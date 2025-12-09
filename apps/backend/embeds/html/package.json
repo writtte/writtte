@@ -1,0 +1,7 @@
+{
+  "name": "velovra-templates",
+  "private": true,
+  "scripts": {
+    "live:sign-up-link": "bun ./emails/sign-up-link.html"
+  }
+}

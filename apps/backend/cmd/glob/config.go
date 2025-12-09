@@ -5,6 +5,7 @@ import (
 
 	"github.com/go-playground/validator/v10"
 
+	"backend/embeds"
 	"backend/pkg/extaws"
 	extgolog "backend/pkg/extlog"
 	"backend/pkg/extpgx"
@@ -19,6 +20,7 @@ type GlobalConfiguration struct {
 	Validator             *validator.Validate
 	AWSSESConfig          *extaws.AWSSESConfig
 	AWSSESSession         *extaws.AWSSESSession
+	EmailTemplates        *embeds.EmailTemplateFiles
 	RateLimit             bool
 	UseLocalSESInLocalEnv bool
 }
