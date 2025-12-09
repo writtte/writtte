@@ -5,6 +5,7 @@ import (
 	"sync"
 	"time"
 
+	"backend/cmd/glob"
 	"backend/constants"
 	extgolog "backend/pkg/extlog"
 )
@@ -70,13 +71,13 @@ func dumpServerLog(info ServerInfo, addr string, logType extgolog.LogType,
 
 	switch logType {
 	case extgolog.TypeInformation:
-		Config.Logger.Information(jsonContent, logMsg)
+		glob.Config.Logger.Information(jsonContent, logMsg)
 
 	case extgolog.TypeSuccess:
-		Config.Logger.Success(jsonContent, logMsg)
+		glob.Config.Logger.Success(jsonContent, logMsg)
 
 	case extgolog.TypeError:
-		Config.Logger.Error(jsonContent, logMsg)
+		glob.Config.Logger.Error(jsonContent, logMsg)
 
 	default:
 	}

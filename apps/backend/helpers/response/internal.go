@@ -9,7 +9,7 @@ import (
 
 	"github.com/getsentry/sentry-go"
 
-	"backend/cmd/app"
+	"backend/cmd/glob"
 	"backend/constants"
 )
 
@@ -82,7 +82,7 @@ func dumpInternalLog(r *http.Request, id string, results any, errMsg any,
 		},
 	}
 
-	app.Config.Logger.Success(jsonContent,
+	glob.Config.Logger.Success(jsonContent,
 		constants.InternalErrorRequest)
 
 	sentry.CaptureMessage(stackTrace)

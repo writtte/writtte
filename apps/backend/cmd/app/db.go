@@ -1,6 +1,7 @@
 package app
 
 import (
+	"backend/cmd/glob"
 	"backend/configs"
 	"backend/constants"
 	extgolog "backend/pkg/extlog"
@@ -21,7 +22,7 @@ func CreateMainDBPool() {
 		constants.DatabaseConnectionStarting)
 
 	var err error
-	Config.MainSQLDB, err = extpgx.CreatePool(connStr)
+	glob.Config.MainSQLDB, err = extpgx.CreatePool(connStr)
 	if err != nil {
 		dumpMainDBLog(uri, extgolog.TypeError,
 			constants.DatabaseConnectionFailed)
@@ -43,13 +44,13 @@ func dumpMainDBLog(uri extpgx.PsqlURI,
 
 	switch logType {
 	case extgolog.TypeInformation:
-		Config.Logger.Information(jsonContent, logMsg)
+		glob.Config.Logger.Information(jsonContent, logMsg)
 
 	case extgolog.TypeSuccess:
-		Config.Logger.Success(jsonContent, logMsg)
+		glob.Config.Logger.Success(jsonContent, logMsg)
 
 	case extgolog.TypeError:
-		Config.Logger.Error(jsonContent, logMsg)
+		glob.Config.Logger.Error(jsonContent, logMsg)
 
 	default:
 	}

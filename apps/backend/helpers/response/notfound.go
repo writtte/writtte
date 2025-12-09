@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"backend/cmd/app"
+	"backend/cmd/glob"
 	"backend/constants"
 	"backend/pkg/intstr"
 )
@@ -40,6 +40,6 @@ func dumpNotFoundErrorLog(httpStatus int,
 		constants.LogHTTPStatus: &httpStatus,
 	}
 
-	app.Config.Logger.Success(jsonContent,
+	glob.Config.Logger.Success(jsonContent,
 		constants.FailedErrorRequest)
 }

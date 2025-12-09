@@ -1,29 +1,19 @@
 package app
 
 import (
+	"errors"
 	"net/http"
 	"sync"
 	"time"
 
-	"github.com/go-playground/validator/v10"
-
+	"backend/cmd/glob"
 	"backend/configs"
+	"backend/constants"
 	extgolog "backend/pkg/extlog"
 	"backend/pkg/extpgx"
 	"backend/pkg/extvalidator"
+	"backend/routes"
 )
-
-type ApplicationConfig struct {
-	Environment int
-	RunningMode int
-	HTTPHandler http.Handler
-	MainSQLDB   *extpgx.PsqlPool
-	Logger      *extgolog.GoLog
-	Validator   *validator.Validate
-	RateLimit   bool
-}
-
-var Config *ApplicationConfig
 
 func SetupConfigs() {
 	configs.EnvironmentEnvs()
@@ -34,7 +24,7 @@ func SetupConfigs() {
 }
 
 func SetupLogger() {
-	Config = &ApplicationConfig{
+	glob.Config = &glob.GlobalConfiguration{
 		Logger: extgolog.InitLogger(extgolog.Config{
 			Destination: configs.LogDestination,
 			Rotation:    configs.LogRotation,
@@ -47,15 +37,22 @@ func SetupApp() {
 	//
 	// Do not change the order of the calls
 
-	Config.Environment = ReturnEnvironment()
-	Config.RunningMode = ReturnMode()
-	Config.HTTPHandler = http.NewServeMux()
-	Config.MainSQLDB = &extpgx.PsqlPool{}
-	Config.RateLimit = ReturnRateLimitStatus()
-	Config.Validator = extvalidator.Init()
+	glob.Config.Environment = ReturnEnvironment()
+	glob.Config.RunningMode = ReturnMode()
+	glob.Config.HTTPHandler = http.NewServeMux()
+	glob.Config.MainSQLDB = &extpgx.PsqlPool{}
+	glob.Config.RateLimit = ReturnRateLimitStatus()
+	glob.Config.Validator = extvalidator.Init()
 }
 
-func SetupAPIRoutes() {}
+func SetupAPIRoutes() {
+	mux, ok := glob.Config.HTTPHandler.(*http.ServeMux)
+	if !ok {
+		panic(errors.New(constants.ErrorInvalidTypeServerMux))
+	}
+
+	routes.Shared(mux)
+}
 
 func SetupDatabases() {
 	CreateMainDBPool()
@@ -84,6 +81,6 @@ func SetupServer() {
 
 	var wg sync.WaitGroup
 	wg.Add(serverCount)
-	CreateHTTPServer(Config.HTTPHandler, *i, &wg)
+	CreateHTTPServer(glob.Config.HTTPHandler, *i, &wg)
 	wg.Wait()
 }
