@@ -6,10 +6,12 @@ dotenv: [".env"]
 
 env:
   FILE_ENV: .env
+  FILE_SCRIPT_PSQL_SETUP: scripts/setup/psql-db.sh
   DIRECTORY_BACKEND_SERVER: apps/backend/
 
 includes:
   go:backend: ./apps/backend/taskfile.yml
+  psql:main: ./databases/main/taskfile.yml
 
 tasks:
   main:format:
