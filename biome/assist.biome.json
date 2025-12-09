@@ -1,0 +1,22 @@
+{
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "identifierOrder": "lexicographic",
+            "groups": [
+              {
+                "type": true
+              },
+              ":URL:",
+              ":NODE:"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

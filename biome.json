@@ -1,0 +1,12 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.3.5/schema.json",
+  "extends": [
+    "./biome/assist.biome.json",
+    "./biome/formatter.biome.json",
+    "./biome/linter.biome.json",
+    "./biome/vcs.biome.json"
+  ],
+  "files": {
+    "includes": ["**/*.{ts,html,css,json}", "!node_modules", "!tests"]
+  }
+}

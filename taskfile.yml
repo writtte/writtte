@@ -1,0 +1,81 @@
+version: "3"
+
+silent: true
+
+dotenv: [".env"]
+
+env:
+  FILE_ENV: .env
+  DIRECTORY_BACKEND_SERVER: apps/backend/
+
+includes:
+  go:backend: ./apps/backend/taskfile.yml
+
+tasks:
+  main:format:
+    description: format entire project
+    cmds:
+      - sh ./scripts/format/bash.sh
+      - sh ./scripts/format/biome.sh
+      - sh ./scripts/format/go.sh
+      - sh ./scripts/format/psql.sh
+
+  main:lint:
+    description: lint entire project
+    cmds:
+      - . ./scripts/lint/bash.sh
+      - . ./scripts/lint/biome.sh
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --err-check
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --go-sec
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --revive ../../.revive.toml
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --static-check
+
+  core:environment-setup:
+    description: download generated ENV file using doppler
+    cmds:
+      - doppler -p ${DOPPLER_PROJECT} -c local secrets download --format env --no-file > $FILE_ENV
+
+  core:githooks-setup:
+    description: setup git hooks
+    cmds:
+      - |
+        hook_scripts=("commit-msg" "post-commit")
+        for script in "${hook_scripts[@]}"; do
+          cp "./scripts/githooks/${script}.sh" ".git/hooks/${script}"
+          chmod +x ".git/hooks/${script}"
+        done
+
+  core:hard-clean:
+    description: hard clean the project
+    prompt: this will remove all generated build artifacts and dependency files from the repository. are you sure you want to continue?
+    cmds:
+      - |
+        find . \( -name "node_modules" -o -name "dist" -o -name ".turbo" \) -type d -prune -exec rm -rf {} +
+        find . \( -name "package-lock.json" -o -name "bun.lock" \) -type f -delete
+
+  core:count-lines:
+    description: count lines of code in the repository
+    cmds:
+      - |
+        find . \( \
+          -name ".DS_Store" -o \
+          -name ".env" -o \
+          -name "go.mod" -o \
+          -name "go.sum" -o \
+          -name "package-lock.json" -o \
+          -name "coverage.html" -o \
+          -name "coverage.out" -o \
+          -name "*.png" -o \
+          -name "*.svg" -o \
+          -name "*.jpeg" -o \
+          -name "*.lock" -o \
+          -name "__debug_*" -o \
+          -type d \( \
+            -name "export" -o \
+            -name "dist" -o \
+            -name "temp" -o \
+            -name ".git" -o \
+            -name ".turbo" -o \
+            -name "node_modules" \) \
+            -prune \) \
+          -o -type f -exec wc -lw {} +

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "all:fmt": {
+      "outputs": []
+    },
+    "fe:dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "fe:build": {
+      "outputs": ["dist/**"]
+    },
+    "fe:start": {
+      "cache": false
+    },
+    "fe:preview": {
+      "cache": false
+    },
+    "fe:lint": {
+      "outputs": []
+    },
+    "fe:check": {
+      "cache": false,
+      "outputs": []
+    },
+    "fe:fmt": {
+      "outputs": []
+    },
+    "fe:types": {
+      "outputs": []
+    },
+    "pkg:build": {
+      "outputs": []
+    },
+    "pkg:lint": {
+      "outputs": []
+    },
+    "pkg:check": {
+      "cache": false,
+      "outputs": []
+    },
+    "pkg:fmt": {
+      "outputs": []
+    },
+    "pkg:types": {
+      "outputs": []
+    }
+  }
+}
