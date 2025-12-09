@@ -29,3 +29,11 @@ const (
 	SESEmailSendSuccess = "email sent successfully"
 	SESEmailSendFailed  = "email failed to send"
 )
+
+const (
+	APIRouteGetInitialized    = "get api route initialized"
+	APIRoutePostInitialized   = "post api route initialized"
+	APIRoutePutInitialized    = "put api route initialized"
+	APIRouteDeleteInitialized = "delete api route initialized"
+	APIRoutePatchInitialized  = "patch api route initialized"
+)
