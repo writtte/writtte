@@ -25,8 +25,26 @@ tasks:
   main:lint:
     description: lint entire project
     cmds:
-      - . ./scripts/lint/bash.sh
-      - . ./scripts/lint/biome.sh
+      - sh ./scripts/lint/bash.sh
+      - sh ./scripts/lint/biome.sh
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --err-check
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --go-sec
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --revive ../../.revive.toml
+      - cd apps/backend/ && sh ../../scripts/lint/go.sh --static-check
+
+  main:lint:sh:
+    description: lint bash script source
+    cmds:
+      - sh ./scripts/lint/bash.sh
+
+  main:lint:biome:
+    description: lint ts, js, html, source
+    cmds:
+      - sh ./scripts/lint/biome.sh
+
+  main:lint:go:
+    description: lint go source
+    cmds:
       - cd apps/backend/ && sh ../../scripts/lint/go.sh --err-check
       - cd apps/backend/ && sh ../../scripts/lint/go.sh --go-sec
       - cd apps/backend/ && sh ../../scripts/lint/go.sh --revive ../../.revive.toml
