@@ -1,0 +1,22 @@
+version: "3"
+
+silent: true
+
+env:
+  PRIVATE_SERVER_FLAGS: -env=local -mode=debug -address=127.0.0.1:7100 -ses-enabled
+
+tasks:
+  setup:
+    description: setup go tools
+    cmds:
+      - |
+        cd ${DIRECTORY_BACKEND_SERVER}
+        . ../../scripts/setup/go-tools.sh
+
+  private:run:
+    description: run backend server-side app
+    cmds:
+      - |
+        cd ${DIRECTORY_BACKEND_SERVER}
+        chmod +x ../../scripts/execute/go-run.sh
+        . ../../scripts/execute/go-run.sh cmd/bin/private/* $PRIVATE_SERVER_FLAGS

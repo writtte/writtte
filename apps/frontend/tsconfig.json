@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2023",
+    "noImplicitAny": true,
+    "moduleResolution": "bundler",
+    "sourceMap": false,
+    "outDir": "dist",
+    "lib": ["dom", "dom.iterable", "ES2023"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "useUnknownInCatchVariables": true,
+    "strict": true,
+    "noEmit": true,
+    "incremental": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+  "include": [".", "global.d.ts"]
+}

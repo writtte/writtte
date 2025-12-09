@@ -1,0 +1,12 @@
+{
+  "root": false,
+  "extends": "//",
+  "files": {
+    "includes": [
+      "**/*.{ts,html,css,json}",
+      "!node_modules",
+      "!dist",
+      "!vite.config.ts"
+    ]
+  }
+}

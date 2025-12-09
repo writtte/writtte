@@ -1,0 +1,40 @@
+[
+  {
+    "label": "[FE] Run Server",
+    "adapter": "JavaScript",
+    "type": "chrome",
+    "request": "launch",
+    "mode": "debug",
+    "webRoot": "${ZED_WORKTREE_ROOT}/apps/frontend",
+    "skipFiles": ["<node_internals>/**"],
+    "build": {
+      "command": "bun",
+      "args": ["run", "fe:dev"],
+      "cwd": "${ZED_WORKTREE_ROOT}"
+    }
+  },
+  {
+    "label": "[FE] Debug Server (Attach)",
+    "adapter": "JavaScript",
+    "type": "chrome",
+    "request": "launch",
+    "mode": "debug",
+    "url": "http://localhost:7102",
+    "webRoot": "${ZED_WORKTREE_ROOT}/apps/frontend",
+    "skipFiles": ["<node_internals>/**"]
+  },
+  {
+    "label": "[BE] Debug Server",
+    "adapter": "Delve",
+    "request": "launch",
+    "mode": "debug",
+    "program": "${ZED_WORKTREE_ROOT}/apps/backend",
+    "cwd": "${ZED_WORKTREE_ROOT}/apps/backend",
+    "args": [
+      "-env=local",
+      "-mode=debug",
+      "-address=127.0.0.1:7100",
+      "-ses-enabled"
+    ]
+  }
+]
