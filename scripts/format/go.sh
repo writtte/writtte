@@ -18,3 +18,5 @@ if [ -n "$go_files" ]; then
   echo "running goimports-reviser..."
   echo "$go_files" | xargs -I{} goimports-reviser -rm-unused {}
 fi
+
+exit 0
