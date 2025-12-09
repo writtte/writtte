@@ -8,6 +8,7 @@ const (
 
 const (
 	ErrorInternalNilResWriter = "response writer is nil"
+	ErrorInvalidTypeServerMux = "invalid type for http server mux"
 )
 
 const (
