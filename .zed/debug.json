@@ -11,7 +11,8 @@
       "command": "bun",
       "args": ["run", "fe:dev"],
       "cwd": "${ZED_WORKTREE_ROOT}"
-    }
+    },
+    "envFile": "${ZED_WORKTREE_ROOT}/.env"
   },
   {
     "label": "[FE] Debug Server (Attach)",
@@ -21,20 +22,22 @@
     "mode": "debug",
     "url": "http://localhost:7102",
     "webRoot": "${ZED_WORKTREE_ROOT}/apps/frontend",
-    "skipFiles": ["<node_internals>/**"]
+    "skipFiles": ["<node_internals>/**"],
+    "envFile": "${ZED_WORKTREE_ROOT}/.env"
   },
   {
     "label": "[BE] Debug Server",
     "adapter": "Delve",
     "request": "launch",
     "mode": "debug",
-    "program": "${ZED_WORKTREE_ROOT}/apps/backend",
+    "program": "${ZED_WORKTREE_ROOT}/apps/backend/cmd/bin",
     "cwd": "${ZED_WORKTREE_ROOT}/apps/backend",
     "args": [
       "-env=local",
       "-mode=debug",
       "-address=127.0.0.1:7100",
       "-ses-enabled"
-    ]
+    ],
+    "envFile": "${ZED_WORKTREE_ROOT}/.env"
   }
 ]
