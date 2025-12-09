@@ -24,3 +24,8 @@ const (
 	RequestLoggingStarting = "request logging is starting"
 	RequestLoggingSuccess  = "request logging success"
 )
+
+const (
+	SESEmailSendSuccess = "email sent successfully"
+	SESEmailSendFailed  = "email failed to send"
+)

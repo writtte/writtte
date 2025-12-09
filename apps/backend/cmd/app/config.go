@@ -9,6 +9,7 @@ import (
 	"backend/cmd/glob"
 	"backend/configs"
 	"backend/constants"
+	"backend/pkg/extaws"
 	extgolog "backend/pkg/extlog"
 	"backend/pkg/extpgx"
 	"backend/pkg/extvalidator"
@@ -43,6 +44,29 @@ func SetupApp() {
 	glob.Config.MainSQLDB = &extpgx.PsqlPool{}
 	glob.Config.RateLimit = ReturnRateLimitStatus()
 	glob.Config.Validator = extvalidator.Init()
+
+	if ReturnSESStatus() {
+		const emptySession = ""
+		cfg, err := extaws.InitSESConfig(extaws.SESConfig{
+			Region:          &configs.AWSSESRegion,
+			AccessKey:       &configs.AWSSESAccountAccessKey,
+			SecretAccessKey: &configs.AWSSESAccountSecretAccessKey,
+			SessionToken:    emptySession,
+		})
+
+		if err != nil {
+			panic(err)
+		}
+
+		glob.Config.AWSSESConfig = &cfg
+		glob.Config.AWSSESSession =
+			extaws.InitSESSession(glob.Config.AWSSESConfig)
+	}
+
+	// Always add local selection at the end of the
+	// configuration flow
+
+	glob.Config.UseLocalSESInLocalEnv = glob.Config.Environment == LocalEnv
 }
 
 func SetupAPIRoutes() {
