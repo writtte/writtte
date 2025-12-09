@@ -1,4 +1,4 @@
-package app
+package flags
 
 import "flag"
 
@@ -21,7 +21,7 @@ var (
 	sesStatus           bool
 )
 
-func ScanFlags() {
+func Scan() {
 	const emptyStr = ""
 
 	env := flag.String("env", emptyStr, emptyStr)
@@ -58,47 +58,4 @@ func ReturnRateLimitStatus() bool {
 
 func ReturnSESStatus() bool {
 	return sesStatus
-}
-
-func checkAddresses(address string) string {
-	if address == "" {
-		panic("server address cannot be empty")
-	}
-
-	return address
-}
-
-func checkEnvironment(env string) int {
-	var envType int
-	switch env {
-	case "local":
-		envType = LocalEnv
-
-	case "staging":
-		envType = StagingEnv
-
-	case "production":
-		envType = ProductionEnv
-
-	default:
-		panic("invalid environment type provided in flags")
-	}
-
-	return envType
-}
-
-func checkMode(mode string) int {
-	var modeType int
-	switch mode {
-	case "debug":
-		modeType = DebugMode
-
-	case "release":
-		modeType = ReleaseMode
-
-	default:
-		panic("invalid mode type provided in flags")
-	}
-
-	return modeType
 }

@@ -1,11 +1,13 @@
-package app
+package connect
 
 import (
 	"net/http"
 	"sync"
 	"time"
 
+	"backend/cmd/flags"
 	"backend/cmd/glob"
+	"backend/configs"
 	"backend/constants"
 	extgolog "backend/pkg/extlog"
 )
@@ -26,7 +28,34 @@ type CorsConfig struct {
 	AllowedHeaders string // Comma-separated list of allowed HTTP headers
 }
 
-func CreateHTTPServer(handler http.Handler, i ServerInfo,
+func Server() {
+	const (
+		serverCount = 1
+
+		readTimeout  = 15 * time.Second
+		writeTimeout = 30 * time.Second
+		idleTimeout  = 60 * time.Second
+	)
+
+	address := string(flags.ReturnAddress())
+
+	i := &ServerInfo{
+		URL:            &address,
+		ReadTimeout:    readTimeout,
+		WriteTimeout:   writeTimeout,
+		IdleTimeout:    idleTimeout,
+		AllowedOrigins: configs.AllowedOrigins,
+		AllowedMethods: configs.AllowedMethods,
+		AllowedHeaders: configs.AllowedHeaders,
+	}
+
+	var wg sync.WaitGroup
+	wg.Add(serverCount)
+	createHTTPServer(glob.Config.HTTPHandler, *i, &wg)
+	wg.Wait()
+}
+
+func createHTTPServer(handler http.Handler, i ServerInfo,
 	wg *sync.WaitGroup) *http.Server {
 	handler = serverCorsHandler(handler, CorsConfig{
 		AllowedOrigins: i.AllowedOrigins,

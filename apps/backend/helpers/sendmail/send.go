@@ -3,7 +3,7 @@ package sendmail
 import (
 	"net/http"
 
-	"backend/cmd/app"
+	"backend/cmd/flags"
 	"backend/cmd/glob"
 	"backend/constants"
 	"backend/pkg/extaws"
@@ -19,7 +19,7 @@ type Info struct {
 }
 
 func Send(r *http.Request, info Info) {
-	if !app.ReturnSESStatus() {
+	if !flags.ReturnSESStatus() {
 		return
 	}
 

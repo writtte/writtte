@@ -1,13 +1,17 @@
 package main
 
-import "backend/cmd/app"
+import (
+	"backend/cmd/connect"
+	"backend/cmd/flags"
+)
 
 func main() {
-	app.ScanFlags()
-	app.SetupConfigs()
-	app.SetupLogger()
-	app.SetupApp()
-	app.SetupAPIRoutes()
-	app.SetupDatabases()
-	app.SetupServer()
+	flags.Scan()
+
+	connect.SetupConfigs()
+	connect.SetupLogger()
+	connect.SetupApp()
+	connect.Routes()
+	connect.Databases()
+	connect.Server()
 }

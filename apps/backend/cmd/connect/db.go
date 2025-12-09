@@ -1,4 +1,4 @@
-package app
+package connect
 
 import (
 	"backend/cmd/glob"
@@ -8,7 +8,11 @@ import (
 	"backend/pkg/extpgx"
 )
 
-func CreateMainDBPool() {
+func Databases() {
+	createMainDBPool()
+}
+
+func createMainDBPool() {
 	uri := extpgx.PsqlURI{
 		Host:     configs.MainSQLDBHost,
 		Port:     configs.MainSQLDBPort,

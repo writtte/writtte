@@ -8,7 +8,7 @@ import (
 
 	"github.com/getsentry/sentry-go"
 
-	"backend/cmd/app"
+	"backend/cmd/flags"
 	"backend/cmd/glob"
 	"backend/helpers/response"
 	"backend/pkg/intstr"
@@ -32,7 +32,7 @@ func handlePanic(w http.ResponseWriter, r *http.Request, err any) {
 	sentry.CurrentHub().Recover(err)
 	sentry.Flush(2 * time.Second)
 
-	if glob.Config.Environment != app.ProductionEnv {
+	if glob.Config.Environment != flags.ProductionEnv {
 		// This is printed in the terminal only in non-production
 		// environments
 
