@@ -12,5 +12,13 @@ const (
 )
 
 const (
-	ErrorMiddlewareUIDNotFound = "unique id not found in context"
+	ErrorMiddlewareJWTClaimNotFound   = "claim not found"
+	ErrorMiddlewareJWTClaimsInvalid   = "invalid claims"
+	ErrorMiddlewareJWTEmptyToken      = "empty access token key"
+	ErrorMiddlewareJWTInvalidToken    = "inactive or invalid access token"
+	ErrorMiddlewareJWTNoAuthHeader    = "no authorization header found in request"
+	ErrorMiddlewareNoBearer           = "no bearer found in header"
+	ErrorMiddlewareRateLimitExceeded  = "rate limit exceeded"
+	ErrorMiddlewareRateLimitInvalidIP = "invalid ip address"
+	ErrorMiddlewareUIDNotFound        = "unique id not found in context"
 )

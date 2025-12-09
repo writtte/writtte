@@ -19,3 +19,8 @@ const (
 	InternalErrorRequest  = "internal server error occurred in the request"
 	SuccessResultsRequest = "request processed successfully"
 )
+
+const (
+	RequestLoggingStarting = "request logging is starting"
+	RequestLoggingSuccess  = "request logging success"
+)
