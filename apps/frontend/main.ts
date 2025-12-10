@@ -1,5 +1,31 @@
+import { defaultNotFoundRoute, defaultRoutes } from './routes';
+import { monitorRendering } from './utils/dom/debug';
+import {
+  defineNotFoundRoute,
+  defineRoutes,
+  initRouter,
+  setRootElement,
+} from './utils/routes/routes';
+
 const main = async (): Promise<void> => {
-  // Add main content here
+  const rootId = 'velovra-root';
+
+  const rootElement = document.getElementById(rootId);
+  setRootElement(rootElement);
+
+  defineRoutes(defaultRoutes);
+  defineNotFoundRoute(defaultNotFoundRoute);
+
+  initRouter();
+
+  if (rootElement !== undefined) {
+    monitorRendering(rootId, {
+      color: '#DC143C',
+      duration: 1000,
+      opacity: '0.3',
+      hidePanel: true,
+    });
+  }
 };
 
 // biome-ignore lint/nursery/noFloatingPromises: A floating promise is required here
