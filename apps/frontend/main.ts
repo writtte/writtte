@@ -1,3 +1,4 @@
+import { setupMiddleware } from './middleware/middleware';
 import { defaultNotFoundRoute, defaultRoutes } from './routes';
 import { monitorRendering } from './utils/dom/debug';
 import {
@@ -12,6 +13,8 @@ const main = async (): Promise<void> => {
 
   const rootElement = document.getElementById(rootId);
   setRootElement(rootElement);
+
+  await setupMiddleware();
 
   defineRoutes(defaultRoutes);
   defineNotFoundRoute(defaultNotFoundRoute);
