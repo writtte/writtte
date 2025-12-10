@@ -5,6 +5,7 @@ import {
   type TInterpolationParams,
   createTranslator,
 } from '@velovra-internal/translations';
+import { buildError } from '../../helpers/error/build';
 import { enMessages } from '../../translations/en-lang';
 import { jaMessages } from '../../translations/ja-lang';
 
@@ -26,12 +27,12 @@ const setupTranslations = (): void => {
 
 const getTr = (key: string): string => {
   if (tr === undefined) {
-    throw new Error('translation (tr) is not set');
+    throw new Error(buildError('translation (tr) is not set'));
   }
 
   const value = tr(key);
   if (value === key) {
-    throw new Error(`invalid translation key ${key} found`);
+    throw new Error(buildError(`invalid translation key ${key} found`));
   }
 
   return value;
