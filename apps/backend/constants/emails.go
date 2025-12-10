@@ -7,5 +7,7 @@ const (
 )
 
 const (
-	EmailSubjectSignUpLink = "You’re Almost There, Finish Creating Your Velovra Account"
+	EmailSubjectSignInQuickLink = "Get Back Into Your Account"
+	EmailSubjectSignUpLink      = "You’re Almost There, Finish Creating Your Velovra Account"
+	EmailSubjectSignUpWelcome   = "Welcome Aboard! Your Velovra Journey Begins Here"
 )
