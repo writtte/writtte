@@ -1,0 +1,6 @@
+The HTML files in this directory must be compiled manually using the JavaScript
+files, and their content must be manually copied into the backend embedded HTML
+files.
+
+This package is part of the main package.json workspace, but it is not connected
+to the frontend or any other part of it. This is an independent source.

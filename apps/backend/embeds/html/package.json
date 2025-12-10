@@ -1,9 +1,0 @@
-{
-  "name": "velovra-templates",
-  "private": true,
-  "scripts": {
-    "live:sign-in-quick": "bun ./emails/sign-in-quick.html",
-    "live:sign-up-link": "bun ./emails/sign-up-link.html",
-    "live:sign-up-welcome": "bun ./emails/sign-up-welcome.html"
-  }
-}

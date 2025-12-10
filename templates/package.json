@@ -1,0 +1,17 @@
+{
+  "name": "velovra-templates",
+  "private": true,
+  "scripts": {
+    "live:template": "bun ./emails/_template.html",
+    "live:sign-in-quick": "bun ./emails/sign-in-quick.html",
+    "live:sign-up-link": "bun ./emails/sign-up-link.html",
+    "live:sign-up-welcome": "bun ./emails/sign-up-welcome.html",
+    "build:sign-in-quick": "cd emails && bun _minify.js sign-up-link.html dist/sign-in-quick.html",
+    "build:sign-up-link": "cd emails && bun _minify.js sign-up-link.html dist/sign-up-link.html",
+    "build:sign-up-welcome": "cd emails && bun _minify.js sign-up-link.html dist/sign-up-welcome.html"
+  },
+  "devDependencies": {
+    "@css-inline/css-inline": "0.18.0",
+    "minify": "14.1.0"
+  }
+}

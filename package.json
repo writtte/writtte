@@ -5,7 +5,7 @@
   "workspaces": [
     "apps/frontend/",
     "packages/@velovra-internal/*",
-    "apps/backend/embeds/html"
+    "templates/"
   ],
   "scripts": {
     "all:fmt": "bunx --bun biome format --write",
