@@ -1,0 +1,9 @@
+.alert-container {
+  bottom: var(--gap-xlg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  position: fixed;
+  right: var(--gap-xlg);
+  z-index: 999999;
+}
