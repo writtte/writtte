@@ -6,8 +6,8 @@ import {
   createTranslator,
 } from '@velovra-internal/translations';
 import { buildError } from '../../helpers/error/build';
-import { enMessages } from '../../translations/en-lang';
-import { jaMessages } from '../../translations/ja-lang';
+import { enMessages } from '../../translations/en';
+import { jaMessages } from '../../translations/ja';
 
 var tr: (key: string, params?: TInterpolationParams) => string;
 
