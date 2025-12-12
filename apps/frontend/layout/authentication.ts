@@ -1,3 +1,5 @@
+import { AuthenticationHeader } from '../components/AuthenticationHeader';
+
 const AuthenticationLayout = async ({
   content,
 }: {
@@ -9,21 +11,12 @@ const AuthenticationLayout = async ({
 
   const layoutDiv = document.createElement('div');
   const containerDiv = document.createElement('div');
-  const headerDiv = document.createElement('div');
-  const pageDiv = document.createElement('div');
-  const footerDiv = document.createElement('div');
 
   layoutDiv.classList.add('authentication-layout');
   containerDiv.classList.add('authentication-layout__container');
-  headerDiv.classList.add('authentication-layout__header');
-  pageDiv.classList.add('authentication-layout__page');
-  footerDiv.classList.add('authentication-layout__footer');
 
+  containerDiv.append(AuthenticationHeader().element, content);
   layoutDiv.appendChild(containerDiv);
-  containerDiv.appendChild(headerDiv);
-  containerDiv.appendChild(pageDiv);
-  containerDiv.appendChild(footerDiv);
-  pageDiv.appendChild(content);
 
   return layoutDiv;
 };
