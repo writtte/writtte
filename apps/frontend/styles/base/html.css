@@ -5,7 +5,7 @@ html {
 }
 
 body {
-  font-family: "IBM Plex Sans";
+  font-family: "IBM Plex Sans Variable", sans-serif;
   font-optical-sizing: auto;
   height: 100%;
   min-height: 100vh;
