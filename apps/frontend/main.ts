@@ -7,6 +7,9 @@ import {
   initRouter,
   setRootElement,
 } from './utils/routes/routes';
+import './styles/theme.css';
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource-variable/jetbrains-mono';
 
 const main = async (): Promise<void> => {
   const rootId = 'velovra-root';
