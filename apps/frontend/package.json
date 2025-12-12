@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@velovra-internal/translations": "workspace:*",
-    "@velovra-internal/validate": "workspace:*"
+    "@velovra-internal/validate": "workspace:*",
+    "@fontsource-variable/ibm-plex-sans": "5.2.8",
+    "@fontsource-variable/jetbrains-mono": "5.2.8"
   },
   "devDependencies": {
     "@types/bun": "1.3.2",
