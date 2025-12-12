@@ -1,3 +1,4 @@
+:root.light-theme,
 :root {
   --shadow-popup: 0 4px 12px 0 rgba(12, 12, 13, 0.05);
   --shadow-alert: 0 3px 12px 0 rgba(0, 0, 0, 0.09);
@@ -6,6 +7,7 @@
     0 4px 16px 0 rgba(12, 12, 13, 0.05), 0 8px 32px 0 rgba(12, 12, 13, 0.05);
 }
 
+:root.light-theme,
 :root {
   --component-alert-background: var(--base-white);
   --component-alert-border: var(--gray-500);
