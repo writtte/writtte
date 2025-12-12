@@ -65,6 +65,10 @@ const StatusText = (opts: TOptions): TReturnStatusText => {
   };
 };
 
-export type { TOptions as TStatusTextOptions, TReturnStatusText };
+export type {
+  TStatusTextType,
+  TOptions as TStatusTextOptions,
+  TReturnStatusText,
+};
 
-export { StatusText };
+export { StatusTextType, StatusText };
