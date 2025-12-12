@@ -1,0 +1,19 @@
+.animated-icon-circle-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    animation: animated-icon-circle-spinner-rotate 1s linear infinite;
+  }
+}
+
+@keyframes animated-icon-circle-spinner-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
