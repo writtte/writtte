@@ -14,19 +14,19 @@ import (
 func TemporaryTokens(mux *http.ServeMux, prefix *string) {
 	basePrefix := *prefix + "/temporary"
 
-	temporaryTokenGet(mux, &basePrefix)
 	temporaryTokenPost(mux, &basePrefix)
 }
 
-func temporaryTokenGet(mux *http.ServeMux, prefix *string) {
+func temporaryTokenPost(mux *http.ServeMux, prefix *string) {
 	var (
-		tokenPath = "/token"
+		tokenGeneratePath = "/token/generate"
+		tokenValidatePath = "/token/validate"
 	)
 
 	flows := []middleware.Flow{
 		{
 			Handler: v1generatetemporarytoken.Setup(),
-			Path:    &tokenPath,
+			Path:    &tokenGeneratePath,
 			Method:  http.MethodGet,
 			Rates: &middleware.Rates{
 				ReqLimit: middleware.ReqLimit2,
@@ -34,29 +34,9 @@ func temporaryTokenGet(mux *http.ServeMux, prefix *string) {
 				TTL:      middleware.TTLDefault,
 			},
 		},
-	}
-
-	for _, flow := range flows {
-		glob.Config.Logger.Information(map[string]any{
-			constants.CallMethod: flow.Method,
-			constants.CallPath:   *prefix + *flow.Path,
-		}, constants.APIRoutePostInitialized)
-
-		*flow.Path = fmt.Sprintf("%s %s%s", flow.Method, // revive:disable-line
-			*prefix, *flow.Path)
-		mux.Handle(*flow.Path, middleware.Apply(flow))
-	}
-}
-
-func temporaryTokenPost(mux *http.ServeMux, prefix *string) {
-	var (
-		tokenPath = "/token"
-	)
-
-	flows := []middleware.Flow{
 		{
 			Handler: v1validatetemporarytoken.Setup(),
-			Path:    &tokenPath,
+			Path:    &tokenValidatePath,
 			Method:  http.MethodPost,
 			Rates: &middleware.Rates{
 				ReqLimit: middleware.ReqLimit2,
