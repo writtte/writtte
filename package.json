@@ -21,7 +21,8 @@
     "pkg:lint": "bunx turbo pkg:lint",
     "pkg:check": "bunx turbo pkg:check",
     "pkg:fmt": "bunx turbo pkg:fmt",
-    "pkg:types": "bunx turbo pkg:types"
+    "pkg:types": "bunx turbo pkg:types",
+    "script:id": "sh ./scripts/helpers/js-id.sh"
   },
   "devDependencies": {
     "typescript": "5.9.3",
