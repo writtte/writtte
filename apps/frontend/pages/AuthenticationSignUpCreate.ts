@@ -79,8 +79,8 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
   const submitForm = async (): Promise<void> =>
     await createUserAccount(
       inputs.input__yohpsetdar,
+      inputs.input__thsdzupune,
       inputs.input__lgitvucjxf,
-      inputs.button__bjluxfstjv,
       button,
     );
 
