@@ -15,10 +15,9 @@ type TReturnAlertController = {
 // This `alerts` variable holds all the alerts on the pages
 
 var alerts: TInternalAlert[] = [];
+var containerDiv: HTMLDivElement | null = null;
 
 const AlertController = (): TReturnAlertController => {
-  var containerDiv = document.createElement('div');
-
   const ensureContainer = (): void => {
     if (!containerDiv) {
       containerDiv = document.createElement('div');
@@ -65,14 +64,12 @@ const AlertController = (): TReturnAlertController => {
   const closeAlert = (id: string): void => {
     alerts = alerts.filter((a) => a.id !== id);
 
-    if (containerDiv) {
-      const alertElement = containerDiv.querySelector<HTMLElement>(
-        `[id="${id}"]`,
-      );
+    const alertElement = containerDiv?.querySelector<HTMLElement>(
+      `[id="${id}"]`,
+    );
 
-      if (alertElement) {
-        alertElement.dispatchEvent(new CustomEvent('alertRemove'));
-      }
+    if (alertElement) {
+      alertElement.dispatchEvent(new CustomEvent('alertRemove'));
     }
   };
 
