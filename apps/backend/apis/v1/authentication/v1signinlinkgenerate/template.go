@@ -79,5 +79,5 @@ func generateQuickSignInLink(email, name, code, accessToken,
 
 	encodedData := base64.StdEncoding.EncodeToString(jsonBytes)
 
-	return configs.FrontendURL + "/sign-in/email/check?data=" + encodedData
+	return configs.FrontendURL + "/sign-in/check?data=" + encodedData
 }

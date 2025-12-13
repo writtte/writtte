@@ -15,6 +15,7 @@
   "dependencies": {
     "@velovra-internal/translations": "workspace:*",
     "@velovra-internal/validate": "workspace:*",
+    "@velovra-internal/local-storage": "workspace:*",
     "@fontsource-variable/ibm-plex-sans": "5.2.8",
     "@fontsource-variable/jetbrains-mono": "5.2.8"
   },
