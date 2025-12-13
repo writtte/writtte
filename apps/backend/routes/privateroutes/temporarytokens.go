@@ -27,7 +27,7 @@ func temporaryTokenPost(mux *http.ServeMux, prefix *string) {
 		{
 			Handler: v1generatetemporarytoken.Setup(),
 			Path:    &tokenGeneratePath,
-			Method:  http.MethodGet,
+			Method:  http.MethodPost,
 			Rates: &middleware.Rates{
 				ReqLimit: middleware.ReqLimit2,
 				Window:   middleware.Window1,
