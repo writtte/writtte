@@ -36,7 +36,7 @@ const getMagicSignInLink = async (
     email: emailInput.getValue(),
   });
 
-  if (status !== HTTP_STATUS.CREATED) {
+  if (status !== HTTP_STATUS.OK) {
     const httpError = handleHTTPError(status, {
       [HTTP_STATUS.NOT_FOUND]: langKeys().ErrorAccountNotExists,
     });
