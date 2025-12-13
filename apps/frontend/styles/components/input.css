@@ -13,6 +13,10 @@
   display: flex;
   width: 100%;
 
+  &:hover {
+    cursor: text;
+  }
+
   &:active,
   &.active {
     border: var(--stroke-sm) solid var(--component-input-border---active);

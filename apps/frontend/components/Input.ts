@@ -119,6 +119,18 @@ const Input = (opts: TOptions): TReturnInput => {
     inputDiv.classList.remove('active');
   });
 
+  inputDiv.addEventListener('click', () => {
+    input.focus();
+  });
+
+  inputDiv.addEventListener(
+    'focus',
+    () => {
+      input.focus();
+    },
+    true,
+  );
+
   const changeInputType = (type: TInputType): void => {
     input.type = type.toLowerCase();
   };
