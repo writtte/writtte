@@ -1,0 +1,9 @@
+const WAIT_TIMEOUT = {
+  SHORT: 3000,
+};
+
+const ALERT_TIMEOUT = {
+  SHORT: 15000,
+};
+
+export { WAIT_TIMEOUT, ALERT_TIMEOUT };

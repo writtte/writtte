@@ -1,0 +1,56 @@
+/* These variables come directly from the figma design system, exported by the extension 'variable2css' */
+
+:root {
+  --base-black: #000000;
+  --base-white: #ffffff;
+  --blue-100: #f6f8ff;
+  --blue-1000: #0b1226;
+  --blue-200: #e3ebff;
+  --blue-300: #c8d7ff;
+  --blue-400: #acc4ff;
+  --blue-500: #759cff;
+  --blue-600: #477bff;
+  --blue-700: #3c69d9;
+  --blue-800: #2e50a6;
+  --blue-900: #203773;
+  --gray-100: #fafbfb;
+  --gray-1000: #141414;
+  --gray-200: #f5f6f7;
+  --gray-300: #eff2f3;
+  --gray-400: #eaedef;
+  --gray-500: #e5e9eb;
+  --gray-600: #898c8d;
+  --gray-700: #5c5d5e;
+  --gray-800: #252626;
+  --gray-900: #1a1a1a;
+  --green-100: #f5fcf6;
+  --green-1000: #0c2f15;
+  --green-200: #e0f5e5;
+  --green-300: #c1ebcc;
+  --green-400: #a2e1b2;
+  --green-500: #65ce7f;
+  --green-600: #31bd54;
+  --green-700: #2aa147;
+  --green-800: #207b37;
+  --green-900: #165526;
+  --red-100: #fff5f5;
+  --red-1000: #400f10;
+  --red-200: #ffe2e2;
+  --red-300: #ffc4c5;
+  --red-400: #ffa7a8;
+  --red-500: #fe6c6e;
+  --red-600: #fe3b3e;
+  --red-700: #d83235;
+  --red-800: #a52628;
+  --red-900: #721b1c;
+  --yellow-100: #fefcf3;
+  --yellow-1000: #3c3002;
+  --yellow-200: #fdf6da;
+  --yellow-300: #fbecb5;
+  --yellow-400: #f8e390;
+  --yellow-500: #f4d146;
+  --yellow-600: #f0c108;
+  --yellow-700: #cca407;
+  --yellow-800: #9c7d05;
+  --yellow-900: #6c5704;
+}

@@ -1,0 +1,26 @@
+██╗   ██╗███████╗██╗      ██████╗ ██╗   ██╗██████╗  █████╗     ███████╗███████╗
+██║   ██║██╔════╝██║     ██╔═══██╗██║   ██║██╔══██╗██╔══██╗    ██╔════╝██╔════╝
+██║   ██║█████╗  ██║     ██║   ██║██║   ██║██████╔╝███████║    █████╗  █████╗
+╚██╗ ██╔╝██╔══╝  ██║     ██║   ██║╚██╗ ██╔╝██╔══██╗██╔══██║    ██╔══╝  ██╔══╝
+ ╚████╔╝ ███████╗███████╗╚██████╔╝ ╚████╔╝ ██║  ██║██║  ██║    ██║     ███████╗
+  ╚═══╝  ╚══════╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝     ╚══════╝
+
+Introduction
+------------
+
+This directory contains the entire source code for the frontend. Simply
+put, the frontend is a SPA, which means a single HTML page handles everything
+through JavaScript.
+
+For more information about development, build, and deployment, please read
+the wiki in this repository.
+
+Q and A
+--------
+
+1. The first question that might come to your mind is why I use direct
+   DOM manipulation.
+
+It’s because of performance, and I want to be as close to the DOM as
+possible to maintain tight control over performance and the codebase’s
+direction.

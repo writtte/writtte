@@ -1,0 +1,67 @@
+:root.light-theme,
+:root {
+  --shadow-popup: 0 4px 12px 0 rgba(12, 12, 13, 0.05);
+  --shadow-alert: 0 3px 12px 0 rgba(0, 0, 0, 0.09);
+  --shadow-menu: 0 4px 12px 0 rgba(12, 12, 13, 0.1);
+  --shadow-modal:
+    0 4px 16px 0 rgba(12, 12, 13, 0.05), 0 8px 32px 0 rgba(12, 12, 13, 0.05);
+}
+
+:root.light-theme,
+:root {
+  --component-alert-background: var(--base-white);
+  --component-alert-border: var(--gray-500);
+  --component-alert-icon--close: var(--gray-700);
+  --component-alert-icon--close---hover: var(--gray-1000);
+  --component-alert-text--description: var(--gray-700);
+  --component-alert-text--title: var(--gray-1000);
+  --component-authentication-form-link: var(--gray-900);
+  --component-authentication-form-link--border: var(--gray-900);
+  --component-authentication-form-text--subtitle: var(--gray-700);
+  --component-authentication-form-text--title: var(--gray-1000);
+  --component-authentication-header-logo: var(--gray-1000);
+  --component-button-authentication-background: var(--gray-1000);
+  --component-button-authentication-background---active: var(--gray-900);
+  --component-button-authentication-background---disable: var(--gray-500);
+  --component-button-authentication-background---hover: var(--gray-800);
+  --component-button-authentication-background---loading: var(--gray-700);
+  --component-button-authentication-text: var(--base-white);
+  --component-button-authentication-text---disabled: var(--gray-600);
+  --component-button-danger-background: var(--red-600);
+  --component-button-danger-background---active: var(--red-700);
+  --component-button-danger-background---disable: var(--gray-500);
+  --component-button-danger-background---hover: var(--red-500);
+  --component-button-danger-background---loading: var(--red-400);
+  --component-button-danger-text: var(--base-white);
+  --component-button-danger-text---disable: var(--gray-600);
+  --component-button-neutral-background: var(--gray-200);
+  --component-button-neutral-background---active: var(--gray-400);
+  --component-button-neutral-background---disable: var(--gray-500);
+  --component-button-neutral-background---hover: var(--gray-300);
+  --component-button-neutral-background---loading: var(--gray-100);
+  --component-button-neutral-border: var(--gray-500);
+  --component-button-neutral-text: var(--gray-1000);
+  --component-button-neutral-text---disable: var(--gray-600);
+  --component-button-neutral-text---loading: var(--gray-600);
+  --component-button-primary-background: var(--blue-600);
+  --component-button-primary-background---active: var(--blue-700);
+  --component-button-primary-background---disable: var(--gray-500);
+  --component-button-primary-background---hover: var(--blue-500);
+  --component-button-primary-background---loading: var(--blue-400);
+  --component-button-primary-text: var(--base-white);
+  --component-button-primary-text---disable: var(--gray-600);
+  --component-error-message-text--description: var(--gray-700);
+  --component-error-message-text--title: var(--gray-1000);
+  --component-input-background: var(--base-white);
+  --component-input-background---disable: var(--gray-300);
+  --component-input-border: var(--gray-500);
+  --component-input-border---active: var(--blue-400);
+  --component-input-border---active-shadow: var(--blue-300);
+  --component-input-text: var(--gray-1000);
+  --component-input-text---disable: var(--gray-600);
+  --component-input-text---placeholder: var(--gray-600);
+  --component-loading-indicator-text: var(--gray-900);
+  --component-status-text-text--error: var(--red-700);
+  --component-status-text-text--success: var(--green-700);
+  --layout-authentication: var(--base-white);
+}

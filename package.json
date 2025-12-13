@@ -4,7 +4,8 @@
   "packageManager": "bun@1.3.0",
   "workspaces": [
     "apps/frontend/",
-    "packages/@velovra-internal/*"
+    "packages/@velovra-internal/*",
+    "templates/"
   ],
   "scripts": {
     "all:fmt": "bunx --bun biome format --write",
@@ -20,7 +21,8 @@
     "pkg:lint": "bunx turbo pkg:lint",
     "pkg:check": "bunx turbo pkg:check",
     "pkg:fmt": "bunx turbo pkg:fmt",
-    "pkg:types": "bunx turbo pkg:types"
+    "pkg:types": "bunx turbo pkg:types",
+    "script:id": "sh ./scripts/helpers/js-id.sh"
   },
   "devDependencies": {
     "typescript": "5.9.3",

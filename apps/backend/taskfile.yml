@@ -13,10 +13,10 @@ tasks:
         cd ${DIRECTORY_BACKEND_SERVER}
         . ../../scripts/setup/go-tools.sh
 
-  private:run:
+  run:
     description: run backend server-side app
     cmds:
       - |
         cd ${DIRECTORY_BACKEND_SERVER}
         chmod +x ../../scripts/execute/go-run.sh
-        . ../../scripts/execute/go-run.sh cmd/bin/private/* $PRIVATE_SERVER_FLAGS
+        . ../../scripts/execute/go-run.sh cmd/bin/* $PRIVATE_SERVER_FLAGS

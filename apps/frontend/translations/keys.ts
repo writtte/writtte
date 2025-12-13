@@ -1,0 +1,132 @@
+import { getTr } from '../middleware/setup/translations';
+
+type TLangKeys = {
+  AlertSignInMagicLinkSentDescription: string;
+  AlertSignInMagicLinkSentTitle: string;
+  AlertSignUpInvitationSentDescription: string;
+  AlertSignUpInvitationSentTitle: string;
+  ErrorAccountAlreadyExists: string;
+  ErrorAccountInvalidCredentials: string;
+  ErrorAccountNotExists: string;
+  ErrorApiBadGateway: string;
+  ErrorApiBadRequest: string;
+  ErrorApiConflict: string;
+  ErrorApiForbidden: string;
+  ErrorApiGatewayTimeout: string;
+  ErrorApiInternalServerError: string;
+  ErrorApiNotFound: string;
+  ErrorApiNotImplemented: string;
+  ErrorApiServiceUnavailable: string;
+  ErrorApiTooManyRequests: string;
+  ErrorApiUnauthorized: string;
+  ErrorEmailInvalid: string;
+  ErrorEmailMax: string;
+  ErrorEmailMin: string;
+  ErrorEmailRequired: string;
+  ErrorMessageNotFoundDescription: string;
+  ErrorMessageNotFoundTitle: string;
+  ErrorNameMax: string;
+  ErrorNameMin: string;
+  ErrorNameRequired: string;
+  ErrorPasswordInvalid: string;
+  ErrorPasswordMax: string;
+  ErrorPasswordMin: string;
+  ErrorPasswordMismatch: string;
+  ErrorPasswordRequired: string;
+  InputPlaceholderEmailAddress: string;
+  InputPlaceholderName: string;
+  InputPlaceholderPassword: string;
+  InputPlaceholderPasswordConfirm: string;
+  LoadingTextCheckingMagicLink: string;
+  PageSignInButtonSignIn: string;
+  PageSignInButtonSigning: string;
+  PageSignInEmailButtonSend: string;
+  PageSignInEmailButtonSending: string;
+  PageSignInEmailLinkSignIn: string;
+  PageSignInEmailTextSubtitle: string;
+  PageSignInEmailTextTitle: string;
+  PageSignInTextSubtitle: string;
+  PageSignInTextTitle: string;
+  PageSignUpButtonSend: string;
+  PageSignUpButtonSending: string;
+  PageSignUpCreateButtonCreate: string;
+  PageSignUpCreateButtonCreating: string;
+  PageSignUpCreateNoteLegal: string;
+  PageSignUpCreateTextSubtitle: string;
+  PageSignUpCreateTextTitle: string;
+  PageSignUpLinkSignIn: string;
+  PageSignUpNoteLegal: string;
+  PageSignUpTextSubtitle: string;
+  PageSignUpTextTitle: string;
+  PageSingInLinkPasswordReset: string;
+  PageSingInLinkSignUp: string;
+};
+
+const langKeys = (): TLangKeys => {
+  // biome-ignore format: Following array should not be formatted
+  const keys: TLangKeys = {
+    AlertSignInMagicLinkSentDescription: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_DESCRIPTION'),
+    AlertSignInMagicLinkSentTitle: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE'),
+    AlertSignUpInvitationSentDescription: getTr('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
+    AlertSignUpInvitationSentTitle: getTr('ALERT_SIGN_UP_INVITATION_SENT_TITLE'),
+    ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
+    ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
+    ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),
+    ErrorApiBadGateway: getTr('ERROR_API_BAD_GATEWAY'),
+    ErrorApiBadRequest: getTr('ERROR_API_BAD_REQUEST'),
+    ErrorApiConflict: getTr('ERROR_API_CONFLICT'),
+    ErrorApiForbidden: getTr('ERROR_API_FORBIDDEN'),
+    ErrorApiGatewayTimeout: getTr('ERROR_API_GATEWAY_TIMEOUT'),
+    ErrorApiInternalServerError: getTr('ERROR_API_INTERNAL_SERVER_ERROR'),
+    ErrorApiNotFound: getTr('ERROR_API_NOT_FOUND'),
+    ErrorApiNotImplemented: getTr('ERROR_API_NOT_IMPLEMENTED'),
+    ErrorApiServiceUnavailable: getTr('ERROR_API_SERVICE_UNAVAILABLE'),
+    ErrorApiTooManyRequests: getTr('ERROR_API_TOO_MANY_REQUESTS'),
+    ErrorApiUnauthorized: getTr('ERROR_API_UNAUTHORIZED'),
+    ErrorEmailInvalid: getTr('ERROR_EMAIL_INVALID'),
+    ErrorEmailMax: getTr('ERROR_EMAIL_MAX'),
+    ErrorEmailMin: getTr('ERROR_EMAIL_MIN'),
+    ErrorEmailRequired: getTr('ERROR_EMAIL_REQUIRED'),
+    ErrorMessageNotFoundDescription: getTr('ERROR_MESSAGE_NOT_FOUND_DESCRIPTION'),
+    ErrorMessageNotFoundTitle: getTr('ERROR_MESSAGE_NOT_FOUND_TITLE'),
+    ErrorNameMax: getTr('ERROR_NAME_MAX'),
+    ErrorNameMin: getTr('ERROR_NAME_MIN'),
+    ErrorNameRequired: getTr('ERROR_NAME_REQUIRED'),
+    ErrorPasswordInvalid: getTr('ERROR_PASSWORD_INVALID'),
+    ErrorPasswordMax: getTr('ERROR_PASSWORD_MAX'),
+    ErrorPasswordMin: getTr('ERROR_PASSWORD_MIN'),
+    ErrorPasswordMismatch: getTr('ERROR_PASSWORD_MISMATCH'),
+    ErrorPasswordRequired: getTr('ERROR_PASSWORD_REQUIRED'),
+    InputPlaceholderEmailAddress: getTr('INPUT_PLACEHOLDER_EMAIL_ADDRESS'),
+    InputPlaceholderName: getTr('INPUT_PLACEHOLDER_NAME'),
+    InputPlaceholderPassword: getTr('INPUT_PLACEHOLDER_PASSWORD'),
+    InputPlaceholderPasswordConfirm: getTr('INPUT_PLACEHOLDER_PASSWORD_CONFIRM'),
+    LoadingTextCheckingMagicLink: getTr('LOADING_TEXT_CHECKING_MAGIC_LINK'),
+    PageSignInButtonSignIn: getTr('PAGE_SIGN_IN_BUTTON_SIGN_IN'),
+    PageSignInButtonSigning: getTr('PAGE_SIGN_IN_BUTTON_SIGNING'),
+    PageSignInEmailButtonSend: getTr('PAGE_SIGN_IN_EMAIL_BUTTON_SEND'),
+    PageSignInEmailButtonSending: getTr('PAGE_SIGN_IN_EMAIL_BUTTON_SENDING'),
+    PageSignInEmailLinkSignIn: getTr('PAGE_SIGN_IN_EMAIL_LINK_SIGN_IN'),
+    PageSignInEmailTextSubtitle: getTr('PAGE_SIGN_IN_EMAIL_TEXT_SUBTITLE'),
+    PageSignInEmailTextTitle: getTr('PAGE_SIGN_IN_EMAIL_TEXT_TITLE'),
+    PageSignInTextSubtitle: getTr('PAGE_SIGN_IN_TEXT_SUBTITLE'),
+    PageSignInTextTitle: getTr('PAGE_SIGN_IN_TEXT_TITLE'),
+    PageSignUpButtonSend: getTr('PAGE_SIGN_UP_BUTTON_SEND'),
+    PageSignUpButtonSending: getTr('PAGE_SIGN_UP_BUTTON_SENDING'),
+    PageSignUpCreateButtonCreate: getTr('PAGE_SIGN_UP_CREATE_BUTTON_CREATE'),
+    PageSignUpCreateButtonCreating: getTr('PAGE_SIGN_UP_CREATE_BUTTON_CREATING'),
+    PageSignUpCreateNoteLegal: getTr('PAGE_SIGN_UP_CREATE_NOTE_LEGAL'),
+    PageSignUpCreateTextSubtitle: getTr('PAGE_SIGN_UP_CREATE_TEXT_SUBTITLE'),
+    PageSignUpCreateTextTitle: getTr('PAGE_SIGN_UP_CREATE_TEXT_TITLE'),
+    PageSignUpLinkSignIn: getTr('PAGE_SIGN_UP_LINK_SIGN_IN'),
+    PageSignUpNoteLegal: getTr('PAGE_SIGN_UP_NOTE_LEGAL'),
+    PageSignUpTextSubtitle: getTr('PAGE_SIGN_UP_TEXT_SUBTITLE'),
+    PageSignUpTextTitle: getTr('PAGE_SIGN_UP_TEXT_TITLE'),
+    PageSingInLinkPasswordReset: getTr('PAGE_SING_IN_LINK_PASSWORD_RESET'),
+    PageSingInLinkSignUp: getTr('PAGE_SING_IN_LINK_SIGN_UP'),
+  }
+
+  return keys;
+};
+
+export { langKeys };
