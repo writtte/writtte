@@ -62,7 +62,7 @@
   }
 
   :hover {
-    cursor: pointer;
+    cursor: var(--cursor);
 
     svg {
       path {

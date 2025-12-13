@@ -92,7 +92,7 @@
     text-underline-offset: 4px;
 
     &:hover {
-      cursor: pointer;
+      cursor: var(--cursor);
       text-decoration: underline;
     }
   }
@@ -128,7 +128,7 @@
     text-underline-offset: 4px;
 
     &:hover {
-      cursor: pointer;
+      cursor: var(--cursor);
       text-decoration: underline;
     }
   }

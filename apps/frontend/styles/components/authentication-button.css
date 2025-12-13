@@ -62,6 +62,7 @@
 
   &:hover {
     background: var(--component-button-authentication-background---hover);
+    cursor: var(--cursor);
   }
 
   &:active {
