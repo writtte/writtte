@@ -51,9 +51,18 @@ const AuthenticationForm = (opts: TOptions): TReturnAuthenticationForm => {
   inputsDiv.classList.add('authentication-form__inputs');
   legalNoteDiv.classList.add('authentication-form__legal-note');
   linksDiv.classList.add('authentication-form__links');
-  leftLinkSpan.classList.add('authentication-form__link');
-  middleLinkSpan.classList.add('authentication-form__link');
-  rightLinkSpan.classList.add('authentication-form__link');
+  leftLinkSpan.classList.add(
+    'authentication-form__link',
+    'authentication-form__link--left',
+  );
+  middleLinkSpan.classList.add(
+    'authentication-form__link',
+    'authentication-form__link--middle',
+  );
+  rightLinkSpan.classList.add(
+    'authentication-form__link',
+    'authentication-form__link--right',
+  );
 
   const button = AuthenticationButton(opts.button);
 

@@ -133,3 +133,15 @@
     }
   }
 }
+
+.authentication-form__link--left {
+  justify-content: start;
+}
+
+.authentication-form__link--middle {
+  justify-content: center;
+}
+
+.authentication-form__link--right {
+  justify-content: end;
+}
