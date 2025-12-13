@@ -20,3 +20,7 @@ const (
 	UserDynamicPasswordValid   = "USER_PASSWORD_VALID"
 	UserDynamicPasswordInvalid = "USER_PASSWORD_INVALID"
 )
+
+const (
+	OverviewAccountRetrieved = "OVERVIEW_ACCOUNT_RETRIEVED"
+)

@@ -19,6 +19,7 @@
 \echo
 \echo '\033[1;32m[ setup functions in the main schema ]\033[0m'
 \echo
+\ir ../scripts/main/functions/v1_overview_account.pg.sql
 \ir ../scripts/main/functions/v1_user_check.pg.sql
 \ir ../scripts/main/functions/v1_user_create.pg.sql
 \ir ../scripts/main/functions/v1_user_retrieve.pg.sql

@@ -1,6 +1,10 @@
 import { getTr } from '../middleware/setup/translations';
 
 type TLangKeys = {
+  AlertMiddlewareNeedSignInDescription: string;
+  AlertMiddlewareNeedSignInTitle: string;
+  AlertMiddlewareSignInRequiredDescription: string;
+  AlertMiddlewareSignInRequiredTitle: string;
   AlertSignInMagicLinkSentDescription: string;
   AlertSignInMagicLinkSentTitle: string;
   AlertSignUpInvitationSentDescription: string;
@@ -25,6 +29,8 @@ type TLangKeys = {
   ErrorEmailRequired: string;
   ErrorMessageNotFoundDescription: string;
   ErrorMessageNotFoundTitle: string;
+  ErrorMessageOverviewNotLoadedDescription: string;
+  ErrorMessageOverviewNotLoadedTitle: string;
   ErrorNameMax: string;
   ErrorNameMin: string;
   ErrorNameRequired: string;
@@ -65,6 +71,10 @@ type TLangKeys = {
 const langKeys = (): TLangKeys => {
   // biome-ignore format: Following array should not be formatted
   const keys: TLangKeys = {
+    AlertMiddlewareNeedSignInDescription: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION'),
+    AlertMiddlewareNeedSignInTitle: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_TITLE'),
+    AlertMiddlewareSignInRequiredDescription: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_DESCRIPTION'),
+    AlertMiddlewareSignInRequiredTitle: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_TITLE'),
     AlertSignInMagicLinkSentDescription: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_DESCRIPTION'),
     AlertSignInMagicLinkSentTitle: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE'),
     AlertSignUpInvitationSentDescription: getTr('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
@@ -89,6 +99,8 @@ const langKeys = (): TLangKeys => {
     ErrorEmailRequired: getTr('ERROR_EMAIL_REQUIRED'),
     ErrorMessageNotFoundDescription: getTr('ERROR_MESSAGE_NOT_FOUND_DESCRIPTION'),
     ErrorMessageNotFoundTitle: getTr('ERROR_MESSAGE_NOT_FOUND_TITLE'),
+    ErrorMessageOverviewNotLoadedDescription: getTr('ERROR_MESSAGE_OVERVIEW_NOT_LOADED_DESCRIPTION'),
+    ErrorMessageOverviewNotLoadedTitle: getTr('ERROR_MESSAGE_OVERVIEW_NOT_LOADED_TITLE'),
     ErrorNameMax: getTr('ERROR_NAME_MAX'),
     ErrorNameMin: getTr('ERROR_NAME_MIN'),
     ErrorNameRequired: getTr('ERROR_NAME_REQUIRED'),

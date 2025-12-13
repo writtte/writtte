@@ -20,6 +20,6 @@ const ErrorMessage = (opts: TOptions): HTMLElement => {
   return containerDiv;
 };
 
-export type { TOptions as TNotFoundOptions };
+export type { TOptions as TErrorMessageOptions };
 
 export { ErrorMessage };

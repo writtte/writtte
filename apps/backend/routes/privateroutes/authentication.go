@@ -20,15 +20,15 @@ func Authentication(mux *http.ServeMux, prefix *string) {
 
 func authenticationPost(mux *http.ServeMux, prefix *string) {
 	var (
-		signUp     = "/sign-up"
-		signIn     = "/sign-in"
-		signInLink = "/sign-in/link"
+		signUpPath     = "/sign-up"
+		signInPath     = "/sign-in"
+		signInLinkPath = "/sign-in/link"
 	)
 
 	flows := []middleware.Flow{
 		{
 			Handler: v1signupcreate.Setup(),
-			Path:    &signUp,
+			Path:    &signUpPath,
 			Method:  http.MethodPost,
 			Rates: &middleware.Rates{
 				ReqLimit: middleware.ReqLimit1,
@@ -38,7 +38,7 @@ func authenticationPost(mux *http.ServeMux, prefix *string) {
 		},
 		{
 			Handler: v1signin.Setup(),
-			Path:    &signIn,
+			Path:    &signInPath,
 			Method:  http.MethodPost,
 			Rates: &middleware.Rates{
 				ReqLimit: middleware.ReqLimit2,
@@ -48,7 +48,7 @@ func authenticationPost(mux *http.ServeMux, prefix *string) {
 		},
 		{
 			Handler: v1signinlinkgenerate.Setup(),
-			Path:    &signInLink,
+			Path:    &signInLinkPath,
 			Method:  http.MethodPost,
 			Rates: &middleware.Rates{
 				ReqLimit: middleware.ReqLimit1,

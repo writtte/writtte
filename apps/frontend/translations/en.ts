@@ -1,5 +1,9 @@
 // biome-ignore format: Following array should not be formatted
 const enMessages = {
+  ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION: 'To access the page you\'re trying to reach, you need to log out of your current account.',
+  ALERT_MIDDLEWARE_NEED_SIGN_IN_TITLE: 'You\'re Already Signed In',
+  ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_DESCRIPTION: 'Please sign in to access the page you are trying to view.',
+  ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_TITLE: 'You\'re Not Signed In',
   ALERT_SIGN_IN_MAGIC_LINK_SENT_DESCRIPTION: 'We\'ve sent a secure sign-in link to your email. Please check your inbox and follow the link to access your account.',
   ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE: 'Sign-In Link Sent',
   ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION: 'We\'ve sent you an invitation email. Please check your inbox and follow the instructions to complete your sign up.',
@@ -24,6 +28,8 @@ const enMessages = {
   ERROR_EMAIL_REQUIRED: "Email address is required to continue.",
   ERROR_MESSAGE_NOT_FOUND_DESCRIPTION: 'We can\'t find the page you\'re looking for...',
   ERROR_MESSAGE_NOT_FOUND_TITLE: 'Page Not Found',
+  ERROR_MESSAGE_OVERVIEW_NOT_LOADED_DESCRIPTION: 'Something happened on our end, please refresh this page in a few seconds.',
+  ERROR_MESSAGE_OVERVIEW_NOT_LOADED_TITLE: 'Your account details cannot be retrieved.',
   ERROR_NAME_MAX: 'Name must not exceed 256 characters.',
   ERROR_NAME_MIN: 'Name must contain at least 2 characters.',
   ERROR_NAME_REQUIRED: 'Name is required to continue.',
