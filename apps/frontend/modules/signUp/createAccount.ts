@@ -29,42 +29,43 @@ const createUserAccount = async (
 
   button.setLoadingState(true);
 
-  const { isValid, nameError, passwordError, passwordConfirmError } =
-    validateForm(
-      nameInput.getValue(),
-      passwordInput.getValue(),
-      passwordConfirmationInput.getValue(),
-    );
+  const { nameError, passwordError, passwordConfirmError } = validateForm(
+    nameInput.getValue(),
+    passwordInput.getValue(),
+    passwordConfirmationInput.getValue(),
+  );
 
-  if (!isValid || nameError || passwordError || passwordConfirmError) {
-    const internalServerError = langKeys().ErrorApiInternalServerError;
+  if (nameError) {
+    nameInput.setStatusText({
+      id: 'status_text__bmsrzexcvb',
+      text: nameError ?? langKeys().ErrorApiInternalServerError,
+      type: StatusTextType.ERROR,
+      isIconVisible: true,
+    });
 
-    if (nameError) {
-      nameInput.setStatusText({
-        id: 'status_text__bmsrzexcvb',
-        text: nameError ?? internalServerError,
-        type: StatusTextType.ERROR,
-        isIconVisible: true,
-      });
-    }
+    button.setLoadingState(false);
+    return;
+  }
 
-    if (passwordError) {
-      passwordInput.setStatusText({
-        id: 'status_text__jcnuxwlnsc',
-        text: passwordError ?? internalServerError,
-        type: StatusTextType.ERROR,
-        isIconVisible: true,
-      });
-    }
+  if (passwordError) {
+    passwordInput.setStatusText({
+      id: 'status_text__jcnuxwlnsc',
+      text: passwordError ?? langKeys().ErrorApiInternalServerError,
+      type: StatusTextType.ERROR,
+      isIconVisible: true,
+    });
 
-    if (passwordConfirmError) {
-      passwordConfirmationInput.setStatusText({
-        id: 'status_text__uembcuhsqp',
-        text: passwordConfirmError ?? internalServerError,
-        type: StatusTextType.ERROR,
-        isIconVisible: true,
-      });
-    }
+    button.setLoadingState(false);
+    return;
+  }
+
+  if (passwordConfirmError) {
+    passwordConfirmationInput.setStatusText({
+      id: 'status_text__uembcuhsqp',
+      text: passwordConfirmError ?? langKeys().ErrorApiInternalServerError,
+      type: StatusTextType.ERROR,
+      isIconVisible: true,
+    });
 
     button.setLoadingState(false);
     return;
