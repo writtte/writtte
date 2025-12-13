@@ -6,7 +6,7 @@ import {
   fetchRequest,
 } from '../../../utils/data/fetch';
 
-type TPayloadV1SignInLinkP = {
+type TPayloadV1SignInLink = {
   email: string;
 };
 
@@ -20,7 +20,7 @@ type TResponseV1SignIn = {
 };
 
 const v1SignInLink = async (
-  payload: TPayloadV1SignInLinkP,
+  payload: TPayloadV1SignInLink,
 ): Promise<{ status: number; response: TResponseV1SignIn | null }> => {
   const body: TFetchProps = {
     endPoint: `${BACKEND_CONFIGS.URL}/v1/authentication/sign-in/link`,
@@ -39,6 +39,6 @@ const v1SignInLink = async (
   };
 };
 
-export type { TPayloadV1SignInLinkP, TResponseV1SignIn };
+export type { TPayloadV1SignInLink, TResponseV1SignIn };
 
 export { v1SignInLink };
