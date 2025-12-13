@@ -56,6 +56,8 @@ const Input = (opts: TOptions): TReturnInput => {
   const inlineButton = document.createElement('button');
   const statusTextDiv = document.createElement('div');
 
+  let hasInlineButton = false;
+
   wrapperDiv.classList.add('input-wrapper');
   inputDiv.classList.add('input', `input--${opts.size.toLowerCase()}`);
 
@@ -84,9 +86,11 @@ const Input = (opts: TOptions): TReturnInput => {
   }
 
   if (opts.inlineButton) {
+    hasInlineButton = true;
     setTestId(inlineButton, opts.inlineButton.id);
     inlineButton.appendChild(opts.inlineButton.icon);
 
+    inlineButton.tabIndex = 0;
     inlineButton.addEventListener('click', opts.inlineButton.onClick);
   } else {
     inlineButton.remove();
@@ -115,18 +119,42 @@ const Input = (opts: TOptions): TReturnInput => {
     inputDiv.classList.add('active');
   });
 
-  input.addEventListener('blur', () => {
-    inputDiv.classList.remove('active');
-  });
+  inputDiv.addEventListener('click', (e) => {
+    if (
+      hasInlineButton &&
+      (e.target === inlineButton || inlineButton.contains(e.target as Node))
+    ) {
+      return;
+    }
 
-  inputDiv.addEventListener('click', () => {
     input.focus();
   });
 
-  inputDiv.addEventListener(
-    'focus',
-    () => {
-      input.focus();
+  wrapperDiv.addEventListener(
+    'focusin',
+    (e) => {
+      inputDiv.classList.add('active');
+
+      if (
+        !(
+          hasInlineButton &&
+          (e.target === inlineButton || inlineButton.contains(e.target as Node))
+        )
+      ) {
+        if (e.target !== input) {
+          input.focus();
+        }
+      }
+    },
+    true,
+  );
+
+  wrapperDiv.addEventListener(
+    'focusout',
+    (e) => {
+      if (!wrapperDiv.contains(e.relatedTarget as Node)) {
+        inputDiv.classList.remove('active');
+      }
     },
     true,
   );
