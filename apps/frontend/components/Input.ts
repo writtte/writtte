@@ -57,11 +57,13 @@ const Input = (opts: TOptions): TReturnInput => {
   const statusTextDiv = document.createElement('div');
 
   wrapperDiv.classList.add('input-wrapper');
-  inputDiv.classList.add('input');
+  inputDiv.classList.add('input', `input--${opts.size.toLowerCase()}`);
+
   input.classList.add(
     'input__element',
     `input__element--${opts.size.toLowerCase()}`,
   );
+
   inlineButton.classList.add('input__inline-button');
   statusTextDiv.classList.add('input-wrapper__status-text', 'hide');
 

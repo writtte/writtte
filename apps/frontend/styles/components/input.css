@@ -35,6 +35,7 @@
 
 .input__inline-button {
   align-items: center;
+  background: transparent;
   border: none;
   box-shadow: none;
   cursor: pointer;
@@ -57,31 +58,43 @@
   width: 100%;
 }
 
-.input__element--large {
+.input--large {
+  align-items: center;
+  display: flex;
   gap: var(--gap-lg);
   height: 48px;
-  padding: var(--gap-flat) var(--gap-lg);
+  padding: var(--gap-flat, 0) var(--gap-lg);
+}
 
+.input--medium {
+  align-items: center;
+  display: flex;
+  gap: var(--gap-lg);
+  height: 40px;
+  padding: var(--gap-flat, 0) var(--gap-lg);
+}
+
+.input--small {
+  align-items: center;
+  display: flex;
+  gap: var(--gap-md);
+  height: 32px;
+  padding: var(--gap-flat) var(--gap-md);
+}
+
+.input__element--large {
   .input__element {
     font-size: var(--font-size-0);
   }
 }
 
 .input__element--medium {
-  gap: var(--gap-lg);
-  height: 40px;
-  padding: var(--gap-flat) var(--gap-lg);
-
   .input__element {
     font-size: var(--font-size--1);
   }
 }
 
 .input__element--small {
-  gap: var(--gap-md);
-  height: 32px;
-  padding: var(--gap-flat) var(--gap-md);
-
   .input__element {
     font-size: var(--font-size--1);
   }
