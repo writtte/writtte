@@ -25,19 +25,19 @@ const handleHTTPError = (
 
   // biome-ignore format: Following record should not be formatted
   const errorMapping: Record<number, string> = {
-    [HTTP_STATUS.BAD_REQUEST]: langKeys().CommonErrorApiBadRequest,
-    [HTTP_STATUS.UNAUTHORIZED]: langKeys().CommonErrorApiUnauthorized,
-    [HTTP_STATUS.FORBIDDEN]: langKeys().CommonErrorApiForbidden,
-    [HTTP_STATUS.NOT_FOUND]: langKeys().CommonErrorApiNotFound,
-    [HTTP_STATUS.CONFLICT]: langKeys().CommonErrorApiConflict,
-    [HTTP_STATUS.TOO_MANY_REQUESTS]: langKeys().CommonErrorApiTooManyRequests,
-    [HTTP_STATUS.NOT_IMPLEMENTED]: langKeys().CommonErrorApiNotImplemented,
-    [HTTP_STATUS.BAD_GATEWAY]: langKeys().CommonErrorApiBadGateway,
-    [HTTP_STATUS.SERVICE_UNAVAILABLE]: langKeys().CommonErrorApiServiceUnavailable,
-    [HTTP_STATUS.GATEWAY_TIMEOUT]: langKeys().CommonErrorApiGatewayTimeout,
+    [HTTP_STATUS.BAD_REQUEST]: langKeys().ErrorApiBadRequest,
+    [HTTP_STATUS.UNAUTHORIZED]: langKeys().ErrorApiUnauthorized,
+    [HTTP_STATUS.FORBIDDEN]: langKeys().ErrorApiForbidden,
+    [HTTP_STATUS.NOT_FOUND]: langKeys().ErrorApiNotFound,
+    [HTTP_STATUS.CONFLICT]: langKeys().ErrorApiConflict,
+    [HTTP_STATUS.TOO_MANY_REQUESTS]: langKeys().ErrorApiTooManyRequests,
+    [HTTP_STATUS.NOT_IMPLEMENTED]: langKeys().ErrorApiNotImplemented,
+    [HTTP_STATUS.BAD_GATEWAY]: langKeys().ErrorApiBadGateway,
+    [HTTP_STATUS.SERVICE_UNAVAILABLE]: langKeys().ErrorApiServiceUnavailable,
+    [HTTP_STATUS.GATEWAY_TIMEOUT]: langKeys().ErrorApiGatewayTimeout,
   };
 
-  return errorMapping[status] || langKeys().CommonErrorApiInternalServerError;
+  return errorMapping[status] || langKeys().ErrorApiInternalServerError;
 };
 
 export type { TApiErrorTranslations };
