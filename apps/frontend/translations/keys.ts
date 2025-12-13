@@ -67,7 +67,7 @@ const langKeys = (): TLangKeys => {
   const keys: TLangKeys = {
     AlertSignInMagicLinkSentDescription: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_DESCRIPTION'),
     AlertSignInMagicLinkSentTitle: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE'),
-    AlertSignUpInvitationSentDescription: ('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
+    AlertSignUpInvitationSentDescription: getTr('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
     AlertSignUpInvitationSentTitle: getTr('ALERT_SIGN_UP_INVITATION_SENT_TITLE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
