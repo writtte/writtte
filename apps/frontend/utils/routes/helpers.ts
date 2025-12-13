@@ -30,10 +30,39 @@ const checkRouteStartsWith = (paths: string[]): boolean => {
   });
 };
 
+const getURLParam = (key: string): string | null => {
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  const param = params.get(key);
+  if (param === null || param.trim().length === 0) {
+    return null;
+  }
+
+  return param;
+};
+
+const getAndDeleteURLParam = (key: string): string | null => {
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  const param = params.get(key);
+  params.delete(key);
+
+  window.history.replaceState({}, '', url.toString());
+  if (param === null || param.trim().length === 0) {
+    return null;
+  }
+
+  return param;
+};
+
 export {
   setPageTitle,
   navigateHard,
   navigateExternal,
   checkRoute,
   checkRouteStartsWith,
+  getURLParam,
+  getAndDeleteURLParam,
 };
