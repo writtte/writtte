@@ -66,6 +66,14 @@ const setupMiddleware = async (): Promise<void> => {
 
         return next(PATHS.OVERVIEW);
       }
+    } else {
+      if (to.path === '/') {
+        if (isLogged()) {
+          return next(PATHS.OVERVIEW);
+        } else {
+          return next(PATHS.SIGN_IN);
+        }
+      }
     }
 
     await next();
