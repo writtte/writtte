@@ -1,0 +1,40 @@
+.error-message {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-lg);
+  padding: var(--gap-xxxlg);
+  width: 100%;
+}
+
+.error-message__title {
+  align-items: center;
+  align-self: stretch;
+  color: var(--component-error-message-text--title);
+  display: flex;
+  flex: 1 0 0;
+  font-size: var(--font-size-9);
+  font-style: normal;
+  font-weight: 500;
+  gap: var(--gap-md);
+  justify-content: center;
+  line-height: normal;
+  padding: var(--gap-md);
+  text-align: center;
+}
+
+.error-message__description {
+  align-items: center;
+  align-self: stretch;
+  color: var(--component-error-message-text--description);
+  display: flex;
+  flex: 1 0 0;
+  font-size: var(--font-size-1);
+  font-style: normal;
+  font-weight: 400;
+  gap: var(--gap-md);
+  justify-content: center;
+  line-height: normal;
+  padding: var(--gap-md);
+  text-align: center;
+}

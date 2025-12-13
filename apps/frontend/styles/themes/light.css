@@ -50,6 +50,8 @@
   --component-button-primary-background---loading: var(--blue-400);
   --component-button-primary-text: var(--base-white);
   --component-button-primary-text---disable: var(--gray-600);
+  --component-error-message-text--description: var(--gray-700);
+  --component-error-message-text--title: var(--gray-1000);
   --component-input-background: var(--base-white);
   --component-input-background---disable: var(--gray-300);
   --component-input-border: var(--gray-500);
