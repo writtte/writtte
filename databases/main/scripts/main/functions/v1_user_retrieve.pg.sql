@@ -22,7 +22,7 @@ BEGIN
   END IF;
   v_user_data := (
     SELECT
-      json_build_object('email_address', tbu.email_address, 'name', tbu.name, 'hashed_password', tbu.hashed_password, 'password_salt', tbu.password_salt, 'status', tbu.status, 'is_email_verified', tbu.is_email_verified, 'created_time', tbu.created_time, 'updated_time', tbu.updated_time)
+      json_build_object('account_code', tbu.account_code, 'email_address', tbu.email_address, 'name', tbu.name, 'hashed_password', tbu.hashed_password, 'password_salt', tbu.password_salt, 'status', tbu.status, 'is_email_verified', tbu.is_email_verified, 'created_time', tbu.created_time, 'updated_time', tbu.updated_time)
     FROM
       schema_main.tb_user tbu
     WHERE (v_p_account_code IS NOT NULL
