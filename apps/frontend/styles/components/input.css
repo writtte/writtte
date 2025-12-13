@@ -58,6 +58,14 @@
   width: 100%;
 }
 
+.input-wrapper__status-text.show {
+  display: flex;
+}
+
+.input-wrapper__status-text.hide {
+  display: none;
+}
+
 .input--large {
   align-items: center;
   display: flex;
