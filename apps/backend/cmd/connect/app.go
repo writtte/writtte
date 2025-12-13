@@ -6,6 +6,7 @@ import (
 	"backend/cmd/flags"
 	"backend/cmd/glob"
 	"backend/configs"
+	"backend/embeds"
 	"backend/pkg/extaws"
 	"backend/pkg/extpgx"
 	"backend/pkg/extvalidator"
@@ -20,6 +21,7 @@ func SetupApp() {
 	glob.Config.RunningMode = flags.ReturnMode()
 	glob.Config.HTTPHandler = http.NewServeMux()
 	glob.Config.MainSQLDB = &extpgx.PsqlPool{}
+	glob.Config.EmailTemplates = embeds.SetupEmailTemplates()
 	glob.Config.RateLimit = flags.ReturnRateLimitStatus()
 	glob.Config.Validator = extvalidator.Init()
 
