@@ -11,4 +11,5 @@ func Private(mux *http.ServeMux) {
 
 	privateroutes.TemporaryTokens(mux, &baseVersion)
 	privateroutes.Authentication(mux, &baseVersion)
+	privateroutes.Overview(mux, &baseVersion)
 }

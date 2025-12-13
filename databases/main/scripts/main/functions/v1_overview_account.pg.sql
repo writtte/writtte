@@ -22,6 +22,9 @@ BEGIN
       schema_main.tb_user tbu
     WHERE
       tbu.account_code = v_p_account_code);
+  IF v_user_data IS NULL THEN
+    RETURN json_build_object(k_status, TRUE, k_code, 'USER_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
+  END IF;
   v_account_overview := json_build_object('user', v_user_data);
   RETURN json_build_object(k_status, TRUE, k_code, 'OVERVIEW_ACCOUNT_RETRIEVED', k_message, NULL, k_additional, NULL, k_data, v_account_overview)::JSONB;
 EXCEPTION
