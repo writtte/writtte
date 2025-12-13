@@ -1,5 +1,6 @@
 .alert {
   align-items: flex-start;
+  box-shadow: var(--shadow-alert);
   display: flex;
   padding: var(--gap-lg);
   width: 384px;
