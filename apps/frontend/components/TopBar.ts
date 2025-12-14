@@ -20,6 +20,8 @@ type TReturnTopBar = {
   replaceRightButtons: (buttons: TActionButtonOptions[]) => void;
   addButtonToLeft: (button: TActionButtonOptions) => void;
   addButtonToRight: (button: TActionButtonOptions) => void;
+  addButtonsToLeft: (buttons: TActionButtonOptions[]) => void;
+  addButtonsToRight: (buttons: TActionButtonOptions[]) => void;
   removeButtonFromLeft: (id: string) => void;
   removeButtonFromRight: (id: string) => void;
 };
@@ -108,6 +110,24 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
     rightDiv.appendChild(actionButtonElement.element);
   };
 
+  const addButtonsToLeft = (newButtons: TActionButtonOptions[]): void => {
+    for (let i = 0; i < newButtons.length; i++) {
+      const button = newButtons[i];
+      const actionButtonElement = ActionButton(button);
+      buttons[button.id] = actionButtonElement;
+      leftDiv.insertBefore(actionButtonElement.element, iconDiv);
+    }
+  };
+
+  const addButtonsToRight = (newButtons: TActionButtonOptions[]): void => {
+    for (let i = 0; i < newButtons.length; i++) {
+      const button = newButtons[i];
+      const actionButtonElement = ActionButton(button);
+      buttons[button.id] = actionButtonElement;
+      rightDiv.appendChild(actionButtonElement.element);
+    }
+  };
+
   const removeButtonFromLeft = (id: string): void => {
     if (buttons[id] && leftDiv.contains(buttons[id].element)) {
       leftDiv.removeChild(buttons[id].element);
@@ -130,6 +150,8 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
     replaceRightButtons,
     addButtonToLeft,
     addButtonToRight,
+    addButtonsToLeft,
+    addButtonsToRight,
     removeButtonFromLeft,
     removeButtonFromRight,
   };
