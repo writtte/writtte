@@ -8,7 +8,7 @@ import { AlertController } from '../../controller/alert';
 import {
   TokenGenerateType,
   v1TemporaryTokenGenerate,
-} from '../../data/apis/temporaryTokens/v1GenerateTemporaryToken';
+} from '../../data/apis/temporaryToken/v1GenerateTemporaryToken';
 import { handleHTTPError } from '../../helpers/http/httpError';
 import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
