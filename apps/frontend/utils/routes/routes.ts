@@ -94,16 +94,14 @@ const renderRoute = async (
         content: pageContent,
       });
 
-      root.innerHTML = '';
-      root.appendChild(currentLayoutElement);
+      root.replaceChildren(currentLayoutElement);
     } else if (matchedRoute.layoutId === currentLayoutId) {
       const contentContainer = currentLayoutElement.querySelector(
         '[data-content-container]',
       );
 
       if (contentContainer) {
-        contentContainer.innerHTML = '';
-        contentContainer.appendChild(pageContent);
+        contentContainer.replaceChildren(pageContent);
       } else {
         throw new Error('no [data-content-container] found in the layout');
       }
@@ -111,8 +109,8 @@ const renderRoute = async (
   } else {
     currentLayoutId = null;
     currentLayoutElement = null;
-    root.innerHTML = '';
-    root.appendChild(pageContent);
+
+    root.replaceChildren(pageContent);
   }
 
   attachLinkHandlers();
