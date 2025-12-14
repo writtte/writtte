@@ -24,7 +24,7 @@ var modals: TInternalModal[] = [];
 
 var containerDiv: HTMLDivElement | null = null;
 
-const modalController = (): TReturnModalController => {
+const ModalController = (): TReturnModalController => {
   const ensureContainer = (): void => {
     if (!containerDiv) {
       containerDiv = document.createElement('div');
@@ -104,4 +104,4 @@ const modalController = (): TReturnModalController => {
   };
 };
 
-export { modalController };
+export { ModalController };
