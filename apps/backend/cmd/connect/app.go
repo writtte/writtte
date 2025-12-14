@@ -12,6 +12,8 @@ import (
 	"backend/pkg/extvalidator"
 )
 
+// revive:disable:line-length-limit
+
 func SetupApp() {
 	// Note:
 	//
@@ -43,9 +45,18 @@ func SetupApp() {
 			extaws.InitSESSession(glob.Config.AWSSESConfig)
 	}
 
+	glob.Config.AWSS3PrivateDirectoryBucketClient = extaws.InitS3(extaws.S3Config{
+		Region:            &configs.AWSS3PrivateDirectoryBucketRegion,
+		AccessKey:         &configs.AWSS3PrivateDirectoryBucketAccessKey,
+		SecretAccessKey:   &configs.AWSS3PrivateDirectoryBucketSecretAccessKey,
+		IsDirectoryBucket: true,
+	})
+
 	// Always add local selection at the end of the
 	// configuration flow
 
 	glob.Config.UseLocalSESInLocalEnv =
 		glob.Config.Environment == flags.LocalEnv
 }
+
+// revive:enable:line-length-limit

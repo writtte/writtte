@@ -31,6 +31,12 @@
     "xxlg",
     "xxxlg",
     "accountoverview",
-    "gidr"
+    "gidr",
+    "documentcreate",
+    "AWSS",
+    "documentretrieve",
+    "dbconvert",
+    "documentretrievelist",
+    "documentupdate"
   ]
 }
