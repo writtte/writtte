@@ -16,4 +16,14 @@ const htmlToNode = (htmlStr: string): HTMLElement => {
   return firstChild.cloneNode(true) as HTMLElement;
 };
 
-export { htmlToNode };
+const gid = (id: string): HTMLElement | null => document.getElementById(id);
+
+const gidr = (id: string): HTMLElement => {
+  const el = document.getElementById(id);
+  if (!el) {
+    throw new Error(`unable to find element with id '${id}'`);
+  }
+  return el;
+};
+
+export { htmlToNode, gid, gidr };
