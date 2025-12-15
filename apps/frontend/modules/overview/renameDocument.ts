@@ -27,6 +27,8 @@ const openDocumentRenameModal = async (
 ): Promise<void> => {
   const modalController = ModalController();
 
+  const documentObject = await getCurrentDocumentDetailsFromIDB(documentCode);
+
   const modal = modalController.showModal({
     id: 'modal__qxtfaslqkw',
     title: langKeys().ModalDocumentRenameTextTitle,
@@ -43,7 +45,7 @@ const openDocumentRenameModal = async (
             title: undefined,
             input: {
               id: 'input__bbnophhgew',
-              text: '', // todo
+              text: documentObject?.title,
               placeholderText: undefined,
               inlineButton: undefined,
               statusText: undefined,
@@ -199,6 +201,25 @@ const updateDocumentTitleInIDB = async (
 ): Promise<void> => {
   const db = getIndexedDB();
 
+  const documentObject = await getCurrentDocumentDetailsFromIDB(documentCode);
+
+  if (!documentObject) {
+    return;
+  }
+
+  const newDataToUpdate: TIDBDocument = {
+    ...documentObject,
+    title: newTitle,
+  };
+
+  await idb.updateData(db, STORE_NAMES.DOCUMENTS, newDataToUpdate);
+};
+
+const getCurrentDocumentDetailsFromIDB = async (
+  documentCode: string,
+): Promise<TIDBDocument | undefined> => {
+  const db = getIndexedDB();
+
   const getObject = await idb.getObject<TIDBDocument>(
     db,
     STORE_NAMES.DOCUMENTS,
@@ -209,12 +230,7 @@ const updateDocumentTitleInIDB = async (
     return;
   }
 
-  const newDataToUpdate: TIDBDocument = {
-    ...getObject,
-    title: newTitle,
-  };
-
-  await idb.updateData(db, STORE_NAMES.DOCUMENTS, newDataToUpdate);
+  return getObject;
 };
 
 export { openDocumentRenameModal };
