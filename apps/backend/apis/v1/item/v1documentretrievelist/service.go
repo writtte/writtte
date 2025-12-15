@@ -6,6 +6,7 @@ import (
 
 	"backend/apis/v1/authentication/v1signin"
 	"backend/constants"
+	"backend/helpers/dbconvert"
 	"backend/pkg/extjwt"
 )
 
@@ -20,8 +21,8 @@ func (s *service) perform(ctx context.Context,
 
 	input := dbQueryInput{
 		AccountCode:    &accountCode,
-		LifecycleState: queries.LifecycleState,
-		WorkflowState:  queries.WorkflowState,
+		LifecycleState: setLifecycleState(queries),
+		WorkflowState:  setWorkflowState(queries),
 		TitleFilter:    queries.TitleFilter,
 		Page:           queries.Page,
 		PageSize:       queries.PageSize,
@@ -40,4 +41,22 @@ func (s *service) perform(ctx context.Context,
 	}
 
 	return parsedResults, nil
+}
+
+func setLifecycleState(queries *QueryParams) *string {
+	if queries.LifecycleState == nil {
+		return nil
+	}
+
+	convertedStatus := dbconvert.ItemLifecycleStateToDB(queries.LifecycleState)
+	return &convertedStatus
+}
+
+func setWorkflowState(queries *QueryParams) *string {
+	if queries.WorkflowState == nil {
+		return nil
+	}
+
+	convertedType := dbconvert.ItemWorkflowStateToDB(queries.WorkflowState)
+	return &convertedType
 }

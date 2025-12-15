@@ -3,8 +3,8 @@ package v1documentretrievelist
 // revive:disable:line-length-limit
 
 type QueryParams struct {
-	LifecycleState *string `json:"lifecycle_state" validate:"omitempty"`
-	WorkflowState  *string `json:"workflow_state" validate:"omitempty"`
+	LifecycleState *string `json:"lifecycle_state" validate:"omitempty,oneof=active deleted"`
+	WorkflowState  *string `json:"workflow_state" validate:"omitempty,oneof=published"`
 	TitleFilter    *string `json:"title_filter" validate:"omitempty"`
 	Page           *int    `json:"page" validate:"omitempty,min=1"`
 	PageSize       *int    `json:"page_size" validate:"omitempty,min=1,max=100"`
