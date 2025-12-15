@@ -7,7 +7,7 @@ type TReturnAuthenticationHeader = {
 const AuthenticationHeader = (): TReturnAuthenticationHeader => {
   const headerDiv = document.createElement('div');
   headerDiv.classList.add('authentication-header');
-  headerDiv.appendChild(FlatIcon(FlatIconName._26_VELOVRA));
+  headerDiv.appendChild(FlatIcon(FlatIconName._SAMPLE_CIRCLE));
 
   return {
     element: headerDiv,

@@ -29,7 +29,7 @@ const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
         placeholderText: langKeys().InputPlaceholderPassword,
         inlineButton: {
           id: 'button__bmhshgsavs',
-          icon: FlatIcon(FlatIconName._18_EYE),
+          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
           onClick: () => togglePasswordVisibility(),
         },
         statusText: undefined,
@@ -80,12 +80,14 @@ const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
     const inputElement = inputs.input__jxdvdzvckn;
     if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
       inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._18_EVE_CLOSED),
+        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
       );
 
       inputElement.changeInputType(InputType.TEXT);
     } else {
-      inputElement.changeInlineButtonIcon(FlatIcon(FlatIconName._18_EYE));
+      inputElement.changeInlineButtonIcon(
+        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      );
       inputElement.changeInputType(InputType.PASSWORD);
     }
   };

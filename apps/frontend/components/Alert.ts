@@ -24,7 +24,7 @@ const Alert = (opts: TOptions): TReturnAlert => {
   descriptionDiv.classList.add('alert__description');
   closeButton.classList.add('alert__close-button');
 
-  closeButton.appendChild(FlatIcon(FlatIconName._14_CROSS));
+  closeButton.appendChild(FlatIcon(FlatIconName._SAMPLE_CIRCLE));
   contentDiv.append(titleDiv, descriptionDiv);
   alertDiv.append(contentDiv, closeButton);
 

@@ -79,7 +79,7 @@ const Modal = (opts: TOptions): TReturnModal => {
   contentDiv.classList.add('modal__content');
 
   titleDiv.textContent = opts.title;
-  closeButton.appendChild(FlatIcon(FlatIconName._14_CROSS));
+  closeButton.appendChild(FlatIcon(FlatIconName._SAMPLE_CIRCLE));
   headerDiv.append(titleDiv, closeButton);
   containerDiv.append(headerDiv, contentDiv);
   modalDiv.appendChild(containerDiv);
