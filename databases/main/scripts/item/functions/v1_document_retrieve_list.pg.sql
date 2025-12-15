@@ -1,3 +1,4 @@
+\echo create function schema_item.v1_document_retrieve_list()
 CREATE OR REPLACE FUNCTION schema_item.v1_document_retrieve_list (p_data JSONB)
   RETURNS JSONB VOLATILE
   AS $$
