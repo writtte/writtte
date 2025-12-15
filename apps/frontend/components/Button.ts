@@ -51,8 +51,8 @@ const Button = (opts: TOptions): TReturnButton => {
 
   button.classList.add(
     'button',
-    `button-${opts.color.toLowerCase}`,
-    `button--${opts.size.toLowerCase}`,
+    `button-${opts.color.toLowerCase()}`,
+    `button--${opts.size.toLowerCase()}`,
   );
 
   if (opts.isFullWidth === true) {
