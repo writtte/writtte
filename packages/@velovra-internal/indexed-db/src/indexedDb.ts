@@ -358,4 +358,4 @@ const idb = {
   checkKeyExists: checkKeyExistsInIdb,
 };
 
-export default idb;
+export { idb };
