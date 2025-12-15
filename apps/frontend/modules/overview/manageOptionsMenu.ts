@@ -73,4 +73,5 @@ const buildDocumentOptionsMenu = async (
 
   document.body.appendChild(menu.element);
 };
+
 export { buildDocumentOptionsMenu };
