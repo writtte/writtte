@@ -18,7 +18,6 @@ DECLARE
   v_result RECORD;
   v_exception TEXT;
   v_query TEXT;
-  v_counter INTEGER := 1;
   v_where_conditions TEXT[];
   v_total_pages INTEGER;
 BEGIN
@@ -38,30 +37,23 @@ BEGIN
   END IF;
   v_where_conditions := ARRAY[]::TEXT[];
   IF v_p_account_code IS NOT NULL THEN
-    v_where_conditions := array_append(v_where_conditions, 'account_code = $' || v_counter::TEXT);
-    v_counter := v_counter + 1;
+    v_where_conditions := array_append(v_where_conditions, format('account_code = %L', v_p_account_code));
   END IF;
   IF v_p_lifecycle_state IS NOT NULL THEN
-    v_where_conditions := array_append(v_where_conditions, 'lifecycle_state = $' || v_counter::TEXT);
-    v_counter := v_counter + 1;
-  ELSE
-    v_where_conditions := array_append(v_where_conditions, 'lifecycle_state = $' || v_counter::TEXT);
-    v_counter := v_counter + 1;
+    v_where_conditions := array_append(v_where_conditions, format('lifecycle_state = %L', v_p_lifecycle_state));
   END IF;
   IF v_p_workflow_state IS NOT NULL THEN
-    v_where_conditions := array_append(v_where_conditions, 'workflow_state = $' || v_counter::TEXT);
-    v_counter := v_counter + 1;
+    v_where_conditions := array_append(v_where_conditions, format('workflow_state = %L', v_p_workflow_state));
   END IF;
   IF v_p_title_filter IS NOT NULL THEN
-    v_where_conditions := array_append(v_where_conditions, 'title ILIKE $' || v_counter::TEXT);
-    v_counter := v_counter + 1;
+    v_where_conditions := array_append(v_where_conditions, format('title ILIKE %L', '%' || v_p_title_filter || '%'));
   END IF;
-  v_query := '
-    SELECT 
+  v_query := format('
+    SELECT
       COALESCE(json_agg(doc_data), ''[]''::JSON) as documents,
       COALESCE(MAX(total_count), 0) as total_count
     FROM (
-      SELECT 
+      SELECT
         json_build_object(
           ''document_code'', document_code,
           ''account_code'', account_code,
@@ -72,57 +64,25 @@ BEGIN
           ''updated_time'', updated_time
         ) as doc_data,
         COUNT(*) OVER() as total_count
-      FROM schema_item.tb_document';
-  IF array_length(v_where_conditions, 1) > 0 THEN
-    v_query := v_query || ' WHERE ' || array_to_string(v_where_conditions, ' AND ');
+      FROM schema_item.tb_document
+      %s
+      ORDER BY %I %s
+      LIMIT %L OFFSET %L
+    ) sub', CASE WHEN array_length(v_where_conditions, 1) > 0 THEN
+      'WHERE ' || array_to_string(v_where_conditions, ' AND ')
+    ELSE
+      ''
+    END, v_p_sort_by, v_p_sort_order, v_p_page_size, (v_p_page - 1) * v_p_page_size);
+  EXECUTE v_query INTO v_result;
+  v_total_pages := ceil(v_result.total_count::NUMERIC / v_p_page_size::NUMERIC)::INTEGER;
+  IF v_total_pages = 0 THEN
+    v_total_pages := 1;
   END IF;
-  v_query := v_query || ' ORDER BY ' || quote_ident(v_p_sort_by) || ' ' || v_p_sort_order || ' LIMIT $' || v_counter::TEXT || ' OFFSET $' || (v_counter + 1)::TEXT || ') sub';
-  IF v_p_account_code IS NOT NULL AND v_p_lifecycle_state IS NOT NULL AND v_p_workflow_state IS NOT NULL AND v_p_title_filter IS NOT NULL THEN
-    EXECUTE v_query INTO v_result
-    USING v_p_account_code, v_p_lifecycle_state, v_p_workflow_state, '%' || v_p_title_filter || '%', v_p_page_size, (v_p_page - 1) * v_p_page_size;
-  ELSIF v_p_account_code IS NOT NULL
-      AND v_p_lifecycle_state IS NOT NULL
-      AND v_p_workflow_state IS NOT NULL THEN
-      EXECUTE v_query INTO v_result
-      USING v_p_account_code, v_p_lifecycle_state, v_p_workflow_state, v_p_page_size, (v_p_page - 1) * v_p_page_size;
-    ELSIF v_p_account_code IS NOT NULL
-        AND v_p_lifecycle_state IS NOT NULL
-        AND v_p_title_filter IS NOT NULL THEN
-        EXECUTE v_query INTO v_result
-        USING v_p_account_code, v_p_lifecycle_state, '%' || v_p_title_filter || '%', v_p_page_size, (v_p_page - 1) * v_p_page_size;
-      ELSIF v_p_account_code IS NOT NULL
-          AND v_p_lifecycle_state IS NOT NULL THEN
-          EXECUTE v_query INTO v_result
-          USING v_p_account_code, v_p_lifecycle_state, v_p_page_size, (v_p_page - 1) * v_p_page_size;
-        ELSIF v_p_lifecycle_state IS NOT NULL
-            AND v_p_workflow_state IS NOT NULL
-            AND v_p_title_filter IS NOT NULL THEN
-            EXECUTE v_query INTO v_result
-            USING v_p_lifecycle_state, v_p_workflow_state, '%' || v_p_title_filter || '%', v_p_page_size, (v_p_page - 1) * v_p_page_size;
-          ELSIF v_p_lifecycle_state IS NOT NULL
-              AND v_p_workflow_state IS NOT NULL THEN
-              EXECUTE v_query INTO v_result
-              USING v_p_lifecycle_state, v_p_workflow_state, v_p_page_size, (v_p_page - 1) * v_p_page_size;
-            ELSIF v_p_lifecycle_state IS NOT NULL
-                AND v_p_title_filter IS NOT NULL THEN
-                EXECUTE v_query INTO v_result
-                USING v_p_lifecycle_state, '%' || v_p_title_filter || '%', v_p_page_size, (v_p_page - 1) * v_p_page_size;
-              ELSIF v_p_lifecycle_state IS NOT NULL THEN
-                EXECUTE v_query INTO v_result
-                USING v_p_lifecycle_state, v_p_page_size, (v_p_page - 1) * v_p_page_size;
-              ELSE
-                EXECUTE v_query INTO v_result
-                USING v_p_page_size, (v_p_page - 1) * v_p_page_size;
-              END IF;
-                v_total_pages := ceil(v_result.total_count::NUMERIC / v_p_page_size::NUMERIC)::INTEGER;
-                IF v_total_pages = 0 THEN
-                  v_total_pages := 1;
-                END IF;
-                RETURN json_build_object(k_status, TRUE, k_code, 'DOCUMENT_RETRIEVED_LIST', k_message, NULL, k_additional, NULL, k_data, json_build_object('documents', v_result.documents::JSONB, 'pagination', json_build_object('current_page', v_p_page, 'page_size', v_p_page_size, 'total_count', v_result.total_count, 'total_pages', v_total_pages)))::JSONB;
+  RETURN json_build_object(k_status, TRUE, k_code, 'DOCUMENT_RETRIEVED_LIST', k_message, NULL, k_additional, NULL, k_data, json_build_object('documents', v_result.documents::JSONB, 'pagination', json_build_object('current_page', v_p_page, 'page_size', v_p_page_size, 'total_count', v_result.total_count, 'total_pages', v_total_pages)))::JSONB;
 EXCEPTION
   WHEN OTHERS THEN
     GET STACKED DIAGNOSTICS v_exception = PG_EXCEPTION_CONTEXT;
-                RETURN json_build_object(k_status, FALSE, k_code, SQLSTATE, k_message, SQLERRM, k_additional, v_exception, k_data, NULL)::JSONB;
+  RETURN json_build_object(k_status, FALSE, k_code, SQLSTATE, k_message, SQLERRM, k_additional, v_exception, k_data, NULL)::JSONB;
 END;
 
 $$
