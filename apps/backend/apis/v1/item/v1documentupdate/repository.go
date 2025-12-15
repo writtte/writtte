@@ -21,7 +21,7 @@ func (d *database) perform(ctx context.Context,
 	// revive:disable:line-length-limit
 
 	err := d.DB.Pool.QueryRow(ctx,
-		"SELECT schema_main.v1_item_update($1::UUID, $2::JSONB)",
+		"SELECT schema_item.v1_document_update($1::UUID, $2::JSONB)",
 		data.DocumentCode,
 		map[string]any{
 			"account_code":    data.AccountCode,
