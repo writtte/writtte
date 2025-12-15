@@ -1,3 +1,4 @@
+import { clickOutside } from '../utils/ui/clickOutside';
 import {
   MenuItem,
   type TMenuItemOptions,
@@ -15,7 +16,6 @@ type TOptions = {
     hasBottomDivider: boolean;
   })[];
   menuWidth: number;
-  isSubMenu: boolean;
 };
 
 type TReturnMenu = {
@@ -60,6 +60,27 @@ const Menu = (opts: TOptions): TReturnMenu => {
       containerDiv.appendChild(dividerDiv);
     }
   }
+
+  let clickOutsideInstance: ReturnType<typeof clickOutside> | null = null;
+
+  const destroy = (): void => {
+    clickOutsideInstance?.destroy();
+    menu.remove();
+  };
+
+  setTimeout(() => {
+    clickOutsideInstance = clickOutside(
+      menu,
+      () => {
+        destroy();
+      },
+      {
+        enabled: true,
+        listenForEscape: true,
+        ignoreMenus: true,
+      },
+    );
+  }, 0);
 
   return {
     element: menu,

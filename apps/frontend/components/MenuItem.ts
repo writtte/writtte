@@ -49,6 +49,14 @@ const MenuItem = (opts: TOptions): TReturnMenuItem => {
   button.addEventListener('click', (e: PointerEvent) => {
     e.preventDefault();
     opts.onClick(e);
+
+    // When a menu item is clicked, the menu should close
+    // automatically.
+
+    const parentMenu = button.closest('.menu');
+    if (parentMenu) {
+      parentMenu.remove();
+    }
   });
 
   const changeText = (text: string): void => {
