@@ -47,6 +47,7 @@ const setAccountOverview = async (): Promise<void> => {
   }
 
   updateAccountOverview({
+    code: response.results.account_code,
     emailAddress: response.results.email_address,
     name: response.results.name,
     status: response.results.status,

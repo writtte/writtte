@@ -1,6 +1,10 @@
 import { getTr } from '../middleware/setup/translations';
 
 type TLangKeys = {
+  AlertDocumentCreateFailedDescription: string;
+  AlertDocumentCreateFailedTitle: string;
+  AlertDocumentRetrievedFailedDescription: string;
+  AlertDocumentRetrievedFailedTitle: string;
   AlertMiddlewareNeedSignInDescription: string;
   AlertMiddlewareNeedSignInTitle: string;
   AlertMiddlewareSignInRequiredDescription: string;
@@ -23,6 +27,9 @@ type TLangKeys = {
   ErrorApiServiceUnavailable: string;
   ErrorApiTooManyRequests: string;
   ErrorApiUnauthorized: string;
+  ErrorDocumentTitleMax: string;
+  ErrorDocumentTitleMin: string;
+  ErrorDocumentTitleRequired: string;
   ErrorEmailInvalid: string;
   ErrorEmailMax: string;
   ErrorEmailMin: string;
@@ -44,6 +51,21 @@ type TLangKeys = {
   InputPlaceholderPassword: string;
   InputPlaceholderPasswordConfirm: string;
   LoadingTextCheckingMagicLink: string;
+  MenuItemDeleteDocument: string;
+  MenuItemOpen: string;
+  MenuItemOpenInTab: string;
+  MenuItemRenameDocument: string;
+  ModalDocumentDeleteButtonCancel: string;
+  ModalDocumentDeleteButtonDelete: string;
+  ModalDocumentDeleteButtonDeleting: string;
+  ModalDocumentDeleteTextContent: string;
+  ModalDocumentDeleteTextTitle: string;
+  ModalDocumentRenameButtonCancel: string;
+  ModalDocumentRenameButtonRename: string;
+  ModalDocumentRenameButtonRenaming: string;
+  ModalDocumentRenameTextContent: string;
+  ModalDocumentRenameTextTitle: string;
+  PageOverviewCreateInputPlaceholderNewDocument: string;
   PageOverviewGreetingsAfternoon01: string;
   PageOverviewGreetingsAfternoon02: string;
   PageOverviewGreetingsAfternoon03: string;
@@ -79,6 +101,8 @@ type TLangKeys = {
   PageOverviewGreetingsNight05: string;
   PageOverviewGreetingsNight06: string;
   PageOverviewGreetingsNight07: string;
+  PageOverviewItemListPlaceholderDescription: string;
+  PageOverviewItemListPlaceholderTitle: string;
   PageSignInButtonSignIn: string;
   PageSignInButtonSigning: string;
   PageSignInEmailButtonSend: string;
@@ -106,6 +130,10 @@ type TLangKeys = {
 const langKeys = (): TLangKeys => {
   // biome-ignore format: Following array should not be formatted
   const keys: TLangKeys = {
+    AlertDocumentCreateFailedDescription: ('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
+    AlertDocumentCreateFailedTitle: ('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
+    AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
+    AlertDocumentRetrievedFailedTitle: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_TITLE'),
     AlertMiddlewareNeedSignInDescription: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION'),
     AlertMiddlewareNeedSignInTitle: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_TITLE'),
     AlertMiddlewareSignInRequiredDescription: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_DESCRIPTION'),
@@ -128,6 +156,9 @@ const langKeys = (): TLangKeys => {
     ErrorApiServiceUnavailable: getTr('ERROR_API_SERVICE_UNAVAILABLE'),
     ErrorApiTooManyRequests: getTr('ERROR_API_TOO_MANY_REQUESTS'),
     ErrorApiUnauthorized: getTr('ERROR_API_UNAUTHORIZED'),
+    ErrorDocumentTitleMax: getTr('ERROR_DOCUMENT_TITLE_MAX'),
+    ErrorDocumentTitleMin: getTr('ERROR_DOCUMENT_TITLE_MIN'),
+    ErrorDocumentTitleRequired: getTr('ERROR_DOCUMENT_TITLE_REQUIRED'),
     ErrorEmailInvalid: getTr('ERROR_EMAIL_INVALID'),
     ErrorEmailMax: getTr('ERROR_EMAIL_MAX'),
     ErrorEmailMin: getTr('ERROR_EMAIL_MIN'),
@@ -149,6 +180,21 @@ const langKeys = (): TLangKeys => {
     InputPlaceholderPassword: getTr('INPUT_PLACEHOLDER_PASSWORD'),
     InputPlaceholderPasswordConfirm: getTr('INPUT_PLACEHOLDER_PASSWORD_CONFIRM'),
     LoadingTextCheckingMagicLink: getTr('LOADING_TEXT_CHECKING_MAGIC_LINK'),
+    MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
+    MenuItemOpen: getTr('MENU_ITEM_OPEN'),
+    MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
+    MenuItemRenameDocument: getTr('MENU_ITEM_RENAME_DOCUMENT'),
+    ModalDocumentDeleteButtonCancel: getTr('MODAL_DOCUMENT_DELETE_BUTTON_CANCEL'),
+    ModalDocumentDeleteButtonDelete: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETE'),
+    ModalDocumentDeleteButtonDeleting: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETING'),
+    ModalDocumentDeleteTextContent: getTr('MODAL_DOCUMENT_DELETE_TEXT_CONTENT'),
+    ModalDocumentDeleteTextTitle: getTr('MODAL_DOCUMENT_DELETE_TEXT_TITLE'),
+    ModalDocumentRenameButtonCancel: getTr('MODAL_DOCUMENT_RENAME_BUTTON_CANCEL'),
+    ModalDocumentRenameButtonRename: getTr('MODAL_DOCUMENT_RENAME_BUTTON_RENAME'),
+    ModalDocumentRenameButtonRenaming: getTr('MODAL_DOCUMENT_RENAME_BUTTON_RENAMING'),
+    ModalDocumentRenameTextContent: getTr('MODAL_DOCUMENT_RENAME_TEXT_CONTENT'),
+    ModalDocumentRenameTextTitle: getTr('MODAL_DOCUMENT_RENAME_TEXT_TITLE'),
+    PageOverviewCreateInputPlaceholderNewDocument: getTr('PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT'),
     PageOverviewGreetingsAfternoon01: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_01'),
     PageOverviewGreetingsAfternoon02: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_02'),
     PageOverviewGreetingsAfternoon03: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_03'),
@@ -184,6 +230,8 @@ const langKeys = (): TLangKeys => {
     PageOverviewGreetingsNight05: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_05'),
     PageOverviewGreetingsNight06: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_06'),
     PageOverviewGreetingsNight07: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_07'),
+    PageOverviewItemListPlaceholderDescription: getTr('PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_DESCRIPTION'),
+    PageOverviewItemListPlaceholderTitle: getTr('PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_TITLE'),
     PageSignInButtonSignIn: getTr('PAGE_SIGN_IN_BUTTON_SIGN_IN'),
     PageSignInButtonSigning: getTr('PAGE_SIGN_IN_BUTTON_SIGNING'),
     PageSignInEmailButtonSend: getTr('PAGE_SIGN_IN_EMAIL_BUTTON_SEND'),

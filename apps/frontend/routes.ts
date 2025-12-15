@@ -1,12 +1,14 @@
 import type { TRoute } from './utils/routes/routes';
 import { PATHS } from './constants/paths';
 import { AuthenticationLayout } from './layout/authentication';
+import { DashboardLayout } from './layout/dashboard';
 import { AuthenticationSignInPage } from './pages/AuthenticationSignIn';
 import { AuthenticationSignInEmailPage } from './pages/AuthenticationSignInEmail';
 import { AuthenticationSignInEmailCheckPage } from './pages/AuthenticationSignInEmailCheck';
 import { AuthenticationSignUpPage } from './pages/AuthenticationSignUp';
 import { AuthenticationSignUpCreatePage } from './pages/AuthenticationSignUpCreate';
 import { NotFoundPage } from './pages/NotFound';
+import { OverviewPage } from './pages/Overview';
 
 const defaultRoutes: TRoute[] = [
   {
@@ -38,6 +40,12 @@ const defaultRoutes: TRoute[] = [
     title: 'Checking Magic Link Access... | Velovra',
     layout: AuthenticationLayout,
     view: async () => await AuthenticationSignInEmailCheckPage(),
+  },
+  {
+    path: PATHS.OVERVIEW,
+    title: 'Overview | Velovra',
+    layout: DashboardLayout,
+    view: async () => await OverviewPage(),
   },
 ];
 

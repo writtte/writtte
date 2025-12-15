@@ -1,5 +1,9 @@
 // biome-ignore format: Following array should not be formatted
 const enMessages = {
+  ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION: 'We were unable to create the document due to an unexpected error on our side. Please try again in a few minutes. If the problem persists, contact our support team for assistance.',
+  ALERT_DOCUMENT_CREATE_FAILED_TITLE: 'Unable to Create Document',
+  ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION: 'We were unable to retrieve documents due to an unexpected error on our side. Please try again in a few minutes. If the problem persists, contact our support team for assistance.',
+  ALERT_DOCUMENT_RETRIEVED_FAILED_TITLE: 'Unable to Retrieve Documents',
   ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION: 'To access the page you\'re trying to reach, you need to log out of your current account.',
   ALERT_MIDDLEWARE_NEED_SIGN_IN_TITLE: 'You\'re Already Signed In',
   ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_DESCRIPTION: 'Please sign in to access the page you are trying to view.',
@@ -22,6 +26,9 @@ const enMessages = {
   ERROR_API_SERVICE_UNAVAILABLE: 'The service is temporarily unavailable. Please try again later.',
   ERROR_API_TOO_MANY_REQUESTS: 'You’ve made too many requests. Please wait a moment and try again.',
   ERROR_API_UNAUTHORIZED: 'You need to sign in to continue.',
+  ERROR_DOCUMENT_TITLE_MAX: 'Document title must not exceed 256 characters.',
+  ERROR_DOCUMENT_TITLE_MIN: 'Document title must contain at least 2 characters.',
+  ERROR_DOCUMENT_TITLE_REQUIRED: 'Document title is required to continue.',
   ERROR_EMAIL_INVALID: "Please enter a valid email address.",
   ERROR_EMAIL_MAX: "Email address can’t be longer than 512 characters.",
   ERROR_EMAIL_MIN: "Email address must be at least 4 characters long.",
@@ -43,6 +50,21 @@ const enMessages = {
   INPUT_PLACEHOLDER_PASSWORD: 'Password',
   INPUT_PLACEHOLDER_PASSWORD_CONFIRM: 'Confirm Password',
   LOADING_TEXT_CHECKING_MAGIC_LINK: 'Checking the magic sign in link...',
+  MENU_ITEM_DELETE_DOCUMENT: 'Delete',
+  MENU_ITEM_OPEN: 'Open',
+  MENU_ITEM_OPEN_IN_TAB: 'Open in new tab',
+  MENU_ITEM_RENAME_DOCUMENT: 'Rename',
+  MODAL_DOCUMENT_DELETE_BUTTON_CANCEL: 'Cancel',
+  MODAL_DOCUMENT_DELETE_BUTTON_DELETE: 'Confirm Delete',
+  MODAL_DOCUMENT_DELETE_BUTTON_DELETING: 'Deleting...',
+  MODAL_DOCUMENT_DELETE_TEXT_CONTENT: 'This action will permanently delete the document and cannot be undone.',
+  MODAL_DOCUMENT_DELETE_TEXT_TITLE: 'Confirm Permanent Deletion',
+  MODAL_DOCUMENT_RENAME_BUTTON_CANCEL: 'Cancel',
+  MODAL_DOCUMENT_RENAME_BUTTON_RENAME: 'Rename',
+  MODAL_DOCUMENT_RENAME_BUTTON_RENAMING: 'Renaming...',
+  MODAL_DOCUMENT_RENAME_TEXT_CONTENT: 'Please enter a new name for the document.',
+  MODAL_DOCUMENT_RENAME_TEXT_TITLE: 'Rename Document',
+  PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT: 'Type a title for your new article',
   PAGE_OVERVIEW_GREETINGS_AFTERNOON_01: 'Good afternoon,',
   PAGE_OVERVIEW_GREETINGS_AFTERNOON_02: 'Afternoon,',
   PAGE_OVERVIEW_GREETINGS_AFTERNOON_03: 'Hope your afternoon is going well,',
@@ -78,6 +100,8 @@ const enMessages = {
   PAGE_OVERVIEW_GREETINGS_NIGHT_05: 'See you tomorrow,',
   PAGE_OVERVIEW_GREETINGS_NIGHT_06: 'Night - great job today,',
   PAGE_OVERVIEW_GREETINGS_NIGHT_07: 'Rest well,',
+  PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_DESCRIPTION: 'Get started by creating your first document.',
+  PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_TITLE: 'No Documents Yet',
   PAGE_SIGN_IN_BUTTON_SIGNING: 'Checking Access...',
   PAGE_SIGN_IN_BUTTON_SIGN_IN: 'Sign In',
   PAGE_SIGN_IN_EMAIL_BUTTON_SEND: 'Get Magic Link',
@@ -100,7 +124,6 @@ const enMessages = {
   PAGE_SIGN_UP_TEXT_TITLE: 'Welcome to Velovra',
   PAGE_SING_IN_LINK_PASSWORD_RESET: '((link))Forgot Password?((/link))',
   PAGE_SING_IN_LINK_SIGN_UP: 'Don’t have an account? ((link))Get Invitation((/link))',
-
 };
 
 export { enMessages };

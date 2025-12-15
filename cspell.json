@@ -37,6 +37,7 @@
     "documentretrieve",
     "dbconvert",
     "documentretrievelist",
-    "documentupdate"
+    "documentupdate",
+    "TIDB"
   ]
 }

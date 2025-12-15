@@ -1,4 +1,7 @@
-import type { TItemListDocumentOptions } from './ItemListDocument';
+import type {
+  TItemListDocumentOptions,
+  TReturnItemListDocument,
+} from './ItemListDocument';
 import type { TItemListPlaceholderOptions } from './ItemListPlaceholder';
 import { ItemListDocument, removeItemListDocument } from './ItemListDocument';
 import { ItemListPlaceholder } from './ItemListPlaceholder';
@@ -10,8 +13,10 @@ type TOptions = {
 
 type TReturnItemList = {
   element: HTMLDivElement;
+  items: Map<string, TReturnItemListDocument>;
   setPlaceholder: (placeholder: TItemListPlaceholderOptions) => void;
   removePlaceholder: () => void;
+  getAllDocumentIDs: () => string[];
   addItemToList: (item: TItemListDocumentOptions) => void;
   removeItemFromList: (id: string) => void;
 };
@@ -25,6 +30,9 @@ const ItemList = (opts: TOptions): TReturnItemList => {
   containerDiv.classList.add('item-list__container');
 
   listDiv.appendChild(containerDiv);
+
+  const documentItems: Map<string, TReturnItemListDocument> = new Map();
+  const documentIds: Map<string, string> = new Map();
 
   const removePlaceholder = (): void => {
     if (placeholderElement && containerDiv.contains(placeholderElement)) {
@@ -42,13 +50,18 @@ const ItemList = (opts: TOptions): TReturnItemList => {
   };
 
   if (opts.documents && opts.documents.length > 0) {
-    opts.documents.forEach((doc) => {
-      const item = ItemListDocument(doc);
+    for (let i = 0; i < opts.documents.length; i++) {
+      const item = ItemListDocument(opts.documents[i]);
       containerDiv.appendChild(item.element);
-    });
+
+      documentIds.set(opts.documents[i].id, opts.documents[i].id);
+      documentItems.set(opts.documents[i].id, item);
+    }
   } else {
     setPlaceholder(opts.placeholder);
   }
+
+  const getAllDocumentIDs = (): string[] => Array.from(documentIds.keys());
 
   const addItemToList = (item: TItemListDocumentOptions): void => {
     if (containerDiv.children.length === 0 || placeholderElement) {
@@ -56,6 +69,9 @@ const ItemList = (opts: TOptions): TReturnItemList => {
     }
 
     const newItem = ItemListDocument(item);
+    documentIds.set(item.id, item.id);
+
+    documentItems.set(item.id, newItem);
 
     if (containerDiv.firstChild) {
       containerDiv.insertBefore(newItem.element, containerDiv.firstChild);
@@ -67,6 +83,9 @@ const ItemList = (opts: TOptions): TReturnItemList => {
   const removeItemFromList = (id: string): void => {
     removeItemListDocument(id);
 
+    documentIds.delete(id);
+    documentItems.delete(id);
+
     if (containerDiv.children.length === 0) {
       setPlaceholder(opts.placeholder);
     }
@@ -74,8 +93,10 @@ const ItemList = (opts: TOptions): TReturnItemList => {
 
   return {
     element: listDiv,
+    items: documentItems,
     setPlaceholder,
     removePlaceholder,
+    getAllDocumentIDs,
     addItemToList,
     removeItemFromList,
   };
