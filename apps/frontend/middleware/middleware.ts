@@ -1,6 +1,7 @@
 import { PATHS } from '../constants/paths';
 import { ALERT_TIMEOUT } from '../constants/timeouts';
 import { AlertController } from '../controller/alert';
+import { initializeIDB } from '../data/stores/indexedDB';
 import { AccessToken } from '../helpers/account/accessToken';
 import { langKeys } from '../translations/keys';
 import { initMiddleware } from '../utils/routes/routes';
@@ -20,6 +21,8 @@ const setupMiddleware = async (): Promise<void> => {
       dumpVelovraLog();
       isFirstLoad = false;
     }
+
+    await initializeIDB();
 
     setupTranslations();
 

@@ -15,6 +15,7 @@ type TReturnAlertController = {
 // This `alerts` variable holds all the alerts on the pages
 
 var alerts: TInternalAlert[] = [];
+
 var containerDiv: HTMLDivElement | null = null;
 
 const AlertController = (): TReturnAlertController => {

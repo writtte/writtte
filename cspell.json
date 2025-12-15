@@ -30,6 +30,14 @@
     "FPMS",
     "xxlg",
     "xxxlg",
-    "accountoverview"
+    "accountoverview",
+    "gidr",
+    "documentcreate",
+    "AWSS",
+    "documentretrieve",
+    "dbconvert",
+    "documentretrievelist",
+    "documentupdate",
+    "TIDB"
   ]
 }

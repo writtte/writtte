@@ -1,6 +1,7 @@
 import { type TStore, createStore } from '@velovra-internal/store';
 
 type TStoreAccountOverview = {
+  code: string;
   emailAddress: string;
   name: string;
   status: string;
@@ -8,6 +9,7 @@ type TStoreAccountOverview = {
 };
 
 const initialState: TStoreAccountOverview = {
+  code: '',
   emailAddress: '',
   name: '',
   status: '',

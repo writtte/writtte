@@ -24,3 +24,12 @@ const (
 const (
 	OverviewAccountRetrieved = "OVERVIEW_ACCOUNT_RETRIEVED"
 )
+
+const (
+	DocumentCreated       = "DOCUMENT_CREATED"
+	DocumentExists        = "DOCUMENT_EXISTS"
+	DocumentNotExists     = "DOCUMENT_NOT_EXISTS"
+	DocumentRetrieved     = "DOCUMENT_RETRIEVED"
+	DocumentRetrievedList = "DOCUMENT_RETRIEVED_LIST"
+	DocumentUpdated       = "DOCUMENT_UPDATED"
+)

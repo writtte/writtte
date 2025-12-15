@@ -2,8 +2,15 @@
   "name": "@velovra-internal/store",
   "version": "1.0.0",
   "private": "true",
+  "sideEffects": false,
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "internal:build:js": "bun build ./src/index.ts --outdir ./dist --minify",
     "internal:types": "bunx --bun tsc --emitDeclarationOnly --outDir dist",

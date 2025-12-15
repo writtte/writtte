@@ -10,6 +10,12 @@ var (
 	AWSSESAccountSecretAccessKey     string
 	AWSSESTransactionalSender        string
 	AWSSESTransactionalConfiguration string
+
+	AWSS3PrivateDirectoryBucketAccountID       string
+	AWSS3PrivateDirectoryBucketAccessKey       string
+	AWSS3PrivateDirectoryBucketSecretAccessKey string
+	AWSS3PrivateDirectoryBucketRegion          string
+	AWSS3PrivateDirectoryBucketName            string
 )
 
 // revive:disable:line-length-limit
@@ -20,4 +26,10 @@ func AWSEnvs() {
 	AWSSESAccountSecretAccessKey = intenv.Load("BE_AWS_SES_KEY_SECRET_ACCESS")
 	AWSSESTransactionalSender = intenv.Load("BE_AWS_SES_TRANSACTIONAL_SENDER_ACCOUNT")
 	AWSSESTransactionalConfiguration = intenv.Load("BE_AWS_SES_TRANSACTIONAL_CONFIGURATION")
+
+	AWSS3PrivateDirectoryBucketAccountID = intenv.Load("BE_AWS_S3_KEY_ACCOUNT_ID")
+	AWSS3PrivateDirectoryBucketAccessKey = intenv.Load("BE_AWS_S3_KEY_ACCESS")
+	AWSS3PrivateDirectoryBucketSecretAccessKey = intenv.Load("BE_AWS_S3_KEY_SECRET_ACCESS")
+	AWSS3PrivateDirectoryBucketRegion = intenv.Load("BE_AWS_S3_REGION")
+	AWSS3PrivateDirectoryBucketName = intenv.Load("BE_AWS_S3_PRIVATE_DIRECTORY_BUCKET_NAME")
 }

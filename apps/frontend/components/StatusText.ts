@@ -39,11 +39,11 @@ const StatusText = (opts: TOptions): TReturnStatusText => {
     let icon: Element | undefined;
     switch (opts.type) {
       case StatusTextType.SUCCESS:
-        icon = FlatIcon(FlatIconName._14_CIRCLE_CHECK);
+        icon = FlatIcon(FlatIconName._SAMPLE_CIRCLE);
         break;
 
       case StatusTextType.ERROR:
-        icon = FlatIcon(FlatIconName._14_CIRCLE_ERROR);
+        icon = FlatIcon(FlatIconName._SAMPLE_CIRCLE);
         break;
 
       default:

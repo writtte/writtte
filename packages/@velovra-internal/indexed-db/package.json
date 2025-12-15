@@ -1,0 +1,26 @@
+{
+  "name": "@velovra-internal/indexed-db",
+  "version": "1.0.0",
+  "private": "true",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "internal:build:js": "bun build ./src/index.ts --outdir ./dist --minify",
+    "internal:types": "bunx --bun tsc --emitDeclarationOnly --outDir dist",
+    "pkg:build": "bun run internal:build:js && bun run internal:types",
+    "pkg:lint": "bunx --bun biome lint",
+    "pkg:check": "bunx --bun biome check --write",
+    "pkg:fmt": "bunx --bun biome check --write --linter-enabled=false",
+    "pkg:types": "tsc --noEmit --skipLibCheck"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

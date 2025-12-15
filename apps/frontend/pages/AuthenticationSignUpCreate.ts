@@ -29,7 +29,7 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
         placeholderText: langKeys().InputPlaceholderPassword,
         inlineButton: {
           id: 'button__rsymixozeh',
-          icon: FlatIcon(FlatIconName._18_EYE),
+          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
           onClick: () => togglePasswordVisibility(),
         },
         statusText: undefined,
@@ -45,7 +45,7 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
         placeholderText: langKeys().InputPlaceholderPasswordConfirm,
         inlineButton: {
           id: 'button__mgxqcajcwa',
-          icon: FlatIcon(FlatIconName._18_EYE),
+          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
           onClick: () => togglePasswordConfirmVisibility(),
         },
         statusText: undefined,
@@ -88,12 +88,14 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
     const inputElement = inputs.input__thsdzupune;
     if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
       inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._18_EVE_CLOSED),
+        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
       );
 
       inputElement.changeInputType(InputType.TEXT);
     } else {
-      inputElement.changeInlineButtonIcon(FlatIcon(FlatIconName._18_EYE));
+      inputElement.changeInlineButtonIcon(
+        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      );
       inputElement.changeInputType(InputType.PASSWORD);
     }
   };
@@ -102,12 +104,14 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
     const inputElement = inputs.input__lgitvucjxf;
     if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
       inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._18_EVE_CLOSED),
+        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
       );
 
       inputElement.changeInputType(InputType.TEXT);
     } else {
-      inputElement.changeInlineButtonIcon(FlatIcon(FlatIconName._18_EYE));
+      inputElement.changeInlineButtonIcon(
+        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      );
       inputElement.changeInputType(InputType.PASSWORD);
     }
   };
