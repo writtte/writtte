@@ -18,6 +18,7 @@
     "@velovra-internal/local-storage": "workspace:*",
     "@velovra-internal/store": "workspace:*",
     "@velovra-internal/indexed-db": "workspace:*",
+    "@velovra-editor/editor": "workspace:*",
     "@fontsource-variable/ibm-plex-sans": "5.2.8",
     "@fontsource-variable/jetbrains-mono": "5.2.8"
   },

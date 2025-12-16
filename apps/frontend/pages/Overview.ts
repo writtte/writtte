@@ -109,6 +109,8 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     for (let i = 0; i < extraItemIds.length; i++) {
       // These items should be added to the list element
 
+      // TODO need to add those to the indexed db too
+
       const extractedDocumentDetails = extractDocumentDetailsFromAPIList(
         documents,
         extraItemIds[i],

@@ -7,6 +7,7 @@ import { AuthenticationSignInEmailPage } from './pages/AuthenticationSignInEmail
 import { AuthenticationSignInEmailCheckPage } from './pages/AuthenticationSignInEmailCheck';
 import { AuthenticationSignUpPage } from './pages/AuthenticationSignUp';
 import { AuthenticationSignUpCreatePage } from './pages/AuthenticationSignUpCreate';
+import { EditorPage } from './pages/Editor';
 import { NotFoundPage } from './pages/NotFound';
 import { OverviewPage } from './pages/Overview';
 
@@ -46,6 +47,13 @@ const defaultRoutes: TRoute[] = [
     title: 'Overview | Velovra',
     layout: DashboardLayout,
     view: async () => await OverviewPage(),
+  },
+  {
+    path: `${PATHS.DOCUMENT_EDIT}/:documentCode`,
+    title: 'Document Editor | Velovra',
+    layout: DashboardLayout,
+    view: async (params: Record<string, string> | undefined) =>
+      await EditorPage(params),
   },
 ];
 

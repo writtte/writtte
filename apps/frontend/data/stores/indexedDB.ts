@@ -8,6 +8,7 @@ const DB_NAME = 'velovra';
 
 const STORE_NAMES = {
   DOCUMENTS: 'documents',
+  DOCUMENT_CONTENTS: 'document-contents',
 };
 
 type TIDBDocument = {
@@ -16,6 +17,12 @@ type TIDBDocument = {
   title: string;
   lifecycleState: string;
   workflowState: string;
+};
+
+type TIDBDocumentContent = {
+  accountCode: string;
+  documentCode: string;
+  content: string;
 };
 
 type TIndexedDBStore = {
@@ -32,7 +39,8 @@ const initializeIDB = async (): Promise<void> => {
   }
 
   const db = await idb.open(DB_NAME, DB_VERSION, (database: IDBDatabase) => {
-    setupItemStore(database);
+    setupDocumentStore(database);
+    setupDocumentContentStore(database);
   });
 
   indexedDBStore.setState({
@@ -49,7 +57,7 @@ const getIndexedDB = (): IDBDatabase => {
   return instance;
 };
 
-const setupItemStore = (database: IDBDatabase): void => {
+const setupDocumentStore = (database: IDBDatabase): void => {
   const store = database.createObjectStore(STORE_NAMES.DOCUMENTS, {
     keyPath: 'documentCode',
   });
@@ -59,6 +67,16 @@ const setupItemStore = (database: IDBDatabase): void => {
   });
 };
 
-export type { TIDBDocument, TIndexedDBStore };
+const setupDocumentContentStore = (database: IDBDatabase): void => {
+  const store = database.createObjectStore(STORE_NAMES.DOCUMENT_CONTENTS, {
+    keyPath: 'documentCode',
+  });
+
+  store.createIndex('documentCode', 'documentCode', {
+    unique: false,
+  });
+};
+
+export type { TIDBDocument, TIDBDocumentContent, TIndexedDBStore };
 
 export { DB_VERSION, DB_NAME, STORE_NAMES, initializeIDB, getIndexedDB };

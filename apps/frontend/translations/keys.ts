@@ -65,6 +65,8 @@ type TLangKeys = {
   ModalDocumentRenameButtonRenaming: string;
   ModalDocumentRenameTextContent: string;
   ModalDocumentRenameTextTitle: string;
+  PageEditorErrorDocumentRetrieveTextDescription: string;
+  PageEditorErrorDocumentRetrieveTextTitle: string;
   PageOverviewCreateInputPlaceholderNewDocument: string;
   PageOverviewGreetingsAfternoon01: string;
   PageOverviewGreetingsAfternoon02: string;
@@ -194,6 +196,8 @@ const langKeys = (): TLangKeys => {
     ModalDocumentRenameButtonRenaming: getTr('MODAL_DOCUMENT_RENAME_BUTTON_RENAMING'),
     ModalDocumentRenameTextContent: getTr('MODAL_DOCUMENT_RENAME_TEXT_CONTENT'),
     ModalDocumentRenameTextTitle: getTr('MODAL_DOCUMENT_RENAME_TEXT_TITLE'),
+    PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
+    PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageOverviewCreateInputPlaceholderNewDocument: getTr('PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT'),
     PageOverviewGreetingsAfternoon01: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_01'),
     PageOverviewGreetingsAfternoon02: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_02'),
