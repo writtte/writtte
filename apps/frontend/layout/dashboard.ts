@@ -1,7 +1,10 @@
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { TopBar } from '../components/TopBar';
+import { PATHS } from '../constants/paths';
 import { TopBarController } from '../controller/topBar';
-import { parentTopBar } from '../modules/topBar/parentTopBar';
+import { setupEditorTopBar } from '../modules/topBar/editorTopBar';
+import { setupParentTopBar } from '../modules/topBar/parentTopBar';
+import { checkRouteStartsWith } from '../utils/routes/helpers';
 
 const DashboardLayout = async ({
   content,
@@ -32,7 +35,11 @@ const DashboardLayout = async ({
   const topBarController = TopBarController();
   topBarController.setTopBar(topBarElement);
 
-  await parentTopBar();
+  if (checkRouteStartsWith([PATHS.DOCUMENT_EDIT])) {
+    await setupEditorTopBar();
+  } else {
+    await setupParentTopBar();
+  }
 
   containerDiv.append(topBarElement.element, pageDiv);
   return layoutDiv;

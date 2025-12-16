@@ -127,6 +127,17 @@ type TLangKeys = {
   PageSignUpTextTitle: string;
   PageSingInLinkPasswordReset: string;
   PageSingInLinkSignUp: string;
+  SettingsModalButtonOk: string;
+  SettingsModalSectionTextAppearance: string;
+  SettingsModalSectionTextBeta: string;
+  SettingsModalSectionTextEditor: string;
+  SettingsModalSectionTextHighRisk: string;
+  SettingsModalSectionTextLocal: string;
+  SettingsModalSectionTextOverview: string;
+  SettingsModalSectionTextSecurity: string;
+  SettingsModalSectionTextSubscription: string;
+  SettingsModalSectionTextUsage: string;
+  SettingsModalTextTitle: string;
 };
 
 const langKeys = (): TLangKeys => {
@@ -258,6 +269,17 @@ const langKeys = (): TLangKeys => {
     PageSignUpTextTitle: getTr('PAGE_SIGN_UP_TEXT_TITLE'),
     PageSingInLinkPasswordReset: getTr('PAGE_SING_IN_LINK_PASSWORD_RESET'),
     PageSingInLinkSignUp: getTr('PAGE_SING_IN_LINK_SIGN_UP'),
+    SettingsModalButtonOk: getTr('SETTINGS_MODAL_BUTTON_OK'),
+    SettingsModalSectionTextAppearance: getTr('SETTINGS_MODAL_SECTION_TEXT_APPEARANCE'),
+    SettingsModalSectionTextBeta: getTr('SETTINGS_MODAL_SECTION_TEXT_BETA'),
+    SettingsModalSectionTextEditor: getTr('SETTINGS_MODAL_SECTION_TEXT_EDITOR'),
+    SettingsModalSectionTextHighRisk: getTr('SETTINGS_MODAL_SECTION_TEXT_HIGH_RISK'),
+    SettingsModalSectionTextLocal: getTr('SETTINGS_MODAL_SECTION_TEXT_LOCAL'),
+    SettingsModalSectionTextOverview: getTr('SETTINGS_MODAL_SECTION_TEXT_OVERVIEW'),
+    SettingsModalSectionTextSecurity: getTr('SETTINGS_MODAL_SECTION_TEXT_SECURITY'),
+    SettingsModalSectionTextSubscription: getTr('SETTINGS_MODAL_SECTION_TEXT_SUBSCRIPTION'),
+    SettingsModalSectionTextUsage: getTr('SETTINGS_MODAL_SECTION_TEXT_USAGE'),
+    SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
   }
 
   return keys;
