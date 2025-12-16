@@ -1,30 +1,25 @@
+import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { topBarInstance } from '../../controller/topBar';
 import { buildError } from '../../helpers/error/build';
+import { openSettingsModal } from '../settings/openSettingsModal';
 
-const parentTopBar = async (): Promise<void> => {
+const setupParentTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {
     throw new Error(buildError('the top bar instance still not initialized'));
   }
 
-  // topBarInstance.addButtonsToLeft([
-  //   {
-  //     id: 'action_button__qgrwkpfqkz',
-  //     icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-  //     onClick: (e: PointerEvent) => {
+  topBarInstance.addButtonsToRight([
+    {
+      id: 'action_button__mctduiojnt',
+      icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      onClick: async (e: PointerEvent): Promise<void> => {
+        e.preventDefault();
+        e.stopPropagation();
 
-  //     },
-  //   },
-  // ]);
-
-  // topBarInstance.addButtonsToRight([
-  //   {
-  //     id: 'action_button__cxhyyxssyc',
-  //     icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-  //     onClick: (e: PointerEvent) => {
-  //       console.log('right', e);
-  //     },
-  //   },
-  // ]);
+        await openSettingsModal();
+      },
+    },
+  ]);
 };
 
-export { parentTopBar };
+export { setupParentTopBar };
