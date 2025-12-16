@@ -23,10 +23,10 @@ func sendSignUpEmail(r *http.Request, email, code *string) *string {
 	return link
 }
 
-func sendEmailUpdateEmail(r *http.Request, email, code,
+func sendEmailUpdateEmail(r *http.Request, email, code, accountCode,
 	newEmailToUpdate *string) *string {
 	title, subject, content, link := emailUpdateLink(email, code,
-		newEmailToUpdate)
+		accountCode, newEmailToUpdate)
 
 	info := sendmail.Info{
 		Title:   title,

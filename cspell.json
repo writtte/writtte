@@ -39,6 +39,7 @@
     "documentretrievelist",
     "documentupdate",
     "TIDB",
-    "userupdate"
+    "userupdate",
+    "updateuseremail"
   ]
 }

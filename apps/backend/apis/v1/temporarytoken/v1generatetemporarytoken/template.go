@@ -67,12 +67,13 @@ func generateSignUpLink(email, code *string) string {
 	return configs.FrontendURL + "/sign-up/create?data=" + encodedData
 }
 
-func emailUpdateLink(email, code, newEmailToUpdate *string) (title, subject,
+func emailUpdateLink(email, code, accountCode,
+	newEmailToUpdate *string) (title, subject,
 	content, link *string) {
 	mailTitle := constants.TransactionalEmailTitle
 	mailSubject := constants.EmailSubjectAccountEmailUpdate
 
-	generatedLink := generateEmailUpdateLink(email, code,
+	generatedLink := generateEmailUpdateLink(email, code, accountCode,
 		newEmailToUpdate)
 
 	var result bytes.Buffer
@@ -93,7 +94,8 @@ func emailUpdateLink(email, code, newEmailToUpdate *string) (title, subject,
 	return &mailTitle, &mailSubject, &mailContent, &generatedLink
 }
 
-func generateEmailUpdateLink(email, code, newEmail *string) string {
+func generateEmailUpdateLink(email, code, accountCode,
+	newEmail *string) string {
 	const (
 		key   = "key"
 		value = "value"
@@ -107,6 +109,10 @@ func generateEmailUpdateLink(email, code, newEmail *string) string {
 		{
 			key:   "code",
 			value: *code,
+		},
+		{
+			key:   "account-code",
+			value: *accountCode,
 		},
 		{
 			key:   "new-email",

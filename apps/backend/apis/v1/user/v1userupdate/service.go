@@ -26,7 +26,6 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 
 	input := dbQueryInput{
 		AccountCode:     &accountCode,
-		EmailAddress:    body.EmailAddress,
 		Name:            body.Name,
 		HashedPassword:  &hashed,
 		PasswordSalt:    &salt,

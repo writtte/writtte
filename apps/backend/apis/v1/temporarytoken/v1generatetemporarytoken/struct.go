@@ -8,6 +8,10 @@ type QueryParams struct {
 }
 
 type BodyParams struct {
+	// The value for the key will depend on the type:
+	// 	- `sing-up-verify`: Email address
+	//  - `email-update`: Account code
+
 	Key *string `json:"key" validate:"required,min=2,max=256"`
 
 	// For account email address update

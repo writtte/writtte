@@ -104,7 +104,7 @@ func checkEmailSend(r *http.Request, body *BodyParams, tokenType TokenType,
 
 		// revive:enable:line-length-limit
 
-		return sendEmailUpdateEmail(r, email, tokenToSend,
+		return sendEmailUpdateEmail(r, email, tokenToSend, body.Key,
 			body.NewAccountEmailAddress)
 	}
 
