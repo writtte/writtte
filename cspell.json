@@ -38,6 +38,7 @@
     "dbconvert",
     "documentretrievelist",
     "documentupdate",
-    "TIDB"
+    "TIDB",
+    "userupdate"
   ]
 }
