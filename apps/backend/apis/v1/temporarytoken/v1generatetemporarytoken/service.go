@@ -17,8 +17,7 @@ type TokenType int
 
 const (
 	TypeSignUpVerify TokenType = iota
-	TypeEmailChange
-	TypeProjectMemberInvitation
+	TypeEmailUpdate
 )
 
 func (s *service) perform(ctx context.Context,
@@ -74,6 +73,9 @@ func checkType(tokenType string) TokenType {
 	case "sign-up-verify":
 		return TypeSignUpVerify
 
+	case "email-update":
+		return TypeEmailUpdate
+
 	default:
 		panic(fmt.Sprintf("invalid token type %s", tokenType))
 	}
@@ -83,6 +85,9 @@ func ConvertTypeToMatchDB(tokenType string) string {
 	switch tokenType {
 	case "sign-up-verify":
 		return "SIGN_UP_VERIFY"
+
+	case "email-update":
+		return "EMAIL_UPDATE"
 
 	default:
 		panic(fmt.Sprintf("invalid token type %s", tokenType))
@@ -100,7 +105,7 @@ func getExpirationMinutes(tokenType TokenType) int {
 	case TypeSignUpVerify:
 		return oneHour
 
-	case TypeEmailChange:
+	case TypeEmailUpdate:
 		return halfHour
 
 	default:

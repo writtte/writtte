@@ -3,12 +3,16 @@ package v1generatetemporarytoken
 // revive:disable:line-length-limit
 
 type QueryParams struct {
-	Type         *string `json:"type" validate:"required,oneof=sign-up-verify"`
+	Type         *string `json:"type" validate:"required,oneof=sign-up-verify email-update"`
 	EmailAddress *string `json:"email_address" validate:"required,email"`
 }
 
 type BodyParams struct {
 	Key *string `json:"key" validate:"required,min=2,max=256"`
+
+	// For account email address update
+
+	NewAccountEmailAddress *string `json:"new_account_email_address" validate:"omitempty,email"`
 }
 
 // revive:enable:line-length-limit

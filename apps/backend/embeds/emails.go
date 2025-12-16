@@ -8,6 +8,9 @@ import (
 
 // revive:disable:line-length-limit
 
+//go:embed html/emails/account-email-update.html
+var EmailAccountEmailUpdate string
+
 //go:embed html/emails/sign-in-quick.html
 var EmailSignInQuickLink string
 
@@ -18,16 +21,18 @@ var EmbedSignUpLink string
 var EmbedSignUpWelcome string
 
 var (
-	PathSignInQuick   = "html/emails/sign-in-quick.html"
-	PathSignUpLink    = "html/emails/sign-up-link.html"
-	PathSignUpWelcome = "html/emails/sign-up-welcome.html" // #nosec G101
+	PathAccountEmailUpdate = "html/emails/account-email-update.html"
+	PathSignInQuick        = "html/emails/sign-in-quick.html"
+	PathSignUpLink         = "html/emails/sign-up-link.html"
+	PathSignUpWelcome      = "html/emails/sign-up-welcome.html" // #nosec G101
 )
 
 func SetupEmailTemplates() *EmailTemplateFiles {
 	return &EmailTemplateFiles{
-		SignInQuickLink: inittmpl.Return(&PathSignInQuick, &EmailSignInQuickLink),
-		SignUpLink:      inittmpl.Return(&PathSignUpLink, &EmbedSignUpLink),
-		SignUpWelcome:   inittmpl.Return(&PathSignUpWelcome, &EmbedSignUpWelcome),
+		AccountEmailUpdate: inittmpl.Return(&PathAccountEmailUpdate, &EmailAccountEmailUpdate),
+		SignInQuickLink:    inittmpl.Return(&PathSignInQuick, &EmailSignInQuickLink),
+		SignUpLink:         inittmpl.Return(&PathSignUpLink, &EmbedSignUpLink),
+		SignUpWelcome:      inittmpl.Return(&PathSignUpWelcome, &EmbedSignUpWelcome),
 	}
 }
 

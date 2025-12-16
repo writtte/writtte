@@ -45,11 +45,11 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	checkResponse(w, r, &queries, *tokenType, results)
+	checkResponse(w, r, &queries, &body, *tokenType, results)
 }
 
 func checkResponse(w http.ResponseWriter, r *http.Request,
-	queries *QueryParams, tokenType TokenType,
+	queries *QueryParams, body *BodyParams, tokenType TokenType,
 	results *dbQueryOutput) {
 	if !*results.Status {
 		response.Internal(w, r, results, results.Message)
@@ -58,7 +58,7 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 
 	switch *results.Code {
 	case constants.TemporaryTokenCreated:
-		generatedLink := checkEmailSend(r, tokenType, results.Data.Value,
+		generatedLink := checkEmailSend(r, body, tokenType, results.Data.Value,
 			queries.EmailAddress)
 
 		if generatedLink == nil {
@@ -85,14 +85,27 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 	}
 }
 
-func checkEmailSend(r *http.Request, tokenType TokenType, tokenToSend,
-	email *string) *string {
+func checkEmailSend(r *http.Request, body *BodyParams, tokenType TokenType,
+	tokenToSend, email *string) *string {
 	if email == nil {
 		return nil
 	}
 
-	if tokenType == TypeSignUpVerify {
+	switch tokenType {
+	case TypeSignUpVerify:
 		return sendSignUpEmail(r, email, tokenToSend)
+
+	case TypeEmailUpdate:
+		// revive:disable:line-length-limit
+
+		if body.NewAccountEmailAddress == nil {
+			panic("new account email address is required to send the confirmation email")
+		}
+
+		// revive:enable:line-length-limit
+
+		return sendEmailUpdateEmail(r, email, tokenToSend,
+			body.NewAccountEmailAddress)
 	}
 
 	return nil

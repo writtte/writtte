@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS schema_temporary.tb_temporary_token (
   expiration_time TIMESTAMP WITH TIME ZONE NOT NULL,
   created_time TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_time TIMESTAMP WITH TIME ZONE DEFAULT NULL,
-  CHECK (type IN ('SIGN_UP_VERIFY')),
+  CHECK (type IN ('SIGN_UP_VERIFY', 'EMAIL_UPDATE')),
   CHECK (status IN ('ACTIVE', 'USED')),
   PRIMARY KEY (id_main),
   UNIQUE (key, value)

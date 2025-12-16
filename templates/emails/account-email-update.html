@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="x-apple-disable-message-reformatting" />
+
+    <title>{{.EmailTitle}}</title>
+
+    <!--[if mso]>
+      <noscript>
+        <xml>
+          <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+        </xml>
+      </noscript>
+    <![endif]-->
+
+    <link rel="stylesheet" href="assets/theme.css">
+  </head>
+
+  <body>
+    <table class="container" width="100%" cellpadding="0" cellspacing="0" align="center">
+      <tr>
+        <td class="logo-title">Velovra</td>
+      </tr>
+
+      <tr>
+        <td>
+          <table class="content" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td class="header">Hi there,</td>
+            </tr>
+
+            <tr>
+              <td class="paragraph">We received a request to update the email address associated with your Velovra account to <b>{{.NewEmailAddressToUpdate}}</b>.</td>
+            </tr>
+
+            <tr>
+              <td class="paragraph">To confirm this change and keep your account secure, please click the button below:</td>
+            </tr>
+
+            <tr>
+              <td class="button primary-button">
+                <a href="{{.ConfirmationLink}}">Confirm New Email Address</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="paragraph">This button will take you to a secure page to verify your updated email address. Once confirmed, this email will be used for future account communications.</td>
+            </tr>
+
+            <tr>
+              <td class="paragraph">If you did not request this email update, you can safely ignore this message or contact our support team.</td>
+            </tr>
+
+            <tr>
+              <td class="paragraph">Thanks for helping us keep your account secure. We’re glad to have you with us.</td>
+            </tr>
+
+            <tr>
+              <td class="complimentary">Warm regards,<br />The Velovra Team</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="footer">
+          <table width="100%" align="center">
+            <tr>
+              <td class="footer__text">
+                Follow us on <a class="footer__link" href="https://x.com/VelovraOS">X</a>, <a class="footer__link" href="https://www.linkedin.com/company/velovra/">Linked In</a>, and <a class="footer__link" href="https://github.com/velovra">GitHub</a><br />
+                © Velovra {{.CurrentYear}}. All rights reserved
+              </td>
+            </tr>
+
+            <tr>
+              <td class="footer__email">
+                This email was sent to <b>{{.EmailAddress}}</b>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
