@@ -5,6 +5,7 @@
   "workspaces": [
     "apps/frontend/",
     "packages/@velovra-internal/*",
+    "packages/@velovra-editor/*",
     "templates/"
   ],
   "scripts": {
