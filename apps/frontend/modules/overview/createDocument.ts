@@ -86,4 +86,4 @@ const addDocumentToIDB = async (data: TIDBDocument): Promise<void> => {
   await idb.addData(db, STORE_NAMES.DOCUMENTS, data);
 };
 
-export { createDocument };
+export { createDocument, addDocumentToIDB };

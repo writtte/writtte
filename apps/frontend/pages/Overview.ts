@@ -1,8 +1,14 @@
+import { idb } from '@velovra-internal/indexed-db';
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { ItemCreateInput } from '../components/ItemCreateInput';
 import { ItemList } from '../components/ItemList';
 import { OverviewTitle } from '../components/OverviewTitle';
 import { PATHS } from '../constants/paths';
+import {
+  STORE_NAMES,
+  type TIDBDocument,
+  getIndexedDB,
+} from '../data/stores/indexedDB';
 import { buildError } from '../helpers/error/build';
 import { documentCodeToKey } from '../helpers/item/codeToKey';
 import { compareDocuments } from '../modules/overview/compareDocuments';
@@ -86,6 +92,8 @@ const OverviewPage = async (): Promise<HTMLElement> => {
 
   // biome-ignore lint/nursery/noFloatingPromises: We need to wait for both operations to complete
   Promise.all([idbPromise]).then(async (): Promise<void> => {
+    const db = getIndexedDB();
+
     const currentDocumentIds = itemListElement.getAllDocumentIDs();
 
     const documents = await getDocumentsFromAPI();
@@ -108,8 +116,6 @@ const OverviewPage = async (): Promise<HTMLElement> => {
 
     for (let i = 0; i < extraItemIds.length; i++) {
       // These items should be added to the list element
-
-      // TODO need to add those to the indexed db too
 
       const extractedDocumentDetails = extractDocumentDetailsFromAPIList(
         documents,
@@ -142,6 +148,21 @@ const OverviewPage = async (): Promise<HTMLElement> => {
             `${PATHS.DOCUMENT_EDIT}/${documents[i].document_code}`,
           ),
       });
+
+      for (let j = 0; j < documents.length; j++) {
+        if (extraItemIds[i] === documentCodeToKey(documents[j].document_code)) {
+          const objectToAdd: TIDBDocument = {
+            accountCode: documents[j].account_code,
+            documentCode: documents[j].document_code,
+            title: documents[j].title,
+            lifecycleState: documents[j].lifecycle_state,
+            workflowState: documents[j].workflow_state,
+          };
+
+          // biome-ignore lint/performance/noAwaitInLoops: The await inside this loop is required
+          await idb.addData(db, STORE_NAMES.DOCUMENTS, objectToAdd);
+        }
+      }
     }
   });
 
