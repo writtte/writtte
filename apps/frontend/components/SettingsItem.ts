@@ -1,5 +1,16 @@
-import { Button, type TButtonOptions, type TReturnButton } from './Button';
-import { Input, type TInputOptions, type TReturnInput } from './Input';
+import {
+  Button,
+  ButtonAction,
+  ButtonSize,
+  type TButtonOptions,
+  type TReturnButton,
+} from './Button';
+import {
+  Input,
+  InputSize,
+  type TInputOptions,
+  type TReturnInput,
+} from './Input';
 
 const SettingsItemType = {
   TEXT: 'TEXT',
@@ -22,17 +33,44 @@ type TOptions = {
       }
     | {
         type: typeof SettingsItemType.BUTTON;
-        button: TButtonOptions;
+        button: Pick<
+          TButtonOptions,
+          | 'id'
+          | 'text'
+          | 'loadingText'
+          | 'leftIcon'
+          | 'rightIcon'
+          | 'color'
+          | 'onClick'
+        >;
       }
     | {
         type: typeof SettingsItemType.INPUT;
-        input: TInputOptions & {
+        input: Pick<
+          TInputOptions,
+          | 'id'
+          | 'text'
+          | 'placeholderText'
+          | 'inlineButton'
+          | 'statusText'
+          | 'type'
+          | 'onSubmit'
+        > & {
           title: string | undefined;
         };
       }
     | {
         type: typeof SettingsItemType.DOUBLE_INPUT;
-        inputs: (TInputOptions & {
+        inputs: (Pick<
+          TInputOptions,
+          | 'id'
+          | 'text'
+          | 'placeholderText'
+          | 'inlineButton'
+          | 'statusText'
+          | 'type'
+          | 'onSubmit'
+        > & {
           title: string | undefined;
         })[];
       };
@@ -103,7 +141,13 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
     }
 
     case SettingsItemType.BUTTON: {
-      const buttonElement = Button(opts.item.button);
+      const buttonElement = Button({
+        ...opts.item.button,
+        action: ButtonAction.BUTTON,
+        size: ButtonSize.SMALL,
+        isFullWidth: false,
+      });
+
       contentDiv.appendChild(buttonElement.element);
 
       result.button = buttonElement;
@@ -111,7 +155,13 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
     }
 
     case SettingsItemType.INPUT: {
-      const inputElement = Input(opts.item.input);
+      const inputElement = Input({
+        ...opts.item.input,
+        size: InputSize.SMALL,
+        isFullWidth: false,
+        onChange: undefined,
+      });
+
       contentDiv.appendChild(inputElement.element);
       result.inputs = {
         [opts.item.input.id]: inputElement,
@@ -124,7 +174,12 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
       result.inputs = {};
       for (let i = 0; i < opts.item.inputs.length; i++) {
         const inputProp = opts.item.inputs[i];
-        const inputElement = Input(inputProp);
+        const inputElement = Input({
+          ...inputProp,
+          size: InputSize.SMALL,
+          isFullWidth: false,
+          onChange: undefined,
+        });
 
         contentDiv.appendChild(inputElement.element);
         result.inputs[inputProp.id] = inputElement;

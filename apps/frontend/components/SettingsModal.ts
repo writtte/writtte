@@ -1,4 +1,9 @@
-import { Button, type TButtonOptions } from './Button';
+import {
+  Button,
+  ButtonAction,
+  ButtonSize,
+  type TButtonOptions,
+} from './Button';
 import { SettingsItem, type TSettingsItemOptions } from './SettingsItem';
 import {
   SettingsSection,
@@ -10,7 +15,10 @@ type TProps = {
   id: string;
   title: string;
   sections: TSettingsSectionOptions[];
-  buttons: TButtonOptions[];
+  buttons: Pick<
+    TButtonOptions,
+    'id' | 'text' | 'leftIcon' | 'color' | 'onClick'
+  >[];
 };
 
 type TReturnSettingsModal = {
@@ -65,7 +73,15 @@ const SettingsModal = (props: TProps): TReturnSettingsModal => {
   titleDiv.textContent = props.title;
 
   for (let i = 0; i < props.buttons.length; i++) {
-    const buttonElement = Button(props.buttons[i]);
+    const buttonElement = Button({
+      ...props.buttons[i],
+      loadingText: undefined,
+      rightIcon: undefined,
+      action: ButtonAction.BUTTON,
+      size: ButtonSize.SMALL,
+      isFullWidth: false,
+    });
+
     footerDiv.appendChild(buttonElement.element);
   }
 
