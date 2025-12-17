@@ -38,6 +38,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.overview, getOverviewSettingsContent()),
+        isVisible: true,
       },
       {
         id: sectionIds.security,
@@ -46,6 +47,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.security, getSecuritySettingsContent()),
+        isVisible: true,
       },
       {
         id: sectionIds.appearance,
@@ -54,6 +56,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.appearance, getAppearanceSettingsContent()),
+        isVisible: false,
       },
       {
         id: sectionIds.editor,
@@ -62,6 +65,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.editor, getEditorSettingsContent()),
+        isVisible: false,
       },
       {
         id: sectionIds.subscription,
@@ -70,6 +74,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.subscription, getSubscriptionSettingsContent()),
+        isVisible: true,
       },
       {
         id: sectionIds.usage,
@@ -78,6 +83,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.usage, getUsageSettingsContent()),
+        isVisible: false,
       },
       {
         id: sectionIds.local,
@@ -86,6 +92,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.local, getLocalOptionsSettingsContent()),
+        isVisible: false,
       },
       {
         id: sectionIds.beta,
@@ -94,6 +101,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.beta, getBetaFeaturesSettingsContent()),
+        isVisible: false,
       },
       {
         id: sectionIds.highRisk,
@@ -102,6 +110,7 @@ const openSettingsModal = async (): Promise<void> => {
         isSelected: false,
         onClick: (): void =>
           setSection(sectionIds.highRisk, getHighRiskSettingsContent()),
+        isVisible: true,
       },
     ],
     buttons: [

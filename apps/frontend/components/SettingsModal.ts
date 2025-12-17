@@ -13,7 +13,9 @@ import {
 type TProps = {
   id: string;
   title: string;
-  sections: TSettingsSectionOptions[];
+  sections: (TSettingsSectionOptions & {
+    isVisible: boolean;
+  })[];
   buttons: Pick<
     TButtonOptions,
     'id' | 'text' | 'leftIcon' | 'color' | 'onClick'
@@ -90,6 +92,10 @@ const SettingsModal = (props: TProps): TReturnSettingsModal => {
 
   for (let i = 0; i < props.sections.length; i++) {
     const sectionProps = props.sections[i];
+    if (sectionProps.isVisible === false) {
+      continue;
+    }
+
     const section = SettingsSection(sectionProps);
     sectionItemsDiv.appendChild(section.element);
     sections[sectionProps.id] = section;
