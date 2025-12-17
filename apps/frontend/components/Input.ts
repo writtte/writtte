@@ -47,6 +47,7 @@ type TReturnInput = {
   setValue: (value: string | undefined) => void;
   getCurrentInputType: () => TInputType;
   changeInlineButtonIcon: (newIcon: HTMLElement) => void;
+  clearStatusTextAfterDelay: (delay: number) => void;
 };
 
 const Input = (opts: TOptions): TReturnInput => {
@@ -198,6 +199,17 @@ const Input = (opts: TOptions): TReturnInput => {
     }
   };
 
+  const clearStatusTextAfterDelay = (delay: number): void => {
+    if (delay <= 0) {
+      setStatusText(undefined);
+      return;
+    }
+
+    setTimeout(() => {
+      setStatusText(undefined);
+    }, delay);
+  };
+
   return {
     element: wrapperDiv,
     changeInputType,
@@ -206,6 +218,7 @@ const Input = (opts: TOptions): TReturnInput => {
     setValue,
     getCurrentInputType,
     changeInlineButtonIcon,
+    clearStatusTextAfterDelay,
   };
 };
 
