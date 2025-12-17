@@ -1,6 +1,4 @@
-import type { TSettingsItemOptions } from '../../../components/SettingsItem';
-
-const getAppearanceSettingsContent = (): TSettingsItemOptions[] => {
+const getAppearanceSettingsContent = (): HTMLDivElement[] => {
   // TODO
 
   return [];

@@ -1,6 +1,4 @@
-import type { TSettingsItemOptions } from '../../../components/SettingsItem';
-
-const getSubscriptionSettingsContent = (): TSettingsItemOptions[] => {
+const getSubscriptionSettingsContent = (): HTMLDivElement[] => {
   // TODO
 
   return [];

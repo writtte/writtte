@@ -1,6 +1,4 @@
-import type { TSettingsItemOptions } from '../../../components/SettingsItem';
-
-const getHighRiskSettingsContent = (): TSettingsItemOptions[] => {
+const getHighRiskSettingsContent = (): HTMLDivElement[] => {
   // TODO
 
   return [];

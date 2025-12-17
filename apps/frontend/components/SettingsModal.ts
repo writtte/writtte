@@ -4,7 +4,6 @@ import {
   ButtonSize,
   type TButtonOptions,
 } from './Button';
-import { SettingsItem, type TSettingsItemOptions } from './SettingsItem';
 import {
   SettingsSection,
   type TReturnSettingsSection,
@@ -26,7 +25,7 @@ type TReturnSettingsModal = {
   sections: {
     [key: string]: TReturnSettingsSection;
   };
-  setSectionContent: (items: TSettingsItemOptions[]) => void;
+  setSectionContent: (items: HTMLDivElement[]) => void;
 };
 
 type TInternalSettingsModal = {
@@ -100,12 +99,11 @@ const SettingsModal = (props: TProps): TReturnSettingsModal => {
   // the `setSectionContent` function when loading the settings
   // modal.
 
-  const setSectionContent = (items: TSettingsItemOptions[]): void => {
+  const setSectionContent = (items: HTMLDivElement[]): void => {
     sectionContentDiv.innerHTML = '';
 
     for (let i = 0; i < items.length; i++) {
-      const contentItem = SettingsItem(items[i]);
-      sectionContentDiv.appendChild(contentItem.element);
+      sectionContentDiv.appendChild(items[i]);
     }
   };
 
