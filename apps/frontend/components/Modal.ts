@@ -1,7 +1,18 @@
 import { setTestId } from '../utils/dom/testId';
-import { Button, type TButtonOptions, type TReturnButton } from './Button';
+import {
+  Button,
+  ButtonAction,
+  ButtonSize,
+  type TButtonOptions,
+  type TReturnButton,
+} from './Button';
 import { FlatIcon, FlatIconName } from './FlatIcon';
-import { Input, type TInputOptions, type TReturnInput } from './Input';
+import {
+  Input,
+  InputSize,
+  type TInputOptions,
+  type TReturnInput,
+} from './Input';
 
 const ModalContainerItemDirection = {
   ROW: 'ROW',
@@ -35,13 +46,25 @@ type TModalContent =
       direction: TModalContentItemDirection;
       inputs: {
         title: string | undefined;
-        input: TInputOptions;
+        input: Pick<
+          TInputOptions,
+          | 'id'
+          | 'text'
+          | 'placeholderText'
+          | 'inlineButton'
+          | 'statusText'
+          | 'type'
+          | 'onSubmit'
+        >;
       }[];
     }
   | {
       type: typeof ModalContentItemType.BUTTON;
       direction: TModalContentItemDirection;
-      buttons: TButtonOptions[];
+      buttons: Pick<
+        TButtonOptions,
+        'id' | 'text' | 'loadingText' | 'leftIcon' | 'color' | 'onClick'
+      >[];
     };
 
 type TOptions = {
@@ -120,7 +143,13 @@ const Modal = (opts: TOptions): TReturnModal => {
             contentItem.appendChild(title);
           }
 
-          const inputComponent = Input(input.input);
+          const inputComponent = Input({
+            ...input.input,
+            size: InputSize.MEDIUM,
+            isFullWidth: true,
+            onChange: undefined,
+          });
+
           contentItem.appendChild(inputComponent.element);
           inputs[input.input.id] = inputComponent;
         }
@@ -134,7 +163,14 @@ const Modal = (opts: TOptions): TReturnModal => {
 
         for (let j = 0; j < item.buttons.length; j++) {
           const button = item.buttons[j];
-          const buttonComponent = Button(button);
+          const buttonComponent = Button({
+            ...button,
+            rightIcon: undefined,
+            action: ButtonAction.BUTTON,
+            size: ButtonSize.MEDIUM,
+            isFullWidth: false,
+          });
+
           contentItem.appendChild(buttonComponent.element);
           buttons[button.id] = buttonComponent;
         }

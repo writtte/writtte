@@ -1,5 +1,5 @@
 import type { TReturnItemList } from '../../components/ItemList';
-import { ButtonAction, ButtonColor, ButtonSize } from '../../components/Button';
+import { ButtonColor } from '../../components/Button';
 import {
   ModalContainerItemDirection,
   ModalContentItemType,
@@ -37,11 +37,7 @@ const openDocumentDeleteModal = async (
             text: langKeys().ModalDocumentDeleteButtonCancel,
             loadingText: undefined,
             leftIcon: undefined,
-            rightIcon: undefined,
-            action: ButtonAction.BUTTON,
             color: ButtonColor.NEUTRAL,
-            size: ButtonSize.MEDIUM,
-            isFullWidth: false,
             onClick: (): void => {
               modalController.closeModal('modal__ivogbppdvg');
             },
@@ -51,11 +47,7 @@ const openDocumentDeleteModal = async (
             text: langKeys().ModalDocumentDeleteButtonDelete,
             loadingText: langKeys().ModalDocumentDeleteButtonDeleting,
             leftIcon: undefined,
-            rightIcon: undefined,
-            action: ButtonAction.BUTTON,
             color: ButtonColor.NEUTRAL,
-            size: ButtonSize.MEDIUM,
-            isFullWidth: false,
             onClick: async (): Promise<void> => await performDocumentDelete(),
           },
         ],

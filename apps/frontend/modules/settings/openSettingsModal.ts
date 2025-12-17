@@ -110,9 +110,8 @@ const openSettingsModal = async (): Promise<void> => {
         text: langKeys().SettingsModalButtonOk,
         leftIcon: undefined,
         color: ButtonColor.PRIMARY,
-        onClick: (): void => {
-          settingsModalController.closeModal('settings_modal__hozbdlgaew');
-        },
+        onClick: (): void =>
+          settingsModalController.closeModal('settings_modal__hozbdlgaew'),
       },
     ],
   });
@@ -126,6 +125,11 @@ const openSettingsModal = async (): Promise<void> => {
     modal.sections[sectionId].setSelectedState(true);
     modal.setSectionContent(content);
   };
+
+  // When opening the modal, the overview settings should be shown as
+  // the default
+
+  setSection(sectionIds.overview, getOverviewSettingsContent());
 };
 
 export { openSettingsModal };

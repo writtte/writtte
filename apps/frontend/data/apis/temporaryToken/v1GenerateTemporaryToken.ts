@@ -8,6 +8,7 @@ import {
 
 const TokenGenerateType = {
   SIGN_UP_VERIFY: 'sign-up-verify',
+  EMAIL_UPDATE: 'email-update',
 } as const;
 
 type TTokenGenerateType =
@@ -17,6 +18,7 @@ type TPayloadV1TemporaryTokenGenerate = {
   type: TTokenGenerateType;
   email: string;
   key: string;
+  newAccountEmailAddress?: string;
 };
 
 type TResponseV1TemporaryTokenGenerate = {
@@ -52,6 +54,7 @@ const v1TemporaryTokenGenerate = async (
     ],
     bodyParams: {
       key: payload.key,
+      new_account_email_address: payload.newAccountEmailAddress,
     },
   };
 
