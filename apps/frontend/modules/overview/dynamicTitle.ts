@@ -25,7 +25,6 @@
  *  - "Welcome back, Jamie"
  */
 
-import { getAccountOverview } from '../../data/stores/overview';
 import { langKeys } from '../../translations/keys';
 
 const getGreetings = (): {
@@ -94,9 +93,7 @@ const getGreetings = (): {
   };
 };
 
-const generateOverviewTitleDynamically = (): string => {
-  const accountOverview = getAccountOverview();
-
+const generateOverviewTitleDynamically = (name: string): string => {
   const greetings = getGreetings();
   const currentHour = new Date().getHours();
 
@@ -117,7 +114,7 @@ const generateOverviewTitleDynamically = (): string => {
   const randomIndex = Math.floor(Math.random() * greetingsToUse.length);
   const base = greetingsToUse[randomIndex];
 
-  return `${base} ${accountOverview.name}`;
+  return `${base} ${name}`;
 };
 
 export { generateOverviewTitleDynamically };
