@@ -52,7 +52,7 @@ const checkParams = (): boolean => {
     return false;
   }
 
-  if (isExpired(decodedData.time, 15 * 60 * 1000)) {
+  if (isExpired(decodedData.time, 30 * 60 * 1000)) {
     return false;
   }
 

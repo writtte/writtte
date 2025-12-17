@@ -7,6 +7,8 @@ type TLangKeys = {
   AlertDocumentRetrievedFailedTitle: string;
   AlertEmailUpdateRequestSentDescription: string;
   AlertEmailUpdateRequestSentTitle: string;
+  AlertEmailVerifiedDescription: string;
+  AlertEmailVerifiedTitle: string;
   AlertMiddlewareNeedSignInDescription: string;
   AlertMiddlewareNeedSignInTitle: string;
   AlertMiddlewareSignInRequiredDescription: string;
@@ -55,6 +57,7 @@ type TLangKeys = {
   InputPlaceholderPassword: string;
   InputPlaceholderPasswordConfirm: string;
   LoadingTextCheckingMagicLink: string;
+  LoadingTextVerifyingEmailUpdateLink: string;
   MenuItemDeleteDocument: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
@@ -172,6 +175,8 @@ const langKeys = (): TLangKeys => {
     AlertDocumentRetrievedFailedTitle: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_TITLE'),
     AlertEmailUpdateRequestSentDescription: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_DESCRIPTION'),
     AlertEmailUpdateRequestSentTitle: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_TITLE'),
+    AlertEmailVerifiedDescription: getTr('ALERT_EMAIL_VERIFIED_DESCRIPTION'),
+    AlertEmailVerifiedTitle: getTr('ALERT_EMAIL_VERIFIED_TITLE'),
     AlertMiddlewareNeedSignInDescription: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION'),
     AlertMiddlewareNeedSignInTitle: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_TITLE'),
     AlertMiddlewareSignInRequiredDescription: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_DESCRIPTION'),
@@ -220,6 +225,7 @@ const langKeys = (): TLangKeys => {
     InputPlaceholderPassword: getTr('INPUT_PLACEHOLDER_PASSWORD'),
     InputPlaceholderPasswordConfirm: getTr('INPUT_PLACEHOLDER_PASSWORD_CONFIRM'),
     LoadingTextCheckingMagicLink: getTr('LOADING_TEXT_CHECKING_MAGIC_LINK'),
+    LoadingTextVerifyingEmailUpdateLink: getTr('LOADING_TEXT_VERIFYING_EMAIL_UPDATE_LINK'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),

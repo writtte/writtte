@@ -1,9 +1,11 @@
 const WAIT_TIMEOUT = {
   SHORT: 3000,
+  LONG: 5000,
 };
 
 const ALERT_TIMEOUT = {
   SHORT: 15000,
+  LONG: 30000,
 };
 
 const DEBOUNCE_TIMEOUT = {

@@ -10,6 +10,7 @@ import { AuthenticationSignUpCreatePage } from './pages/AuthenticationSignUpCrea
 import { EditorPage } from './pages/Editor';
 import { NotFoundPage } from './pages/NotFound';
 import { OverviewPage } from './pages/Overview';
+import { ValidateEmailUpdatePage } from './pages/ValidateEmailUpdate';
 
 const defaultRoutes: TRoute[] = [
   {
@@ -54,6 +55,11 @@ const defaultRoutes: TRoute[] = [
     layout: DashboardLayout,
     view: async (params: Record<string, string> | undefined) =>
       await EditorPage(params),
+  },
+  {
+    path: PATHS.VALIDATE_EMAIL,
+    title: 'Validate Email | Velovra',
+    view: async () => await ValidateEmailUpdatePage(),
   },
 ];
 

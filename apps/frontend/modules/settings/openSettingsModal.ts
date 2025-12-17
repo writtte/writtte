@@ -128,7 +128,9 @@ const openSettingsModal = async (): Promise<void> => {
   const setSection = (sectionId: string, content: HTMLDivElement[]): void => {
     const ids = Object.values(sectionIds);
     for (let i = 0; i < ids.length; i++) {
-      modal.sections[ids[i]].setSelectedState(false);
+      if (modal.sections[ids[i]]) {
+        modal.sections[ids[i]].setSelectedState(false);
+      }
     }
 
     modal.sections[sectionId].setSelectedState(true);
