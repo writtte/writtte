@@ -15,10 +15,10 @@ import (
 func User(mux *http.ServeMux, prefix *string) {
 	basePrefix := *prefix + "/user"
 
-	userPost(mux, &basePrefix)
+	userPatch(mux, &basePrefix)
 }
 
-func userPost(mux *http.ServeMux, prefix *string) {
+func userPatch(mux *http.ServeMux, prefix *string) {
 	var (
 		accountPath = ""
 	)
@@ -27,7 +27,7 @@ func userPost(mux *http.ServeMux, prefix *string) {
 		{
 			Handler: v1userupdate.Setup(),
 			Path:    &accountPath,
-			Method:  http.MethodPost,
+			Method:  http.MethodPatch,
 			Rates: &middleware.Rates{
 				ReqLimit: middleware.ReqLimit2,
 				Window:   middleware.Window1,
