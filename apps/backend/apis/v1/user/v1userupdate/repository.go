@@ -21,7 +21,7 @@ func (d *database) perform(ctx context.Context,
 		"SELECT schema_main.v1_user_update($1::UUID, $2::JSONB)",
 		data.AccountCode,
 		map[string]any{
-			"Name":              data.Name,
+			"name":              data.Name,
 			"hashed_password":   data.HashedPassword,
 			"password_salt":     data.PasswordSalt,
 			"status":            data.Status,

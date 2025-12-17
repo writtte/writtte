@@ -19,16 +19,19 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 	claims := ctx.Value(constants.JWTKey).(extjwt.MapClaims)  // revive:disable-line
 	accountCode := claims[v1signin.ClaimAccountCode].(string) // revive:disable-line
 
-	var hashed, salt string
+	var hashed, salt *string
 	if body.Password != nil {
-		hashed, salt = password.Hash(*body.Password)
+		hashedPassword, passwordSalt := password.Hash(*body.Password)
+
+		hashed = &hashedPassword
+		salt = &passwordSalt
 	}
 
 	input := dbQueryInput{
 		AccountCode:     &accountCode,
 		Name:            body.Name,
-		HashedPassword:  &hashed,
-		PasswordSalt:    &salt,
+		HashedPassword:  hashed,
+		PasswordSalt:    salt,
 		Status:          body.Status,
 		IsEmailVerified: body.IsEmailVerified,
 	}
