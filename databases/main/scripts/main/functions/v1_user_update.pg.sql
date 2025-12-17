@@ -23,7 +23,7 @@ BEGIN
   v_p_password_salt := (p_data ->> 'password_salt');
   v_p_status := upper(p_data ->> 'status');
   v_p_is_email_verified := (p_data ->> 'is_email_verified')::BOOLEAN;
-  v_check_user := schema_main.v1_user_check (json_build_object('email_address', v_p_email_address)::JSONB, TRUE)::JSONB;
+  v_check_user := schema_main.v1_user_check (json_build_object('account_code', p_account_code)::JSONB, TRUE)::JSONB;
   IF v_check_user ->> k_code != 'USER_EXISTS' THEN
     RETURN v_check_user;
   END IF;
@@ -55,7 +55,7 @@ BEGIN
     WHERE
       account_code = p_account_code;
   END IF;
-  RETURN json_build_object(k_status, TRUE, k_code, 'USER_UPDATED', k_message, NULL, k_additional, NULL, k_data, json_build_object('account_code', v_account_code)::JSONB)::JSONB;
+  RETURN json_build_object(k_status, TRUE, k_code, 'USER_UPDATED', k_message, NULL, k_additional, NULL, k_data, json_build_object('account_code', p_account_code)::JSONB)::JSONB;
 EXCEPTION
   WHEN OTHERS THEN
     GET STACKED DIAGNOSTICS v_exception = PG_EXCEPTION_CONTEXT;

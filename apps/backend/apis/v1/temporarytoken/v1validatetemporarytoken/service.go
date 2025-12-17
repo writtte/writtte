@@ -31,5 +31,14 @@ func (s *service) perform(ctx context.Context,
 		return nil, err
 	}
 
+	if *parsedResults.Status && *body.Type == "email-update" {
+		_, err := s.repo.updateAccountEmail(ctx, body.Key,
+			body.EmailToUpdate)
+
+		if err != nil {
+			return nil, err
+		}
+	}
+
 	return parsedResults, nil
 }

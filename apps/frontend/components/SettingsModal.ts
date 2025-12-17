@@ -4,7 +4,6 @@ import {
   ButtonSize,
   type TButtonOptions,
 } from './Button';
-import { SettingsItem, type TSettingsItemOptions } from './SettingsItem';
 import {
   SettingsSection,
   type TReturnSettingsSection,
@@ -14,7 +13,9 @@ import {
 type TProps = {
   id: string;
   title: string;
-  sections: TSettingsSectionOptions[];
+  sections: (TSettingsSectionOptions & {
+    isVisible: boolean;
+  })[];
   buttons: Pick<
     TButtonOptions,
     'id' | 'text' | 'leftIcon' | 'color' | 'onClick'
@@ -26,7 +27,7 @@ type TReturnSettingsModal = {
   sections: {
     [key: string]: TReturnSettingsSection;
   };
-  setSectionContent: (items: TSettingsItemOptions[]) => void;
+  setSectionContent: (items: HTMLDivElement[]) => void;
 };
 
 type TInternalSettingsModal = {
@@ -91,6 +92,10 @@ const SettingsModal = (props: TProps): TReturnSettingsModal => {
 
   for (let i = 0; i < props.sections.length; i++) {
     const sectionProps = props.sections[i];
+    if (sectionProps.isVisible === false) {
+      continue;
+    }
+
     const section = SettingsSection(sectionProps);
     sectionItemsDiv.appendChild(section.element);
     sections[sectionProps.id] = section;
@@ -100,12 +105,11 @@ const SettingsModal = (props: TProps): TReturnSettingsModal => {
   // the `setSectionContent` function when loading the settings
   // modal.
 
-  const setSectionContent = (items: TSettingsItemOptions[]): void => {
+  const setSectionContent = (items: HTMLDivElement[]): void => {
     sectionContentDiv.innerHTML = '';
 
     for (let i = 0; i < items.length; i++) {
-      const contentItem = SettingsItem(items[i]);
-      sectionContentDiv.appendChild(contentItem.element);
+      sectionContentDiv.appendChild(items[i]);
     }
   };
 

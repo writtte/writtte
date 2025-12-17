@@ -5,10 +5,16 @@ type TLangKeys = {
   AlertDocumentCreateFailedTitle: string;
   AlertDocumentRetrievedFailedDescription: string;
   AlertDocumentRetrievedFailedTitle: string;
+  AlertEmailUpdateRequestSentDescription: string;
+  AlertEmailUpdateRequestSentTitle: string;
+  AlertEmailVerifiedDescription: string;
+  AlertEmailVerifiedTitle: string;
   AlertMiddlewareNeedSignInDescription: string;
   AlertMiddlewareNeedSignInTitle: string;
   AlertMiddlewareSignInRequiredDescription: string;
   AlertMiddlewareSignInRequiredTitle: string;
+  AlertPasswordUpdatedDescription: string;
+  AlertPasswordUpdatedTitle: string;
   AlertSignInMagicLinkSentDescription: string;
   AlertSignInMagicLinkSentTitle: string;
   AlertSignUpInvitationSentDescription: string;
@@ -51,6 +57,7 @@ type TLangKeys = {
   InputPlaceholderPassword: string;
   InputPlaceholderPasswordConfirm: string;
   LoadingTextCheckingMagicLink: string;
+  LoadingTextVerifyingEmailUpdateLink: string;
   MenuItemDeleteDocument: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
@@ -65,6 +72,16 @@ type TLangKeys = {
   ModalDocumentRenameButtonRenaming: string;
   ModalDocumentRenameTextContent: string;
   ModalDocumentRenameTextTitle: string;
+  ModalEmailUpdateButtonCancel: string;
+  ModalEmailUpdateButtonSend: string;
+  ModalEmailUpdateButtonSending: string;
+  ModalEmailUpdateTextContent: string;
+  ModalEmailUpdateTextTitle: string;
+  ModalPasswordUpdateButtonCancel: string;
+  ModalPasswordUpdateButtonUpdate: string;
+  ModalPasswordUpdateButtonUpdating: string;
+  ModalPasswordUpdateTextContent: string;
+  ModalPasswordUpdateTextTitle: string;
   PageEditorErrorDocumentRetrieveTextDescription: string;
   PageEditorErrorDocumentRetrieveTextTitle: string;
   PageOverviewCreateInputPlaceholderNewDocument: string;
@@ -128,6 +145,8 @@ type TLangKeys = {
   PageSingInLinkPasswordReset: string;
   PageSingInLinkSignUp: string;
   SettingsModalButtonOk: string;
+  SettingsModalOverviewUpdateNameInputPlaceholder: string;
+  SettingsModalOverviewUpdateNameTextTitle: string;
   SettingsModalSectionTextAppearance: string;
   SettingsModalSectionTextBeta: string;
   SettingsModalSectionTextEditor: string;
@@ -137,7 +156,14 @@ type TLangKeys = {
   SettingsModalSectionTextSecurity: string;
   SettingsModalSectionTextSubscription: string;
   SettingsModalSectionTextUsage: string;
+  SettingsModalSecurityUpdateEmailButtonUpdate: string;
+  SettingsModalSecurityUpdateEmailTextDescription: string;
+  SettingsModalSecurityUpdateEmailTextTitle: string;
+  SettingsModalSecurityUpdatePasswordButtonUpdate: string;
+  SettingsModalSecurityUpdatePasswordTextDescription: string;
+  SettingsModalSecurityUpdatePasswordTextTitle: string;
   SettingsModalTextTitle: string;
+  SuccessNameUpdated: string;
 };
 
 const langKeys = (): TLangKeys => {
@@ -147,10 +173,16 @@ const langKeys = (): TLangKeys => {
     AlertDocumentCreateFailedTitle: ('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
     AlertDocumentRetrievedFailedTitle: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_TITLE'),
+    AlertEmailUpdateRequestSentDescription: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_DESCRIPTION'),
+    AlertEmailUpdateRequestSentTitle: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_TITLE'),
+    AlertEmailVerifiedDescription: getTr('ALERT_EMAIL_VERIFIED_DESCRIPTION'),
+    AlertEmailVerifiedTitle: getTr('ALERT_EMAIL_VERIFIED_TITLE'),
     AlertMiddlewareNeedSignInDescription: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION'),
     AlertMiddlewareNeedSignInTitle: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_TITLE'),
     AlertMiddlewareSignInRequiredDescription: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_DESCRIPTION'),
     AlertMiddlewareSignInRequiredTitle: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_TITLE'),
+    AlertPasswordUpdatedDescription: getTr('ALERT_PASSWORD_UPDATED_DESCRIPTION'),
+    AlertPasswordUpdatedTitle: getTr('ALERT_PASSWORD_UPDATED_TITLE'),
     AlertSignInMagicLinkSentDescription: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_DESCRIPTION'),
     AlertSignInMagicLinkSentTitle: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE'),
     AlertSignUpInvitationSentDescription: getTr('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
@@ -193,6 +225,7 @@ const langKeys = (): TLangKeys => {
     InputPlaceholderPassword: getTr('INPUT_PLACEHOLDER_PASSWORD'),
     InputPlaceholderPasswordConfirm: getTr('INPUT_PLACEHOLDER_PASSWORD_CONFIRM'),
     LoadingTextCheckingMagicLink: getTr('LOADING_TEXT_CHECKING_MAGIC_LINK'),
+    LoadingTextVerifyingEmailUpdateLink: getTr('LOADING_TEXT_VERIFYING_EMAIL_UPDATE_LINK'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
@@ -207,6 +240,16 @@ const langKeys = (): TLangKeys => {
     ModalDocumentRenameButtonRenaming: getTr('MODAL_DOCUMENT_RENAME_BUTTON_RENAMING'),
     ModalDocumentRenameTextContent: getTr('MODAL_DOCUMENT_RENAME_TEXT_CONTENT'),
     ModalDocumentRenameTextTitle: getTr('MODAL_DOCUMENT_RENAME_TEXT_TITLE'),
+    ModalEmailUpdateButtonCancel: getTr('MODAL_EMAIL_UPDATE_BUTTON_CANCEL'),
+    ModalEmailUpdateButtonSend: getTr('MODAL_EMAIL_UPDATE_BUTTON_SEND'),
+    ModalEmailUpdateButtonSending: getTr('MODAL_EMAIL_UPDATE_BUTTON_SENDING'),
+    ModalEmailUpdateTextContent: getTr('MODAL_EMAIL_UPDATE_TEXT_CONTENT'),
+    ModalEmailUpdateTextTitle: getTr('MODAL_EMAIL_UPDATE_TEXT_TITLE'),
+    ModalPasswordUpdateButtonCancel: getTr('MODAL_PASSWORD_UPDATE_BUTTON_CANCEL'),
+    ModalPasswordUpdateButtonUpdate: getTr('MODAL_PASSWORD_UPDATE_BUTTON_UPDATE'),
+    ModalPasswordUpdateButtonUpdating: getTr('MODAL_PASSWORD_UPDATE_BUTTON_UPDATING'),
+    ModalPasswordUpdateTextContent: getTr('MODAL_PASSWORD_UPDATE_TEXT_CONTENT'),
+    ModalPasswordUpdateTextTitle: getTr('MODAL_PASSWORD_UPDATE_TEXT_TITLE'),
     PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageOverviewCreateInputPlaceholderNewDocument: getTr('PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT'),
@@ -270,6 +313,8 @@ const langKeys = (): TLangKeys => {
     PageSingInLinkPasswordReset: getTr('PAGE_SING_IN_LINK_PASSWORD_RESET'),
     PageSingInLinkSignUp: getTr('PAGE_SING_IN_LINK_SIGN_UP'),
     SettingsModalButtonOk: getTr('SETTINGS_MODAL_BUTTON_OK'),
+    SettingsModalOverviewUpdateNameInputPlaceholder: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_INPUT_PLACEHOLDER'),
+    SettingsModalOverviewUpdateNameTextTitle: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_TEXT_TITLE'),
     SettingsModalSectionTextAppearance: getTr('SETTINGS_MODAL_SECTION_TEXT_APPEARANCE'),
     SettingsModalSectionTextBeta: getTr('SETTINGS_MODAL_SECTION_TEXT_BETA'),
     SettingsModalSectionTextEditor: getTr('SETTINGS_MODAL_SECTION_TEXT_EDITOR'),
@@ -279,7 +324,14 @@ const langKeys = (): TLangKeys => {
     SettingsModalSectionTextSecurity: getTr('SETTINGS_MODAL_SECTION_TEXT_SECURITY'),
     SettingsModalSectionTextSubscription: getTr('SETTINGS_MODAL_SECTION_TEXT_SUBSCRIPTION'),
     SettingsModalSectionTextUsage: getTr('SETTINGS_MODAL_SECTION_TEXT_USAGE'),
+    SettingsModalSecurityUpdateEmailButtonUpdate: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_BUTTON_UPDATE'),
+    SettingsModalSecurityUpdateEmailTextDescription: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_TEXT_DESCRIPTION'),
+    SettingsModalSecurityUpdateEmailTextTitle: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_TEXT_TITLE'),
+    SettingsModalSecurityUpdatePasswordButtonUpdate: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_BUTTON_UPDATE'),
+    SettingsModalSecurityUpdatePasswordTextDescription: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_DESCRIPTION'),
+    SettingsModalSecurityUpdatePasswordTextTitle: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_TITLE'),
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
+    SuccessNameUpdated: getTr('SUCCESS_NAME_UPDATED'),
   }
 
   return keys;

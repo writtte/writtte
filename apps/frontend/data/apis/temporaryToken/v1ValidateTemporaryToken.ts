@@ -11,6 +11,7 @@ type TPayloadV1TemporaryTokenValidate = {
   type: TTokenGenerateType;
   key: string;
   value: string;
+  emailToUpdate?: string;
 };
 
 const v1TemporaryTokenValidate = async (
@@ -27,6 +28,7 @@ const v1TemporaryTokenValidate = async (
       type: payload.type,
       key: payload.key,
       value: payload.value,
+      email_to_update: payload.emailToUpdate,
     },
   };
 

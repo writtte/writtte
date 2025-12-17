@@ -1,8 +1,8 @@
 import type { TReturnItemList } from '../../components/ItemList';
 import { idb } from '@velovra-internal/indexed-db';
 import { ERROR_CODES, validate } from '@velovra-internal/validate';
-import { ButtonAction, ButtonColor, ButtonSize } from '../../components/Button';
-import { InputSize, InputType } from '../../components/Input';
+import { ButtonColor } from '../../components/Button';
+import { InputType } from '../../components/Input';
 import {
   ModalContainerItemDirection,
   ModalContentItemType,
@@ -50,9 +50,6 @@ const openDocumentRenameModal = async (
               inlineButton: undefined,
               statusText: undefined,
               type: InputType.TEXT,
-              size: InputSize.MEDIUM,
-              isFullWidth: true,
-              onChange: undefined,
               onSubmit: async (): Promise<void> =>
                 await performDocumentRename(),
             },
@@ -68,11 +65,7 @@ const openDocumentRenameModal = async (
             text: langKeys().ModalDocumentRenameButtonCancel,
             loadingText: undefined,
             leftIcon: undefined,
-            rightIcon: undefined,
-            action: ButtonAction.BUTTON,
             color: ButtonColor.NEUTRAL,
-            size: ButtonSize.MEDIUM,
-            isFullWidth: false,
             onClick: (): void => {
               modalController.closeModal('modal__qxtfaslqkw');
             },
@@ -82,11 +75,7 @@ const openDocumentRenameModal = async (
             text: langKeys().ModalDocumentRenameButtonRename,
             loadingText: langKeys().ModalDocumentRenameButtonRenaming,
             leftIcon: undefined,
-            rightIcon: undefined,
-            action: ButtonAction.BUTTON,
             color: ButtonColor.NEUTRAL,
-            size: ButtonSize.MEDIUM,
-            isFullWidth: false,
             onClick: async (): Promise<void> => await performDocumentRename(),
           },
         ],

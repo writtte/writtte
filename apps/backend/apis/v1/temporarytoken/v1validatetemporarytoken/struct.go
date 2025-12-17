@@ -3,9 +3,13 @@ package v1validatetemporarytoken
 // revive:disable:line-length-limit
 
 type BodyParams struct {
-	Type  *string `json:"type" validate:"required,oneof=sign-up-verify"`
+	Type  *string `json:"type" validate:"required,oneof=sign-up-verify email-update"`
 	Key   *string `json:"key" validate:"required,min=2,max=256"`
 	Value *string `json:"value" validate:"required,min=2,max=256"`
+
+	// The following fields are only used when the type is "email-update"
+
+	EmailToUpdate *string `json:"email_to_update" validate:"omitempty,email"`
 }
 
 // revive:enable:line-length-limit

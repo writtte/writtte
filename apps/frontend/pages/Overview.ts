@@ -9,6 +9,7 @@ import {
   type TIDBDocument,
   getIndexedDB,
 } from '../data/stores/indexedDB';
+import { getAccountOverview } from '../data/stores/overview';
 import { buildError } from '../helpers/error/build';
 import { documentCodeToKey } from '../helpers/item/codeToKey';
 import { compareDocuments } from '../modules/overview/compareDocuments';
@@ -35,8 +36,14 @@ const OverviewPage = async (): Promise<HTMLElement> => {
 
   overviewDiv.append(headerDiv, contentDiv);
 
+  const accountOverview = getAccountOverview();
+
   const overviewTitleElement = OverviewTitle({
-    title: generateOverviewTitleDynamically(),
+    // If you change the ID, please update it in all other
+    // places, such as the account name update in settings.
+
+    id: 'overview_title__gwcalajmpp',
+    title: generateOverviewTitleDynamically(accountOverview.name),
   });
 
   const itemCreateInputElement = ItemCreateInput({

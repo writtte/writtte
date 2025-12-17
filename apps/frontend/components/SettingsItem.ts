@@ -54,6 +54,7 @@ type TOptions = {
           | 'inlineButton'
           | 'statusText'
           | 'type'
+          | 'onChange'
           | 'onSubmit'
         > & {
           title: string | undefined;
@@ -69,6 +70,7 @@ type TOptions = {
           | 'inlineButton'
           | 'statusText'
           | 'type'
+          | 'onChange'
           | 'onSubmit'
         > & {
           title: string | undefined;
@@ -159,7 +161,6 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
         ...opts.item.input,
         size: InputSize.SMALL,
         isFullWidth: false,
-        onChange: undefined,
       });
 
       contentDiv.appendChild(inputElement.element);
@@ -178,7 +179,6 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
           ...inputProp,
           size: InputSize.SMALL,
           isFullWidth: false,
-          onChange: undefined,
         });
 
         contentDiv.appendChild(inputElement.element);
@@ -192,6 +192,10 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
   return result;
 };
 
-export type { TOptions as TSettingsItemOptions, TSettingsItemType };
+export type {
+  TOptions as TSettingsItemOptions,
+  TSettingsItemType,
+  TReturnSettingsItem,
+};
 
 export { SettingsItemType, SettingsItem };

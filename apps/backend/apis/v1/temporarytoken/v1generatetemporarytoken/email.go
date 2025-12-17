@@ -22,3 +22,21 @@ func sendSignUpEmail(r *http.Request, email, code *string) *string {
 	sendmail.Send(r, info)
 	return link
 }
+
+func sendEmailUpdateEmail(r *http.Request, email, code, accountCode,
+	newEmailToUpdate *string) *string {
+	title, subject, content, link := emailUpdateLink(email, code,
+		accountCode, newEmailToUpdate)
+
+	info := sendmail.Info{
+		Title:   title,
+		From:    &configs.AWSSESTransactionalSender,
+		To:      email,
+		Subject: subject,
+		Content: content,
+		Config:  &configs.AWSSESTransactionalConfiguration,
+	}
+
+	sendmail.Send(r, info)
+	return link
+}

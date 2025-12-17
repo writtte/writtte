@@ -1,6 +1,4 @@
-import type { TSettingsItemOptions } from '../../../components/SettingsItem';
-
-const getEditorSettingsContent = (): TSettingsItemOptions[] => {
+const getEditorSettingsContent = (): HTMLDivElement[] => {
   // TODO
 
   return [];
