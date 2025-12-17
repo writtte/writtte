@@ -40,6 +40,9 @@
     "documentupdate",
     "TIDB",
     "userupdate",
-    "updateuseremail"
+    "updateuseremail",
+    "subscriptionretrieve",
+    "polarorderpaid",
+    "polarsubscriptionrevoked"
   ]
 }

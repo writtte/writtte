@@ -29,6 +29,7 @@
 \ir ../scripts/main/functions/v1_subscription_create.pg.sql
 \ir ../scripts/main/functions/v1_subscription_retrieve.pg.sql
 \ir ../scripts/main/functions/v1_subscription_update.pg.sql
+\ir ../scripts/main/functions/v1_subscription_update_via_customer_id.pg.sql
 \ir ../scripts/main/functions/v1_user_check.pg.sql
 \ir ../scripts/main/functions/v1_user_create.pg.sql
 \ir ../scripts/main/functions/v1_user_retrieve.pg.sql

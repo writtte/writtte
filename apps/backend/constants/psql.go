@@ -37,4 +37,5 @@ const (
 const (
 	SubscriptionNotExists = "SUBSCRIPTION_NOT_EXISTS"
 	SubscriptionRetrieved = "SUBSCRIPTION_RETRIEVED"
+	SubscriptionUpdated   = "SUBSCRIPTION_UPDATED"
 )

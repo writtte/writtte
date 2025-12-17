@@ -10,4 +10,5 @@ func SetupConfigs() {
 	configs.FrontendEnvs()
 	configs.AWSEnvs()
 	configs.JWTEnvs()
+	configs.PolarEnvs()
 }
