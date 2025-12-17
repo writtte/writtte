@@ -33,3 +33,8 @@ const (
 	DocumentRetrievedList = "DOCUMENT_RETRIEVED_LIST"
 	DocumentUpdated       = "DOCUMENT_UPDATED"
 )
+
+const (
+	SubscriptionNotExists = "SUBSCRIPTION_NOT_EXISTS"
+	SubscriptionRetrieved = "SUBSCRIPTION_RETRIEVED"
+)
