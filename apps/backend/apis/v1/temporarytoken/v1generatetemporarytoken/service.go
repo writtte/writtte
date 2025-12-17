@@ -106,7 +106,7 @@ func getExpirationMinutes(tokenType TokenType) int {
 		return oneHour
 
 	case TypeEmailUpdate:
-		return halfHour
+		return quarterHour
 
 	default:
 		return quarterHour
