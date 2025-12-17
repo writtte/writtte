@@ -43,6 +43,10 @@
     "updateuseremail",
     "subscriptionretrieve",
     "polarorderpaid",
-    "polarsubscriptionrevoked"
+    "polarsubscriptionrevoked",
+    "customerportallink",
+    "apicall",
+    "APIURL",
+    "checkoutsessionlink"
   ]
 }

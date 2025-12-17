@@ -16,4 +16,5 @@ func Private(mux *http.ServeMux) {
 	privateroutes.Item(mux, &baseVersion)
 	privateroutes.Subscription(mux, &baseVersion)
 	privateroutes.Webhook(mux, &baseVersion)
+	privateroutes.External(mux, &baseVersion)
 }
