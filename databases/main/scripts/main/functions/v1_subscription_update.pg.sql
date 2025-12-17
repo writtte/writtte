@@ -38,7 +38,7 @@ BEGIN
     updated_time INTO v_updated_id,
     v_updated_time;
   IF v_updated_id IS NULL THEN
-    RETURN json_build_object(k_status, FALSE, k_code, 'SUBSCRIPTION_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
+    RETURN json_build_object(k_status, TRUE, k_code, 'SUBSCRIPTION_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
   END IF;
   RETURN json_build_object(k_status, TRUE, k_code, 'SUBSCRIPTION_UPDATED', k_message, NULL, k_additional, NULL, k_data, json_build_object('id_main', v_updated_id, 'account_code', p_account_code, 'status', v_p_status, 'updated_time', v_updated_time)::JSONB)::JSONB;
 EXCEPTION

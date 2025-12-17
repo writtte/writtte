@@ -33,7 +33,7 @@ BEGIN
     VALUES (v_p_email_address, v_p_name, v_p_hashed_password, v_p_password_salt)
   RETURNING
     account_code INTO v_account_code;
-  v_subscription_create_results := schema_main.v1_subscription_create (json_build_object('account_code', v_account_code, 'status', 'TRIALING')::JSONB)::JSONB;
+  v_subscription_create_results := schema_main.v1_subscription_create (json_build_object('account_code', v_account_code, 'status', 'NO_SUBSCRIPTION')::JSONB)::JSONB;
   IF (v_subscription_create_results ->> k_status)::BOOLEAN = FALSE THEN
     RAISE EXCEPTION 'failed to create subscription: %', v_subscription_create_results ->> k_message;
   END IF;

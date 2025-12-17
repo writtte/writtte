@@ -20,7 +20,7 @@ BEGIN
   WHERE
     s.account_code = v_p_account_code;
   IF v_subscription_data IS NULL THEN
-    RETURN json_build_object(k_status, FALSE, k_code, 'SUBSCRIPTION_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
+    RETURN json_build_object(k_status, TRUE, k_code, 'SUBSCRIPTION_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
   END IF;
   RETURN json_build_object(k_status, TRUE, k_code, 'SUBSCRIPTION_RETRIEVED', k_message, NULL, k_additional, NULL, k_data, v_subscription_data)::JSONB;
 EXCEPTION
