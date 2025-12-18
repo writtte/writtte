@@ -2,7 +2,6 @@ package v1documentretrieve
 
 import (
 	"context"
-	"encoding/base64"
 	"encoding/json"
 
 	"backend/apis/v1/authentication/v1signin"
@@ -35,7 +34,7 @@ func (s *service) perform(ctx context.Context,
 		return nil, nil, err
 	}
 
-	var encodedContent string
+	var contentToPass string
 	if *parsedResults.Status {
 		var content *extaws.S3FileRetrieveData
 		content, err = getDocumentContent(ctx, &accountCode,
@@ -45,9 +44,8 @@ func (s *service) perform(ctx context.Context,
 			return nil, nil, err
 		}
 
-		encodedContent = base64.RawStdEncoding.
-			EncodeToString([]byte(*content.Body))
+		contentToPass = *content.Body
 	}
 
-	return parsedResults, &encodedContent, nil
+	return parsedResults, &contentToPass, nil
 }
