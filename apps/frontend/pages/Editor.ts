@@ -1,4 +1,4 @@
-import type { TEditorSchema } from '@velovra-editor/editor';
+import type { TEditorSchema } from '@writtte-editor/editor';
 import { Editor } from '../components/Editor';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';

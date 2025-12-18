@@ -144,7 +144,7 @@ const enMessages = {
   PAGE_SIGN_UP_LINK_SIGN_IN: 'Already have an account? ((link))Sign In((/link))',
   PAGE_SIGN_UP_NOTE_LEGAL: 'By continuing, you agree to our ((link))Terms((/link)) and ((link1))Privacy Policy((/link1)).',
   PAGE_SIGN_UP_TEXT_SUBTITLE: 'Create your account, draft your greatest articles, and grow into the creator you\'re meant to be.',
-  PAGE_SIGN_UP_TEXT_TITLE: 'Welcome to Velovra',
+  PAGE_SIGN_UP_TEXT_TITLE: 'Welcome to Writtte',
   PAGE_SING_IN_LINK_PASSWORD_RESET: '((link))Forgot Password?((/link))',
   PAGE_SING_IN_LINK_SIGN_UP: 'Don\'t have an account? ((link))Get Invitation((/link))',
   SETTINGS_MODAL_BUTTON_OK: 'Ok',
@@ -172,7 +172,7 @@ const enMessages = {
   SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_PLANS: 'View Plans',
   SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT: 'Opening...',
   SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE: 'Choose a Subscription Plan',
-  SETTINGS_MODAL_TEXT_TITLE: 'Velovra Settings',
+  SETTINGS_MODAL_TEXT_TITLE: 'Writtte Settings',
   SUCCESS_NAME_UPDATED: 'The account name was updated successfully.'
 };
 

@@ -1,10 +1,10 @@
-import { idb } from '@velovra-internal/indexed-db';
-import { type TStore, createStore } from '@velovra-internal/store';
+import { idb } from '@writtte-internal/indexed-db';
+import { type TStore, createStore } from '@writtte-internal/store';
 import { buildError } from '../../helpers/error/build';
 
 const DB_VERSION = 1;
 
-const DB_NAME = 'velovra';
+const DB_NAME = 'writtte';
 
 const STORE_NAMES = {
   DOCUMENTS: 'documents',

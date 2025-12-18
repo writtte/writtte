@@ -11,7 +11,7 @@ type TOptions = {
   options: TExtensionOptions;
 };
 
-const VelovraEditor = (opts: TOptions): TEditorAPI => {
+const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const extensions: AnyExtension[] = [];
 
   if (opts.options.paragraph.isEnabled) {
@@ -68,6 +68,6 @@ const VelovraEditor = (opts: TOptions): TEditorAPI => {
   };
 };
 
-export type { TOptions as TVelovraEditorOptions };
+export type { TOptions as TWrittteEditorOptions };
 
-export { VelovraEditor };
+export { WrittteEditor };

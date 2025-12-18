@@ -1,6 +1,6 @@
 import type { TReturnItemList } from '../../components/ItemList';
-import { idb } from '@velovra-internal/indexed-db';
-import { ERROR_CODES, validate } from '@velovra-internal/validate';
+import { idb } from '@writtte-internal/indexed-db';
+import { ERROR_CODES, validate } from '@writtte-internal/validate';
 import { ButtonColor } from '../../components/Button';
 import { InputType } from '../../components/Input';
 import {

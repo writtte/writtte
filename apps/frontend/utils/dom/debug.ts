@@ -139,7 +139,7 @@ const createStatsPanel = (
   header.style.cursor = 'move';
 
   const title = document.createElement('div');
-  title.textContent = 'Velovra Rendering Monitor';
+  title.textContent = 'Writtte Rendering Monitor';
   title.style.fontSize = '10px';
   title.style.fontWeight = 'bold';
   title.style.color = '#00ff00';

@@ -12,7 +12,7 @@ import '@fontsource-variable/ibm-plex-sans';
 import '@fontsource-variable/jetbrains-mono';
 
 const main = async (): Promise<void> => {
-  const rootId = 'velovra-root';
+  const rootId = 'writtte-root';
 
   const rootElement = document.getElementById(rootId);
   setRootElement(rootElement);

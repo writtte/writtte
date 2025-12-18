@@ -1,4 +1,4 @@
-import type { TExtensionOptions } from '@velovra-editor/editor';
+import type { TExtensionOptions } from '@writtte-editor/editor';
 
 const setupEditorExtensionOptions = (): TExtensionOptions => ({
   paragraph: {

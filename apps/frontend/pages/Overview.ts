@@ -1,4 +1,4 @@
-import { idb } from '@velovra-internal/indexed-db';
+import { idb } from '@writtte-internal/indexed-db';
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { ItemCreateInput } from '../components/ItemCreateInput';
 import { ItemList } from '../components/ItemList';

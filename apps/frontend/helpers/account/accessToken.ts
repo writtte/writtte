@@ -2,7 +2,7 @@ import {
   getLocalStorage,
   removeLocalStorage,
   setLocalStorage,
-} from '@velovra-internal/local-storage';
+} from '@writtte-internal/local-storage';
 
 type TAccountData = {
   name: string;
@@ -31,7 +31,7 @@ type TAccessToken = {
   ) => boolean;
 };
 
-const STORAGE_KEY = 'velovra-accounts';
+const STORAGE_KEY = 'writtte-accounts';
 
 const AccessToken = (): TAccessToken => {
   const getAccountsStorage = (): TAccountsStorage => {
