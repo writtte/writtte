@@ -36,7 +36,13 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 	case constants.OverviewAccountRetrieved:
 		// revive:disabled:line-length-limit
 
+		var statusStr string
 		var subscriptionStatusStr string
+
+		status := results.Data.User.Status
+		if status != nil {
+			statusStr = strings.ToLower(*status)
+		}
 
 		subscriptionStatus := results.Data.Subscription.Status
 		if subscriptionStatus != nil {
@@ -47,7 +53,7 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 			AccountCode:        results.Data.User.AccountCode,
 			EmailAddress:       results.Data.User.EmailAddress,
 			Name:               results.Data.User.Name,
-			Status:             results.Data.User.Status,
+			Status:             &statusStr,
 			SubscriptionStatus: &subscriptionStatusStr,
 			IsEmailVerified:    results.Data.User.IsEmailVerified,
 			UpdatedTime:        results.Data.User.UpdatedTime,
