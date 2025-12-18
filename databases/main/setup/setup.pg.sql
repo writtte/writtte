@@ -12,6 +12,7 @@
 \echo
 \echo '\033[1;32m[ setup tables in the main schema ]\033[0m'
 \echo
+\ir ../scripts/main/tables/tb_subscription.pg.sql
 \ir ../scripts/main/tables/tb_user.pg.sql
 \echo
 \echo '\033[1;32m[ setup tables in the item schema ]\033[0m'
@@ -25,6 +26,10 @@
 \echo '\033[1;32m[ setup functions in the main schema ]\033[0m'
 \echo
 \ir ../scripts/main/functions/v1_overview_account.pg.sql
+\ir ../scripts/main/functions/v1_subscription_create.pg.sql
+\ir ../scripts/main/functions/v1_subscription_retrieve.pg.sql
+\ir ../scripts/main/functions/v1_subscription_update.pg.sql
+\ir ../scripts/main/functions/v1_subscription_update_via_customer_id.pg.sql
 \ir ../scripts/main/functions/v1_user_check.pg.sql
 \ir ../scripts/main/functions/v1_user_create.pg.sql
 \ir ../scripts/main/functions/v1_user_retrieve.pg.sql
@@ -45,6 +50,7 @@
 \echo
 \echo '\033[1;32m[ setup indexes in the the main schema ]\033[0m'
 \echo
+\ir ../scripts/main/indexes/idx_tb_subscription.pg.sql
 \ir ../scripts/main/indexes/idx_tb_user.pg.sql
 \echo
 \echo '\033[1;32m[ setup indexes in the the item schema ]\033[0m'
@@ -54,3 +60,8 @@
 \echo '\033[1;32m[ setup indexes in the the temporary schema ]\033[0m'
 \echo
 \ir ../scripts/temporary/indexes/idx_tb_temporary_token.pg.sql
+\echo
+\echo '\033[1;32m[ foreign keys in the the main schema ]\033[0m'
+\echo
+\ir ../scripts/main/fkeys/fk_tb_subscription.pg.sql
+\echo

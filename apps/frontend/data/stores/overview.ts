@@ -5,6 +5,7 @@ type TStoreAccountOverview = {
   emailAddress: string;
   name: string;
   status: string;
+  subscriptionStatus: string;
   isEmailVerified: boolean;
 };
 
@@ -13,6 +14,7 @@ const initialState: TStoreAccountOverview = {
   emailAddress: '',
   name: '',
   status: '',
+  subscriptionStatus: '',
   isEmailVerified: false,
 };
 

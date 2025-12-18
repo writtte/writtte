@@ -40,6 +40,13 @@
     "documentupdate",
     "TIDB",
     "userupdate",
-    "updateuseremail"
+    "updateuseremail",
+    "subscriptionretrieve",
+    "polarorderpaid",
+    "polarsubscriptionrevoked",
+    "customerportallink",
+    "apicall",
+    "APIURL",
+    "checkoutsessionlink"
   ]
 }

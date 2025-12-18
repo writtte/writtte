@@ -18,6 +18,7 @@ type TResponseV1AccountOverview = {
     email_address: string;
     name: string;
     status: string;
+    subscription_status: string;
     is_email_verified: boolean;
     updated_time: string;
   };

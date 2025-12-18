@@ -1,7 +1,19 @@
 package v1accountoverview
 
+import "encoding/json"
+
 type dbQueryInput struct {
 	AccountCode *string
+}
+
+type dbQueryOutputDataSubscription struct {
+	CustomerID  *string          `json:"customer_id"`
+	SeatCount   *int             `json:"seat_count"`
+	Service     *string          `json:"service"`
+	ServiceData *json.RawMessage `json:"service_data"`
+	Status      *string          `json:"status"`
+	CreatedTime *string          `json:"created_time"`
+	UpdatedTime *string          `json:"updated_time"`
 }
 
 type dbQueryOutputDataUser struct {
@@ -14,7 +26,8 @@ type dbQueryOutputDataUser struct {
 }
 
 type dbQueryOutputData struct {
-	User *dbQueryOutputDataUser `json:"user"`
+	Subscription *dbQueryOutputDataSubscription `json:"subscription"`
+	User         *dbQueryOutputDataUser         `json:"user"`
 }
 
 type dbQueryOutput struct {
@@ -26,10 +39,11 @@ type dbQueryOutput struct {
 }
 
 type apiResultsSuccess struct {
-	AccountCode     *string `json:"account_code"`
-	EmailAddress    *string `json:"email_address"`
-	Name            *string `json:"name"`
-	Status          *string `json:"status"`
-	IsEmailVerified *bool   `json:"is_email_verified"`
-	UpdatedTime     *string `json:"updated_time"`
+	AccountCode        *string `json:"account_code"`
+	EmailAddress       *string `json:"email_address"`
+	Name               *string `json:"name"`
+	Status             *string `json:"status"`
+	SubscriptionStatus *string `json:"subscription_status"`
+	IsEmailVerified    *bool   `json:"is_email_verified"`
+	UpdatedTime        *string `json:"updated_time"`
 }

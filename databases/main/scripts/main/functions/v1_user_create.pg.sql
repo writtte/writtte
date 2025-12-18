@@ -16,6 +16,7 @@ DECLARE
   v_p_usage JSONB;
   v_check_user JSONB;
   v_account_code UUID;
+  v_subscription_create_results JSONB;
   v_exception TEXT;
 BEGIN
   v_p_email_address := lower(p_data ->> 'email_address');
@@ -32,6 +33,10 @@ BEGIN
     VALUES (v_p_email_address, v_p_name, v_p_hashed_password, v_p_password_salt)
   RETURNING
     account_code INTO v_account_code;
+  v_subscription_create_results := schema_main.v1_subscription_create (json_build_object('account_code', v_account_code, 'status', 'NO_SUBSCRIPTION')::JSONB)::JSONB;
+  IF (v_subscription_create_results ->> k_status)::BOOLEAN = FALSE THEN
+    RAISE EXCEPTION 'failed to create subscription: %', v_subscription_create_results ->> k_message;
+  END IF;
   RETURN json_build_object(k_status, TRUE, k_code, 'USER_CREATED', k_message, NULL, k_additional, NULL, k_data, json_build_object('account_code', v_account_code)::JSONB)::JSONB;
 EXCEPTION
   WHEN OTHERS THEN

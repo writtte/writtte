@@ -19,6 +19,10 @@ type TLangKeys = {
   AlertSignInMagicLinkSentTitle: string;
   AlertSignUpInvitationSentDescription: string;
   AlertSignUpInvitationSentTitle: string;
+  AlertSubscriptionCheckoutSessionLinkFailedDescription: string;
+  AlertSubscriptionCheckoutSessionLinkFailedTitle: string;
+  AlertSubscriptionCustomerPortalLinkFailedDescription: string;
+  AlertSubscriptionCustomerPortalLinkFailedTitle: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountInvalidCredentials: string;
   ErrorAccountNotExists: string;
@@ -162,6 +166,13 @@ type TLangKeys = {
   SettingsModalSecurityUpdatePasswordButtonUpdate: string;
   SettingsModalSecurityUpdatePasswordTextDescription: string;
   SettingsModalSecurityUpdatePasswordTextTitle: string;
+  SettingsModalSubscriptionCustomerPortalButtonOpen: string;
+  SettingsModalSubscriptionCustomerPortalButtonWait: string;
+  SettingsModalSubscriptionCustomerPortalTextDescription: string;
+  SettingsModalSubscriptionCustomerPortalTextTitle: string;
+  SettingsModalSubscriptionSubscribeButtonPlans: string;
+  SettingsModalSubscriptionSubscribeButtonWait: string;
+  SettingsModalSubscriptionSubscribeTextTitle: string;
   SettingsModalTextTitle: string;
   SuccessNameUpdated: string;
 };
@@ -187,6 +198,10 @@ const langKeys = (): TLangKeys => {
     AlertSignInMagicLinkSentTitle: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE'),
     AlertSignUpInvitationSentDescription: getTr('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
     AlertSignUpInvitationSentTitle: getTr('ALERT_SIGN_UP_INVITATION_SENT_TITLE'),
+    AlertSubscriptionCheckoutSessionLinkFailedDescription: getTr('ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_DESCRIPTION'),
+    AlertSubscriptionCheckoutSessionLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_TITLE'),
+    AlertSubscriptionCustomerPortalLinkFailedDescription: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_DESCRIPTION'),
+    AlertSubscriptionCustomerPortalLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
     ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),
@@ -330,6 +345,13 @@ const langKeys = (): TLangKeys => {
     SettingsModalSecurityUpdatePasswordButtonUpdate: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_BUTTON_UPDATE'),
     SettingsModalSecurityUpdatePasswordTextDescription: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_DESCRIPTION'),
     SettingsModalSecurityUpdatePasswordTextTitle: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_TITLE'),
+    SettingsModalSubscriptionCustomerPortalButtonOpen: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_OPEN'),
+    SettingsModalSubscriptionCustomerPortalButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_WAIT'),
+    SettingsModalSubscriptionCustomerPortalTextDescription: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_TEXT_DESCRIPTION'),
+    SettingsModalSubscriptionCustomerPortalTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_TEXT_TITLE'),
+    SettingsModalSubscriptionSubscribeButtonPlans: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_PLANS'),
+    SettingsModalSubscriptionSubscribeButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT'),
+    SettingsModalSubscriptionSubscribeTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE'),
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
     SuccessNameUpdated: getTr('SUCCESS_NAME_UPDATED'),
   }
