@@ -1,6 +1,6 @@
 import type { TReturnAuthenticationButton } from '../../components/AuthenticationButton';
 import type { TReturnInput } from '../../components/Input';
-import { ERROR_CODES, validate } from '@velovra-internal/validate';
+import { ERROR_CODES, validate } from '@writtte-internal/validate';
 import { StatusTextType } from '../../components/StatusText';
 import { PATHS } from '../../constants/paths';
 import { REGEX } from '../../constants/regex';

@@ -1,5 +1,5 @@
 {
-  "name": "velovra-templates",
+  "name": "writtte-templates",
   "private": true,
   "scripts": {
     "live:template": "bun ./emails/_template.html",

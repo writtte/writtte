@@ -5,7 +5,7 @@ import { initializeIDB } from '../data/stores/indexedDB';
 import { AccessToken } from '../helpers/account/accessToken';
 import { langKeys } from '../translations/keys';
 import { initMiddleware } from '../utils/routes/routes';
-import { dumpVelovraLog } from './setup/log';
+import { dumpWrittteLog } from './setup/log';
 import { ensureAccountOverviewLoaded } from './setup/overview';
 import { setupTranslations } from './setup/translations';
 
@@ -18,7 +18,7 @@ const setupMiddleware = async (): Promise<void> => {
     const alertController = AlertController();
 
     if (isFirstLoad === true) {
-      dumpVelovraLog();
+      dumpWrittteLog();
       isFirstLoad = false;
     }
 

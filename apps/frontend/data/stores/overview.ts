@@ -1,4 +1,4 @@
-import { type TStore, createStore } from '@velovra-internal/store';
+import { type TStore, createStore } from '@writtte-internal/store';
 
 type TStoreAccountOverview = {
   code: string;

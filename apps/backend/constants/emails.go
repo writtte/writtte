@@ -3,12 +3,12 @@ package constants
 // revive:disable:line-length-limit
 
 const (
-	TransactionalEmailTitle = "Velovra"
+	TransactionalEmailTitle = "Writtte"
 )
 
 const (
 	EmailSubjectAccountEmailUpdate = "Please confirm your email update request"
 	EmailSubjectSignInQuickLink    = "Get Back Into Your Account"
-	EmailSubjectSignUpLink         = "You’re Almost There, Finish Creating Your Velovra Account"
-	EmailSubjectSignUpWelcome      = "Welcome Aboard! Your Velovra Journey Begins Here"
+	EmailSubjectSignUpLink         = "You’re Almost There, Finish Creating Your Writtte Account"
+	EmailSubjectSignUpWelcome      = "Welcome Aboard! Your Writtte Journey Begins Here"
 )

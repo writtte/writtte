@@ -1,5 +1,5 @@
-import type { TEditorAPI, TEditorSchema } from '@velovra-editor/editor';
-import { idb } from '@velovra-internal/indexed-db';
+import type { TEditorAPI, TEditorSchema } from '@writtte-editor/editor';
+import { idb } from '@writtte-internal/indexed-db';
 import { v1DocumentUpdate } from '../../data/apis/item/v1DocumentUpdate';
 import {
   STORE_NAMES,

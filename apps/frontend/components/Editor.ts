@@ -1,8 +1,8 @@
 import {
   type TEditorAPI,
   type TExtensionOptions,
-  VelovraEditor,
-} from '@velovra-editor/editor';
+  WrittteEditor,
+} from '@writtte-editor/editor';
 import { setTestId } from '../utils/dom/testId';
 
 type TOptions = {
@@ -24,7 +24,7 @@ const Editor = (opts: TOptions): TReturnEditor => {
   editorDiv.id = opts.id;
   setTestId(editorDiv, opts.id);
 
-  const velovraEditor: TEditorAPI = VelovraEditor({
+  const writtteEditor: TEditorAPI = WrittteEditor({
     element: editorDiv,
     options: opts.options,
   });
@@ -39,7 +39,7 @@ const Editor = (opts: TOptions): TReturnEditor => {
 
   return {
     element: editorDiv,
-    api: velovraEditor,
+    api: writtteEditor,
     setLoadingState,
     setError,
   };

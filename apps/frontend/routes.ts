@@ -15,56 +15,56 @@ import { ValidateEmailUpdatePage } from './pages/ValidateEmailUpdate';
 const defaultRoutes: TRoute[] = [
   {
     path: PATHS.SIGN_UP,
-    title: 'Sign Up | Velovra',
+    title: 'Sign Up | Writtte',
     layout: AuthenticationLayout,
     view: async () => await AuthenticationSignUpPage(),
   },
   {
     path: PATHS.SIGN_UP_CREATE,
-    title: 'Create Your Account | Velovra',
+    title: 'Create Your Account | Writtte',
     layout: AuthenticationLayout,
     view: async () => await AuthenticationSignUpCreatePage(),
   },
   {
     path: PATHS.SIGN_IN,
-    title: 'Sign In | Velovra',
+    title: 'Sign In | Writtte',
     layout: AuthenticationLayout,
     view: async () => await AuthenticationSignInPage(),
   },
   {
     path: PATHS.SIGN_IN_EMAIL,
-    title: 'Sign In with Email | Velovra',
+    title: 'Sign In with Email | Writtte',
     layout: AuthenticationLayout,
     view: async () => await AuthenticationSignInEmailPage(),
   },
   {
     path: PATHS.SIGN_IN_CHECK,
-    title: 'Checking Magic Link Access... | Velovra',
+    title: 'Checking Magic Link Access... | Writtte',
     layout: AuthenticationLayout,
     view: async () => await AuthenticationSignInEmailCheckPage(),
   },
   {
     path: PATHS.OVERVIEW,
-    title: 'Overview | Velovra',
+    title: 'Overview | Writtte',
     layout: DashboardLayout,
     view: async () => await OverviewPage(),
   },
   {
     path: `${PATHS.DOCUMENT_EDIT}/:documentCode`,
-    title: 'Document Editor | Velovra',
+    title: 'Document Editor | Writtte',
     layout: DashboardLayout,
     view: async (params: Record<string, string> | undefined) =>
       await EditorPage(params),
   },
   {
     path: PATHS.VALIDATE_EMAIL,
-    title: 'Validate Email | Velovra',
+    title: 'Validate Email | Writtte',
     view: async () => await ValidateEmailUpdatePage(),
   },
 ];
 
 const defaultNotFoundRoute: TRoute = {
-  title: 'Not Found | Velovra',
+  title: 'Not Found | Writtte',
   view: async () => await NotFoundPage(),
 };
 

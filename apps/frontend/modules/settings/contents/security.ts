@@ -1,4 +1,4 @@
-import { ERROR_CODES, validate } from '@velovra-internal/validate';
+import { ERROR_CODES, validate } from '@writtte-internal/validate';
 import { ButtonColor } from '../../../components/Button';
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
 import { InputType } from '../../../components/Input';

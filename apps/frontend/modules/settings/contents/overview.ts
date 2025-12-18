@@ -1,4 +1,4 @@
-import { ERROR_CODES, validate } from '@velovra-internal/validate';
+import { ERROR_CODES, validate } from '@writtte-internal/validate';
 import { InputType } from '../../../components/Input';
 import { updateOverviewTitle } from '../../../components/OverviewTitle';
 import {

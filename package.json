@@ -1,11 +1,11 @@
 {
-  "name": "velovra-platform",
+  "name": "writtte-platform",
   "private": true,
   "packageManager": "bun@1.3.0",
   "workspaces": [
     "apps/frontend/",
-    "packages/@velovra-internal/*",
-    "packages/@velovra-editor/*",
+    "packages/@writtte-internal/*",
+    "packages/@writtte-editor/*",
     "templates/"
   ],
   "scripts": {

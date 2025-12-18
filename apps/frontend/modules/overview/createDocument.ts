@@ -1,5 +1,5 @@
 import type { TReturnItemCreateInput } from '../../components/ItemCreateInput';
-import { idb } from '@velovra-internal/indexed-db';
+import { idb } from '@writtte-internal/indexed-db';
 import { PATHS } from '../../constants/paths';
 import { ALERT_TIMEOUT } from '../../constants/timeouts';
 import { AlertController } from '../../controller/alert';

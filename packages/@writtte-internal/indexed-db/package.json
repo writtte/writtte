@@ -1,5 +1,5 @@
 {
-  "name": "@velovra-editor/editor",
+  "name": "@writtte-internal/indexed-db",
   "version": "1.0.0",
   "private": "true",
   "sideEffects": false,
@@ -19,10 +19,6 @@
     "pkg:check": "bunx --bun biome check --write",
     "pkg:fmt": "bunx --bun biome check --write --linter-enabled=false",
     "pkg:types": "tsc --noEmit --skipLibCheck"
-  },
-  "dependencies": {
-    "@tiptap/core": "3.13.0",
-    "prosemirror-model": "1.25.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

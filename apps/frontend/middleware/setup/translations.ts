@@ -4,7 +4,7 @@
 import {
   type TInterpolationParams,
   createTranslator,
-} from '@velovra-internal/translations';
+} from '@writtte-internal/translations';
 import { buildError } from '../../helpers/error/build';
 import { enMessages } from '../../translations/en';
 import { jaMessages } from '../../translations/ja';
@@ -19,7 +19,7 @@ const setupTranslations = (): void => {
       en: enMessages,
       ja: jaMessages,
     },
-    storageKey: 'velovra-locale',
+    storageKey: 'writtte-locale',
   });
 
   tr = translator.t;
