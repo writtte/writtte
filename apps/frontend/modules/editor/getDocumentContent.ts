@@ -39,7 +39,7 @@ const getDocumentContentFromAPI = async (
   const content = response.results.content;
 
   return {
-    content: content,
+    content,
   };
 };
 
