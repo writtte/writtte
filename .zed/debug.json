@@ -26,7 +26,7 @@
     "envFile": "${ZED_WORKTREE_ROOT}/.env"
   },
   {
-    "label": "[BE] Debug Server",
+    "label": "[BE] Run Server",
     "adapter": "Delve",
     "request": "launch",
     "mode": "debug",
