@@ -2,3 +2,5 @@
 
 export * from './editor/api';
 export * from './editor/editor';
+export * from './editor/options';
+export * from './editor/schema';

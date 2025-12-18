@@ -1,11 +1,18 @@
+import type { TEditorSchema } from '@velovra-editor/editor';
 import { Editor } from '../components/Editor';
 import { ErrorMessage } from '../components/ErrorMessage';
+import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';
+import { setupEditorExtensionOptions } from '../modules/editor/editorOptions';
 import {
   getDocumentContentFromAPI,
   getDocumentContentFromIDB,
 } from '../modules/editor/getDocumentContent';
-import { updateDocumentContentOnIDB } from '../modules/editor/updateDocumentContent';
+import {
+  updateDocumentContent,
+  updateDocumentContentOnIDB,
+} from '../modules/editor/updateDocumentContent';
 import { langKeys } from '../translations/keys';
+import { debounce } from '../utils/time/debounce';
 
 const EditorPage = async (
   params: Record<string, string> | undefined,
@@ -32,6 +39,7 @@ const EditorPage = async (
 
   const editorElement = Editor({
     id: 'editor__oqvawzczdv',
+    options: setupEditorExtensionOptions(),
   });
 
   containerDiv.appendChild(editorElement.element);
@@ -43,7 +51,9 @@ const EditorPage = async (
       return;
     }
 
-    editorElement.api.setContent(content);
+    const contentInJSON = editorElement.api.stringToSchema(content);
+    editorElement.api.setContent(contentInJSON);
+
     return content;
   })();
 
@@ -66,7 +76,9 @@ const EditorPage = async (
     if (contentFromIDB === undefined) {
       await updateDocumentContentOnIDB(documentCode, contentFromAPI);
 
-      editorElement.api.setContent(contentFromAPI);
+      const contentInJSON = editorElement.api.stringToSchema(contentFromAPI);
+      editorElement.api.setContent(contentInJSON);
+
       editorElement.setLoadingState(false);
       return;
     }
@@ -78,8 +90,10 @@ const EditorPage = async (
     // If the content is different, the IndexedDB should be updated
     // again.
 
+    const contentInJSON = editorElement.api.stringToSchema(contentFromAPI);
+
     const contentAfterReplacement =
-      editorElement.api.replaceContent(contentFromAPI);
+      editorElement.api.replaceContent(contentInJSON);
 
     if (contentAfterReplacement !== undefined) {
       await updateDocumentContentOnIDB(documentCode, contentAfterReplacement);
@@ -87,6 +101,19 @@ const EditorPage = async (
 
     editorElement.setLoadingState(false);
   });
+
+  if (editorElement.api.isEditable()) {
+    const debouncedLogContent = debounce(
+      async (content: TEditorSchema): Promise<void> => {
+        await updateDocumentContent(editorElement.api, documentCode, content);
+      },
+      { delay: DEBOUNCE_TIMEOUT.EDITOR_SAVE },
+    );
+
+    editorElement.api.onChange((content: TEditorSchema) => {
+      debouncedLogContent(content);
+    });
+  }
 
   return editorPageDiv;
 };

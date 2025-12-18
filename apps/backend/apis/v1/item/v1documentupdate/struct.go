@@ -10,7 +10,7 @@ type BodyParams struct {
 	Title          *string `json:"title" validate:"omitempty,min=2,max=256"`
 	LifecycleState *string `json:"lifecycle_state" validate:"omitempty,oneof=active deleted"`
 	WorkflowState  *string `json:"workflow_state" validate:"omitempty,oneof=published"`
-	Content        *string `json:"content" validate:"omitempty,base64"`
+	Content        *string `json:"content" validate:"omitempty"`
 }
 
 // revive:enable:line-length-limit

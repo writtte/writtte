@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@tiptap/core": "3.13.0",
-    "@tiptap/pm": "3.13.0"
+    "prosemirror-model": "1.25.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
