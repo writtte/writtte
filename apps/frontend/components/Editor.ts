@@ -1,8 +1,13 @@
-import { type TEditorAPI, VelovraEditor } from '@velovra-editor/editor';
+import {
+  type TEditorAPI,
+  type TExtensionOptions,
+  VelovraEditor,
+} from '@velovra-editor/editor';
 import { setTestId } from '../utils/dom/testId';
 
 type TOptions = {
   id: string;
+  options: TExtensionOptions;
 };
 
 type TReturnEditor = {
@@ -21,6 +26,7 @@ const Editor = (opts: TOptions): TReturnEditor => {
 
   const velovraEditor: TEditorAPI = VelovraEditor({
     element: editorDiv,
+    options: opts.options,
   });
 
   const setLoadingState = (_isLoading: boolean): void => {

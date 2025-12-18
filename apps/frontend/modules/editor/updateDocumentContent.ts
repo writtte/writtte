@@ -1,3 +1,4 @@
+import type { TEditorAPI, TEditorSchema } from '@velovra-editor/editor';
 import { idb } from '@velovra-internal/indexed-db';
 import { v1DocumentUpdate } from '../../data/apis/item/v1DocumentUpdate';
 import {
@@ -9,6 +10,17 @@ import { getAccountOverview } from '../../data/stores/overview';
 import { AccessToken } from '../../helpers/account/accessToken';
 import { buildError } from '../../helpers/error/build';
 import { HTTP_STATUS } from '../../utils/data/fetch';
+
+const updateDocumentContent = async (
+  api: TEditorAPI,
+  documentCode: string,
+  content: TEditorSchema,
+): Promise<void> => {
+  const stringContent = api.schemaToString(content);
+
+  await updateDocumentContentOnIDB(documentCode, stringContent);
+  await updateDocumentContentFromAPI(documentCode, stringContent);
+};
 
 const updateDocumentContentFromAPI = async (
   documentCode: string,
@@ -68,4 +80,8 @@ const updateDocumentContentOnIDB = async (
   await idb.updateData(db, STORE_NAMES.DOCUMENT_CONTENTS, objectToUpdate);
 };
 
-export { updateDocumentContentFromAPI, updateDocumentContentOnIDB };
+export {
+  updateDocumentContent,
+  updateDocumentContentFromAPI,
+  updateDocumentContentOnIDB,
+};

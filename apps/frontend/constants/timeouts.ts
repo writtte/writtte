@@ -10,6 +10,7 @@ const ALERT_TIMEOUT = {
 
 const DEBOUNCE_TIMEOUT = {
   SHORT: 800,
+  EDITOR_SAVE: 1000,
 };
 
 const STATUS_TEXT_TIMEOUT = {
