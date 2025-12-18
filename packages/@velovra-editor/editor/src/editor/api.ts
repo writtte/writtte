@@ -1,6 +1,14 @@
+import type { TEditorSchema } from './schema';
+
 type TEditorAPI = {
-  setContent: (content: string) => void;
-  replaceContent: (content: string) => string | undefined;
+  isEditable: () => boolean;
+  setEditable: () => void;
+  setReadable: () => void;
+  setContent: (content: TEditorSchema) => void;
+  replaceContent: (content: TEditorSchema) => void;
+  stringToSchema: (content: string) => TEditorSchema;
+  schemaToString: (schema: TEditorSchema) => string;
+  onChange: (callback: (content: TEditorSchema) => void) => void;
 };
 
 export type { TEditorAPI };
