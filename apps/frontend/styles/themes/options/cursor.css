@@ -1,7 +1,0 @@
-:root {
-  --cursor: pointer;
-}
-
-:root.default-cursor {
-  --cursor: default;
-}
