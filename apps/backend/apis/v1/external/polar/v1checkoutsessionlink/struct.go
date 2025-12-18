@@ -3,7 +3,6 @@ package v1checkoutsessionlink
 // revive:disable:line-length-limit
 
 type QueryParams struct {
-	Product   *string `json:"product" validate:"required,oneof=solo-monthly solo-yearly"`
 	ReturnURL *string `json:"return_url" validate:"required,http_url"`
 }
 

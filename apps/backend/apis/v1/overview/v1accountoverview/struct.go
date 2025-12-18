@@ -1,17 +1,19 @@
 package v1accountoverview
 
+import "encoding/json"
+
 type dbQueryInput struct {
 	AccountCode *string
 }
 
 type dbQueryOutputDataSubscription struct {
-	CustomerID  *string `json:"customer_id"`
-	SeatCount   *string `json:"seat_count"`
-	Service     *string `json:"service"`
-	ServiceData *string `json:"service_data"`
-	Status      *string `json:"status"`
-	CreatedTime *string `json:"created_time"`
-	UpdatedTime *string `json:"updated_time"`
+	CustomerID  *string          `json:"customer_id"`
+	SeatCount   *int             `json:"seat_count"`
+	Service     *string          `json:"service"`
+	ServiceData *json.RawMessage `json:"service_data"`
+	Status      *string          `json:"status"`
+	CreatedTime *string          `json:"created_time"`
+	UpdatedTime *string          `json:"updated_time"`
 }
 
 type dbQueryOutputDataUser struct {

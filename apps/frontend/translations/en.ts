@@ -1,5 +1,9 @@
 // biome-ignore format: Following array should not be formatted
 const enMessages = {
+  ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_TITLE: 'Unable to Start Subscription',
+  ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_DESCRIPTION: 'We ran into an issue while creating your subscription link. Please try again in a moment.',
+  ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE: 'Unable to Open Customer Portal',
+  ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_DESCRIPTION: 'We encountered an issue while generating your customer portal link. Please try again shortly.',  
   ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION: 'We were unable to create the document due to an unexpected error on our side. Please try again in a few minutes. If the problem persists, contact our support team for assistance.',
   ALERT_DOCUMENT_CREATE_FAILED_TITLE: 'Unable to Create Document',
   ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION: 'We were unable to retrieve documents due to an unexpected error on our side. Please try again in a few minutes. If the problem persists, contact our support team for assistance.',
@@ -161,6 +165,13 @@ const enMessages = {
   SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_BUTTON_UPDATE: 'Update Password',
   SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_DESCRIPTION: 'Primary account password',
   SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_TITLE: 'Password',
+  SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_OPEN: 'Open Customer Portal',
+  SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_WAIT: 'Opening...',
+  SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_TEXT_DESCRIPTION: 'Manage your subscription and billing details',
+  SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_TEXT_TITLE: 'Subscription Management',
+  SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_PLANS: 'View Plans',
+  SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT: 'Opening...',
+  SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE: 'Choose a Subscription Plan',
   SETTINGS_MODAL_TEXT_TITLE: 'Velovra Settings',
   SUCCESS_NAME_UPDATED: 'The account name was updated successfully.'
 };
