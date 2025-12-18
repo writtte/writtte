@@ -61,7 +61,7 @@ func generateCheckoutLink(accountCode, name, email, returnURL *string,
 		Products      []string       `json:"products"`
 		CustomerName  string         `json:"customer_name"`
 		CustomerEmail string         `json:"customer_email"`
-		ReturnURL     string         `json:"return_url,omitempty"`
+		ReturnURL     string         `json:"return_url"`
 		Metadata      map[string]any `json:"metadata"`
 	}
 
