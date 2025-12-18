@@ -39,10 +39,9 @@ func (s *service) perform(ctx context.Context, queries *QueryParams,
 
 	if *parsedResults.Status &&
 		*parsedResults.Code == constants.UserRetrieved {
-		productID := getProductID(queries.Product)
-
-		checkoutLink, err := generateCheckoutLink(parsedResults.Data.Name,
-			parsedResults.Data.EmailAddress, &productID, queries.ReturnURL)
+		checkoutLink, err := generateCheckoutLink(&accountCode,
+			parsedResults.Data.Name, parsedResults.Data.EmailAddress,
+			queries.ReturnURL)
 
 		if err != nil {
 			return nil, err
@@ -54,24 +53,29 @@ func (s *service) perform(ctx context.Context, queries *QueryParams,
 	return nil, err
 }
 
-func generateCheckoutLink(name, email, product, returnURL *string,
+func generateCheckoutLink(accountCode, name, email, returnURL *string,
 ) (*string, error) {
 	httpClient := apicall.NewHTTPClient()
 
 	type requestBody struct {
-		Products      []string `json:"products"`
-		CustomerName  string
-		CustomerEmail string
-		ReturnURL     string `json:"return_url,omitempty"`
+		Products      []string       `json:"products"`
+		CustomerName  string         `json:"customer_name"`
+		CustomerEmail string         `json:"customer_email"`
+		ReturnURL     string         `json:"return_url,omitempty"`
+		Metadata      map[string]any `json:"metadata"`
 	}
 
 	body := requestBody{
 		Products: []string{
-			*product,
+			configs.PolarPlanProductIDSoloMonthly,
+			configs.PolarPlanProductIDSoloYearly,
 		},
 		CustomerName:  *name,
 		CustomerEmail: *email,
 		ReturnURL:     *returnURL,
+		Metadata: map[string]any{
+			"account_code": *accountCode,
+		},
 	}
 
 	jsonBody, err := json.Marshal(body)
@@ -108,16 +112,4 @@ func generateCheckoutLink(name, email, product, returnURL *string,
 	}
 
 	return &checkoutResponse.URL, nil
-}
-
-func getProductID(planType *string) string {
-	switch *planType {
-	case "solo-monthly":
-		return configs.PolarPlanProductIDSoloMonthly
-
-	case "solo-yearly":
-		return configs.PolarPlanProductIDSoloYearly
-	}
-
-	panic(fmt.Sprintf("invalid plan type %s passed", *planType))
 }

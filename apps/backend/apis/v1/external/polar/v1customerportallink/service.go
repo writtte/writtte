@@ -39,8 +39,8 @@ func (s *service) perform(ctx context.Context, queries *QueryParams,
 
 	if *parsedResults.Status &&
 		*parsedResults.Code == constants.SubscriptionRetrieved {
-		portalLink, err := generatePortalLink(parsedResults.Data.CustomerID,
-			queries.ReturnURL)
+		portalLink, err := generatePortalLink(&accountCode,
+			parsedResults.Data.CustomerID, queries.ReturnURL)
 
 		if err != nil {
 			return parsedResults, nil, err
@@ -52,17 +52,22 @@ func (s *service) perform(ctx context.Context, queries *QueryParams,
 	return parsedResults, nil, nil
 }
 
-func generatePortalLink(customerID, returnURL *string) (*string, error) {
+func generatePortalLink(accountCode, customerID,
+	returnURL *string) (*string, error) {
 	httpClient := apicall.NewHTTPClient()
 
 	type requestBody struct {
-		CustomerID string `json:"customer_id"`
-		ReturnURL  string `json:"return_url"`
+		CustomerID string         `json:"customer_id"`
+		ReturnURL  string         `json:"return_url"`
+		Metadata   map[string]any `json:"metadata"`
 	}
 
 	body := requestBody{
 		CustomerID: *customerID,
 		ReturnURL:  *returnURL,
+		Metadata: map[string]any{
+			"account_code": *accountCode,
+		},
 	}
 
 	jsonBody, err := json.Marshal(body)
@@ -90,7 +95,7 @@ func generatePortalLink(customerID, returnURL *string) (*string, error) {
 	}
 
 	var portalResponse struct {
-		URL string `json:"url"`
+		CustomerPortalURL string `json:"customer_portal_url"`
 	}
 
 	if err := json.Unmarshal([]byte(response.Body),
@@ -98,5 +103,5 @@ func generatePortalLink(customerID, returnURL *string) (*string, error) {
 		return nil, err
 	}
 
-	return &portalResponse.URL, nil
+	return &portalResponse.CustomerPortalURL, nil
 }
