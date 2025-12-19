@@ -47,6 +47,10 @@
     "customerportallink",
     "apicall",
     "APIURL",
-    "checkoutsessionlink"
+    "checkoutsessionlink",
+    "datarace",
+    "errorf",
+    "blocklist",
+    "waitgroup"
   ]
 }
