@@ -1,0 +1,74 @@
+.error-message-overlay {
+  align-items: center;
+  background: var(--layout-bg--authentication);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+  z-index: var(--z-index-overlay-error-message);
+}
+
+.error-message-logo {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  height: 48px;
+  justify-content: center;
+  left: 0;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  svg path {
+    fill: var(--component-error-message-text--title);
+  }
+}
+
+.error-message {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  width: 80%;
+}
+
+.error-message__title {
+  align-items: center;
+  align-self: stretch;
+  color: var(--component-error-message-text--title);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 8px;
+  justify-content: center;
+  line-height: 40px;
+  padding: 8px;
+  text-align: center;
+}
+
+.error-message__description {
+  align-items: center;
+  align-self: stretch;
+  color: var(--component-error-message-text--description);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  gap: 8px;
+  justify-content: center;
+  line-height: 24px;
+  padding: 8px;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .error-message {
+    width: 100%;
+    padding-inline: 24px;
+  }
+}

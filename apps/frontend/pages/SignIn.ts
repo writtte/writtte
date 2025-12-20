@@ -6,7 +6,7 @@ import { PATHS } from '../constants/paths';
 import { signInToAccount } from '../modules/signIn/signInToAccount';
 import { langKeys } from '../translations/keys';
 
-const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
+const SignInPage = async (): Promise<HTMLElement> => {
   const { element, inputs, button } = AuthenticationForm({
     title: langKeys().PageSignInTextTitle,
     subtitle: langKeys().PageSignInTextSubtitle,
@@ -18,7 +18,7 @@ const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
         inlineButton: undefined,
         statusText: undefined,
         type: InputType.TEXT,
-        size: InputSize.LARGE,
+        size: InputSize.MEDIUM,
         isFullWidth: true,
         onChange: undefined,
         onSubmit: async (): Promise<void> => await submitForm(),
@@ -29,12 +29,12 @@ const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
         placeholderText: langKeys().InputPlaceholderPassword,
         inlineButton: {
           id: 'button__bmhshgsavs',
-          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+          icon: FlatIcon(FlatIconName._18_EYE),
           onClick: () => togglePasswordVisibility(),
         },
         statusText: undefined,
         type: InputType.PASSWORD,
-        size: InputSize.LARGE,
+        size: InputSize.MEDIUM,
         isFullWidth: true,
         onChange: undefined,
         onSubmit: async (): Promise<void> => await submitForm(),
@@ -80,14 +80,12 @@ const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
     const inputElement = inputs.input__jxdvdzvckn;
     if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
       inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+        FlatIcon(FlatIconName._18_EYE_CLOSED),
       );
 
       inputElement.changeInputType(InputType.TEXT);
     } else {
-      inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-      );
+      inputElement.changeInlineButtonIcon(FlatIcon(FlatIconName._18_EYE));
       inputElement.changeInputType(InputType.PASSWORD);
     }
   };
@@ -95,4 +93,4 @@ const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
   return element;
 };
 
-export { AuthenticationSignInPage };
+export { SignInPage };

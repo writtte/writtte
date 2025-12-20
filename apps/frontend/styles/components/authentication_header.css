@@ -1,0 +1,16 @@
+.authentication-header {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  height: 48px;
+  justify-content: center;
+  left: 0;
+  padding: 8px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  svg path {
+    fill: var(--component-authentication-header-logo);
+  }
+}

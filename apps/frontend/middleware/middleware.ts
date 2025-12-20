@@ -61,8 +61,8 @@ const setupMiddleware = async (): Promise<void> => {
         alertController.showAlert(
           {
             id: 'alert__gchsirikpj',
-            title: langKeys().AlertMiddlewareNeedSignInDescription,
-            description: langKeys().AlertMiddlewareNeedSignInTitle,
+            title: langKeys().AlertMiddlewareNeedSignInTitle,
+            description: langKeys().AlertMiddlewareNeedSignInDescription,
           },
           ALERT_TIMEOUT.SHORT,
         );

@@ -6,7 +6,7 @@ import { LINKS } from '../constants/links';
 import { createUserAccount } from '../modules/signUp/createAccount';
 import { langKeys } from '../translations/keys';
 
-const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
+const SignUpCreatePage = async (): Promise<HTMLElement> => {
   const { element, inputs, button } = AuthenticationForm({
     title: langKeys().PageSignUpCreateTextTitle,
     subtitle: langKeys().PageSignUpCreateTextSubtitle,
@@ -18,7 +18,7 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
         inlineButton: undefined,
         statusText: undefined,
         type: InputType.TEXT,
-        size: InputSize.LARGE,
+        size: InputSize.MEDIUM,
         isFullWidth: true,
         onChange: undefined,
         onSubmit: async (): Promise<void> => await submitForm(),
@@ -29,12 +29,12 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
         placeholderText: langKeys().InputPlaceholderPassword,
         inlineButton: {
           id: 'button__rsymixozeh',
-          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+          icon: FlatIcon(FlatIconName._18_EYE),
           onClick: () => togglePasswordVisibility(),
         },
         statusText: undefined,
         type: InputType.PASSWORD,
-        size: InputSize.LARGE,
+        size: InputSize.MEDIUM,
         isFullWidth: true,
         onChange: undefined,
         onSubmit: async (): Promise<void> => await submitForm(),
@@ -45,12 +45,12 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
         placeholderText: langKeys().InputPlaceholderPasswordConfirm,
         inlineButton: {
           id: 'button__mgxqcajcwa',
-          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+          icon: FlatIcon(FlatIconName._18_EYE),
           onClick: () => togglePasswordConfirmVisibility(),
         },
         statusText: undefined,
         type: InputType.PASSWORD,
-        size: InputSize.LARGE,
+        size: InputSize.MEDIUM,
         isFullWidth: true,
         onChange: undefined,
         onSubmit: async (): Promise<void> => await submitForm(),
@@ -88,14 +88,12 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
     const inputElement = inputs.input__thsdzupune;
     if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
       inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+        FlatIcon(FlatIconName._18_EYE_CLOSED),
       );
 
       inputElement.changeInputType(InputType.TEXT);
     } else {
-      inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-      );
+      inputElement.changeInlineButtonIcon(FlatIcon(FlatIconName._18_EYE));
       inputElement.changeInputType(InputType.PASSWORD);
     }
   };
@@ -119,4 +117,4 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
   return element;
 };
 
-export { AuthenticationSignUpCreatePage };
+export { SignUpCreatePage };

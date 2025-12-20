@@ -2,14 +2,14 @@ import type { TRoute } from './utils/routes/routes';
 import { PATHS } from './constants/paths';
 import { AuthenticationLayout } from './layout/authentication';
 import { DashboardLayout } from './layout/dashboard';
-import { AuthenticationSignInPage } from './pages/AuthenticationSignIn';
-import { AuthenticationSignInEmailPage } from './pages/AuthenticationSignInEmail';
-import { AuthenticationSignInEmailCheckPage } from './pages/AuthenticationSignInEmailCheck';
-import { AuthenticationSignUpPage } from './pages/AuthenticationSignUp';
-import { AuthenticationSignUpCreatePage } from './pages/AuthenticationSignUpCreate';
 import { EditorPage } from './pages/Editor';
 import { NotFoundPage } from './pages/NotFound';
 import { OverviewPage } from './pages/Overview';
+import { SignInPage } from './pages/SignIn';
+import { SignInEmailPage } from './pages/SignInEmail';
+import { SignInEmailCheckPage } from './pages/SignInEmailCheck';
+import { SignUpPage } from './pages/SignUp';
+import { SignUpCreatePage } from './pages/SignUpCreate';
 import { ValidateEmailUpdatePage } from './pages/ValidateEmailUpdate';
 
 const defaultRoutes: TRoute[] = [
@@ -17,31 +17,31 @@ const defaultRoutes: TRoute[] = [
     path: PATHS.SIGN_UP,
     title: 'Sign Up | Writtte',
     layout: AuthenticationLayout,
-    view: async () => await AuthenticationSignUpPage(),
+    view: async () => await SignUpPage(),
   },
   {
     path: PATHS.SIGN_UP_CREATE,
     title: 'Create Your Account | Writtte',
     layout: AuthenticationLayout,
-    view: async () => await AuthenticationSignUpCreatePage(),
+    view: async () => await SignUpCreatePage(),
   },
   {
     path: PATHS.SIGN_IN,
     title: 'Sign In | Writtte',
     layout: AuthenticationLayout,
-    view: async () => await AuthenticationSignInPage(),
+    view: async () => await SignInPage(),
   },
   {
     path: PATHS.SIGN_IN_EMAIL,
     title: 'Sign In with Email | Writtte',
     layout: AuthenticationLayout,
-    view: async () => await AuthenticationSignInEmailPage(),
+    view: async () => await SignInEmailPage(),
   },
   {
     path: PATHS.SIGN_IN_CHECK,
     title: 'Checking Magic Link Access... | Writtte',
     layout: AuthenticationLayout,
-    view: async () => await AuthenticationSignInEmailCheckPage(),
+    view: async () => await SignInEmailCheckPage(),
   },
   {
     path: PATHS.OVERVIEW,

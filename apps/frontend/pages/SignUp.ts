@@ -6,7 +6,7 @@ import { PATHS } from '../constants/paths';
 import { getSignUpInvitation } from '../modules/signUp/getInvitation';
 import { langKeys } from '../translations/keys';
 
-const AuthenticationSignUpPage = async (): Promise<HTMLElement> => {
+const SignUpPage = async (): Promise<HTMLElement> => {
   const { element, inputs, button } = AuthenticationForm({
     title: langKeys().PageSignUpTextTitle,
     subtitle: langKeys().PageSignUpTextSubtitle,
@@ -18,7 +18,7 @@ const AuthenticationSignUpPage = async (): Promise<HTMLElement> => {
         inlineButton: undefined,
         statusText: undefined,
         type: InputType.EMAIL,
-        size: InputSize.LARGE,
+        size: InputSize.MEDIUM,
         isFullWidth: true,
         onChange: undefined,
         onSubmit: async (): Promise<void> => await submitForm(),
@@ -60,4 +60,4 @@ const AuthenticationSignUpPage = async (): Promise<HTMLElement> => {
   return element;
 };
 
-export { AuthenticationSignUpPage };
+export { SignUpPage };

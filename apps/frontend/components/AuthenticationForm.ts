@@ -33,9 +33,9 @@ const AuthenticationForm = (opts: TOptions): TReturnAuthenticationForm => {
   const containerDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
+  const footerDiv = document.createElement('div');
   const titleDiv = document.createElement('div');
   const subtitleDiv = document.createElement('div');
-  const inputsDiv = document.createElement('div');
   const legalNoteDiv = document.createElement('div');
   const linksDiv = document.createElement('div');
   const leftLinkSpan = document.createElement('span');
@@ -45,10 +45,10 @@ const AuthenticationForm = (opts: TOptions): TReturnAuthenticationForm => {
   formDiv.classList.add('authentication-form');
   containerDiv.classList.add('authentication-form__container');
   headerDiv.classList.add('authentication-form__header');
-  contentDiv.classList.add('authentication-form_content');
+  contentDiv.classList.add('authentication-form__content');
+  footerDiv.classList.add('authentication-form__footer');
   titleDiv.classList.add('authentication-form__title');
   subtitleDiv.classList.add('authentication-form__subtitle');
-  inputsDiv.classList.add('authentication-form__inputs');
   legalNoteDiv.classList.add('authentication-form__legal-note');
   linksDiv.classList.add('authentication-form__links');
   leftLinkSpan.classList.add(
@@ -67,9 +67,9 @@ const AuthenticationForm = (opts: TOptions): TReturnAuthenticationForm => {
   const button = AuthenticationButton(opts.button);
 
   linksDiv.append(leftLinkSpan, middleLinkSpan, rightLinkSpan);
-  contentDiv.append(inputsDiv, legalNoteDiv, button.element, linksDiv);
+  footerDiv.append(legalNoteDiv, button.element, linksDiv);
   headerDiv.append(titleDiv, subtitleDiv);
-  containerDiv.append(headerDiv, contentDiv);
+  containerDiv.append(headerDiv, contentDiv, footerDiv);
   formDiv.appendChild(containerDiv);
 
   titleDiv.textContent = opts.title;
@@ -80,11 +80,11 @@ const AuthenticationForm = (opts: TOptions): TReturnAuthenticationForm => {
     for (let i = 0; i < opts.inputs.length; i++) {
       const inputElement = Input(opts.inputs[i]);
 
-      inputsDiv.appendChild(inputElement.element);
+      contentDiv.appendChild(inputElement.element);
       inputs[opts.inputs[i].id] = inputElement;
     }
   } else {
-    inputsDiv.remove();
+    contentDiv.remove();
   }
 
   if (opts.legalNote !== undefined) {
