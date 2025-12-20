@@ -1,3 +1,6 @@
+import { AnimatedIcon, AnimatedIconName } from './AnimatedIcon';
+import { FlatIcon, FlatIconName } from './FlatIcon';
+
 type TOptions = {
   id: string;
   text: string;
@@ -21,6 +24,8 @@ const LoadingIndicator = (opts: TOptions): TReturnLoadingIndicator => {
   spinnerSpan.classList.add('loading-indicator__spinner');
   textSpan.classList.add('loading-indicator__text');
 
+  logoDiv.appendChild(FlatIcon(FlatIconName._26_WRITTTE_LOGO));
+  spinnerSpan.appendChild(AnimatedIcon(AnimatedIconName._18_CIRCLE_SPINNER));
   indicatorDiv.append(spinnerSpan, textSpan);
 
   textSpan.textContent = opts.text;
