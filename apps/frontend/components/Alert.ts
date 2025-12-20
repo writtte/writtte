@@ -1,5 +1,5 @@
 import { setTestId } from '../utils/dom/testId';
-import { FlatIcon, FlatIconName } from './FlatIcon';
+import { CloseButton } from './CloseButton';
 
 type TOptions = {
   id: string;
@@ -16,17 +16,21 @@ const Alert = (opts: TOptions): TReturnAlert => {
   const contentDiv = document.createElement('div');
   const titleDiv = document.createElement('div');
   const descriptionDiv = document.createElement('div');
-  const closeButton = document.createElement('button');
 
   alertDiv.classList.add('alert');
   contentDiv.classList.add('alert__content');
   titleDiv.classList.add('alert__title');
   descriptionDiv.classList.add('alert__description');
-  closeButton.classList.add('alert__close-button');
 
-  closeButton.appendChild(FlatIcon(FlatIconName._SAMPLE_CIRCLE));
+  const closeButtonElement = CloseButton({
+    id: `${opts.id}-close-button`,
+    onClick: (): void => {
+      alertDiv.dispatchEvent(new CustomEvent('alertRemove'));
+    },
+  });
+
   contentDiv.append(titleDiv, descriptionDiv);
-  alertDiv.append(contentDiv, closeButton);
+  alertDiv.append(contentDiv, closeButtonElement.element);
 
   titleDiv.textContent = opts.title;
 
@@ -38,15 +42,6 @@ const Alert = (opts: TOptions): TReturnAlert => {
 
   alertDiv.id = opts.id;
   setTestId(alertDiv, opts.id);
-
-  setTestId(closeButton, `${opts.id}-close-button`);
-
-  closeButton.addEventListener('click', (e: PointerEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    alertDiv.dispatchEvent(new CustomEvent('alertRemove'));
-  });
 
   return {
     element: alertDiv,

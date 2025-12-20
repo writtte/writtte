@@ -1,0 +1,42 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: `!important` is required in this script */
+
+* {
+  outline: 1px solid rgba(255, 0, 0, 0.3) !important;
+}
+
+*:hover {
+  outline: 2px solid rgba(255, 0, 0, 0.8) !important;
+}
+
+div {
+  outline-color: rgba(255, 0, 0, 0.5) !important;
+}
+
+section,
+article,
+aside,
+nav,
+header,
+footer {
+  outline-color: rgba(0, 255, 0, 0.5) !important;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  outline-color: rgba(0, 0, 255, 0.5) !important;
+}
+
+span,
+a,
+button {
+  outline-color: rgba(255, 255, 0, 0.5) !important;
+}
+
+* {
+  box-shadow: inset 0 0 0 1px rgba(255, 0, 0, 0.1) !important;
+}

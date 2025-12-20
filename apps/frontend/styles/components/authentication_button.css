@@ -1,0 +1,108 @@
+.authentication-button {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.authentication-button__status-text {
+  width: 100%;
+}
+
+.authentication-button__status-text.show {
+  display: flex;
+}
+
+.authentication-button__status-text.hide {
+  display: none;
+}
+
+.authentication-button__icon {
+  aspect-ratio: 1 / 1;
+  height: 18px;
+  width: 18px;
+
+  svg path {
+    fill: var(--component-button-authentication-text);
+  }
+}
+
+.authentication-button__icon.show {
+  display: flex;
+}
+
+.authentication-button__icon.hide {
+  display: none;
+}
+
+.authentication-button__text {
+  color: var(--component-button-authentication-text);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+.authentication-button__button {
+  align-items: center;
+  align-self: stretch;
+  background: var(--component-button-authentication-bg);
+  border-radius: 32px;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  outline: none;
+  padding: 0 24px;
+
+  &:hover {
+    background: var(--component-button-authentication-bg---hover);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    border-radius: 32px;
+    outline-offset: 2px;
+    outline: 2px dashed var(--common-focus-neutral);
+  }
+
+  &:disabled {
+    background: var(--component-button-authentication-bg---disable);
+    cursor: not-allowed;
+    pointer-events: none;
+
+    .authentication-button__icon {
+      svg path {
+        fill: var(--component-button-authentication-text---disable);
+      }
+    }
+
+    .authentication-button__text {
+      color: var(--component-button-authentication-text---disable);
+    }
+  }
+}
+
+.authentication-button__button--loading {
+  background: var(--component-button-authentication-bg---loading);
+  cursor: wait;
+  pointer-events: none;
+
+  &:hover,
+  &:active,
+  &:disabled {
+    background: var(--component-button-authentication-bg---loading);
+    cursor: wait;
+    pointer-events: none;
+
+    .authentication-button__icon {
+      svg path {
+        fill: var(--component-button-authentication-text);
+      }
+    }
+  }
+}

@@ -11,7 +11,6 @@ const InputType = {
 } as const;
 
 const InputSize = {
-  LARGE: 'LARGE',
   MEDIUM: 'MEDIUM',
   SMALL: 'SMALL',
 } as const;

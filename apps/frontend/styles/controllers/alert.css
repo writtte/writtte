@@ -1,0 +1,17 @@
+.alert-container {
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: fixed;
+  right: 24px;
+  z-index: var(--z-index-controller-alert);
+}
+
+@media screen and (max-width: 480px) {
+  .alert-container {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+  }
+}

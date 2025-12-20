@@ -17,7 +17,7 @@ const AuthenticationSignInEmailPage = async (): Promise<HTMLElement> => {
         inlineButton: undefined,
         statusText: undefined,
         type: InputType.EMAIL,
-        size: InputSize.LARGE,
+        size: InputSize.MEDIUM,
         isFullWidth: true,
         onChange: undefined,
         onSubmit: async (): Promise<void> => await submitForm(),
