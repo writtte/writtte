@@ -25,10 +25,11 @@
 /* Components */
 
 @import "./components/alert.css";
-@import "./components/close_button.css";
+@import "./components/animated_icon.css";
 @import "./components/authentication_button.css";
 @import "./components/authentication_form.css";
 @import "./components/authentication_header.css";
+@import "./components/close_button.css";
 @import "./components/error.css";
 @import "./components/input.css";
 @import "./components/loading_indicator.css";
