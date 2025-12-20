@@ -1,0 +1,39 @@
+.close-button {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  outline: none;
+  width: 32px;
+
+  svg {
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-shrink: 0;
+    height: 18px;
+    justify-content: center;
+    width: 18px;
+
+    path {
+      fill: var(--component-button-close-icon);
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    svg path {
+      fill: var(--component-button-close-icon---hover);
+    }
+  }
+
+  &:focus-visible {
+    outline: 1px dashed var(--common-focus-neutral);
+  }
+}
