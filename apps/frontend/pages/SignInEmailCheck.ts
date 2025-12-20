@@ -7,7 +7,7 @@ import { navigateHard } from '../utils/routes/helpers';
 import { decodeArrayParam } from '../utils/string/decodeArrayParam';
 import { isExpired } from '../utils/time/isExpired';
 
-const AuthenticationSignInEmailCheckPage = async (): Promise<HTMLElement> => {
+const SignInEmailCheckPage = async (): Promise<HTMLElement> => {
   if (!checkParams()) {
     return ErrorMessage({
       title: langKeys().ErrorMessageNotFoundTitle,
@@ -68,4 +68,4 @@ const checkParams = (): boolean => {
   return true;
 };
 
-export { AuthenticationSignInEmailCheckPage };
+export { SignInEmailCheckPage };

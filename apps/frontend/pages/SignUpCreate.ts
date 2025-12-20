@@ -6,7 +6,7 @@ import { LINKS } from '../constants/links';
 import { createUserAccount } from '../modules/signUp/createAccount';
 import { langKeys } from '../translations/keys';
 
-const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
+const SignUpCreatePage = async (): Promise<HTMLElement> => {
   const { element, inputs, button } = AuthenticationForm({
     title: langKeys().PageSignUpCreateTextTitle,
     subtitle: langKeys().PageSignUpCreateTextSubtitle,
@@ -117,4 +117,4 @@ const AuthenticationSignUpCreatePage = async (): Promise<HTMLElement> => {
   return element;
 };
 
-export { AuthenticationSignUpCreatePage };
+export { SignUpCreatePage };

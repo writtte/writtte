@@ -5,7 +5,7 @@ import { PATHS } from '../constants/paths';
 import { getMagicSignInLink } from '../modules/signIn/getMagicSignInLink';
 import { langKeys } from '../translations/keys';
 
-const AuthenticationSignInEmailPage = async (): Promise<HTMLElement> => {
+const SignInEmailPage = async (): Promise<HTMLElement> => {
   const { element, inputs, button } = AuthenticationForm({
     title: langKeys().PageSignInEmailTextTitle,
     subtitle: langKeys().PageSignInEmailTextSubtitle,
@@ -52,4 +52,4 @@ const AuthenticationSignInEmailPage = async (): Promise<HTMLElement> => {
   return element;
 };
 
-export { AuthenticationSignInEmailPage };
+export { SignInEmailPage };

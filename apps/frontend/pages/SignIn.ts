@@ -6,7 +6,7 @@ import { PATHS } from '../constants/paths';
 import { signInToAccount } from '../modules/signIn/signInToAccount';
 import { langKeys } from '../translations/keys';
 
-const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
+const SignInPage = async (): Promise<HTMLElement> => {
   const { element, inputs, button } = AuthenticationForm({
     title: langKeys().PageSignInTextTitle,
     subtitle: langKeys().PageSignInTextSubtitle,
@@ -93,4 +93,4 @@ const AuthenticationSignInPage = async (): Promise<HTMLElement> => {
   return element;
 };
 
-export { AuthenticationSignInPage };
+export { SignInPage };
