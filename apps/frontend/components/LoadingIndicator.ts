@@ -10,11 +10,13 @@ type TReturnLoadingIndicator = {
 
 const LoadingIndicator = (opts: TOptions): TReturnLoadingIndicator => {
   const overlayDiv = document.createElement('div');
+  const logoDiv = document.createElement('div');
   const indicatorDiv = document.createElement('div');
   const spinnerSpan = document.createElement('span');
   const textSpan = document.createElement('span');
 
   overlayDiv.classList.add('loading-indicator-overlay');
+  logoDiv.classList.add('loading-indicator-logo');
   indicatorDiv.classList.add('loading-indicator');
   spinnerSpan.classList.add('loading-indicator__spinner');
   textSpan.classList.add('loading-indicator__text');
@@ -25,13 +27,14 @@ const LoadingIndicator = (opts: TOptions): TReturnLoadingIndicator => {
 
   if (!opts.isOverlay) {
     overlayDiv.remove();
+    logoDiv.remove();
 
     return {
       element: indicatorDiv,
     };
   }
 
-  overlayDiv.appendChild(indicatorDiv);
+  overlayDiv.append(logoDiv, indicatorDiv);
 
   return {
     element: overlayDiv,
