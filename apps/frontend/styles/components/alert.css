@@ -29,6 +29,7 @@
   justify-content: space-between;
   line-height: 20px;
   padding: 8px;
+  width: 100%;
 }
 
 .alert__description {
@@ -41,9 +42,9 @@
   font-style: normal;
   font-weight: 400;
   gap: 8px;
-  justify-content: center;
   line-height: 20px;
   padding: 8px;
+  width: 100%;
 }
 
 @media screen and (max-width: 480px) {
