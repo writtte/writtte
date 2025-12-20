@@ -25,7 +25,7 @@ const ErrorMessage = (opts: TOptions): HTMLElement => {
   titleDiv.textContent = opts.title;
   descriptionDiv.textContent = opts.description;
 
-  return messageDiv;
+  return overlayDiv;
 };
 
 export type { TOptions as TErrorMessageOptions };
