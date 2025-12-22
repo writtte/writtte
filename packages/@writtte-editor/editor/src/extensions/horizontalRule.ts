@@ -5,6 +5,7 @@ import {
   InputRule,
   Node,
   type RawCommands,
+  type SingleCommands,
   canInsertNode,
   isNodeSelection,
   mergeAttributes,
@@ -163,7 +164,7 @@ const HorizontalLineExtension: AnyExtension =
           }: {
             state: EditorState;
             range: { from: number; to: number };
-            commands: any;
+            commands: SingleCommands;
           }) => {
             const { $from } = state.selection;
 
