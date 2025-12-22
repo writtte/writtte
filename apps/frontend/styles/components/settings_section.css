@@ -1,0 +1,58 @@
+.settings-section {
+  align-items: center;
+  background: var(--component-settings-modal-item-bg);
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+
+  &:hover {
+    background: var(--component-settings-modal-item-bg---hover);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: 1px dashed var(--common-focus-neutral);
+  }
+}
+
+.settings-section__icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--component-settings-modal-item-text);
+    }
+  }
+}
+
+.settings-section__text {
+  color: var(--component-settings-modal-item-text);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  user-select: none;
+}
+
+.settings-section--selected {
+  background: var(--component-settings-modal-item-bg---selected);
+  pointer-events: none;
+
+  &:focus-visible {
+    outline: none;
+  }
+}

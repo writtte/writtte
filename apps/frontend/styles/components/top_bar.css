@@ -1,0 +1,70 @@
+.top-bar {
+  align-items: center;
+  border-bottom: 1px solid var(--component-top-bar-border);
+  display: flex;
+  height: 48px;
+  justify-content: space-between;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.top-bar__logo {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    height: 26px;
+    width: 26px;
+
+    path {
+      fill: var(--component-top-bar-logo);
+    }
+  }
+}
+
+.top-bar__left {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.top-bar__right {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  justify-content: flex-end;
+}
+
+.top-bar__badge {
+  align-items: center;
+  border-radius: 32px;
+  display: inline-flex;
+  font-size: 12px;
+  font-style: normal;
+  font-variant: all-small-caps;
+  font-weight: 500;
+  gap: 8px;
+  height: 24px;
+  justify-content: center;
+  line-height: normal;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.top-bar__badge--blue {
+  background: var(--component-top-bar-badge-bg--blue);
+  color: var(--component-top-bar-badge-text);
+}
+
+.top-bar__left-buttons,
+.top-bar__right-buttons {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,22 @@
+.dashboard-layout {
+  align-items: flex-start;
+  display: flex;
+  height: 100vh;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.dashboard-layout__container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.dashboard-layout__page {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
