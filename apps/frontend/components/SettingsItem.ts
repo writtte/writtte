@@ -97,7 +97,9 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
 
   itemDiv.classList.add('settings-item');
   headerDiv.classList.add('settings-item__header');
-  contentDiv.classList.add('settings-item');
+  titleDiv.classList.add('settings-item__title');
+  descriptionDiv.classList.add('settings-item__description');
+  contentDiv.classList.add('settings-item__content');
 
   headerDiv.append(titleDiv, descriptionDiv);
   itemDiv.append(headerDiv, contentDiv);
@@ -160,7 +162,7 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
       const inputElement = Input({
         ...opts.item.input,
         size: InputSize.SMALL,
-        isFullWidth: false,
+        isFullWidth: true,
       });
 
       contentDiv.appendChild(inputElement.element);
@@ -178,7 +180,7 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
         const inputElement = Input({
           ...inputProp,
           size: InputSize.SMALL,
-          isFullWidth: false,
+          isFullWidth: true,
         });
 
         contentDiv.appendChild(inputElement.element);
