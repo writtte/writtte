@@ -21,12 +21,7 @@ type TReturnEditorFixedMenu = {
 
 const EditorFixedMenu = (opts: TOptions): TReturnEditorFixedMenu => {
   const menu = document.createElement('menu');
-  const itemsDiv = document.createElement('div');
-
   menu.classList.add('editor-fixed-menu');
-  itemsDiv.classList.add('editor-fixed-menu__items');
-
-  menu.appendChild(itemsDiv);
 
   const itemReturnsMap: { [key: string]: TReturnEditorFixedMenuItem } = {};
 
@@ -40,10 +35,10 @@ const EditorFixedMenu = (opts: TOptions): TReturnEditorFixedMenu => {
       const dividerDiv = document.createElement('div');
       dividerDiv.classList.add('editor-fixed-menu__divider');
 
-      itemsDiv.appendChild(dividerDiv);
+      menu.appendChild(dividerDiv);
     }
 
-    itemsDiv.appendChild(itemElement.element);
+    menu.appendChild(itemElement.element);
 
     if (
       opts.items[i].hasRightDivider !== undefined &&
@@ -52,7 +47,7 @@ const EditorFixedMenu = (opts: TOptions): TReturnEditorFixedMenu => {
       const dividerDiv = document.createElement('div');
       dividerDiv.classList.add('editor-fixed-menu__divider');
 
-      itemsDiv.appendChild(dividerDiv);
+      menu.appendChild(dividerDiv);
     }
 
     itemReturnsMap[opts.items[i].id] = itemElement;
