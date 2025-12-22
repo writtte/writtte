@@ -1,12 +1,18 @@
 import {
   SettingsModal,
-  type TInternalSettingsModal,
   type TReturnSettingsModal,
-  type TSettingsModalProps,
+  type TSettingsModalOptions,
 } from '../components/SettingsModal';
 
+type TInternalSettingsModal = {
+  id: string;
+  props: TSettingsModalOptions;
+  modalReturn: TReturnSettingsModal;
+  createdAt: number;
+};
+
 type TReturnSettingsModalController = {
-  showModal: (props: TSettingsModalProps) => TReturnSettingsModal;
+  showModal: (props: TSettingsModalOptions) => TReturnSettingsModal;
   closeModal: (id: string) => void;
   getModal: () => TInternalSettingsModal | undefined;
   getModalById: (id: string) => TReturnSettingsModal | undefined;
@@ -31,10 +37,14 @@ const SettingsModalController = (): TReturnSettingsModalController => {
     if (currentModal && currentModal.id === id) {
       currentModal.modalReturn.element.remove();
       currentModal = null;
+
+      if (containerDiv) {
+        containerDiv.style.display = 'none';
+      }
     }
   };
 
-  const showModal = (props: TSettingsModalProps): TReturnSettingsModal => {
+  const showModal = (props: TSettingsModalOptions): TReturnSettingsModal => {
     if (currentModal) {
       currentModal.modalReturn.element.remove();
       currentModal = null;
@@ -42,7 +52,11 @@ const SettingsModalController = (): TReturnSettingsModalController => {
 
     ensureContainer();
 
-    const modalProps: TSettingsModalProps = {
+    if (containerDiv) {
+      containerDiv.style.display = '';
+    }
+
+    const modalProps: TSettingsModalOptions = {
       ...props,
     };
 
@@ -67,8 +81,15 @@ const SettingsModalController = (): TReturnSettingsModalController => {
       }
     });
 
+    modalReturn.element.addEventListener('modalClose', () => {
+      closeModal(props.id);
+    });
+
     return modalReturn;
   };
+
+  const getModal = (): TInternalSettingsModal | undefined =>
+    currentModal ?? undefined;
 
   const getModalById = (id: string): TReturnSettingsModal | undefined => {
     if (currentModal?.id === id) {
@@ -81,11 +102,11 @@ const SettingsModalController = (): TReturnSettingsModalController => {
   return {
     showModal,
     closeModal,
-    getModal(): TInternalSettingsModal | undefined {
-      return currentModal ?? undefined;
-    },
+    getModal,
     getModalById,
   };
 };
+
+export type { TInternalSettingsModal };
 
 export { SettingsModalController };
