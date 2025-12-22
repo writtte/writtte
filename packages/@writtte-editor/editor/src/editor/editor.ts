@@ -2,14 +2,20 @@ import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
 import type { TEditorSchema } from './schema';
 import { type AnyExtension, Editor } from '@tiptap/core';
+import { BoldExtension } from '../extensions/bold';
 import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
+import { ItalicExtension } from '../extensions/italic';
 import { LinkExtension } from '../extensions/link';
 import { ListItemExtension } from '../extensions/listItem';
 import { NumberListExtension } from '../extensions/numberList';
 import { ParagraphExtension } from '../extensions/paragraph';
+import { StrikethroughExtension } from '../extensions/strikethrough';
+import { SubscriptExtension } from '../extensions/subscript';
+import { SuperscriptExtension } from '../extensions/superscript';
 import { TextExtension } from '../extensions/text';
+import { UnderlineExtension } from '../extensions/underline';
 import { UndoRedoExtension } from '../extensions/undoRedo';
 
 type TOptions = {
@@ -53,6 +59,40 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   if (opts.options.undoRedo.isEnabled) {
     extensions.push(
       UndoRedoExtension.configure(opts.options.undoRedo ?? undefined),
+    );
+  }
+
+  if (opts.options.bold.isEnabled) {
+    extensions.push(BoldExtension.configure(opts.options.bold ?? undefined));
+  }
+
+  if (opts.options.italic.isEnabled) {
+    extensions.push(
+      ItalicExtension.configure(opts.options.italic ?? undefined),
+    );
+  }
+
+  if (opts.options.strikeThrough.isEnabled) {
+    extensions.push(
+      StrikethroughExtension.configure(opts.options.strikeThrough ?? undefined),
+    );
+  }
+
+  if (opts.options.subscript.isEnabled) {
+    extensions.push(
+      SubscriptExtension.configure(opts.options.subscript ?? undefined),
+    );
+  }
+
+  if (opts.options.superScript.isEnabled) {
+    extensions.push(
+      SuperscriptExtension.configure(opts.options.superScript ?? undefined),
+    );
+  }
+
+  if (opts.options.underline.isEnabled) {
+    extensions.push(
+      UnderlineExtension.configure(opts.options.underline ?? undefined),
     );
   }
 

@@ -8,6 +8,12 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   listItem: { isEnabled: true },
   undoRedo: { isEnabled: true },
   link: { isEnabled: true },
+  bold: { isEnabled: true },
+  italic: { isEnabled: true },
+  strikeThrough: { isEnabled: true },
+  subscript: { isEnabled: true },
+  superScript: { isEnabled: true },
+  underline: { isEnabled: true },
 });
 
 export { setupEditorExtensionOptions };
