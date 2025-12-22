@@ -1,6 +1,8 @@
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
+import { PATHS } from '../../constants/paths';
 import { topBarInstance } from '../../controller/topBar';
 import { buildError } from '../../helpers/error/build';
+import { navigate } from '../../utils/routes/routes';
 import { openSettingsModal } from '../settings/openSettingsModal';
 
 const setupEditorTopBar = async (): Promise<void> => {
@@ -12,8 +14,10 @@ const setupEditorTopBar = async (): Promise<void> => {
     {
       id: 'action_button__wzgexjekpk',
       icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-      onClick: (e: PointerEvent) => {
+      onClick: async (e: PointerEvent): Promise<void> => {
         e.preventDefault();
+
+        await navigate(PATHS.OVERVIEW);
       },
     },
   ]);
