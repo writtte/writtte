@@ -9,6 +9,7 @@ import type { TParagraphOptions } from '../extensions/paragraph';
 import type { TStrikethroughOptions } from '../extensions/strikethrough';
 import type { TSubscriptOptions } from '../extensions/subscript';
 import type { TSuperscriptOptions } from '../extensions/superscript';
+import type { TTrailingNodeOptions } from '../extensions/trailingNode';
 import type { TUnderlineOptions } from '../extensions/underline';
 import type { TUndoRedoOptions } from '../extensions/undoRedo';
 
@@ -26,6 +27,7 @@ type TExtensionOptions = {
   subscript: Partial<TSubscriptOptions> & { isEnabled: boolean };
   superScript: Partial<TSuperscriptOptions> & { isEnabled: boolean };
   underline: Partial<TUnderlineOptions> & { isEnabled: boolean };
+  trailingNode: Partial<TTrailingNodeOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };

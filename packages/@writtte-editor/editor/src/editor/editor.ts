@@ -62,6 +62,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     );
   }
 
+  if (opts.options.link.isEnabled) {
+    extensions.push(LinkExtension.configure(opts.options.link ?? undefined));
+  }
+
   if (opts.options.bold.isEnabled) {
     extensions.push(BoldExtension.configure(opts.options.bold ?? undefined));
   }
@@ -94,10 +98,6 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     extensions.push(
       UnderlineExtension.configure(opts.options.underline ?? undefined),
     );
-  }
-
-  if (opts.options.link.isEnabled) {
-    extensions.push(LinkExtension.configure(opts.options.link ?? undefined));
   }
 
   const _editor = new Editor({
