@@ -1,6 +1,7 @@
 import type { TBoldOptions } from '../extensions/bold';
 import type { TBulletListOptions } from '../extensions/bulletList';
 import type { THeadingOptions } from '../extensions/header';
+import type { TInlineCodeOptions } from '../extensions/inlineCode';
 import type { TItalicOptions } from '../extensions/italic';
 import type { TLinkOptions } from '../extensions/link';
 import type { TListItemOptions } from '../extensions/listItem';
@@ -28,6 +29,7 @@ type TExtensionOptions = {
   superScript: Partial<TSuperscriptOptions> & { isEnabled: boolean };
   underline: Partial<TUnderlineOptions> & { isEnabled: boolean };
   trailingNode: Partial<TTrailingNodeOptions> & { isEnabled: boolean };
+  inlineCode: Partial<TInlineCodeOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };

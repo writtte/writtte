@@ -54,6 +54,7 @@
     "waitgroup",
     "playfair",
     "textblock",
-    "Prosemirror"
+    "Prosemirror",
+    "exitable"
   ]
 }

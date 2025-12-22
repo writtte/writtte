@@ -6,6 +6,7 @@ import { BoldExtension } from '../extensions/bold';
 import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
+import { InlineCodeExtension } from '../extensions/inlineCode';
 import { ItalicExtension } from '../extensions/italic';
 import { LinkExtension } from '../extensions/link';
 import { ListItemExtension } from '../extensions/listItem';
@@ -97,6 +98,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   if (opts.options.underline.isEnabled) {
     extensions.push(
       UnderlineExtension.configure(opts.options.underline ?? undefined),
+    );
+  }
+
+  if (opts.options.inlineCode.isEnabled) {
+    extensions.push(
+      InlineCodeExtension.configure(opts.options.inlineCode ?? undefined),
     );
   }
 

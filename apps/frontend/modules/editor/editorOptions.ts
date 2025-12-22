@@ -15,6 +15,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   superScript: { isEnabled: true },
   underline: { isEnabled: true },
   trailingNode: { isEnabled: true },
+  inlineCode: { isEnabled: true },
 });
 
 export { setupEditorExtensionOptions };
