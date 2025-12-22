@@ -2,7 +2,11 @@ import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
 import type { TEditorSchema } from './schema';
 import { type AnyExtension, Editor } from '@tiptap/core';
+import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
+import { HeadingExtension } from '../extensions/header';
+import { ListItemExtension } from '../extensions/listItem';
+import { NumberListExtension } from '../extensions/numberList';
 import { ParagraphExtension } from '../extensions/paragraph';
 import { TextExtension } from '../extensions/text';
 
@@ -14,8 +18,34 @@ type TOptions = {
 const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const extensions: AnyExtension[] = [];
 
-  if (opts.options.paragraph.isEnabled) {
-    extensions.push(ParagraphExtension.configure(opts.options.paragraph));
+  if (opts.options.paragraph?.isEnabled) {
+    extensions.push(
+      ParagraphExtension.configure(opts.options.paragraph ?? undefined),
+    );
+  }
+
+  if (opts.options.header?.isEnabled) {
+    extensions.push(
+      HeadingExtension.configure(opts.options.header ?? undefined),
+    );
+  }
+
+  if (opts.options.bulletList.isEnabled) {
+    extensions.push(
+      BulletListExtension.configure(opts.options.bulletList ?? undefined),
+    );
+  }
+
+  if (opts.options.numberList.isEnabled) {
+    extensions.push(
+      NumberListExtension.configure(opts.options.numberList ?? undefined),
+    );
+  }
+
+  if (opts.options.listItem.isEnabled) {
+    extensions.push(
+      ListItemExtension.configure(opts.options.listItem ?? undefined),
+    );
   }
 
   const _editor = new Editor({

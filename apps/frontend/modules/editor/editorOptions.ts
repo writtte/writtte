@@ -1,13 +1,11 @@
 import type { TExtensionOptions } from '@writtte-editor/editor';
 
 const setupEditorExtensionOptions = (): TExtensionOptions => ({
-  paragraph: {
-    HTMLAttributes: {},
-    shortcutKeys: {
-      setParagraph: '',
-    },
-    isEnabled: true,
-  },
+  paragraph: { isEnabled: true },
+  header: { isEnabled: true },
+  bulletList: { isEnabled: true },
+  numberList: { isEnabled: true },
+  listItem: { isEnabled: true },
 });
 
 export { setupEditorExtensionOptions };
