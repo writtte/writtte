@@ -1,7 +1,9 @@
 import type { TEditorSchema } from '@writtte-editor/editor';
 import { Editor } from '../components/Editor';
+import { EditorFixedMenu } from '../components/EditorFixedMenu';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';
+import { setupEditorFixedMenuOptions } from '../modules/editor/editorFixedMenuOptions';
 import { setupEditorExtensionOptions } from '../modules/editor/editorOptions';
 import {
   getDocumentContentFromAPI,
@@ -34,15 +36,19 @@ const EditorPage = async (
   containerDiv.classList.add('editor-page__container');
   editorDiv.classList.add('editor-page__editor');
 
-  containerDiv.appendChild(editorDiv);
-  editorPageDiv.appendChild(containerDiv);
+  const editorFixedMenuElement = EditorFixedMenu({
+    id: 'editor_fixed_menu__tuaodnwhdq',
+    items: setupEditorFixedMenuOptions(),
+  });
 
   const editorElement = Editor({
     id: 'editor__oqvawzczdv',
     options: setupEditorExtensionOptions(),
   });
 
-  containerDiv.appendChild(editorElement.element);
+  containerDiv.append(editorFixedMenuElement.element, editorDiv);
+  editorDiv.appendChild(editorElement.element);
+  editorPageDiv.appendChild(containerDiv);
 
   const idbPromise = (async (): Promise<string | undefined> => {
     const { content } = await getDocumentContentFromIDB(documentCode);
