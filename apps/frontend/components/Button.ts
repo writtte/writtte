@@ -51,7 +51,7 @@ const Button = (opts: TOptions): TReturnButton => {
 
   button.classList.add(
     'button',
-    `button-${opts.color.toLowerCase()}`,
+    `button--${opts.color.toLowerCase()}`,
     `button--${opts.size.toLowerCase()}`,
   );
 
@@ -59,7 +59,7 @@ const Button = (opts: TOptions): TReturnButton => {
     button.classList.add('button--full-width');
   }
 
-  loadingIconSpan.classList.add('button__loading-icon');
+  loadingIconSpan.classList.add('button__loading-icon', 'hide');
   leftIconSpan.classList.add('button__icon');
   textSpan.classList.add('button__text');
   rightIconSpan.classList.add('button__icon');
@@ -93,6 +93,14 @@ const Button = (opts: TOptions): TReturnButton => {
       loadingIconSpan.classList.add('show');
       loadingIconSpan.classList.remove('hide');
 
+      if (opts.leftIcon && leftIconSpan.parentNode === button) {
+        leftIconSpan.classList.add('hide');
+      }
+
+      if (opts.rightIcon && rightIconSpan.parentNode === button) {
+        rightIconSpan.classList.add('hide');
+      }
+
       button.setAttribute('disabled', 'true');
 
       if (opts.loadingText) {
@@ -107,6 +115,14 @@ const Button = (opts: TOptions): TReturnButton => {
       loadingIconSpan.innerHTML = '';
       loadingIconSpan.classList.add('hide');
       loadingIconSpan.classList.remove('show');
+
+      if (opts.leftIcon && leftIconSpan.parentNode === button) {
+        leftIconSpan.classList.remove('hide');
+      }
+
+      if (opts.rightIcon && rightIconSpan.parentNode === button) {
+        rightIconSpan.classList.remove('hide');
+      }
 
       button.removeAttribute('disabled');
       button.classList.remove('button--loading');
