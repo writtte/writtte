@@ -28,13 +28,13 @@ type TOptions = {
 const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const extensions: AnyExtension[] = [];
 
-  if (opts.options.paragraph?.isEnabled) {
+  if (opts.options.paragraph.isEnabled) {
     extensions.push(
       ParagraphExtension.configure(opts.options.paragraph ?? undefined),
     );
   }
 
-  if (opts.options.header?.isEnabled) {
+  if (opts.options.header.isEnabled) {
     extensions.push(
       HeadingExtension.configure(opts.options.header ?? undefined),
     );
