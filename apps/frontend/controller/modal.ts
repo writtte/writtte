@@ -35,6 +35,13 @@ const ModalController = (): TReturnModalController => {
     }
   };
 
+  document.addEventListener('modal:close', (e: Event) => {
+    const customEvent = e as CustomEvent;
+    if (customEvent.detail?.id) {
+      closeModal(customEvent.detail.id);
+    }
+  });
+
   const closeModal = (id: string): void => {
     const modalToClose = modals.find((m) => m.id === id);
     if (modalToClose) {
@@ -48,6 +55,11 @@ const ModalController = (): TReturnModalController => {
       }
 
       modals = newModals;
+
+      if (containerDiv) {
+        containerDiv.remove();
+        containerDiv = null;
+      }
     }
   };
 
@@ -78,15 +90,9 @@ const ModalController = (): TReturnModalController => {
       containerDiv.appendChild(modalReturn.element);
     }
 
-    const closeButton = modalReturn.element.querySelector(
-      '.modal__close-button',
-    );
-
-    if (closeButton) {
-      closeButton.addEventListener('click', () => {
-        closeModal(props.id);
-      });
-    }
+    // We don't need to add a click event listener here anymore
+    // since the Modal component will emit a custom event that
+    // this controller listens for
 
     return modalReturn;
   };
