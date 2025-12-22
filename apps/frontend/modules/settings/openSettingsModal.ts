@@ -1,4 +1,3 @@
-import { ButtonColor } from '../../components/Button';
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { SettingsModalController } from '../../controller/settingsModal';
 import { langKeys } from '../../translations/keys';
@@ -111,16 +110,6 @@ const openSettingsModal = async (): Promise<void> => {
         onClick: (): void =>
           setSection(sectionIds.highRisk, getHighRiskSettingsContent()),
         isVisible: true,
-      },
-    ],
-    buttons: [
-      {
-        id: 'button__gettkserzv',
-        text: langKeys().SettingsModalButtonOk,
-        leftIcon: undefined,
-        color: ButtonColor.PRIMARY,
-        onClick: (): void =>
-          settingsModalController.closeModal('settings_modal__hozbdlgaew'),
       },
     ],
   });
