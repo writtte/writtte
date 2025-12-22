@@ -5,6 +5,7 @@ import { type AnyExtension, Editor } from '@tiptap/core';
 import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
+import { LinkExtension } from '../extensions/link';
 import { ListItemExtension } from '../extensions/listItem';
 import { NumberListExtension } from '../extensions/numberList';
 import { ParagraphExtension } from '../extensions/paragraph';
@@ -53,6 +54,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     extensions.push(
       UndoRedoExtension.configure(opts.options.undoRedo ?? undefined),
     );
+  }
+
+  if (opts.options.link.isEnabled) {
+    extensions.push(LinkExtension.configure(opts.options.link ?? undefined));
   }
 
   const _editor = new Editor({

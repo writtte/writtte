@@ -7,6 +7,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   numberList: { isEnabled: true },
   listItem: { isEnabled: true },
   undoRedo: { isEnabled: true },
+  link: { isEnabled: true },
 });
 
 export { setupEditorExtensionOptions };

@@ -1,5 +1,6 @@
 import type { TBulletListOptions } from '../extensions/bulletList';
 import type { THeadingOptions } from '../extensions/header';
+import type { TLinkOptions } from '../extensions/link';
 import type { TListItemOptions } from '../extensions/listItem';
 import type { TNumberListOptions } from '../extensions/numberList';
 import type { TParagraphOptions } from '../extensions/paragraph';
@@ -12,6 +13,7 @@ type TExtensionOptions = {
   numberList: Partial<TNumberListOptions> & { isEnabled: boolean };
   listItem: Partial<TListItemOptions> & { isEnabled: boolean };
   undoRedo: Partial<TUndoRedoOptions> & { isEnabled: boolean };
+  link: Partial<TLinkOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };
