@@ -6,6 +6,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   bulletList: { isEnabled: true },
   numberList: { isEnabled: true },
   listItem: { isEnabled: true },
+  undoRedo: { isEnabled: true },
 });
 
 export { setupEditorExtensionOptions };

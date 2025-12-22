@@ -9,6 +9,7 @@ import { ListItemExtension } from '../extensions/listItem';
 import { NumberListExtension } from '../extensions/numberList';
 import { ParagraphExtension } from '../extensions/paragraph';
 import { TextExtension } from '../extensions/text';
+import { UndoRedoExtension } from '../extensions/undoRedo';
 
 type TOptions = {
   element: HTMLDivElement;
@@ -45,6 +46,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   if (opts.options.listItem.isEnabled) {
     extensions.push(
       ListItemExtension.configure(opts.options.listItem ?? undefined),
+    );
+  }
+
+  if (opts.options.undoRedo.isEnabled) {
+    extensions.push(
+      UndoRedoExtension.configure(opts.options.undoRedo ?? undefined),
     );
   }
 
