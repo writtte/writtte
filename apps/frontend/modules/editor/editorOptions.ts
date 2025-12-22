@@ -16,6 +16,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   underline: { isEnabled: true },
   trailingNode: { isEnabled: true },
   inlineCode: { isEnabled: true },
+  horizontalRule: { isEnabled: true },
 });
 
 export { setupEditorExtensionOptions };
