@@ -8,6 +8,7 @@ import type { TLinkOptions } from '../extensions/link';
 import type { TListItemOptions } from '../extensions/listItem';
 import type { TNumberListOptions } from '../extensions/numberList';
 import type { TParagraphOptions } from '../extensions/paragraph';
+import type { TPlaceholderOptions } from '../extensions/placeholder';
 import type { TStrikethroughOptions } from '../extensions/strikethrough';
 import type { TSubscriptOptions } from '../extensions/subscript';
 import type { TSuperscriptOptions } from '../extensions/superscript';
@@ -32,6 +33,7 @@ type TExtensionOptions = {
   trailingNode: Partial<TTrailingNodeOptions> & { isEnabled: boolean };
   inlineCode: Partial<TInlineCodeOptions> & { isEnabled: boolean };
   horizontalRule: Partial<THorizontalLineOptions> & { isEnabled: boolean };
+  placeholder: Partial<TPlaceholderOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };

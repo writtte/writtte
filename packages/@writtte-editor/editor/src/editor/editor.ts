@@ -13,6 +13,7 @@ import { LinkExtension } from '../extensions/link';
 import { ListItemExtension } from '../extensions/listItem';
 import { NumberListExtension } from '../extensions/numberList';
 import { ParagraphExtension } from '../extensions/paragraph';
+import { PlaceholderExtension } from '../extensions/placeholder';
 import { StrikethroughExtension } from '../extensions/strikethrough';
 import { SubscriptExtension } from '../extensions/subscript';
 import { SuperscriptExtension } from '../extensions/superscript';
@@ -113,6 +114,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
       HorizontalLineExtension.configure(
         opts.options.horizontalRule ?? undefined,
       ),
+    );
+  }
+
+  if (opts.options.placeholder.isEnabled) {
+    extensions.push(
+      PlaceholderExtension.configure(opts.options.placeholder ?? undefined),
     );
   }
 

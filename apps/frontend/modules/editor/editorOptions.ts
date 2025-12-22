@@ -125,6 +125,9 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     ignoredParents: ['tableCell', 'listItem'],
     isEnabled: true,
   },
+  placeholder: {
+    isEnabled: true,
+  },
 });
 
 export { setupEditorExtensionOptions };
