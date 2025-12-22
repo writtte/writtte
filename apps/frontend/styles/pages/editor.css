@@ -1,0 +1,33 @@
+.editor-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.editor-page__container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.editor-page__editor {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-inline: 384px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .editor-page__editor {
+    padding-inline: 128px;
+  }
+}
+
+@media screen and (max-width: 972px) {
+  .editor-page__editor {
+    padding-inline: 24px;
+  }
+}

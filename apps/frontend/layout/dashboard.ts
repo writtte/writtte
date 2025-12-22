@@ -27,7 +27,8 @@ const DashboardLayout = async ({
   layoutDiv.appendChild(containerDiv);
 
   const topBarElement = TopBar({
-    icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+    logo: FlatIcon(FlatIconName._26_WRITTTE_LOGO),
+    badge: undefined,
     leftButtons: [],
     rightButtons: [],
   });

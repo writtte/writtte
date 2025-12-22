@@ -19,19 +19,16 @@ type TReturnItemCreateInput = {
 };
 
 const ItemCreateInput = (opts: TOptions): TReturnItemCreateInput => {
-  const wrapperDiv = document.createElement('div');
   const inputDiv = document.createElement('div');
   const input = document.createElement('input');
   const createButton = document.createElement('button');
 
-  wrapperDiv.classList.add('item-create-input__wrapper');
   inputDiv.classList.add('item-create-input');
   input.classList.add('item-create-input__input-element');
-  createButton.classList.add('item-create-input__create-button');
+  createButton.classList.add('item-create-input__create-button', 'hide');
 
   createButton.appendChild(opts.createButton.icon);
   inputDiv.append(input, createButton);
-  wrapperDiv.appendChild(inputDiv);
 
   input.id = opts.id;
   input.placeholder = opts.placeholderText;
@@ -46,7 +43,17 @@ const ItemCreateInput = (opts: TOptions): TReturnItemCreateInput => {
     const hasValue = input.value.trim() !== '';
     createButton.disabled = !hasValue;
     createButton.dataset.hasValue = hasValue ? 'true' : 'false';
+
+    if (hasValue) {
+      createButton.classList.add('show');
+      createButton.classList.remove('hide');
+    } else {
+      createButton.classList.add('hide');
+      createButton.classList.remove('show');
+    }
   };
+
+  inputDiv.addEventListener('click', (): void => input.focus());
 
   input.addEventListener('input', updateButtonState);
 
@@ -83,21 +90,29 @@ const ItemCreateInput = (opts: TOptions): TReturnItemCreateInput => {
       );
 
       createButton.setAttribute('disabled', 'true');
-      createButton.classList.add('item-create-input__create-button--loading');
+      createButton.classList.add(
+        'item-create-input__create-button--loading',
+        'show',
+      );
+
+      createButton.classList.remove('hide');
     } else {
       input.classList.add('show');
 
       createButton.replaceChildren(opts.createButton.icon);
 
       updateButtonState();
+      createButton.classList.add('hide');
+
       createButton.classList.remove(
         'item-create-input__create-button--loading',
+        'show',
       );
     }
   };
 
   return {
-    element: wrapperDiv,
+    element: inputDiv,
     getValue,
     setLoadingState,
   };

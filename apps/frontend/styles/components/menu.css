@@ -1,0 +1,25 @@
+.menu {
+  align-items: flex-start;
+  background: var(--component-menu-item-bg);
+  border: 1px solid var(--component-menu-item-border);
+  box-shadow: var(--shadow-menu);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  position: fixed;
+}
+
+.menu__container {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.menu__divider {
+  background: var(--component-menu-item-border);
+  height: 1px;
+  width: 100%;
+}

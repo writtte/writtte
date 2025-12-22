@@ -1,5 +1,6 @@
 import { gidr } from '../utils/dom/node';
 import { setTestId } from '../utils/dom/testId';
+import { ActionButton } from './ActionButton';
 
 type TOptions = {
   id: string;
@@ -20,14 +21,22 @@ type TReturnItemListDocument = {
 const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
   const itemButton = document.createElement('button');
   const textDiv = document.createElement('div');
-  const optionButton = document.createElement('button');
 
   itemButton.classList.add('item-list-document-item');
   textDiv.classList.add('item-list-document-item__text');
-  optionButton.classList.add('item-list-document-item__options-button');
 
-  optionButton.append(opts.optionButton.icon);
-  itemButton.append(textDiv, optionButton);
+  const optionButtonElement = ActionButton({
+    id: opts.optionButton.id,
+    icon: opts.optionButton.icon,
+    onClick: (e: PointerEvent): void => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      opts.optionButton.onClick(e);
+    },
+  });
+
+  itemButton.append(textDiv, optionButtonElement.element);
 
   textDiv.id = `${opts.id}-text`;
   textDiv.textContent = opts.text;
@@ -35,14 +44,6 @@ const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
   itemButton.id = opts.id;
 
   setTestId(itemButton, opts.id);
-  setTestId(optionButton, opts.optionButton.id);
-
-  optionButton.addEventListener('click', (e: PointerEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    opts.optionButton.onClick(e);
-  });
 
   const changeText = (text: string): void => {
     textDiv.textContent = text;

@@ -26,6 +26,11 @@
   border: 1px solid var(--component-input-border);
   display: flex;
 
+  &::placeholder,
+  &::-ms-input-placeholder {
+    color: var(--component-input-text---placeholder);
+  }
+
   &:hover {
     cursor: text;
   }
@@ -34,6 +39,11 @@
     background: var(--component-input-bg);
     border: 1px solid var(--component-input-border---active);
     box-shadow: 0 0 8px 0 var(--component-input-shadow---active);
+  }
+
+  &:disabled {
+    background: var(--component-input-bg--disable);
+    color: var(--component-input-text---disable);
   }
 }
 

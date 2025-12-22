@@ -58,7 +58,7 @@ const openDocumentRenameModal = async (
       },
       {
         type: ModalContentItemType.BUTTON,
-        direction: ModalContainerItemDirection.COLUMN,
+        direction: ModalContainerItemDirection.ROW,
         buttons: [
           {
             id: 'button__mmygztoxor',
@@ -75,7 +75,7 @@ const openDocumentRenameModal = async (
             text: langKeys().ModalDocumentRenameButtonRename,
             loadingText: langKeys().ModalDocumentRenameButtonRenaming,
             leftIcon: undefined,
-            color: ButtonColor.NEUTRAL,
+            color: ButtonColor.PRIMARY,
             onClick: async (): Promise<void> => await performDocumentRename(),
           },
         ],

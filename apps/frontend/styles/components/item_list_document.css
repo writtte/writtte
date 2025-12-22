@@ -1,0 +1,32 @@
+.item-list-document-item {
+  align-items: center;
+  background: var(--component-item-list-document-bg);
+  border-bottom: 1px solid var(--component-item-list-document-border);
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 12px;
+  height: 48px;
+  outline: none;
+  padding: 0 8px 0 12px;
+  width: 100%;
+
+  &:hover {
+    background: var(--component-item-list-document-bg---hover);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    border: 1px dashed var(--common-focus-neutral);
+  }
+}
+
+.item-list-document-item__text {
+  color: var(--component-item-list-document-text);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

@@ -1,0 +1,16 @@
+.overview-title {
+  align-items: center;
+  color: var(--component-overview-title-text);
+  display: flex;
+  flex: 1 0 0;
+  font-family: "Playfair Variable", serif;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 300;
+  gap: 8px;
+  justify-content: center;
+  line-height: normal;
+  padding: 24px;
+  text-align: center;
+  width: 100%;
+}

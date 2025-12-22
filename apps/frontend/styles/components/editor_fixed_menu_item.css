@@ -1,0 +1,80 @@
+.editor-fixed-menu-item-text {
+  align-items: center;
+  color: var(--component-editor-menu-item-text);
+  display: inline-flex;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  line-height: normal;
+  padding: 0 2px;
+  user-select: none;
+}
+
+.editor-fixed-menu-item-button__icon {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+
+  svg {
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--component-editor-menu-item-icon);
+    }
+  }
+}
+
+.editor-fixed-menu-item-button {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  padding: 8px;
+  width: 32px;
+  border-radius: 32px;
+  background: var(--component-editor-menu-item-bg);
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  &:hover {
+    background: var(--component-editor-menu-item-bg---hover);
+    cursor: pointer;
+
+    .editor-fixed-menu-item-button__icon {
+      svg path {
+        fill: var(--component-editor-menu-item-icon---hover);
+      }
+    }
+  }
+
+  &:active {
+    background: var(--component-editor-menu-item-bg---active);
+  }
+
+  &:focus-visible {
+    outline-offset: 2px;
+    outline: 1px dashed var(--common-focus-neutral);
+  }
+}
+
+.editor-fixed-menu-item-button--selected {
+  background: var(--component-editor-menu-item-bg---selected);
+  pointer-events: none;
+
+  &:hover {
+    background: var(--component-editor-menu-item-bg---selected);
+  }
+
+  &:active {
+    background: var(--component-editor-menu-item-bg---selected);
+  }
+}

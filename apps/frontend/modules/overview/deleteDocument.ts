@@ -30,7 +30,7 @@ const openDocumentDeleteModal = async (
       },
       {
         type: ModalContentItemType.BUTTON,
-        direction: ModalContainerItemDirection.COLUMN,
+        direction: ModalContainerItemDirection.ROW,
         buttons: [
           {
             id: 'button__lcjwbvuhur',
@@ -47,7 +47,7 @@ const openDocumentDeleteModal = async (
             text: langKeys().ModalDocumentDeleteButtonDelete,
             loadingText: langKeys().ModalDocumentDeleteButtonDeleting,
             leftIcon: undefined,
-            color: ButtonColor.NEUTRAL,
+            color: ButtonColor.DANGER,
             onClick: async (): Promise<void> => await performDocumentDelete(),
           },
         ],

@@ -6,7 +6,7 @@ import {
   type TButtonOptions,
   type TReturnButton,
 } from './Button';
-import { FlatIcon, FlatIconName } from './FlatIcon';
+import { CloseButton } from './CloseButton';
 import {
   Input,
   InputSize,
@@ -85,28 +85,35 @@ type TReturnModal = {
 };
 
 const Modal = (opts: TOptions): TReturnModal => {
-  const overlayDiv = document.createElement('div');
   const modalDiv = document.createElement('div');
   const containerDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
   const titleDiv = document.createElement('div');
-  const closeButton = document.createElement('button');
   const contentDiv = document.createElement('div');
 
-  overlayDiv.classList.add('modal-overlay');
   modalDiv.classList.add('modal');
   containerDiv.classList.add('modal__container');
   headerDiv.classList.add('modal__header');
   titleDiv.classList.add('modal__title');
-  closeButton.classList.add('modal__close-button');
   contentDiv.classList.add('modal__content');
 
+  const closeButtonElement = CloseButton({
+    id: `${opts.id}-close-button`,
+    onClick: () => {
+      const closeEvent = new CustomEvent('modal:close', {
+        detail: {
+          id: opts.id,
+        },
+      });
+
+      document.dispatchEvent(closeEvent);
+    },
+  });
+
   titleDiv.textContent = opts.title;
-  closeButton.appendChild(FlatIcon(FlatIconName._SAMPLE_CIRCLE));
-  headerDiv.append(titleDiv, closeButton);
+  headerDiv.append(titleDiv, closeButtonElement.element);
   containerDiv.append(headerDiv, contentDiv);
   modalDiv.appendChild(containerDiv);
-  overlayDiv.appendChild(modalDiv);
 
   modalDiv.style.width = `${opts.width}px`;
 
@@ -127,6 +134,7 @@ const Modal = (opts: TOptions): TReturnModal => {
 
       case ModalContentItemType.TEXT:
         contentItem.textContent = item.text;
+        contentItem.classList.add('modal__content-item--text');
         break;
 
       case ModalContentItemType.INPUT:
@@ -158,6 +166,7 @@ const Modal = (opts: TOptions): TReturnModal => {
 
       case ModalContentItemType.BUTTON:
         contentItem.classList.add(
+          'modal__content-item--buttons',
           `modal__content-item--${item.direction.toLowerCase()}`,
         );
 
@@ -181,13 +190,8 @@ const Modal = (opts: TOptions): TReturnModal => {
     contentDiv.appendChild(contentItem);
   }
 
-  closeButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    overlayDiv.remove();
-  });
-
   return {
-    element: overlayDiv,
+    element: modalDiv,
     inputs,
     buttons,
   };

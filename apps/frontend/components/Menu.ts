@@ -16,6 +16,7 @@ type TOptions = {
     hasBottomDivider: boolean;
   })[];
   menuWidth: number;
+  isRightSideMenu: boolean;
 };
 
 type TReturnMenu = {
@@ -34,7 +35,12 @@ const Menu = (opts: TOptions): TReturnMenu => {
 
   menu.style.width = `${opts.menuWidth}px`;
   menu.style.top = `${opts.location.y}px`;
-  menu.style.left = `${opts.location.x}px`;
+
+  if (opts.isRightSideMenu) {
+    menu.style.right = `${window.innerWidth - opts.location.x}px`;
+  } else {
+    menu.style.left = `${opts.location.x}px`;
+  }
 
   menu.appendChild(containerDiv);
 

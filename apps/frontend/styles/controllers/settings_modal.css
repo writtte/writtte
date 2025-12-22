@@ -1,0 +1,25 @@
+.settings-modal-container {
+  align-items: center;
+  background: var(--component-settings-modal-bg);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  padding: 128px 256px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: var(--z-index-controller-settings-modal);
+}
+
+@media screen and (max-width: 1200px) {
+  .settings-modal-container {
+    padding: 64px 24px;
+  }
+}
+
+@media screen and (max-width: 972px) {
+  .settings-modal-container {
+    padding: 24px;
+  }
+}

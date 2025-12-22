@@ -9,7 +9,6 @@ type TOptions = {
 type TReturnActionButton = {
   element: HTMLButtonElement;
   changeIcon: (icon: HTMLElement) => void;
-  setSelectedState: (isSelected: boolean) => void;
 };
 
 const ActionButton = (opts: TOptions): TReturnActionButton => {
@@ -35,18 +34,9 @@ const ActionButton = (opts: TOptions): TReturnActionButton => {
     iconDiv.replaceChildren(icon);
   };
 
-  const setSelectedState = (isSelected: boolean): void => {
-    if (isSelected === true) {
-      button.classList.add('action-button--selected');
-    } else {
-      button.classList.remove('action-button--selected');
-    }
-  };
-
   return {
     element: button,
     changeIcon,
-    setSelectedState,
   };
 };
 

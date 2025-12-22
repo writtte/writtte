@@ -1,0 +1,214 @@
+.button {
+  align-items: center;
+  border-radius: 32px;
+  border: none;
+  box-shadow: none;
+  display: inline-flex;
+  justify-content: center;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline: 2px dashed var(--common-focus-neutral);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.button__icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    height: 18px;
+    width: 18px;
+  }
+}
+
+.button__text {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-align: center;
+}
+
+.button--loading {
+  cursor: wait;
+  pointer-events: none;
+}
+
+.button--primary {
+  background: var(--component-button-primary-bg);
+
+  .button__loading-icon,
+  .button__icon {
+    svg path {
+      fill: var(--component-button-primary-text);
+    }
+  }
+
+  .button__text {
+    color: var(--component-button-primary-text);
+  }
+
+  &:hover {
+    background: var(--component-button-primary-bg---hover);
+  }
+
+  &:active {
+    background: var(--component-button-primary-bg---active);
+  }
+
+  &:disabled {
+    background: var(--component-button-primary-bg---disable);
+
+    .button__text {
+      color: var(--component-button-primary-text---disable);
+    }
+
+    .button__icon {
+      svg path {
+        fill: var(--component-button-primary-text---disable);
+      }
+    }
+  }
+
+  .button--loading {
+    background: var(--component-button-primary-bg---loading);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: var(--component-button-primary-bg---loading);
+    }
+  }
+}
+
+.button--danger {
+  background: var(--component-button-danger-bg);
+
+  .button__loading-icon,
+  .button__icon {
+    svg path {
+      fill: var(--component-button-danger-text);
+    }
+  }
+
+  .button__text {
+    color: var(--component-button-danger-text);
+  }
+
+  &:hover {
+    background: var(--component-button-danger-bg---hover);
+  }
+
+  &:active {
+    background: var(--component-button-danger-bg---active);
+  }
+
+  &:disabled {
+    background: var(--component-button-danger-bg---disable);
+
+    .button__text {
+      color: var(--component-button-danger-text---disable);
+    }
+
+    .button__icon {
+      svg path {
+        fill: var(--component-button-danger-text---disable);
+      }
+    }
+  }
+
+  .button--loading {
+    background: var(--component-button-danger-bg---loading);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: var(--component-button-danger-bg---loading);
+    }
+  }
+}
+
+.button--neutral {
+  background: var(--component-button-neutral-bg);
+  border: 1px solid var(--component-button-neutral-border);
+
+  .button__loading-icon,
+  .button__icon {
+    svg path {
+      fill: var(--component-button-neutral-text);
+    }
+  }
+
+  .button__text {
+    color: var(--component-button-neutral-text);
+  }
+
+  &:hover {
+    background: var(--component-button-neutral-bg---hover);
+  }
+
+  &:active {
+    background: var(--component-button-neutral-bg---active);
+  }
+
+  &:disabled {
+    background: var(--component-button-neutral-bg---disable);
+
+    .button__text {
+      color: var(--component-button-neutral-text---disable);
+    }
+
+    .button__icon {
+      svg path {
+        fill: var(--component-button-neutral-text---disable);
+      }
+    }
+  }
+
+  .button--loading {
+    background: var(--component-button-neutral-bg---loading);
+
+    &:hover,
+    &:active,
+    &:focus {
+      background: var(--component-button-neutral-bg---loading);
+    }
+  }
+}
+
+.button--medium {
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+}
+
+.button--small {
+  gap: 8px;
+  height: 32px;
+  padding: 0 8px;
+}
+
+.button__icon.show,
+.button__loading-icon.show {
+  display: flex;
+}
+
+.button__icon.hide,
+.button__loading-icon.hide {
+  display: none;
+}
+
+.button--full-width {
+  width: 100%;
+}

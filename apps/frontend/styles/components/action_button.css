@@ -1,0 +1,42 @@
+.action-button__icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--component-button-action-icon);
+    }
+  }
+}
+
+.action-button {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border-radius: 32px;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  outline: none;
+  width: 32px;
+
+  &:hover {
+    background: var(--component-button-action-bg---hover);
+    cursor: pointer;
+
+    .action-button__icon {
+      svg path {
+        fill: var(--component-button-action-icon---hover);
+      }
+    }
+  }
+}

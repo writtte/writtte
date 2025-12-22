@@ -1,0 +1,101 @@
+.item-create-input {
+  align-items: center;
+  background: var(--component-item-create-input-bg);
+  border-radius: 32px;
+  cursor: text;
+  display: flex;
+  gap: 12px;
+  height: 56px;
+  padding: 8px 24px 8px 24px;
+  width: 100%;
+}
+
+.item-create-input__input-element {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  flex: 1 0 0;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+  width: 100%;
+
+  &::placeholder,
+  &::-ms-input-placeholder {
+    color: var(--component-item-create-input-text---placeholder);
+  }
+}
+
+.item-create-input__create-button {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--component-item-create-input-button-bg);
+  border-radius: 32px;
+  border: none;
+  box-shadow: none;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  outline: none;
+  padding: 8px;
+  width: 40px;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--component-item-create-input-button-icon);
+    }
+  }
+
+  &:hover {
+    background: var(--component-item-create-input-button-bg---hover);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline-offset: 2px;
+    outline: 2px dashed var(--common-focus-neutral);
+  }
+}
+
+.item-create-input__create-button.show {
+  display: flex;
+}
+
+.item-create-input__create-button.hide {
+  display: none;
+}
+
+.item-create-input:has(.item-create-input__create-button.show) {
+  padding: 8px 8px 8px 24px;
+}
+
+.item-create-input__create-button--loading {
+  background: var(--component-item-create-input-button-bg---loading);
+  pointer-events: none;
+  width: 100%;
+
+  &:hover {
+    background: var(--component-item-create-input-button-bg---loading);
+    cursor: wait;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.item-create-input:has(.item-create-input__create-button--loading.show) {
+  padding: 8px;
+}
+
+.item-create-input:has(.item-create-input__create-button--loading)
+  .item-create-input__input-element {
+  display: none;
+}

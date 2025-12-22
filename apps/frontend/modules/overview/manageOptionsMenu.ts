@@ -2,7 +2,7 @@ import type { TReturnItemList } from '../../components/ItemList';
 import { Menu } from '../../components/Menu';
 import { PATHS } from '../../constants/paths';
 import { langKeys } from '../../translations/keys';
-import { navigateHard } from '../../utils/routes/helpers';
+import { navigateExternal } from '../../utils/routes/helpers';
 import { navigate } from '../../utils/routes/routes';
 import { openDocumentDeleteModal } from './deleteDocument';
 import { openDocumentRenameModal } from './renameDocument';
@@ -15,8 +15,8 @@ const buildDocumentOptionsMenu = async (
   const rect = (e.target as HTMLButtonElement).getBoundingClientRect();
 
   const location = {
-    x: rect.x,
-    y: rect.y + rect.height + 4,
+    x: rect.x + 24,
+    y: rect.y + rect.height + 12,
   };
 
   const menu = Menu({
@@ -41,7 +41,7 @@ const buildDocumentOptionsMenu = async (
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: (): void =>
-          navigateHard(`${PATHS.DOCUMENT_EDIT}/${documentCode}`),
+          navigateExternal(`${PATHS.DOCUMENT_EDIT}/${documentCode}`),
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -69,6 +69,7 @@ const buildDocumentOptionsMenu = async (
       },
     ],
     menuWidth: 208,
+    isRightSideMenu: true,
   });
 
   document.body.appendChild(menu.element);
