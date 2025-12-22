@@ -51,6 +51,7 @@
     "datarace",
     "errorf",
     "blocklist",
-    "waitgroup"
+    "waitgroup",
+    "playfair"
   ]
 }
