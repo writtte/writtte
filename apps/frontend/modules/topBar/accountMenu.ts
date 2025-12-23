@@ -44,8 +44,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         leftIcon: undefined,
         rightIcon: undefined,
         isLeftIconVisible: true,
-        onClick: async (): Promise<void> =>
-          navigateExternal(LINKS.PRODUCT_CHANGELOGS),
+        onClick: (): void => navigateExternal(LINKS.PRODUCT_CHANGELOGS),
         hasTopDivider: false,
         hasBottomDivider: false,
       },
