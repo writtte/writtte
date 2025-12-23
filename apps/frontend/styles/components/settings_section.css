@@ -8,8 +8,8 @@
   display: flex;
   gap: 8px;
   height: 48px;
+  min-width: 288px;
   padding: 0 12px;
-  width: 224px;
 
   &:hover {
     background: var(--component-settings-modal-item-bg---hover);
@@ -17,6 +17,7 @@
   }
 
   &:focus-visible {
+    outline-offset: -1px;
     outline: 1px dashed var(--common-focus-neutral);
   }
 }
@@ -55,5 +56,16 @@
 
   &:focus-visible {
     outline: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .settings-section {
+    min-width: fit-content;
+    width: fit-content;
+  }
+
+  .settings-section__text {
+    display: none;
   }
 }

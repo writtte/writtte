@@ -65,7 +65,7 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  width: 224px;
+  width: fit-content;
 }
 
 .settings-modal__section-content {
@@ -83,4 +83,28 @@
   display: flex;
   height: 1px;
   width: 100%;
+}
+
+@media screen and (max-width: 576px) {
+  .settings-modal__content {
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .settings-modal__section-divider {
+    height: 1px;
+    width: 100%;
+  }
+
+  .settings-modal__section-items {
+    -ms-overflow-style: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

@@ -87,3 +87,12 @@
   flex-direction: column;
   gap: 8px;
 }
+
+@media screen and (max-width: 576px) {
+  .modal {
+    /* biome-ignore lint/complexity/noImportantStyles: the !important
+       style is required here because the width is set inside the
+       component via JavaScript */
+    width: calc(100% - 24px) !important;
+  }
+}
