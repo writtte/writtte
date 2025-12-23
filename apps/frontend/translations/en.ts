@@ -1,9 +1,9 @@
 // biome-ignore format: Following array should not be formatted
 const enMessages = {
-  ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_TITLE: 'Unable to Start Subscription',
-  ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_DESCRIPTION: 'We ran into an issue while creating your subscription link. Please try again in a moment.',
-  ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE: 'Unable to Open Customer Portal',
-  ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_DESCRIPTION: 'We encountered an issue while generating your customer portal link. Please try again shortly.',
+  ALERT_ACCOUNT_NAME_UPDATE_FAILED_DESCRIPTION: 'We were unable to update your name due to an unexpected error on our side. Please try again in a few minutes. If the problem persists, contact our support team for assistance.',
+  ALERT_ACCOUNT_NAME_UPDATE_FAILED_TITLE: 'Unable to Update Account Name',
+  ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_DESCRIPTION: 'Your name has been updated successfully.',
+  ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_TITLE: 'Account Name Updated',
   ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION: 'We were unable to create the document due to an unexpected error on our side. Please try again in a few minutes. If the problem persists, contact our support team for assistance.',
   ALERT_DOCUMENT_CREATE_FAILED_TITLE: 'Unable to Create Document',
   ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION: 'We were unable to retrieve documents due to an unexpected error on our side. Please try again in a few minutes. If the problem persists, contact our support team for assistance.',
@@ -22,6 +22,10 @@ const enMessages = {
   ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE: 'Sign-In Link Sent',
   ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION: 'We\'ve sent you an invitation email. Please check your inbox and follow the instructions to complete your sign up.',
   ALERT_SIGN_UP_INVITATION_SENT_TITLE: 'Sign Up Invitation Sent',
+  ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_DESCRIPTION: 'We ran into an issue while creating your subscription link. Please try again in a moment.',
+  ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_TITLE: 'Unable to Start Subscription',
+  ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_DESCRIPTION: 'We encountered an issue while generating your customer portal link. Please try again shortly.',
+  ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE: 'Unable to Open Customer Portal',
   ERROR_ACCOUNT_ALREADY_EXISTS: 'An account with this email already exists.',
   ERROR_ACCOUNT_INVALID_CREDENTIALS: 'The email or password you entered is incorrect.',
   ERROR_ACCOUNT_NOT_EXISTS: 'No account found with this email address.',
@@ -178,7 +182,6 @@ const enMessages = {
   SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT: 'Opening...',
   SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE: 'Choose a Subscription Plan',
   SETTINGS_MODAL_TEXT_TITLE: 'Writtte Settings',
-  SUCCESS_NAME_UPDATED: 'The account name was updated successfully.'
 };
 
 export { enMessages };

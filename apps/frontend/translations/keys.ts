@@ -1,6 +1,10 @@
 import { getTr } from '../middleware/setup/translations';
 
 type TLangKeys = {
+  AlertAccountNameUpdateFailedDescription: string;
+  AlertAccountNameUpdateFailedTitle: string;
+  AlertAccountNameUpdateSuccessDescription: string;
+  AlertAccountNameUpdateSuccessTitle: string;
   AlertDocumentCreateFailedDescription: string;
   AlertDocumentCreateFailedTitle: string;
   AlertDocumentRetrievedFailedDescription: string;
@@ -12,7 +16,6 @@ type TLangKeys = {
   AlertMiddlewareNeedSignInDescription: string;
   AlertMiddlewareNeedSignInTitle: string;
   AlertMiddlewareSignInRequiredDescription: string;
-  ErrorEmailSimilar: string;
   AlertMiddlewareSignInRequiredTitle: string;
   AlertPasswordUpdatedDescription: string;
   AlertPasswordUpdatedTitle: string;
@@ -45,6 +48,7 @@ type TLangKeys = {
   ErrorEmailMax: string;
   ErrorEmailMin: string;
   ErrorEmailRequired: string;
+  ErrorEmailSimilar: string;
   ErrorMessageNotFoundDescription: string;
   ErrorMessageNotFoundTitle: string;
   ErrorMessageOverviewNotLoadedDescription: string;
@@ -179,12 +183,15 @@ type TLangKeys = {
   SettingsModalSubscriptionSubscribeButtonWait: string;
   SettingsModalSubscriptionSubscribeTextTitle: string;
   SettingsModalTextTitle: string;
-  SuccessNameUpdated: string;
 };
 
 const langKeys = (): TLangKeys => {
   // biome-ignore format: Following array should not be formatted
   const keys: TLangKeys = {
+    AlertAccountNameUpdateFailedDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_DESCRIPTION'),
+    AlertAccountNameUpdateFailedTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_TITLE'),
+    AlertAccountNameUpdateSuccessDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_DESCRIPTION'),
+    AlertAccountNameUpdateSuccessTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_TITLE'),
     AlertDocumentCreateFailedDescription: ('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
     AlertDocumentCreateFailedTitle: ('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
@@ -363,7 +370,6 @@ const langKeys = (): TLangKeys => {
     SettingsModalSubscriptionSubscribeButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT'),
     SettingsModalSubscriptionSubscribeTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE'),
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
-    SuccessNameUpdated: getTr('SUCCESS_NAME_UPDATED'),
   }
 
   return keys;
