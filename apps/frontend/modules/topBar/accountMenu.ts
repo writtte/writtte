@@ -1,7 +1,9 @@
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { Menu } from '../../components/Menu';
+import { LINKS } from '../../constants/links';
 import { signOutCurrentAccount } from '../../helpers/account/signOut';
 import { langKeys } from '../../translations/keys';
+import { navigateExternal } from '../../utils/routes/helpers';
 import { openSettingsModal } from '../settings/openSettingsModal';
 
 const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
@@ -32,7 +34,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         leftIcon: FlatIcon(FlatIconName._16_CIRCLE_HELP),
         rightIcon: undefined,
         isLeftIconVisible: true,
-        onClick: async (): Promise<void> => {},
+        onClick: (): void => navigateExternal(LINKS.PRODUCT_DOCUMENTATION),
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -42,7 +44,8 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         leftIcon: undefined,
         rightIcon: undefined,
         isLeftIconVisible: true,
-        onClick: async (): Promise<void> => {},
+        onClick: async (): Promise<void> =>
+          navigateExternal(LINKS.PRODUCT_CHANGELOGS),
         hasTopDivider: false,
         hasBottomDivider: false,
       },
