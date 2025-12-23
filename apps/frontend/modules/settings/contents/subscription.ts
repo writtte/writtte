@@ -35,7 +35,7 @@ const getSubscriptionSettingsContent = (): HTMLDivElement[] => {
         id: 'button__jowowqqysp',
         text: langKeys().SettingsModalSubscriptionSubscribeButtonPlans,
         loadingText: langKeys().SettingsModalSubscriptionSubscribeButtonWait,
-        leftIcon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+        leftIcon: FlatIcon(FlatIconName._16_OPEN_NEW_TAB),
         rightIcon: undefined,
         color: ButtonColor.NEUTRAL,
         onClick: async (): Promise<void> => {
