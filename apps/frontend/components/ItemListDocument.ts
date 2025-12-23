@@ -1,6 +1,7 @@
 import { gidr } from '../utils/dom/node';
 import { setTestId } from '../utils/dom/testId';
 import { ActionButton } from './ActionButton';
+import { FlatIcon, FlatIconName } from './FlatIcon';
 
 type TOptions = {
   id: string;
@@ -20,10 +21,14 @@ type TReturnItemListDocument = {
 
 const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
   const itemButton = document.createElement('button');
+  const iconDiv = document.createElement('div');
   const textDiv = document.createElement('div');
 
   itemButton.classList.add('item-list-document-item');
+  iconDiv.classList.add('item-list-document-item__icon');
   textDiv.classList.add('item-list-document-item__text');
+
+  iconDiv.appendChild(FlatIcon(FlatIconName._18_DOCUMENT));
 
   const optionButtonElement = ActionButton({
     id: opts.optionButton.id,
@@ -36,7 +41,7 @@ const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
     },
   });
 
-  itemButton.append(textDiv, optionButtonElement.element);
+  itemButton.append(iconDiv, textDiv, optionButtonElement.element);
 
   textDiv.id = `${opts.id}-text`;
   textDiv.textContent = opts.text;

@@ -34,7 +34,7 @@ const EditorPage = async (
 
   editorPageDiv.classList.add('editor-page');
   containerDiv.classList.add('editor-page__container');
-  editorDiv.classList.add('editor-page__editor');
+  editorDiv.classList.add('editor-page__editor', 'v-scrollbar');
 
   const editorFixedMenuElement = EditorFixedMenu({
     id: 'editor_fixed_menu__tuaodnwhdq',

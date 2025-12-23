@@ -5,11 +5,8 @@ import {
   SettingsItem,
   SettingsItemType,
 } from '../../../components/SettingsItem';
-import { StatusTextType } from '../../../components/StatusText';
-import {
-  DEBOUNCE_TIMEOUT,
-  STATUS_TEXT_TIMEOUT,
-} from '../../../constants/timeouts';
+import { ALERT_TIMEOUT, DEBOUNCE_TIMEOUT } from '../../../constants/timeouts';
+import { AlertController } from '../../../controller/alert';
 import { v1UserUpdate } from '../../../data/apis/user/v1UserUpdate';
 import {
   getAccountOverview,
@@ -23,6 +20,8 @@ import { debounce } from '../../../utils/time/debounce';
 import { generateOverviewTitleDynamically } from '../../overview/dynamicTitle';
 
 const getOverviewSettingsContent = (): HTMLDivElement[] => {
+  const alertController = AlertController();
+
   const { getCurrentAccountData } = AccessToken();
   const accountOverview = getAccountOverview();
 
@@ -76,15 +75,13 @@ const getOverviewSettingsContent = (): HTMLDivElement[] => {
                   break;
               }
 
-              nameUpdateElement.inputs?.input__vijxwyggzm.setStatusText({
-                id: 'status_text__bqpvnzfcmw',
-                text: nameErrorStr,
-                type: StatusTextType.ERROR,
-                isIconVisible: false,
-              });
-
-              nameUpdateElement.inputs?.input__vijxwyggzm.clearStatusTextAfterDelay(
-                STATUS_TEXT_TIMEOUT.SHORT,
+              alertController.showAlert(
+                {
+                  id: 'alert__rpjplskoje',
+                  title: langKeys().AlertAccountNameUpdateFailedTitle,
+                  description: nameErrorStr,
+                },
+                ALERT_TIMEOUT.SHORT,
               );
 
               return;
@@ -98,29 +95,26 @@ const getOverviewSettingsContent = (): HTMLDivElement[] => {
             if (status !== HTTP_STATUS.NO_CONTENT) {
               const httpError = handleHTTPError(status, undefined);
 
-              nameUpdateElement.inputs?.input__vijxwyggzm.setStatusText({
-                id: 'status_text__bqpvnzfcmw',
-                text: httpError,
-                type: StatusTextType.ERROR,
-                isIconVisible: false,
-              });
-
-              nameUpdateElement.inputs?.input__vijxwyggzm.clearStatusTextAfterDelay(
-                STATUS_TEXT_TIMEOUT.SHORT,
+              alertController.showAlert(
+                {
+                  id: 'alert__eqwnvmyzsj',
+                  title: langKeys().AlertAccountNameUpdateFailedTitle,
+                  description: httpError,
+                },
+                ALERT_TIMEOUT.SHORT,
               );
 
               return;
             }
 
-            nameUpdateElement.inputs?.input__vijxwyggzm.setStatusText({
-              id: 'status_text__bqpvnzfcmw',
-              text: langKeys().SuccessNameUpdated,
-              type: StatusTextType.SUCCESS,
-              isIconVisible: false,
-            });
-
-            nameUpdateElement.inputs?.input__vijxwyggzm.clearStatusTextAfterDelay(
-              STATUS_TEXT_TIMEOUT.SHORT,
+            alertController.showAlert(
+              {
+                id: 'alert__ccmlrmoyvm',
+                title: langKeys().AlertAccountNameUpdateSuccessTitle,
+                description:
+                  langKeys().AlertAccountNameUpdateSuccessDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
             );
 
             // After updating the name, it should be updated in the account

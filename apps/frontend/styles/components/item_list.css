@@ -12,6 +12,7 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  gap: 0px;
   width: 100%;
+  border: 1px solid var(--component-item-list-document-border);
+  border-bottom: none;
 }

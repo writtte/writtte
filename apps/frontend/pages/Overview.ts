@@ -20,7 +20,7 @@ import {
   getDocumentsFromAPI,
   getDocumentsFromIDB,
 } from '../modules/overview/getDocuments';
-import { buildDocumentOptionsMenu } from '../modules/overview/manageOptionsMenu';
+import { buildDocumentOptionsMenu } from '../modules/overview/optionsMenu';
 import { EmptyItemListPlaceholder } from '../placeholders/EmptyItemList';
 import { langKeys } from '../translations/keys';
 import { navigate } from '../utils/routes/routes';
@@ -51,7 +51,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     placeholderText: langKeys().PageOverviewCreateInputPlaceholderNewDocument,
     createButton: {
       id: 'button__ivsmtfanim',
-      icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      icon: FlatIcon(FlatIconName._18_ARROW_RIGHT),
       onClick: async (): Promise<void> =>
         await createDocument(itemCreateInputElement),
     },
@@ -81,7 +81,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
         text: documents[i].title,
         optionButton: {
           id: `button__${documentCodeToKey(documents[i].documentCode)}`,
-          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+          icon: FlatIcon(FlatIconName._18_HORIZONTAL_DOTS),
           onClick: async (e: PointerEvent): Promise<void> =>
             await buildDocumentOptionsMenu(
               e,
@@ -142,7 +142,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
         text: extractedDocumentDetails.title,
         optionButton: {
           id: `button__${documentCodeToKey(documents[i].document_code)}`,
-          icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+          icon: FlatIcon(FlatIconName._18_HORIZONTAL_DOTS),
           onClick: async (e: PointerEvent): Promise<void> =>
             await buildDocumentOptionsMenu(
               e,

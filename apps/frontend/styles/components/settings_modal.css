@@ -17,15 +17,29 @@
   border-bottom: 1px solid var(--component-settings-modal-border);
   display: flex;
   flex-shrink: 0;
-  gap: 8px;
-  height: 56px;
-  justify-content: center;
+  height: 48px;
+  justify-content: space-between;
   padding: 12px;
+}
+
+.settings-modal__logo {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--component-settings-modal-text--title);
+    }
+  }
 }
 
 .settings-modal__title {
   color: var(--component-settings-modal-text--title);
-  flex: 1 0 0;
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
@@ -37,8 +51,6 @@
   align-self: stretch;
   display: flex;
   flex: 1 0 0;
-  gap: 8px;
-  padding: 12px;
 }
 
 .settings-modal__section-divider {
@@ -53,8 +65,7 @@
   align-self: stretch;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 224px;
+  width: fit-content;
 }
 
 .settings-modal__section-content {
@@ -64,6 +75,7 @@
   flex-direction: column;
   flex: 1 0 0;
   gap: 8px;
+  padding: 12px;
 }
 
 .settings-modal__item-divider {
@@ -71,4 +83,28 @@
   display: flex;
   height: 1px;
   width: 100%;
+}
+
+@media screen and (max-width: 576px) {
+  .settings-modal__content {
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .settings-modal__section-divider {
+    height: 1px;
+    width: 100%;
+  }
+
+  .settings-modal__section-items {
+    -ms-overflow-style: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }

@@ -101,8 +101,6 @@ const Button = (opts: TOptions): TReturnButton => {
         rightIconSpan.classList.add('hide');
       }
 
-      button.setAttribute('disabled', 'true');
-
       if (opts.loadingText) {
         textSpan.textContent = opts.loadingText;
         loadingIconSpan.replaceChildren(
@@ -124,7 +122,6 @@ const Button = (opts: TOptions): TReturnButton => {
         rightIconSpan.classList.remove('hide');
       }
 
-      button.removeAttribute('disabled');
       button.classList.remove('button--loading');
 
       if (opts.text) {

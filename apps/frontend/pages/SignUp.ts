@@ -1,4 +1,5 @@
 import { AuthenticationForm } from '../components/AuthenticationForm';
+import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { InputSize, InputType } from '../components/Input';
 import { ParseLinkInText } from '../components/ParseLinkInText';
 import { LINKS } from '../constants/links';
@@ -29,7 +30,7 @@ const SignUpPage = async (): Promise<HTMLElement> => {
       text: langKeys().PageSignUpButtonSend,
       loadingText: langKeys().PageSignUpButtonSending,
       leftIcon: undefined,
-      rightIcon: undefined,
+      rightIcon: FlatIcon(FlatIconName._18_EMAIL_GET),
       statusText: undefined,
       onClick: async (): Promise<void> => await submitForm(),
     },

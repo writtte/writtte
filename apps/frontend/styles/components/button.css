@@ -190,13 +190,13 @@
 .button--medium {
   gap: 8px;
   height: 40px;
-  padding: 0 12px;
+  padding: 0 24px;
 }
 
 .button--small {
   gap: 8px;
   height: 32px;
-  padding: 0 8px;
+  padding: 0 12px;
 }
 
 .button__icon.show,

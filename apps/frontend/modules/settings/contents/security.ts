@@ -93,7 +93,7 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
                     id: 'button__vgzgeojcri',
                     text: langKeys().ModalEmailUpdateButtonSend,
                     loadingText: langKeys().ModalEmailUpdateButtonSending,
-                    leftIcon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+                    leftIcon: FlatIcon(FlatIconName._18_EMAIL_SEND),
                     color: ButtonColor.PRIMARY,
                     onClick: async (): Promise<void> =>
                       await sendEmailUpdateRequest(),
@@ -101,7 +101,7 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
                 ],
               },
             ],
-            width: 384,
+            width: 512,
           });
 
           const sendEmailUpdateRequest = async (): Promise<void> => {
@@ -109,6 +109,21 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
             const button = modal.buttons.button__vgzgeojcri;
 
             button.setLoading(true);
+
+            if (
+              input.getValue().trim() === accountOverview.emailAddress.trim()
+            ) {
+              input.setStatusText({
+                id: 'status_text__jxgribhweq',
+                text: langKeys().ErrorEmailSimilar,
+                type: StatusTextType.ERROR,
+                isIconVisible: false,
+              });
+
+              input.clearStatusTextAfterDelay(STATUS_TEXT_TIMEOUT.SHORT);
+              button.setLoading(false);
+              return;
+            }
 
             const { isValid, results } = validate([
               {
@@ -228,7 +243,7 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
               },
               {
                 type: ModalContentItemType.INPUT,
-                direction: ModalContainerItemDirection.ROW,
+                direction: ModalContainerItemDirection.COLUMN,
                 inputs: [
                   {
                     title: undefined,
@@ -236,7 +251,11 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
                       id: 'input__znzeioyjkn',
                       text: undefined,
                       placeholderText: langKeys().InputPlaceholderPassword,
-                      inlineButton: undefined,
+                      inlineButton: {
+                        id: 'button__oljpofykkv',
+                        icon: FlatIcon(FlatIconName._18_EYE),
+                        onClick: () => togglePasswordVisibility(),
+                      },
                       statusText: undefined,
                       type: InputType.PASSWORD,
                       onSubmit: async (): Promise<void> =>
@@ -250,7 +269,11 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
                       text: undefined,
                       placeholderText:
                         langKeys().InputPlaceholderPasswordConfirm,
-                      inlineButton: undefined,
+                      inlineButton: {
+                        id: 'button__ewonvcejqc',
+                        icon: FlatIcon(FlatIconName._18_EYE),
+                        onClick: () => togglePasswordConfirmVisibility(),
+                      },
                       statusText: undefined,
                       type: InputType.PASSWORD,
                       onSubmit: async (): Promise<void> =>
@@ -276,15 +299,15 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
                     id: 'button__kwildirfxa',
                     text: langKeys().ModalPasswordUpdateButtonUpdate,
                     loadingText: langKeys().ModalPasswordUpdateButtonUpdating,
-                    leftIcon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-                    color: ButtonColor.PRIMARY,
+                    leftIcon: undefined,
+                    color: ButtonColor.DANGER,
                     onClick: async (): Promise<void> =>
                       await updateAccountPassword(),
                   },
                 ],
               },
             ],
-            width: 384,
+            width: 512,
           });
 
           const updateAccountPassword = async (): Promise<void> => {
@@ -397,6 +420,38 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
             );
 
             modalController.closeModal('modal__hupeqdndow');
+          };
+
+          const togglePasswordVisibility = (): void => {
+            const inputElement = modal.inputs.input__znzeioyjkn;
+            if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
+              inputElement.changeInlineButtonIcon(
+                FlatIcon(FlatIconName._18_EYE_CLOSED),
+              );
+
+              inputElement.changeInputType(InputType.TEXT);
+            } else {
+              inputElement.changeInlineButtonIcon(
+                FlatIcon(FlatIconName._18_EYE),
+              );
+              inputElement.changeInputType(InputType.PASSWORD);
+            }
+          };
+
+          const togglePasswordConfirmVisibility = (): void => {
+            const inputElement = modal.inputs.input__fpymvxrnim;
+            if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
+              inputElement.changeInlineButtonIcon(
+                FlatIcon(FlatIconName._18_EYE_CLOSED),
+              );
+
+              inputElement.changeInputType(InputType.TEXT);
+            } else {
+              inputElement.changeInlineButtonIcon(
+                FlatIcon(FlatIconName._18_EYE),
+              );
+              inputElement.changeInputType(InputType.PASSWORD);
+            }
           };
         },
       },

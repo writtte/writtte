@@ -81,3 +81,15 @@
   padding: 2px;
   text-align: right;
 }
+
+@media screen and (max-width: 972px) {
+  .settings-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .settings-item__content {
+    min-width: 100%;
+    justify-content: flex-start;
+  }
+}

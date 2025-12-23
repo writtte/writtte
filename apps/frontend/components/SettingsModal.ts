@@ -1,4 +1,5 @@
 import { CloseButton } from './CloseButton';
+import { FlatIcon, FlatIconName } from './FlatIcon';
 import {
   SettingsSection,
   type TReturnSettingsSection,
@@ -24,6 +25,7 @@ type TReturnSettingsModal = {
 const SettingsModal = (opts: TOptions): TReturnSettingsModal => {
   const modalDiv = document.createElement('div');
   const headerDiv = document.createElement('div');
+  const logoDiv = document.createElement('div');
   const titleDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
   const sectionDividerDiv = document.createElement('div');
@@ -32,11 +34,15 @@ const SettingsModal = (opts: TOptions): TReturnSettingsModal => {
 
   modalDiv.classList.add('settings-modal');
   headerDiv.classList.add('settings-modal__header');
+  logoDiv.classList.add('settings-modal__logo');
   titleDiv.classList.add('settings-modal__title');
   contentDiv.classList.add('settings-modal__content');
   sectionDividerDiv.classList.add('settings-modal__section-divider');
   sectionItemsDiv.classList.add('settings-modal__section-items');
-  sectionContentDiv.classList.add('settings-modal__section-content');
+  sectionContentDiv.classList.add(
+    'settings-modal__section-content',
+    'v-scrollbar',
+  );
 
   const closeButtonElement = CloseButton({
     id: `${opts.id}-close-button`,
@@ -45,7 +51,9 @@ const SettingsModal = (opts: TOptions): TReturnSettingsModal => {
     },
   });
 
-  headerDiv.append(titleDiv, closeButtonElement.element);
+  logoDiv.appendChild(FlatIcon(FlatIconName._18_WRITTTE_LOGO));
+
+  headerDiv.append(logoDiv, titleDiv, closeButtonElement.element);
   contentDiv.append(sectionItemsDiv, sectionDividerDiv, sectionContentDiv);
   modalDiv.append(headerDiv, contentDiv);
 

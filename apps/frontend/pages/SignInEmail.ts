@@ -1,4 +1,5 @@
 import { AuthenticationForm } from '../components/AuthenticationForm';
+import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { InputSize, InputType } from '../components/Input';
 import { ParseLinkInText } from '../components/ParseLinkInText';
 import { PATHS } from '../constants/paths';
@@ -28,7 +29,7 @@ const SignInEmailPage = async (): Promise<HTMLElement> => {
       text: langKeys().PageSignInEmailButtonSend,
       loadingText: langKeys().PageSignInEmailButtonSending,
       leftIcon: undefined,
-      rightIcon: undefined,
+      rightIcon: FlatIcon(FlatIconName._18_EMAIL_GET),
       statusText: undefined,
       onClick: async (): Promise<void> => await submitForm(),
     },

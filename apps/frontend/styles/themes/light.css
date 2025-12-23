@@ -7,6 +7,7 @@
 
 :root {
   --common-focus-neutral: var(--global-neutral-14);
+  --common-scrollbar-bg: var(--global-neutral-8);
   --component-alert-bg: var(--base-white);
   --component-alert-border: var(--global-neutral-5);
   --component-alert-text--content: var(--global-neutral-10);

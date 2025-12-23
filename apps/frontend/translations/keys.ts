@@ -1,6 +1,10 @@
 import { getTr } from '../middleware/setup/translations';
 
 type TLangKeys = {
+  AlertAccountNameUpdateFailedDescription: string;
+  AlertAccountNameUpdateFailedTitle: string;
+  AlertAccountNameUpdateSuccessDescription: string;
+  AlertAccountNameUpdateSuccessTitle: string;
   AlertDocumentCreateFailedDescription: string;
   AlertDocumentCreateFailedTitle: string;
   AlertDocumentRetrievedFailedDescription: string;
@@ -44,6 +48,7 @@ type TLangKeys = {
   ErrorEmailMax: string;
   ErrorEmailMin: string;
   ErrorEmailRequired: string;
+  ErrorEmailSimilar: string;
   ErrorMessageNotFoundDescription: string;
   ErrorMessageNotFoundTitle: string;
   ErrorMessageOverviewNotLoadedDescription: string;
@@ -62,10 +67,14 @@ type TLangKeys = {
   InputPlaceholderPasswordConfirm: string;
   LoadingTextCheckingMagicLink: string;
   LoadingTextVerifyingEmailUpdateLink: string;
+  MenuItemChangelogs: string;
   MenuItemDeleteDocument: string;
+  MenuItemHelpAndDocumentation: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
   MenuItemRenameDocument: string;
+  MenuItemSettings: string;
+  MenuItemSignOut: string;
   ModalDocumentDeleteButtonCancel: string;
   ModalDocumentDeleteButtonDelete: string;
   ModalDocumentDeleteButtonDeleting: string;
@@ -151,15 +160,10 @@ type TLangKeys = {
   SettingsModalButtonOk: string;
   SettingsModalOverviewUpdateNameInputPlaceholder: string;
   SettingsModalOverviewUpdateNameTextTitle: string;
-  SettingsModalSectionTextAppearance: string;
-  SettingsModalSectionTextBeta: string;
-  SettingsModalSectionTextEditor: string;
   SettingsModalSectionTextHighRisk: string;
-  SettingsModalSectionTextLocal: string;
   SettingsModalSectionTextOverview: string;
   SettingsModalSectionTextSecurity: string;
   SettingsModalSectionTextSubscription: string;
-  SettingsModalSectionTextUsage: string;
   SettingsModalSecurityUpdateEmailButtonUpdate: string;
   SettingsModalSecurityUpdateEmailTextDescription: string;
   SettingsModalSecurityUpdateEmailTextTitle: string;
@@ -174,12 +178,15 @@ type TLangKeys = {
   SettingsModalSubscriptionSubscribeButtonWait: string;
   SettingsModalSubscriptionSubscribeTextTitle: string;
   SettingsModalTextTitle: string;
-  SuccessNameUpdated: string;
 };
 
 const langKeys = (): TLangKeys => {
   // biome-ignore format: Following array should not be formatted
   const keys: TLangKeys = {
+    AlertAccountNameUpdateFailedDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_DESCRIPTION'),
+    AlertAccountNameUpdateFailedTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_TITLE'),
+    AlertAccountNameUpdateSuccessDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_DESCRIPTION'),
+    AlertAccountNameUpdateSuccessTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_TITLE'),
     AlertDocumentCreateFailedDescription: ('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
     AlertDocumentCreateFailedTitle: ('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
@@ -223,6 +230,7 @@ const langKeys = (): TLangKeys => {
     ErrorEmailMax: getTr('ERROR_EMAIL_MAX'),
     ErrorEmailMin: getTr('ERROR_EMAIL_MIN'),
     ErrorEmailRequired: getTr('ERROR_EMAIL_REQUIRED'),
+    ErrorEmailSimilar: getTr('ERROR_EMAIL_SIMILAR'),
     ErrorMessageNotFoundDescription: getTr('ERROR_MESSAGE_NOT_FOUND_DESCRIPTION'),
     ErrorMessageNotFoundTitle: getTr('ERROR_MESSAGE_NOT_FOUND_TITLE'),
     ErrorMessageOverviewNotLoadedDescription: getTr('ERROR_MESSAGE_OVERVIEW_NOT_LOADED_DESCRIPTION'),
@@ -241,10 +249,14 @@ const langKeys = (): TLangKeys => {
     InputPlaceholderPasswordConfirm: getTr('INPUT_PLACEHOLDER_PASSWORD_CONFIRM'),
     LoadingTextCheckingMagicLink: getTr('LOADING_TEXT_CHECKING_MAGIC_LINK'),
     LoadingTextVerifyingEmailUpdateLink: getTr('LOADING_TEXT_VERIFYING_EMAIL_UPDATE_LINK'),
+    MenuItemChangelogs: getTr('MENU_ITEM_CHANGELOGS'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
+    MenuItemHelpAndDocumentation: getTr('MENU_ITEM_HELP_AND_DOCUMENTATION'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
     MenuItemRenameDocument: getTr('MENU_ITEM_RENAME_DOCUMENT'),
+    MenuItemSettings: getTr('MENU_ITEM_SETTINGS'),
+    MenuItemSignOut: getTr('MENU_ITEM_SIGN_OUT'),
     ModalDocumentDeleteButtonCancel: getTr('MODAL_DOCUMENT_DELETE_BUTTON_CANCEL'),
     ModalDocumentDeleteButtonDelete: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETE'),
     ModalDocumentDeleteButtonDeleting: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETING'),
@@ -330,15 +342,10 @@ const langKeys = (): TLangKeys => {
     SettingsModalButtonOk: getTr('SETTINGS_MODAL_BUTTON_OK'),
     SettingsModalOverviewUpdateNameInputPlaceholder: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_INPUT_PLACEHOLDER'),
     SettingsModalOverviewUpdateNameTextTitle: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_TEXT_TITLE'),
-    SettingsModalSectionTextAppearance: getTr('SETTINGS_MODAL_SECTION_TEXT_APPEARANCE'),
-    SettingsModalSectionTextBeta: getTr('SETTINGS_MODAL_SECTION_TEXT_BETA'),
-    SettingsModalSectionTextEditor: getTr('SETTINGS_MODAL_SECTION_TEXT_EDITOR'),
     SettingsModalSectionTextHighRisk: getTr('SETTINGS_MODAL_SECTION_TEXT_HIGH_RISK'),
-    SettingsModalSectionTextLocal: getTr('SETTINGS_MODAL_SECTION_TEXT_LOCAL'),
     SettingsModalSectionTextOverview: getTr('SETTINGS_MODAL_SECTION_TEXT_OVERVIEW'),
     SettingsModalSectionTextSecurity: getTr('SETTINGS_MODAL_SECTION_TEXT_SECURITY'),
     SettingsModalSectionTextSubscription: getTr('SETTINGS_MODAL_SECTION_TEXT_SUBSCRIPTION'),
-    SettingsModalSectionTextUsage: getTr('SETTINGS_MODAL_SECTION_TEXT_USAGE'),
     SettingsModalSecurityUpdateEmailButtonUpdate: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_BUTTON_UPDATE'),
     SettingsModalSecurityUpdateEmailTextDescription: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_TEXT_DESCRIPTION'),
     SettingsModalSecurityUpdateEmailTextTitle: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_TEXT_TITLE'),
@@ -353,7 +360,6 @@ const langKeys = (): TLangKeys => {
     SettingsModalSubscriptionSubscribeButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT'),
     SettingsModalSubscriptionSubscribeTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE'),
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
-    SuccessNameUpdated: getTr('SUCCESS_NAME_UPDATED'),
   }
 
   return keys;
