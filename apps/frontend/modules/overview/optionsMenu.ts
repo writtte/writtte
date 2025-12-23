@@ -1,4 +1,5 @@
 import type { TReturnItemList } from '../../components/ItemList';
+import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { Menu } from '../../components/Menu';
 import { PATHS } from '../../constants/paths';
 import { langKeys } from '../../translations/keys';
@@ -37,7 +38,7 @@ const buildDocumentOptionsMenu = async (
       {
         id: 'menu_item__kdvrbpcxzz',
         text: langKeys().MenuItemOpenInTab,
-        leftIcon: undefined,
+        leftIcon: FlatIcon(FlatIconName._16_OPEN_NEW_TAB),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: (): void =>
@@ -48,7 +49,7 @@ const buildDocumentOptionsMenu = async (
       {
         id: 'menu_item__yybpiupwdd',
         text: langKeys().MenuItemRenameDocument,
-        leftIcon: undefined,
+        leftIcon: FlatIcon(FlatIconName._16_EDIT),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>
@@ -59,7 +60,7 @@ const buildDocumentOptionsMenu = async (
       {
         id: 'menu_item__iigulhsowe',
         text: langKeys().MenuItemDeleteDocument,
-        leftIcon: undefined,
+        leftIcon: FlatIcon(FlatIconName._16_TRASH),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>

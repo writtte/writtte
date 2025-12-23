@@ -1,7 +1,7 @@
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { topBarInstance } from '../../controller/topBar';
 import { buildError } from '../../helpers/error/build';
-import { openSettingsModal } from '../settings/openSettingsModal';
+import { buildAccountMenu } from './accountMenu';
 
 const setupParentTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {
@@ -11,12 +11,12 @@ const setupParentTopBar = async (): Promise<void> => {
   topBarInstance.addButtonsToRight([
     {
       id: 'action_button__mctduiojnt',
-      icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      icon: FlatIcon(FlatIconName._18_USER),
       onClick: async (e: PointerEvent): Promise<void> => {
         e.preventDefault();
         e.stopPropagation();
 
-        await openSettingsModal();
+        await buildAccountMenu(e);
       },
     },
   ]);

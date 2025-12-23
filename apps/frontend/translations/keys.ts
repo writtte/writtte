@@ -62,10 +62,14 @@ type TLangKeys = {
   InputPlaceholderPasswordConfirm: string;
   LoadingTextCheckingMagicLink: string;
   LoadingTextVerifyingEmailUpdateLink: string;
+  MenuItemChangelogs: string;
   MenuItemDeleteDocument: string;
+  MenuItemHelpAndDocumentation: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
   MenuItemRenameDocument: string;
+  MenuItemSettings: string;
+  MenuItemSignOut: string;
   ModalDocumentDeleteButtonCancel: string;
   ModalDocumentDeleteButtonDelete: string;
   ModalDocumentDeleteButtonDeleting: string;
@@ -241,10 +245,14 @@ const langKeys = (): TLangKeys => {
     InputPlaceholderPasswordConfirm: getTr('INPUT_PLACEHOLDER_PASSWORD_CONFIRM'),
     LoadingTextCheckingMagicLink: getTr('LOADING_TEXT_CHECKING_MAGIC_LINK'),
     LoadingTextVerifyingEmailUpdateLink: getTr('LOADING_TEXT_VERIFYING_EMAIL_UPDATE_LINK'),
+    MenuItemChangelogs: getTr('MENU_ITEM_CHANGELOGS'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
+    MenuItemHelpAndDocumentation: getTr('MENU_ITEM_HELP_AND_DOCUMENTATION'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
     MenuItemRenameDocument: getTr('MENU_ITEM_RENAME_DOCUMENT'),
+    MenuItemSettings: getTr('MENU_ITEM_SETTINGS'),
+    MenuItemSignOut: getTr('MENU_ITEM_SIGN_OUT'),
     ModalDocumentDeleteButtonCancel: getTr('MODAL_DOCUMENT_DELETE_BUTTON_CANCEL'),
     ModalDocumentDeleteButtonDelete: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETE'),
     ModalDocumentDeleteButtonDeleting: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETING'),

@@ -3,7 +3,7 @@ import { PATHS } from '../../constants/paths';
 import { topBarInstance } from '../../controller/topBar';
 import { buildError } from '../../helpers/error/build';
 import { navigate } from '../../utils/routes/routes';
-import { openSettingsModal } from '../settings/openSettingsModal';
+import { buildAccountMenu } from './accountMenu';
 
 const setupEditorTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {
@@ -13,7 +13,7 @@ const setupEditorTopBar = async (): Promise<void> => {
   topBarInstance.addButtonsToLeft([
     {
       id: 'action_button__wzgexjekpk',
-      icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      icon: FlatIcon(FlatIconName._18_ARROW_LEFT),
       onClick: async (e: PointerEvent): Promise<void> => {
         e.preventDefault();
 
@@ -24,33 +24,13 @@ const setupEditorTopBar = async (): Promise<void> => {
 
   topBarInstance.addButtonsToRight([
     {
-      id: 'action_button__byqscebarg',
-      icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-      onClick: async (e: PointerEvent): Promise<void> => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        await openSettingsModal();
-      },
-    },
-    {
-      id: 'action_button__rwnqfhimth',
-      icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-      onClick: async (e: PointerEvent): Promise<void> => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        await openSettingsModal();
-      },
-    },
-    {
       id: 'action_button__znkmokydeg',
-      icon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+      icon: FlatIcon(FlatIconName._18_USER),
       onClick: async (e: PointerEvent): Promise<void> => {
         e.preventDefault();
         e.stopPropagation();
 
-        await openSettingsModal();
+        await buildAccountMenu(e);
       },
     },
   ]);
