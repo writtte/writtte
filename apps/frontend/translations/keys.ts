@@ -160,15 +160,10 @@ type TLangKeys = {
   SettingsModalButtonOk: string;
   SettingsModalOverviewUpdateNameInputPlaceholder: string;
   SettingsModalOverviewUpdateNameTextTitle: string;
-  SettingsModalSectionTextAppearance: string;
-  SettingsModalSectionTextBeta: string;
-  SettingsModalSectionTextEditor: string;
   SettingsModalSectionTextHighRisk: string;
-  SettingsModalSectionTextLocal: string;
   SettingsModalSectionTextOverview: string;
   SettingsModalSectionTextSecurity: string;
   SettingsModalSectionTextSubscription: string;
-  SettingsModalSectionTextUsage: string;
   SettingsModalSecurityUpdateEmailButtonUpdate: string;
   SettingsModalSecurityUpdateEmailTextDescription: string;
   SettingsModalSecurityUpdateEmailTextTitle: string;
@@ -347,15 +342,10 @@ const langKeys = (): TLangKeys => {
     SettingsModalButtonOk: getTr('SETTINGS_MODAL_BUTTON_OK'),
     SettingsModalOverviewUpdateNameInputPlaceholder: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_INPUT_PLACEHOLDER'),
     SettingsModalOverviewUpdateNameTextTitle: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_TEXT_TITLE'),
-    SettingsModalSectionTextAppearance: getTr('SETTINGS_MODAL_SECTION_TEXT_APPEARANCE'),
-    SettingsModalSectionTextBeta: getTr('SETTINGS_MODAL_SECTION_TEXT_BETA'),
-    SettingsModalSectionTextEditor: getTr('SETTINGS_MODAL_SECTION_TEXT_EDITOR'),
     SettingsModalSectionTextHighRisk: getTr('SETTINGS_MODAL_SECTION_TEXT_HIGH_RISK'),
-    SettingsModalSectionTextLocal: getTr('SETTINGS_MODAL_SECTION_TEXT_LOCAL'),
     SettingsModalSectionTextOverview: getTr('SETTINGS_MODAL_SECTION_TEXT_OVERVIEW'),
     SettingsModalSectionTextSecurity: getTr('SETTINGS_MODAL_SECTION_TEXT_SECURITY'),
     SettingsModalSectionTextSubscription: getTr('SETTINGS_MODAL_SECTION_TEXT_SUBSCRIPTION'),
-    SettingsModalSectionTextUsage: getTr('SETTINGS_MODAL_SECTION_TEXT_USAGE'),
     SettingsModalSecurityUpdateEmailButtonUpdate: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_BUTTON_UPDATE'),
     SettingsModalSecurityUpdateEmailTextDescription: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_TEXT_DESCRIPTION'),
     SettingsModalSecurityUpdateEmailTextTitle: getTr('SETTINGS_MODAL_SECURITY_UPDATE_EMAIL_TEXT_TITLE'),
