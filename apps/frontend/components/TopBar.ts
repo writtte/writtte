@@ -62,9 +62,9 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
   rightButtonsDiv.classList.add('top-bar__right-buttons');
 
   logoDiv.appendChild(opts.logo);
-  leftDiv.append(logoDiv, leftButtonsDiv);
+  leftDiv.append(leftButtonsDiv);
   rightDiv.append(badgeDiv, rightButtonsDiv);
-  topBarDiv.append(leftDiv, rightDiv);
+  topBarDiv.append(leftDiv, logoDiv, rightDiv);
 
   const buttons: TReturnTopBar['buttons'] = {};
 
