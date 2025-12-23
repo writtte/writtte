@@ -1,5 +1,6 @@
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { Menu } from '../../components/Menu';
+import { signOutCurrentAccount } from '../../helpers/account/signOut';
 import { langKeys } from '../../translations/keys';
 import { openSettingsModal } from '../settings/openSettingsModal';
 
@@ -51,7 +52,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         leftIcon: FlatIcon(FlatIconName._16_SIGN_OUT),
         rightIcon: undefined,
         isLeftIconVisible: true,
-        onClick: async (): Promise<void> => {},
+        onClick: async (): Promise<void> => await signOutCurrentAccount(),
         hasTopDivider: true,
         hasBottomDivider: false,
       },
