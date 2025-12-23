@@ -102,14 +102,12 @@ const SignUpCreatePage = async (): Promise<HTMLElement> => {
     const inputElement = inputs.input__lgitvucjxf;
     if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
       inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+        FlatIcon(FlatIconName._18_EYE_CLOSED),
       );
 
       inputElement.changeInputType(InputType.TEXT);
     } else {
-      inputElement.changeInlineButtonIcon(
-        FlatIcon(FlatIconName._SAMPLE_CIRCLE),
-      );
+      inputElement.changeInlineButtonIcon(FlatIcon(FlatIconName._18_EYE));
       inputElement.changeInputType(InputType.PASSWORD);
     }
   };

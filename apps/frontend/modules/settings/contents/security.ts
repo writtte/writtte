@@ -442,13 +442,13 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
             const inputElement = modal.inputs.input__fpymvxrnim;
             if (inputElement.getCurrentInputType() === InputType.PASSWORD) {
               inputElement.changeInlineButtonIcon(
-                FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+                FlatIcon(FlatIconName._18_EYE_CLOSED),
               );
 
               inputElement.changeInputType(InputType.TEXT);
             } else {
               inputElement.changeInlineButtonIcon(
-                FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+                FlatIcon(FlatIconName._18_EYE),
               );
               inputElement.changeInputType(InputType.PASSWORD);
             }
