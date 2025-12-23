@@ -101,7 +101,7 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
                 ],
               },
             ],
-            width: 384,
+            width: 512,
           });
 
           const sendEmailUpdateRequest = async (): Promise<void> => {
@@ -228,7 +228,7 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
               },
               {
                 type: ModalContentItemType.INPUT,
-                direction: ModalContainerItemDirection.ROW,
+                direction: ModalContainerItemDirection.COLUMN,
                 inputs: [
                   {
                     title: undefined,
@@ -284,7 +284,7 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
                 ],
               },
             ],
-            width: 384,
+            width: 512,
           });
 
           const updateAccountPassword = async (): Promise<void> => {
