@@ -12,6 +12,7 @@ type TLangKeys = {
   AlertMiddlewareNeedSignInDescription: string;
   AlertMiddlewareNeedSignInTitle: string;
   AlertMiddlewareSignInRequiredDescription: string;
+  ErrorEmailSimilar: string;
   AlertMiddlewareSignInRequiredTitle: string;
   AlertPasswordUpdatedDescription: string;
   AlertPasswordUpdatedTitle: string;
@@ -227,6 +228,7 @@ const langKeys = (): TLangKeys => {
     ErrorEmailMax: getTr('ERROR_EMAIL_MAX'),
     ErrorEmailMin: getTr('ERROR_EMAIL_MIN'),
     ErrorEmailRequired: getTr('ERROR_EMAIL_REQUIRED'),
+    ErrorEmailSimilar: getTr('ERROR_EMAIL_SIMILAR'),
     ErrorMessageNotFoundDescription: getTr('ERROR_MESSAGE_NOT_FOUND_DESCRIPTION'),
     ErrorMessageNotFoundTitle: getTr('ERROR_MESSAGE_NOT_FOUND_TITLE'),
     ErrorMessageOverviewNotLoadedDescription: getTr('ERROR_MESSAGE_OVERVIEW_NOT_LOADED_DESCRIPTION'),

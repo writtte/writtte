@@ -43,6 +43,7 @@ const enMessages = {
   ERROR_EMAIL_MAX: 'Email address can\'t be longer than 512 characters.',
   ERROR_EMAIL_MIN: 'Email address must be at least 4 characters long.',
   ERROR_EMAIL_REQUIRED: 'Email address is required to continue.',
+  ERROR_EMAIL_SIMILAR: 'To change, the email address must be different from the current email address.',
   ERROR_MESSAGE_NOT_FOUND_DESCRIPTION: 'We can\'t find the page you\'re looking for...',
   ERROR_MESSAGE_NOT_FOUND_TITLE: 'Page Not Found',
   ERROR_MESSAGE_OVERVIEW_NOT_LOADED_DESCRIPTION: 'Something happened on our end, please refresh this page in a few seconds.',
