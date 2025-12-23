@@ -38,7 +38,7 @@ const buildDocumentOptionsMenu = async (
       {
         id: 'menu_item__kdvrbpcxzz',
         text: langKeys().MenuItemOpenInTab,
-        leftIcon: FlatIcon(FlatIconName._16_OPEN_NEW_TAB),
+        leftIcon: FlatIcon(FlatIconName._18_OPEN_NEW_TAB),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: (): void =>
@@ -49,7 +49,7 @@ const buildDocumentOptionsMenu = async (
       {
         id: 'menu_item__yybpiupwdd',
         text: langKeys().MenuItemRenameDocument,
-        leftIcon: FlatIcon(FlatIconName._16_EDIT),
+        leftIcon: FlatIcon(FlatIconName._18_EDIT),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>
@@ -60,7 +60,7 @@ const buildDocumentOptionsMenu = async (
       {
         id: 'menu_item__iigulhsowe',
         text: langKeys().MenuItemDeleteDocument,
-        leftIcon: FlatIcon(FlatIconName._16_TRASH),
+        leftIcon: FlatIcon(FlatIconName._18_TRASH),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>

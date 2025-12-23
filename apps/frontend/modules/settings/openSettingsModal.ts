@@ -41,7 +41,7 @@ const openSettingsModal = async (): Promise<void> => {
       },
       {
         id: sectionIds.security,
-        icon: FlatIcon(FlatIconName._16_SECURITY),
+        icon: FlatIcon(FlatIconName._18_SECURITY),
         text: langKeys().SettingsModalSectionTextSecurity,
         isSelected: false,
         onClick: (): void =>
@@ -68,7 +68,7 @@ const openSettingsModal = async (): Promise<void> => {
       },
       {
         id: sectionIds.subscription,
-        icon: FlatIcon(FlatIconName._16_SUBSCRIPTION),
+        icon: FlatIcon(FlatIconName._18_SUBSCRIPTION),
         text: langKeys().SettingsModalSectionTextSubscription,
         isSelected: false,
         onClick: (): void =>
@@ -104,7 +104,7 @@ const openSettingsModal = async (): Promise<void> => {
       },
       {
         id: sectionIds.highRisk,
-        icon: FlatIcon(FlatIconName._16_HIGH_RISK),
+        icon: FlatIcon(FlatIconName._18_HIGH_RISK),
         text: langKeys().SettingsModalSectionTextHighRisk,
         isSelected: false,
         onClick: (): void =>

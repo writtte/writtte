@@ -28,7 +28,7 @@ const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
   iconDiv.classList.add('item-list-document-item__icon');
   textDiv.classList.add('item-list-document-item__text');
 
-  iconDiv.appendChild(FlatIcon(FlatIconName._16_DOCUMENT));
+  iconDiv.appendChild(FlatIcon(FlatIconName._18_DOCUMENT));
 
   const optionButtonElement = ActionButton({
     id: opts.optionButton.id,

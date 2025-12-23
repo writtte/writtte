@@ -21,7 +21,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
       {
         id: 'menu_item__pvovhxmpmt',
         text: langKeys().MenuItemSettings,
-        leftIcon: FlatIcon(FlatIconName._16_SETTINGS),
+        leftIcon: FlatIcon(FlatIconName._18_SETTINGS),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => await openSettingsModal(),
@@ -31,7 +31,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
       {
         id: 'menu_item__eqvjtlzaru',
         text: langKeys().MenuItemHelpAndDocumentation,
-        leftIcon: FlatIcon(FlatIconName._16_CIRCLE_HELP),
+        leftIcon: FlatIcon(FlatIconName._18_CIRCLE_HELP),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: (): void => navigateExternal(LINKS.PRODUCT_DOCUMENTATION),
@@ -52,7 +52,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
       {
         id: 'menu_item__skauzwsbhh',
         text: langKeys().MenuItemSignOut,
-        leftIcon: FlatIcon(FlatIconName._16_SIGN_OUT),
+        leftIcon: FlatIcon(FlatIconName._18_SIGN_OUT),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => await signOutCurrentAccount(),
