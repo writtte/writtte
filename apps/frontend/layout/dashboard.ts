@@ -21,7 +21,7 @@ const DashboardLayout = async ({
 
   layoutDiv.classList.add('dashboard-layout');
   containerDiv.classList.add('dashboard-layout__container');
-  pageDiv.classList.add('dashboard-layout__page');
+  pageDiv.classList.add('dashboard-layout__page', 'v-scrollbar');
 
   pageDiv.appendChild(content);
   layoutDiv.appendChild(containerDiv);

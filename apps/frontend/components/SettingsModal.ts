@@ -39,7 +39,10 @@ const SettingsModal = (opts: TOptions): TReturnSettingsModal => {
   contentDiv.classList.add('settings-modal__content');
   sectionDividerDiv.classList.add('settings-modal__section-divider');
   sectionItemsDiv.classList.add('settings-modal__section-items');
-  sectionContentDiv.classList.add('settings-modal__section-content');
+  sectionContentDiv.classList.add(
+    'settings-modal__section-content',
+    'v-scrollbar',
+  );
 
   const closeButtonElement = CloseButton({
     id: `${opts.id}-close-button`,

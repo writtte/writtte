@@ -1,0 +1,76 @@
+.v-scrollbar {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--common-scrollbar-bg) transparent;
+}
+
+.v-scrollbar::-webkit-scrollbar {
+  width: thin;
+  height: thin;
+}
+
+.v-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 32px;
+}
+
+.v-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--common-scrollbar-bg);
+  border-radius: 32px;
+}
+
+.v-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--common-scrollbar-bg);
+}
+
+.h-scrollbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--common-scrollbar-bg) transparent;
+}
+
+.h-scrollbar::-webkit-scrollbar {
+  width: thin;
+  height: thin;
+}
+
+.h-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 32px;
+}
+
+.h-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--common-scrollbar-bg);
+  border-radius: 32px;
+}
+
+.h-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--common-scrollbar-bg);
+}
+
+.vh-scrollbar {
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--common-scrollbar-bg) transparent;
+}
+
+.vh-scrollbar::-webkit-scrollbar {
+  width: thin;
+  height: thin;
+}
+
+.vh-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 32px;
+}
+
+.vh-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--common-scrollbar-bg);
+  border-radius: 32px;
+}
+
+.vh-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--common-scrollbar-bg);
+}

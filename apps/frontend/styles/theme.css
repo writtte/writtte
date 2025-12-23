@@ -18,6 +18,10 @@
 
 @import "./themes/light.css";
 
+/* Global */
+
+@import "./global/scroll_bars.css";
+
 /* Layouts */
 
 @import "./layouts/authentication.css";
