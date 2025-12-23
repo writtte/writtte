@@ -71,8 +71,7 @@
 }
 
 .writtte-editor--read-only li,
-.writtte-editor--read-only li label,
-.writtte-editor--read-only li input[type="checkbox"] {
+.writtte-editor--read-only li label {
   cursor: default;
 }
 
