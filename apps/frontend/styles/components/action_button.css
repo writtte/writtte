@@ -39,4 +39,9 @@
       }
     }
   }
+
+  &:focus-visible {
+    outline: 1px dashed var(--common-focus-neutral, #050505);
+    outline-offset: 2px;
+  }
 }
