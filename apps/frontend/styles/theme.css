@@ -63,6 +63,10 @@
 @import "./controllers/modal.css";
 @import "./controllers/settings_modal.css";
 
+/* Vendors */
+
+@import "./vendors/writtte_editor.css";
+
 /* Debugging */
 
 /* @import "./debug/outline.css"; */

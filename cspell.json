@@ -52,6 +52,9 @@
     "errorf",
     "blocklist",
     "waitgroup",
-    "playfair"
+    "playfair",
+    "textblock",
+    "Prosemirror",
+    "exitable"
   ]
 }

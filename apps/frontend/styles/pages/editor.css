@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  margin-top: 24px;
   padding-inline: 384px;
   width: 100%;
 }
