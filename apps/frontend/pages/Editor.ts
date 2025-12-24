@@ -7,7 +7,7 @@ import { updateMainEditor } from '../data/stores/mainEditor';
 import {
   fixedMenuUpdateEventListener,
   setupEditorFixedMenuOptions,
-} from '../modules/editor/editorFixedMenuOptions';
+} from '../modules/editor/editorFixedMenu';
 import { setupEditorExtensionOptions } from '../modules/editor/editorOptions';
 import {
   getDocumentContentFromAPI,
