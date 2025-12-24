@@ -328,6 +328,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   const isLinkActive = (): boolean => _editor.isActive('link');
 
+  const isBulletListActive = (): boolean => _editor.isActive('bulletList');
+
+  const isNumberListActive = (): boolean => _editor.isActive('numberList');
+
   return {
     isEditable,
     setEditable,
@@ -369,6 +373,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isSubscriptActive,
     isStrikethroughActive,
     isLinkActive,
+    isBulletListActive,
+    isNumberListActive,
   };
 };
 

@@ -47,6 +47,8 @@ type TEditorAPI = {
   isSubscriptActive: () => boolean;
   isStrikethroughActive: () => boolean;
   isLinkActive: () => boolean;
+  isBulletListActive: () => boolean;
+  isNumberListActive: () => boolean;
 };
 
 export type { TEditorAPI };
