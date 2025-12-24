@@ -86,14 +86,14 @@
 
 .editor-fixed-menu-item-button--selected {
   background: var(--component-editor-menu-item-bg---selected);
-  pointer-events: none;
 
   &:hover {
     background: var(--component-editor-menu-item-bg---selected);
+    cursor: pointer;
   }
 
   &:active {
-    background: var(--component-editor-menu-item-bg---selected);
+    background: var(--component-editor-menu-item-bg---active);
   }
 }
 
