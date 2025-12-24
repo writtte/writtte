@@ -23,6 +23,7 @@ type TOptions = {
         text: string | undefined;
         placeholderText: string | undefined;
         isVisible: boolean;
+        onSubmit: () => void;
       }
     | {
         type: typeof FixedMenuItemType.BUTTON;
@@ -132,6 +133,12 @@ const EditorFixedMenuItem = (opts: TOptions): TReturnEditorFixedMenuItem => {
         input.classList.remove('show');
       }
     };
+
+    input.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && opts.item.type === FixedMenuItemType.INPUT) {
+        opts.item.onSubmit();
+      }
+    });
 
     return {
       element: input,
