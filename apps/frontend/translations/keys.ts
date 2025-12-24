@@ -27,6 +27,8 @@ type TLangKeys = {
   AlertSubscriptionCheckoutSessionLinkFailedTitle: string;
   AlertSubscriptionCustomerPortalLinkFailedDescription: string;
   AlertSubscriptionCustomerPortalLinkFailedTitle: string;
+  AlertUnableToAddHyperlinkDescription: string;
+  AlertUnableToAddHyperlinkTitle: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountInvalidCredentials: string;
   ErrorAccountNotExists: string;
@@ -61,6 +63,10 @@ type TLangKeys = {
   ErrorPasswordMin: string;
   ErrorPasswordMismatch: string;
   ErrorPasswordRequired: string;
+  ErrorUrlMax: string;
+  ErrorUrlMin: string;
+  ErrorUrlPattern: string;
+  ErrorUrlRequired: string;
   InputPlaceholderEmailAddress: string;
   InputPlaceholderName: string;
   InputPlaceholderPassword: string;
@@ -209,6 +215,8 @@ const langKeys = (): TLangKeys => {
     AlertSubscriptionCheckoutSessionLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_TITLE'),
     AlertSubscriptionCustomerPortalLinkFailedDescription: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_DESCRIPTION'),
     AlertSubscriptionCustomerPortalLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE'),
+    AlertUnableToAddHyperlinkDescription: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_DESCRIPTION'),
+    AlertUnableToAddHyperlinkTitle: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_TITLE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
     ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),
@@ -243,6 +251,10 @@ const langKeys = (): TLangKeys => {
     ErrorPasswordMin: getTr('ERROR_PASSWORD_MIN'),
     ErrorPasswordMismatch: getTr('ERROR_PASSWORD_MISMATCH'),
     ErrorPasswordRequired: getTr('ERROR_PASSWORD_REQUIRED'),
+    ErrorUrlMax: getTr('ERROR_URL_MAX'),
+    ErrorUrlMin: getTr('ERROR_URL_MIN'),
+    ErrorUrlPattern: getTr('ERROR_URL_PATTERN'),
+    ErrorUrlRequired: getTr('ERROR_URL_REQUIRED'),
     InputPlaceholderEmailAddress: getTr('INPUT_PLACEHOLDER_EMAIL_ADDRESS'),
     InputPlaceholderName: getTr('INPUT_PLACEHOLDER_NAME'),
     InputPlaceholderPassword: getTr('INPUT_PLACEHOLDER_PASSWORD'),

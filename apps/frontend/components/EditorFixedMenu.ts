@@ -1,3 +1,4 @@
+import { setTestId } from '../utils/dom/testId';
 import {
   EditorFixedMenuItem,
   type TEditorFixedMenuItemOptions,
@@ -24,6 +25,8 @@ type TReturnEditorFixedMenu = {
 const EditorFixedMenu = (opts: TOptions): TReturnEditorFixedMenu => {
   const menu = document.createElement('menu');
   menu.classList.add('editor-fixed-menu');
+
+  setTestId(menu, opts.id);
 
   const itemReturnsMap: { [key: string]: TReturnEditorFixedMenuItem } = {};
 

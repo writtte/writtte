@@ -223,9 +223,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     };
   };
 
-  const unsetLink = (): boolean => {
-    return _editor.chain().focus().unsetLink().run();
-  };
+  const unsetLink = (): boolean => _editor.chain().focus().unsetLink().run();
 
   const toggleHeader01 = (): boolean =>
     _editor
