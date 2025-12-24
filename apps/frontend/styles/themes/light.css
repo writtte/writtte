@@ -61,6 +61,7 @@
   --component-editor-menu-item-bg---active: var(--global-neutral-3);
   --component-editor-menu-item-bg---hover: var(--global-neutral-2);
   --component-editor-menu-item-bg---selected: var(--global-neutral-3);
+  --component-editor-menu-item-bg--input: var(--global-neutral-2);
   --component-editor-menu-item-bg--key: var(--global-neutral-2);
   --component-editor-menu-item-bg: var(--base-white);
   --component-editor-menu-item-icon---hover: var(--global-neutral-12);

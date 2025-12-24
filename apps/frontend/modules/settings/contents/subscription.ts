@@ -82,7 +82,7 @@ const getSubscriptionSettingsContent = (): HTMLDivElement[] => {
         text: langKeys().SettingsModalSubscriptionCustomerPortalButtonOpen,
         loadingText:
           langKeys().SettingsModalSubscriptionCustomerPortalButtonWait,
-        leftIcon: FlatIcon(FlatIconName._SAMPLE_CIRCLE),
+        leftIcon: FlatIcon(FlatIconName._18_OPEN_NEW_TAB),
         rightIcon: undefined,
         color: ButtonColor.NEUTRAL,
         onClick: async (): Promise<void> => {

@@ -3,7 +3,11 @@ import { Editor } from '../components/Editor';
 import { EditorFixedMenu } from '../components/EditorFixedMenu';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';
-import { setupEditorFixedMenuOptions } from '../modules/editor/editorFixedMenuOptions';
+import { updateMainEditor } from '../data/stores/mainEditor';
+import {
+  fixedMenuUpdateEventListener,
+  setupEditorFixedMenuOptions,
+} from '../modules/editor/editorFixedMenu';
 import { setupEditorExtensionOptions } from '../modules/editor/editorOptions';
 import {
   getDocumentContentFromAPI,
@@ -36,15 +40,26 @@ const EditorPage = async (
   containerDiv.classList.add('editor-page__container');
   editorDiv.classList.add('editor-page__editor', 'v-scrollbar');
 
-  const editorFixedMenuElement = EditorFixedMenu({
-    id: 'editor_fixed_menu__tuaodnwhdq',
-    items: setupEditorFixedMenuOptions(),
-  });
-
   const editorElement = Editor({
     id: 'editor__oqvawzczdv',
     options: setupEditorExtensionOptions(),
   });
+
+  if (editorElement) {
+    updateMainEditor({
+      api: editorElement.api,
+    });
+  }
+
+  const editorFixedMenuElement = EditorFixedMenu({
+    id: 'editor_fixed_menu__tuaodnwhdq',
+  });
+
+  editorFixedMenuElement.setItems(
+    setupEditorFixedMenuOptions(editorFixedMenuElement),
+  );
+
+  fixedMenuUpdateEventListener(editorFixedMenuElement);
 
   containerDiv.append(editorFixedMenuElement.element, editorDiv);
   editorDiv.appendChild(editorElement.element);
