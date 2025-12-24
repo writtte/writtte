@@ -18,3 +18,24 @@
   height: 24px;
   width: 1px;
 }
+
+@media screen and (max-width: 972px) {
+  .editor-fixed-menu {
+    -ms-overflow-style: none;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  
+  .settings-modal-container {
+    padding: 24px;
+  }
+
+  .editor-fixed-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .editor-fixed-menu > * {
+    flex-shrink: 0;
+  }
+}
