@@ -45,7 +45,8 @@ type TEditorAPI = {
   isInlineCodeActive: () => boolean;
   isSuperscriptActive: () => boolean;
   isSubscriptActive: () => boolean;
-  isStrikethrough: () => boolean;
+  isStrikethroughActive: () => boolean;
+  isLinkActive: () => boolean;
 };
 
 export type { TEditorAPI };

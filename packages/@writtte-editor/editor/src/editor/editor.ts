@@ -323,7 +323,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   const isSubscriptActive = (): boolean => _editor.isActive('subscript');
 
-  const isStrikethrough = (): boolean => _editor.isActive('strikethrough');
+  const isStrikethroughActive = (): boolean =>
+    _editor.isActive('strikethrough');
+
+  const isLinkActive = (): boolean => _editor.isActive('link');
 
   return {
     isEditable,
@@ -364,7 +367,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isInlineCodeActive,
     isSuperscriptActive,
     isSubscriptActive,
-    isStrikethrough,
+    isStrikethroughActive,
+    isLinkActive,
   };
 };
 
