@@ -3,6 +3,7 @@ import { setTestId } from '../utils/dom/testId';
 
 const FixedMenuItemType = {
   TEXT: 'TEXT',
+  INPUT: 'INPUT',
   BUTTON: 'BUTTON',
 } as const;
 
@@ -15,6 +16,11 @@ type TOptions = {
     | {
         type: typeof FixedMenuItemType.TEXT;
         text: string;
+      }
+    | {
+        type: typeof FixedMenuItemType.INPUT;
+        text: string | undefined;
+        placeholderText: string | undefined;
       }
     | {
         type: typeof FixedMenuItemType.BUTTON;
@@ -48,6 +54,41 @@ const EditorFixedMenuItem = (opts: TOptions): TReturnEditorFixedMenuItem => {
       setText: undefined,
       getTextPlaceholder: undefined,
       setTextPlaceholder: undefined,
+      setButtonVisibility: undefined,
+      setButtonSelectedState: undefined,
+    };
+  }
+
+  if (opts.item.type === FixedMenuItemType.INPUT) {
+    const input = document.createElement('input');
+    input.classList.add('editor-fixed-menu-item-input');
+
+    if (opts.item.text !== undefined) {
+      input.value = opts.item.text;
+    }
+
+    if (opts.item.placeholderText) {
+      input.placeholder = opts.item.placeholderText;
+    }
+
+    const getText = (): string => input.value;
+
+    const setText = (text: string): void => {
+      input.value = text;
+    };
+
+    const getTextPlaceholder = (): string => input.placeholder;
+
+    const setTextPlaceholder = (text: string): void => {
+      input.placeholder = text;
+    };
+
+    return {
+      element: input,
+      getText,
+      setText,
+      getTextPlaceholder,
+      setTextPlaceholder,
       setButtonVisibility: undefined,
       setButtonSelectedState: undefined,
     };
