@@ -20,6 +20,7 @@ import { SuperscriptExtension } from '../extensions/superscript';
 import { TextExtension } from '../extensions/text';
 import { UnderlineExtension } from '../extensions/underline';
 import { UndoRedoExtension } from '../extensions/undoRedo';
+import { type TEditorState, getEditorState } from './state';
 
 type TOptions = {
   element: HTMLDivElement;
@@ -161,6 +162,169 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     });
   };
 
+  const onSelectionUpdate = (callback: (state: TEditorState) => void): void => {
+    _editor.on('selectionUpdate', ({ editor }: { editor: Editor }) => {
+      const stateInfo = getEditorState(editor);
+      callback(stateInfo);
+    });
+  };
+
+  const onFocus = (callback: (state: TEditorState) => void): void => {
+    _editor.on('focus', ({ editor }: { editor: Editor }) => {
+      const stateInfo = getEditorState(editor);
+      callback(stateInfo);
+    });
+  };
+
+  const onBlur = (callback: (state: TEditorState) => void): void => {
+    _editor.on('blur', ({ editor }: { editor: Editor }) => {
+      const stateInfo = getEditorState(editor);
+      callback(stateInfo);
+    });
+  };
+
+  const onTransaction = (callback: (state: TEditorState) => void): void => {
+    _editor.on('transaction', ({ editor }: { editor: Editor }) => {
+      const stateInfo = getEditorState(editor);
+      callback(stateInfo);
+    });
+  };
+
+  const setParagraph = (): boolean =>
+    _editor.chain().focus().setParagraph().run();
+
+  const setHorizontalLine = (): boolean =>
+    _editor.chain().focus().setHorizontalLine().run();
+
+  const setLink = (href: string, target: string): boolean =>
+    _editor
+      .chain()
+      .focus()
+      .setLink({
+        href,
+        target,
+      })
+      .run();
+
+  const getLink = ():
+    | {
+        href: string;
+        target: string;
+      }
+    | undefined => {
+    const attributes = _editor.getAttributes('link');
+    if (!attributes.href || !attributes.target) {
+      return;
+    }
+
+    return {
+      href: attributes.href,
+      target: attributes.target,
+    };
+  };
+
+  const unsetLink = (): boolean => {
+    if (_editor.isActive('link')) {
+      return false;
+    }
+
+    return _editor.chain().focus().unsetLink().run();
+  };
+
+  const toggleHeader01 = (): boolean =>
+    _editor
+      .chain()
+      .focus()
+      .toggleHeading({
+        level: 1,
+      })
+      .run();
+
+  const toggleHeader02 = (): boolean =>
+    _editor
+      .chain()
+      .focus()
+      .toggleHeading({
+        level: 2,
+      })
+      .run();
+
+  const toggleHeader03 = (): boolean =>
+    _editor
+      .chain()
+      .focus()
+      .toggleHeading({
+        level: 3,
+      })
+      .run();
+
+  const toggleHeader04 = (): boolean =>
+    _editor
+      .chain()
+      .focus()
+      .toggleHeading({
+        level: 4,
+      })
+      .run();
+
+  const toggleHeader05 = (): boolean =>
+    _editor
+      .chain()
+      .focus()
+      .toggleHeading({
+        level: 5,
+      })
+      .run();
+
+  const toggleHeader06 = (): boolean =>
+    _editor
+      .chain()
+      .focus()
+      .toggleHeading({
+        level: 6,
+      })
+      .run();
+
+  const toggleBold = (): boolean => _editor.chain().focus().toggleBold().run();
+
+  const toggleItalic = (): boolean =>
+    _editor.chain().focus().toggleItalic().run();
+
+  const toggleUnderline = (): boolean =>
+    _editor.chain().focus().toggleUnderline().run();
+
+  const toggleInlineCode = (): boolean =>
+    _editor.chain().focus().toggleInlineCode().run();
+
+  const toggleSuperscript = (): boolean =>
+    _editor.chain().focus().toggleSuperscript().run();
+
+  const toggleSubscript = (): boolean =>
+    _editor.chain().focus().toggleSubscript().run();
+
+  const toggleStrikethrough = (): boolean =>
+    _editor.chain().focus().toggleStrikethrough().run();
+
+  const toggleBulletList = (): boolean =>
+    _editor.chain().focus().toggleBulletList().run();
+
+  const toggleNumberList = (): boolean =>
+    _editor.chain().focus().toggleNumberList().run();
+
+  const isBoldActive = (): boolean => _editor.isActive('bold');
+
+  const isItalicActive = (): boolean => _editor.isActive('italic');
+
+  const isUnderlineActive = (): boolean => _editor.isActive('underline');
+
+  const isInlineCodeActive = (): boolean => _editor.isActive('inlineCode');
+
+  const isSuperscriptActive = (): boolean => _editor.isActive('superscript');
+
+  const isSubscriptActive = (): boolean => _editor.isActive('subscript');
+
+  const isStrikethrough = (): boolean => _editor.isActive('strikethrough');
+
   return {
     isEditable,
     setEditable,
@@ -170,6 +334,37 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     stringToSchema,
     schemaToString,
     onChange,
+    onSelectionUpdate,
+    onFocus,
+    onBlur,
+    onTransaction,
+    setParagraph,
+    setHorizontalLine,
+    setLink,
+    getLink,
+    unsetLink,
+    toggleHeader01,
+    toggleHeader02,
+    toggleHeader03,
+    toggleHeader04,
+    toggleHeader05,
+    toggleHeader06,
+    toggleBold,
+    toggleItalic,
+    toggleUnderline,
+    toggleInlineCode,
+    toggleSuperscript,
+    toggleSubscript,
+    toggleStrikethrough,
+    toggleBulletList,
+    toggleNumberList,
+    isBoldActive,
+    isItalicActive,
+    isUnderlineActive,
+    isInlineCodeActive,
+    isSuperscriptActive,
+    isSubscriptActive,
+    isStrikethrough,
   };
 };
 
