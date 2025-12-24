@@ -14,6 +14,14 @@
   user-select: none;
 }
 
+.editor-fixed-menu-item-text.show {
+  display: flex;
+}
+
+.editor-fixed-menu-item-text {
+  display: none;
+}
+
 .editor-fixed-menu-item-button__icon {
   align-items: center;
   aspect-ratio: 1 / 1;
@@ -68,6 +76,14 @@
   }
 }
 
+.editor-fixed-menu-item-button.show {
+  display: flex;
+}
+
+.editor-fixed-menu-item-button.hide {
+  display: none;
+}
+
 .editor-fixed-menu-item-button--selected {
   background: var(--component-editor-menu-item-bg---selected);
   pointer-events: none;
@@ -88,8 +104,8 @@
   box-shadow: none;
   color: var(--component-editor-menu-item-text);
   display: flex;
-  flex-shrink: 0;
   flex: 1 0 0;
+  flex-shrink: 0;
   font-family: "JetBrains Mono Variable", monospace;
   font-size: 12px;
   font-style: normal;
@@ -114,4 +130,12 @@
   &:focus-visible {
     border: 1px solid var(--component-input-border---active);
   }
+}
+
+.editor-fixed-menu-item-input.show {
+  display: flex;
+}
+
+.editor-fixed-menu-item-input.hide {
+  display: none;
 }
