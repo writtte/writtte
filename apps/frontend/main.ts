@@ -29,7 +29,7 @@ const main = async (): Promise<void> => {
       color: '#DC143C',
       duration: 1000,
       opacity: '0.3',
-      hidePanel: true,
+      hidePanel: false,
     });
   }
 };
