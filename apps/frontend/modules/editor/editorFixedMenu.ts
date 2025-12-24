@@ -362,8 +362,6 @@ const fixedMenuUpdateEventListener = (menu: TReturnEditorFixedMenu): void => {
         hyperlinkEnableButton.buttonReturns?.setVisibleState(true);
         return;
       }
-
-      // todo
     } else {
       disableHyperLink(menu);
     }
@@ -482,6 +480,7 @@ const validateURL = (
     case ERROR_CODES.MIN:
       urlErrorStr = langKeys().ErrorUrlMin;
       break;
+
     case ERROR_CODES.MAX:
       urlErrorStr = langKeys().ErrorUrlMax;
       break;
