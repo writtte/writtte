@@ -209,7 +209,7 @@ const setupEditorFixedMenuOptions = (
       isSelected: false,
       onClick: (): void => enableHyperLink(thisMenu),
     },
-    hasLeftDivider: true,
+    hasLeftDivider: false,
     hasRightDivider: false,
   },
   {
@@ -258,20 +258,6 @@ const setupEditorFixedMenuOptions = (
       onClick: (): void => {
         getEditorAPI().unsetLink();
         disableHyperLink(thisMenu);
-      },
-    },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__wzfkovtnkb',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HORIZONTAL_RULE),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().setHorizontalLine();
       },
     },
     hasLeftDivider: false,
