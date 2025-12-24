@@ -224,10 +224,6 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   };
 
   const unsetLink = (): boolean => {
-    if (_editor.isActive('link')) {
-      return false;
-    }
-
     return _editor.chain().focus().unsetLink().run();
   };
 
