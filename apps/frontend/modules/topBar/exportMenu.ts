@@ -1,8 +1,16 @@
+import { copyToClipboard } from '@writtte-internal/clipboard';
+import { exportToMarkdown } from '../../../../packages/@writtte-editor/export';
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { Menu } from '../../components/Menu';
+import { ALERT_TIMEOUT } from '../../constants/timeouts';
+import { AlertController } from '../../controller/alert';
+import { getEditorAPI } from '../../data/stores/mainEditor';
 import { langKeys } from '../../translations/keys';
 
 const buildExportMenu = async (e: PointerEvent): Promise<void> => {
+  const editorAPI = getEditorAPI();
+  const alertController = AlertController();
+
   const rect = (e.target as HTMLButtonElement).getBoundingClientRect();
 
   const location = {
@@ -21,7 +29,50 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          // complete later
+          const alertPrefix = 'Markdown ';
+
+          const content = editorAPI.getContent();
+          if (content === undefined) {
+            alertController.showAlert(
+              {
+                id: 'alert__vefoupxouy',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          const mdContent = exportToMarkdown(content);
+          const { isCopied, error } = await copyToClipboard(mdContent, {
+            mimeType: 'text/plain',
+          });
+
+          if (!isCopied || error) {
+            alertController.showAlert(
+              {
+                id: 'alert__edtifuossn',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: error
+                  ? error
+                  : langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          alertController.showAlert(
+            {
+              id: 'alert__jcaftsgzum',
+              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
+              description: langKeys().AlertDocumentCopiedDescription,
+            },
+            ALERT_TIMEOUT.SHORT,
+          );
         },
         hasTopDivider: false,
         hasBottomDivider: false,

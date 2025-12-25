@@ -5,6 +5,10 @@ type TLangKeys = {
   AlertAccountNameUpdateFailedTitle: string;
   AlertAccountNameUpdateSuccessDescription: string;
   AlertAccountNameUpdateSuccessTitle: string;
+  AlertDocumentCopiedDescription: string;
+  AlertDocumentCopiedTitle: string;
+  AlertDocumentCopyFailedDescription: string;
+  AlertDocumentCopyFailedTitle: string;
   AlertDocumentCreateFailedDescription: string;
   AlertDocumentCreateFailedTitle: string;
   AlertDocumentRetrievedFailedDescription: string;
@@ -200,6 +204,10 @@ const langKeys = (): TLangKeys => {
     AlertAccountNameUpdateFailedTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_TITLE'),
     AlertAccountNameUpdateSuccessDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_DESCRIPTION'),
     AlertAccountNameUpdateSuccessTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_TITLE'),
+    AlertDocumentCopiedDescription: getTr('ALERT_DOCUMENT_COPIED_DESCRIPTION'),
+    AlertDocumentCopiedTitle: getTr('ALERT_DOCUMENT_COPIED_TITLE'),
+    AlertDocumentCopyFailedDescription: getTr('ALERT_DOCUMENT_COPY_FAILED_DESCRIPTION'),
+    AlertDocumentCopyFailedTitle: getTr('ALERT_DOCUMENT_COPY_FAILED_TITLE'),
     AlertDocumentCreateFailedDescription: ('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
     AlertDocumentCreateFailedTitle: ('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
