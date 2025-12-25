@@ -8,7 +8,10 @@ const copyToClipboard = async (
     jsonIndent?: number;
     useFallback?: boolean;
   },
-): Promise<boolean> => {
+): Promise<{
+  isCopied: boolean;
+  error: string | undefined;
+}> => {
   const {
     stringifyObjects = true,
     mimeType = 'text/plain',
@@ -60,24 +63,48 @@ const copyToClipboard = async (
         const clipboardItem = new ClipboardItem({ [mimeType]: blob });
 
         await navigator.clipboard.write([clipboardItem]);
-        return true;
-      } catch {
+        return {
+          isCopied: true,
+          error: undefined,
+        };
+      } catch (clipboardError) {
         if (useFallback && mimeType === 'text/plain') {
           try {
             await navigator.clipboard.writeText(textContent);
-            return true;
-          } catch {
-            return false;
+            return {
+              isCopied: true,
+              error: undefined,
+            };
+          } catch (fallbackError) {
+            return {
+              isCopied: false,
+              error:
+                fallbackError instanceof Error
+                  ? fallbackError.message
+                  : 'failed to copy using fallback method',
+            };
           }
         }
 
-        return false;
+        return {
+          isCopied: false,
+          error:
+            clipboardError instanceof Error
+              ? clipboardError.message
+              : 'clipboard API failed',
+        };
       }
     }
 
-    return false;
-  } catch {
-    return false;
+    return {
+      isCopied: false,
+      error: 'clipboard API not available',
+    };
+  } catch (error) {
+    return {
+      isCopied: false,
+      error: error instanceof Error ? error.message : 'Unknown error occurred',
+    };
   }
 };
 
