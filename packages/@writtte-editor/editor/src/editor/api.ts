@@ -5,6 +5,7 @@ type TEditorAPI = {
   isEditable: () => boolean;
   setEditable: () => void;
   setReadable: () => void;
+  getContent: () => TEditorSchema | undefined;
   setContent: (content: TEditorSchema) => void;
   replaceContent: (content: TEditorSchema) => void;
   stringToSchema: (content: string) => TEditorSchema;

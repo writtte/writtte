@@ -139,6 +139,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     _editor.setEditable(false);
   };
 
+  const getContent = (): TEditorSchema => _editor.getJSON();
+
   const setContent = (content: TEditorSchema): void => {
     _editor.commands.setContent(content);
   };
@@ -331,6 +333,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setEditable,
     setReadable,
     setContent,
+    getContent,
     replaceContent,
     stringToSchema,
     schemaToString,
