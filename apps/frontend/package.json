@@ -19,6 +19,7 @@
     "@writtte-internal/store": "workspace:*",
     "@writtte-internal/indexed-db": "workspace:*",
     "@writtte-editor/editor": "workspace:*",
+    "@writtte-editor/export": "workspace:*",
     "@fontsource-variable/ibm-plex-sans": "5.2.8",
     "@fontsource-variable/jetbrains-mono": "5.2.8",
     "@fontsource-variable/playfair": "5.2.8"
