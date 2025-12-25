@@ -84,7 +84,50 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          // complete later
+          const alertPrefix = 'Markdown eXtended ';
+
+          const content = editorAPI.getContent();
+          if (content === undefined) {
+            alertController.showAlert(
+              {
+                id: 'alert__hjqbczbhlu',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          const mdContent = exportToMarkdown(content);
+          const { isCopied, error } = await copyToClipboard(mdContent, {
+            mimeType: 'text/plain',
+          });
+
+          if (!isCopied || error) {
+            alertController.showAlert(
+              {
+                id: 'alert__kjmvkvhzvd',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: error
+                  ? error
+                  : langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          alertController.showAlert(
+            {
+              id: 'alert__hxtnejnkjz',
+              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
+              description: langKeys().AlertDocumentCopiedDescription,
+            },
+            ALERT_TIMEOUT.SHORT,
+          );
         },
         hasTopDivider: false,
         hasBottomDivider: true,
