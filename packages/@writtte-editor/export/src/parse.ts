@@ -2,12 +2,14 @@ import type { TEditorSchema } from '@writtte-editor/editor';
 import type { TExportType } from './type';
 import {
   setBold,
+  setBulletList,
   setHeading,
   setHorizontalRule,
   setInlineCode,
   setItalic,
   setLink,
   setListItem,
+  setNumberList,
   setParagraph,
   setSubscript,
   setSuperscript,
@@ -211,7 +213,9 @@ const parseBulletAndNumberList = (
     );
   }
 
-  return parsedText;
+  return itemType === 'bullet'
+    ? setBulletList(exportType, parsedText)
+    : setNumberList(exportType, parsedText);
 };
 
 const parseListItem = (

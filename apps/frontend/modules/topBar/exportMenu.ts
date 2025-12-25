@@ -1,5 +1,8 @@
 import { copyToClipboard } from '@writtte-internal/clipboard';
-import { exportToMarkdown } from '../../../../packages/@writtte-editor/export';
+import {
+  exportToMarkdown,
+  exportToXML,
+} from '../../../../packages/@writtte-editor/export';
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { Menu } from '../../components/Menu';
 import { ALERT_TIMEOUT } from '../../constants/timeouts';
@@ -139,7 +142,50 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          // complete later
+          const alertPrefix = 'XML ';
+
+          const content = editorAPI.getContent();
+          if (content === undefined) {
+            alertController.showAlert(
+              {
+                id: 'alert__ylomdvanwa',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          const xmlContent = exportToXML(content);
+          const { isCopied, error } = await copyToClipboard(xmlContent, {
+            mimeType: 'text/plain',
+          });
+
+          if (!isCopied || error) {
+            alertController.showAlert(
+              {
+                id: 'alert__cdhibpeyer',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: error
+                  ? error
+                  : langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          alertController.showAlert(
+            {
+              id: 'alert__xqmolqozww',
+              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
+              description: langKeys().AlertDocumentCopiedDescription,
+            },
+            ALERT_TIMEOUT.SHORT,
+          );
         },
         hasTopDivider: false,
         hasBottomDivider: true,

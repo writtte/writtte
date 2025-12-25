@@ -5,4 +5,7 @@ import { ExportType } from './type';
 const exportToMarkdown = (schema: TEditorSchema): string =>
   parseSchema(ExportType.MD, schema, undefined);
 
-export { exportToMarkdown };
+const exportToXML = (schema: TEditorSchema): string =>
+  parseSchema(ExportType.XML, schema, undefined);
+
+export { exportToMarkdown, exportToXML };

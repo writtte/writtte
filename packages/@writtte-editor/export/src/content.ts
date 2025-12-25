@@ -34,6 +34,9 @@ const setSuperscript = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
       return '<sup>' + text + '</sup>';
+
+    case ExportType.XML:
+      return '<superscript>' + text + '</superscript>';
   }
 
   return text;
@@ -43,6 +46,9 @@ const setSubscript = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
       return '<sub>' + text + '</sub>';
+
+    case ExportType.XML:
+      return '<sub>' + text + '</subscript>';
   }
 
   return text;
@@ -52,6 +58,9 @@ const setInlineCode = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
       return '`' + text + '`';
+
+    case ExportType.XML:
+      return '<code>' + text + '</code>';
   }
 
   return text;
@@ -65,6 +74,9 @@ const setLink = (
   switch (exportType) {
     case ExportType.MD:
       return '[' + text + '](' + href + ')';
+
+    case ExportType.XML:
+      return '<link href="' + href + '">' + text + '</link>';
   }
 
   return text;
@@ -74,6 +86,9 @@ const setParagraph = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
       return text + '\n\n';
+
+    case ExportType.XML:
+      return '<paragraph>' + text + '</paragraph>';
   }
 
   return text;
@@ -103,6 +118,9 @@ const setHeading = (
 
       return prefix + text + '\n\n';
     }
+
+    case ExportType.XML:
+      return '<heading level="' + level + '">' + text + '</heading>';
   }
 
   return text;
@@ -115,6 +133,24 @@ const setHorizontalRule = (exportType: TExportType): string => {
   }
 
   return '';
+};
+
+const setBulletList = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.XML:
+      return '<list type="unordered">' + text + '</list>';
+  }
+
+  return text;
+};
+
+const setNumberList = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.XML:
+      return '<list type="unordered">' + text + '</ordered>';
+  }
+
+  return text;
 };
 
 const setListItem = (
@@ -134,6 +170,9 @@ const setListItem = (
 
         return tabsPrefixForListItem(currentBlock) + '* ' + normalizedText;
       }
+
+      case ExportType.XML:
+        return '<item>' + text + '</text>';
     }
   } else if (type === 'number') {
     switch (exportType) {
@@ -149,6 +188,9 @@ const setListItem = (
           normalizedText
         );
       }
+
+      case ExportType.XML:
+        return '<item>' + text + '</text>';
     }
   }
 
@@ -166,5 +208,7 @@ export {
   setParagraph,
   setHeading,
   setHorizontalRule,
+  setBulletList,
+  setNumberList,
   setListItem,
 };
