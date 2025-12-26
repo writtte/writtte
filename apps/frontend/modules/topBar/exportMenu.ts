@@ -358,18 +358,6 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         hasTopDivider: false,
         hasBottomDivider: false,
       },
-      {
-        id: 'menu_item__hnzhdaotoh',
-        text: langKeys().MenuItemDocumentExportHelp,
-        leftIcon: FlatIcon(FlatIconName._18_CIRCLE_HELP),
-        rightIcon: undefined,
-        isLeftIconVisible: true,
-        onClick: async (): Promise<void> => {
-          // complete later
-        },
-        hasTopDivider: true,
-        hasBottomDivider: false,
-      },
     ],
     menuWidth: 256,
     isRightSideMenu: true,

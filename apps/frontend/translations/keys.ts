@@ -79,7 +79,6 @@ type TLangKeys = {
   LoadingTextVerifyingEmailUpdateLink: string;
   MenuItemChangelogs: string;
   MenuItemDeleteDocument: string;
-  MenuItemDocumentExportHelp: string;
   MenuItemDocumentExportMarkdown: string;
   MenuItemDocumentExportMarkdownX: string;
   MenuItemDocumentExportPlatformMedium: string;
@@ -278,7 +277,6 @@ const langKeys = (): TLangKeys => {
     LoadingTextVerifyingEmailUpdateLink: getTr('LOADING_TEXT_VERIFYING_EMAIL_UPDATE_LINK'),
     MenuItemChangelogs: getTr('MENU_ITEM_CHANGELOGS'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
-    MenuItemDocumentExportHelp: getTr('MENU_ITEM_DOCUMENT_EXPORT_HELP'),
     MenuItemDocumentExportMarkdown: getTr('MENU_ITEM_DOCUMENT_EXPORT_MARKDOWN'),
     MenuItemDocumentExportMarkdownX: getTr('MENU_ITEM_DOCUMENT_EXPORT_MARKDOWN_X'),
     MenuItemDocumentExportPlatformMedium: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_MEDIUM'),
