@@ -8,6 +8,7 @@ const setBold = (exportType: TExportType, text: string): string => {
     case ExportType.MD:
       return '**' + text + '**';
 
+    case ExportType.WORDPRESS:
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
       return '<strong>' + text + '</strong>';
@@ -21,6 +22,7 @@ const setItalic = (exportType: TExportType, text: string): string => {
     case ExportType.MD:
       return '_' + text + '_';
 
+    case ExportType.WORDPRESS:
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
       return '<em>' + text + '</em>';
@@ -33,6 +35,9 @@ const setUnderline = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
       return '<u>' + text + '</u>';
+
+    case ExportType.WORDPRESS:
+      return '<span style="text-decoration: underline;">' + text + '</span>';
   }
 
   return text;
@@ -41,6 +46,7 @@ const setUnderline = (exportType: TExportType, text: string): string => {
 const setSuperscript = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
+    case ExportType.WORDPRESS:
     case ExportType.SUBSTACK:
       return '<sup>' + text + '</sup>';
 
@@ -55,6 +61,7 @@ const setSubscript = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
     case ExportType.SUBSTACK:
+    case ExportType.WORDPRESS:
       return '<sub>' + text + '</sub>';
 
     case ExportType.XML:
@@ -69,6 +76,7 @@ const setStrikethrough = (exportType: TExportType, text: string): string => {
     case ExportType.MD:
       return '~~' + text + '~~';
 
+    case ExportType.WORDPRESS:
     case ExportType.SUBSTACK:
       return '<s>' + text + '</s>';
   }
@@ -82,6 +90,7 @@ const setInlineCode = (exportType: TExportType, text: string): string => {
       return '`' + text + '`';
 
     case ExportType.XML:
+    case ExportType.WORDPRESS:
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
       return '<code>' + text + '</code>';
@@ -101,6 +110,9 @@ const setLink = (
 
     case ExportType.XML:
       return '<link href="' + href + '">' + text + '</link>';
+
+    case ExportType.WORDPRESS:
+      return '<a href="' + href + '">' + text + '</a>';
 
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
@@ -126,6 +138,7 @@ const setParagraph = (exportType: TExportType, text: string): string => {
     case ExportType.XML:
       return '<paragraph>' + text + '</paragraph>';
 
+    case ExportType.WORDPRESS:
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
       return '<p>' + text + '</p>';
@@ -179,6 +192,7 @@ const setHeading = (
       );
     }
 
+    case ExportType.WORDPRESS:
     case ExportType.SUBSTACK:
       return (
         '<h' + level.toString() + '>' + text + '</h' + level.toString() + '>'
@@ -193,6 +207,9 @@ const setHorizontalRule = (exportType: TExportType): string => {
     case ExportType.MD:
       return '---\n\n';
 
+    case ExportType.WORDPRESS:
+      return '<hr>';
+
     case ExportType.SUBSTACK:
       return '<hr contenteditable="false">';
   }
@@ -204,6 +221,9 @@ const setBulletList = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.XML:
       return '<list type="unordered">' + text + '</list>';
+
+    case ExportType.WORDPRESS:
+      return '<ul data-type="core/list" data-title="List">' + text + '</ul>';
 
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
@@ -217,6 +237,9 @@ const setNumberList = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.XML:
       return '<list type="unordered">' + text + '</list>';
+
+    case ExportType.WORDPRESS:
+      return '<ol data-type="core/list" data-title="List">' + text + '</ol>';
 
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
@@ -247,6 +270,13 @@ const setListItem = (
       case ExportType.XML:
         return '<item>' + text + '</text>';
 
+      case ExportType.WORDPRESS:
+        return (
+          '<li data-type="core/list-item" data-title="List Item">' +
+          text +
+          '</li>'
+        );
+
       case ExportType.MEDIUM:
       case ExportType.SUBSTACK:
         return '<li>' + text + '</li>';
@@ -268,6 +298,13 @@ const setListItem = (
 
       case ExportType.XML:
         return '<item>' + text + '</text>';
+
+      case ExportType.WORDPRESS:
+        return (
+          '<li data-type="core/list-item" data-title="List Item">' +
+          text +
+          '</li>'
+        );
 
       case ExportType.MEDIUM:
       case ExportType.SUBSTACK:
