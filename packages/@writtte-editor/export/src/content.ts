@@ -162,10 +162,22 @@ const setHeading = (
     case ExportType.XML:
       return '<heading level="' + level + '">' + text + '</heading>';
 
-    case ExportType.MEDIUM:
+    case ExportType.MEDIUM: {
+      // Medium.com only supports headings and subheadings, which
+      // correspond to H3 and H4.
+
+      const mediumBasedLevel = level === 1 ? 3 : 4;
+
       return (
-        '<h' + level.toString() + '>' + text + '</h' + level.toString() + '>'
+        '<h' +
+        mediumBasedLevel.toString() +
+        '>' +
+        text +
+        '</h' +
+        mediumBasedLevel.toString() +
+        '>'
       );
+    }
 
     case ExportType.SUBSTACK:
       return (
