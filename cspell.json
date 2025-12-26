@@ -55,6 +55,9 @@
     "playfair",
     "textblock",
     "Prosemirror",
-    "exitable"
+    "exitable",
+    "Substack",
+    "Buffer",
+    "contenteditable"
   ]
 }

@@ -5,6 +5,10 @@ type TLangKeys = {
   AlertAccountNameUpdateFailedTitle: string;
   AlertAccountNameUpdateSuccessDescription: string;
   AlertAccountNameUpdateSuccessTitle: string;
+  AlertDocumentCopiedDescription: string;
+  AlertDocumentCopiedTitle: string;
+  AlertDocumentCopyFailedDescription: string;
+  AlertDocumentCopyFailedTitle: string;
   AlertDocumentCreateFailedDescription: string;
   AlertDocumentCreateFailedTitle: string;
   AlertDocumentRetrievedFailedDescription: string;
@@ -75,6 +79,12 @@ type TLangKeys = {
   LoadingTextVerifyingEmailUpdateLink: string;
   MenuItemChangelogs: string;
   MenuItemDeleteDocument: string;
+  MenuItemDocumentExportMarkdown: string;
+  MenuItemDocumentExportMarkdownX: string;
+  MenuItemDocumentExportPlatformMedium: string;
+  MenuItemDocumentExportPlatformSubstack: string;
+  MenuItemDocumentExportPlatformWordpress: string;
+  MenuItemDocumentExportXml: string;
   MenuItemHelpAndDocumentation: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
@@ -193,8 +203,12 @@ const langKeys = (): TLangKeys => {
     AlertAccountNameUpdateFailedTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_TITLE'),
     AlertAccountNameUpdateSuccessDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_DESCRIPTION'),
     AlertAccountNameUpdateSuccessTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_TITLE'),
-    AlertDocumentCreateFailedDescription: ('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
-    AlertDocumentCreateFailedTitle: ('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
+    AlertDocumentCopiedDescription: getTr('ALERT_DOCUMENT_COPIED_DESCRIPTION'),
+    AlertDocumentCopiedTitle: getTr('ALERT_DOCUMENT_COPIED_TITLE'),
+    AlertDocumentCopyFailedDescription: getTr('ALERT_DOCUMENT_COPY_FAILED_DESCRIPTION'),
+    AlertDocumentCopyFailedTitle: getTr('ALERT_DOCUMENT_COPY_FAILED_TITLE'),
+    AlertDocumentCreateFailedDescription: getTr('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
+    AlertDocumentCreateFailedTitle: getTr('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
     AlertDocumentRetrievedFailedTitle: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_TITLE'),
     AlertEmailUpdateRequestSentDescription: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_DESCRIPTION'),
@@ -263,6 +277,12 @@ const langKeys = (): TLangKeys => {
     LoadingTextVerifyingEmailUpdateLink: getTr('LOADING_TEXT_VERIFYING_EMAIL_UPDATE_LINK'),
     MenuItemChangelogs: getTr('MENU_ITEM_CHANGELOGS'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
+    MenuItemDocumentExportMarkdown: getTr('MENU_ITEM_DOCUMENT_EXPORT_MARKDOWN'),
+    MenuItemDocumentExportMarkdownX: getTr('MENU_ITEM_DOCUMENT_EXPORT_MARKDOWN_X'),
+    MenuItemDocumentExportPlatformMedium: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_MEDIUM'),
+    MenuItemDocumentExportPlatformSubstack: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_Substack'),
+    MenuItemDocumentExportPlatformWordpress: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_WORDPRESS'),
+    MenuItemDocumentExportXml: getTr('MENU_ITEM_DOCUMENT_EXPORT_XML'),
     MenuItemHelpAndDocumentation: getTr('MENU_ITEM_HELP_AND_DOCUMENTATION'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),

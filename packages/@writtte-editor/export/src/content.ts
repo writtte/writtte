@@ -1,0 +1,333 @@
+// biome-ignore-all lint/style/useTemplate: Templates literals are not required in this file
+
+import { ExportType, type TExportType } from './type';
+import { normalizeNewlines, tabsPrefixForListItem } from './utils';
+
+const setBold = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '**' + text + '**';
+
+    case ExportType.WORDPRESS:
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+      return '<strong>' + text + '</strong>';
+  }
+
+  return text;
+};
+
+const setItalic = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '_' + text + '_';
+
+    case ExportType.WORDPRESS:
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+      return '<em>' + text + '</em>';
+  }
+
+  return text;
+};
+
+const setUnderline = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '<u>' + text + '</u>';
+
+    case ExportType.WORDPRESS:
+      return '<span style="text-decoration: underline;">' + text + '</span>';
+  }
+
+  return text;
+};
+
+const setSuperscript = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+    case ExportType.WORDPRESS:
+    case ExportType.SUBSTACK:
+      return '<sup>' + text + '</sup>';
+
+    case ExportType.XML:
+      return '<superscript>' + text + '</superscript>';
+  }
+
+  return text;
+};
+
+const setSubscript = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+    case ExportType.SUBSTACK:
+    case ExportType.WORDPRESS:
+      return '<sub>' + text + '</sub>';
+
+    case ExportType.XML:
+      return '<subscript>' + text + '</subscript>';
+  }
+
+  return text;
+};
+
+const setStrikethrough = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '~~' + text + '~~';
+
+    case ExportType.WORDPRESS:
+    case ExportType.SUBSTACK:
+      return '<s>' + text + '</s>';
+  }
+
+  return text;
+};
+
+const setInlineCode = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '`' + text + '`';
+
+    case ExportType.XML:
+    case ExportType.WORDPRESS:
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+      return '<code>' + text + '</code>';
+  }
+
+  return text;
+};
+
+const setLink = (
+  exportType: TExportType,
+  text: string,
+  href: string,
+): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '[' + text + '](' + href + ')';
+
+    case ExportType.XML:
+      return '<link href="' + href + '">' + text + '</link>';
+
+    case ExportType.WORDPRESS:
+      return '<a href="' + href + '">' + text + '</a>';
+
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+      return (
+        '<a href="' +
+        href +
+        '" data-href="' +
+        href +
+        '" rel="noopener" target="_blank">' +
+        text +
+        '</a>'
+      );
+  }
+
+  return text;
+};
+
+const setParagraph = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return text + '\n\n';
+
+    case ExportType.XML:
+      return '<paragraph>' + text + '</paragraph>';
+
+    case ExportType.WORDPRESS:
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+      return '<p>' + text + '</p>';
+  }
+
+  return text;
+};
+
+const setHeading = (
+  exportType: TExportType,
+  text: string,
+  level: number,
+): string => {
+  switch (exportType) {
+    case ExportType.MD: {
+      const prefix =
+        level === 1
+          ? '# '
+          : level === 2
+            ? '## '
+            : level === 3
+              ? '### '
+              : level === 4
+                ? '#### '
+                : level === 5
+                  ? '##### '
+                  : level === 6
+                    ? '###### '
+                    : '';
+
+      return prefix + text + '\n\n';
+    }
+
+    case ExportType.XML:
+      return '<heading level="' + level + '">' + text + '</heading>';
+
+    case ExportType.MEDIUM: {
+      // Medium.com only supports headings and subheadings, which
+      // correspond to H3 and H4.
+
+      const mediumBasedLevel = level === 1 ? 3 : 4;
+
+      return (
+        '<h' +
+        mediumBasedLevel.toString() +
+        '>' +
+        text +
+        '</h' +
+        mediumBasedLevel.toString() +
+        '>'
+      );
+    }
+
+    case ExportType.WORDPRESS:
+    case ExportType.SUBSTACK:
+      return (
+        '<h' + level.toString() + '>' + text + '</h' + level.toString() + '>'
+      );
+  }
+
+  return text;
+};
+
+const setHorizontalRule = (exportType: TExportType): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '---\n\n';
+
+    case ExportType.WORDPRESS:
+      return '<hr>';
+
+    case ExportType.SUBSTACK:
+      return '<hr contenteditable="false">';
+  }
+
+  return '';
+};
+
+const setBulletList = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.XML:
+      return '<list type="unordered">' + text + '</list>';
+
+    case ExportType.WORDPRESS:
+      return '<ul data-type="core/list" data-title="List">' + text + '</ul>';
+
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+      return '<ul>' + text + '</ul>';
+  }
+
+  return text;
+};
+
+const setNumberList = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.XML:
+      return '<list type="unordered">' + text + '</list>';
+
+    case ExportType.WORDPRESS:
+      return '<ol data-type="core/list" data-title="List">' + text + '</ol>';
+
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+      return '<ol>' + text + '</ol>';
+  }
+
+  return text;
+};
+
+const setListItem = (
+  exportType: TExportType,
+  text: string,
+  type: 'bullet' | 'number',
+  currentId: number,
+  currentBlock: number,
+  isLastItemInBlock: boolean,
+): string => {
+  if (type === 'bullet') {
+    switch (exportType) {
+      case ExportType.MD: {
+        const normalizedText = isLastItemInBlock
+          ? text
+          : normalizeNewlines(text);
+
+        return tabsPrefixForListItem(currentBlock) + '* ' + normalizedText;
+      }
+
+      case ExportType.XML:
+        return '<item>' + text + '</text>';
+
+      case ExportType.WORDPRESS:
+        return (
+          '<li data-type="core/list-item" data-title="List Item">' +
+          text +
+          '</li>'
+        );
+
+      case ExportType.MEDIUM:
+      case ExportType.SUBSTACK:
+        return '<li>' + text + '</li>';
+    }
+  } else if (type === 'number') {
+    switch (exportType) {
+      case ExportType.MD: {
+        const normalizedText = isLastItemInBlock
+          ? text
+          : normalizeNewlines(text);
+
+        return (
+          tabsPrefixForListItem(currentBlock) +
+          currentId.toString() +
+          '. ' +
+          normalizedText
+        );
+      }
+
+      case ExportType.XML:
+        return '<item>' + text + '</text>';
+
+      case ExportType.WORDPRESS:
+        return (
+          '<li data-type="core/list-item" data-title="List Item">' +
+          text +
+          '</li>'
+        );
+
+      case ExportType.MEDIUM:
+      case ExportType.SUBSTACK:
+        return '<li>' + text + '</li>';
+    }
+  }
+
+  return '';
+};
+
+export {
+  setBold,
+  setItalic,
+  setUnderline,
+  setSuperscript,
+  setSubscript,
+  setStrikethrough,
+  setInlineCode,
+  setLink,
+  setParagraph,
+  setHeading,
+  setHorizontalRule,
+  setBulletList,
+  setNumberList,
+  setListItem,
+};

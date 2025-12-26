@@ -4,6 +4,7 @@ import { topBarInstance } from '../../controller/topBar';
 import { buildError } from '../../helpers/error/build';
 import { navigate } from '../../utils/routes/routes';
 import { buildAccountMenu } from './accountMenu';
+import { buildExportMenu } from './exportMenu';
 
 const setupEditorTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {
@@ -23,6 +24,16 @@ const setupEditorTopBar = async (): Promise<void> => {
   ]);
 
   topBarInstance.addButtonsToRight([
+    {
+      id: 'action_button__eznfyyfppu',
+      icon: FlatIcon(FlatIconName._18_EXPORT),
+      onClick: async (e: PointerEvent): Promise<void> => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        await buildExportMenu(e);
+      },
+    },
     {
       id: 'action_button__znkmokydeg',
       icon: FlatIcon(FlatIconName._18_USER),

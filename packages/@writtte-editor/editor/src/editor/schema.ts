@@ -1,7 +1,7 @@
-type JSONContent = {
+type TEditorSchema = {
   type?: string;
   attrs?: Record<string, string | number | boolean>;
-  content?: JSONContent[];
+  content?: TEditorSchema[];
   marks?: {
     type: string;
     attrs?: Record<string, string | number | boolean>;
@@ -11,6 +11,4 @@ type JSONContent = {
   [key: string]: unknown;
 };
 
-type TEditorSchema = JSONContent;
-
-export type { TEditorSchema, JSONContent };
+export type { TEditorSchema };
