@@ -10,6 +10,7 @@ import {
   setListItem,
   setNumberList,
   setParagraph,
+  setStrikethrough,
   setSubscript,
   setSuperscript,
   setUnderline,
@@ -77,6 +78,7 @@ const parseText = (exportType: TExportType, schema: TEditorSchema): string => {
   let hasUnderline = false;
   let hasSuperscript = false;
   let hasSubscript = false;
+  let hasStrikethrough = false;
   let hasInlineCode = false;
   let hasLink = false;
 
@@ -100,6 +102,10 @@ const parseText = (exportType: TExportType, schema: TEditorSchema): string => {
 
       case 'subscript':
         hasSubscript = true;
+        break;
+
+      case 'strikethrough':
+        hasStrikethrough = true;
         break;
 
       case 'inlineCode':
@@ -132,6 +138,10 @@ const parseText = (exportType: TExportType, schema: TEditorSchema): string => {
 
   if (hasSubscript) {
     parsedText = setSubscript(exportType, parsedText);
+  }
+
+  if (hasStrikethrough) {
+    parsedText = setStrikethrough(exportType, parsedText);
   }
 
   if (hasInlineCode) {

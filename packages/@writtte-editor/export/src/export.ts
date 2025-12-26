@@ -11,4 +11,7 @@ const exportToXML = (schema: TEditorSchema): string =>
 const exportToMedium = (schema: TEditorSchema): string =>
   parseSchema(ExportType.MEDIUM, schema, undefined);
 
-export { exportToMarkdown, exportToXML, exportToMedium };
+const exportToSubstack = (schema: TEditorSchema): string =>
+  parseSchema(ExportType.SUBSTACK, schema, undefined);
+
+export { exportToMarkdown, exportToXML, exportToMedium, exportToSubstack };

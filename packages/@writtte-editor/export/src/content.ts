@@ -9,6 +9,7 @@ const setBold = (exportType: TExportType, text: string): string => {
       return '**' + text + '**';
 
     case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
       return '<strong>' + text + '</strong>';
   }
 
@@ -21,6 +22,7 @@ const setItalic = (exportType: TExportType, text: string): string => {
       return '_' + text + '_';
 
     case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
       return '<em>' + text + '</em>';
   }
 
@@ -39,6 +41,7 @@ const setUnderline = (exportType: TExportType, text: string): string => {
 const setSuperscript = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
+    case ExportType.SUBSTACK:
       return '<sup>' + text + '</sup>';
 
     case ExportType.XML:
@@ -51,10 +54,23 @@ const setSuperscript = (exportType: TExportType, text: string): string => {
 const setSubscript = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
+    case ExportType.SUBSTACK:
       return '<sub>' + text + '</sub>';
 
     case ExportType.XML:
-      return '<sub>' + text + '</subscript>';
+      return '<subscript>' + text + '</subscript>';
+  }
+
+  return text;
+};
+
+const setStrikethrough = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '~~' + text + '~~';
+
+    case ExportType.SUBSTACK:
+      return '<s>' + text + '</s>';
   }
 
   return text;
@@ -67,6 +83,7 @@ const setInlineCode = (exportType: TExportType, text: string): string => {
 
     case ExportType.XML:
     case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
       return '<code>' + text + '</code>';
   }
 
@@ -86,6 +103,7 @@ const setLink = (
       return '<link href="' + href + '">' + text + '</link>';
 
     case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
       return (
         '<a href="' +
         href +
@@ -109,6 +127,7 @@ const setParagraph = (exportType: TExportType, text: string): string => {
       return '<paragraph>' + text + '</paragraph>';
 
     case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
       return '<p>' + text + '</p>';
   }
 
@@ -147,6 +166,11 @@ const setHeading = (
       return (
         '<h' + level.toString() + '>' + text + '</h' + level.toString() + '>'
       );
+
+    case ExportType.SUBSTACK:
+      return (
+        '<h' + level.toString() + '>' + text + '</h' + level.toString() + '>'
+      );
   }
 
   return text;
@@ -156,6 +180,9 @@ const setHorizontalRule = (exportType: TExportType): string => {
   switch (exportType) {
     case ExportType.MD:
       return '---\n\n';
+
+    case ExportType.SUBSTACK:
+      return '<hr contenteditable="false">';
   }
 
   return '';
@@ -167,6 +194,7 @@ const setBulletList = (exportType: TExportType, text: string): string => {
       return '<list type="unordered">' + text + '</list>';
 
     case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
       return '<ul>' + text + '</ul>';
   }
 
@@ -179,6 +207,7 @@ const setNumberList = (exportType: TExportType, text: string): string => {
       return '<list type="unordered">' + text + '</list>';
 
     case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
       return '<ol>' + text + '</ol>';
   }
 
@@ -207,6 +236,7 @@ const setListItem = (
         return '<item>' + text + '</text>';
 
       case ExportType.MEDIUM:
+      case ExportType.SUBSTACK:
         return '<li>' + text + '</li>';
     }
   } else if (type === 'number') {
@@ -228,6 +258,7 @@ const setListItem = (
         return '<item>' + text + '</text>';
 
       case ExportType.MEDIUM:
+      case ExportType.SUBSTACK:
         return '<li>' + text + '</li>';
     }
   }
@@ -241,6 +272,7 @@ export {
   setUnderline,
   setSuperscript,
   setSubscript,
+  setStrikethrough,
   setInlineCode,
   setLink,
   setParagraph,
