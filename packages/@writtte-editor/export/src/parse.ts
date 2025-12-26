@@ -1,5 +1,4 @@
 import type { TEditorSchema } from '@writtte-editor/editor';
-import type { TExportType } from './type';
 import {
   setBold,
   setBulletList,
@@ -15,6 +14,7 @@ import {
   setSuperscript,
   setUnderline,
 } from './content';
+import { ExportType, type TExportType } from './type';
 
 const parseSchema = (
   exportType: TExportType,
@@ -195,6 +195,13 @@ const parseBulletAndNumberList = (
 ): string => {
   const listItems = schema.content;
   if (!listItems || listItems.length <= 0) {
+    return '';
+  }
+
+  if (exportType === ExportType.MEDIUM && currentBlock !== 0) {
+    // Since the Medium.com editor does not support nested bullet, and
+    // number lists, we will ignore them when exporting the content.
+
     return '';
   }
 

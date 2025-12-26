@@ -1,6 +1,7 @@
 import { copyToClipboard } from '@writtte-internal/clipboard';
 import {
   exportToMarkdown,
+  exportToMedium,
   exportToXML,
 } from '../../../../packages/@writtte-editor/export';
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
@@ -209,7 +210,50 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          // complete later
+          const alertPrefix = 'Medium ';
+
+          const content = editorAPI.getContent();
+          if (content === undefined) {
+            alertController.showAlert(
+              {
+                id: 'alert__xpvopfpqmi',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          const mediumContent = exportToMedium(content);
+          const { isCopied, error } = await copyToClipboard(mediumContent, {
+            mimeType: 'text/html',
+          });
+
+          if (!isCopied || error) {
+            alertController.showAlert(
+              {
+                id: 'alert__ecbpmppnjp',
+                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
+                description: error
+                  ? error
+                  : langKeys().AlertDocumentCopyFailedDescription,
+              },
+              ALERT_TIMEOUT.SHORT,
+            );
+
+            return;
+          }
+
+          alertController.showAlert(
+            {
+              id: 'alert__ondbbryded',
+              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
+              description: langKeys().AlertDocumentCopiedDescription,
+            },
+            ALERT_TIMEOUT.SHORT,
+          );
         },
         hasTopDivider: false,
         hasBottomDivider: false,

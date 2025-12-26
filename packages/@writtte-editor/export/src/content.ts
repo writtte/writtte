@@ -7,6 +7,9 @@ const setBold = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
       return '**' + text + '**';
+
+    case ExportType.MEDIUM:
+      return '<strong>' + text + '</strong>';
   }
 
   return text;
@@ -16,6 +19,9 @@ const setItalic = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.MD:
       return '_' + text + '_';
+
+    case ExportType.MEDIUM:
+      return '<em>' + text + '</em>';
   }
 
   return text;
@@ -60,6 +66,7 @@ const setInlineCode = (exportType: TExportType, text: string): string => {
       return '`' + text + '`';
 
     case ExportType.XML:
+    case ExportType.MEDIUM:
       return '<code>' + text + '</code>';
   }
 
@@ -77,6 +84,17 @@ const setLink = (
 
     case ExportType.XML:
       return '<link href="' + href + '">' + text + '</link>';
+
+    case ExportType.MEDIUM:
+      return (
+        '<a href="' +
+        href +
+        '" data-href="' +
+        href +
+        '" rel="noopener" target="_blank">' +
+        text +
+        '</a>'
+      );
   }
 
   return text;
@@ -89,6 +107,9 @@ const setParagraph = (exportType: TExportType, text: string): string => {
 
     case ExportType.XML:
       return '<paragraph>' + text + '</paragraph>';
+
+    case ExportType.MEDIUM:
+      return '<p>' + text + '</p>';
   }
 
   return text;
@@ -121,6 +142,11 @@ const setHeading = (
 
     case ExportType.XML:
       return '<heading level="' + level + '">' + text + '</heading>';
+
+    case ExportType.MEDIUM:
+      return (
+        '<h' + level.toString() + '>' + text + '</h' + level.toString() + '>'
+      );
   }
 
   return text;
@@ -139,6 +165,9 @@ const setBulletList = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.XML:
       return '<list type="unordered">' + text + '</list>';
+
+    case ExportType.MEDIUM:
+      return '<ul>' + text + '</ul>';
   }
 
   return text;
@@ -147,7 +176,10 @@ const setBulletList = (exportType: TExportType, text: string): string => {
 const setNumberList = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.XML:
-      return '<list type="unordered">' + text + '</ordered>';
+      return '<list type="unordered">' + text + '</list>';
+
+    case ExportType.MEDIUM:
+      return '<ol>' + text + '</ol>';
   }
 
   return text;
@@ -173,6 +205,9 @@ const setListItem = (
 
       case ExportType.XML:
         return '<item>' + text + '</text>';
+
+      case ExportType.MEDIUM:
+        return '<li>' + text + '</li>';
     }
   } else if (type === 'number') {
     switch (exportType) {
@@ -191,6 +226,9 @@ const setListItem = (
 
       case ExportType.XML:
         return '<item>' + text + '</text>';
+
+      case ExportType.MEDIUM:
+        return '<li>' + text + '</li>';
     }
   }
 

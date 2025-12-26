@@ -8,4 +8,7 @@ const exportToMarkdown = (schema: TEditorSchema): string =>
 const exportToXML = (schema: TEditorSchema): string =>
   parseSchema(ExportType.XML, schema, undefined);
 
-export { exportToMarkdown, exportToXML };
+const exportToMedium = (schema: TEditorSchema): string =>
+  parseSchema(ExportType.MEDIUM, schema, undefined);
+
+export { exportToMarkdown, exportToXML, exportToMedium };
