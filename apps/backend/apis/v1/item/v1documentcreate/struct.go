@@ -1,7 +1,7 @@
 package v1documentcreate
 
 type BodyParams struct {
-	Title *string `json:"title" validate:"required,min=2,max=256"`
+	Title *string `json:"title" validate:"required,min=1,max=256"`
 }
 
 type dbQueryInput struct {
