@@ -27,25 +27,6 @@ We welcome feature suggestions! To suggest a new feature:
 2. Create a new issue with a clear description of the feature and why it would be valuable
 3. Include any relevant mockups or examples if possible
 
-## Coding Standards
-
-- Follow the [style guide](./STYLE.md)
-- Write meaningful commit messages
-- Include comments for complex code sections
-- Write tests for new features
-
-## Testing
-
-- Test your changes thoroughly
-- Make sure all tests pass before submitting a pull request
-- Add new tests for new features
-
-## Documentation
-
-- Update documentation when changing functionality
-- Use clear and concise language
-- Include examples when appropriate
-
 ## Release Process
 
 Our maintainers handle the release process. Once your pull request is approved and merged, it will be included in the next release.
