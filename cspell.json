@@ -58,6 +58,7 @@
     "exitable",
     "Substack",
     "Buffer",
-    "contenteditable"
+    "contenteditable",
+    "fkeys"
   ]
 }

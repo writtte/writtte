@@ -18,6 +18,7 @@
 \echo '\033[1;32m[ setup tables in the item schema ]\033[0m'
 \echo
 \ir ../scripts/item/tables/tb_document.pg.sql
+\ir ../scripts/item/tables/tb_image.pg.sql
 \echo
 \echo '\033[1;32m[ setup tables in the temporary schema ]\033[0m'
 \echo
@@ -42,6 +43,10 @@
 \ir ../scripts/item/functions/v1_document_retrieve.pg.sql
 \ir ../scripts/item/functions/v1_document_retrieve_list.pg.sql
 \ir ../scripts/item/functions/v1_document_update.pg.sql
+\ir ../scripts/item/functions/v1_image_check.pg.sql
+\ir ../scripts/item/functions/v1_image_create.pg.sql
+\ir ../scripts/item/functions/v1_image_retrieve.pg.sql
+\ir ../scripts/item/functions/v1_image_update.pg.sql
 \echo
 \echo '\033[1;32m[ setup functions in the temporary schema ]\033[0m'
 \echo
@@ -56,6 +61,7 @@
 \echo '\033[1;32m[ setup indexes in the the item schema ]\033[0m'
 \echo
 \ir ../scripts/item/indexes/idx_tb_document.pg.sql
+\ir ../scripts/item/indexes/idx_tb_image.pg.sql
 \echo
 \echo '\033[1;32m[ setup indexes in the the temporary schema ]\033[0m'
 \echo
