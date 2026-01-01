@@ -18,6 +18,7 @@ import {
   updateDocumentContentOnIDB,
 } from '../modules/editor/updateDocumentContent';
 import { langKeys } from '../translations/keys';
+import { setPageTitle } from '../utils/routes/helpers';
 import { debounce } from '../utils/time/debounce';
 
 const EditorPage = async (
@@ -68,7 +69,7 @@ const EditorPage = async (
   editorPageDiv.appendChild(containerDiv);
 
   const idbPromise = (async (): Promise<string | undefined> => {
-    const { content } = await getDocumentContentFromIDB(documentCode);
+    const { title, content } = await getDocumentContentFromIDB(documentCode);
     if (content === undefined) {
       editorElement.setLoadingState(true);
       return;
@@ -77,6 +78,10 @@ const EditorPage = async (
     const contentInJSON = editorElement.api.stringToSchema(content);
     editorElement.api.setContent(contentInJSON);
 
+    if (title) {
+      setPageTitle(title);
+    }
+
     return content;
   })();
 
@@ -84,7 +89,7 @@ const EditorPage = async (
   Promise.all([idbPromise]).then(async ([idbResults]): Promise<void> => {
     const contentFromIDB = idbResults;
 
-    const { content: contentFromAPI } =
+    const { title: titleFromAPI, content: contentFromAPI } =
       await getDocumentContentFromAPI(documentCode);
 
     if (contentFromAPI === undefined) {
@@ -94,6 +99,10 @@ const EditorPage = async (
       );
 
       return;
+    }
+
+    if (titleFromAPI) {
+      setPageTitle(titleFromAPI);
     }
 
     if (contentFromIDB === undefined) {
