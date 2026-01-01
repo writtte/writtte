@@ -21,7 +21,6 @@ import {
   getDocumentsFromIDB,
 } from '../modules/overview/getDocuments';
 import { buildDocumentOptionsMenu } from '../modules/overview/optionsMenu';
-import { EmptyItemListPlaceholder } from '../placeholders/EmptyItemList';
 import { langKeys } from '../translations/keys';
 import { navigate } from '../utils/routes/routes';
 
@@ -64,14 +63,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     itemCreateInputElement.element,
   );
 
-  const itemListElement = ItemList({
-    documents: [],
-    placeholder: {
-      placeholderSvg: EmptyItemListPlaceholder(),
-      title: langKeys().PageOverviewItemListPlaceholderTitle,
-      description: langKeys().PageOverviewItemListPlaceholderDescription,
-    },
-  });
+  const itemListElement = ItemList();
 
   const idbPromise = (async (): Promise<void> => {
     const documents = await getDocumentsFromIDB();
@@ -108,6 +100,13 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     const currentDocumentsFromIDB = await getDocumentsFromIDB();
 
     const documents = await getDocumentsFromAPI();
+
+    if (!documents || documents.length === 0) {
+      itemListElement.setNoItems();
+
+      contentDiv.remove();
+      return;
+    }
 
     const idsFromAPI: string[] = [];
     for (let i = 0; i < documents.length; i++) {

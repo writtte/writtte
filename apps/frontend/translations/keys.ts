@@ -149,8 +149,6 @@ type TLangKeys = {
   PageOverviewGreetingsNight05: string;
   PageOverviewGreetingsNight06: string;
   PageOverviewGreetingsNight07: string;
-  PageOverviewItemListPlaceholderDescription: string;
-  PageOverviewItemListPlaceholderTitle: string;
   PageSignInButtonSignIn: string;
   PageSignInButtonSigning: string;
   PageSignInEmailButtonSend: string;
@@ -347,8 +345,6 @@ const langKeys = (): TLangKeys => {
     PageOverviewGreetingsNight05: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_05'),
     PageOverviewGreetingsNight06: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_06'),
     PageOverviewGreetingsNight07: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_07'),
-    PageOverviewItemListPlaceholderDescription: getTr('PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_DESCRIPTION'),
-    PageOverviewItemListPlaceholderTitle: getTr('PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_TITLE'),
     PageSignInButtonSignIn: getTr('PAGE_SIGN_IN_BUTTON_SIGN_IN'),
     PageSignInButtonSigning: getTr('PAGE_SIGN_IN_BUTTON_SIGNING'),
     PageSignInEmailButtonSend: getTr('PAGE_SIGN_IN_EMAIL_BUTTON_SEND'),
