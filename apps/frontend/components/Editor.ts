@@ -24,17 +24,57 @@ const Editor = (opts: TOptions): TReturnEditor => {
   editorDiv.id = opts.id;
   setTestId(editorDiv, opts.id);
 
-  const writtteEditor: TEditorAPI = WrittteEditor({
+  var writtteEditor: TEditorAPI = WrittteEditor({
     element: editorDiv,
     options: opts.options,
   });
 
-  const setLoadingState = (_isLoading: boolean): void => {
-    return;
+  const setLoadingState = (isLoading: boolean): void => {
+    if (isLoading) {
+      const containerDiv = document.createElement('div');
+      const loadingIndicatorDiv = document.createElement('div');
+      const largeLineDiv = document.createElement('div');
+      const smallLineDiv = document.createElement('div');
+
+      containerDiv.classList.add('editor-loading-indicator-container');
+      loadingIndicatorDiv.classList.add('editor-loading-indicator');
+      largeLineDiv.classList.add('editor-loading-indicator__large');
+      smallLineDiv.classList.add('editor-loading-indicator__small');
+
+      loadingIndicatorDiv.append(largeLineDiv, smallLineDiv);
+      containerDiv.appendChild(loadingIndicatorDiv);
+      editorDiv.appendChild(containerDiv);
+    } else {
+      const loadingIndicatorElements = editorDiv.getElementsByClassName(
+        'editor-loading-indicator',
+      );
+
+      if (loadingIndicatorElements) {
+        for (let i = 0; i < loadingIndicatorElements.length; i++) {
+          loadingIndicatorElements[i].remove();
+        }
+      }
+    }
   };
 
-  const setError = (_title: string, _description: string): void => {
-    return;
+  const setError = (title: string, description: string): void => {
+    const containerDiv = document.createElement('div');
+    const messageDiv = document.createElement('div');
+    const titleDiv = document.createElement('div');
+    const descriptionDiv = document.createElement('div');
+
+    containerDiv.classList.add('editor-error-message-container');
+    messageDiv.classList.add('editor-error-message');
+    titleDiv.classList.add('editor-error-message__title');
+    descriptionDiv.classList.add('editor-error-message__description');
+
+    messageDiv.append(titleDiv, descriptionDiv);
+    containerDiv.appendChild(messageDiv);
+
+    titleDiv.textContent = title;
+    descriptionDiv.textContent = description;
+
+    editorDiv.replaceChildren(containerDiv);
   };
 
   return {
