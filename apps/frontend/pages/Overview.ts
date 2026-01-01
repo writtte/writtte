@@ -1,7 +1,7 @@
 import { idb } from '@writtte-internal/indexed-db';
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { ItemCreateInput } from '../components/ItemCreateInput';
-import { ItemList } from '../components/ItemList';
+import { ItemList, itemSortCollector } from '../components/ItemList';
 import { OverviewTitle } from '../components/OverviewTitle';
 import { PATHS } from '../constants/paths';
 import {
@@ -21,7 +21,6 @@ import {
   getDocumentsFromIDB,
 } from '../modules/overview/getDocuments';
 import { buildDocumentOptionsMenu } from '../modules/overview/optionsMenu';
-import { EmptyItemListPlaceholder } from '../placeholders/EmptyItemList';
 import { langKeys } from '../translations/keys';
 import { navigate } from '../utils/routes/routes';
 
@@ -64,17 +63,13 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     itemCreateInputElement.element,
   );
 
-  const itemListElement = ItemList({
-    documents: [],
-    placeholder: {
-      placeholderSvg: EmptyItemListPlaceholder(),
-      title: langKeys().PageOverviewItemListPlaceholderTitle,
-      description: langKeys().PageOverviewItemListPlaceholderDescription,
-    },
-  });
+  const itemListElement = ItemList();
 
   const idbPromise = (async (): Promise<void> => {
     const documents = await getDocumentsFromIDB();
+
+    documents.sort((a, b) => itemSortCollector.compare(a.title, b.title));
+
     for (let i = 0; i < documents.length; i++) {
       itemListElement.addItemToList({
         id: documentCodeToKey(documents[i].documentCode),
@@ -102,8 +97,16 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     const db = getIndexedDB();
 
     const currentDocumentIds = itemListElement.getAllDocumentIDs();
+    const currentDocumentsFromIDB = await getDocumentsFromIDB();
 
     const documents = await getDocumentsFromAPI();
+
+    if (!documents || documents.length === 0) {
+      itemListElement.setNoItems();
+
+      contentDiv.remove();
+      return;
+    }
 
     const idsFromAPI: string[] = [];
     for (let i = 0; i < documents.length; i++) {
@@ -171,6 +174,43 @@ const OverviewPage = async (): Promise<HTMLElement> => {
         }
       }
     }
+
+    for (let i = 0; i < documents.length; i++) {
+      // Update document titles for existing documents that might have
+      // changed in another browser
+
+      const documentId = documentCodeToKey(documents[i].document_code);
+      if (extraItemIds.includes(documentId)) {
+        // Newly added items should be ignored
+
+        continue;
+      }
+
+      const itemToUpdate = itemListElement.items.get(documentId);
+
+      if (itemToUpdate && itemToUpdate.getText() !== documents[i].title) {
+        itemToUpdate.changeText(documents[i].title);
+
+        const currentDoc = currentDocumentsFromIDB.find(
+          (doc) => documentCodeToKey(doc.documentCode) === documentId,
+        );
+
+        if (currentDoc) {
+          const updatedDoc: TIDBDocument = {
+            ...currentDoc,
+            title: documents[i].title,
+          };
+
+          // biome-ignore lint/performance/noAwaitInLoops: The await inside this loop is required
+          await idb.updateData(db, STORE_NAMES.DOCUMENTS, updatedDoc);
+        }
+      }
+    }
+
+    // Sort all documents alphabetically after all
+    // updates
+
+    itemListElement.sortItemsAlphabetically();
   });
 
   return overviewDiv;

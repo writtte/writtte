@@ -2,6 +2,7 @@ import { idb } from '@writtte-internal/indexed-db';
 import { v1DocumentRetrieve } from '../../data/apis/item/v1DocumentRetrieve';
 import {
   STORE_NAMES,
+  type TIDBDocument,
   type TIDBDocumentContent,
   getIndexedDB,
 } from '../../data/stores/indexedDB';
@@ -12,6 +13,7 @@ import { HTTP_STATUS } from '../../utils/data/fetch';
 const getDocumentContentFromAPI = async (
   documentCode: string,
 ): Promise<{
+  title: string | undefined;
   content: string | undefined;
 }> => {
   const { getCurrentAccountData } = AccessToken();
@@ -32,13 +34,16 @@ const getDocumentContentFromAPI = async (
 
   if (status !== HTTP_STATUS.OK || !response) {
     return {
+      title: undefined,
       content: undefined,
     };
   }
 
   const content = response.results.content;
+  const title = response.results.title;
 
   return {
+    title,
     content,
   };
 };
@@ -46,24 +51,33 @@ const getDocumentContentFromAPI = async (
 const getDocumentContentFromIDB = async (
   documentCode: string,
 ): Promise<{
+  title: string | undefined;
   content: string | undefined;
 }> => {
   const db = getIndexedDB();
 
-  const documentObject = await idb.getObject<TIDBDocumentContent>(
+  const documentContentObject = await idb.getObject<TIDBDocumentContent>(
     db,
     STORE_NAMES.DOCUMENT_CONTENTS,
     documentCode,
   );
 
-  if (!documentObject) {
+  if (!documentContentObject) {
     return {
+      title: undefined,
       content: undefined,
     };
   }
 
+  const documentObject = await idb.getObject<TIDBDocument>(
+    db,
+    STORE_NAMES.DOCUMENTS,
+    documentCode,
+  );
+
   return {
-    content: documentObject.content,
+    title: documentObject?.title,
+    content: documentContentObject.content,
   };
 };
 

@@ -69,6 +69,10 @@ const openDocumentDeleteModal = async (
     const documentId = documentCodeToKey(documentCode);
     itemList.removeItemFromList(documentId);
 
+    if (itemList.items.size === 0) {
+      itemList.setNoItems();
+    }
+
     modalController.closeModal('modal__ivogbppdvg');
   };
 };

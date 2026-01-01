@@ -148,8 +148,6 @@ const enMessages = {
   PAGE_OVERVIEW_GREETINGS_NIGHT_05: 'See you tomorrow,',
   PAGE_OVERVIEW_GREETINGS_NIGHT_06: 'Night - great job today,',
   PAGE_OVERVIEW_GREETINGS_NIGHT_07: 'Rest well,',
-  PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_DESCRIPTION: 'Get started by creating your first document.',
-  PAGE_OVERVIEW_ITEM_LIST_PLACEHOLDER_TITLE: 'No Documents Yet',
   PAGE_SIGN_IN_BUTTON_SIGNING: 'Checking Access...',
   PAGE_SIGN_IN_BUTTON_SIGN_IN: 'Sign In',
   PAGE_SIGN_IN_EMAIL_BUTTON_SEND: 'Get Magic Link',

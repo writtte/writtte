@@ -18,6 +18,7 @@ import {
   updateDocumentContentOnIDB,
 } from '../modules/editor/updateDocumentContent';
 import { langKeys } from '../translations/keys';
+import { setPageTitle } from '../utils/routes/helpers';
 import { debounce } from '../utils/time/debounce';
 
 const EditorPage = async (
@@ -46,6 +47,8 @@ const EditorPage = async (
   });
 
   if (editorElement) {
+    editorElement.api.setReadable();
+
     updateMainEditor({
       api: editorElement.api,
     });
@@ -66,7 +69,7 @@ const EditorPage = async (
   editorPageDiv.appendChild(containerDiv);
 
   const idbPromise = (async (): Promise<string | undefined> => {
-    const { content } = await getDocumentContentFromIDB(documentCode);
+    const { title, content } = await getDocumentContentFromIDB(documentCode);
     if (content === undefined) {
       editorElement.setLoadingState(true);
       return;
@@ -75,6 +78,10 @@ const EditorPage = async (
     const contentInJSON = editorElement.api.stringToSchema(content);
     editorElement.api.setContent(contentInJSON);
 
+    if (title) {
+      setPageTitle(title);
+    }
+
     return content;
   })();
 
@@ -82,10 +89,10 @@ const EditorPage = async (
   Promise.all([idbPromise]).then(async ([idbResults]): Promise<void> => {
     const contentFromIDB = idbResults;
 
-    const { content: contentFromAPI } =
+    const { title: titleFromAPI, content: contentFromAPI } =
       await getDocumentContentFromAPI(documentCode);
 
-    if (!contentFromAPI) {
+    if (contentFromAPI === undefined) {
       editorElement.setError(
         langKeys().PageEditorErrorDocumentRetrieveTextTitle,
         langKeys().PageEditorErrorDocumentRetrieveTextDescription,
@@ -94,13 +101,18 @@ const EditorPage = async (
       return;
     }
 
+    if (titleFromAPI) {
+      setPageTitle(titleFromAPI);
+    }
+
     if (contentFromIDB === undefined) {
       await updateDocumentContentOnIDB(documentCode, contentFromAPI);
-
       const contentInJSON = editorElement.api.stringToSchema(contentFromAPI);
-      editorElement.api.setContent(contentInJSON);
 
+      editorElement.api.setContent(contentInJSON);
       editorElement.setLoadingState(false);
+
+      editorElement.api.setEditable();
       return;
     }
 
@@ -117,24 +129,34 @@ const EditorPage = async (
       editorElement.api.replaceContent(contentInJSON);
 
     if (contentAfterReplacement !== undefined) {
-      await updateDocumentContentOnIDB(documentCode, contentAfterReplacement);
+      await updateDocumentContentOnIDB(
+        documentCode,
+        editorElement.api.schemaToString(contentAfterReplacement),
+      );
     }
 
     editorElement.setLoadingState(false);
+    editorElement.api.setEditable();
   });
 
-  if (editorElement.api.isEditable()) {
-    const debouncedLogContent = debounce(
-      async (content: TEditorSchema): Promise<void> => {
-        await updateDocumentContent(editorElement.api, documentCode, content);
-      },
-      { delay: DEBOUNCE_TIMEOUT.EDITOR_SAVE },
-    );
+  let isEditorMounted = false;
+  const debouncedLogContent = debounce(
+    async (content: TEditorSchema): Promise<void> => {
+      await updateDocumentContent(editorElement.api, documentCode, content);
+    },
+    { delay: DEBOUNCE_TIMEOUT.EDITOR_SAVE },
+  );
 
-    editorElement.api.onChange((content: TEditorSchema) => {
+  editorElement.api.onChange((content: TEditorSchema) => {
+    if (editorElement.api.isEditable()) {
+      if (!isEditorMounted) {
+        isEditorMounted = true;
+        return;
+      }
+
       debouncedLogContent(content);
-    });
-  }
+    }
+  });
 
   return editorPageDiv;
 };

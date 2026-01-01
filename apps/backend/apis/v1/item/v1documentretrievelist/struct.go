@@ -7,7 +7,7 @@ type QueryParams struct {
 	WorkflowState  *string `json:"workflow_state" validate:"omitempty,oneof=published"`
 	TitleFilter    *string `json:"title_filter" validate:"omitempty"`
 	Page           *int    `json:"page" validate:"omitempty,min=1"`
-	PageSize       *int    `json:"page_size" validate:"omitempty,min=1,max=100"`
+	PageSize       *int    `json:"page_size" validate:"omitempty,min=1,max=1000"`
 	SortBy         *string `json:"sort_by" validate:"omitempty,oneof=created_time updated_time title"`
 	SortOrder      *string `json:"sort_order" validate:"omitempty,oneof=ASC DESC"`
 }

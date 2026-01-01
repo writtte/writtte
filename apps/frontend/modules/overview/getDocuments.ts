@@ -33,6 +33,7 @@ const getDocumentsFromAPI = async (): Promise<
   const { status, response } = await v1DocumentRetrieveList({
     accessToken,
     lifecycleState: DocumentLifecycleState.ACTIVE,
+    pageSize: 1000,
   });
 
   if (status !== HTTP_STATUS.OK || !response) {

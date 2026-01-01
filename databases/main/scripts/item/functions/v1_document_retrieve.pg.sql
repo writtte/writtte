@@ -25,13 +25,12 @@ BEGIN
       json_build_object('document_code', tbd.document_code, 'account_code', tbd.account_code, 'title', tbd.title, 'lifecycle_state', tbd.lifecycle_state, 'workflow_state', tbd.workflow_state, 'created_time', tbd.created_time, 'updated_time', tbd.updated_time, 'deleted_time', tbd.deleted_time)
     FROM
       schema_item.tb_document tbd
-    WHERE (v_p_document_code IS NOT NULL
-      AND tbd.document_code = v_p_document_code)
-    OR (v_p_account_code IS NOT NULL
-      AND tbd.account_code = v_p_account_code)
-  ORDER BY
-    tbd.created_time DESC
-  LIMIT 1);
+    WHERE
+      tbd.document_code = v_p_document_code
+      AND tbd.account_code = v_p_account_code
+    ORDER BY
+      tbd.created_time DESC
+    LIMIT 1);
   RETURN json_build_object(k_status, TRUE, k_code, 'DOCUMENT_RETRIEVED', k_message, NULL, k_additional, NULL, k_data, v_document_data)::JSONB;
 EXCEPTION
   WHEN OTHERS THEN

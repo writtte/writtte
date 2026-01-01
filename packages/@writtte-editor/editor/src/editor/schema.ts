@@ -11,4 +11,10 @@ type TEditorSchema = {
   [key: string]: unknown;
 };
 
+const defaultEditorSchema: TEditorSchema = {
+  type: 'document',
+};
+
 export type { TEditorSchema };
+
+export { defaultEditorSchema };

@@ -54,6 +54,7 @@
   --component-editor-bg--hr: var(--global-neutral-5);
   --component-editor-bg--inline-code: var(--global-neutral-3);
   --component-editor-bg--list-item-marker: var(--global-neutral-9);
+  --component-editor-bg--loading: var(--global-neutral-3);
   --component-editor-bg--text-selection: var(--global-light-blue-2);
   --component-editor-border--block---focused: var(--global-light-blue-6);
   --component-editor-menu-bg: var(--base-white);

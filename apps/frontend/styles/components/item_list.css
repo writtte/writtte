@@ -7,6 +7,10 @@
   width: 100%;
 }
 
+.item-list.hide {
+  display: none;
+}
+
 .item-list__container {
   align-items: flex-start;
   align-self: stretch;

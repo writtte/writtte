@@ -50,21 +50,37 @@ const Menu = (opts: TOptions): TReturnMenu => {
     if (opts.items[i].hasTopDivider === true) {
       const dividerDiv = document.createElement('div');
       dividerDiv.classList.add('menu__divider');
-
       containerDiv.appendChild(dividerDiv);
     }
 
     const menuElement = MenuItem(opts.items[i]);
     items[opts.items[i].id] = menuElement;
-
     containerDiv.appendChild(menuElement.element);
 
     if (opts.items[i].hasBottomDivider === true) {
       const dividerDiv = document.createElement('div');
       dividerDiv.classList.add('menu__divider');
-
       containerDiv.appendChild(dividerDiv);
     }
+  }
+
+  document.body.appendChild(menu);
+
+  const menuRect = menu.getBoundingClientRect();
+  const viewportHeight = window.innerHeight;
+  const viewportWidth = window.innerWidth;
+
+  if (menuRect.bottom > viewportHeight) {
+    const newTop = Math.max(0, opts.location.y - menuRect.height);
+    menu.style.top = `${newTop}px`;
+  }
+
+  if (!opts.isRightSideMenu && menuRect.right > viewportWidth) {
+    menu.style.left = 'auto';
+    menu.style.right = `${window.innerWidth - opts.location.x}px`;
+  } else if (opts.isRightSideMenu && menuRect.left < 0) {
+    menu.style.right = 'auto';
+    menu.style.left = `${opts.location.x}px`;
   }
 
   let clickOutsideInstance: ReturnType<typeof clickOutside> | null = null;
