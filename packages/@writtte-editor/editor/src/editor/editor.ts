@@ -1,6 +1,5 @@
 import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
-import type { TEditorSchema } from './schema';
 import { type AnyExtension, Editor } from '@tiptap/core';
 import { BoldExtension } from '../extensions/bold';
 import { BulletListExtension } from '../extensions/bulletList';
@@ -20,6 +19,7 @@ import { SuperscriptExtension } from '../extensions/superscript';
 import { TextExtension } from '../extensions/text';
 import { UnderlineExtension } from '../extensions/underline';
 import { UndoRedoExtension } from '../extensions/undoRedo';
+import { type TEditorSchema, defaultEditorSchema } from './schema';
 import { type TEditorState, getEditorState } from './state';
 
 type TOptions = {
@@ -145,17 +145,27 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     _editor.commands.setContent(content);
   };
 
-  const replaceContent = (content: TEditorSchema): void => {
+  const replaceContent = (content: TEditorSchema): TEditorSchema => {
     _editor.commands.setContent(content);
+    return _editor.getJSON();
   };
 
   const stringToSchema = (content: string): TEditorSchema => {
-    const jsonContent = JSON.parse(content);
-    return jsonContent as TEditorSchema;
+    try {
+      const jsonContent = JSON.parse(content);
+      return jsonContent as TEditorSchema;
+    } catch {
+      return defaultEditorSchema;
+    }
   };
 
-  const schemaToString = (schema: TEditorSchema): string =>
-    JSON.stringify(schema);
+  const schemaToString = (schema: TEditorSchema): string => {
+    try {
+      return JSON.stringify(schema);
+    } catch {
+      return '';
+    }
+  };
 
   const onChange = (callback: (content: TEditorSchema) => void): void => {
     _editor.on('update', ({ editor }: { editor: Editor }) => {

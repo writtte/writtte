@@ -7,7 +7,7 @@ type TEditorAPI = {
   setReadable: () => void;
   getContent: () => TEditorSchema | undefined;
   setContent: (content: TEditorSchema) => void;
-  replaceContent: (content: TEditorSchema) => void;
+  replaceContent: (content: TEditorSchema) => TEditorSchema;
   stringToSchema: (content: string) => TEditorSchema;
   schemaToString: (schema: TEditorSchema) => string;
   onChange: (callback: (content: TEditorSchema) => void) => void;
