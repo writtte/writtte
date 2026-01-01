@@ -1,7 +1,7 @@
 import { idb } from '@writtte-internal/indexed-db';
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { ItemCreateInput } from '../components/ItemCreateInput';
-import { ItemList } from '../components/ItemList';
+import { ItemList, itemSortCollector } from '../components/ItemList';
 import { OverviewTitle } from '../components/OverviewTitle';
 import { PATHS } from '../constants/paths';
 import {
@@ -75,6 +75,9 @@ const OverviewPage = async (): Promise<HTMLElement> => {
 
   const idbPromise = (async (): Promise<void> => {
     const documents = await getDocumentsFromIDB();
+
+    documents.sort((a, b) => itemSortCollector.compare(a.title, b.title));
+
     for (let i = 0; i < documents.length; i++) {
       itemListElement.addItemToList({
         id: documentCodeToKey(documents[i].documentCode),
@@ -204,6 +207,11 @@ const OverviewPage = async (): Promise<HTMLElement> => {
         }
       }
     }
+
+    // Sort all documents alphabetically after all
+    // updates
+
+    itemListElement.sortItemsAlphabetically();
   });
 
   return overviewDiv;

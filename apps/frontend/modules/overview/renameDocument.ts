@@ -129,6 +129,12 @@ const openDocumentRenameModal = async (
     await updateDocumentTitleInIDB(documentCode, input.getValue().trim());
 
     itemToUpdate.changeText(input.getValue());
+
+    // Re-sort the item list to maintain alphabetical order after
+    // renaming
+
+    itemList.sortItemsAlphabetically();
+
     modalController.closeModal('modal__qxtfaslqkw');
   };
 };
