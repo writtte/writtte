@@ -102,6 +102,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     const db = getIndexedDB();
 
     const currentDocumentIds = itemListElement.getAllDocumentIDs();
+    const currentDocumentsFromIDB = await getDocumentsFromIDB();
 
     const documents = await getDocumentsFromAPI();
 
@@ -168,6 +169,38 @@ const OverviewPage = async (): Promise<HTMLElement> => {
 
           // biome-ignore lint/performance/noAwaitInLoops: The await inside this loop is required
           await idb.addData(db, STORE_NAMES.DOCUMENTS, objectToAdd);
+        }
+      }
+    }
+
+    for (let i = 0; i < documents.length; i++) {
+      // Update document titles for existing documents that might have
+      // changed in another browser
+
+      const documentId = documentCodeToKey(documents[i].document_code);
+      if (extraItemIds.includes(documentId)) {
+        // Newly added items should be ignored
+
+        continue;
+      }
+
+      const itemToUpdate = itemListElement.items.get(documentId);
+
+      if (itemToUpdate && itemToUpdate.getText() !== documents[i].title) {
+        itemToUpdate.changeText(documents[i].title);
+
+        const currentDoc = currentDocumentsFromIDB.find(
+          (doc) => documentCodeToKey(doc.documentCode) === documentId,
+        );
+
+        if (currentDoc) {
+          const updatedDoc: TIDBDocument = {
+            ...currentDoc,
+            title: documents[i].title,
+          };
+
+          // biome-ignore lint/performance/noAwaitInLoops: The await inside this loop is required
+          await idb.updateData(db, STORE_NAMES.DOCUMENTS, updatedDoc);
         }
       }
     }

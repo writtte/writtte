@@ -16,6 +16,7 @@ type TOptions = {
 
 type TReturnItemListDocument = {
   element: HTMLButtonElement;
+  getText: () => string;
   changeText: (text: string) => void;
 };
 
@@ -54,6 +55,8 @@ const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
     textDiv.textContent = text;
   };
 
+  const getText = (): string => textDiv.textContent || '';
+
   itemButton.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -63,6 +66,7 @@ const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
 
   return {
     element: itemButton,
+    getText,
     changeText,
   };
 };
