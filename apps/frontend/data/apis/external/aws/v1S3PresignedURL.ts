@@ -6,10 +6,6 @@ import {
   fetchRequest,
 } from '../../../../utils/data/fetch';
 
-const PresignedURLBucket = {
-  PUBLIC: 'public',
-} as const;
-
 const PresignedURLType = {
   DOCUMENT_IMAGE: 'document-image',
 };
@@ -20,9 +16,6 @@ const PresignedURLAction = {
   DELETE: 'delete',
 };
 
-type TPresignedURLBucket =
-  (typeof PresignedURLBucket)[keyof typeof PresignedURLBucket];
-
 type TPresignedURLType =
   (typeof PresignedURLType)[keyof typeof PresignedURLType];
 
@@ -31,7 +24,6 @@ type TPresignedURLAction =
 
 type TPayloadV1S3PresignedURL = {
   accessToken: string;
-  bucket: TPresignedURLBucket;
   type: TPresignedURLType;
   action: TPresignedURLAction;
   documentCode?: string;
@@ -60,7 +52,6 @@ const v1S3PresignedURL = async (
     method: HTTP_METHODS.POST,
     bearerValue: payload.accessToken,
     bodyParams: {
-      bucket: payload.bucket,
       type: payload.type,
       action: payload.action,
       document_code: payload.documentCode,
@@ -78,16 +69,10 @@ const v1S3PresignedURL = async (
 };
 
 export type {
-  TPresignedURLBucket,
   TPresignedURLType,
   TPresignedURLAction,
   TPayloadV1S3PresignedURL,
   TResponseV1S3PresignedURL,
 };
 
-export {
-  PresignedURLBucket,
-  PresignedURLType,
-  PresignedURLAction,
-  v1S3PresignedURL,
-};
+export { PresignedURLType, PresignedURLAction, v1S3PresignedURL };

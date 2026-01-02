@@ -11,6 +11,11 @@ var (
 	AWSSESTransactionalSender        string
 	AWSSESTransactionalConfiguration string
 
+	AWSS3PrivateGeneralBucketAccessKey       string
+	AWSS3PrivateGeneralBucketSecretAccessKey string
+	AWSS3PrivateGeneralBucketRegion          string
+	AWSS3PrivateGeneralBucketName            string
+
 	AWSS3PrivateDirectoryBucketAccountID       string
 	AWSS3PrivateDirectoryBucketAccessKey       string
 	AWSS3PrivateDirectoryBucketSecretAccessKey string
@@ -26,6 +31,11 @@ func AWSEnvs() {
 	AWSSESAccountSecretAccessKey = intenv.Load("BE_AWS_SES_KEY_SECRET_ACCESS")
 	AWSSESTransactionalSender = intenv.Load("BE_AWS_SES_TRANSACTIONAL_SENDER_ACCOUNT")
 	AWSSESTransactionalConfiguration = intenv.Load("BE_AWS_SES_TRANSACTIONAL_CONFIGURATION")
+
+	AWSS3PrivateGeneralBucketAccessKey = intenv.Load("BE_AWS_S3_KEY_ACCESS")
+	AWSS3PrivateGeneralBucketSecretAccessKey = intenv.Load("BE_AWS_S3_KEY_SECRET_ACCESS")
+	AWSS3PrivateGeneralBucketRegion = intenv.Load("BE_AWS_S3_REGION")
+	AWSS3PrivateGeneralBucketName = intenv.Load("BE_AWS_S3_PRIVATE_GENERAL_BUCKET_NAME")
 
 	AWSS3PrivateDirectoryBucketAccountID = intenv.Load("BE_AWS_S3_KEY_ACCOUNT_ID")
 	AWSS3PrivateDirectoryBucketAccessKey = intenv.Load("BE_AWS_S3_KEY_ACCESS")

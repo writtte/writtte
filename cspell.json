@@ -64,6 +64,7 @@
     "imageretrieve",
     "imageupdate",
     "presignedurl",
-    "presign"
+    "presign",
+    "IMDS"
   ]
 }

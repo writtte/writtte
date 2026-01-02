@@ -3,7 +3,6 @@ package v1s3presignedurl
 // revive:disable:line-length-limit
 
 type BodyParams struct {
-	Bucket *string `json:"bucket" validate:"required,oneof=private"`
 	Type   *string `json:"type" validate:"required,oneof=document-image"`
 	Action *string `json:"action" validate:"required,oneof=get put delete"`
 

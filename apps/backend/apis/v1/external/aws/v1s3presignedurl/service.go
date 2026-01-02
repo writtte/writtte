@@ -19,7 +19,6 @@ type service struct {
 
 const (
 	expirationMinutes = 5
-	bucketPrivate     = "private"
 	typeDocumentImage = "document-image"
 	actionGet         = "get"
 	actionPut         = "put"
@@ -28,22 +27,14 @@ const (
 
 func (s *service) perform(ctx context.Context, body *BodyParams,
 ) (*string, error) {
-	var client *extaws.S3Client
-	var bucket string
 	var generatedURL *string
+
+	client := glob.Config.AWSS3PrivateGeneralBucketClient
+	bucket := configs.AWSS3PrivateGeneralBucketName
 
 	key, err := s.getKey(ctx, body)
 	if err != nil {
 		return nil, err
-	}
-
-	switch *body.Bucket {
-	case bucketPrivate:
-		client = glob.Config.AWSS3PrivateDirectoryBucketClient
-		bucket = configs.AWSS3PrivateDirectoryBucketName
-
-	default:
-		panic("bucket not supported")
 	}
 
 	switch *body.Action {

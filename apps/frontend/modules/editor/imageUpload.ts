@@ -4,7 +4,6 @@ import { ALERT_TIMEOUT } from '../../constants/timeouts';
 import { AlertController } from '../../controller/alert';
 import {
   PresignedURLAction,
-  PresignedURLBucket,
   PresignedURLType,
   v1S3PresignedURL,
 } from '../../data/apis/external/aws/v1S3PresignedURL';
@@ -68,7 +67,6 @@ const imageUpload = async (file: File): Promise<TImageAttributes> => {
 
     const { status, response } = await v1S3PresignedURL({
       accessToken,
-      bucket: PresignedURLBucket.PUBLIC,
       type: PresignedURLType.DOCUMENT_IMAGE,
       action: PresignedURLAction.PUT,
       documentCode,
