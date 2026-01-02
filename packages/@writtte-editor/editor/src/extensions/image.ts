@@ -320,7 +320,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
   addNodeView(): NodeViewRenderer {
     return ({ node }: { node: ProsemirrorNode }) => {
       const dom = document.createElement('div');
-      dom.classList.add('image-container');
+      dom.classList.add('writtte-image-container');
 
       const img = document.createElement('img');
 
