@@ -3,10 +3,12 @@ import { type TStore, createStore } from '@writtte-internal/store';
 import { buildError } from '../../helpers/error/build';
 
 type TStoreMainEditor = {
+  documentCode: string | undefined;
   api: TEditorAPI | undefined;
 };
 
 const initialState: TStoreMainEditor = {
+  documentCode: undefined,
   api: undefined,
 };
 

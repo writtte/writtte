@@ -50,6 +50,7 @@ const EditorPage = async (
     editorElement.api.setReadable();
 
     updateMainEditor({
+      documentCode,
       api: editorElement.api,
     });
   }
