@@ -45,7 +45,8 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 
 func validateBodyParamCombinations(body *BodyParams) error {
 	if *body.Type == typeDocumentImage &&
-		(body.DocumentCode == nil || body.ImageExtension == nil) {
+		(body.DocumentCode == nil || body.ImageCode == nil ||
+			body.ImageExtension == nil) {
 		return errors.New("document code and image extension are required")
 	}
 

@@ -82,8 +82,8 @@ func (s *service) getKey(ctx context.Context, body *BodyParams,
 		return nil, err
 	}
 
-	if *parsedResults.Status ||
-		*parsedResults.Code != constants.ImageCreated {
+	if !(*parsedResults.Status == true &&
+		*parsedResults.Code == constants.ImageCreated) {
 		return nil, errors.New(*parsedResults.Message)
 	}
 
