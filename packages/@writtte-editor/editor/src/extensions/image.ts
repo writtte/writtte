@@ -29,7 +29,7 @@ type TImageOptions = {
   supportedImageFileExtensions: string[];
   allowImagePaste: boolean;
   onImagePaste?: (file: File) => Promise<TImageAttributes>;
-  loadingIndicator?: string;
+  loadingIndicator?: HTMLDivElement;
 };
 
 type TImageAttributes = {
@@ -62,17 +62,9 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     return {
       HTMLAttributes: {},
       inline: false,
-      supportedImageFileExtensions: [
-        'jpg',
-        'jpeg',
-        'png',
-        'gif',
-        'webp',
-        'svg',
-      ],
-      allowImagePaste: true,
+      supportedImageFileExtensions: [],
+      allowImagePaste: false,
       onImagePaste: undefined,
-      loadingIndicator: '<div>Uploading (change this externally)...</div>',
     };
   },
   addAttributes(): Attributes {
@@ -343,7 +335,10 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
         dom.appendChild(img);
       } else if (node.attrs.extension === 'uploading') {
         const loadingContainer = document.createElement('div');
-        loadingContainer.innerHTML = this.options.loadingIndicator || '';
+        if (this.options.loadingIndicator) {
+          loadingContainer.appendChild(this.options.loadingIndicator);
+        }
+
         dom.appendChild(loadingContainer);
       }
 
@@ -387,7 +382,9 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       new Plugin({
         props: {
           handlePaste: (view: EditorView, event: ClipboardEvent): boolean => {
-            if (!event.clipboardData) return false;
+            if (!event.clipboardData) {
+              return false;
+            }
 
             const items = Array.from(event.clipboardData.items);
             const imageItems = items.filter(
