@@ -13,6 +13,8 @@ type TLangKeys = {
   AlertDocumentCreateFailedTitle: string;
   AlertDocumentRetrievedFailedDescription: string;
   AlertDocumentRetrievedFailedTitle: string;
+  AlertEditorImageUploadFailedDescription: string;
+  AlertEditorImageUploadFailedTitle: string;
   AlertEmailUpdateRequestSentDescription: string;
   AlertEmailUpdateRequestSentTitle: string;
   AlertEmailVerifiedDescription: string;
@@ -33,6 +35,7 @@ type TLangKeys = {
   AlertSubscriptionCustomerPortalLinkFailedTitle: string;
   AlertUnableToAddHyperlinkDescription: string;
   AlertUnableToAddHyperlinkTitle: string;
+  EditorLoadingUploadingImage: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountInvalidCredentials: string;
   ErrorAccountNotExists: string;
@@ -209,6 +212,8 @@ const langKeys = (): TLangKeys => {
     AlertDocumentCreateFailedTitle: getTr('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
     AlertDocumentRetrievedFailedTitle: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_TITLE'),
+    AlertEditorImageUploadFailedDescription: getTr('ALERT_EDITOR_IMAGE_UPLOAD_FAILED_DESCRIPTION'),
+    AlertEditorImageUploadFailedTitle: getTr('ALERT_EDITOR_IMAGE_UPLOAD_FAILED_TITLE'),
     AlertEmailUpdateRequestSentDescription: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_DESCRIPTION'),
     AlertEmailUpdateRequestSentTitle: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_TITLE'),
     AlertEmailVerifiedDescription: getTr('ALERT_EMAIL_VERIFIED_DESCRIPTION'),
@@ -229,6 +234,7 @@ const langKeys = (): TLangKeys => {
     AlertSubscriptionCustomerPortalLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE'),
     AlertUnableToAddHyperlinkDescription: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_DESCRIPTION'),
     AlertUnableToAddHyperlinkTitle: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_TITLE'),
+    EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
     ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),

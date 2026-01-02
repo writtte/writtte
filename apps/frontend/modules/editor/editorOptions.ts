@@ -1,8 +1,14 @@
-import type { TExtensionOptions } from '@writtte-editor/editor';
+import type {
+  TExtensionOptions,
+  TImageAttributes,
+} from '@writtte-editor/editor';
+import { EditorUploadLoadingIndicator } from '../../components/EditorUploadLoadingIndicator';
+import { langKeys } from '../../translations/keys';
+import { imageUpload } from './imageUpload';
 
 const shortcutKeys = {
   SET_PARAGRAPH: 'Mod-Alt-0',
-  SET_HEADING: 'Mod-Alt', // KEY-[1 .. 6], ex: Mod-Alt-1 for H1
+  SET_HEADING: 'Mod-Alt', // Mod-Alt-[1 .. 6]
   TOGGLE_BOLD: 'Mod-b',
   TOGGLE_ITALIC: 'Mod-i',
   TOGGLE_UNDERLINE: 'Mod-u',
@@ -126,6 +132,18 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     isEnabled: true,
   },
   placeholder: {
+    isEnabled: true,
+  },
+  image: {
+    inline: false,
+    supportedImageFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
+    allowImagePaste: true,
+    loadingIndicator: EditorUploadLoadingIndicator({
+      id: 'editor_upload_loading_indicator__qbhguzgecj',
+      text: langKeys().EditorLoadingUploadingImage,
+    }).element,
+    onImagePaste: async (file: File): Promise<TImageAttributes> =>
+      imageUpload(file),
     isEnabled: true,
   },
 });
