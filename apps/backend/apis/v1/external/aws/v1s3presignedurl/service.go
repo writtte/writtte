@@ -25,6 +25,8 @@ const (
 	actionDelete      = "delete"
 )
 
+// revive:disable:cognitive-complexity
+
 func (s *service) perform(ctx context.Context, body *BodyParams,
 ) (*string, error) {
 	var generatedURL *string
@@ -55,6 +57,10 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 
 			generatedURL, err = extaws.GeneratePutPresignedURL(ctx, *client,
 				bucket, *key, expirationMinutes*time.Minute)
+
+			if err != nil {
+				return nil, err
+			}
 		}
 
 	case actionDelete:
@@ -76,6 +82,8 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 
 	return generatedURL, nil
 }
+
+// revive:enable:cognitive-complexity
 
 func getKeyForGetAction(body *BodyParams) *string {
 	var key string
