@@ -334,12 +334,9 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
         dom.appendChild(img);
       } else if (node.attrs.extension === 'uploading') {
-        const loadingContainer = document.createElement('div');
         if (this.options.loadingIndicator) {
-          loadingContainer.appendChild(this.options.loadingIndicator);
+          dom.appendChild(this.options.loadingIndicator);
         }
-
-        dom.appendChild(loadingContainer);
       }
 
       return {
@@ -432,6 +429,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
               );
 
               // If custom upload handler is provided, use it
+
               if (this.options.onImagePaste) {
                 try {
                   const attributes = await this.options.onImagePaste(file);
