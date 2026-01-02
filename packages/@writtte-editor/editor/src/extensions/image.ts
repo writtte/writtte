@@ -39,7 +39,6 @@ type TImageAttributes = {
     height?: number;
   };
   extension: string;
-  src?: string;
 };
 
 declare module '@tiptap/core' {
@@ -97,30 +96,25 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       extension: {
         default: null,
       },
-      src: {
-        default: null,
-      },
     };
   },
   parseHTML(): NodeSpec['parseDOM'] {
     return [
       {
-        tag: 'img[src]',
+        tag: 'img[data-image-code][data-extension]',
         getAttrs: (element: HTMLElement) => {
           if (!(element instanceof HTMLElement)) {
             return false;
           }
 
-          const src = element.getAttribute('src');
           const imageCode = element.getAttribute('data-image-code');
           const extension = element.getAttribute('data-extension');
 
-          if (!src || !imageCode || !extension) {
+          if (!imageCode || !extension) {
             return false;
           }
 
           return {
-            src,
             imageCode,
             extension,
           };
@@ -135,7 +129,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     node: ProsemirrorNode;
     HTMLAttributes: Record<string, string | number | boolean>;
   }): DOMOutputSpec {
-    const { imageCode, extension, src, metadata } = node.attrs;
+    const { imageCode, extension, metadata } = node.attrs;
 
     return [
       'img',
@@ -143,7 +137,6 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
         this.options.HTMLAttributes,
         HTMLAttributes,
         {
-          src,
           'data-image-code': imageCode,
           'data-extension': extension,
         },
@@ -321,8 +314,14 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
       const img = document.createElement('img');
 
-      if (node.attrs.src) {
-        img.src = node.attrs.src;
+      // Add data attributes even though src will be managed
+      // externally
+
+      if (node.attrs.extension !== 'uploading') {
+        // Set required data attributes
+
+        img.setAttribute('data-image-code', node.attrs.imageCode);
+        img.setAttribute('data-extension', node.attrs.extension);
 
         if (node.attrs.metadata?.width) {
           img.width = node.attrs.metadata.width;
@@ -344,14 +343,23 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
         update: (updatedNode: ProsemirrorNode) => {
           if (updatedNode.type !== node.type) return false;
 
-          // If we now have a source, replace the loading indicator with the
-          // actual image
-
-          if (updatedNode.attrs.src && node.attrs.extension === 'uploading') {
+          if (
+            updatedNode.attrs.extension !== 'uploading' &&
+            node.attrs.extension === 'uploading'
+          ) {
             dom.innerHTML = '';
 
             const updatedImg = document.createElement('img');
-            updatedImg.src = updatedNode.attrs.src;
+
+            updatedImg.setAttribute(
+              'data-image-code',
+              updatedNode.attrs.imageCode,
+            );
+
+            updatedImg.setAttribute(
+              'data-extension',
+              updatedNode.attrs.extension,
+            );
 
             if (updatedNode.attrs.metadata?.width) {
               updatedImg.width = updatedNode.attrs.metadata.width;
@@ -415,13 +423,13 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                 return;
               }
 
-              const imageCode = `image-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+              const tempImageCode = `image-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
               const tr = view.state.tr;
               view.dispatch(
                 tr.replaceSelectionWith(
                   this.type.create({
-                    imageCode,
+                    imageCode: tempImageCode,
                     extension: 'uploading',
                     metadata: {},
                   }),
@@ -446,12 +454,11 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
                     if (
                       node.type === this.type &&
-                      node.attrs.imageCode === imageCode
+                      node.attrs.imageCode === tempImageCode
                     ) {
                       found = true;
                       updateTr.setNodeMarkup(pos, undefined, {
                         ...attributes,
-                        imageCode,
                       });
 
                       view.dispatch(updateTr);
@@ -462,9 +469,8 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                   });
                 } catch {
                   // Handle error silently - the error will be thrown to
-                  // the caller
-
-                  // If upload fails, we should remove the placeholder
+                  // the caller and if upload fails, we should remove the
+                  // placeholder
 
                   const { state } = view;
                   const errorTr = state.tr;
@@ -472,7 +478,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                   state.doc.descendants((node, pos) => {
                     if (
                       node.type === this.type &&
-                      node.attrs.imageCode === imageCode
+                      node.attrs.imageCode === tempImageCode
                     ) {
                       errorTr.delete(pos, pos + node.nodeSize);
                       view.dispatch(errorTr);

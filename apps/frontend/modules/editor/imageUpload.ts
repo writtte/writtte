@@ -52,8 +52,6 @@ const imageUpload = async (file: File): Promise<TImageAttributes> => {
       );
     }
 
-    const objectURL = URL.createObjectURL(imageBlob.image);
-
     const { getCurrentAccountData } = AccessToken();
 
     const accessToken = getCurrentAccountData()?.access_token;
@@ -94,7 +92,6 @@ const imageUpload = async (file: File): Promise<TImageAttributes> => {
     return {
       imageCode: imageCode,
       extension: imageExtension,
-      src: objectURL,
       metadata: {
         width: undefined,
         height: undefined,
