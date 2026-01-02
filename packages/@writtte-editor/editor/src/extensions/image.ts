@@ -39,6 +39,12 @@ type TImageAttributes = {
     height?: number;
   };
   extension: string;
+
+  // The following attribute should only be defined when creating an
+  // image by adding or pasting; otherwise, this field should be fucking
+  // ignored completely.
+
+  srcWhenCreate?: string;
 };
 
 declare module '@tiptap/core' {
@@ -94,6 +100,9 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
         },
       },
       extension: {
+        default: null,
+      },
+      srcWhenCreate: {
         default: null,
       },
     };
@@ -270,6 +279,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                 ...(attributes.metadata || {}),
               },
             });
+
             tr.setSelection(NodeSelection.create(tr.doc, from));
             dispatch(tr);
           }
@@ -341,7 +351,9 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       return {
         dom,
         update: (updatedNode: ProsemirrorNode) => {
-          if (updatedNode.type !== node.type) return false;
+          if (updatedNode.type !== node.type) {
+            return false;
+          }
 
           if (
             updatedNode.attrs.extension !== 'uploading' &&
@@ -369,6 +381,12 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
               updatedImg.height = updatedNode.attrs.metadata.height;
             }
 
+            if (updatedNode.attrs.srcWhenCreate) {
+              // This will run only when pasting the image
+
+              updatedImg.src = updatedNode.attrs.srcWhenCreate;
+            }
+
             dom.appendChild(updatedImg);
           }
 
@@ -377,7 +395,6 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       };
     };
   },
-
   addProseMirrorPlugins(): Plugin[] {
     if (!this.options.allowImagePaste) {
       return [];
@@ -442,31 +459,41 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                 try {
                   const attributes = await this.options.onImagePaste(file);
 
-                  // Find the node with our temporary imageCode and
-                  // update it
+                  // Create a data URL for the file to use as srcWhenCreate
+                  const reader = new FileReader();
+                  reader.onload = (e: ProgressEvent<FileReader>) => {
+                    const srcWhenCreate = e.target?.result as string;
 
-                  const { state } = view;
-                  const updateTr = state.tr;
+                    // Find the node with our temporary imageCode and update it
+                    const { state } = view;
+                    const updateTr = state.tr;
 
-                  let found = false;
-                  state.doc.descendants((node, pos) => {
-                    if (found) return false;
+                    let found = false;
+                    state.doc.descendants((node, pos) => {
+                      if (found) {
+                        return false;
+                      }
 
-                    if (
-                      node.type === this.type &&
-                      node.attrs.imageCode === tempImageCode
-                    ) {
-                      found = true;
-                      updateTr.setNodeMarkup(pos, undefined, {
-                        ...attributes,
-                      });
+                      if (
+                        node.type === this.type &&
+                        node.attrs.imageCode === tempImageCode
+                      ) {
+                        found = true;
+                        updateTr.setNodeMarkup(pos, undefined, {
+                          ...attributes,
+                          srcWhenCreate,
+                        });
 
-                      view.dispatch(updateTr);
-                      return false;
-                    }
+                        view.dispatch(updateTr);
+                        return false;
+                      }
 
-                    return true;
-                  });
+                      return true;
+                    });
+                  };
+
+                  // Start reading the file as a data URL
+                  reader.readAsDataURL(file);
                 } catch {
                   // Handle error silently - the error will be thrown to
                   // the caller and if upload fails, we should remove the

@@ -2,21 +2,26 @@ import { setTestId } from '../utils/dom/testId';
 
 type TOptions = {
   id: string;
-  text: string;
+  text: string | undefined;
 };
 
-type TReturnEditorUploadLoadingIndicator = {
+type TReturnEditorNodeLoadingIndicator = {
   element: HTMLDivElement;
 };
 
-const EditorUploadLoadingIndicator = (
+const EditorNodeLoadingIndicator = (
   opts: TOptions,
-): TReturnEditorUploadLoadingIndicator => {
+): TReturnEditorNodeLoadingIndicator => {
   const indicatorDiv = document.createElement('div');
   const animatedSvgDiv = document.createElement('div');
   const textDiv = document.createElement('div');
 
-  textDiv.textContent = opts.text;
+  if (opts.text !== undefined) {
+    textDiv.textContent = opts.text;
+  } else {
+    textDiv.remove();
+  }
+
   indicatorDiv.append(animatedSvgDiv, textDiv);
 
   setTestId(indicatorDiv, opts.id);
@@ -27,8 +32,8 @@ const EditorUploadLoadingIndicator = (
 };
 
 export type {
-  TOptions as TEditorUploadLoadingIndicatorOptions,
-  TReturnEditorUploadLoadingIndicator,
+  TOptions as TEditorNodeLoadingIndicatorOptions,
+  TReturnEditorNodeLoadingIndicator,
 };
 
-export { EditorUploadLoadingIndicator };
+export { EditorNodeLoadingIndicator };

@@ -13,6 +13,7 @@ import {
   getDocumentContentFromAPI,
   getDocumentContentFromIDB,
 } from '../modules/editor/getDocumentContent';
+import { checkAndSetImages } from '../modules/editor/setImages';
 import {
   updateDocumentContent,
   updateDocumentContentOnIDB,
@@ -83,6 +84,12 @@ const EditorPage = async (
       setPageTitle(title);
     }
 
+    // After retrieving the document content from IndexedDB, all images
+    // should be checked and updated accordingly, even when rechecking
+    // after calling the API.
+
+    await checkAndSetImages();
+
     return content;
   })();
 
@@ -135,6 +142,11 @@ const EditorPage = async (
         editorElement.api.schemaToString(contentAfterReplacement),
       );
     }
+
+    // After replacing the document content, all images should be
+    // re-checked and updated accordingly.
+
+    await checkAndSetImages();
 
     editorElement.setLoadingState(false);
     editorElement.api.setEditable();

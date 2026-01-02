@@ -65,6 +65,8 @@
     "imageupdate",
     "presignedurl",
     "presign",
-    "IMDS"
+    "IMDS",
+    "noopener",
+    "noreferrer"
   ]
 }

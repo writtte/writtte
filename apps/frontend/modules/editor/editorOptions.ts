@@ -2,7 +2,7 @@ import type {
   TExtensionOptions,
   TImageAttributes,
 } from '@writtte-editor/editor';
-import { EditorUploadLoadingIndicator } from '../../components/EditorUploadLoadingIndicator';
+import { EditorNodeLoadingIndicator } from '../../components/EditorNodeLoadingIndicator';
 import { langKeys } from '../../translations/keys';
 import { imageUpload } from './imageUpload';
 
@@ -138,8 +138,8 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     inline: false,
     supportedImageFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
     allowImagePaste: true,
-    loadingIndicator: EditorUploadLoadingIndicator({
-      id: 'editor_upload_loading_indicator__qbhguzgecj',
+    loadingIndicator: EditorNodeLoadingIndicator({
+      id: 'editor_node_loading_indicator__qbhguzgecj',
       text: langKeys().EditorLoadingUploadingImage,
     }).element,
     onImagePaste: async (file: File): Promise<TImageAttributes> =>

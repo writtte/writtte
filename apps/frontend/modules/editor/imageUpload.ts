@@ -30,6 +30,8 @@ const imageUpload = async (file: File): Promise<TImageAttributes> => {
 
   const documentCode = getMainEditor().documentCode ?? '';
 
+  let imageSrcFromIDB: string = '';
+
   try {
     const imageObject: TIDBDocumentImages = {
       documentCode: documentCode,
@@ -51,6 +53,8 @@ const imageUpload = async (file: File): Promise<TImageAttributes> => {
         buildError('failed to retrieve image from IndexedDB after storing it'),
       );
     }
+
+    imageSrcFromIDB = URL.createObjectURL(imageBlob.image);
 
     const { getCurrentAccountData } = AccessToken();
 
@@ -96,6 +100,7 @@ const imageUpload = async (file: File): Promise<TImageAttributes> => {
         width: undefined,
         height: undefined,
       },
+      srcWhenCreate: imageSrcFromIDB,
     };
   } catch (error) {
     try {
