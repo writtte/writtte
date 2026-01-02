@@ -39,3 +39,11 @@ const (
 	SubscriptionRetrieved = "SUBSCRIPTION_RETRIEVED"
 	SubscriptionUpdated   = "SUBSCRIPTION_UPDATED"
 )
+
+const (
+	ImageCreated   = "IMAGE_CREATED"
+	ImageExists    = "IMAGE_EXISTS"
+	ImageNotExists = "IMAGE_NOT_EXISTS"
+	ImageRetrieved = "IMAGE_RETRIEVED"
+	ImageUpdated   = "IMAGE_UPDATED"
+)

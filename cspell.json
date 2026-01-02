@@ -59,6 +59,11 @@
     "Substack",
     "Buffer",
     "contenteditable",
-    "fkeys"
+    "fkeys",
+    "imagecreate",
+    "imageretrieve",
+    "imageupdate",
+    "presignedurl",
+    "presign"
   ]
 }
