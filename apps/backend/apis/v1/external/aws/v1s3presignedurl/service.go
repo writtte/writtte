@@ -32,29 +32,64 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 	client := glob.Config.AWSS3PrivateGeneralBucketClient
 	bucket := configs.AWSS3PrivateGeneralBucketName
 
-	key, err := s.getKey(ctx, body)
-	if err != nil {
-		return nil, err
-	}
-
 	switch *body.Action {
 	case actionGet:
-		generatedURL, err = extaws.GenerateGetPresignedURL(ctx, *client,
-			bucket, *key, expirationMinutes*time.Minute)
+		{
+			var err error
+
+			key := getKeyForGetAction(body)
+			generatedURL, err = extaws.GenerateGetPresignedURL(ctx, *client,
+				bucket, *key, expirationMinutes*time.Minute)
+
+			if err != nil {
+				return nil, err
+			}
+		}
 
 	case actionPut:
-		generatedURL, err = extaws.GeneratePutPresignedURL(ctx, *client,
-			bucket, *key, expirationMinutes*time.Minute)
+		{
+			key, err := s.getKey(ctx, body)
+			if err != nil {
+				return nil, err
+			}
+
+			generatedURL, err = extaws.GeneratePutPresignedURL(ctx, *client,
+				bucket, *key, expirationMinutes*time.Minute)
+		}
 
 	case actionDelete:
-		generatedURL, err = extaws.GenerateDeletePresignedURL(ctx, *client,
-			bucket, *key, expirationMinutes*time.Minute)
+		{
+			var err error
+
+			key := getKeyForGetAction(body)
+			generatedURL, err = extaws.GenerateDeletePresignedURL(ctx, *client,
+				bucket, *key, expirationMinutes*time.Minute)
+
+			if err != nil {
+				return nil, err
+			}
+		}
 
 	default:
 		panic("action not supported")
 	}
 
-	return generatedURL, err
+	return generatedURL, nil
+}
+
+func getKeyForGetAction(body *BodyParams) *string {
+	var key string
+
+	switch *body.Type {
+	case typeDocumentImage:
+		key = *files.DocumentImageFilePath(body.DocumentCode,
+			body.ImageCode, body.ImageExtension)
+
+	default:
+		panic("type not supported")
+	}
+
+	return &key
 }
 
 func (s *service) getKey(ctx context.Context, body *BodyParams,
