@@ -26,6 +26,7 @@ type TEditorAPI = {
       }
     | undefined;
   unsetLink: () => boolean;
+  setUploadingImage: (id: string) => boolean;
   setImage: (attributes: TImageAttributes) => boolean;
   updateImage: (attributes: Partial<TImageAttributes>) => boolean;
   removeImage: () => boolean;

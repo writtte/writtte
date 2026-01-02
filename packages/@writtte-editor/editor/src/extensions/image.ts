@@ -3,12 +3,14 @@ import type {
   NodeSpec,
   Node as ProsemirrorNode,
 } from 'prosemirror-model';
+import type { EditorView } from 'prosemirror-view';
 import {
   type AnyExtension,
   type Attributes,
   type ChainedCommands,
   type Dispatch,
   Node,
+  type NodeViewRenderer,
   type RawCommands,
   canInsertNode,
   mergeAttributes,
@@ -16,6 +18,7 @@ import {
 import {
   type EditorState,
   NodeSelection,
+  Plugin,
   TextSelection,
   type Transaction,
 } from 'prosemirror-state';
@@ -23,6 +26,10 @@ import {
 type TImageOptions = {
   HTMLAttributes: Record<string, string | number | boolean>;
   inline: boolean;
+  supportedImageFileExtensions: string[];
+  allowImagePaste: boolean;
+  onImagePaste?: (file: File) => Promise<TImageAttributes>;
+  loadingIndicator?: string;
 };
 
 type TImageAttributes = {
@@ -41,6 +48,7 @@ declare module '@tiptap/core' {
       setImage: (attributes: TImageAttributes) => ReturnType;
       updateImage: (attributes: Partial<TImageAttributes>) => ReturnType;
       removeImage: () => ReturnType;
+      setUploadingImage: (id: string) => ReturnType;
     };
   }
 }
@@ -54,6 +62,17 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     return {
       HTMLAttributes: {},
       inline: false,
+      supportedImageFileExtensions: [
+        'jpg',
+        'jpeg',
+        'png',
+        'gif',
+        'webp',
+        'svg',
+      ],
+      allowImagePaste: true,
+      onImagePaste: undefined,
+      loadingIndicator: '<div>Uploading (change this externally)...</div>',
     };
   },
   addAttributes(): Attributes {
@@ -143,6 +162,52 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
   },
   addCommands(): Partial<RawCommands> {
     return {
+      setUploadingImage:
+        (id: string) =>
+        ({
+          chain,
+          state,
+        }: {
+          chain: () => ChainedCommands;
+          state: EditorState;
+        }) => {
+          if (!canInsertNode(state, state.schema.nodes[this.name])) {
+            return false;
+          }
+
+          return chain()
+            .insertContent({
+              type: this.name,
+              attrs: {
+                imageCode: id,
+                extension: 'uploading',
+                metadata: {},
+              },
+            })
+            .command(({ tr, dispatch }) => {
+              if (dispatch) {
+                const { $to } = tr.selection;
+                const posAfter = $to.end();
+
+                if ($to.pos >= tr.doc.content.size - 2) {
+                  const node =
+                    $to.parent.type.contentMatch.defaultType?.create();
+
+                  if (node) {
+                    tr.insert(posAfter, node);
+                    tr.setSelection(TextSelection.create(tr.doc, posAfter + 1));
+                  }
+                } else {
+                  tr.setSelection(TextSelection.create(tr.doc, $to.pos));
+                }
+
+                tr.scrollIntoView();
+              }
+
+              return true;
+            })
+            .run();
+        },
       setImage:
         (attributes: TImageAttributes) =>
         ({
@@ -256,6 +321,181 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
           return true;
         },
     };
+  },
+  addNodeView(): NodeViewRenderer {
+    return ({ node }: { node: ProsemirrorNode }) => {
+      const dom = document.createElement('div');
+      dom.classList.add('image-container');
+
+      const img = document.createElement('img');
+
+      if (node.attrs.src) {
+        img.src = node.attrs.src;
+
+        if (node.attrs.metadata?.width) {
+          img.width = node.attrs.metadata.width;
+        }
+
+        if (node.attrs.metadata?.height) {
+          img.height = node.attrs.metadata.height;
+        }
+
+        dom.appendChild(img);
+      } else if (node.attrs.extension === 'uploading') {
+        const loadingContainer = document.createElement('div');
+        loadingContainer.innerHTML = this.options.loadingIndicator || '';
+        dom.appendChild(loadingContainer);
+      }
+
+      return {
+        dom,
+        update: (updatedNode: ProsemirrorNode) => {
+          if (updatedNode.type !== node.type) return false;
+
+          // If we now have a source, replace the loading indicator with the
+          // actual image
+
+          if (updatedNode.attrs.src && node.attrs.extension === 'uploading') {
+            dom.innerHTML = '';
+
+            const updatedImg = document.createElement('img');
+            updatedImg.src = updatedNode.attrs.src;
+
+            if (updatedNode.attrs.metadata?.width) {
+              updatedImg.width = updatedNode.attrs.metadata.width;
+            }
+
+            if (updatedNode.attrs.metadata?.height) {
+              updatedImg.height = updatedNode.attrs.metadata.height;
+            }
+
+            dom.appendChild(updatedImg);
+          }
+
+          return true;
+        },
+      };
+    };
+  },
+
+  addProseMirrorPlugins(): Plugin[] {
+    if (!this.options.allowImagePaste) {
+      return [];
+    }
+
+    return [
+      new Plugin({
+        props: {
+          handlePaste: (view: EditorView, event: ClipboardEvent): boolean => {
+            if (!event.clipboardData) return false;
+
+            const items = Array.from(event.clipboardData.items);
+            const imageItems = items.filter(
+              (item: DataTransferItem) =>
+                item.kind === 'file' && item.type.startsWith('image/'),
+            );
+
+            if (imageItems.length === 0) {
+              return false;
+            }
+
+            event.preventDefault();
+
+            imageItems.forEach(async (item: DataTransferItem) => {
+              const file = item.getAsFile();
+              if (!file) {
+                return;
+              }
+
+              // Check if file extension is supported
+
+              const fileExtension =
+                file.name.split('.').pop()?.toLowerCase() || '';
+
+              if (
+                this.options.supportedImageFileExtensions.length > 0 &&
+                !this.options.supportedImageFileExtensions.includes(
+                  fileExtension,
+                )
+              ) {
+                return;
+              }
+
+              const imageCode = `image-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
+              const tr = view.state.tr;
+              view.dispatch(
+                tr.replaceSelectionWith(
+                  this.type.create({
+                    imageCode,
+                    extension: 'uploading',
+                    metadata: {},
+                  }),
+                ),
+              );
+
+              // If custom upload handler is provided, use it
+              if (this.options.onImagePaste) {
+                try {
+                  const attributes = await this.options.onImagePaste(file);
+
+                  // Find the node with our temporary imageCode and
+                  // update it
+
+                  const { state } = view;
+                  const updateTr = state.tr;
+
+                  let found = false;
+                  state.doc.descendants((node, pos) => {
+                    if (found) return false;
+
+                    if (
+                      node.type === this.type &&
+                      node.attrs.imageCode === imageCode
+                    ) {
+                      found = true;
+                      updateTr.setNodeMarkup(pos, undefined, {
+                        ...attributes,
+                        imageCode,
+                      });
+
+                      view.dispatch(updateTr);
+                      return false;
+                    }
+
+                    return true;
+                  });
+                } catch {
+                  // Handle error silently - the error will be thrown to
+                  // the caller
+
+                  // If upload fails, we should remove the placeholder
+
+                  const { state } = view;
+                  const errorTr = state.tr;
+
+                  state.doc.descendants((node, pos) => {
+                    if (
+                      node.type === this.type &&
+                      node.attrs.imageCode === imageCode
+                    ) {
+                      errorTr.delete(pos, pos + node.nodeSize);
+                      view.dispatch(errorTr);
+
+                      return false;
+                    }
+
+                    return true;
+                  });
+                }
+              }
+            });
+
+            return true;
+          },
+        },
+      }),
+    ];
   },
 });
 

@@ -242,6 +242,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   const unsetLink = (): boolean => _editor.chain().focus().unsetLink().run();
 
+  const setUploadingImage = (id: string): boolean =>
+    _editor.chain().focus().setUploadingImage(id).run();
+
   const setImage = (attributes: TImageAttributes): boolean =>
     _editor.chain().focus().setImage(attributes).run();
 
@@ -398,6 +401,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isLinkActive,
     isBulletListActive,
     isNumberListActive,
+    setUploadingImage,
     setImage,
     updateImage,
     removeImage,
