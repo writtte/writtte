@@ -10,6 +10,7 @@ type BodyParams struct {
 	// Flow specific details
 
 	DocumentCode   *string `json:"document_code" validate:"omitempty,uuid"`
+	ImageCode      *string `json:"image_code" validate:"omitempty,uuid"`
 	ImageExtension *string `json:"image_extension" validate:"omitempty,min=1,max=8"`
 }
 

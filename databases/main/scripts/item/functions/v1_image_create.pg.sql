@@ -9,11 +9,13 @@ DECLARE
   k_additional CONSTANT TEXT := 'additional';
   k_data CONSTANT TEXT := 'data';
   v_p_document_code UUID;
+  v_p_image_code UUID;
   v_p_lifecycle_state VARCHAR(16);
   v_image_code UUID;
   v_exception TEXT;
 BEGIN
   v_p_document_code := (p_data ->> 'document_code')::UUID;
+  v_p_image_code := (p_data ->> 'image_code')::UUID;
   v_p_lifecycle_state := coalesce(upper(p_data ->> 'lifecycle_state'), 'AVAILABLE');
   DECLARE v_document_exists BOOLEAN;
   BEGIN
@@ -30,8 +32,8 @@ BEGIN
       RETURN json_build_object(k_status, TRUE, k_code, 'DOCUMENT_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
     END IF;
   END;
-  INSERT INTO schema_item.tb_image (document_code, lifecycle_state)
-    VALUES (v_p_document_code, v_p_lifecycle_state)
+  INSERT INTO schema_item.tb_image (document_code, image_code, lifecycle_state)
+    VALUES (v_p_document_code, v_p_image_code, v_p_lifecycle_state)
   RETURNING
     image_code INTO v_image_code;
   RETURN json_build_object(k_status, TRUE, k_code, 'IMAGE_CREATED', k_message, NULL, k_additional, NULL, k_data, json_build_object('image_code', v_image_code)::JSONB)::JSONB;

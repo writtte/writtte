@@ -70,7 +70,8 @@ func (s *service) getKey(ctx context.Context, body *BodyParams,
 ) (*string, error) {
 	var key string
 
-	results, err := s.repo.performImageCreate(ctx, body.DocumentCode)
+	results, err := s.repo.performImageCreate(ctx, body.DocumentCode,
+		body.ImageCode)
 	if err != nil {
 		return nil, err
 	}
