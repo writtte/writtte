@@ -254,6 +254,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const setImage = (attributes: TImageAttributes): boolean =>
     _editor.chain().focus().setImage(attributes).run();
 
+  const updateImage = (
+    imageCode: string,
+    attributes: Partial<TImageAttributes>,
+  ): boolean =>
+    _editor.chain().focus().updateImage(imageCode, attributes).run();
+
   const removeImage = (): boolean =>
     _editor.chain().focus().removeImage().run();
 
@@ -388,6 +394,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setLink,
     getLink,
     unsetLink,
+    setImage,
+    updateImage,
+    removeImage,
     addPlaceholder,
     removePlaceholder,
     removeAllPlaceholders,
@@ -416,8 +425,6 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isLinkActive,
     isBulletListActive,
     isNumberListActive,
-    setImage,
-    removeImage,
     isImageActive,
   };
 };

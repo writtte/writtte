@@ -27,6 +27,10 @@ type TEditorAPI = {
     | undefined;
   unsetLink: () => boolean;
   setImage: (attributes: TImageAttributes) => boolean;
+  updateImage: (
+    imageCode: string,
+    attributes: Partial<TImageAttributes>,
+  ) => boolean;
   removeImage: () => boolean;
   addPlaceholder: (element: HTMLElement, id: string) => boolean;
   removePlaceholder: (id: string) => boolean;

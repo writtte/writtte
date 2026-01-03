@@ -30,6 +30,8 @@ const checkAndSetImage = async (
   imageCode: string,
   src: string | undefined,
 ): Promise<void> => {
+  const mainEditor = getMainEditor();
+
   const element = document.querySelector(`[data-image-code="${imageCode}"]`);
   if (!element) {
     return;
@@ -56,6 +58,14 @@ const checkAndSetImage = async (
     const blobURL = URL.createObjectURL(checkImageInIDB.image);
     if (element instanceof HTMLImageElement && blobURL) {
       element.src = blobURL;
+
+      // The editor should be updated here and I literally wasted
+      // fucking hours before realizing this needed to be done.
+
+      mainEditor.api?.updateImage(imageCode, {
+        src: blobURL,
+      });
+
       return;
     }
   }
@@ -143,6 +153,11 @@ const checkAndSetImage = async (
     loadingIndicator.remove();
 
     element.src = blobURL;
+
+    mainEditor.api?.updateImage(imageCode, {
+      src: blobURL,
+    });
+
     return;
   }
 };
