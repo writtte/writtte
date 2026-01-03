@@ -132,6 +132,9 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   placeholder: {
     isEnabled: true,
   },
+  blockPlaceholder: {
+    isEnabled: true,
+  },
   image: {
     fileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
     onAfterPaste: async (

@@ -1,6 +1,7 @@
 import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
 import { type AnyExtension, Editor } from '@tiptap/core';
+import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
 import { BoldExtension } from '../extensions/bold';
 import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
@@ -122,6 +123,14 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   if (opts.options.placeholder.isEnabled) {
     extensions.push(
       PlaceholderExtension.configure(opts.options.placeholder ?? undefined),
+    );
+  }
+
+  if (opts.options.blockPlaceholder.isEnabled) {
+    extensions.push(
+      BlockPlaceholderExtension.configure(
+        opts.options.blockPlaceholder ?? undefined,
+      ),
     );
   }
 
@@ -248,6 +257,15 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const removeImage = (): boolean =>
     _editor.chain().focus().removeImage().run();
 
+  const addPlaceholder = (element: HTMLElement, id: string): boolean =>
+    _editor.chain().focus().addPlaceholder(element, id).run();
+
+  const removePlaceholder = (id: string): boolean =>
+    _editor.chain().focus().removePlaceholder(id).run();
+
+  const removeAllPlaceholders = (): boolean =>
+    _editor.chain().focus().removeAllPlaceholders().run();
+
   const toggleHeader01 = (): boolean =>
     _editor
       .chain()
@@ -370,6 +388,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setLink,
     getLink,
     unsetLink,
+    addPlaceholder,
+    removePlaceholder,
+    removeAllPlaceholders,
     toggleHeader01,
     toggleHeader02,
     toggleHeader03,

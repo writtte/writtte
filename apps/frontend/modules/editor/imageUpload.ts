@@ -1,5 +1,6 @@
-import type { TImageAttributes } from '@writtte-editor/editor';
+import type { TEditorAPI, TImageAttributes } from '@writtte-editor/editor';
 import { idb } from '@writtte-internal/indexed-db';
+import { EditorNodeLoadingIndicator } from '../../components/EditorNodeLoadingIndicator';
 import { ALERT_TIMEOUT } from '../../constants/timeouts';
 import { AlertController } from '../../controller/alert';
 import {
@@ -27,17 +28,22 @@ const imageUpload = async (
   const alertController = AlertController();
 
   const db = getIndexedDB();
+  const mainEditor = getMainEditor();
+
+  if (!mainEditor || !mainEditor.documentCode || !mainEditor.api) {
+    return;
+  }
+
+  setLoadingIndicator(mainEditor.api);
 
   const imageCode = generateUUID();
   const imageExtension = file.name.split('.').pop()?.toLowerCase() || '';
-
-  const documentCode = getMainEditor().documentCode ?? '';
 
   let imageSrcFromIDB: string = '';
 
   try {
     const imageObject: TIDBDocumentImages = {
-      documentCode: documentCode,
+      documentCode: mainEditor.documentCode,
       imageCode: imageCode,
       extension: imageExtension,
       image: file,
@@ -52,6 +58,8 @@ const imageUpload = async (
     );
 
     if (!imageBlob) {
+      removeLoadingIndicator(mainEditor.api);
+
       throw new Error(
         buildError('failed to retrieve image from IndexedDB after storing it'),
       );
@@ -63,6 +71,8 @@ const imageUpload = async (
 
     const accessToken = getCurrentAccountData()?.access_token;
     if (!accessToken) {
+      removeLoadingIndicator(mainEditor.api);
+
       throw new Error(
         buildError(
           'unable to upload image because the access token is undefined',
@@ -74,12 +84,14 @@ const imageUpload = async (
       accessToken,
       type: PresignedURLType.DOCUMENT_IMAGE,
       action: PresignedURLAction.PUT,
-      documentCode,
+      documentCode: mainEditor.documentCode,
       imageCode,
       imageExtension,
     });
 
     if (status !== HTTP_STATUS.OK || !response) {
+      removeLoadingIndicator(mainEditor.api);
+
       throw new Error(
         buildError('failed to generate presigned URL for image upload'),
       );
@@ -93,8 +105,12 @@ const imageUpload = async (
     });
 
     if (s3UploadResult.status !== HTTP_STATUS.OK) {
+      removeLoadingIndicator(mainEditor.api);
+
       throw new Error(buildError('failed to upload image to S3'));
     }
+
+    removeLoadingIndicator(mainEditor.api);
 
     updateImage({
       src: imageSrcFromIDB,
@@ -120,6 +136,22 @@ const imageUpload = async (
 
     throw new Error(buildError('unable to upload image to the editor', error));
   }
+};
+
+const setLoadingIndicator = (api: TEditorAPI): void => {
+  const loadingIndicatorElement = EditorNodeLoadingIndicator({
+    id: 'editor_node_loading_indicator__lmumdrlhro',
+    text: langKeys().EditorLoadingUploadingImage,
+  });
+
+  api.addPlaceholder(
+    loadingIndicatorElement.element,
+    'editor_node_loading_indicator__lmumdrlhro',
+  );
+};
+
+const removeLoadingIndicator = (api: TEditorAPI): void => {
+  api.removePlaceholder('editor_node_loading_indicator__lmumdrlhro');
 };
 
 export { imageUpload };

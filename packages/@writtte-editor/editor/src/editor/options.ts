@@ -1,3 +1,4 @@
+import type { TBlockPlaceholderOptions } from '../extensions/blockPlaceholder';
 import type { TBoldOptions } from '../extensions/bold';
 import type { TBulletListOptions } from '../extensions/bulletList';
 import type { THeadingOptions } from '../extensions/header';
@@ -35,6 +36,7 @@ type TExtensionOptions = {
   inlineCode: Partial<TInlineCodeOptions> & { isEnabled: boolean };
   horizontalRule: Partial<THorizontalLineOptions> & { isEnabled: boolean };
   placeholder: Partial<TPlaceholderOptions> & { isEnabled: boolean };
+  blockPlaceholder: Partial<TBlockPlaceholderOptions> & { isEnabled: boolean };
   image: Partial<TImageOptions> & { isEnabled: boolean };
 };
 
