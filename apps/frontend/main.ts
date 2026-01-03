@@ -1,6 +1,5 @@
 import { setupMiddleware } from './middleware/middleware';
 import { defaultNotFoundRoute, defaultRoutes } from './routes';
-import { monitorRendering } from './utils/dom/debug';
 import {
   defineNotFoundRoute,
   defineRoutes,
@@ -23,15 +22,6 @@ const main = async (): Promise<void> => {
   defineNotFoundRoute(defaultNotFoundRoute);
 
   initRouter();
-
-  if (rootElement !== undefined) {
-    monitorRendering(rootId, {
-      color: '#DC143C',
-      duration: 1000,
-      opacity: '0.3',
-      hidePanel: false,
-    });
-  }
 };
 
 // biome-ignore lint/nursery/noFloatingPromises: A floating promise is required here
