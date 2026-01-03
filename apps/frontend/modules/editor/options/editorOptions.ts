@@ -4,6 +4,15 @@ import type {
 } from '@writtte-editor/editor';
 import { imageUpload } from '../image/imageUpload';
 
+const ALLOWED_IMAGE_FILE_EXTENSIONS: string[] = [
+  'jpg',
+  'jpeg',
+  'png',
+  'gif',
+  'webp',
+  'svg',
+];
+
 const shortcutKeys = {
   SET_PARAGRAPH: 'Mod-Alt-0',
   SET_HEADING: 'Mod-Alt', // Mod-Alt-[1 .. 6]
@@ -136,7 +145,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     isEnabled: true,
   },
   image: {
-    fileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
+    fileExtensions: ALLOWED_IMAGE_FILE_EXTENSIONS,
     onAfterPaste: async (
       file: File,
       updateImage: (attrs: Partial<TImageAttributes>) => void,
@@ -145,4 +154,4 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   },
 });
 
-export { setupEditorExtensionOptions };
+export { ALLOWED_IMAGE_FILE_EXTENSIONS, setupEditorExtensionOptions };
