@@ -1,14 +1,14 @@
 import { idb } from '@writtte-internal/indexed-db';
-import { v1DocumentRetrieve } from '../../data/apis/item/v1DocumentRetrieve';
+import { v1DocumentRetrieve } from '../../../data/apis/item/v1DocumentRetrieve';
 import {
   STORE_NAMES,
   type TIDBDocument,
   type TIDBDocumentContent,
   getIndexedDB,
-} from '../../data/stores/indexedDB';
-import { AccessToken } from '../../helpers/account/accessToken';
-import { buildError } from '../../helpers/error/build';
-import { HTTP_STATUS } from '../../utils/data/fetch';
+} from '../../../data/stores/indexedDB';
+import { AccessToken } from '../../../helpers/account/accessToken';
+import { buildError } from '../../../helpers/error/build';
+import { HTTP_STATUS } from '../../../utils/data/fetch';
 
 const getDocumentContentFromAPI = async (
   documentCode: string,

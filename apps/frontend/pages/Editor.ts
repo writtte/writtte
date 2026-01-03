@@ -5,19 +5,19 @@ import { ErrorMessage } from '../components/ErrorMessage';
 import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';
 import { updateMainEditor } from '../data/stores/mainEditor';
 import {
-  fixedMenuUpdateEventListener,
-  setupEditorFixedMenuOptions,
-} from '../modules/editor/editorFixedMenu';
-import { setupEditorExtensionOptions } from '../modules/editor/editorOptions';
-import {
   getDocumentContentFromAPI,
   getDocumentContentFromIDB,
-} from '../modules/editor/getDocumentContent';
-import { checkAndSetImages } from '../modules/editor/setImages';
+} from '../modules/editor/content/getDocumentContent';
 import {
   updateDocumentContent,
   updateDocumentContentOnIDB,
-} from '../modules/editor/updateDocumentContent';
+} from '../modules/editor/content/updateDocumentContent';
+import { checkAndSetImages } from '../modules/editor/image/setImages';
+import {
+  fixedMenuUpdateEventListener,
+  setupEditorFixedMenuOptions,
+} from '../modules/editor/menu/editorFixedMenu';
+import { setupEditorExtensionOptions } from '../modules/editor/options/editorOptions';
 import { langKeys } from '../translations/keys';
 import { setPageTitle } from '../utils/routes/helpers';
 import { debounce } from '../utils/time/debounce';

@@ -2,7 +2,7 @@ import type {
   TExtensionOptions,
   TImageAttributes,
 } from '@writtte-editor/editor';
-import { imageUpload } from './imageUpload';
+import { imageUpload } from '../image/imageUpload';
 
 const shortcutKeys = {
   SET_PARAGRAPH: 'Mod-Alt-0',

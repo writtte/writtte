@@ -1,19 +1,19 @@
 import { idb } from '@writtte-internal/indexed-db';
-import { EditorNodeLoadingIndicator } from '../../components/EditorNodeLoadingIndicator';
+import { EditorNodeLoadingIndicator } from '../../../components/EditorNodeLoadingIndicator';
 import {
   PresignedURLAction,
   PresignedURLType,
   v1S3PresignedURL,
-} from '../../data/apis/external/aws/v1S3PresignedURL';
-import { v1AwsS3GetFile } from '../../data/apis/thirdParty/v1AwsS3GetFile';
+} from '../../../data/apis/external/aws/v1S3PresignedURL';
+import { v1AwsS3GetFile } from '../../../data/apis/thirdParty/v1AwsS3GetFile';
 import {
   STORE_NAMES,
   type TIDBDocumentImages,
   getIndexedDB,
-} from '../../data/stores/indexedDB';
-import { getMainEditor } from '../../data/stores/mainEditor';
-import { AccessToken } from '../../helpers/account/accessToken';
-import { HTTP_STATUS } from '../../utils/data/fetch';
+} from '../../../data/stores/indexedDB';
+import { getMainEditor } from '../../../data/stores/mainEditor';
+import { AccessToken } from '../../../helpers/account/accessToken';
+import { HTTP_STATUS } from '../../../utils/data/fetch';
 
 const checkAndSetImages = async (): Promise<void> => {
   const elements = document.querySelectorAll('[data-image-code]');

@@ -1,25 +1,25 @@
 import type { TEditorAPI, TImageAttributes } from '@writtte-editor/editor';
 import { idb } from '@writtte-internal/indexed-db';
-import { EditorNodeLoadingIndicator } from '../../components/EditorNodeLoadingIndicator';
-import { ALERT_TIMEOUT } from '../../constants/timeouts';
-import { AlertController } from '../../controller/alert';
+import { EditorNodeLoadingIndicator } from '../../../components/EditorNodeLoadingIndicator';
+import { ALERT_TIMEOUT } from '../../../constants/timeouts';
+import { AlertController } from '../../../controller/alert';
 import {
   PresignedURLAction,
   PresignedURLType,
   v1S3PresignedURL,
-} from '../../data/apis/external/aws/v1S3PresignedURL';
-import { v1AwsS3PutFile } from '../../data/apis/thirdParty/v1AwsS3PutFile';
+} from '../../../data/apis/external/aws/v1S3PresignedURL';
+import { v1AwsS3PutFile } from '../../../data/apis/thirdParty/v1AwsS3PutFile';
 import {
   STORE_NAMES,
   type TIDBDocumentImages,
   getIndexedDB,
-} from '../../data/stores/indexedDB';
-import { getMainEditor } from '../../data/stores/mainEditor';
-import { AccessToken } from '../../helpers/account/accessToken';
-import { buildError } from '../../helpers/error/build';
-import { langKeys } from '../../translations/keys';
-import { HTTP_STATUS } from '../../utils/data/fetch';
-import { generateUUID } from '../../utils/string/uuid';
+} from '../../../data/stores/indexedDB';
+import { getMainEditor } from '../../../data/stores/mainEditor';
+import { AccessToken } from '../../../helpers/account/accessToken';
+import { buildError } from '../../../helpers/error/build';
+import { langKeys } from '../../../translations/keys';
+import { HTTP_STATUS } from '../../../utils/data/fetch';
+import { generateUUID } from '../../../utils/string/uuid';
 
 const imageUpload = async (
   file: File,
