@@ -137,6 +137,10 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
             return false;
           }
 
+          if (attributes.src === undefined || attributes.src === null) {
+            return false;
+          }
+
           return chain()
             .insertContent({
               type: this.name,
@@ -183,6 +187,10 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
           dispatch: Dispatch;
         }) => {
           let found = false;
+
+          if (attributes.src === undefined || attributes.src === null) {
+            return false;
+          }
 
           state.doc.descendants((docNode, docPos) => {
             if (found) {
