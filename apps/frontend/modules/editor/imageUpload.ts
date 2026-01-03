@@ -20,7 +20,10 @@ import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
 import { generateUUID } from '../../utils/string/uuid';
 
-const imageUpload = async (file: File): Promise<TImageAttributes> => {
+const imageUpload = async (
+  file: File,
+  updateImage: (attrs: Partial<TImageAttributes>) => void,
+): Promise<void> => {
   const alertController = AlertController();
 
   const db = getIndexedDB();
@@ -93,15 +96,12 @@ const imageUpload = async (file: File): Promise<TImageAttributes> => {
       throw new Error(buildError('failed to upload image to S3'));
     }
 
-    return {
-      imageCode: imageCode,
+    updateImage({
+      src: imageSrcFromIDB,
+      imageCode,
       extension: imageExtension,
-      metadata: {
-        width: undefined,
-        height: undefined,
-      },
-      srcWhenCreate: imageSrcFromIDB,
-    };
+      alt: '',
+    });
   } catch (error) {
     try {
       await idb.deleteData(db, STORE_NAMES.DOCUMENT_IMAGES, imageCode);

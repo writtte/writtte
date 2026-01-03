@@ -2,8 +2,6 @@ import type {
   TExtensionOptions,
   TImageAttributes,
 } from '@writtte-editor/editor';
-import { EditorNodeLoadingIndicator } from '../../components/EditorNodeLoadingIndicator';
-import { langKeys } from '../../translations/keys';
 import { imageUpload } from './imageUpload';
 
 const shortcutKeys = {
@@ -135,15 +133,11 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     isEnabled: true,
   },
   image: {
-    inline: false,
-    supportedImageFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
-    allowImagePaste: true,
-    loadingIndicator: EditorNodeLoadingIndicator({
-      id: 'editor_node_loading_indicator__qbhguzgecj',
-      text: langKeys().EditorLoadingUploadingImage,
-    }).element,
-    onImagePaste: async (file: File): Promise<TImageAttributes> =>
-      imageUpload(file),
+    fileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'],
+    onAfterPaste: async (
+      file: File,
+      updateImage: (attrs: Partial<TImageAttributes>) => void,
+    ): Promise<void> => imageUpload(file, updateImage),
     isEnabled: true,
   },
 });

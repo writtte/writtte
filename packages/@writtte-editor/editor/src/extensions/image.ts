@@ -25,35 +25,31 @@ import {
 
 type TImageOptions = {
   HTMLAttributes: Record<string, string | number | boolean>;
-  inline: boolean;
-  supportedImageFileExtensions: string[];
-  allowImagePaste: boolean;
-  onImagePaste?: (file: File) => Promise<TImageAttributes>;
-  loadingIndicator?: HTMLDivElement;
+  fileExtensions: string[];
+  onAfterPaste:
+    | ((
+        file: File,
+        updateImage: (attrs: Partial<TImageAttributes>) => void,
+      ) => void)
+    | undefined;
 };
 
 type TImageAttributes = {
   imageCode: string;
-  metadata: {
-    width?: number;
-    height?: number;
-  };
   extension: string;
-
-  // The following attribute should only be defined when creating an
-  // image by adding or pasting; otherwise, this field should be fucking
-  // ignored completely.
-
-  srcWhenCreate?: string;
+  src?: string;
+  alt?: string;
 };
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
     image: {
       setImage: (attributes: TImageAttributes) => ReturnType;
-      updateImage: (attributes: Partial<TImageAttributes>) => ReturnType;
+      updateImage: (
+        imageCode: string,
+        attributes: Partial<TImageAttributes>,
+      ) => ReturnType;
       removeImage: () => ReturnType;
-      setUploadingImage: (id: string) => ReturnType;
     };
   }
 }
@@ -62,14 +58,11 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
   name: 'image',
   group: 'block',
   selectable: true,
-  draggable: true,
   addOptions(): TImageOptions {
     return {
       HTMLAttributes: {},
-      inline: false,
-      supportedImageFileExtensions: [],
-      allowImagePaste: false,
-      onImagePaste: undefined,
+      fileExtensions: [],
+      onAfterPaste: undefined,
     };
   },
   addAttributes(): Attributes {
@@ -77,32 +70,13 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       imageCode: {
         default: null,
       },
-      metadata: {
-        default: {},
-        parseHTML: (element: HTMLElement) => {
-          const metadataStr = element.getAttribute('data-metadata');
-          if (metadataStr) {
-            try {
-              return JSON.parse(metadataStr);
-            } catch {
-              return {};
-            }
-          }
-          return {};
-        },
-        renderHTML: (attributes: Record<string, string | number | boolean>) => {
-          if (attributes.metadata) {
-            return {
-              'data-metadata': JSON.stringify(attributes.metadata),
-            };
-          }
-          return {};
-        },
-      },
       extension: {
         default: null,
       },
-      srcWhenCreate: {
+      src: {
+        default: null,
+      },
+      alt: {
         default: null,
       },
     };
@@ -138,70 +112,18 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     node: ProsemirrorNode;
     HTMLAttributes: Record<string, string | number | boolean>;
   }): DOMOutputSpec {
-    const { imageCode, extension, metadata } = node.attrs;
+    const { imageCode, extension } = node.attrs;
 
     return [
       'img',
-      mergeAttributes(
-        this.options.HTMLAttributes,
-        HTMLAttributes,
-        {
-          'data-image-code': imageCode,
-          'data-extension': extension,
-        },
-        metadata?.width ? { width: metadata.width } : {},
-        metadata?.height ? { height: metadata.height } : {},
-      ),
+      mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
+        'data-image-code': imageCode,
+        'data-extension': extension,
+      }),
     ];
   },
   addCommands(): Partial<RawCommands> {
     return {
-      setUploadingImage:
-        (id: string) =>
-        ({
-          chain,
-          state,
-        }: {
-          chain: () => ChainedCommands;
-          state: EditorState;
-        }) => {
-          if (!canInsertNode(state, state.schema.nodes[this.name])) {
-            return false;
-          }
-
-          return chain()
-            .insertContent({
-              type: this.name,
-              attrs: {
-                imageCode: id,
-                extension: 'uploading',
-                metadata: {},
-              },
-            })
-            .command(({ tr, dispatch }) => {
-              if (dispatch) {
-                const { $to } = tr.selection;
-                const posAfter = $to.end();
-
-                if ($to.pos >= tr.doc.content.size - 2) {
-                  const node =
-                    $to.parent.type.contentMatch.defaultType?.create();
-
-                  if (node) {
-                    tr.insert(posAfter, node);
-                    tr.setSelection(TextSelection.create(tr.doc, posAfter + 1));
-                  }
-                } else {
-                  tr.setSelection(TextSelection.create(tr.doc, $to.pos));
-                }
-
-                tr.scrollIntoView();
-              }
-
-              return true;
-            })
-            .run();
-        },
       setImage:
         (attributes: TImageAttributes) =>
         ({
@@ -250,7 +172,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
             .run();
         },
       updateImage:
-        (attributes: Partial<TImageAttributes>) =>
+        (imageCode: string, attributes: Partial<TImageAttributes>) =>
         ({
           state,
           tr,
@@ -260,31 +182,32 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
           tr: Transaction;
           dispatch: Dispatch;
         }) => {
-          const { selection } = state;
-          if (
-            !(selection instanceof NodeSelection) ||
-            selection.node.type !== this.type
-          ) {
-            return false;
-          }
+          let found = false;
 
-          const { from } = selection;
+          state.doc.descendants((docNode, docPos) => {
+            if (found) {
+              return false;
+            }
 
-          if (dispatch) {
-            tr.setNodeMarkup(from, undefined, {
-              ...selection.node.attrs,
-              ...attributes,
-              metadata: {
-                ...selection.node.attrs.metadata,
-                ...(attributes.metadata || {}),
-              },
-            });
+            if (
+              docNode.type === this.type &&
+              docNode.attrs.imageCode === imageCode
+            ) {
+              found = true;
+              if (dispatch) {
+                tr.setNodeMarkup(docPos, undefined, {
+                  ...docNode.attrs,
+                  ...attributes,
+                });
+                dispatch(tr);
+              }
+              return false;
+            }
 
-            tr.setSelection(NodeSelection.create(tr.doc, from));
-            dispatch(tr);
-          }
+            return true;
+          });
 
-          return true;
+          return found;
         },
       removeImage:
         () =>
@@ -324,29 +247,14 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
       const img = document.createElement('img');
 
-      // Add data attributes even though src will be managed
-      // externally
-
-      if (node.attrs.extension !== 'uploading') {
-        // Set required data attributes
-
-        img.setAttribute('data-image-code', node.attrs.imageCode);
-        img.setAttribute('data-extension', node.attrs.extension);
-
-        if (node.attrs.metadata?.width) {
-          img.width = node.attrs.metadata.width;
-        }
-
-        if (node.attrs.metadata?.height) {
-          img.height = node.attrs.metadata.height;
-        }
-
-        dom.appendChild(img);
-      } else if (node.attrs.extension === 'uploading') {
-        if (this.options.loadingIndicator) {
-          dom.appendChild(this.options.loadingIndicator);
-        }
+      if (node.attrs.src) {
+        img.src = node.attrs.src;
       }
+
+      img.setAttribute('data-image-code', node.attrs.imageCode);
+      img.setAttribute('data-extension', node.attrs.extension);
+
+      dom.appendChild(img);
 
       return {
         dom,
@@ -355,39 +263,20 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
             return false;
           }
 
-          if (
-            updatedNode.attrs.extension !== 'uploading' &&
-            node.attrs.extension === 'uploading'
-          ) {
-            dom.innerHTML = '';
+          if (updatedNode.attrs.src !== node.attrs.src) {
+            img.src = updatedNode.attrs.src;
+          }
 
-            const updatedImg = document.createElement('img');
+          if (updatedNode.attrs.imageCode !== node.attrs.imageCode) {
+            img.setAttribute('data-image-code', updatedNode.attrs.imageCode);
+          }
 
-            updatedImg.setAttribute(
-              'data-image-code',
-              updatedNode.attrs.imageCode,
-            );
+          if (updatedNode.attrs.extension) {
+            img.setAttribute('data-extension', updatedNode.attrs.extension);
+          }
 
-            updatedImg.setAttribute(
-              'data-extension',
-              updatedNode.attrs.extension,
-            );
-
-            if (updatedNode.attrs.metadata?.width) {
-              updatedImg.width = updatedNode.attrs.metadata.width;
-            }
-
-            if (updatedNode.attrs.metadata?.height) {
-              updatedImg.height = updatedNode.attrs.metadata.height;
-            }
-
-            if (updatedNode.attrs.srcWhenCreate) {
-              // This will run only when pasting the image
-
-              updatedImg.src = updatedNode.attrs.srcWhenCreate;
-            }
-
-            dom.appendChild(updatedImg);
+          if (updatedNode.attrs.alt) {
+            img.alt = updatedNode.attrs.alt;
           }
 
           return true;
@@ -396,10 +285,6 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     };
   },
   addProseMirrorPlugins(): Plugin[] {
-    if (!this.options.allowImagePaste) {
-      return [];
-    }
-
     return [
       new Plugin({
         props: {
@@ -408,11 +293,17 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
               return false;
             }
 
+            var imageItems: DataTransferItem[] = [];
+
             const items = Array.from(event.clipboardData.items);
-            const imageItems = items.filter(
-              (item: DataTransferItem) =>
-                item.kind === 'file' && item.type.startsWith('image/'),
-            );
+            for (let i = 0; i < items.length; i++) {
+              if (
+                items[i].kind === 'file' &&
+                items[i].type.startsWith('image/')
+              ) {
+                imageItems.push(items[i]);
+              }
+            }
 
             if (imageItems.length === 0) {
               return false;
@@ -420,56 +311,76 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
             event.preventDefault();
 
-            imageItems.forEach(async (item: DataTransferItem) => {
-              const file = item.getAsFile();
-              if (!file) {
-                return;
-              }
+            for (let i = 0; i < imageItems.length; i++) {
+              const item = imageItems[i];
+              const itemFile = item.getAsFile();
 
-              // Check if file extension is supported
+              if (!itemFile) {
+                break;
+              }
 
               const fileExtension =
-                file.name.split('.').pop()?.toLowerCase() || '';
+                itemFile.name.split('.').pop()?.toLowerCase() || '';
+
+              // Check if the file extension is allowed
+              // If fileExtensions is empty, all extensions are allowed
+              // Otherwise, check if the extension is in the list
 
               if (
-                this.options.supportedImageFileExtensions.length > 0 &&
-                !this.options.supportedImageFileExtensions.includes(
-                  fileExtension,
-                )
+                this.options.fileExtensions.length > 0 &&
+                !this.options.fileExtensions.includes(fileExtension)
               ) {
-                return;
+                break;
               }
 
-              const tempImageCode = `image-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+              try {
+                // This code will be removed when attributes are pasted or
+                // updated.
 
-              const tr = view.state.tr;
-              view.dispatch(
-                tr.replaceSelectionWith(
-                  this.type.create({
-                    imageCode: tempImageCode,
-                    extension: 'uploading',
-                    metadata: {},
-                  }),
-                ),
-              );
+                const tempImageCode = `${Math.floor(Math.random() * 1000)}`;
 
-              // If custom upload handler is provided, use it
+                const imageAttrs: TImageAttributes = {
+                  imageCode: tempImageCode,
+                  extension: fileExtension,
+                };
 
-              if (this.options.onImagePaste) {
-                try {
-                  const attributes = await this.options.onImagePaste(file);
+                const imageNode =
+                  view.state.schema.nodes[this.name].create(imageAttrs);
 
-                  // Create a data URL for the file to use as srcWhenCreate
-                  const reader = new FileReader();
-                  reader.onload = (e: ProgressEvent<FileReader>) => {
-                    const srcWhenCreate = e.target?.result as string;
+                if (
+                  !canInsertNode(view.state, view.state.schema.nodes[this.name])
+                ) {
+                  continue;
+                }
 
-                    // Find the node with our temporary imageCode and update it
-                    const { state } = view;
-                    const updateTr = state.tr;
+                const tr = view.state.tr;
+                tr.replaceSelectionWith(imageNode);
+
+                const { $to } = tr.selection;
+                if ($to.pos >= tr.doc.content.size - 2) {
+                  const node =
+                    $to.parent.type.contentMatch.defaultType?.create();
+                  if (node) {
+                    const posAfter = $to.end();
+                    tr.insert(posAfter, node);
+                    tr.setSelection(TextSelection.create(tr.doc, posAfter + 1));
+                  }
+                } else {
+                  tr.setSelection(TextSelection.create(tr.doc, $to.pos));
+                }
+
+                tr.scrollIntoView();
+                view.dispatch(tr);
+
+                if (this.options.onAfterPaste) {
+                  const updateImageAttrs = (
+                    attrs: Partial<TImageAttributes>,
+                  ) => {
+                    const currentState = view.state;
+                    const attrsTr = currentState.tr;
 
                     let found = false;
-                    state.doc.descendants((node, pos) => {
+                    currentState.doc.descendants((node, pos) => {
                       if (found) {
                         return false;
                       }
@@ -479,12 +390,12 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                         node.attrs.imageCode === tempImageCode
                       ) {
                         found = true;
-                        updateTr.setNodeMarkup(pos, undefined, {
-                          ...attributes,
-                          srcWhenCreate,
+                        attrsTr.setNodeMarkup(pos, undefined, {
+                          ...node.attrs,
+                          ...attrs,
                         });
 
-                        view.dispatch(updateTr);
+                        view.dispatch(attrsTr);
                         return false;
                       }
 
@@ -492,32 +403,29 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                     });
                   };
 
-                  // Start reading the file as a data URL
-                  reader.readAsDataURL(file);
-                } catch {
-                  // Handle error silently - the error will be thrown to
-                  // the caller and if upload fails, we should remove the
-                  // placeholder
-
-                  const { state } = view;
-                  const errorTr = state.tr;
-
-                  state.doc.descendants((node, pos) => {
-                    if (
-                      node.type === this.type &&
-                      node.attrs.imageCode === tempImageCode
-                    ) {
-                      errorTr.delete(pos, pos + node.nodeSize);
-                      view.dispatch(errorTr);
-
-                      return false;
-                    }
-
-                    return true;
-                  });
+                  this.options.onAfterPaste(itemFile, updateImageAttrs);
                 }
+              } catch {
+                // Handle error silently, the error will be thrown to
+                // the caller and if upload fails, we should remove the
+                // placeholder
+
+                const { state } = view;
+
+                const errorTr = state.tr;
+
+                state.doc.descendants((node, pos) => {
+                  if (node.type === this.type) {
+                    errorTr.delete(pos, pos + node.nodeSize);
+                    view.dispatch(errorTr);
+
+                    return false;
+                  }
+
+                  return true;
+                });
               }
-            });
+            }
 
             return true;
           },
