@@ -1,9 +1,13 @@
+import type { EditorState } from 'prosemirror-state';
 import {
   type AnyExtension,
   type CommandProps,
   Extension,
   type RawCommands,
+  isNodeSelection,
 } from '@tiptap/core';
+import { Plugin } from 'prosemirror-state';
+import { Decoration, DecorationSet } from 'prosemirror-view';
 
 type TBlockPlaceholderOptions = {
   HTMLAttributes: Record<string, string | number | boolean>;
@@ -29,16 +33,27 @@ const BlockPlaceholderExtension: AnyExtension =
     },
     addStorage(): {
       placeholders: Record<string, HTMLElement>;
+      decorations: DecorationSet;
     } {
       return {
         placeholders: {},
+        decorations: DecorationSet.empty,
       };
+    },
+    addProseMirrorPlugins(): Plugin[] {
+      return [
+        new Plugin({
+          props: {
+            decorations: (_state: EditorState) => this.storage.decorations,
+          },
+        }),
+      ];
     },
     addCommands(): Partial<RawCommands> {
       return {
         addPlaceholder:
           (element: HTMLElement, id: string) =>
-          ({ editor, dispatch, tr }: CommandProps) => {
+          ({ state, dispatch, tr }: CommandProps) => {
             if (!dispatch || !tr) {
               return false;
             }
@@ -52,17 +67,23 @@ const BlockPlaceholderExtension: AnyExtension =
 
             this.storage.placeholders[placeholderId] = element;
 
-            const editorElement = editor.options.element;
-            if (!editorElement || typeof editorElement === 'function') {
-              return false;
+            const { selection } = state;
+
+            let pos: number;
+            if (isNodeSelection(selection)) {
+              pos = selection.$to.pos;
+            } else {
+              pos = selection.head;
             }
 
-            const domElement =
-              'mount' in editorElement
-                ? editorElement.mount
-                : (editorElement as HTMLElement);
+            const decoration = Decoration.widget(pos, () => element, {
+              id: placeholderId,
+              stopEvent: () => true,
+            });
 
-            domElement.appendChild(element);
+            this.storage.decorations = this.storage.decorations.add(tr.doc, [
+              decoration,
+            ]);
 
             dispatch(tr);
             return true;
@@ -81,9 +102,13 @@ const BlockPlaceholderExtension: AnyExtension =
               return false;
             }
 
-            if (placeholder.parentNode) {
-              placeholder.parentNode.removeChild(placeholder);
-            }
+            this.storage.decorations = this.storage.decorations.remove(
+              this.storage.decorations.find(
+                undefined,
+                undefined,
+                (spec: { id: string }) => spec.id === id,
+              ),
+            );
 
             delete this.storage.placeholders[id];
 
@@ -99,14 +124,7 @@ const BlockPlaceholderExtension: AnyExtension =
 
             tr.setMeta('addToHistory', false);
 
-            const placeholders = Object.values(this.storage.placeholders);
-            for (let i = 0; i < placeholders.length; i++) {
-              const element = placeholders[i] as HTMLElement;
-              if (element.parentNode) {
-                element.parentNode.removeChild(element);
-              }
-            }
-
+            this.storage.decorations = DecorationSet.empty;
             this.storage.placeholders = {};
 
             dispatch(tr);
