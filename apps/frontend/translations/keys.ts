@@ -116,6 +116,7 @@ type TLangKeys = {
   ModalPasswordUpdateTextTitle: string;
   PageEditorErrorDocumentRetrieveTextDescription: string;
   PageEditorErrorDocumentRetrieveTextTitle: string;
+  PageEditorPlaceholder: string;
   PageOverviewCreateInputPlaceholderNewDocument: string;
   PageOverviewGreetingsAfternoon01: string;
   PageOverviewGreetingsAfternoon02: string;
@@ -315,6 +316,7 @@ const langKeys = (): TLangKeys => {
     ModalPasswordUpdateTextTitle: getTr('MODAL_PASSWORD_UPDATE_TEXT_TITLE'),
     PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
+    PageEditorPlaceholder: getTr('PAGE_EDITOR_PLACEHOLDER'),
     PageOverviewCreateInputPlaceholderNewDocument: getTr('PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT'),
     PageOverviewGreetingsAfternoon01: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_01'),
     PageOverviewGreetingsAfternoon02: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_02'),
