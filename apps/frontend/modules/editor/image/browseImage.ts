@@ -1,7 +1,7 @@
 import type { TImageAttributes } from '@writtte-editor/editor';
 import { getMainEditor } from '../../../data/stores/mainEditor';
 import { ALLOWED_IMAGE_FILE_EXTENSIONS } from '../options/editorOptions';
-import { imageUpload } from './imageUpload';
+import { imageUploadForBrowse } from './imageUpload';
 import { checkAndSetImage } from './setImages';
 
 const ALLOWED_MIME_TYPES: string = ALLOWED_IMAGE_FILE_EXTENSIONS.map((ext) => {
@@ -68,7 +68,7 @@ const browseAndInsertImage = async (): Promise<void> => {
         }
       };
 
-      imageUpload(file, updateImage)
+      imageUploadForBrowse(file, updateImage)
         .then(() => {
           resolve();
         })

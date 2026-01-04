@@ -26,11 +26,13 @@ import {
 type TImageOptions = {
   HTMLAttributes: Record<string, string | number | boolean>;
   fileExtensions: string[];
+  onBeforePaste: ((file: File) => Promise<TImageAttributes>) | undefined;
   onAfterPaste:
     | ((
         file: File,
+        currentAttrs: TImageAttributes,
         updateImage: (attrs: Partial<TImageAttributes>) => void,
-      ) => void)
+      ) => Promise<void>)
     | undefined;
 };
 
@@ -63,6 +65,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     return {
       HTMLAttributes: {},
       fileExtensions: [],
+      onBeforePaste: undefined,
       onAfterPaste: undefined,
     };
   },
@@ -268,6 +271,10 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       img.setAttribute('data-image-code', node.attrs.imageCode);
       img.setAttribute('data-extension', node.attrs.extension);
 
+      if (node.attrs.src) {
+        img.src = node.attrs.src;
+      }
+
       if (node.attrs.alt) {
         img.alt = node.attrs.alt;
       }
@@ -314,146 +321,155 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     return [
       new Plugin({
         props: {
-          handlePaste: (view: EditorView, event: ClipboardEvent): boolean => {
-            if (!event.clipboardData) {
-              return false;
-            }
-
-            var imageItems: DataTransferItem[] = [];
-
-            const items = Array.from(event.clipboardData.items);
-            for (let i = 0; i < items.length; i++) {
-              if (
-                items[i].kind === 'file' &&
-                items[i].type.startsWith('image/')
-              ) {
-                imageItems.push(items[i]);
-              }
-            }
-
-            if (imageItems.length === 0) {
-              return false;
-            }
-
-            event.preventDefault();
-
-            for (let i = 0; i < imageItems.length; i++) {
-              const item = imageItems[i];
-              const itemFile = item.getAsFile();
-
-              if (!itemFile) {
-                break;
+          handlePaste: (view: EditorView, event: ClipboardEvent): void => {
+            // biome-ignore lint/nursery/noFloatingPromises: A floating promise is required here
+            (async () => {
+              if (!event.clipboardData) {
+                return false;
               }
 
-              const fileExtension =
-                itemFile.name.split('.').pop()?.toLowerCase() || '';
+              var imageItems: DataTransferItem[] = [];
 
-              // Check if the file extension is allowed
-              // If fileExtensions is empty, all extensions are allowed
-              // Otherwise, check if the extension is in the list
-
-              if (
-                this.options.fileExtensions.length > 0 &&
-                !this.options.fileExtensions.includes(fileExtension)
-              ) {
-                break;
+              const items = Array.from(event.clipboardData.items);
+              for (let i = 0; i < items.length; i++) {
+                if (
+                  items[i].kind === 'file' &&
+                  items[i].type.startsWith('image/')
+                ) {
+                  imageItems.push(items[i]);
+                }
               }
 
-              try {
-                // This code will be removed when attributes are pasted or
-                // updated.
+              if (imageItems.length === 0) {
+                return false;
+              }
 
-                const tempImageCode = `${Math.floor(Math.random() * 1000)}`;
+              event.preventDefault();
 
-                const imageAttrs: TImageAttributes = {
-                  imageCode: tempImageCode,
-                  extension: fileExtension,
-                };
+              for (let i = 0; i < imageItems.length; i++) {
+                const item = imageItems[i];
+                const itemFile = item.getAsFile();
 
-                const imageNode =
-                  view.state.schema.nodes[this.name].create(imageAttrs);
+                if (!itemFile) {
+                  break;
+                }
+
+                const fileExtension =
+                  itemFile.name.split('.').pop()?.toLowerCase() || '';
+
+                // Check if the file extension is allowed
+                // If fileExtensions is empty, all extensions are allowed
+                // Otherwise, check if the extension is in the list
 
                 if (
-                  !canInsertNode(view.state, view.state.schema.nodes[this.name])
+                  this.options.fileExtensions.length > 0 &&
+                  !this.options.fileExtensions.includes(fileExtension)
                 ) {
-                  continue;
+                  break;
                 }
 
-                const tr = view.state.tr;
-                tr.replaceSelectionWith(imageNode);
-
-                const { $to } = tr.selection;
-                if ($to.pos >= tr.doc.content.size - 2) {
-                  const node =
-                    $to.parent.type.contentMatch.defaultType?.create();
-                  if (node) {
-                    const posAfter = $to.end();
-                    tr.insert(posAfter, node);
-                    tr.setSelection(TextSelection.create(tr.doc, posAfter + 1));
-                  }
-                } else {
-                  tr.setSelection(TextSelection.create(tr.doc, $to.pos));
-                }
-
-                tr.scrollIntoView();
-                view.dispatch(tr);
-
-                if (this.options.onAfterPaste) {
-                  const updateImageAttrs = (
-                    attrs: Partial<TImageAttributes>,
-                  ) => {
-                    const currentState = view.state;
-                    const attrsTr = currentState.tr;
-
-                    let found = false;
-                    currentState.doc.descendants((node, pos) => {
-                      if (found) {
-                        return false;
-                      }
-
-                      if (
-                        node.type === this.type &&
-                        node.attrs.imageCode === tempImageCode
-                      ) {
-                        found = true;
-                        attrsTr.setNodeMarkup(pos, undefined, {
-                          ...node.attrs,
-                          ...attrs,
-                        });
-
-                        view.dispatch(attrsTr);
-                        return false;
-                      }
-
-                      return true;
-                    });
-                  };
-
-                  this.options.onAfterPaste(itemFile, updateImageAttrs);
-                }
-              } catch {
-                // Handle error silently, the error will be thrown to
-                // the caller and if upload fails, we should remove the
-                // placeholder
-
-                const { state } = view;
-
-                const errorTr = state.tr;
-
-                state.doc.descendants((node, pos) => {
-                  if (node.type === this.type) {
-                    errorTr.delete(pos, pos + node.nodeSize);
-                    view.dispatch(errorTr);
-
-                    return false;
+                try {
+                  if (!this.options.onBeforePaste) {
+                    continue;
                   }
 
-                  return true;
-                });
+                  const imageAttrs: TImageAttributes =
+                    // biome-ignore lint/performance/noAwaitInLoops: The await inside the loop is required
+                    await this.options.onBeforePaste(itemFile);
+
+                  const imageNode =
+                    view.state.schema.nodes[this.name].create(imageAttrs);
+
+                  if (
+                    !canInsertNode(
+                      view.state,
+                      view.state.schema.nodes[this.name],
+                    )
+                  ) {
+                    continue;
+                  }
+
+                  const tr = view.state.tr;
+                  tr.replaceSelectionWith(imageNode);
+
+                  const { $to } = tr.selection;
+                  if ($to.pos >= tr.doc.content.size - 2) {
+                    const node =
+                      $to.parent.type.contentMatch.defaultType?.create();
+
+                    if (node) {
+                      const posAfter = $to.end();
+
+                      tr.insert(posAfter, node);
+                      tr.setSelection(
+                        TextSelection.create(tr.doc, posAfter + 1),
+                      );
+                    }
+                  } else {
+                    tr.setSelection(TextSelection.create(tr.doc, $to.pos));
+                  }
+
+                  tr.scrollIntoView();
+                  view.dispatch(tr);
+
+                  if (this.options.onAfterPaste) {
+                    const updateImageAttrs = (
+                      attrs: Partial<TImageAttributes>,
+                    ) => {
+                      const currentState = view.state;
+                      const attrsTr = currentState.tr;
+
+                      let found = false;
+                      currentState.doc.descendants((node, pos) => {
+                        if (found) {
+                          return false;
+                        }
+
+                        if (node.type === this.type) {
+                          found = true;
+                          attrsTr.setNodeMarkup(pos, undefined, {
+                            ...node.attrs,
+                            ...attrs,
+                          });
+
+                          view.dispatch(attrsTr);
+                          return false;
+                        }
+
+                        return true;
+                      });
+                    };
+
+                    this.options.onAfterPaste(
+                      itemFile,
+                      imageAttrs,
+                      updateImageAttrs,
+                    );
+                  }
+                } catch {
+                  // Handle error silently, the error will be thrown to
+                  // the caller and if upload fails, we should remove the
+                  // placeholder
+
+                  const { state } = view;
+
+                  const errorTr = state.tr;
+
+                  state.doc.descendants((node, pos) => {
+                    if (node.type === this.type) {
+                      errorTr.delete(pos, pos + node.nodeSize);
+                      view.dispatch(errorTr);
+
+                      return false;
+                    }
+
+                    return true;
+                  });
+                }
               }
-            }
 
-            return true;
+              return true;
+            })();
           },
         },
       }),

@@ -2,7 +2,7 @@ import type {
   TExtensionOptions,
   TImageAttributes,
 } from '@writtte-editor/editor';
-import { imageUpload } from '../image/imageUpload';
+import { imageAfterPaste, setupImageForUpload } from '../image/imageUpload';
 
 const ALLOWED_IMAGE_FILE_EXTENSIONS: string[] = [
   'jpg',
@@ -146,10 +146,13 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   },
   image: {
     fileExtensions: ALLOWED_IMAGE_FILE_EXTENSIONS,
+    onBeforePaste: async (file: File): Promise<TImageAttributes> =>
+      await setupImageForUpload(file),
     onAfterPaste: async (
-      file: File,
-      updateImage: (attrs: Partial<TImageAttributes>) => void,
-    ): Promise<void> => imageUpload(file, updateImage),
+      _: File,
+      __: TImageAttributes,
+      ___: (attrs: Partial<TImageAttributes>) => void,
+    ): Promise<void> => await imageAfterPaste(),
     isEnabled: true,
   },
 });
