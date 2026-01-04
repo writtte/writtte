@@ -1,8 +1,21 @@
-import type { TExtensionOptions } from '@writtte-editor/editor';
+import type {
+  TExtensionOptions,
+  TImageAttributes,
+} from '@writtte-editor/editor';
+import { imageAfterPaste, setupImageForUpload } from '../image/imageUpload';
+
+const ALLOWED_IMAGE_FILE_EXTENSIONS: string[] = [
+  'jpg',
+  'jpeg',
+  'png',
+  'gif',
+  'webp',
+  'svg',
+];
 
 const shortcutKeys = {
   SET_PARAGRAPH: 'Mod-Alt-0',
-  SET_HEADING: 'Mod-Alt', // KEY-[1 .. 6], ex: Mod-Alt-1 for H1
+  SET_HEADING: 'Mod-Alt', // Mod-Alt-[1 .. 6]
   TOGGLE_BOLD: 'Mod-b',
   TOGGLE_ITALIC: 'Mod-i',
   TOGGLE_UNDERLINE: 'Mod-u',
@@ -128,6 +141,20 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   placeholder: {
     isEnabled: true,
   },
+  blockPlaceholder: {
+    isEnabled: true,
+  },
+  image: {
+    fileExtensions: ALLOWED_IMAGE_FILE_EXTENSIONS,
+    onBeforePaste: async (file: File): Promise<TImageAttributes> =>
+      await setupImageForUpload(file),
+    onAfterPaste: async (
+      _: File,
+      __: TImageAttributes,
+      ___: (attrs: Partial<TImageAttributes>) => void,
+    ): Promise<void> => await imageAfterPaste(),
+    isEnabled: true,
+  },
 });
 
-export { setupEditorExtensionOptions };
+export { ALLOWED_IMAGE_FILE_EXTENSIONS, setupEditorExtensionOptions };

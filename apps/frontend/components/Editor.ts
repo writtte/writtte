@@ -46,7 +46,7 @@ const Editor = (opts: TOptions): TReturnEditor => {
       editorDiv.appendChild(containerDiv);
     } else {
       const loadingIndicatorElements = editorDiv.getElementsByClassName(
-        'editor-loading-indicator',
+        'editor-loading-indicator-container',
       );
 
       if (loadingIndicatorElements) {

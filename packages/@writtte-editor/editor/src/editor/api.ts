@@ -1,3 +1,4 @@
+import type { TImageAttributes } from '../extensions/image';
 import type { TEditorSchema } from './schema';
 import type { TEditorState } from './state';
 
@@ -25,6 +26,15 @@ type TEditorAPI = {
       }
     | undefined;
   unsetLink: () => boolean;
+  setImage: (attributes: TImageAttributes) => boolean;
+  updateImage: (
+    imageCode: string,
+    attributes: Partial<TImageAttributes>,
+  ) => boolean;
+  removeImage: () => boolean;
+  addPlaceholder: (element: HTMLElement, id: string) => boolean;
+  removePlaceholder: (id: string) => boolean;
+  removeAllPlaceholders: () => boolean;
   toggleHeader01: () => boolean;
   toggleHeader02: () => boolean;
   toggleHeader03: () => boolean;
@@ -50,6 +60,7 @@ type TEditorAPI = {
   isLinkActive: () => boolean;
   isBulletListActive: () => boolean;
   isNumberListActive: () => boolean;
+  isImageActive: () => boolean;
 };
 
 export type { TEditorAPI };

@@ -1,11 +1,13 @@
 import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
 import { type AnyExtension, Editor } from '@tiptap/core';
+import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
 import { BoldExtension } from '../extensions/bold';
 import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
 import { HorizontalLineExtension } from '../extensions/horizontalRule';
+import { ImageExtension, type TImageAttributes } from '../extensions/image';
 import { InlineCodeExtension } from '../extensions/inlineCode';
 import { ItalicExtension } from '../extensions/italic';
 import { LinkExtension } from '../extensions/link';
@@ -124,6 +126,18 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     );
   }
 
+  if (opts.options.blockPlaceholder.isEnabled) {
+    extensions.push(
+      BlockPlaceholderExtension.configure(
+        opts.options.blockPlaceholder ?? undefined,
+      ),
+    );
+  }
+
+  if (opts.options.image.isEnabled) {
+    extensions.push(ImageExtension.configure(opts.options.image ?? undefined));
+  }
+
   const _editor = new Editor({
     element: opts.element,
     extensions: [TextExtension, DocumentExtension, ...extensions],
@@ -237,6 +251,27 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   const unsetLink = (): boolean => _editor.chain().focus().unsetLink().run();
 
+  const setImage = (attributes: TImageAttributes): boolean =>
+    _editor.chain().focus().setImage(attributes).run();
+
+  const updateImage = (
+    imageCode: string,
+    attributes: Partial<TImageAttributes>,
+  ): boolean =>
+    _editor.chain().focus().updateImage(imageCode, attributes).run();
+
+  const removeImage = (): boolean =>
+    _editor.chain().focus().removeImage().run();
+
+  const addPlaceholder = (element: HTMLElement, id: string): boolean =>
+    _editor.chain().focus().addPlaceholder(element, id).run();
+
+  const removePlaceholder = (id: string): boolean =>
+    _editor.chain().focus().removePlaceholder(id).run();
+
+  const removeAllPlaceholders = (): boolean =>
+    _editor.chain().focus().removeAllPlaceholders().run();
+
   const toggleHeader01 = (): boolean =>
     _editor
       .chain()
@@ -338,6 +373,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   const isNumberListActive = (): boolean => _editor.isActive('numberList');
 
+  const isImageActive = (): boolean => _editor.isActive('image');
+
   return {
     isEditable,
     setEditable,
@@ -357,6 +394,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setLink,
     getLink,
     unsetLink,
+    setImage,
+    updateImage,
+    removeImage,
+    addPlaceholder,
+    removePlaceholder,
+    removeAllPlaceholders,
     toggleHeader01,
     toggleHeader02,
     toggleHeader03,
@@ -382,6 +425,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isLinkActive,
     isBulletListActive,
     isNumberListActive,
+    isImageActive,
   };
 };
 

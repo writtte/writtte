@@ -58,6 +58,15 @@
     "exitable",
     "Substack",
     "Buffer",
-    "contenteditable"
+    "contenteditable",
+    "fkeys",
+    "imagecreate",
+    "imageretrieve",
+    "imageupdate",
+    "presignedurl",
+    "presign",
+    "IMDS",
+    "noopener",
+    "noreferrer"
   ]
 }

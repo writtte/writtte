@@ -5,18 +5,19 @@ import { ErrorMessage } from '../components/ErrorMessage';
 import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';
 import { updateMainEditor } from '../data/stores/mainEditor';
 import {
-  fixedMenuUpdateEventListener,
-  setupEditorFixedMenuOptions,
-} from '../modules/editor/editorFixedMenu';
-import { setupEditorExtensionOptions } from '../modules/editor/editorOptions';
-import {
   getDocumentContentFromAPI,
   getDocumentContentFromIDB,
-} from '../modules/editor/getDocumentContent';
+} from '../modules/editor/content/getDocumentContent';
 import {
   updateDocumentContent,
   updateDocumentContentOnIDB,
-} from '../modules/editor/updateDocumentContent';
+} from '../modules/editor/content/updateDocumentContent';
+import { checkAndSetImages } from '../modules/editor/image/setImages';
+import {
+  fixedMenuUpdateEventListener,
+  setupEditorFixedMenuOptions,
+} from '../modules/editor/menu/editorFixedMenu';
+import { setupEditorExtensionOptions } from '../modules/editor/options/editorOptions';
 import { langKeys } from '../translations/keys';
 import { setPageTitle } from '../utils/routes/helpers';
 import { debounce } from '../utils/time/debounce';
@@ -50,6 +51,7 @@ const EditorPage = async (
     editorElement.api.setReadable();
 
     updateMainEditor({
+      documentCode,
       api: editorElement.api,
     });
   }
@@ -82,6 +84,12 @@ const EditorPage = async (
       setPageTitle(title);
     }
 
+    // After retrieving the document content from IndexedDB, all images
+    // should be checked and updated accordingly, even when rechecking
+    // after calling the API.
+
+    await checkAndSetImages();
+
     return content;
   })();
 
@@ -113,6 +121,8 @@ const EditorPage = async (
       editorElement.setLoadingState(false);
 
       editorElement.api.setEditable();
+
+      await checkAndSetImages();
       return;
     }
 
@@ -134,6 +144,11 @@ const EditorPage = async (
         editorElement.api.schemaToString(contentAfterReplacement),
       );
     }
+
+    // After replacing the document content, all images should be
+    // re-checked and updated accordingly.
+
+    await checkAndSetImages();
 
     editorElement.setLoadingState(false);
     editorElement.api.setEditable();

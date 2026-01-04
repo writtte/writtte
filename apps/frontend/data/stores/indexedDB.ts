@@ -9,6 +9,7 @@ const DB_NAME = 'writtte';
 const STORE_NAMES = {
   DOCUMENTS: 'documents',
   DOCUMENT_CONTENTS: 'document-contents',
+  DOCUMENT_IMAGES: 'document-images',
 };
 
 type TIDBDocument = {
@@ -23,6 +24,13 @@ type TIDBDocumentContent = {
   accountCode: string;
   documentCode: string;
   content: string;
+};
+
+type TIDBDocumentImages = {
+  documentCode: string;
+  imageCode: string;
+  extension: string;
+  image: Blob;
 };
 
 type TIndexedDBStore = {
@@ -41,6 +49,7 @@ const initializeIDB = async (): Promise<void> => {
   const db = await idb.open(DB_NAME, DB_VERSION, (database: IDBDatabase) => {
     setupDocumentStore(database);
     setupDocumentContentStore(database);
+    setupDocumentImageStore(database);
   });
 
   indexedDBStore.setState({
@@ -77,6 +86,21 @@ const setupDocumentContentStore = (database: IDBDatabase): void => {
   });
 };
 
-export type { TIDBDocument, TIDBDocumentContent, TIndexedDBStore };
+const setupDocumentImageStore = (database: IDBDatabase): void => {
+  const store = database.createObjectStore(STORE_NAMES.DOCUMENT_IMAGES, {
+    keyPath: 'imageCode',
+  });
+
+  store.createIndex('imageCode', 'imageCode', {
+    unique: false,
+  });
+};
+
+export type {
+  TIDBDocument,
+  TIDBDocumentContent,
+  TIDBDocumentImages,
+  TIndexedDBStore,
+};
 
 export { DB_VERSION, DB_NAME, STORE_NAMES, initializeIDB, getIndexedDB };

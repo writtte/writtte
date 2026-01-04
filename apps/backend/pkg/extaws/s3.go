@@ -209,6 +209,16 @@ func GenerateDeletePresignedURL(ctx context.Context, client S3Client,
 	return &presignedURL.URL, nil
 }
 
+func GeneratePublicURL(region, bucketName, key *string) *string {
+	// revive:disable:line-length-limit
+
+	url := "https://" + *bucketName + ".s3." + *region + ".amazonaws.com/" + *key
+
+	// revive:enable:line-length-limit
+
+	return &url
+}
+
 func handleS3Error(err error) error {
 	// Error codes:
 	//

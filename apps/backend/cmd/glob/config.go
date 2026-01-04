@@ -20,6 +20,7 @@ type GlobalConfiguration struct {
 	Validator                         *validator.Validate
 	AWSSESConfig                      *extaws.AWSSESConfig
 	AWSSESSession                     *extaws.AWSSESSession
+	AWSS3PrivateGeneralBucketClient   *extaws.S3Client
 	AWSS3PrivateDirectoryBucketClient *extaws.S3Client
 	EmailTemplates                    *embeds.EmailTemplateFiles
 	RateLimit                         bool

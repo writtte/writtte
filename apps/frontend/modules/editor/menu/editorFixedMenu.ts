@@ -1,16 +1,17 @@
 import type { TEditorState } from '@writtte-editor/editor';
-import type { TReturnEditorFixedMenu } from '../../components/EditorFixedMenu';
+import type { TReturnEditorFixedMenu } from '../../../components/EditorFixedMenu';
 import { ERROR_CODES, validate } from '@writtte-internal/validate';
 import {
   FixedMenuItemType,
   type TEditorFixedMenuItemOptions,
-} from '../../components/EditorFixedMenuItem';
-import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
-import { REGEX } from '../../constants/regex';
-import { ALERT_TIMEOUT } from '../../constants/timeouts';
-import { AlertController } from '../../controller/alert';
-import { getEditorAPI } from '../../data/stores/mainEditor';
-import { langKeys } from '../../translations/keys';
+} from '../../../components/EditorFixedMenuItem';
+import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
+import { REGEX } from '../../../constants/regex';
+import { ALERT_TIMEOUT } from '../../../constants/timeouts';
+import { AlertController } from '../../../controller/alert';
+import { getEditorAPI } from '../../../data/stores/mainEditor';
+import { langKeys } from '../../../translations/keys';
+import { browseAndInsertImage } from '../image/browseImage';
 
 const setupEditorFixedMenuOptions = (
   thisMenu: TReturnEditorFixedMenu,
@@ -154,6 +155,18 @@ const setupEditorFixedMenuOptions = (
       onClick: (): void => {
         getEditorAPI().toggleSubscript();
       },
+    },
+    hasLeftDivider: false,
+    hasRightDivider: true,
+  },
+  {
+    id: 'button__oxwopdzujp',
+    item: {
+      type: FixedMenuItemType.BUTTON,
+      icon: FlatIcon(FlatIconName._18_IMAGE),
+      isVisible: true,
+      isSelected: false,
+      onClick: async (): Promise<void> => await browseAndInsertImage(),
     },
     hasLeftDivider: false,
     hasRightDivider: true,

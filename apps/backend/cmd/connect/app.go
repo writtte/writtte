@@ -45,6 +45,13 @@ func SetupApp() {
 			extaws.InitSESSession(glob.Config.AWSSESConfig)
 	}
 
+	glob.Config.AWSS3PrivateGeneralBucketClient = extaws.InitS3(extaws.S3Config{
+		Region:            &configs.AWSS3PrivateGeneralBucketRegion,
+		AccessKey:         &configs.AWSS3PrivateGeneralBucketAccessKey,
+		SecretAccessKey:   &configs.AWSS3PrivateGeneralBucketSecretAccessKey,
+		IsDirectoryBucket: false,
+	})
+
 	glob.Config.AWSS3PrivateDirectoryBucketClient = extaws.InitS3(extaws.S3Config{
 		Region:            &configs.AWSS3PrivateDirectoryBucketRegion,
 		AccessKey:         &configs.AWSS3PrivateDirectoryBucketAccessKey,

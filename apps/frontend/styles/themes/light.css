@@ -71,6 +71,8 @@
   --component-editor-menu-item-text--placeholder: var(--global-neutral-9);
   --component-editor-menu-item-text: var(--global-neutral-12);
   --component-editor-menu-text: var(--global-neutral-10);
+  --component-editor-node-loading-indicator-bg: var(--global-neutral-2);
+  --component-editor-node-loading-indicator-text: var(--global-neutral-10);
   --component-editor-text---placeholder: var(--global-neutral-8);
   --component-editor-text--link: var(--global-light-blue-6);
   --component-editor-text: var(--global-neutral-11);
