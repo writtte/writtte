@@ -12,10 +12,13 @@ import { HTTP_STATUS } from '../../../utils/data/fetch';
 
 const getDocumentContentFromAPI = async (
   documentCode: string,
-): Promise<{
-  title: string | undefined;
-  content: string | undefined;
-}> => {
+): Promise<
+  | {
+      title: string | undefined;
+      content: string | undefined;
+    }
+  | undefined
+> => {
   const { getCurrentAccountData } = AccessToken();
 
   const accessToken = getCurrentAccountData()?.access_token;
@@ -27,10 +30,20 @@ const getDocumentContentFromAPI = async (
     );
   }
 
+  const eTagFromIDB = await getDocumentETag(documentCode);
+
   const { status, response } = await v1DocumentRetrieve({
     accessToken,
     documentCode,
+    eTag: eTagFromIDB,
   });
+
+  if (status === HTTP_STATUS.NOT_MODIFIED) {
+    // The status code "Not modified" means the ETag matches and the
+    // content on the local and server sides is the same
+
+    return;
+  }
 
   if (status !== HTTP_STATUS.OK || !response) {
     return {
@@ -79,6 +92,22 @@ const getDocumentContentFromIDB = async (
     title: documentObject?.title,
     content: documentContentObject.content,
   };
+};
+
+const getDocumentETag = async (documentCode: string): Promise<string> => {
+  const db = getIndexedDB();
+
+  const documentContentObject = await idb.getObject<TIDBDocumentContent>(
+    db,
+    STORE_NAMES.DOCUMENT_CONTENTS,
+    documentCode,
+  );
+
+  if (!documentContentObject) {
+    return '';
+  }
+
+  return documentContentObject.eTag;
 };
 
 export { getDocumentContentFromAPI, getDocumentContentFromIDB };

@@ -86,7 +86,7 @@ const deleteDocument = async (documentCode: string): Promise<boolean> => {
     lifecycleState: DocumentLifecycleState.DELETED,
   });
 
-  if (status !== HTTP_STATUS.NO_CONTENT) {
+  if (status !== HTTP_STATUS.OK) {
     return false;
   }
 

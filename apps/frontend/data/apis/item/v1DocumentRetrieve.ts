@@ -9,6 +9,7 @@ import {
 type TPayloadV1DocumentRetrieve = {
   accessToken: string;
   documentCode: string;
+  eTag: string | undefined;
 };
 
 type TResponseV1DocumentRetrieve = {
@@ -41,6 +42,17 @@ const v1DocumentRetrieve = async (
       },
     ],
   };
+
+  if (payload.eTag) {
+    if (!body.headers) {
+      body.headers = [];
+    }
+
+    body.headers.push({
+      key: 'If-None-Match',
+      value: payload.eTag,
+    });
+  }
 
   const { status, results } = await fetchRequest(body);
 

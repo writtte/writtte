@@ -28,6 +28,7 @@ func (d *database) perform(ctx context.Context,
 			"title":           data.Title,
 			"lifecycle_state": data.LifecycleState,
 			"workflow_state":  data.WorkflowState,
+			"e_tag":           data.ETag,
 		},
 	).Scan(&results)
 

@@ -28,6 +28,19 @@ type dbQueryOutput struct {
 	Data       *dbQueryOutputData `json:"data"`
 }
 
+type dbQueryOutputETagData struct {
+	DocumentCode *string `json:"document_code"`
+	ETag         *string `json:"e_tag"`
+}
+
+type dbQueryOutputETag struct {
+	Status     *bool                  `json:"status"`
+	Code       *string                `json:"code"`
+	Message    *string                `json:"message"`
+	Additional *string                `json:"additional"`
+	Data       *dbQueryOutputETagData `json:"data"`
+}
+
 type apiResultsSuccess struct {
 	Title          *string `json:"title"`
 	LifecycleState *string `json:"lifecycle_state"`

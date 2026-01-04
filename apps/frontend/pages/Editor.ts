@@ -48,8 +48,6 @@ const EditorPage = async (
   });
 
   if (editorElement) {
-    editorElement.api.setReadable();
-
     updateMainEditor({
       documentCode,
       api: editorElement.api,
@@ -97,8 +95,16 @@ const EditorPage = async (
   Promise.all([idbPromise]).then(async ([idbResults]): Promise<void> => {
     const contentFromIDB = idbResults;
 
-    const { title: titleFromAPI, content: contentFromAPI } =
-      await getDocumentContentFromAPI(documentCode);
+    const checkAPIResults = await getDocumentContentFromAPI(documentCode);
+
+    if (checkAPIResults === undefined) {
+      editorElement.setLoadingState(false);
+
+      await checkAndSetImages();
+      return;
+    }
+
+    const { title: titleFromAPI, content: contentFromAPI } = checkAPIResults;
 
     if (contentFromAPI === undefined) {
       editorElement.setError(
@@ -119,8 +125,6 @@ const EditorPage = async (
 
       editorElement.api.setContent(contentInJSON);
       editorElement.setLoadingState(false);
-
-      editorElement.api.setEditable();
 
       await checkAndSetImages();
       return;
@@ -151,27 +155,32 @@ const EditorPage = async (
     await checkAndSetImages();
 
     editorElement.setLoadingState(false);
-    editorElement.api.setEditable();
   });
 
-  let isEditorMounted = false;
-  const debouncedLogContent = debounce(
-    async (content: TEditorSchema): Promise<void> => {
-      await updateDocumentContent(editorElement.api, documentCode, content);
-    },
-    { delay: DEBOUNCE_TIMEOUT.EDITOR_SAVE },
-  );
+  var editorMountTime = Date.now();
 
-  editorElement.api.onChange((content: TEditorSchema) => {
-    if (editorElement.api.isEditable()) {
-      if (!isEditorMounted) {
-        isEditorMounted = true;
-        return;
+  {
+    const debouncedLogContent = debounce(
+      async (content: TEditorSchema): Promise<void> => {
+        await updateDocumentContent(editorElement.api, documentCode, content);
+      },
+      { delay: DEBOUNCE_TIMEOUT.EDITOR_SAVE },
+    );
+
+    editorElement.api.onChange((content: TEditorSchema) => {
+      if (editorElement.api.isEditable()) {
+        const now = Date.now();
+        if (now - editorMountTime < 5000) {
+          // Don't save the editor until 5 seconds after the initial
+          // content has loaded
+
+          return;
+        }
+
+        debouncedLogContent(content);
       }
-
-      debouncedLogContent(content);
-    }
-  });
+    });
+  }
 
   return editorPageDiv;
 };

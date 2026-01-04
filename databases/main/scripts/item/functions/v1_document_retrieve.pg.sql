@@ -22,7 +22,7 @@ BEGIN
   END IF;
   v_document_data := (
     SELECT
-      json_build_object('document_code', tbd.document_code, 'account_code', tbd.account_code, 'title', tbd.title, 'lifecycle_state', tbd.lifecycle_state, 'workflow_state', tbd.workflow_state, 'created_time', tbd.created_time, 'updated_time', tbd.updated_time, 'deleted_time', tbd.deleted_time)
+      json_build_object('document_code', tbd.document_code, 'account_code', tbd.account_code, 'title', tbd.title, 'lifecycle_state', tbd.lifecycle_state, 'workflow_state', tbd.workflow_state, 'e_tag', tbd.e_tag, 'created_time', tbd.created_time, 'updated_time', tbd.updated_time, 'deleted_time', tbd.deleted_time)
     FROM
       schema_item.tb_document tbd
     WHERE

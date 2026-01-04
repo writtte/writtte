@@ -33,6 +33,9 @@ type TPayloadV1DocumentUpdate = {
 type TResponseV1DocumentUpdate = {
   id: string;
   code: number;
+  results: {
+    e_tag: string;
+  };
   status: boolean;
 };
 

@@ -2,6 +2,7 @@ package connect
 
 import (
 	"net/http"
+	"strings"
 	"sync"
 	"time"
 
@@ -114,9 +115,11 @@ func dumpServerLog(info ServerInfo, addr string, logType extgolog.LogType,
 
 func serverCorsHandler(next http.Handler, config CorsConfig) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		cleanHeaders := strings.ReplaceAll(config.AllowedHeaders, " ", "")
+
 		(w).Header().Set("Access-Control-Allow-Origin", config.AllowedOrigins)
 		(w).Header().Set("Access-Control-Allow-Methods", config.AllowedMethods)
-		(w).Header().Set("Access-Control-Allow-Headers", config.AllowedHeaders)
+		(w).Header().Set("Access-Control-Allow-Headers", cleanHeaders)
 
 		if r.Method == http.MethodOptions {
 			if w == nil {

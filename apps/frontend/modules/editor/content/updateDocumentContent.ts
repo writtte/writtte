@@ -37,15 +37,22 @@ const updateDocumentContentFromAPI = async (
     );
   }
 
-  const { status } = await v1DocumentUpdate({
+  const { status, response } = await v1DocumentUpdate({
     accessToken,
     documentCode,
     content: newContent,
   });
 
-  if (status !== HTTP_STATUS.NO_CONTENT) {
+  if (status !== HTTP_STATUS.OK) {
     return;
   }
+
+  const eTag = response?.results.e_tag;
+  if (!eTag) {
+    return;
+  }
+
+  await updateDocumentEtag(documentCode, eTag);
 };
 
 const updateDocumentContentOnIDB = async (
@@ -66,6 +73,7 @@ const updateDocumentContentOnIDB = async (
       accountCode: accountOverview.code,
       documentCode,
       content: newContent,
+      eTag: '',
     };
 
     await idb.addData(db, STORE_NAMES.DOCUMENT_CONTENTS, objectToCreate);
@@ -80,8 +88,33 @@ const updateDocumentContentOnIDB = async (
   await idb.updateData(db, STORE_NAMES.DOCUMENT_CONTENTS, objectToUpdate);
 };
 
+const updateDocumentEtag = async (
+  documentCode: string,
+  newETag: string,
+): Promise<void> => {
+  const db = getIndexedDB();
+
+  const getObject = await idb.getObject<TIDBDocumentContent>(
+    db,
+    STORE_NAMES.DOCUMENT_CONTENTS,
+    documentCode,
+  );
+
+  if (!getObject) {
+    return;
+  }
+
+  const objectToUpdate: TIDBDocumentContent = {
+    ...getObject,
+    eTag: newETag,
+  };
+
+  await idb.updateData(db, STORE_NAMES.DOCUMENT_CONTENTS, objectToUpdate);
+};
+
 export {
   updateDocumentContent,
   updateDocumentContentFromAPI,
   updateDocumentContentOnIDB,
+  updateDocumentEtag,
 };
