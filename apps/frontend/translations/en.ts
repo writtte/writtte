@@ -115,6 +115,7 @@ const enMessages = {
   MODAL_PASSWORD_UPDATE_TEXT_TITLE: 'Update Password',
   PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION: 'Something went wrong while retrieving this document from our servers. Please try again in a few moments. If it still doesn\'t work, our support team can help.',
   PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE: 'We Couldn\'t Load Your Document',
+  PAGE_EDITOR_PLACEHOLDER: 'Draft your content here...',
   PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT: 'Type a title for your new article',
   PAGE_OVERVIEW_GREETINGS_AFTERNOON_01: 'Good afternoon,',
   PAGE_OVERVIEW_GREETINGS_AFTERNOON_02: 'Afternoon,',

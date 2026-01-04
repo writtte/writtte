@@ -2,6 +2,7 @@ import type {
   TExtensionOptions,
   TImageAttributes,
 } from '@writtte-editor/editor';
+import { langKeys } from '../../../translations/keys';
 import { imageAfterPaste, setupImageForUpload } from '../image/imageUpload';
 
 const ALLOWED_IMAGE_FILE_EXTENSIONS: string[] = [
@@ -139,6 +140,9 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     isEnabled: true,
   },
   placeholder: {
+    placeholder: langKeys().PageEditorPlaceholder,
+    showOnlyWhenEditable: true,
+    showOnlyIfCurrentNodeIsEmpty: true,
     isEnabled: true,
   },
   blockPlaceholder: {
