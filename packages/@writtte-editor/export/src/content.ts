@@ -226,7 +226,7 @@ const setImage = (exportType: TExportType, schema: TEditorSchema): string => {
     return '';
   }
 
-  // set private general bucket read only access to true (only read only),
+  // Set private general bucket read only access to true (only read only),
   // and then store its address in the image extension new attribute
   // pass that value here :D
   //
