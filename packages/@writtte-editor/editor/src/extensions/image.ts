@@ -104,6 +104,9 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
           return {
             imageCode,
             extension,
+            src: element.getAttribute('src') || null,
+            alt: element.getAttribute('alt') || null,
+            publicURL: element.getAttribute('data-public-url') || null,
           };
         },
       },
@@ -116,13 +119,16 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     node: ProsemirrorNode;
     HTMLAttributes: Record<string, string | number | boolean>;
   }): DOMOutputSpec {
-    const { imageCode, extension } = node.attrs;
+    const { imageCode, extension, src, alt, publicURL } = node.attrs;
 
     return [
       'img',
       mergeAttributes(this.options.HTMLAttributes, HTMLAttributes, {
         'data-image-code': imageCode,
         'data-extension': extension,
+        'data-public-url': publicURL || null,
+        src: src || null,
+        alt: alt || null,
       }),
     ];
   },
@@ -259,11 +265,16 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
       const img = document.createElement('img');
 
-      // Don't set the image src here; it should be added when
-      // updating.
-
       img.setAttribute('data-image-code', node.attrs.imageCode);
       img.setAttribute('data-extension', node.attrs.extension);
+
+      if (node.attrs.alt) {
+        img.alt = node.attrs.alt;
+      }
+
+      if (node.attrs.publicURL) {
+        img.setAttribute('data-public-url', node.attrs.publicURL);
+      }
 
       dom.appendChild(img);
 

@@ -2,6 +2,7 @@ import type { TImageAttributes } from '@writtte-editor/editor';
 import { getMainEditor } from '../../../data/stores/mainEditor';
 import { ALLOWED_IMAGE_FILE_EXTENSIONS } from '../options/editorOptions';
 import { imageUpload } from './imageUpload';
+import { checkAndSetImage } from './setImages';
 
 const ALLOWED_MIME_TYPES: string = ALLOWED_IMAGE_FILE_EXTENSIONS.map((ext) => {
   if (ext === 'jpg' || ext === 'jpeg') {
@@ -51,15 +52,20 @@ const browseAndInsertImage = async (): Promise<void> => {
       // showing a loading indicator via addPlaceholder, and the image
       // will only be inserted after upload completes via setImage
 
-      const updateImage = (attrs: Partial<TImageAttributes>): void => {
-        // After upload completes, insert the image with the final attributes
+      const updateImage = async (
+        attrs: Partial<TImageAttributes>,
+      ): Promise<void> => {
+        if (attrs.imageCode) {
+          mainEditor.api?.setImage({
+            imageCode: attrs.imageCode ?? '',
+            extension: attrs.extension ?? fileExtension,
+            src: attrs.src ?? '',
+            alt: attrs.alt ?? '',
+            publicURL: attrs.publicURL ?? '',
+          });
 
-        mainEditor.api?.setImage({
-          imageCode: attrs.imageCode ?? '',
-          extension: attrs.extension ?? fileExtension,
-          src: attrs.src ?? '',
-          alt: attrs.alt ?? '',
-        });
+          await checkAndSetImage(attrs.imageCode, attrs.src);
+        }
       };
 
       imageUpload(file, updateImage)

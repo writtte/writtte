@@ -239,10 +239,12 @@ const setImage = (exportType: TExportType, schema: TEditorSchema): string => {
     case ExportType.XML:
       return `<image alt="${alt}">${src}</image>`;
 
-    case ExportType.MEDIUM:
-    case ExportType.SUBSTACK:
     case ExportType.WORDPRESS:
+    case ExportType.SUBSTACK:
       return `<img src="${src}" alt="${alt}" />`;
+
+    case ExportType.MEDIUM:
+      return `<figure><img src="${src}" alt="${alt}" /></figure>`;
   }
 
   return '';
