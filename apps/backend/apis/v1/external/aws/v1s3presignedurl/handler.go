@@ -32,14 +32,15 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	generatedURL, err := h.serv.perform(ctx, &body)
+	presignedURL, publicAccessURL, err := h.serv.perform(ctx, &body)
 	if err != nil {
 		response.Internal(w, r, nil, intstr.StrPtr(err.Error()))
 		return
 	}
 
 	response.Results(w, r, http.StatusOK, &apiResultsSuccess{
-		GeneratedURL: generatedURL,
+		GeneratedURL:  presignedURL,
+		ItemPublicURL: publicAccessURL,
 	})
 }
 

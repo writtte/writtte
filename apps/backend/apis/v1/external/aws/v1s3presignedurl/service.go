@@ -28,8 +28,9 @@ const (
 // revive:disable:cognitive-complexity
 
 func (s *service) perform(ctx context.Context, body *BodyParams,
-) (*string, error) {
+) (presignedURL *string, publicAccessURL *string, err error) {
 	var generatedURL *string
+	var itemPublicURL *string
 
 	client := glob.Config.AWSS3PrivateGeneralBucketClient
 	bucket := configs.AWSS3PrivateGeneralBucketName
@@ -44,7 +45,7 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 				bucket, *key, expirationMinutes*time.Minute)
 
 			if err != nil {
-				return nil, err
+				return nil, nil, err
 			}
 		}
 
@@ -52,14 +53,21 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 		{
 			key, err := s.getKey(ctx, body)
 			if err != nil {
-				return nil, err
+				return nil, nil, err
 			}
 
 			generatedURL, err = extaws.GeneratePutPresignedURL(ctx, *client,
 				bucket, *key, expirationMinutes*time.Minute)
 
+			// revive:disable:line-length-limit
+
+			itemPublicURL = extaws.GeneratePublicURL(&configs.AWSS3PrivateGeneralBucketRegion,
+				&configs.AWSS3PrivateGeneralBucketName, key)
+
+			// revive:enable:line-length-limit
+
 			if err != nil {
-				return nil, err
+				return nil, nil, err
 			}
 		}
 
@@ -72,7 +80,7 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 				bucket, *key, expirationMinutes*time.Minute)
 
 			if err != nil {
-				return nil, err
+				return nil, nil, err
 			}
 		}
 
@@ -80,7 +88,7 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 		panic("action not supported")
 	}
 
-	return generatedURL, nil
+	return generatedURL, itemPublicURL, nil
 }
 
 // revive:enable:cognitive-complexity

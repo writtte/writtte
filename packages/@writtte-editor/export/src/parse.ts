@@ -4,6 +4,7 @@ import {
   setBulletList,
   setHeading,
   setHorizontalRule,
+  setImage,
   setInlineCode,
   setItalic,
   setLink,
@@ -42,6 +43,10 @@ const parseSchema = (
 
   if (type === 'horizontalLine') {
     return parseHorizontalRule(exportType);
+  }
+
+  if (type === 'image') {
+    return parseImage(exportType, schema);
   }
 
   if (type === 'bulletList' || type === 'numberList') {
@@ -197,6 +202,9 @@ const parseHeading = (
 
 const parseHorizontalRule = (exportType: TExportType): string =>
   setHorizontalRule(exportType);
+
+const parseImage = (exportType: TExportType, schema: TEditorSchema): string =>
+  setImage(exportType, schema);
 
 const parseBulletAndNumberList = (
   exportType: TExportType,

@@ -36,6 +36,7 @@ type TResponseV1S3PresignedURL = {
   code: number;
   results: {
     generated_url: string;
+    item_public_url: string | undefined | null;
   };
   status: boolean;
 };

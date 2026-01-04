@@ -117,6 +117,7 @@ const imageUpload = async (
       imageCode,
       extension: imageExtension,
       alt: '',
+      publicURL: response.results.item_public_url ?? undefined,
     });
   } catch (error) {
     try {

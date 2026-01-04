@@ -28,5 +28,6 @@ type dbQueryOutputForImage struct {
 }
 
 type apiResultsSuccess struct {
-	GeneratedURL *string `json:"generated_url"`
+	GeneratedURL  *string `json:"generated_url"`
+	ItemPublicURL *string `json:"item_public_url"`
 }

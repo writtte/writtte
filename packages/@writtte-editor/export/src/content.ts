@@ -1,5 +1,6 @@
 // biome-ignore-all lint/style/useTemplate: Templates literals are not required in this file
 
+import type { TEditorSchema } from '@writtte-editor/editor';
 import { ExportType, type TExportType } from './type';
 import { normalizeNewlines, tabsPrefixForListItem } from './utils';
 
@@ -217,6 +218,36 @@ const setHorizontalRule = (exportType: TExportType): string => {
   return '';
 };
 
+const setImage = (exportType: TExportType, schema: TEditorSchema): string => {
+  const src = schema.attrs?.publicURL;
+  const alt = schema.attrs?.alt;
+
+  if (!src || typeof src !== 'string' || src?.trim().length === 0) {
+    return '';
+  }
+
+  // set private general bucket read only access to true (only read only),
+  // and then store its address in the image extension new attribute
+  // pass that value here :D
+  //
+  // the same thing doing Medium and Substack editors
+
+  switch (exportType) {
+    case ExportType.MD:
+      return `![](${src})\n\n`;
+
+    case ExportType.XML:
+      return `<image alt="${alt}">${src}</image>`;
+
+    case ExportType.MEDIUM:
+    case ExportType.SUBSTACK:
+    case ExportType.WORDPRESS:
+      return `<img src="${src}" alt="${alt}" />`;
+  }
+
+  return '';
+};
+
 const setBulletList = (exportType: TExportType, text: string): string => {
   switch (exportType) {
     case ExportType.XML:
@@ -327,6 +358,7 @@ export {
   setParagraph,
   setHeading,
   setHorizontalRule,
+  setImage,
   setBulletList,
   setNumberList,
   setListItem,
