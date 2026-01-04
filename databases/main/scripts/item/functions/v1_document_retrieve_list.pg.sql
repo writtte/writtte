@@ -61,6 +61,7 @@ BEGIN
           ''title'', title,
           ''lifecycle_state'', lifecycle_state,
           ''workflow_state'', workflow_state,
+          ''e_tag'', e_tag,
           ''created_time'', created_time,
           ''updated_time'', updated_time
         ) as doc_data,

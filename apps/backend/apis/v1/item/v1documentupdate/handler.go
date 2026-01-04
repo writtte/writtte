@@ -37,17 +37,17 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	results, err := h.serv.perform(ctx, &queries, &body)
+	results, eTag, err := h.serv.perform(ctx, &queries, &body)
 	if err != nil {
 		response.Internal(w, r, nil, intstr.StrPtr(err.Error()))
 		return
 	}
 
-	checkResponse(w, r, results)
+	checkResponse(w, r, results, eTag)
 }
 
 func checkResponse(w http.ResponseWriter, r *http.Request,
-	results *dbQueryOutput) {
+	results *dbQueryOutput, eTag *string) {
 	if !*results.Status {
 		response.Internal(w, r, results, results.Message)
 		return
@@ -55,7 +55,10 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 
 	switch *results.Code {
 	case constants.DocumentUpdated:
-		response.Results(w, r, http.StatusNoContent, nil)
+		response.Results(w, r, http.StatusOK, &apiResultsSuccess{
+			ETag: eTag,
+		})
+
 		return
 
 	case constants.DocumentNotExists:

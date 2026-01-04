@@ -15,8 +15,12 @@ type handler struct {
 	serv service
 }
 
+// revive:disable:cognitive-complexity
+
 func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
+
+	ifNoneMatch := r.Header.Get("if-none-match")
 
 	var queries QueryParams
 	if err := parse.Queries(r, &queries); err != nil {
@@ -28,6 +32,22 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if ifNoneMatch != "" {
+		eTag, err := h.serv.performETag(ctx, &queries)
+		if err != nil {
+			response.Internal(w, r, nil, intstr.StrPtr(err.Error()))
+			return
+		}
+
+		if eTag != nil && *eTag == ifNoneMatch {
+			response.Results(w, r, http.StatusNotModified, nil)
+			return
+		}
+
+		// In this case, the content should be returned, so continue to
+		// the fucking section below...
+	}
+
 	results, content, err := h.serv.perform(ctx, &queries)
 	if err != nil {
 		response.Internal(w, r, nil, intstr.StrPtr(err.Error()))
@@ -36,6 +56,8 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 
 	checkResponse(w, r, results, content)
 }
+
+// revive:enable:cognitive-complexity
 
 func checkResponse(w http.ResponseWriter, r *http.Request,
 	results *dbQueryOutput, content *string) {

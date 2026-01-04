@@ -151,7 +151,7 @@ const renameDocument = async (
     title: newTitle,
   });
 
-  if (status !== HTTP_STATUS.NO_CONTENT) {
+  if (status !== HTTP_STATUS.OK) {
     return false;
   }
 

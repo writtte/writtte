@@ -24,6 +24,7 @@ type TIDBDocumentContent = {
   accountCode: string;
   documentCode: string;
   content: string;
+  eTag: string;
 };
 
 type TIDBDocumentImages = {

@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS schema_item.tb_document (
   title VARCHAR(256) NOT NULL,
   lifecycle_state VARCHAR(16) NOT NULL,
   workflow_state VARCHAR(16) NOT NULL,
+  e_tag VARCHAR(8) NOT NULL,
   created_time TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(),
   updated_time TIMESTAMP WITH TIME ZONE DEFAULT NULL,
   deleted_time TIMESTAMP WITH TIME ZONE DEFAULT NULL,

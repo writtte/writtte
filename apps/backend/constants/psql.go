@@ -30,6 +30,7 @@ const (
 	DocumentExists        = "DOCUMENT_EXISTS"
 	DocumentNotExists     = "DOCUMENT_NOT_EXISTS"
 	DocumentRetrieved     = "DOCUMENT_RETRIEVED"
+	DocumentRetrievedETag = "DOCUMENT_RETRIEVED_ETAG"
 	DocumentRetrievedList = "DOCUMENT_RETRIEVED_LIST"
 	DocumentUpdated       = "DOCUMENT_UPDATED"
 )

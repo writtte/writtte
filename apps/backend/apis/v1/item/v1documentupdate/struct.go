@@ -21,6 +21,7 @@ type dbQueryInput struct {
 	Title          *string
 	LifecycleState *string
 	WorkflowState  *string
+	ETag           *string
 }
 
 type dbQueryOutput struct {
@@ -29,4 +30,8 @@ type dbQueryOutput struct {
 	Message    *string `json:"message"`
 	Additional *string `json:"additional"`
 	Data       *any    `json:"data"`
+}
+
+type apiResultsSuccess struct {
+	ETag *string `json:"e_tag"`
 }

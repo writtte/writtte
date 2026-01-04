@@ -41,6 +41,7 @@
 \ir ../scripts/item/functions/v1_document_check.pg.sql
 \ir ../scripts/item/functions/v1_document_create.pg.sql
 \ir ../scripts/item/functions/v1_document_retrieve.pg.sql
+\ir ../scripts/item/functions/v1_document_retrieve_etag.pg.sql
 \ir ../scripts/item/functions/v1_document_retrieve_list.pg.sql
 \ir ../scripts/item/functions/v1_document_update.pg.sql
 \ir ../scripts/item/functions/v1_image_check.pg.sql

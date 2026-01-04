@@ -3,6 +3,7 @@ package v1documentretrieve
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	"backend/apis/v1/authentication/v1signin"
 	"backend/constants"
@@ -48,4 +49,33 @@ func (s *service) perform(ctx context.Context,
 	}
 
 	return parsedResults, &contentToPass, nil
+}
+
+func (s *service) performETag(ctx context.Context,
+	queries *QueryParams) (*string, error) {
+	results, err := s.repo.performETag(ctx, queries.DocumentCode)
+	if err != nil {
+		return nil, err
+	}
+
+	var parsedResults *dbQueryOutputETag
+	if err := json.Unmarshal([]byte(*results), &parsedResults); err != nil {
+		return nil, err
+	}
+
+	// revive:disable:line-length-limit
+
+	if !*parsedResults.Status {
+		return nil, fmt.Errorf("unable to retrieve eTag: status is false, message: %s",
+			*parsedResults.Message)
+	}
+
+	if *parsedResults.Code != constants.DocumentRetrievedETag {
+		return nil, fmt.Errorf("unable to retrieve eTag: unexpected code: %s, expected: %s",
+			*parsedResults.Code, constants.DocumentRetrievedETag)
+	}
+
+	// revive:enable:line-length-limit
+
+	return parsedResults.Data.ETag, nil
 }
