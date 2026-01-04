@@ -39,6 +39,11 @@ const checkAndSetImage = async (
 
   if (element instanceof HTMLImageElement && src) {
     element.src = src;
+
+    mainEditor.api?.updateImage(imageCode, {
+      src,
+    });
+
     return;
   }
 

@@ -121,6 +121,8 @@ const EditorPage = async (
       editorElement.setLoadingState(false);
 
       editorElement.api.setEditable();
+
+      await checkAndSetImages();
       return;
     }
 

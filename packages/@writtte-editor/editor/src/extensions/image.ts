@@ -39,6 +39,7 @@ type TImageAttributes = {
   extension: string;
   src?: string;
   alt?: string;
+  publicURL?: string;
 };
 
 declare module '@tiptap/core' {
@@ -77,6 +78,9 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
         default: null,
       },
       alt: {
+        default: null,
+      },
+      publicURL: {
         default: null,
       },
     };
@@ -255,9 +259,8 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
       const img = document.createElement('img');
 
-      if (node.attrs.src) {
-        img.src = node.attrs.src;
-      }
+      // Don't set the image src here; it should be added when
+      // updating.
 
       img.setAttribute('data-image-code', node.attrs.imageCode);
       img.setAttribute('data-extension', node.attrs.extension);
@@ -285,6 +288,10 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
           if (updatedNode.attrs.alt) {
             img.alt = updatedNode.attrs.alt;
+          }
+
+          if (updatedNode.attrs.publicURL) {
+            img.setAttribute('data-public-url', updatedNode.attrs.publicURL);
           }
 
           return true;
