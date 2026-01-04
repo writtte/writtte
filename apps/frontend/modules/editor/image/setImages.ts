@@ -86,6 +86,13 @@ const checkAndSetImage = async (
     return;
   }
 
+  const imgTags = parentDiv.querySelectorAll('img');
+  for (let i = 0; i < imgTags.length; i++) {
+    if (imgTags[i]) {
+      imgTags[i].style.display = 'none';
+    }
+  }
+
   const loadingIndicator = EditorNodeLoadingIndicator({
     id: 'editor_node_loading_indicator__mfgzmibptx',
     text: undefined,
@@ -154,6 +161,12 @@ const checkAndSetImage = async (
 
   const blobURL = URL.createObjectURL(dataToStoreInIDB.image);
   if (element instanceof HTMLImageElement) {
+    for (let i = 0; i < imgTags.length; i++) {
+      if (imgTags[i]) {
+        imgTags[i].style.display = 'block';
+      }
+    }
+
     element.classList.remove('hide');
     loadingIndicator.remove();
 
