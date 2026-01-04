@@ -2,7 +2,11 @@
 
 import type { TEditorSchema } from '@writtte-editor/editor';
 import { ExportType, type TExportType } from './type';
-import { normalizeNewlines, tabsPrefixForListItem } from './utils';
+import {
+  extractParagraphContent,
+  normalizeNewlines,
+  tabsPrefixForListItem,
+} from './utils';
 
 const setBold = (exportType: TExportType, text: string): string => {
   switch (exportType) {
@@ -311,6 +315,8 @@ const setListItem = (
         );
 
       case ExportType.MEDIUM:
+        return '<li>' + extractParagraphContent(text) + '</li>';
+
       case ExportType.SUBSTACK:
         return '<li>' + text + '</li>';
     }
@@ -340,6 +346,8 @@ const setListItem = (
         );
 
       case ExportType.MEDIUM:
+        return '<li>' + extractParagraphContent(text) + '</li>';
+
       case ExportType.SUBSTACK:
         return '<li>' + text + '</li>';
     }
