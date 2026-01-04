@@ -48,10 +48,6 @@ const browseAndInsertImage = async (): Promise<void> => {
         return;
       }
 
-      // Don't insert image node here. The imageUpload function handles
-      // showing a loading indicator via addPlaceholder, and the image
-      // will only be inserted after upload completes via setImage
-
       const updateImage = async (
         attrs: Partial<TImageAttributes>,
       ): Promise<void> => {
