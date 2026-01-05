@@ -1,3 +1,4 @@
+import { AnimatedIcon, AnimatedIconName } from '../components/AnimatedIcon';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { LoadingIndicator } from '../components/LoadingIndicator';
 import { PATHS } from '../constants/paths';
@@ -19,6 +20,8 @@ const ValidateEmailUpdatePage = async (): Promise<HTMLElement> => {
   const loadingIndicatorElement = LoadingIndicator({
     id: 'loading_indicator__xjjueqiwjx',
     text: langKeys().LoadingTextVerifyingEmailUpdateLink,
+    animatedIcon: AnimatedIcon(AnimatedIconName._18_CIRCLE_SPINNER),
+    shouldHideLogoInOverlay: false,
     isOverlay: true,
   }).element;
 
