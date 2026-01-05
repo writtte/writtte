@@ -9,8 +9,11 @@ import {
 import './styles/theme.css';
 import '@fontsource-variable/ibm-plex-sans';
 import '@fontsource-variable/jetbrains-mono';
+import { initSentry } from './sentry';
 
 const main = async (): Promise<void> => {
+  initSentry();
+
   const rootId = 'writtte-root';
 
   const rootElement = document.getElementById(rootId);
