@@ -7,7 +7,7 @@ import {
 } from './ActionButton';
 
 const TopBarBadgeType = {
-  BLUE: 'BLUR',
+  BLUE: 'BLUE',
 } as const;
 
 type TTopBarBadgeType = (typeof TopBarBadgeType)[keyof typeof TopBarBadgeType];
@@ -122,21 +122,23 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
         badge.onClick();
       });
     } else {
-      const newBadge = document.createElement('div');
-      newBadge.classList.add('top-bar__badge');
-      newBadge.classList.add(`top-bar__badge--${badge.type.toLowerCase()}`);
+      const newBadgeButton = document.createElement('button');
+      newBadgeButton.classList.add('top-bar__badge');
+      newBadgeButton.classList.add(
+        `top-bar__badge--${badge.type.toLowerCase()}`,
+      );
 
-      newBadge.id = badge.id;
-      setTestId(newBadge, badge.id);
+      newBadgeButton.id = badge.id;
+      setTestId(newBadgeButton, badge.id);
 
-      newBadge.textContent = badge.text;
+      newBadgeButton.textContent = badge.text;
 
-      newBadge.addEventListener('click', (e: PointerEvent) => {
+      newBadgeButton.addEventListener('click', (e: PointerEvent) => {
         e.preventDefault();
         badge.onClick();
       });
 
-      rightDiv.insertBefore(newBadge, rightButtonsDiv);
+      rightDiv.insertBefore(newBadgeButton, rightButtonsDiv);
     }
   };
 
