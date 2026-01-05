@@ -1,6 +1,13 @@
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
+import { TopBarBadgeType } from '../../components/TopBar';
 import { topBarInstance } from '../../controller/topBar';
+import { isAccountInFreeTrial } from '../../data/stores/overview';
 import { buildError } from '../../helpers/error/build';
+import { langKeys } from '../../translations/keys';
+import {
+  openSettingsModal,
+  settingsPageSectionIDs,
+} from '../settings/openSettingsModal';
 import { buildAccountMenu } from './accountMenu';
 
 const setupParentTopBar = async (): Promise<void> => {
@@ -20,6 +27,21 @@ const setupParentTopBar = async (): Promise<void> => {
       },
     },
   ]);
+
+  const { isFreeTrial, availableDays } = isAccountInFreeTrial();
+
+  if (isFreeTrial && availableDays !== undefined) {
+    topBarInstance.updateBadge({
+      id: 'top_bar_badge__nmyjdxanui',
+      text:
+        availableDays > 0
+          ? `${availableDays} ${langKeys().TopBarBadgeDaysLeft}`
+          : langKeys().TopBarBadgeFreeTrialExpired,
+      type: availableDays > 0 ? TopBarBadgeType.BLUE : TopBarBadgeType.YELLOW,
+      onClick: async (): Promise<void> =>
+        await openSettingsModal(settingsPageSectionIDs.subscription),
+    });
+  }
 };
 
 export { setupParentTopBar };

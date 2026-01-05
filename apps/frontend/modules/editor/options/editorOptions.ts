@@ -141,7 +141,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   },
   placeholder: {
     placeholder: langKeys().PageEditorPlaceholder,
-    showOnlyWhenEditable: true,
+    showOnlyWhenEditable: false,
     showOnlyIfCurrentNodeIsEmpty: true,
     isEnabled: true,
   },

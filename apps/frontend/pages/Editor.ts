@@ -4,6 +4,7 @@ import { EditorFixedMenu } from '../components/EditorFixedMenu';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';
 import { updateMainEditor } from '../data/stores/mainEditor';
+import { isAccountInFreeTrial } from '../data/stores/overview';
 import {
   getDocumentContentFromAPI,
   getDocumentContentFromIDB,
@@ -34,6 +35,8 @@ const EditorPage = async (
 
   const documentCode = params.documentCode;
 
+  const { isFreeTrialExpired } = isAccountInFreeTrial();
+
   const editorPageDiv = document.createElement('div');
   const containerDiv = document.createElement('div');
   const editorDiv = document.createElement('div');
@@ -52,19 +55,28 @@ const EditorPage = async (
       documentCode,
       api: editorElement.api,
     });
+
+    if (isFreeTrialExpired) {
+      editorElement.api.setReadable();
+    }
   }
 
-  const editorFixedMenuElement = EditorFixedMenu({
-    id: 'editor_fixed_menu__tuaodnwhdq',
-  });
+  if (!isFreeTrialExpired) {
+    const editorFixedMenuElement = EditorFixedMenu({
+      id: 'editor_fixed_menu__tuaodnwhdq',
+    });
 
-  editorFixedMenuElement.setItems(
-    setupEditorFixedMenuOptions(editorFixedMenuElement),
-  );
+    editorFixedMenuElement.setItems(
+      setupEditorFixedMenuOptions(editorFixedMenuElement),
+    );
 
-  fixedMenuUpdateEventListener(editorFixedMenuElement);
+    fixedMenuUpdateEventListener(editorFixedMenuElement);
 
-  containerDiv.append(editorFixedMenuElement.element, editorDiv);
+    containerDiv.append(editorFixedMenuElement.element, editorDiv);
+  } else {
+    containerDiv.appendChild(editorDiv);
+  }
+
   editorDiv.appendChild(editorElement.element);
   editorPageDiv.appendChild(containerDiv);
 
@@ -168,6 +180,10 @@ const EditorPage = async (
     );
 
     editorElement.api.onChange((content: TEditorSchema) => {
+      if (isFreeTrialExpired) {
+        return;
+      }
+
       if (editorElement.api.isEditable()) {
         const now = Date.now();
         if (now - editorMountTime < 5000) {

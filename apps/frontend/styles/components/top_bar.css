@@ -48,6 +48,8 @@
 .top-bar__badge {
   align-items: center;
   border-radius: 32px;
+  border: none;
+  box-shadow: none;
   display: inline-flex;
   font-size: 12px;
   font-style: normal;
@@ -57,12 +59,35 @@
   height: 24px;
   justify-content: center;
   line-height: normal;
-  padding: 0 24px;
+  outline: none;
+  padding: 0 12px;
   text-align: center;
+  transition: padding-inline 0.2s ease-in-out;
+  user-select: none;
+
+  &:hover {
+    cursor: pointer;
+    padding-inline: 24px;
+  }
+
+  &:focus-visible {
+    outline-offset: 2px;
+    outline: 1px dashed var(--common-focus-neutral);
+  }
 }
 
 .top-bar__badge--blue {
   background: var(--component-top-bar-badge-bg--blue);
+  color: var(--component-top-bar-badge-text);
+}
+
+.top-bar__badge--yellow {
+  background: var(--component-top-bar-badge-bg--yellow);
+  color: var(--component-top-bar-badge-text--invert);
+}
+
+.top-bar__badge--red {
+  background: var(--component-top-bar-badge-bg--red);
   color: var(--component-top-bar-badge-text);
 }
 

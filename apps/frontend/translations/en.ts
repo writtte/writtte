@@ -195,6 +195,9 @@ const enMessages = {
   SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT: 'Opening...',
   SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE: 'Choose a Subscription Plan',
   SETTINGS_MODAL_TEXT_TITLE: 'Writtte Settings',
+  TOP_BAR_BADGE_DAYS_LEFT: 'Days Left!',
+  TOP_BAR_BADGE_DOCUMENT_READ_ONLY: 'You Can View Only',
+  TOP_BAR_BADGE_FREE_TRIAL_EXPIRED: 'Unlock Full Access'
 };
 
 export { enMessages };

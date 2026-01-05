@@ -25,6 +25,8 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 	checkResponse(w, r, results)
 }
 
+// revive:disable:cognitive-complexity
+
 func checkResponse(w http.ResponseWriter, r *http.Request,
 	results *dbQueryOutput) {
 	if !*results.Status {
@@ -49,7 +51,7 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 			subscriptionStatusStr = strings.ToLower(*subscriptionStatus)
 		}
 
-		response.Results(w, r, http.StatusOK, &apiResultsSuccess{
+		mappedResults := &apiResultsSuccess{
 			AccountCode:        results.Data.User.AccountCode,
 			EmailAddress:       results.Data.User.EmailAddress,
 			Name:               results.Data.User.Name,
@@ -57,7 +59,17 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 			SubscriptionStatus: &subscriptionStatusStr,
 			IsEmailVerified:    results.Data.User.IsEmailVerified,
 			UpdatedTime:        results.Data.User.UpdatedTime,
-		})
+		}
+
+		if subscriptionStatusStr == "no_subscription" &&
+			results.Data.User.CreatedTime != nil {
+			calculatedDays :=
+				calculateFreeTrialDays(results.Data.User.CreatedTime)
+
+			mappedResults.AvailableFreeTrialDates = &calculatedDays
+		}
+
+		response.Results(w, r, http.StatusOK, mappedResults)
 
 		// revive:enable:line-length-limit
 
@@ -72,3 +84,5 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 		return
 	}
 }
+
+// revive:enable:cognitive-complexity

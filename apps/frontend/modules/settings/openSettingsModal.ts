@@ -6,14 +6,16 @@ import { getOverviewSettingsContent } from './contents/overview';
 import { getSecuritySettingsContent } from './contents/security';
 import { getSubscriptionSettingsContent } from './contents/subscription';
 
-const sectionIds = {
+const settingsPageSectionIDs = {
   overview: 'settings_section__pdfqqoturl',
   security: 'settings_section__xgyawjbhfi',
   subscription: 'settings_section__kqxiqxtclz',
   highRisk: 'settings_section__kzdzcgodsq',
 };
 
-const openSettingsModal = async (): Promise<void> => {
+const openSettingsModal = async (
+  pageSectionIDToShow: string,
+): Promise<void> => {
   const settingsModalController = SettingsModalController();
 
   const modal = settingsModalController.showModal({
@@ -21,46 +23,58 @@ const openSettingsModal = async (): Promise<void> => {
     title: langKeys().SettingsModalTextTitle,
     sections: [
       {
-        id: sectionIds.overview,
+        id: settingsPageSectionIDs.overview,
         icon: FlatIcon(FlatIconName._18_USER),
         text: langKeys().SettingsModalSectionTextOverview,
         isSelected: false,
         onClick: (): void =>
-          setSection(sectionIds.overview, getOverviewSettingsContent()),
+          setSection(
+            settingsPageSectionIDs.overview,
+            getOverviewSettingsContent(),
+          ),
         isVisible: true,
       },
       {
-        id: sectionIds.security,
+        id: settingsPageSectionIDs.security,
         icon: FlatIcon(FlatIconName._18_SECURITY),
         text: langKeys().SettingsModalSectionTextSecurity,
         isSelected: false,
         onClick: (): void =>
-          setSection(sectionIds.security, getSecuritySettingsContent()),
+          setSection(
+            settingsPageSectionIDs.security,
+            getSecuritySettingsContent(),
+          ),
         isVisible: true,
       },
       {
-        id: sectionIds.subscription,
+        id: settingsPageSectionIDs.subscription,
         icon: FlatIcon(FlatIconName._18_SUBSCRIPTION),
         text: langKeys().SettingsModalSectionTextSubscription,
         isSelected: false,
         onClick: (): void =>
-          setSection(sectionIds.subscription, getSubscriptionSettingsContent()),
+          setSection(
+            settingsPageSectionIDs.subscription,
+            getSubscriptionSettingsContent(),
+          ),
         isVisible: true,
       },
       {
-        id: sectionIds.highRisk,
+        id: settingsPageSectionIDs.highRisk,
         icon: FlatIcon(FlatIconName._18_HIGH_RISK),
         text: langKeys().SettingsModalSectionTextHighRisk,
         isSelected: false,
         onClick: (): void =>
-          setSection(sectionIds.highRisk, getHighRiskSettingsContent()),
+          setSection(
+            settingsPageSectionIDs.highRisk,
+            getHighRiskSettingsContent(),
+          ),
         isVisible: true,
       },
     ],
   });
 
   const setSection = (sectionId: string, content: HTMLDivElement[]): void => {
-    const ids = Object.values(sectionIds);
+    const ids = Object.values(settingsPageSectionIDs);
     for (let i = 0; i < ids.length; i++) {
       if (modal.sections[ids[i]]) {
         modal.sections[ids[i]].setSelectedState(false);
@@ -71,10 +85,17 @@ const openSettingsModal = async (): Promise<void> => {
     modal.setSectionContent(content);
   };
 
-  // When opening the modal, the overview settings should be shown as
-  // the default
+  var sectionToShow: HTMLDivElement[] = getOverviewSettingsContent();
+  switch (pageSectionIDToShow) {
+    case settingsPageSectionIDs.subscription:
+      sectionToShow = getSubscriptionSettingsContent();
+      break;
 
-  setSection(sectionIds.overview, getOverviewSettingsContent());
+    default:
+      sectionToShow = getOverviewSettingsContent();
+  }
+
+  setSection(pageSectionIDToShow, sectionToShow);
 };
 
-export { openSettingsModal };
+export { settingsPageSectionIDs, openSettingsModal };

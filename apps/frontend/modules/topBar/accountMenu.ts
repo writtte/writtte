@@ -4,7 +4,10 @@ import { LINKS } from '../../constants/links';
 import { signOutCurrentAccount } from '../../helpers/account/signOut';
 import { langKeys } from '../../translations/keys';
 import { navigateExternal } from '../../utils/routes/helpers';
-import { openSettingsModal } from '../settings/openSettingsModal';
+import {
+  openSettingsModal,
+  settingsPageSectionIDs,
+} from '../settings/openSettingsModal';
 
 const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
   const rect = (e.target as HTMLButtonElement).getBoundingClientRect();
@@ -24,7 +27,8 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         leftIcon: FlatIcon(FlatIconName._18_SETTINGS),
         rightIcon: undefined,
         isLeftIconVisible: true,
-        onClick: async (): Promise<void> => await openSettingsModal(),
+        onClick: async (): Promise<void> =>
+          await openSettingsModal(settingsPageSectionIDs.overview),
         hasTopDivider: false,
         hasBottomDivider: true,
       },

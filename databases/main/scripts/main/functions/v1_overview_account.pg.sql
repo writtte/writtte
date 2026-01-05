@@ -17,7 +17,7 @@ BEGIN
   v_p_account_code := (p_data ->> 'account_code')::UUID;
   v_user_data := (
     SELECT
-      json_build_object('account_code', tbu.account_code, 'email_address', tbu.email_address, 'name', tbu.name, 'status', tbu.status, 'is_email_verified', tbu.is_email_verified, 'updated_time', tbu.updated_time)
+      json_build_object('account_code', tbu.account_code, 'email_address', tbu.email_address, 'name', tbu.name, 'status', tbu.status, 'is_email_verified', tbu.is_email_verified, 'updated_time', tbu.updated_time, 'created_time', tbu.created_time)
     FROM
       schema_main.tb_user tbu
     WHERE

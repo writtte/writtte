@@ -124,6 +124,7 @@
   --component-status-text-text--error: var(--global-light-red-6);
   --component-status-text-text--success: var(--global-light-green-7);
   --component-top-bar-badge-bg--blue: var(--global-light-blue-5);
+  --component-top-bar-badge-bg--red: var(--global-light-red-6);
   --component-top-bar-badge-bg--yellow: var(--global-light-yellow-5);
   --component-top-bar-badge-text--invert: var(--global-neutral-13);
   --component-top-bar-badge-text: var(--base-white);
