@@ -26,8 +26,7 @@ const logFatalToSentry = (error: unknown): void => {
 
   const lastLogged = errorCache.get(errorKey);
   if (lastLogged && now - lastLogged < DEDUPE_WINDOW_MS) {
-    // Skip logging to prevent spam
-
+    // Skip logging to prevent spa
     return;
   }
 
