@@ -1,3 +1,4 @@
+import { buildError } from '../../helpers/error/build';
 import { setPageTitle } from './helpers';
 
 type TRoute = {
@@ -76,7 +77,7 @@ const renderRoute = async (
   params: Record<string, string>,
 ): Promise<void> => {
   if (!root) {
-    throw new Error('router root element not set');
+    throw new Error(buildError('router root element not set'));
   }
 
   setPageTitle(
@@ -103,7 +104,9 @@ const renderRoute = async (
       if (contentContainer) {
         contentContainer.replaceChildren(pageContent);
       } else {
-        throw new Error('no [data-content-container] found in the layout');
+        throw new Error(
+          buildError('no [data-content-container] found in the layout'),
+        );
       }
     }
   } else {
@@ -166,7 +169,7 @@ const runMiddlewares = async (
 
 const setRootElement = (element: HTMLElement | null): void => {
   if (element === null) {
-    throw new Error('root element is null');
+    throw new Error(buildError('root element is null'));
   }
 
   root = element;

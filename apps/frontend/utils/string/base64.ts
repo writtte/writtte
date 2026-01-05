@@ -1,3 +1,5 @@
+import { buildError } from '../../helpers/error/build';
+
 const encodeBase64 = (str: string): string => {
   try {
     if (typeof Buffer !== 'undefined') {
@@ -6,7 +8,7 @@ const encodeBase64 = (str: string): string => {
 
     return btoa(str);
   } catch (error) {
-    throw new Error(`failed to encode string to base64: ${error}`);
+    throw new Error(buildError(`failed to encode string to base64: ${error}`));
   }
 };
 

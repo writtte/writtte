@@ -1,3 +1,5 @@
+import { buildError } from '../../helpers/error/build';
+
 type THighlightOptions = {
   color: string;
   duration: number;
@@ -210,7 +212,9 @@ const monitorRendering = (
 ): MutationObserver => {
   const rootElement = document.getElementById(rootElementId);
   if (!rootElement) {
-    throw new Error(`root element with id "${rootElementId}" not found`);
+    throw new Error(
+      buildError(`root element with id "${rootElementId}" not found`),
+    );
   }
 
   const stats: TRenderStats = {

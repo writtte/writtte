@@ -67,6 +67,8 @@
     "presign",
     "IMDS",
     "noopener",
-    "noreferrer"
+    "noreferrer",
+    "Contextify",
+    "extsentry"
   ]
 }

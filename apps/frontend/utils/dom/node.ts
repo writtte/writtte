@@ -1,6 +1,8 @@
+import { buildError } from '../../helpers/error/build';
+
 const htmlToNode = (htmlStr: string): HTMLElement => {
   if (!htmlStr || htmlStr.trim().length <= 0) {
-    throw new Error('invalid html string passed');
+    throw new Error(buildError('invalid html string passed'));
   }
 
   const template = document.createElement('template');
@@ -9,7 +11,7 @@ const htmlToNode = (htmlStr: string): HTMLElement => {
   const firstChild = template.content.firstElementChild;
   if (firstChild === null) {
     throw new Error(
-      'unable to parse imported html template string to an element',
+      buildError('unable to parse imported html template string to an element'),
     );
   }
 
@@ -21,7 +23,7 @@ const gid = (id: string): HTMLElement | null => document.getElementById(id);
 const gidr = (id: string): HTMLElement => {
   const el = document.getElementById(id);
   if (!el) {
-    throw new Error(`unable to find element with id '${id}'`);
+    throw new Error(buildError(`unable to find element with id '${id}'`));
   }
   return el;
 };
