@@ -1,4 +1,20 @@
-.animated-icon-circle-spinner {
+.animated-icon--18 {
+  svg {
+    aspect-ratio: 1 / 1;
+    height: 18px;
+    width: 18px;
+  }
+}
+
+.animated-icon--26 {
+  svg {
+    aspect-ratio: 1 / 1;
+    height: 26px;
+    width: 26px;
+  }
+}
+
+.animated-icon__circle-spinner {
   align-items: center;
   display: flex;
   justify-content: center;

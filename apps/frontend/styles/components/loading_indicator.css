@@ -38,10 +38,6 @@
   justify-content: center;
 
   svg {
-    aspect-ratio: 1 / 1;
-    height: 18px;
-    width: 18px;
-
     path {
       fill: var(--component-loading-indicator-text);
     }

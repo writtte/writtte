@@ -1,3 +1,4 @@
+import { AnimatedIcon, AnimatedIconName } from '../components/AnimatedIcon';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { LoadingIndicator } from '../components/LoadingIndicator';
 import { PATHS } from '../constants/paths';
@@ -20,6 +21,8 @@ const SignInEmailCheckPage = async (): Promise<HTMLElement> => {
   return LoadingIndicator({
     id: 'loading_indicator__cbxmwowiyf',
     text: langKeys().LoadingTextCheckingMagicLink,
+    animatedIcon: AnimatedIcon(AnimatedIconName._18_CIRCLE_SPINNER),
+    shouldHideLogoInOverlay: false,
     isOverlay: true,
   }).element;
 };

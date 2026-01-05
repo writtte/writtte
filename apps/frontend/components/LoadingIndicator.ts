@@ -1,9 +1,10 @@
-import { AnimatedIcon, AnimatedIconName } from './AnimatedIcon';
 import { FlatIcon, FlatIconName } from './FlatIcon';
 
 type TOptions = {
   id: string;
-  text: string;
+  text: string | undefined;
+  animatedIcon: HTMLElement;
+  shouldHideLogoInOverlay: boolean;
   isOverlay: boolean;
 };
 
@@ -25,10 +26,14 @@ const LoadingIndicator = (opts: TOptions): TReturnLoadingIndicator => {
   textSpan.classList.add('loading-indicator__text');
 
   logoDiv.appendChild(FlatIcon(FlatIconName._26_WRITTTE_LOGO));
-  spinnerSpan.appendChild(AnimatedIcon(AnimatedIconName._18_CIRCLE_SPINNER));
+  spinnerSpan.appendChild(opts.animatedIcon);
   indicatorDiv.append(spinnerSpan, textSpan);
 
-  textSpan.textContent = opts.text;
+  if (opts.text) {
+    textSpan.textContent = opts.text;
+  } else {
+    textSpan.remove();
+  }
 
   if (!opts.isOverlay) {
     overlayDiv.remove();
@@ -40,6 +45,10 @@ const LoadingIndicator = (opts: TOptions): TReturnLoadingIndicator => {
   }
 
   overlayDiv.append(logoDiv, indicatorDiv);
+
+  if (opts.shouldHideLogoInOverlay) {
+    logoDiv.remove();
+  }
 
   return {
     element: overlayDiv,

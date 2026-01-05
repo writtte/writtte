@@ -1,3 +1,5 @@
+import { AnimatedIcon, AnimatedIconName } from '../../components/AnimatedIcon';
+import { LoadingIndicator } from '../../components/LoadingIndicator';
 import { ErrorMessageController } from '../../controller/errorMessage';
 import { v1AccountOverview } from '../../data/apis/overview/v1AccountOverview';
 import {
@@ -8,6 +10,9 @@ import {
 import { AccessToken } from '../../helpers/account/accessToken';
 import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
+import { minimumDelay } from '../../utils/time/minimumDelay';
+
+const overviewMinimumDelayTime = 800;
 
 let fetchPromise: Promise<void> | null = null;
 
@@ -30,12 +35,25 @@ const resetAccountOverviewCache = (): void => {
 
 const setAccountOverview = async (): Promise<void> => {
   const errorMessageController = ErrorMessageController();
-
   const { getCurrentAccountData } = AccessToken();
 
-  const { status, response } = await v1AccountOverview({
-    accessToken: getCurrentAccountData()?.access_token ?? '',
-  });
+  const loadingIndicatorElement = LoadingIndicator({
+    id: 'loading_indicator__ywpzqvfuth',
+    text: undefined,
+    animatedIcon: AnimatedIcon(AnimatedIconName._26_WRITTTE_LOGO_SPINNER),
+    shouldHideLogoInOverlay: true,
+    isOverlay: true,
+  }).element;
+
+  document.body.appendChild(loadingIndicatorElement);
+
+  // Execute API call with minimum display time of 500ms
+  const { status, response } = await minimumDelay(
+    v1AccountOverview({
+      accessToken: getCurrentAccountData()?.access_token ?? '',
+    }),
+    overviewMinimumDelayTime,
+  );
 
   if (status !== HTTP_STATUS.OK || !response) {
     errorMessageController.showError({
@@ -55,6 +73,8 @@ const setAccountOverview = async (): Promise<void> => {
     availableFreeTrialDates: response.results.available_free_trial_dates,
     isEmailVerified: response.results.is_email_verified,
   });
+
+  document.body.removeChild(loadingIndicatorElement);
 
   updateOverviewLoadedStatus(true);
 };
