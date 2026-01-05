@@ -8,6 +8,8 @@ import {
 
 const TopBarBadgeType = {
   BLUE: 'BLUE',
+  YELLOW: 'YELLOW',
+  RED: 'RED',
 } as const;
 
 type TTopBarBadgeType = (typeof TopBarBadgeType)[keyof typeof TopBarBadgeType];

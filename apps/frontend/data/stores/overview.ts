@@ -51,7 +51,7 @@ const isAccountInFreeTrial = (): {
   }
 
   const availableDays = accountOverviewStore.getState().availableFreeTrialDates;
-  if (!availableDays) {
+  if (availableDays === undefined) {
     return {
       isFreeTrial: false,
       isFreeTrialExpired: undefined,
@@ -61,7 +61,7 @@ const isAccountInFreeTrial = (): {
 
   return {
     isFreeTrial: true,
-    isFreeTrialExpired: availableDays <= 0,
+    isFreeTrialExpired: availableDays === 0,
     availableDays,
   };
 };

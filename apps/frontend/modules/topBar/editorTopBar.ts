@@ -58,8 +58,8 @@ const setupEditorTopBar = async (): Promise<void> => {
   if (isFreeTrialExpired) {
     topBarInstance.updateBadge({
       id: 'top_bar_badge__vsdssovtec',
-      text: langKeys().TopBarDocumentReadOnly,
-      type: TopBarBadgeType.BLUE,
+      text: langKeys().TopBarBadgeDocumentReadOnly,
+      type: TopBarBadgeType.RED,
       onClick: async (): Promise<void> =>
         await openSettingsModal(settingsPageSectionIDs.subscription),
     });

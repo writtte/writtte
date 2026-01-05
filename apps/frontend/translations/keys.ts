@@ -197,7 +197,8 @@ type TLangKeys = {
   SettingsModalSubscriptionSubscribeTextTitle: string;
   SettingsModalTextTitle: string;
   TopBarBadgeDaysLeft: string;
-  TopBarDocumentReadOnly: string;
+  TopBarBadgeDocumentReadOnly: string;
+  TopBarBadgeFreeTrialExpired: string;
 };
 
 const langKeys = (): TLangKeys => {
@@ -399,7 +400,8 @@ const langKeys = (): TLangKeys => {
     SettingsModalSubscriptionSubscribeTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE'),
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
     TopBarBadgeDaysLeft: getTr('TOP_BAR_BADGE_DAYS_LEFT'),
-    TopBarDocumentReadOnly: getTr('TOP_BAR_DOCUMENT_READ_ONLY'),
+    TopBarBadgeDocumentReadOnly: getTr('TOP_BAR_BADGE_DOCUMENT_READ_ONLY'),
+    TopBarBadgeFreeTrialExpired: getTr('TOP_BAR_BADGE_FREE_TRIAL_EXPIRED')
   }
 
   return keys;

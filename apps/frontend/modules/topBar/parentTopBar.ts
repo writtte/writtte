@@ -30,11 +30,14 @@ const setupParentTopBar = async (): Promise<void> => {
 
   const { isFreeTrial, availableDays } = isAccountInFreeTrial();
 
-  if (isFreeTrial) {
+  if (isFreeTrial && availableDays !== undefined) {
     topBarInstance.updateBadge({
       id: 'top_bar_badge__nmyjdxanui',
-      text: `${availableDays} ${langKeys().TopBarBadgeDaysLeft}`,
-      type: TopBarBadgeType.BLUE,
+      text:
+        availableDays > 0
+          ? `${availableDays} ${langKeys().TopBarBadgeDaysLeft}`
+          : langKeys().TopBarBadgeFreeTrialExpired,
+      type: availableDays > 0 ? TopBarBadgeType.BLUE : TopBarBadgeType.YELLOW,
       onClick: async (): Promise<void> =>
         await openSettingsModal(settingsPageSectionIDs.subscription),
     });

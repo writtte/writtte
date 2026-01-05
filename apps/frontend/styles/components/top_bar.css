@@ -81,6 +81,16 @@
   color: var(--component-top-bar-badge-text);
 }
 
+.top-bar__badge--yellow {
+  background: var(--component-top-bar-badge-bg--yellow);
+  color: var(--component-top-bar-badge-text--invert);
+}
+
+.top-bar__badge--red {
+  background: var(--component-top-bar-badge-bg--red);
+  color: var(--component-top-bar-badge-text);
+}
+
 .top-bar__left-buttons,
 .top-bar__right-buttons {
   align-items: center;
