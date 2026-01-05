@@ -196,6 +196,8 @@ type TLangKeys = {
   SettingsModalSubscriptionSubscribeButtonWait: string;
   SettingsModalSubscriptionSubscribeTextTitle: string;
   SettingsModalTextTitle: string;
+  TopBarBadgeDaysLeft: string;
+  TopBarDocumentReadOnly: string;
 };
 
 const langKeys = (): TLangKeys => {
@@ -396,6 +398,8 @@ const langKeys = (): TLangKeys => {
     SettingsModalSubscriptionSubscribeButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT'),
     SettingsModalSubscriptionSubscribeTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE'),
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
+    TopBarBadgeDaysLeft: getTr('TOP_BAR_BADGE_DAYS_LEFT'),
+    TopBarDocumentReadOnly: getTr('TOP_BAR_DOCUMENT_READ_ONLY'),
   }
 
   return keys;

@@ -10,6 +10,7 @@ import { REGEX } from '../../../constants/regex';
 import { ALERT_TIMEOUT } from '../../../constants/timeouts';
 import { AlertController } from '../../../controller/alert';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
+import { isAccountInFreeTrial } from '../../../data/stores/overview';
 import { langKeys } from '../../../translations/keys';
 import { browseAndInsertImage } from '../image/browseImage';
 
@@ -18,265 +19,272 @@ const setupEditorFixedMenuOptions = (
 ): (TEditorFixedMenuItemOptions & {
   hasLeftDivider: boolean;
   hasRightDivider: boolean;
-})[] => [
-  {
-    id: 'button__klxnihfohr',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_PARAGRAPH),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().setParagraph();
+})[] => {
+  const { isFreeTrialExpired } = isAccountInFreeTrial();
+  if (isFreeTrialExpired) {
+    return [];
+  }
+
+  return [
+    {
+      id: 'button__klxnihfohr',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_PARAGRAPH),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().setParagraph();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: true,
     },
-    hasLeftDivider: false,
-    hasRightDivider: true,
-  },
-  {
-    id: 'button__jpysaswwpy',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HEADING_01),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleHeader01();
+    {
+      id: 'button__jpysaswwpy',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_HEADING_01),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleHeader01();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: false,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__yjtiaomqfn',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HEADING_02),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleHeader02();
+    {
+      id: 'button__yjtiaomqfn',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_HEADING_02),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleHeader02();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: false,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__mhexyelvda',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HEADING_03),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleHeader03();
+    {
+      id: 'button__mhexyelvda',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_HEADING_03),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleHeader03();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: true,
     },
-    hasLeftDivider: false,
-    hasRightDivider: true,
-  },
-  {
-    id: 'button__kovxizjntg',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_BOLD),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleBold();
+    {
+      id: 'button__kovxizjntg',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_BOLD),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleBold();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: false,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__xevyzoapsy',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_ITALIC),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleItalic();
+    {
+      id: 'button__xevyzoapsy',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_ITALIC),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleItalic();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: false,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__ctvdbmfnzn',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_UNDERLINE),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleUnderline();
+    {
+      id: 'button__ctvdbmfnzn',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_UNDERLINE),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleUnderline();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: true,
     },
-    hasLeftDivider: false,
-    hasRightDivider: true,
-  },
-  {
-    id: 'button__blnncjmzml',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_INLINE_CODE),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleInlineCode();
+    {
+      id: 'button__blnncjmzml',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_INLINE_CODE),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleInlineCode();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: true,
     },
-    hasLeftDivider: false,
-    hasRightDivider: true,
-  },
-  {
-    id: 'button__lqwbmmoxus',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_SUPER_SCRIPT),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleSuperscript();
+    {
+      id: 'button__lqwbmmoxus',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_SUPER_SCRIPT),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleSuperscript();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: false,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__gxvccwmyhl',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_SUB_SCRIPT),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleSubscript();
+    {
+      id: 'button__gxvccwmyhl',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_SUB_SCRIPT),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleSubscript();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: true,
     },
-    hasLeftDivider: false,
-    hasRightDivider: true,
-  },
-  {
-    id: 'button__oxwopdzujp',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_IMAGE),
-      isVisible: true,
-      isSelected: false,
-      onClick: async (): Promise<void> => await browseAndInsertImage(),
-    },
-    hasLeftDivider: false,
-    hasRightDivider: true,
-  },
-  {
-    id: 'button__hzouaveanw',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_STRIKETHROUGH),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleStrikethrough();
+    {
+      id: 'button__oxwopdzujp',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_IMAGE),
+        isVisible: true,
+        isSelected: false,
+        onClick: async (): Promise<void> => await browseAndInsertImage(),
       },
+      hasLeftDivider: false,
+      hasRightDivider: true,
     },
-    hasLeftDivider: false,
-    hasRightDivider: true,
-  },
-  {
-    id: 'button__rrujmyecrv',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_BULLET_LIST),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleBulletList();
+    {
+      id: 'button__hzouaveanw',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_STRIKETHROUGH),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleStrikethrough();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: true,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__thphluhzux',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_NUMBER_LIST),
-      isVisible: true,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().toggleNumberList();
+    {
+      id: 'button__rrujmyecrv',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_BULLET_LIST),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleBulletList();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: false,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__pkqlfdlqtn',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HYPERLINK),
-      isVisible: false,
-      isSelected: false,
-      onClick: (): void => enableHyperLink(thisMenu),
-    },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__pjdfjerfjd',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HYPERLINK),
-      isVisible: false,
-      isSelected: true,
-      onClick: (): void => disableHyperLink(thisMenu),
-    },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'input__eeizujkfwy',
-    item: {
-      type: FixedMenuItemType.INPUT,
-      text: undefined,
-      placeholderText: undefined,
-      isVisible: false,
-      onSubmit: (): void => addHyperLink(thisMenu),
-    },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__gqzgqctnnr',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HYPERLINK_ADD),
-      isVisible: false,
-      isSelected: false,
-      onClick: (): void => addHyperLink(thisMenu),
-    },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-  {
-    id: 'button__gdrvfruhim',
-    item: {
-      type: FixedMenuItemType.BUTTON,
-      icon: FlatIcon(FlatIconName._18_HYPERLINK_REMOVE),
-      isVisible: false,
-      isSelected: false,
-      onClick: (): void => {
-        getEditorAPI().unsetLink();
-        disableHyperLink(thisMenu);
+    {
+      id: 'button__thphluhzux',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_NUMBER_LIST),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().toggleNumberList();
+        },
       },
+      hasLeftDivider: false,
+      hasRightDivider: false,
     },
-    hasLeftDivider: false,
-    hasRightDivider: false,
-  },
-];
+    {
+      id: 'button__pkqlfdlqtn',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_HYPERLINK),
+        isVisible: false,
+        isSelected: false,
+        onClick: (): void => enableHyperLink(thisMenu),
+      },
+      hasLeftDivider: false,
+      hasRightDivider: false,
+    },
+    {
+      id: 'button__pjdfjerfjd',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_HYPERLINK),
+        isVisible: false,
+        isSelected: true,
+        onClick: (): void => disableHyperLink(thisMenu),
+      },
+      hasLeftDivider: false,
+      hasRightDivider: false,
+    },
+    {
+      id: 'input__eeizujkfwy',
+      item: {
+        type: FixedMenuItemType.INPUT,
+        text: undefined,
+        placeholderText: undefined,
+        isVisible: false,
+        onSubmit: (): void => addHyperLink(thisMenu),
+      },
+      hasLeftDivider: false,
+      hasRightDivider: false,
+    },
+    {
+      id: 'button__gqzgqctnnr',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_HYPERLINK_ADD),
+        isVisible: false,
+        isSelected: false,
+        onClick: (): void => addHyperLink(thisMenu),
+      },
+      hasLeftDivider: false,
+      hasRightDivider: false,
+    },
+    {
+      id: 'button__gdrvfruhim',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_HYPERLINK_REMOVE),
+        isVisible: false,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().unsetLink();
+          disableHyperLink(thisMenu);
+        },
+      },
+      hasLeftDivider: false,
+      hasRightDivider: false,
+    },
+  ];
+};
 
 const fixedMenuUpdateEventListener = (menu: TReturnEditorFixedMenu): void => {
   const editorAPI = getEditorAPI();
@@ -291,6 +299,11 @@ const fixedMenuUpdateEventListener = (menu: TReturnEditorFixedMenu): void => {
   const bulletListButton = menu.returnsMap.button__rrujmyecrv;
   const numberListButton = menu.returnsMap.button__thphluhzux;
   const hyperlinkEnableButton = menu.returnsMap.button__pkqlfdlqtn;
+
+  const { isFreeTrialExpired } = isAccountInFreeTrial();
+  if (isFreeTrialExpired) {
+    return;
+  }
 
   editorAPI.onTransaction((): void => {
     if (editorAPI.isBoldActive()) {

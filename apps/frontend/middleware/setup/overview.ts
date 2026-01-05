@@ -52,6 +52,7 @@ const setAccountOverview = async (): Promise<void> => {
     name: response.results.name,
     status: response.results.status,
     subscriptionStatus: response.results.subscription_status,
+    availableFreeTrialDates: response.results.available_free_trial_dates,
     isEmailVerified: response.results.is_email_verified,
   });
 

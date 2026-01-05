@@ -19,6 +19,7 @@ type TResponseV1AccountOverview = {
     name: string;
     status: string;
     subscription_status: string;
+    available_free_trial_dates: number | undefined;
     is_email_verified: boolean;
     updated_time: string;
   };

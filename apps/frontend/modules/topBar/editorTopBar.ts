@@ -1,8 +1,15 @@
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
+import { TopBarBadgeType } from '../../components/TopBar';
 import { PATHS } from '../../constants/paths';
 import { topBarInstance } from '../../controller/topBar';
+import { isAccountInFreeTrial } from '../../data/stores/overview';
 import { buildError } from '../../helpers/error/build';
+import { langKeys } from '../../translations/keys';
 import { navigate } from '../../utils/routes/routes';
+import {
+  openSettingsModal,
+  settingsPageSectionIDs,
+} from '../settings/openSettingsModal';
 import { buildAccountMenu } from './accountMenu';
 import { buildExportMenu } from './exportMenu';
 
@@ -45,6 +52,18 @@ const setupEditorTopBar = async (): Promise<void> => {
       },
     },
   ]);
+
+  const { isFreeTrialExpired } = isAccountInFreeTrial();
+
+  if (isFreeTrialExpired) {
+    topBarInstance.updateBadge({
+      id: 'top_bar_badge__vsdssovtec',
+      text: langKeys().TopBarDocumentReadOnly,
+      type: TopBarBadgeType.BLUE,
+      onClick: async (): Promise<void> =>
+        await openSettingsModal(settingsPageSectionIDs.subscription),
+    });
+  }
 };
 
 export { setupEditorTopBar };

@@ -6,6 +6,7 @@ type TStoreAccountOverview = {
   name: string;
   status: string;
   subscriptionStatus: string;
+  availableFreeTrialDates: number | undefined;
   isEmailVerified: boolean;
 };
 
@@ -15,6 +16,7 @@ const initialState: TStoreAccountOverview = {
   name: '',
   status: '',
   subscriptionStatus: '',
+  availableFreeTrialDates: undefined,
   isEmailVerified: false,
 };
 
@@ -33,6 +35,37 @@ const updateOverviewLoadedStatus = (isLoaded: boolean): void => {
   isOverviewLoaded = isLoaded;
 };
 
+const isAccountInFreeTrial = (): {
+  isFreeTrial: boolean;
+  isFreeTrialExpired: boolean | undefined;
+  availableDays: number | undefined;
+} => {
+  if (
+    accountOverviewStore.getState().subscriptionStatus !== 'no_subscription'
+  ) {
+    return {
+      isFreeTrial: false,
+      isFreeTrialExpired: undefined,
+      availableDays: undefined,
+    };
+  }
+
+  const availableDays = accountOverviewStore.getState().availableFreeTrialDates;
+  if (!availableDays) {
+    return {
+      isFreeTrial: false,
+      isFreeTrialExpired: undefined,
+      availableDays: undefined,
+    };
+  }
+
+  return {
+    isFreeTrial: true,
+    isFreeTrialExpired: availableDays <= 0,
+    availableDays,
+  };
+};
+
 export type { TStoreAccountOverview };
 
 export {
@@ -41,4 +74,5 @@ export {
   getAccountOverview,
   updateAccountOverview,
   updateOverviewLoadedStatus,
+  isAccountInFreeTrial,
 };
