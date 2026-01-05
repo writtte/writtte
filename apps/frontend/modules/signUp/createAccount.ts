@@ -118,7 +118,7 @@ const createUserAccount = async (
 
   if (status !== HTTP_STATUS.CREATED || !response) {
     const httpError = handleHTTPError(status, {
-      [HTTP_STATUS.CONFLICT]: langKeys().PageSignUpButtonSend,
+      [HTTP_STATUS.CONFLICT]: langKeys().ErrorAccountAlreadyExists,
     });
 
     button.setStatusText({
