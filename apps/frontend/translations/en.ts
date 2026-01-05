@@ -37,7 +37,7 @@ const enMessages = {
   EDITOR_LOADING_UPLOADING_IMAGE: 'Uploading image...',
   ERROR_ACCOUNT_ALREADY_EXISTS: 'An account with this email already exists.',
   ERROR_ACCOUNT_DELETE_ALREADY_IN_SUBSCRIPTION: 'To delete your account, you must first cancel your active subscription to avoid unnecessary future charges.',
-  ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED: 'The email address you entered is invalid. Please enter it in the correct format to continue.',
+  ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED: 'The confirmation text format you entered is invalid. Please enter it in the correct format to continue.',
   ERROR_ACCOUNT_INVALID_CREDENTIALS: 'The email or password you entered is incorrect.',
   ERROR_ACCOUNT_NOT_EXISTS: 'No account found with this email address.',
   ERROR_API_BAD_GATEWAY: 'We\'re having trouble reaching the server. Please try again soon.',
