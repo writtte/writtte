@@ -2,6 +2,7 @@ package v1subscriptionretrieve
 
 import (
 	"net/http"
+	"strings"
 
 	"backend/constants"
 	"backend/helpers/response"
@@ -31,14 +32,13 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
+	subscriptionStatusStr := strings.ToLower(*results.Data.Status)
+
 	switch *results.Code {
 	case constants.SubscriptionRetrieved:
 		response.Results(w, r, http.StatusOK, &apiResultsSuccess{
-			CustomerID:  results.Data.CustomerID,
-			SeatCount:   results.Data.SeatCount,
-			Service:     results.Data.Service,
-			ServiceData: results.Data.ServiceData,
-			Status:      results.Data.Status,
+			CustomerID: results.Data.CustomerID,
+			Status:     &subscriptionStatusStr,
 		})
 
 		return

@@ -37,6 +37,8 @@ type TLangKeys = {
   AlertUnableToAddHyperlinkTitle: string;
   EditorLoadingUploadingImage: string;
   ErrorAccountAlreadyExists: string;
+  ErrorAccountDeleteAlreadyInSubscription: string;
+  ErrorAccountDeleteConfirmationFailed: string;
   ErrorAccountInvalidCredentials: string;
   ErrorAccountNotExists: string;
   ErrorApiBadGateway: string;
@@ -94,6 +96,12 @@ type TLangKeys = {
   MenuItemRenameDocument: string;
   MenuItemSettings: string;
   MenuItemSignOut: string;
+  ModalAccountDeleteConfirmationButtonCancel: string;
+  ModalAccountDeleteConfirmationButtonConfirm: string;
+  ModalAccountDeleteConfirmationButtonDeleting: string;
+  ModalAccountDeleteConfirmationTextContent: string;
+  ModalAccountDeleteConfirmationTextContentNotice: string;
+  ModalAccountDeleteConfirmationTextTitle: string;
   ModalDocumentDeleteButtonCancel: string;
   ModalDocumentDeleteButtonDelete: string;
   ModalDocumentDeleteButtonDeleting: string;
@@ -176,6 +184,9 @@ type TLangKeys = {
   PageSingInLinkPasswordReset: string;
   PageSingInLinkSignUp: string;
   SettingsModalButtonOk: string;
+  SettingsModalHighRiskDeleteAccountButtonDelete: string;
+  SettingsModalHighRiskDeleteAccountTextDescription: string;
+  SettingsModalHighRiskDeleteAccountTextTitle: string;
   SettingsModalOverviewUpdateNameInputPlaceholder: string;
   SettingsModalOverviewUpdateNameTextTitle: string;
   SettingsModalSectionTextHighRisk: string;
@@ -240,6 +251,8 @@ const langKeys = (): TLangKeys => {
     AlertUnableToAddHyperlinkTitle: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_TITLE'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
+    ErrorAccountDeleteAlreadyInSubscription: getTr('ERROR_ACCOUNT_DELETE_ALREADY_IN_SUBSCRIPTION'),
+    ErrorAccountDeleteConfirmationFailed: getTr('ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
     ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),
     ErrorApiBadGateway: getTr('ERROR_API_BAD_GATEWAY'),
@@ -297,6 +310,12 @@ const langKeys = (): TLangKeys => {
     MenuItemRenameDocument: getTr('MENU_ITEM_RENAME_DOCUMENT'),
     MenuItemSettings: getTr('MENU_ITEM_SETTINGS'),
     MenuItemSignOut: getTr('MENU_ITEM_SIGN_OUT'),
+    ModalAccountDeleteConfirmationButtonCancel: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CANCEL'),
+    ModalAccountDeleteConfirmationButtonConfirm: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CONFIRM'),
+    ModalAccountDeleteConfirmationButtonDeleting: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_DELETING'),
+    ModalAccountDeleteConfirmationTextContent: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_TEXT_CONTENT'),
+    ModalAccountDeleteConfirmationTextContentNotice: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_TEXT_CONTENT_NOTICE'),
+    ModalAccountDeleteConfirmationTextTitle: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_TEXT_TITLE'),
     ModalDocumentDeleteButtonCancel: getTr('MODAL_DOCUMENT_DELETE_BUTTON_CANCEL'),
     ModalDocumentDeleteButtonDelete: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETE'),
     ModalDocumentDeleteButtonDeleting: getTr('MODAL_DOCUMENT_DELETE_BUTTON_DELETING'),
@@ -379,6 +398,9 @@ const langKeys = (): TLangKeys => {
     PageSingInLinkPasswordReset: getTr('PAGE_SING_IN_LINK_PASSWORD_RESET'),
     PageSingInLinkSignUp: getTr('PAGE_SING_IN_LINK_SIGN_UP'),
     SettingsModalButtonOk: getTr('SETTINGS_MODAL_BUTTON_OK'),
+    SettingsModalHighRiskDeleteAccountButtonDelete: getTr('SETTINGS_MODAL_HIGH_RISK_DELETE_ACCOUNT_BUTTON_DELETE'),
+    SettingsModalHighRiskDeleteAccountTextDescription: getTr('SETTINGS_MODAL_HIGH_RISK_DELETE_ACCOUNT_TEXT_DESCRIPTION'),
+    SettingsModalHighRiskDeleteAccountTextTitle: getTr('SETTINGS_MODAL_HIGH_RISK_DELETE_ACCOUNT_TEXT_TITLE'),
     SettingsModalOverviewUpdateNameInputPlaceholder: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_INPUT_PLACEHOLDER'),
     SettingsModalOverviewUpdateNameTextTitle: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_TEXT_TITLE'),
     SettingsModalSectionTextHighRisk: getTr('SETTINGS_MODAL_SECTION_TEXT_HIGH_RISK'),
@@ -401,7 +423,7 @@ const langKeys = (): TLangKeys => {
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
     TopBarBadgeDaysLeft: getTr('TOP_BAR_BADGE_DAYS_LEFT'),
     TopBarBadgeDocumentReadOnly: getTr('TOP_BAR_BADGE_DOCUMENT_READ_ONLY'),
-    TopBarBadgeFreeTrialExpired: getTr('TOP_BAR_BADGE_FREE_TRIAL_EXPIRED')
+    TopBarBadgeFreeTrialExpired: getTr('TOP_BAR_BADGE_FREE_TRIAL_EXPIRED'),
   }
 
   return keys;

@@ -23,9 +23,6 @@ type dbQueryOutput struct {
 }
 
 type apiResultsSuccess struct {
-	CustomerID  *string        `json:"customer_id"`
-	SeatCount   *int           `json:"seat_count"`
-	Service     *string        `json:"service"`
-	ServiceData map[string]any `json:"service_data"`
-	Status      *string        `json:"status"`
+	CustomerID *string `json:"customer_id"`
+	Status     *string `json:"status"`
 }
