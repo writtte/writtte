@@ -26,7 +26,7 @@ window.onerror = (
     logFatalToSentry(syntheticError);
   }
 
-  return false;
+  return true;
 };
 
 window.addEventListener(
@@ -48,5 +48,7 @@ window.addEventListener(
 
       logFatalToSentry(syntheticError);
     }
+
+    return true;
   },
 );
