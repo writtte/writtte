@@ -40,9 +40,7 @@ const isAccountInFreeTrial = (): {
   isFreeTrialExpired: boolean | undefined;
   availableDays: number | undefined;
 } => {
-  if (
-    accountOverviewStore.getState().subscriptionStatus !== 'no_subscription'
-  ) {
+  if (accountOverviewStore.getState().subscriptionStatus === 'active') {
     return {
       isFreeTrial: false,
       isFreeTrialExpired: undefined,
