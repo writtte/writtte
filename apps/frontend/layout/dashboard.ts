@@ -2,6 +2,7 @@ import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { TopBar } from '../components/TopBar';
 import { PATHS } from '../constants/paths';
 import { TopBarController } from '../controller/topBar';
+import { buildError } from '../helpers/error/build';
 import { setupEditorTopBar } from '../modules/topBar/editorTopBar';
 import { setupParentTopBar } from '../modules/topBar/parentTopBar';
 import { checkRouteStartsWith } from '../utils/routes/helpers';
@@ -12,7 +13,7 @@ const DashboardLayout = async ({
   content: HTMLElement;
 }): Promise<HTMLElement> => {
   if (!(content instanceof HTMLElement)) {
-    throw new Error('content should be a valid HTMLElement');
+    throw new Error(buildError('content should be a valid HTMLElement'));
   }
 
   const layoutDiv = document.createElement('div');
