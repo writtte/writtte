@@ -23,6 +23,7 @@ type dbQueryOutputDataUser struct {
 	Status          *string `json:"status"`
 	IsEmailVerified *bool   `json:"is_email_verified"`
 	UpdatedTime     *string `json:"updated_time"`
+	CreatedTime     *string `json:"created_time"`
 }
 
 type dbQueryOutputData struct {
@@ -38,12 +39,17 @@ type dbQueryOutput struct {
 	Data       *dbQueryOutputData `json:"data"`
 }
 
+// revive:disable:line-length-limit
+
 type apiResultsSuccess struct {
-	AccountCode        *string `json:"account_code"`
-	EmailAddress       *string `json:"email_address"`
-	Name               *string `json:"name"`
-	Status             *string `json:"status"`
-	SubscriptionStatus *string `json:"subscription_status"`
-	IsEmailVerified    *bool   `json:"is_email_verified"`
-	UpdatedTime        *string `json:"updated_time"`
+	AccountCode             *string `json:"account_code"`
+	EmailAddress            *string `json:"email_address"`
+	Name                    *string `json:"name"`
+	Status                  *string `json:"status"`
+	SubscriptionStatus      *string `json:"subscription_status"`
+	AvailableFreeTrialDates *int    `json:"available_free_trial_dates,omitempty"`
+	IsEmailVerified         *bool   `json:"is_email_verified"`
+	UpdatedTime             *string `json:"updated_time"`
 }
+
+// revive:enable:line-length-limit

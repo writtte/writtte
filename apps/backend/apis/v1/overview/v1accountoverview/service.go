@@ -3,6 +3,7 @@ package v1accountoverview
 import (
 	"context"
 	"encoding/json"
+	"time"
 
 	"backend/apis/v1/authentication/v1signin"
 	"backend/constants"
@@ -32,4 +33,24 @@ func (s *service) perform(ctx context.Context) (*dbQueryOutput, error) {
 	}
 
 	return parsedResults, nil
+}
+
+func calculateFreeTrialDays(createdTimeStr *string) int {
+	const hoursPerDay = 24
+	const freeTrialDays = 7
+	const minDays = 0
+
+	if createdTimeStr == nil {
+		return minDays
+	}
+
+	createdTime, err := time.Parse(time.RFC3339, *createdTimeStr)
+	if err != nil {
+		return minDays
+	}
+
+	daysSinceCreation := int(time.Since(createdTime).Hours() / hoursPerDay)
+
+	daysRemaining := freeTrialDays - daysSinceCreation
+	return max(daysRemaining, minDays)
 }
