@@ -65,7 +65,7 @@
   font-weight: 400;
   gap: 8px;
   justify-content: flex-start;
-  line-height: normal;
+  line-height: 24px;
   padding: 2px;
 }
 

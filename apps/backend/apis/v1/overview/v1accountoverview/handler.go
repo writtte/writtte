@@ -61,7 +61,7 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 			UpdatedTime:        results.Data.User.UpdatedTime,
 		}
 
-		if subscriptionStatusStr == "no_subscription" &&
+		if subscriptionStatusStr != "active" &&
 			results.Data.User.CreatedTime != nil {
 			calculatedDays :=
 				calculateFreeTrialDays(results.Data.User.CreatedTime)
