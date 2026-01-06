@@ -43,7 +43,7 @@ const EditorPage = async (
 
   editorPageDiv.classList.add('editor-page');
   containerDiv.classList.add('editor-page__container');
-  editorDiv.classList.add('editor-page__editor', 'v-scrollbar');
+  editorDiv.classList.add('editor-page__editor');
 
   const editorElement = Editor({
     id: 'editor__oqvawzczdv',
