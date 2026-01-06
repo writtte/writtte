@@ -143,15 +143,10 @@
 
   .appearance-modal__content {
     flex-direction: column;
-    overflow: hidden;
   }
 
   .appearance-modal__panel-divider {
     height: 1px;
     width: 100%;
-  }
-
-  .appearance-modal__panel {
-    flex: 0 0 auto;
   }
 }
