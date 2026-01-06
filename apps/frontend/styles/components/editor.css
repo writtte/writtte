@@ -53,9 +53,9 @@
     animation: shimmer-after 1s ease-in-out infinite;
     background: linear-gradient(
       90deg,
-      var(--component-editor-bg--loading) 0%,
-      var(--component-editor-bg--loading) 50%,
-      var(--component-editor-bg--loading) 100%
+      var(--component-writtte-editor-bg--loading) 0%,
+      var(--component-writtte-editor-bg--loading) 50%,
+      var(--component-writtte-editor-bg--loading) 100%
     );
     bottom: 0;
     content: "";
@@ -89,9 +89,9 @@
     animation: shimmer-after 1s ease-in-out infinite;
     background: linear-gradient(
       90deg,
-      var(--component-editor-bg--loading) 0%,
-      var(--component-editor-bg--loading) 50%,
-      var(--component-editor-bg--loading) 100%
+      var(--component-writtte-editor-bg--loading) 0%,
+      var(--component-writtte-editor-bg--loading) 50%,
+      var(--component-writtte-editor-bg--loading) 100%
     );
     bottom: 0;
     content: "";
