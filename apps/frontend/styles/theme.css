@@ -51,6 +51,7 @@
 /* Pages */
 
 @import "./pages/editor.css";
+@import "./pages/onboarding.css";
 @import "./pages/overview.css";
 
 /* Components */

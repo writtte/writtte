@@ -1,0 +1,262 @@
+.onboarding-page {
+  align-items: center;
+  background: #ffffff;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+.onboarding-page__container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  max-width: 640px;
+  overflow: hidden;
+  padding: 48px;
+  position: relative;
+  width: 100%;
+}
+
+.onboarding-page__logo {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  position: fixed;
+  top: 24px;
+
+  svg {
+    height: 26px;
+    width: 26px;
+
+    path {
+      fill: #1c1d1e;
+    }
+  }
+}
+
+.onboarding-page__step {
+  align-items: center;
+  display: flex;
+  gap: 32px;
+  height: auto;
+  justify-content: center;
+  left: 50%;
+  opacity: 0;
+  padding: 32px;
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%) translateY(30px);
+  transition:
+    opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+}
+
+.onboarding-page__step--active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) translateY(0);
+}
+
+.onboarding-page__step--exiting {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) translateY(-30px);
+}
+
+.onboarding-page__step--final.onboarding-page__step--active {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(28, 29, 30, 0.08));
+  }
+}
+
+.onboarding-page__step-text {
+  color: #1c1d1e;
+  font-family: "IBM Plex Sans Variable", sans-serif;
+  font-size: 17px;
+  font-weight: 350;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.onboarding-page__step--final .onboarding-page__step-text {
+  font-size: 17px;
+  font-weight: 350;
+}
+
+.onboarding-page__step-button {
+  align-items: center;
+  background: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  flex-shrink: 0;
+  height: 44px;
+  justify-content: center;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.2s ease;
+  width: 44px;
+
+  svg {
+    height: 18px;
+    transition: transform 0.2s ease;
+    width: 18px;
+
+    path {
+      fill: #8b8f96;
+      transition: fill 0.3s ease;
+    }
+  }
+
+  &:hover {
+    background-color: #1c1d1e;
+    border-color: #1c1d1e;
+    transform: scale(1.05);
+
+    svg {
+      transform: translateX(2px);
+
+      path {
+        fill: #ffffff;
+      }
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.onboarding-page__step--final .onboarding-page__step-button {
+  background: #1c1d1e;
+  border-color: #1c1d1e;
+
+  svg path {
+    fill: #ffffff;
+  }
+
+  &:hover {
+    background: #2c2d2e;
+    border-color: #2c2d2e;
+  }
+}
+
+.onboarding-page__progress {
+  align-items: center;
+  bottom: 48px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease;
+}
+
+.onboarding-page__progress--complete {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.onboarding-page__progress-dot {
+  align-items: center;
+  background: transparent;
+  border-radius: 50%;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+  display: flex;
+  height: 8px;
+  justify-content: center;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease,
+    width 0.3s ease,
+    height 0.3s ease;
+  width: 8px;
+
+  &:hover {
+    background: #c5c7cb;
+    transform: scale(1.2);
+  }
+}
+
+.onboarding-page__progress-dot--active {
+  background: transparent;
+  border: 1px solid #1c1d1e;
+}
+
+.onboarding-page__progress-dot--current {
+  background: #1c1d1e;
+  height: 12px;
+  width: 12px;
+
+  &:hover {
+    background: #1c1d1e;
+    transform: scale(1.1);
+  }
+}
+
+.onboarding-page__container--complete {
+  animation: fade-out-up 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fade-out-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.onboarding-page__step-button--start {
+  border-radius: 24px;
+  gap: 10px;
+  padding: 0 24px;
+  width: auto;
+}
+
+.onboarding-page__step-button-text {
+  color: #ffffff;
+  font-family: "IBM Plex Sans Variable", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.onboarding-page__step-button--start:hover {
+  gap: 12px;
+}
+
+.onboarding-page__step--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) translateY(30px);
+}
+
+.onboarding-page__step--exit {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) translateY(-30px);
+}
