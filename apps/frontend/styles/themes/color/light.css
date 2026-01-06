@@ -33,7 +33,7 @@ html[data-color-theme="theme_light"] {
   --component-button-danger-bg---loading: #ffa7a8;
   --component-button-danger-bg: #fe3b3e;
   --component-button-danger-text---disable: #8b8f96;
-  --component-button-danger-text: var(--base-white);
+  --component-button-danger-text: #ffffff;
   --component-button-neutral-bg---active: #eff0f1;
   --component-button-neutral-bg---disable: #dedfe2;
   --component-button-neutral-bg---hover: #f6f6f6;
