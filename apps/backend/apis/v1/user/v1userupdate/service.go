@@ -34,7 +34,7 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 		Name:            body.Name,
 		HashedPassword:  hashed,
 		PasswordSalt:    salt,
-		Status:          intstr.StrPtr(convertStatusToMatchDB(*body.Status)),
+		Status:          convertStatusToMatchDB(body.Status),
 		IsEmailVerified: body.IsEmailVerified,
 	}
 
@@ -51,12 +51,16 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 	return parsedResults, nil
 }
 
-func convertStatusToMatchDB(statusType string) string {
-	switch statusType {
+func convertStatusToMatchDB(statusType *string) *string {
+	if statusType == nil {
+		return nil
+	}
+
+	switch *statusType {
 	case "pending-deletion":
-		return "PENDING_DELETION"
+		return intstr.StrPtr("PENDING_DELETION")
 
 	default:
-		panic(fmt.Sprintf("invalid status type %s", statusType))
+		panic(fmt.Sprintf("invalid status type %s", *statusType))
 	}
 }
