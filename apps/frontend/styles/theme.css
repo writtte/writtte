@@ -11,12 +11,15 @@
 
 /* Settings */
 
-@import "./settings/colors.css";
 @import "./settings/numbers.css";
 
-/* Themes */
+/* Color Style Themes */
 
-@import "./themes/light.css";
+@import "./themes/color/base.css";
+
+/* Editor Style Themes */
+
+@import "./themes/editor/base.css";
 
 /* Global */
 
@@ -70,7 +73,7 @@
 
 /* Vendors */
 
-@import "./vendors/writtte_editor.css";
+@import "./vendors/editor.css";
 
 /* Debugging */
 
