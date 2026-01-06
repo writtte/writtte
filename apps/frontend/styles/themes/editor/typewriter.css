@@ -1,5 +1,5 @@
 /* biome-ignore format: Style variables should not be formatted */
-html[data-editor-theme="typewriter"] {
+html[data-editor-theme="editor_typewriter"] {
   --editor-core-font-family: 'Special Elite', system-ui;
 
   /* Placeholder */

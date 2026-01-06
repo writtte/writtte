@@ -58,6 +58,7 @@
 @import "./components/action_button.css";
 @import "./components/alert.css";
 @import "./components/animated_icon.css";
+@import "./components/appearance_modal.css";
 @import "./components/authentication_button.css";
 @import "./components/authentication_form.css";
 @import "./components/authentication_header.css";
@@ -86,6 +87,7 @@
 /* Controllers */
 
 @import "./controllers/alert.css";
+@import "./controllers/appearance_modal.css";
 @import "./controllers/modal.css";
 @import "./controllers/settings_modal.css";
 

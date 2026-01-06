@@ -35,6 +35,9 @@ type TLangKeys = {
   AlertSubscriptionCustomerPortalLinkFailedTitle: string;
   AlertUnableToAddHyperlinkDescription: string;
   AlertUnableToAddHyperlinkTitle: string;
+  AppearanceModalPanelEditorTextTitle: string;
+  AppearanceModalPanelThemeTextTitle: string;
+  AppearanceModalTextTitle: string;
   EditorLoadingUploadingImage: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountDeleteAlreadyInSubscription: string;
@@ -82,6 +85,7 @@ type TLangKeys = {
   InputPlaceholderPasswordConfirm: string;
   LoadingTextCheckingMagicLink: string;
   LoadingTextVerifyingEmailUpdateLink: string;
+  MenuItemAppearance: string;
   MenuItemChangelogs: string;
   MenuItemDeleteDocument: string;
   MenuItemDocumentExportMarkdown: string;
@@ -249,6 +253,9 @@ const langKeys = (): TLangKeys => {
     AlertSubscriptionCustomerPortalLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE'),
     AlertUnableToAddHyperlinkDescription: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_DESCRIPTION'),
     AlertUnableToAddHyperlinkTitle: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_TITLE'),
+    AppearanceModalPanelEditorTextTitle: getTr('APPEARANCE_MODAL_PANEL_EDITOR_TEXT_TITLE'),
+    AppearanceModalPanelThemeTextTitle: getTr('APPEARANCE_MODAL_PANEL_THEME_TEXT_TITLE'),
+    AppearanceModalTextTitle: getTr('APPEARANCE_MODAL_TEXT_TITLE'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountDeleteAlreadyInSubscription: getTr('ERROR_ACCOUNT_DELETE_ALREADY_IN_SUBSCRIPTION'),
@@ -296,6 +303,7 @@ const langKeys = (): TLangKeys => {
     InputPlaceholderPasswordConfirm: getTr('INPUT_PLACEHOLDER_PASSWORD_CONFIRM'),
     LoadingTextCheckingMagicLink: getTr('LOADING_TEXT_CHECKING_MAGIC_LINK'),
     LoadingTextVerifyingEmailUpdateLink: getTr('LOADING_TEXT_VERIFYING_EMAIL_UPDATE_LINK'),
+    MenuItemAppearance: getTr('MENU_ITEM_APPEARANCE'),
     MenuItemChangelogs: getTr('MENU_ITEM_CHANGELOGS'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
     MenuItemDocumentExportMarkdown: getTr('MENU_ITEM_DOCUMENT_EXPORT_MARKDOWN'),

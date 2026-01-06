@@ -1,5 +1,5 @@
 /* biome-ignore format: Style variables should not be formatted */
-html[data-editor-theme="sans"] {
+html[data-editor-theme="editor_sans"] {
   --editor-core-font-family: "IBM Plex Sans Variable", sans-serif;
 
   /* Placeholder */

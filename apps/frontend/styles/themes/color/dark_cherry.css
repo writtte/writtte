@@ -1,5 +1,5 @@
 /* biome-ignore format: Style variables should not be formatted */
-html[data-color-theme="dark_cherry"] {
+html[data-color-theme="theme_dark_cherry"] {
   --shadow-alert: none;
   --shadow-menu: none;
   --shadow-modal: none;

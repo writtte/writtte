@@ -1,5 +1,5 @@
 /* biome-ignore format: Style variables should not be formatted */
-html[data-editor-theme="mono"] {
+html[data-editor-theme="editor_mono"] {
   --editor-core-font-family: 'JetBrains Mono Variable', monospace;;
 
   /* Placeholder */

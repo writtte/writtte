@@ -3,7 +3,7 @@ import { getLocalStorage } from '@writtte-internal/local-storage';
 const checkAndSetColorTheme = (): void => {
   const currentTheme = getLocalStorage('color-theme');
   if (currentTheme === null) {
-    document.documentElement.setAttribute('data-color-theme', 'light');
+    document.documentElement.setAttribute('data-color-theme', 'theme_light');
     return;
   }
 
@@ -13,7 +13,7 @@ const checkAndSetColorTheme = (): void => {
 const checkAndSetEditorTheme = (): void => {
   const currentTheme = getLocalStorage('editor-theme');
   if (currentTheme === null) {
-    document.documentElement.setAttribute('data-editor-theme', 'sans');
+    document.documentElement.setAttribute('data-editor-theme', 'editor_sans');
     return;
   }
 

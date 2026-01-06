@@ -1,5 +1,5 @@
 /* biome-ignore format: Style variables should not be formatted */
-html[data-editor-theme="serif"] {
+html[data-editor-theme="editor_serif"] {
   --editor-core-font-family: 'Playfair Variable', serif;
 
   /* Placeholder */

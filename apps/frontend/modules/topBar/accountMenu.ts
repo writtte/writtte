@@ -4,6 +4,7 @@ import { LINKS } from '../../constants/links';
 import { signOutCurrentAccount } from '../../helpers/account/signOut';
 import { langKeys } from '../../translations/keys';
 import { navigateExternal } from '../../utils/routes/helpers';
+import { openAppearanceModal } from '../appearance/openAppearanceModal';
 import {
   openSettingsModal,
   settingsPageSectionIDs,
@@ -29,6 +30,16 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>
           await openSettingsModal(settingsPageSectionIDs.overview),
+        hasTopDivider: false,
+        hasBottomDivider: false,
+      },
+      {
+        id: 'menu_item__jqvjjehwnn',
+        text: langKeys().MenuItemAppearance,
+        leftIcon: undefined,
+        rightIcon: undefined,
+        isLeftIconVisible: true,
+        onClick: (): void => openAppearanceModal(),
         hasTopDivider: false,
         hasBottomDivider: true,
       },
