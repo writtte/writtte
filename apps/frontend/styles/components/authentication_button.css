@@ -99,6 +99,10 @@
     cursor: wait;
     pointer-events: none;
 
+    .authentication-button__text {
+      color: var(--component-button-authentication-text);
+    }
+
     .authentication-button__icon {
       svg path {
         fill: var(--component-button-authentication-text);

@@ -19,18 +19,7 @@
   flex-direction: column;
   height: 100%;
   margin-top: 24px;
-  padding-inline: 384px;
+  overflow: hidden;
+  padding-inline: 0;
   width: 100%;
-}
-
-@media screen and (max-width: 1200px) {
-  .editor-page__editor {
-    padding-inline: 128px;
-  }
-}
-
-@media screen and (max-width: 972px) {
-  .editor-page__editor {
-    padding-inline: 24px;
-  }
 }

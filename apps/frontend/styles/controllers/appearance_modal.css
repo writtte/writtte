@@ -1,0 +1,19 @@
+.appearance-modal-container {
+  align-items: center;
+  background: transparent;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  padding: 64px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: var(--z-index-controller-settings-modal);
+}
+
+@media screen and (max-width: 576px) {
+  .appearance-modal-container {
+    padding: 24px;
+  }
+}

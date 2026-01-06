@@ -69,6 +69,8 @@
     "noopener",
     "noreferrer",
     "Contextify",
-    "extsentry"
+    "extsentry",
+    "selectednode",
+    "catppuccin"
   ]
 }

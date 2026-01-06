@@ -25,6 +25,7 @@
     "@fontsource-variable/ibm-plex-sans": "5.2.8",
     "@fontsource-variable/jetbrains-mono": "5.2.8",
     "@fontsource-variable/playfair": "5.2.8",
+    "@fontsource/special-elite": "5.2.8",
     "@sentry/browser": "10.32.1"
   },
   "devDependencies": {

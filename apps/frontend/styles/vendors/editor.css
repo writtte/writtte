@@ -1,0 +1,393 @@
+.writtte-editor {
+  cursor: text;
+  font-family: var(--editor-core-font-family);
+  overflow-wrap: break-word;
+  unicode-bidi: isolate;
+  white-space-collapse: break-spaces;
+  word-break: break-word;
+  word-wrap: break-word;
+
+  div {
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.writtte-editor ::selection {
+  background: var(--component-writtte-editor-bg--text-selection);
+  color: inherit;
+}
+
+.writtte-editor ::-moz-selection {
+  background: var(--component-writtte-editor-bg--text-selection);
+  color: inherit;
+}
+
+/* Selected Node */
+
+.writtte-editor .ProseMirror-selectednode {
+  border-radius: 0px;
+  border: none;
+  box-shadow: none;
+  outline-offset: -1px;
+  outline: 1px solid var(--component-writtte-editor-border--block---focused);
+}
+
+.writtte-editor .persistent-selection {
+  background: var(--component-writtte-editor-bg--text-selection);
+  color: inherit;
+}
+
+/* Disabled and Read-only Styles */
+
+.writtte-editor--read-only a:hover {
+  cursor: pointer;
+}
+
+.writtte-editor--read-only li,
+.writtte-editor--read-only li label {
+  cursor: default;
+}
+
+/* Placeholder Styles */
+
+.writtte-editor p {
+  position: relative;
+}
+
+.writtte-editor p::before {
+  color: var(--component-writtte-editor-text---placeholder);
+  content: attr(data-placeholder);
+  display: block;
+  font-family: inherit;
+  font-size: var(--editor-placeholder-font-size);
+  font-style: normal;
+  font-weight: var(--editor-placeholder-font-weight);
+  left: 0;
+  line-height: auto;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+/* Paragraph */
+
+.writtte-editor p {
+  caret-color: var(--component-writtte-editor-text--paragraph);
+  color: var(--component-writtte-editor-text--paragraph);
+  font-size: var(--editor-p-font-size);
+  font-weight: var(--editor-p-font-weight);
+  line-height: var(--editor-p-line-height);
+  margin-bottom: var(--editor-p-margin-bottom);
+  word-spacing: var(--editor-p-word-spacing);
+}
+
+.writtte-editor h1 {
+  border-bottom: var(--editor-h1-border-bottom);
+  caret-color: var(--component-writtte-editor-text--h1);
+  color: var(--component-writtte-editor-text--h1);
+  font-size: var(--editor-h1-font-size);
+  font-weight: var(--editor-h1-font-weight);
+  line-height: var(--editor-h1-line-height);
+  margin-bottom: var(--editor-h1-margin-bottom);
+  margin-top: var(--editor-h1-margia-top);
+  text-align: var(--editor-h1-text-align);
+  word-spacing: var(--editor-h1-word-spacing);
+}
+
+.writtte-editor h2 {
+  border-bottom: var(--editor-h2-border-bottom);
+  caret-color: var(--component-writtte-editor-text--h2);
+  color: var(--component-writtte-editor-text--h2);
+  font-size: var(--editor-h2-font-size);
+  font-weight: var(--editor-h2-font-weight);
+  line-height: var(--editor-h2-line-height);
+  margin-bottom: var(--editor-h2-margin-bottom);
+  margin-top: var(--editor-h2-margin-top);
+  text-align: var(--editor-h2-text-align);
+  word-spacing: var(--editor-h2-word-spacing);
+}
+
+.writtte-editor h3 {
+  border-bottom: var(--editor-h3-border-bottom);
+  caret-color: var(--component-writtte-editor-text--h3);
+  color: var(--component-writtte-editor-text--h3);
+  font-size: var(--editor-h3-font-size);
+  font-weight: var(--editor-h3-font-weight);
+  line-height: var(--editor-h3-line-height);
+  margin-bottom: var(--editor-h3-margin-bottom);
+  margin-top: var(--editor-h3-margin-top);
+  text-align: var(--editor-h3-text-align);
+  word-spacing: var(--editor-h3-word-spacing);
+}
+
+.writtte-editor h4 {
+  border-bottom: var(--editor-h4-border-bottom);
+  caret-color: var(--component-writtte-editor-text--h4);
+  color: var(--component-writtte-editor-text--h4);
+  font-size: var(--editor-h4-font-size);
+  font-weight: var(--editor-h4-font-weight);
+  line-height: var(--editor-h4-line-height);
+  margin-bottom: var(--editor-h4-margin-bottom);
+  margin-top: var(--editor-h4-margin-top);
+  text-align: var(--editor-h4-text-align);
+  word-spacing: var(--editor-h4-word-spacing);
+}
+
+.writtte-editor h5 {
+  border-bottom: var(--editor-h5-border-bottom);
+  caret-color: var(--component-writtte-editor-text--h5);
+  color: var(--component-writtte-editor-text--h5);
+  font-size: var(--editor-h5-font-size);
+  font-weight: var(--editor-h5-font-weight);
+  line-height: var(--editor-h5-line-height);
+  margin-bottom: var(--editor-h5-margin-bottom);
+  margin-top: var(--editor-h5-margin-top);
+  text-align: var(--editor-h5-text-align);
+  word-spacing: var(--editor-h5-word-spacing);
+}
+
+.writtte-editor h6 {
+  border-bottom: var(--editor-h6-border-bottom);
+  caret-color: var(--component-writtte-editor-text--h6);
+  color: var(--component-writtte-editor-text--h6);
+  font-size: var(--editor-h6-font-size);
+  font-weight: var(--editor-h6-font-weight);
+  line-height: var(--editor-h6-line-height);
+  margin-bottom: var(--editor-h6-margin-bottom);
+  margin-top: var(--editor-h6-margin-top);
+  text-align: var(--editor-h6-text-align);
+  word-spacing: var(--editor-h6-word-spacing);
+}
+
+.writtte-editor h1:first-child,
+.writtte-editor h2:first-child,
+.writtte-editor h3:first-child,
+.writtte-editor h4:first-child,
+.writtte-editor h5:first-child,
+.writtte-editor h6:first-child {
+  margin-top: 0;
+}
+
+.writtte-editor h1 + h1,
+.writtte-editor h2 + h2,
+.writtte-editor h3 + h3,
+.writtte-editor h4 + h4,
+.writtte-editor h5 + h5,
+.writtte-editor h6 + h6 {
+  margin-top: 0px;
+}
+
+/* Bold */
+
+.writtte-editor b,
+.writtte-editor strong {
+  color: var(--component-writtte-editor-text--paragraph);
+  font-weight: var(--editor-bold-font-weight);
+}
+
+/* Underline */
+
+.writtte-editor i,
+.writtte-editor em {
+  font-style: italic;
+}
+
+.writtte-editor u {
+  text-decoration-line: underline;
+  text-decoration-skip-ink: auto;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  text-underline-offset: var(--editor-underline-offset);
+  text-underline-position: from-font;
+}
+
+/* Strikethrough */
+
+.writtte-editor s {
+  text-decoration-line: line-through;
+}
+
+/* Superscript and Subscript */
+
+.writtte-editor sub,
+.writtte-editor sup {
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.writtte-editor sub {
+  bottom: var(--editor-sub-script-bottom);
+  font-size: var(--editor-sub-script-font-size);
+}
+
+.writtte-editor sup {
+  font-size: var(--editor-super-script-font-size);
+  top: var(--editor-super-script-bottom);
+}
+
+/* Inline Code */
+
+.writtte-editor code {
+  align-items: center;
+  background: var(--component-writtte-editor-bg--inline-code);
+  border-radius: var(--editor-inline-code-border-radius);
+  color: var(--component-writtte-editor-text--paragraph);
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--editor-inline-code-font-family);
+  font-size: var(--editor-inline-code-font-size);
+  font-style: normal;
+  font-weight: 400;
+  justify-content: center;
+  padding: var(--editor-inline-code-padding);
+}
+
+/* Hyper Link */
+
+.writtte-editor a {
+  background: none;
+  border: none;
+  color: var(--component-writtte-editor-text--link);
+  cursor: text;
+  font-style: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-skip-ink: auto;
+  text-decoration-style: solid;
+  text-decoration-thickness: auto;
+  transition:
+    color var(--editor-hyper-link-hover-duration),
+    filter var(--editor-hyper-link-hover-duration),
+    opacity var(--editor-hyper-link-hover-duration),
+    text-decoration var(--editor-hyper-link-hover-duration);
+
+  &:hover {
+    filter: var(--editor-hyper-link-hover-filter);
+    opacity: var(--editor-hyper-link-hover-opacity);
+    text-decoration: underline;
+    text-underline-offset: var(--editor-hyper-link-underline-offset);
+  }
+
+  &:focus,
+  &:active,
+  &:visited {
+    background: none;
+    border: none;
+    color: var(--component-writtte-editor-text--link);
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+/* List */
+
+.writtte-editor ol,
+.writtte-editor ul {
+  display: block;
+  list-style-position: outside;
+  list-style-type: decimal;
+  margin: 0 0 0 var(--editor-list-padding-left);
+  padding: 0;
+  text-align: left;
+}
+
+.writtte-editor ol,
+.writtte-editor ul,
+.writtte-editor ol ul,
+.writtte-editor ol ol,
+.writtte-editor ul ul,
+.writtte-editor ul ol {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.writtte-editor ul {
+  list-style-type: disc;
+}
+
+.writtte-editor ol ol,
+.writtte-editor ol ul,
+.writtte-editor ul ol,
+.writtte-editor ul ul {
+  margin-left: var(--editor-list-gap-nested-lists);
+}
+
+.writtte-editor li {
+  margin: 0;
+  padding: 0 0 0 var(--editor-list-gap-mark-and-text);
+  position: relative;
+  text-align: left;
+}
+
+.writtte-editor li::marker {
+  color: var(--component-writtte-editor-bg--list-item-marker);
+}
+
+.writtte-editor ul,
+.writtte-editor ol {
+  margin-bottom: var(--editor-list-margin-bottom);
+}
+
+.writtte-editor ul p,
+.writtte-editor ol p {
+  margin-bottom: var(--editor-list-gap-items);
+}
+
+.writtte-editor p + ol,
+.writtte-editor p + ul {
+  margin-top: calc(
+    (-1 * var(--gap-items-common)) +
+    var(--editor-list-gap-nested-lists)
+  );
+}
+
+.writtte-editor li > p + ol,
+.writtte-editor li > p + ul {
+  margin-top: var(--editor-list-gap-items);
+}
+
+/* Horizontal Rule */
+
+.writtte-editor hr {
+  background: var(--component-writtte-editor-bg--hr);
+  border: none;
+  display: block;
+  height: var(--editor-horizontal-rule-height);
+  margin-bottom: var(--editor-horizontal-rule-margin-bottom);
+  margin-top: var(--editor-horizontal-rule-margin-top);
+  outline: none;
+}
+
+/* Image Container */
+
+.writtte-image-container {
+  align-items: center;
+  display: flex;
+  height: auto;
+  justify-content: center;
+  margin-bottom: var(--editor-image-container-margin-bottom);
+  margin-top: var(--editor-image-container-margin-top);
+  max-height: 100%;
+  max-width: 100%;
+  padding: var(--editor-image-container-padding);
+  width: auto;
+
+  img {
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    width: auto;
+  }
+}
+
+.writtte-image-container.hide {
+  display: none;
+}

@@ -9,7 +9,9 @@ import {
 import './styles/theme.css';
 import '@fontsource-variable/ibm-plex-sans';
 import '@fontsource-variable/jetbrains-mono';
+import '@fontsource/special-elite';
 import './sentry';
+import './theme';
 
 const main = async (): Promise<void> => {
   const rootId = 'writtte-root';

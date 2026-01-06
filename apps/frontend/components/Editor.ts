@@ -19,7 +19,7 @@ type TReturnEditor = {
 
 const Editor = (opts: TOptions): TReturnEditor => {
   const editorDiv = document.createElement('div');
-  editorDiv.classList.add('editor', 'writtte-editor');
+  editorDiv.classList.add('editor', 'writtte-editor', 'v-scrollbar');
 
   editorDiv.id = opts.id;
   setTestId(editorDiv, opts.id);

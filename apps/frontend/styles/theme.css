@@ -11,12 +11,33 @@
 
 /* Settings */
 
-@import "./settings/colors.css";
 @import "./settings/numbers.css";
 
-/* Themes */
+/* Color Style Themes */
 
-@import "./themes/light.css";
+@import "./themes/color/dark_blue.css";
+@import "./themes/color/dark_catppuccin.css";
+@import "./themes/color/dark_cherry.css";
+@import "./themes/color/dark_forest.css";
+@import "./themes/color/dark_gray.css";
+@import "./themes/color/dark_sepia.css";
+@import "./themes/color/dark_solarized.css";
+@import "./themes/color/dark_typewriter.css";
+@import "./themes/color/light.css";
+@import "./themes/color/light_blue.css";
+@import "./themes/color/light_catppuccin.css";
+@import "./themes/color/light_cherry.css";
+@import "./themes/color/light_forest.css";
+@import "./themes/color/light_sepia.css";
+@import "./themes/color/light_solarized.css";
+@import "./themes/color/light_typewriter.css";
+
+/* Editor Style Themes */
+
+@import "./themes/editor/mono.css";
+@import "./themes/editor/sans.css";
+@import "./themes/editor/serif.css";
+@import "./themes/editor/typewriter.css";
 
 /* Global */
 
@@ -37,6 +58,7 @@
 @import "./components/action_button.css";
 @import "./components/alert.css";
 @import "./components/animated_icon.css";
+@import "./components/appearance_modal.css";
 @import "./components/authentication_button.css";
 @import "./components/authentication_form.css";
 @import "./components/authentication_header.css";
@@ -65,12 +87,13 @@
 /* Controllers */
 
 @import "./controllers/alert.css";
+@import "./controllers/appearance_modal.css";
 @import "./controllers/modal.css";
 @import "./controllers/settings_modal.css";
 
 /* Vendors */
 
-@import "./vendors/writtte_editor.css";
+@import "./vendors/editor.css";
 
 /* Debugging */
 

@@ -3,6 +3,19 @@
   overflow: auto;
   position: relative;
   width: 100%;
+  padding-inline: 384px;
+}
+
+@media screen and (max-width: 1200px) {
+  .editor {
+    padding-inline: 128px;
+  }
+}
+
+@media screen and (max-width: 972px) {
+  .editor {
+    padding-inline: 24px;
+  }
 }
 
 .editor-loading-indicator-container {
@@ -14,6 +27,7 @@
   justify-content: center;
   left: 0;
   overflow: hidden;
+  padding-inline: 384px;
   position: absolute;
   right: 0;
   top: 0;
@@ -22,11 +36,24 @@
   z-index: 100;
 }
 
+@media screen and (max-width: 1200px) {
+  .editor-loading-indicator-container {
+    padding-inline: 128px;
+  }
+}
+
+@media screen and (max-width: 972px) {
+  .editor-loading-indicator-container {
+    padding-inline: 24px;
+  }
+}
+
 .editor-loading-indicator {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  overflow: hidden;
   padding: 24px;
   width: 100%;
 }
@@ -53,9 +80,9 @@
     animation: shimmer-after 1s ease-in-out infinite;
     background: linear-gradient(
       90deg,
-      var(--component-editor-bg--loading) 0%,
-      var(--component-editor-bg--loading) 50%,
-      var(--component-editor-bg--loading) 100%
+      var(--component-writtte-editor-bg--loading) 0%,
+      var(--component-writtte-editor-bg--loading) 50%,
+      var(--component-writtte-editor-bg--loading) 100%
     );
     bottom: 0;
     content: "";
@@ -89,9 +116,9 @@
     animation: shimmer-after 1s ease-in-out infinite;
     background: linear-gradient(
       90deg,
-      var(--component-editor-bg--loading) 0%,
-      var(--component-editor-bg--loading) 50%,
-      var(--component-editor-bg--loading) 100%
+      var(--component-writtte-editor-bg--loading) 0%,
+      var(--component-writtte-editor-bg--loading) 50%,
+      var(--component-writtte-editor-bg--loading) 100%
     );
     bottom: 0;
     content: "";
