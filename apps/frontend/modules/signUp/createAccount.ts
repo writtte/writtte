@@ -158,7 +158,7 @@ const createUserAccount = async (
       refresh_token,
     });
 
-    await navigate(PATHS.OVERVIEW);
+    await navigate(PATHS.ONBOARDING);
   }, WAIT_TIMEOUT.SHORT);
 };
 

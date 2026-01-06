@@ -4,6 +4,7 @@ import { AuthenticationLayout } from './layout/authentication';
 import { DashboardLayout } from './layout/dashboard';
 import { EditorPage } from './pages/Editor';
 import { NotFoundPage } from './pages/NotFound';
+import { OnboardingPage } from './pages/Onboarding';
 import { OverviewPage } from './pages/Overview';
 import { SignInPage } from './pages/SignIn';
 import { SignInEmailPage } from './pages/SignInEmail';
@@ -42,6 +43,11 @@ const defaultRoutes: TRoute[] = [
     title: 'Checking Magic Link Access... | Writtte',
     layout: AuthenticationLayout,
     view: async () => await SignInEmailCheckPage(),
+  },
+  {
+    path: PATHS.ONBOARDING,
+    title: 'Welcome | Writtte',
+    view: async () => await OnboardingPage(),
   },
   {
     path: PATHS.OVERVIEW,
