@@ -15,11 +15,29 @@
 
 /* Color Style Themes */
 
-@import "./themes/color/base.css";
+@import "./themes/color/dark_blue.css";
+@import "./themes/color/dark_catppuccin.css";
+@import "./themes/color/dark_cherry.css";
+@import "./themes/color/dark_forest.css";
+@import "./themes/color/dark_gray.css";
+@import "./themes/color/dark_sepia.css";
+@import "./themes/color/dark_solarized.css";
+@import "./themes/color/dark_typewriter.css";
+@import "./themes/color/light.css";
+@import "./themes/color/light_blue.css";
+@import "./themes/color/light_catppuccin.css";
+@import "./themes/color/light_cherry.css";
+@import "./themes/color/light_forest.css";
+@import "./themes/color/light_sepia.css";
+@import "./themes/color/light_solarized.css";
+@import "./themes/color/light_typewriter.css";
 
 /* Editor Style Themes */
 
-@import "./themes/editor/base.css";
+@import "./themes/editor/mono.css";
+@import "./themes/editor/sans.css";
+@import "./themes/editor/serif.css";
+@import "./themes/editor/typewriter.css";
 
 /* Global */
 

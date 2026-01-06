@@ -13,7 +13,7 @@ const checkAndSetColorTheme = (): void => {
 const checkAndSetEditorTheme = (): void => {
   const currentTheme = getLocalStorage('editor-theme');
   if (currentTheme === null) {
-    document.documentElement.setAttribute('data-editor-theme', 'default');
+    document.documentElement.setAttribute('data-editor-theme', 'sans');
     return;
   }
 
