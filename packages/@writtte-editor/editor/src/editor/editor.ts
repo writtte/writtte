@@ -8,7 +8,7 @@ import { BubbleMenuExtension } from '../extensions/bubbleMenu';
 import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
-import { HorizontalLineExtension } from '../extensions/horizontalRule';
+import { HorizontalLineExtension } from '../extensions/horizontalLine';
 import { ImageExtension, type TImageAttributes } from '../extensions/image';
 import { InlineCodeExtension } from '../extensions/inlineCode';
 import { ItalicExtension } from '../extensions/italic';

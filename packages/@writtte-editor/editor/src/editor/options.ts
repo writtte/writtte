@@ -4,7 +4,7 @@ import type { TBoldOptions } from '../extensions/bold';
 import type { TBubbleMenuOptions } from '../extensions/bubbleMenu';
 import type { TBulletListOptions } from '../extensions/bulletList';
 import type { THeadingOptions } from '../extensions/header';
-import type { THorizontalLineOptions } from '../extensions/horizontalRule';
+import type { THorizontalLineOptions } from '../extensions/horizontalLine';
 import type { TImageOptions } from '../extensions/image';
 import type { TInlineCodeOptions } from '../extensions/inlineCode';
 import type { TItalicOptions } from '../extensions/italic';
