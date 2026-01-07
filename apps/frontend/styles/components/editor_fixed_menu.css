@@ -19,6 +19,18 @@
   width: 1px;
 }
 
+@media screen and (min-width: 1024px) {
+  .editor-fixed-menu {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .editor-fixed-menu {
+    display: flex;
+  }
+}
+
 @media screen and (max-width: 972px) {
   .editor-fixed-menu {
     -ms-overflow-style: none;
