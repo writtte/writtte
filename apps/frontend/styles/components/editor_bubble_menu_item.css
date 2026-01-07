@@ -1,0 +1,121 @@
+.editor-bubble-menu-item-text {
+  align-items: center;
+  color: var(--component-editor-menu-item-text);
+  display: inline-flex;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  line-height: normal;
+  padding: 0 2px;
+}
+
+.editor-bubble-menu-item-input {
+  align-items: center;
+  background: var(--component-editor-menu-item-bg--input);
+  border: 1px solid transparent;
+  box-shadow: none;
+  color: var(--component-editor-menu-item-text);
+  display: flex;
+  flex: 1 0 0;
+  flex-shrink: 0;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  gap: 8px;
+  height: 32px;
+  line-height: normal;
+  max-width: 192px;
+  min-width: 192px;
+  outline: none;
+  padding: 0 8px;
+
+  &::placeholder,
+  &::-ms-input-placeholder {
+    color: var(--component-editor-menu-item-text--placeholder);
+  }
+
+  &:active {
+    border: 1px solid var(--component-input-border---active);
+  }
+
+  &:focus-visible {
+    border: 1px solid var(--component-input-border---active);
+  }
+}
+
+.editor-bubble-menu-item-input.show {
+  display: flex;
+}
+
+.editor-bubble-menu-item-input.hide {
+  display: none;
+}
+
+.editor-bubble-menu-item-button {
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  background: var(--component-editor-menu-item-bg);
+  border-radius: 32px;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 8px;
+  height: 32px;
+  justify-content: center;
+  outline: none;
+  padding: 8px;
+  width: 32px;
+
+  &:hover {
+    background: var(--component-editor-menu-item-bg---hover);
+    cursor: pointer;
+  }
+
+  &:active {
+    background: var(--component-editor-menu-item-bg---active);
+  }
+
+  &:focus-visible {
+    outline-offset: -1px;
+    outline: 1px dashed var(--common-focus-neutral);
+  }
+}
+
+.editor-bubble-menu-item-button.show {
+  display: flex;
+}
+
+.editor-bubble-menu-item-button.hide {
+  display: none;
+}
+
+.editor-bubble-menu-item-button--selected {
+  background: var(--component-editor-menu-item-bg---selected);
+}
+
+.editor-bubble-menu-item-button__icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--component-editor-menu-item-icon);
+    }
+  }
+
+  &:hover {
+    svg path {
+      fill: var(--component-editor-menu-item-icon---hover);
+    }
+  }
+}

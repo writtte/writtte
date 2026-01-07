@@ -66,6 +66,10 @@
 @import "./components/button.css";
 @import "./components/close_button.css";
 @import "./components/editor.css";
+@import "./components/editor_block_menu.css";
+@import "./components/editor_block_menu_item.css";
+@import "./components/editor_bubble_menu.css";
+@import "./components/editor_bubble_menu_item.css";
 @import "./components/editor_fixed_menu.css";
 @import "./components/editor_fixed_menu_item.css";
 @import "./components/editor_node_loading_indicator.css";

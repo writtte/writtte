@@ -14,10 +14,8 @@ import {
   updateDocumentContentOnIDB,
 } from '../modules/editor/content/updateDocumentContent';
 import { checkAndSetImages } from '../modules/editor/image/setImages';
-import {
-  fixedMenuUpdateEventListener,
-  setupEditorFixedMenuOptions,
-} from '../modules/editor/menu/editorFixedMenu';
+import { bubbleMenuEventListener } from '../modules/editor/menu/editorBubbleMenu';
+import { setupEditorFixedMenuOptions } from '../modules/editor/menu/editorFixedMenu';
 import { setupEditorExtensionOptions } from '../modules/editor/options/editorOptions';
 import { langKeys } from '../translations/keys';
 import { setPageTitle } from '../utils/routes/helpers';
@@ -66,13 +64,13 @@ const EditorPage = async (
       id: 'editor_fixed_menu__tuaodnwhdq',
     });
 
-    editorFixedMenuElement.setItems(
-      setupEditorFixedMenuOptions(editorFixedMenuElement),
-    );
-
-    fixedMenuUpdateEventListener(editorFixedMenuElement);
+    editorFixedMenuElement.setItems(setupEditorFixedMenuOptions());
 
     containerDiv.append(editorFixedMenuElement.element, editorDiv);
+
+    // Setup bubble menu event listener
+
+    bubbleMenuEventListener();
   } else {
     containerDiv.appendChild(editorDiv);
   }

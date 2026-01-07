@@ -1,8 +1,10 @@
+import type { TBlockMenuOptions } from '../extensions/blockMenu';
 import type { TBlockPlaceholderOptions } from '../extensions/blockPlaceholder';
 import type { TBoldOptions } from '../extensions/bold';
+import type { TBubbleMenuOptions } from '../extensions/bubbleMenu';
 import type { TBulletListOptions } from '../extensions/bulletList';
 import type { THeadingOptions } from '../extensions/header';
-import type { THorizontalLineOptions } from '../extensions/horizontalRule';
+import type { THorizontalLineOptions } from '../extensions/horizontalLine';
 import type { TImageOptions } from '../extensions/image';
 import type { TInlineCodeOptions } from '../extensions/inlineCode';
 import type { TItalicOptions } from '../extensions/italic';
@@ -38,6 +40,8 @@ type TExtensionOptions = {
   placeholder: Partial<TPlaceholderOptions> & { isEnabled: boolean };
   blockPlaceholder: Partial<TBlockPlaceholderOptions> & { isEnabled: boolean };
   image: Partial<TImageOptions> & { isEnabled: boolean };
+  bubbleMenu: Partial<TBubbleMenuOptions> & { isEnabled: boolean };
+  blockMenu: Partial<TBlockMenuOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };

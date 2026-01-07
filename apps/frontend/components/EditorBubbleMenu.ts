@@ -6,10 +6,6 @@ import {
 
 type TOptions = {
   id: string;
-  location: {
-    x: number;
-    y: number;
-  };
   items: (TEditorBubbleMenuItemOptions & {
     hasLeftDivider: boolean;
     hasRightDivider: boolean;
@@ -25,15 +21,8 @@ type TReturnEditorBubbleMenu = {
 
 const EditorBubbleMenu = (opts: TOptions): TReturnEditorBubbleMenu => {
   const menu = document.createElement('menu');
-  const itemsDiv = document.createElement('div');
 
   menu.classList.add('editor-bubble-menu');
-  itemsDiv.classList.add('editor-bubble-menu__items');
-
-  menu.appendChild(itemsDiv);
-
-  menu.style.top = `${opts.location.y}px`;
-  menu.style.left = `${opts.location.x}px`;
 
   const itemReturnsMap: { [key: string]: TReturnEditorBubbleMenuItem } = {};
 
@@ -47,10 +36,10 @@ const EditorBubbleMenu = (opts: TOptions): TReturnEditorBubbleMenu => {
       const dividerDiv = document.createElement('div');
       dividerDiv.classList.add('editor-bubble-menu__divider');
 
-      itemsDiv.appendChild(dividerDiv);
+      menu.appendChild(dividerDiv);
     }
 
-    itemsDiv.appendChild(itemElement.element);
+    menu.appendChild(itemElement.element);
 
     if (
       opts.items[i].hasRightDivider !== undefined &&
@@ -59,7 +48,7 @@ const EditorBubbleMenu = (opts: TOptions): TReturnEditorBubbleMenu => {
       const dividerDiv = document.createElement('div');
       dividerDiv.classList.add('editor-bubble-menu__divider');
 
-      itemsDiv.appendChild(dividerDiv);
+      menu.appendChild(dividerDiv);
     }
 
     itemReturnsMap[opts.items[i].id] = itemElement;

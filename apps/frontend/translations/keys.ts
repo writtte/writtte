@@ -39,6 +39,18 @@ type TLangKeys = {
   AppearanceModalPanelThemeTextTitle: string;
   AppearanceModalTextTitle: string;
   EditorLoadingUploadingImage: string;
+  EditorMenuItemBulletList: string;
+  EditorMenuItemHeading01: string;
+  EditorMenuItemHeading02: string;
+  EditorMenuItemHeading03: string;
+  EditorMenuItemHeading04: string;
+  EditorMenuItemHeading05: string;
+  EditorMenuItemHeading06: string;
+  EditorMenuItemHorizontalRule: string;
+  EditorMenuItemImage: string;
+  EditorMenuItemNumberList: string;
+  EditorMenuItemParagraph: string;
+  EditorMenuTitleFilter: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountDeleteAlreadyInSubscription: string;
   ErrorAccountDeleteConfirmationFailed: string;
@@ -257,6 +269,18 @@ const langKeys = (): TLangKeys => {
     AppearanceModalPanelThemeTextTitle: getTr('APPEARANCE_MODAL_PANEL_THEME_TEXT_TITLE'),
     AppearanceModalTextTitle: getTr('APPEARANCE_MODAL_TEXT_TITLE'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
+    EditorMenuItemBulletList: getTr('EDITOR_MENU_ITEM_BULLET_LIST'),
+    EditorMenuItemHeading01: getTr('EDITOR_MENU_ITEM_HEADING_01'),
+    EditorMenuItemHeading02: getTr('EDITOR_MENU_ITEM_HEADING_02'),
+    EditorMenuItemHeading03: getTr('EDITOR_MENU_ITEM_HEADING_03'),
+    EditorMenuItemHeading04: getTr('EDITOR_MENU_ITEM_HEADING_04'),
+    EditorMenuItemHeading05: getTr('EDITOR_MENU_ITEM_HEADING_05'),
+    EditorMenuItemHeading06: getTr('EDITOR_MENU_ITEM_HEADING_06'),
+    EditorMenuItemHorizontalRule: getTr('EDITOR_MENU_ITEM_HORIZONTAL_RULE'),
+    EditorMenuItemImage: getTr('EDITOR_MENU_ITEM_IMAGE'),
+    EditorMenuItemNumberList: getTr('EDITOR_MENU_ITEM_NUMBER_LIST'),
+    EditorMenuItemParagraph: getTr('EDITOR_MENU_ITEM_PARAGRAPH'),
+    EditorMenuTitleFilter: getTr('EDITOR_MENU_TITLE_FILTER'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountDeleteAlreadyInSubscription: getTr('ERROR_ACCOUNT_DELETE_ALREADY_IN_SUBSCRIPTION'),
     ErrorAccountDeleteConfirmationFailed: getTr('ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED'),

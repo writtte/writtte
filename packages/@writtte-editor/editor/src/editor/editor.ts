@@ -1,12 +1,14 @@
 import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
 import { type AnyExtension, Editor } from '@tiptap/core';
+import { BlockMenuExtension } from '../extensions/blockMenu';
 import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
 import { BoldExtension } from '../extensions/bold';
+import { BubbleMenuExtension } from '../extensions/bubbleMenu';
 import { BulletListExtension } from '../extensions/bulletList';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
-import { HorizontalLineExtension } from '../extensions/horizontalRule';
+import { HorizontalLineExtension } from '../extensions/horizontalLine';
 import { ImageExtension, type TImageAttributes } from '../extensions/image';
 import { InlineCodeExtension } from '../extensions/inlineCode';
 import { ItalicExtension } from '../extensions/italic';
@@ -138,6 +140,18 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     extensions.push(ImageExtension.configure(opts.options.image ?? undefined));
   }
 
+  if (opts.options.bubbleMenu.isEnabled) {
+    extensions.push(
+      BubbleMenuExtension.configure(opts.options.bubbleMenu ?? undefined),
+    );
+  }
+
+  if (opts.options.blockMenu.isEnabled) {
+    extensions.push(
+      BlockMenuExtension.configure(opts.options.blockMenu ?? undefined),
+    );
+  }
+
   const _editor = new Editor({
     element: opts.element,
     extensions: [TextExtension, DocumentExtension, ...extensions],
@@ -174,7 +188,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   };
 
   const focus = (): void => {
-    _editor.chain().focus();
+    if (!_editor.isActive || !_editor.isFocused) {
+      _editor.chain().focus();
+    }
   };
 
   const schemaToString = (schema: TEditorSchema): string => {
