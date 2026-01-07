@@ -119,7 +119,7 @@ html[data-color-theme="theme_light_typewriter"] {
   --component-top-bar-badge-text: #faf9f7;
   --component-top-bar-border: #d4d3d1;
   --component-top-bar-logo: #1a1a1a;
-  --component-writtte-editor-bg--element: #e3e2e0;
+  --component-writtte-editor-bg--loading: #e3e2e0;
   --component-writtte-editor-bg--hr: #d4d3d1;
   --component-writtte-editor-bg--inline-code: #e3e2e0;
   --component-writtte-editor-bg--list-item-marker: #6a6a6a;
