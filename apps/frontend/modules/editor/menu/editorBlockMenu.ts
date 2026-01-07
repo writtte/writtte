@@ -176,6 +176,32 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     hasBottomDivider: true,
   },
   {
+    id: 'block_menu_item__cnguzmiyyz',
+    text: langKeys().EditorMenuItemBulletList,
+    icon: FlatIcon(FlatIconName._18_BULLET_LIST),
+    key: undefined,
+    isSelected: false,
+    keywords: ['bullets', 'list'],
+    onClick: (): void => {
+      getEditorAPI().toggleBulletList();
+    },
+    hasTopDivider: false,
+    hasBottomDivider: false,
+  },
+  {
+    id: 'block_menu_item__uyoomociyf',
+    text: langKeys().EditorMenuItemNumberList,
+    icon: FlatIcon(FlatIconName._18_NUMBER_LIST),
+    key: undefined,
+    isSelected: false,
+    keywords: ['numbers', 'list'],
+    onClick: (): void => {
+      getEditorAPI().toggleNumberList();
+    },
+    hasTopDivider: false,
+    hasBottomDivider: true,
+  },
+  {
     id: 'block_menu_item__jleijdtqxw',
     text: langKeys().EditorMenuItemHorizontalRule,
     icon: FlatIcon(FlatIconName._18_HORIZONTAL_RULE),
