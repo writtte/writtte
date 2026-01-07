@@ -1,6 +1,12 @@
 import type { EditorView } from 'prosemirror-view';
-import { type AnyExtension, Extension } from '@tiptap/core';
+import { type AnyExtension, Extension, isNodeSelection } from '@tiptap/core';
 import { Plugin, PluginKey } from 'prosemirror-state';
+
+const excludedNodeTypes: string[] = [
+  'image',
+  'horizontalLine',
+  'blockPlaceholder',
+];
 
 type TBubbleMenuOptions = {
   MenuElement: HTMLMenuElement;
@@ -37,6 +43,16 @@ const BubbleMenuExtension: AnyExtension = Extension.create<TBubbleMenuOptions>({
               menuElement.style.display = 'none';
               menuElement.dataset.isOpen = 'false';
               return;
+            }
+
+            // Hide bubble menu when excluded nodes are selected (e.g., image, horizontalRule)
+            if (isNodeSelection(selection)) {
+              const nodeName = selection.node.type.name;
+              if (excludedNodeTypes.includes(nodeName)) {
+                menuElement.style.display = 'none';
+                menuElement.dataset.isOpen = 'false';
+                return;
+              }
             }
 
             if (
