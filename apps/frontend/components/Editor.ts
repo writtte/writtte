@@ -77,6 +77,10 @@ const Editor = (opts: TOptions): TReturnEditor => {
     editorDiv.replaceChildren(containerDiv);
   };
 
+  editorDiv.addEventListener('click', (): void => {
+    writtteEditor.focus();
+  });
+
   return {
     element: editorDiv,
     api: writtteEditor,

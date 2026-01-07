@@ -10,6 +10,7 @@ type TEditorAPI = {
   setContent: (content: TEditorSchema) => void;
   replaceContent: (content: TEditorSchema) => TEditorSchema;
   stringToSchema: (content: string) => TEditorSchema;
+  focus: () => void;
   schemaToString: (schema: TEditorSchema) => string;
   onChange: (callback: (content: TEditorSchema) => void) => void;
   onSelectionUpdate: (callback: (state: TEditorState) => void) => void;

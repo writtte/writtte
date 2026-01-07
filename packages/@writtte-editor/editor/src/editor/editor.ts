@@ -173,6 +173,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     }
   };
 
+  const focus = (): void => {
+    _editor.chain().focus();
+  };
+
   const schemaToString = (schema: TEditorSchema): string => {
     try {
       return JSON.stringify(schema);
@@ -383,6 +387,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     getContent,
     replaceContent,
     stringToSchema,
+    focus,
     schemaToString,
     onChange,
     onSelectionUpdate,

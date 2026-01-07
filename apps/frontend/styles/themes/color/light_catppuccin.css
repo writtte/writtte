@@ -119,7 +119,7 @@ html[data-color-theme="theme_light_catppuccin"] {
   --component-top-bar-badge-text: #eff1f5;
   --component-top-bar-border: #ccd0da;
   --component-top-bar-logo: #4c4f69;
-  --component-writtte-editor-bg--element: #dce0e8;
+  --component-writtte-editor-bg--loading: #dce0e8;
   --component-writtte-editor-bg--hr: #ccd0da;
   --component-writtte-editor-bg--inline-code: #dce0e8;
   --component-writtte-editor-bg--list-item-marker: #7c7f93;
