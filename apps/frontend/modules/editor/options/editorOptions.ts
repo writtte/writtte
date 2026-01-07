@@ -3,16 +3,18 @@ import type {
   TImageAttributes,
 } from '@writtte-editor/editor';
 import { langKeys } from '../../../translations/keys';
+import { ALLOWED_IMAGE_FILE_EXTENSIONS } from '../image/browseImage';
 import { imageAfterPaste, setupImageForUpload } from '../image/imageUpload';
-
-const ALLOWED_IMAGE_FILE_EXTENSIONS: string[] = [
-  'jpg',
-  'jpeg',
-  'png',
-  'gif',
-  'webp',
-  'svg',
-];
+import {
+  getQueryStateRef,
+  selectNextBlockMenuItem,
+  selectPreviousBlockMenuItem,
+  setBlockMenuCallbacks,
+  setupEditorBlockMenu,
+  triggerSelectedBlockMenuItem,
+  updateBlockMenuQuery,
+} from '../menu/editorBlockMenu';
+import { setupEditorBubbleMenu } from '../menu/editorBubbleMenu';
 
 const shortcutKeys = {
   SET_PARAGRAPH: 'Mod-Alt-0',
@@ -159,6 +161,22 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     ): Promise<void> => await imageAfterPaste(),
     isEnabled: true,
   },
+  bubbleMenu: {
+    MenuElement: setupEditorBubbleMenu(),
+    isEnabled: true,
+  },
+  blockMenu: {
+    MenuElement: setupEditorBlockMenu(),
+    trigger: '/',
+    onInputUpdate: (query: string): void => updateBlockMenuQuery(query),
+    queryStateRef: getQueryStateRef(),
+    onArrowDown: (): void => selectNextBlockMenuItem(),
+    onArrowUp: (): void => selectPreviousBlockMenuItem(),
+    onEnter: (): void => triggerSelectedBlockMenuItem(),
+    onSelect: (deleteTrigger: () => void, hideMenu: () => void): void =>
+      setBlockMenuCallbacks(deleteTrigger, hideMenu),
+    isEnabled: true,
+  },
 });
 
-export { ALLOWED_IMAGE_FILE_EXTENSIONS, setupEditorExtensionOptions };
+export { setupEditorExtensionOptions };

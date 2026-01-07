@@ -14,6 +14,7 @@ import {
   updateDocumentContentOnIDB,
 } from '../modules/editor/content/updateDocumentContent';
 import { checkAndSetImages } from '../modules/editor/image/setImages';
+import { bubbleMenuEventListener } from '../modules/editor/menu/editorBubbleMenu';
 import {
   fixedMenuUpdateEventListener,
   setupEditorFixedMenuOptions,
@@ -73,6 +74,10 @@ const EditorPage = async (
     fixedMenuUpdateEventListener(editorFixedMenuElement);
 
     containerDiv.append(editorFixedMenuElement.element, editorDiv);
+
+    // Setup bubble menu event listener
+
+    bubbleMenuEventListener();
   } else {
     containerDiv.appendChild(editorDiv);
   }

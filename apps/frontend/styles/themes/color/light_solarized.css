@@ -3,6 +3,7 @@ html[data-color-theme="theme_light_solarized"] {
   --shadow-alert: 0 3px 12px 0 rgba(88, 110, 117, 0.08);
   --shadow-menu: 0 4px 12px 0 rgba(88, 110, 117, 0.1);
   --shadow-modal: 0 4px 16px 0 rgba(88, 110, 117, 0.05), 0 8px 32px 0 rgba(88, 110, 117, 0.05);
+  --shadow-popup: 0 4px 12px 0 rgba(88, 110, 117, 0.05);
 
   --common-focus-neutral: #586e75;
   --common-scrollbar-bg: #93a1a1;

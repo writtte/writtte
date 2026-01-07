@@ -1,0 +1,78 @@
+.editor-block-menu-item {
+  align-items: center;
+  background: var(--component-editor-menu-item-bg);
+  border: none;
+  box-shadow: none;
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  justify-content: center;
+  outline: none;
+  padding: 8px;
+  width: 100%;
+
+  &:hover {
+    background: var(--component-editor-menu-item-bg---hover);
+    cursor: pointer;
+  }
+
+  &:active {
+    background: var(--component-editor-menu-item-bg---active);
+  }
+
+  &:focus-visible {
+    outline-offset: -1px;
+    outline: 1px dashed var(--common-focus-neutral);
+  }
+}
+
+.editor-block-menu-item--selected {
+  background: var(--component-editor-menu-item-bg---active);
+}
+
+.editor-block-menu-item__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    aspect-ratio: 1 / 1;
+
+    path {
+      fill: var(--component-editor-menu-item-icon);
+    }
+  }
+}
+
+.editor-block-menu-item__text {
+  color: var(--component-editor-menu-item-text);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  justify-content: flex-start;
+  line-height: normal;
+}
+
+.editor-block-menu-item__key {
+  align-items: center;
+  background: var(--component-editor-menu-item-bg--key);
+  border: 1px solid var(--component-editor-menu-border);
+  display: flex;
+  gap: 8px;
+  height: 20px;
+  padding: 8px;
+
+  & {
+    color: var(--component-editor-menu-item-text--placeholder);
+    font-size: 11px;
+    font-style: normal;
+    font-variant: all-small-caps;
+    font-weight: 600;
+    line-height: normal;
+  }
+}

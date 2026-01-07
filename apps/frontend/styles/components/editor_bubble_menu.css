@@ -1,0 +1,17 @@
+.editor-bubble-menu {
+  align-items: center;
+  background: var(--component-editor-menu-bg);
+  border-radius: 32px;
+  border: 1px solid var(--component-editor-menu-border);
+  box-shadow: var(--shadow-popup);
+  display: inline-flex;
+  gap: 8px;
+  height: 48px;
+  padding: 0 8px;
+}
+
+.editor-bubble-menu__divider {
+  background: var(--component-editor-menu-border);
+  height: 24px;
+  width: 1px;
+}

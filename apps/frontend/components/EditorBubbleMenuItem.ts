@@ -16,11 +16,14 @@ type TOptions = {
     | {
         type: typeof BubbleMenuItemType.TEXT;
         text: string;
+        isVisible: boolean;
       }
     | {
         type: typeof BubbleMenuItemType.INPUT;
         text: string | undefined;
         placeholderText: string | undefined;
+        isVisible: boolean;
+        onSubmit: () => void;
       }
     | {
         type: typeof BubbleMenuItemType.BUTTON;
@@ -33,39 +36,75 @@ type TOptions = {
 
 type TReturnEditorBubbleMenuItem = {
   element: HTMLDivElement | HTMLInputElement | HTMLButtonElement;
-  getText: (() => string) | undefined;
-  setText: ((text: string) => void) | undefined;
-  getTextPlaceholder: (() => string) | undefined;
-  setTextPlaceholder: ((text: string) => void) | undefined;
-  setButtonVisibility: ((isVisible: boolean) => void) | undefined;
-  setButtonSelectedState: ((isSelected: boolean) => void) | undefined;
+  textReturns:
+    | {
+        get: () => string;
+        set: (value: string) => string;
+        setVisibleState: (isVisible: boolean) => void;
+      }
+    | undefined;
+  inputReturns:
+    | {
+        get: () => string;
+        getPlaceholder: () => string;
+        set: (value: string) => string;
+        setPlaceholder: (value: string) => string;
+        setVisibleState: (isVisible: boolean) => void;
+      }
+    | undefined;
+  buttonReturns:
+    | {
+        setSelectedState: (isSelected: boolean) => void;
+        setVisibleState: (isVisible: boolean) => void;
+      }
+    | undefined;
 };
 
 const EditorBubbleMenuItem = (opts: TOptions): TReturnEditorBubbleMenuItem => {
   if (opts.item.type === BubbleMenuItemType.TEXT) {
     const textDiv = document.createElement('div');
     textDiv.classList.add('editor-bubble-menu-item-text');
+    textDiv.classList.add(opts.item.isVisible ? 'show' : 'hide');
 
     textDiv.textContent = opts.item.text;
 
+    const get = (): string => textDiv.textContent || '';
+
+    const set = (value: string): string => {
+      textDiv.textContent = value;
+      return value;
+    };
+
+    const setVisibleState = (isVisible: boolean): void => {
+      if (isVisible) {
+        textDiv.classList.add('show');
+        textDiv.classList.remove('hide');
+      } else {
+        textDiv.classList.add('hide');
+        textDiv.classList.remove('show');
+      }
+    };
+
     return {
       element: textDiv,
-      getText: undefined,
-      setText: undefined,
-      getTextPlaceholder: undefined,
-      setTextPlaceholder: undefined,
-      setButtonVisibility: undefined,
-      setButtonSelectedState: undefined,
+      textReturns: {
+        get,
+        set,
+        setVisibleState,
+      },
+      inputReturns: undefined,
+      buttonReturns: undefined,
     };
   }
 
   if (opts.item.type === BubbleMenuItemType.INPUT) {
     const input = document.createElement('input');
     input.classList.add('editor-bubble-menu-item-input');
+    input.classList.add(opts.item.isVisible ? 'show' : 'hide');
 
     setTestId(input, opts.id);
 
-    if (opts.item.text) {
+    if (opts.item.text !== undefined) {
       input.value = opts.item.text;
     }
 
@@ -73,26 +112,47 @@ const EditorBubbleMenuItem = (opts: TOptions): TReturnEditorBubbleMenuItem => {
       input.placeholder = opts.item.placeholderText;
     }
 
-    const getText = (): string => input.value;
+    const get = (): string => input.value;
 
-    const setText = (text: string): void => {
-      input.value = text;
+    const set = (value: string): string => {
+      input.value = value;
+      return value;
     };
 
-    const getTextPlaceholder = (): string => input.placeholder;
+    const getPlaceholder = (): string => input.placeholder;
 
-    const setTextPlaceholder = (text: string): void => {
-      input.placeholder = text;
+    const setPlaceholder = (value: string): string => {
+      input.placeholder = value;
+      return value;
     };
+
+    const setVisibleState = (isVisible: boolean): void => {
+      if (isVisible) {
+        input.classList.add('show');
+        input.classList.remove('hide');
+      } else {
+        input.classList.add('hide');
+        input.classList.remove('show');
+      }
+    };
+
+    input.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Enter' && opts.item.type === BubbleMenuItemType.INPUT) {
+        opts.item.onSubmit();
+      }
+    });
 
     return {
       element: input,
-      getText,
-      setText,
-      getTextPlaceholder,
-      setTextPlaceholder,
-      setButtonVisibility: undefined,
-      setButtonSelectedState: undefined,
+      textReturns: undefined,
+      inputReturns: {
+        get,
+        set,
+        getPlaceholder,
+        setPlaceholder,
+        setVisibleState,
+      },
+      buttonReturns: undefined,
     };
   }
 
@@ -127,7 +187,15 @@ const EditorBubbleMenuItem = (opts: TOptions): TReturnEditorBubbleMenuItem => {
       ).onClick();
     });
 
-    const setButtonVisibility = (isVisible: boolean): void => {
+    const setSelectedState = (isSelected: boolean): void => {
+      if (isSelected) {
+        button.classList.add('editor-bubble-menu-item-button--selected');
+      } else {
+        button.classList.remove('editor-bubble-menu-item-button--selected');
+      }
+    };
+
+    const setVisibleState = (isVisible: boolean): void => {
       if (isVisible) {
         button.classList.add('show');
         button.classList.remove('hide');
@@ -137,22 +205,14 @@ const EditorBubbleMenuItem = (opts: TOptions): TReturnEditorBubbleMenuItem => {
       }
     };
 
-    const setButtonSelectedState = (isSelected: boolean): void => {
-      if (isSelected) {
-        button.classList.add('editor-bubble-menu-item-button--selected');
-      } else {
-        button.classList.remove('editor-bubble-menu-item-button--selected');
-      }
-    };
-
     return {
       element: button,
-      getText: undefined,
-      setText: undefined,
-      getTextPlaceholder: undefined,
-      setTextPlaceholder: undefined,
-      setButtonVisibility,
-      setButtonSelectedState,
+      textReturns: undefined,
+      inputReturns: undefined,
+      buttonReturns: {
+        setSelectedState,
+        setVisibleState,
+      },
     };
   }
 
