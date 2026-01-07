@@ -3,6 +3,7 @@ import type { TBlockPlaceholderOptions } from '../extensions/blockPlaceholder';
 import type { TBoldOptions } from '../extensions/bold';
 import type { TBubbleMenuOptions } from '../extensions/bubbleMenu';
 import type { TBulletListOptions } from '../extensions/bulletList';
+import type { TCanvasOptions } from '../extensions/canvas';
 import type { THeadingOptions } from '../extensions/header';
 import type { THorizontalLineOptions } from '../extensions/horizontalLine';
 import type { TImageOptions } from '../extensions/image';
@@ -40,6 +41,7 @@ type TExtensionOptions = {
   placeholder: Partial<TPlaceholderOptions> & { isEnabled: boolean };
   blockPlaceholder: Partial<TBlockPlaceholderOptions> & { isEnabled: boolean };
   image: Partial<TImageOptions> & { isEnabled: boolean };
+  canvas: Partial<TCanvasOptions> & { isEnabled: boolean };
   bubbleMenu: Partial<TBubbleMenuOptions> & { isEnabled: boolean };
   blockMenu: Partial<TBlockMenuOptions> & { isEnabled: boolean };
 };

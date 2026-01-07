@@ -6,6 +6,7 @@ import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
 import { BoldExtension } from '../extensions/bold';
 import { BubbleMenuExtension } from '../extensions/bubbleMenu';
 import { BulletListExtension } from '../extensions/bulletList';
+import { CanvasExtension, type TCanvasAttributes } from '../extensions/canvas';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
 import { HorizontalLineExtension } from '../extensions/horizontalLine';
@@ -138,6 +139,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   if (opts.options.image.isEnabled) {
     extensions.push(ImageExtension.configure(opts.options.image ?? undefined));
+  }
+
+  if (opts.options.canvas.isEnabled) {
+    extensions.push(
+      CanvasExtension.configure(opts.options.canvas ?? undefined),
+    );
   }
 
   if (opts.options.bubbleMenu.isEnabled) {
@@ -283,6 +290,23 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const removeImage = (): boolean =>
     _editor.chain().focus().removeImage().run();
 
+  const addCanvas = (attributes: TCanvasAttributes): boolean =>
+    _editor.chain().focus().addCanvas(attributes).run();
+
+  const updateCanvas = (
+    canvasId: string,
+    attributes: Partial<TCanvasAttributes>,
+  ): boolean =>
+    _editor.chain().focus().updateCanvas(canvasId, attributes).run();
+
+  const removeCanvas = (): boolean =>
+    _editor.chain().focus().removeCanvas().run();
+
+  const selectCanvas = (canvasId: string): boolean =>
+    _editor.chain().focus().selectCanvas(canvasId).run();
+
+  const isCanvasActive = (): boolean => _editor.isActive('canvas');
+
   const addPlaceholder = (element: HTMLElement, id: string): boolean =>
     _editor.chain().focus().addPlaceholder(element, id).run();
 
@@ -418,6 +442,11 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setImage,
     updateImage,
     removeImage,
+    addCanvas,
+    updateCanvas,
+    removeCanvas,
+    selectCanvas,
+    isCanvasActive,
     addPlaceholder,
     removePlaceholder,
     removeAllPlaceholders,

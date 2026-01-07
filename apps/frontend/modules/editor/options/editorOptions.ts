@@ -177,6 +177,9 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
       setBlockMenuCallbacks(deleteTrigger, hideMenu),
     isEnabled: true,
   },
+  canvas: {
+    isEnabled: true,
+  },
 });
 
 export { setupEditorExtensionOptions };

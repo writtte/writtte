@@ -1,3 +1,4 @@
+import type { TCanvasAttributes } from '../extensions/canvas';
 import type { TImageAttributes } from '../extensions/image';
 import type { TEditorSchema } from './schema';
 import type { TEditorState } from './state';
@@ -33,6 +34,14 @@ type TEditorAPI = {
     attributes: Partial<TImageAttributes>,
   ) => boolean;
   removeImage: () => boolean;
+  addCanvas: (attributes: TCanvasAttributes) => boolean;
+  updateCanvas: (
+    canvasId: string,
+    attributes: Partial<TCanvasAttributes>,
+  ) => boolean;
+  removeCanvas: () => boolean;
+  selectCanvas: (canvasId: string) => boolean;
+  isCanvasActive: () => boolean;
   addPlaceholder: (element: HTMLElement, id: string) => boolean;
   removePlaceholder: (id: string) => boolean;
   removeAllPlaceholders: () => boolean;
