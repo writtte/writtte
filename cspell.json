@@ -71,6 +71,7 @@
     "Contextify",
     "extsentry",
     "selectednode",
-    "catppuccin"
+    "catppuccin",
+    "keyCode"
   ]
 }
