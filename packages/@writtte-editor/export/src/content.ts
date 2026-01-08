@@ -358,14 +358,12 @@ const setListItem = (
 
 const setCodeBlock = (
   exportType: TExportType,
-  schema: TEditorSchema,
+  content: string | undefined,
+  language: string | undefined,
 ): string => {
-  if (!schema.content) {
+  if (!content) {
     return '';
   }
-
-  const language = schema.attrs?.language;
-  const content = schema.content[0]?.text;
 
   switch (exportType) {
     case ExportType.MD:

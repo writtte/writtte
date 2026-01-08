@@ -278,7 +278,17 @@ const parseListItem = (
 const parseCodeBlock = (
   exportType: TExportType,
   schema: TEditorSchema,
-): string => setCodeBlock(exportType, schema);
+): string => {
+  const content = schema.content;
+  const language: string | undefined =
+    (schema.attrs?.language as string) ?? undefined;
+
+  if (!content || content.length <= 0) {
+    return '';
+  }
+
+  return setCodeBlock(exportType, content[0]?.text, language);
+};
 
 const parseBlockQuote = (
   exportType: TExportType,
