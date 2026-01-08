@@ -356,6 +356,43 @@ const setListItem = (
   return '';
 };
 
+const setCodeBlock = (
+  exportType: TExportType,
+  schema: TEditorSchema,
+): string => {
+  if (!schema.content) {
+    return '';
+  }
+
+  const language = schema.attrs?.language;
+  const content = schema.content[0]?.text;
+
+  switch (exportType) {
+    case ExportType.MD:
+      return '```' + (language ?? '') + '\n' + content + '\n```\n';
+
+    case ExportType.XML:
+      return '<pre>' + content + '</pre>';
+
+    case ExportType.WORDPRESS:
+      return '<pre>' + content + '</pre>';
+
+    case ExportType.MEDIUM:
+      return (
+        '<pre data-code-block-lang="' +
+        (language ?? '') +
+        '">' +
+        content +
+        '</pre>'
+      );
+
+    case ExportType.SUBSTACK:
+      return '<pre><code>' + content + '</code></pre>';
+  }
+
+  return '';
+};
+
 export {
   setBold,
   setItalic,
@@ -372,4 +409,5 @@ export {
   setBulletList,
   setNumberList,
   setListItem,
+  setCodeBlock,
 };

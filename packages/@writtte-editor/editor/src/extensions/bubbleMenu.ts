@@ -6,6 +6,7 @@ const excludedNodeTypes: string[] = [
   'image',
   'horizontalLine',
   'blockPlaceholder',
+  'codeBlock',
 ];
 
 type TBubbleMenuOptions = {

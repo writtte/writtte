@@ -51,6 +51,7 @@ type TEditorAPI = {
   toggleStrikethrough: () => boolean;
   toggleBulletList: () => boolean;
   toggleNumberList: () => boolean;
+  toggleCodeBlock: () => boolean;
   isBoldActive: () => boolean;
   isItalicActive: () => boolean;
   isUnderlineActive: () => boolean;
@@ -62,6 +63,7 @@ type TEditorAPI = {
   isBulletListActive: () => boolean;
   isNumberListActive: () => boolean;
   isImageActive: () => boolean;
+  isCodeBlockActive: () => boolean;
 };
 
 export type { TEditorAPI };

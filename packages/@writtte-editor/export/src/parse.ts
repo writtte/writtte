@@ -2,6 +2,7 @@ import type { TEditorSchema } from '@writtte-editor/editor';
 import {
   setBold,
   setBulletList,
+  setCodeBlock,
   setHeading,
   setHorizontalRule,
   setImage,
@@ -55,6 +56,10 @@ const parseSchema = (
       schema,
       listContext ? listContext.currentBlock + 1 : 0,
     );
+  }
+
+  if (type === 'codeBlock') {
+    return parseCodeBlock(exportType, schema);
   }
 
   if (schema.content !== undefined) {
@@ -264,5 +269,10 @@ const parseListItem = (
     isLastItemInBlock,
   );
 };
+
+const parseCodeBlock = (
+  exportType: TExportType,
+  schema: TEditorSchema,
+): string => setCodeBlock(exportType, schema);
 
 export { parseSchema };

@@ -202,6 +202,19 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     hasBottomDivider: true,
   },
   {
+    id: 'block_menu_item__mjyeocjthi',
+    text: langKeys().EditorMenuItemCodeBlock,
+    icon: FlatIcon(FlatIconName._18_CODE_BLOCK),
+    key: undefined,
+    isSelected: false,
+    keywords: ['code', 'codeblock'],
+    onClick: (): void => {
+      getEditorAPI().toggleCodeBlock();
+    },
+    hasTopDivider: false,
+    hasBottomDivider: true,
+  },
+  {
     id: 'block_menu_item__jleijdtqxw',
     text: langKeys().EditorMenuItemHorizontalRule,
     icon: FlatIcon(FlatIconName._18_HORIZONTAL_RULE),

@@ -26,6 +26,7 @@ const shortcutKeys = {
   TOGGLE_SUPERSCRIPT: 'Mod-Shift-+',
   TOGGLE_SUBSCRIPT: 'Mod-Shift--',
   TOGGLE_INLINE_CODE: 'Mod-Shift-c',
+  TOGGLE_CODE_BLOCK: 'Mod-Alt-c',
   UNDO: 'Mod-z',
   REDO: 'Mod-y',
   REDO_SECOND: 'Shift-Mod-z',
@@ -134,6 +135,12 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   inlineCode: {
     shortcutKeys: {
       toggleInlineCode: shortcutKeys.TOGGLE_INLINE_CODE,
+    },
+    isEnabled: true,
+  },
+  codeBlock: {
+    shortcutKeys: {
+      toggleCodeBlock: shortcutKeys.TOGGLE_CODE_BLOCK,
     },
     isEnabled: true,
   },
