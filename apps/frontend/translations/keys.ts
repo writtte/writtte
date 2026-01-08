@@ -39,6 +39,7 @@ type TLangKeys = {
   AppearanceModalPanelThemeTextTitle: string;
   AppearanceModalTextTitle: string;
   EditorLoadingUploadingImage: string;
+  EditorMenuItemBlockQuote: string;
   EditorMenuItemBulletList: string;
   EditorMenuItemCodeBlock: string;
   EditorMenuItemHeading01: string;
@@ -270,6 +271,7 @@ const langKeys = (): TLangKeys => {
     AppearanceModalPanelThemeTextTitle: getTr('APPEARANCE_MODAL_PANEL_THEME_TEXT_TITLE'),
     AppearanceModalTextTitle: getTr('APPEARANCE_MODAL_TEXT_TITLE'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
+    EditorMenuItemBlockQuote: getTr('EDITOR_MENU_ITEM_BLOCK_QUOTE'),
     EditorMenuItemBulletList: getTr('EDITOR_MENU_ITEM_BULLET_LIST'),
     EditorMenuItemCodeBlock: getTr('EDITOR_MENU_ITEM_CODE_BLOCK'),
     EditorMenuItemHeading01: getTr('EDITOR_MENU_ITEM_HEADING_01'),

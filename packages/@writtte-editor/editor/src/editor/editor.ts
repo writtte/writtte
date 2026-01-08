@@ -3,6 +3,7 @@ import type { TExtensionOptions } from './options';
 import { type AnyExtension, Editor } from '@tiptap/core';
 import { BlockMenuExtension } from '../extensions/blockMenu';
 import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
+import { BlockQuoteExtension } from '../extensions/blockQuote';
 import { BoldExtension } from '../extensions/bold';
 import { BubbleMenuExtension } from '../extensions/bubbleMenu';
 import { BulletListExtension } from '../extensions/bulletList';
@@ -159,6 +160,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     );
   }
 
+  if (opts.options.blockQuote.isEnabled) {
+    extensions.push(
+      BlockQuoteExtension.configure(opts.options.blockQuote ?? undefined),
+    );
+  }
+
   const _editor = new Editor({
     element: opts.element,
     extensions: [TextExtension, DocumentExtension, ...extensions],
@@ -299,6 +306,15 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const removeAllPlaceholders = (): boolean =>
     _editor.chain().focus().removeAllPlaceholders().run();
 
+  const setBlockQuote = (): boolean =>
+    _editor.chain().focus().setBlockQuote().run();
+
+  const unsetBlockQuote = (): boolean =>
+    _editor.chain().focus().unsetBlockQuote().run();
+
+  const toggleBlockQuote = (): boolean =>
+    _editor.chain().focus().toggleBlockQuote().run();
+
   const toggleHeader01 = (): boolean =>
     _editor
       .chain()
@@ -433,6 +449,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     addPlaceholder,
     removePlaceholder,
     removeAllPlaceholders,
+    setBlockQuote,
+    unsetBlockQuote,
+    toggleBlockQuote,
     toggleHeader01,
     toggleHeader02,
     toggleHeader03,

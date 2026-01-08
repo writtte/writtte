@@ -202,6 +202,19 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     hasBottomDivider: true,
   },
   {
+    id: 'block_menu_item__mpqbebhndd',
+    text: langKeys().EditorMenuItemBlockQuote,
+    icon: FlatIcon(FlatIconName._18_BLOCK_QUOTE),
+    key: undefined,
+    isSelected: false,
+    keywords: ['quote', 'blockQuote', 'note'],
+    onClick: (): void => {
+      getEditorAPI().toggleBlockQuote();
+    },
+    hasTopDivider: false,
+    hasBottomDivider: false,
+  },
+  {
     id: 'block_menu_item__mjyeocjthi',
     text: langKeys().EditorMenuItemCodeBlock,
     icon: FlatIcon(FlatIconName._18_CODE_BLOCK),
