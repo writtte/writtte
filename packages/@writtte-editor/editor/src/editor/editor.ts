@@ -1,6 +1,7 @@
 import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
 import { type AnyExtension, Editor } from '@tiptap/core';
+import { BaseNodeExtension } from '../extensions/baseNode';
 import { BlockMenuExtension } from '../extensions/blockMenu';
 import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
 import { BlockQuoteExtension } from '../extensions/blockQuote';
@@ -108,6 +109,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   if (opts.options.underline.isEnabled) {
     extensions.push(
       UnderlineExtension.configure(opts.options.underline ?? undefined),
+    );
+  }
+
+  if (opts.options.baseNode.isEnabled) {
+    extensions.push(
+      BaseNodeExtension.configure(opts.options.baseNode ?? undefined),
     );
   }
 

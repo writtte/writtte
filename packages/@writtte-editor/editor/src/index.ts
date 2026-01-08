@@ -1,5 +1,6 @@
 // biome-ignore-all lint/performance/noBarrelFile: Barrel exports are required in this file
 
+export type { TBaseNodeOptions } from './extensions/baseNode';
 export type { TCodeBlockOptions } from './extensions/codeBlock';
 export type { TImageAttributes } from './extensions/image';
 export * from './editor/api';
