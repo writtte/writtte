@@ -9,7 +9,12 @@ import {
 
 const INPUT_REGEX = /[\s\n\t]/;
 
-const excludedNodeTypes: string[] = ['codeBlock'];
+const excludedNodeTypes: string[] = [
+  'heading',
+  'codeBlock',
+  'image',
+  'horizontalLine',
+];
 
 const isInsideExcludedNode = (state: EditorState): boolean => {
   const $pos = state.selection.$from;
