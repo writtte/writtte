@@ -6,6 +6,7 @@ import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
 import { BoldExtension } from '../extensions/bold';
 import { BubbleMenuExtension } from '../extensions/bubbleMenu';
 import { BulletListExtension } from '../extensions/bulletList';
+import { CodeBlockExtension } from '../extensions/codeBlock';
 import { DocumentExtension } from '../extensions/document';
 import { HeadingExtension } from '../extensions/header';
 import { HorizontalLineExtension } from '../extensions/horizontalLine';
@@ -111,6 +112,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   if (opts.options.inlineCode.isEnabled) {
     extensions.push(
       InlineCodeExtension.configure(opts.options.inlineCode ?? undefined),
+    );
+  }
+
+  if (opts.options.codeBlock.isEnabled) {
+    extensions.push(
+      CodeBlockExtension.configure(opts.options.codeBlock ?? undefined),
     );
   }
 
@@ -372,6 +379,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const toggleNumberList = (): boolean =>
     _editor.chain().focus().toggleNumberList().run();
 
+  const toggleCodeBlock = (): boolean =>
+    _editor.chain().focus().toggleCodeBlock().run();
+
   const isBoldActive = (): boolean => _editor.isActive('bold');
 
   const isItalicActive = (): boolean => _editor.isActive('italic');
@@ -394,6 +404,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const isNumberListActive = (): boolean => _editor.isActive('numberList');
 
   const isImageActive = (): boolean => _editor.isActive('image');
+
+  const isCodeBlockActive = (): boolean => _editor.isActive('codeBlock');
 
   return {
     isEditable,
@@ -436,6 +448,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     toggleStrikethrough,
     toggleBulletList,
     toggleNumberList,
+    toggleCodeBlock,
     isBoldActive,
     isItalicActive,
     isUnderlineActive,
@@ -447,6 +460,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isBulletListActive,
     isNumberListActive,
     isImageActive,
+    isCodeBlockActive,
   };
 };
 

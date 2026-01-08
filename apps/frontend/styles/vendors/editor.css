@@ -391,3 +391,41 @@
 .writtte-image-container.hide {
   display: none;
 }
+
+/* Code Block */
+
+.writtte-code-block {
+  background: var(--component-writtte-editor-bg--inline-code);
+  border-radius: 0px;
+  color: var(--component-writtte-editor-text--paragraph);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 13px;
+  line-height: 24px;
+  margin: 24px 0;
+  min-height: 24px;
+  overflow-x: auto;
+  padding: 12px;
+  white-space: pre;
+}
+
+.writtte-code-block code {
+  background: transparent;
+  caret-color: var(--component-writtte-editor-text--paragraph);
+  color: inherit;
+  display: block;
+  font-family: inherit;
+  font-size: inherit;
+  min-height: 24px;
+  padding: 0;
+}
+
+.writtte-code-block .ProseMirror pre {
+  caret-color: var(--component-writtte-editor-text--paragraph);
+  min-height: 24px;
+  outline: none;
+}
+
+.writtte-code-block code:empty::before {
+  content: "\200b";
+  display: inline;
+}
