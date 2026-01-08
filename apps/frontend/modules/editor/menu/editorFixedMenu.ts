@@ -144,6 +144,20 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       hasRightDivider: true,
     },
     {
+      id: 'button__canawcdkkf',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_BLOCK_QUOTE),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().setBlockQuote();
+        },
+      },
+      hasLeftDivider: false,
+      hasRightDivider: true,
+    },
+    {
       id: 'button__icyswcgvas',
       item: {
         type: FixedMenuItemType.BUTTON,

@@ -184,6 +184,9 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
       setBlockMenuCallbacks(deleteTrigger, hideMenu),
     isEnabled: true,
   },
+  blockQuote: {
+    isEnabled: true,
+  },
 });
 
 export { setupEditorExtensionOptions };

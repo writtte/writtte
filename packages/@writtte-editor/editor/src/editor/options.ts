@@ -1,5 +1,6 @@
 import type { TBlockMenuOptions } from '../extensions/blockMenu';
 import type { TBlockPlaceholderOptions } from '../extensions/blockPlaceholder';
+import type { TBlockQuoteOptions } from '../extensions/blockQuote';
 import type { TBoldOptions } from '../extensions/bold';
 import type { TBubbleMenuOptions } from '../extensions/bubbleMenu';
 import type { TBulletListOptions } from '../extensions/bulletList';
@@ -44,6 +45,7 @@ type TExtensionOptions = {
   image: Partial<TImageOptions> & { isEnabled: boolean };
   bubbleMenu: Partial<TBubbleMenuOptions> & { isEnabled: boolean };
   blockMenu: Partial<TBlockMenuOptions> & { isEnabled: boolean };
+  blockQuote: Partial<TBlockQuoteOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };

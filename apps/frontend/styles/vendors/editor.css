@@ -365,6 +365,19 @@
   outline: none;
 }
 
+/* Blockquote */
+
+.writtte-editor blockquote {
+  border-left: 3px solid var(--component-writtte-editor-text--paragraph);
+  color: var(--component-writtte-editor-text--paragraph);
+  margin: 24px 0;
+  padding: 4px 24px;
+}
+
+.writtte-editor blockquote > p:last-child {
+  margin-bottom: 0px;
+}
+
 /* Image Container */
 
 .writtte-image-container {
