@@ -1,5 +1,6 @@
 import type { TEditorSchema } from '@writtte-editor/editor';
 import {
+  setBlockQuote,
   setBold,
   setBulletList,
   setCodeBlock,
@@ -60,6 +61,10 @@ const parseSchema = (
 
   if (type === 'codeBlock') {
     return parseCodeBlock(exportType, schema);
+  }
+
+  if (type === 'blockQuote') {
+    return parseBlockQuote(exportType, schema);
   }
 
   if (schema.content !== undefined) {
@@ -274,5 +279,25 @@ const parseCodeBlock = (
   exportType: TExportType,
   schema: TEditorSchema,
 ): string => setCodeBlock(exportType, schema);
+
+const parseBlockQuote = (
+  exportType: TExportType,
+  schema: TEditorSchema,
+): string => {
+  const content = schema.content;
+  if (!content || content.length <= 0) {
+    return '';
+  }
+
+  let parsedText: string = '';
+  for (let i = 0; i < content.length; i++) {
+    parsedText += setBlockQuote(
+      exportType,
+      parseSchema(exportType, content[i], undefined),
+    );
+  }
+
+  return parsedText;
+};
 
 export { parseSchema };

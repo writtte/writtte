@@ -393,6 +393,25 @@ const setCodeBlock = (
   return '';
 };
 
+const setBlockQuote = (exportType: TExportType, text: string): string => {
+  switch (exportType) {
+    case ExportType.MD:
+      return '> ' + text;
+
+    case ExportType.XML:
+      return '<blockQuote>' + text + '</blockQuote>';
+
+    case ExportType.MEDIUM:
+      return '<blockquote>' + extractParagraphContent(text) + '</blockquote>';
+
+    case ExportType.WORDPRESS:
+    case ExportType.SUBSTACK:
+      return '<blockquote>' + text + '</blockquote>';
+  }
+
+  return '';
+};
+
 export {
   setBold,
   setItalic,
@@ -410,4 +429,5 @@ export {
   setNumberList,
   setListItem,
   setCodeBlock,
+  setBlockQuote,
 };
