@@ -46,10 +46,40 @@ const BubbleMenuExtension: AnyExtension = Extension.create<TBubbleMenuOptions>({
               return;
             }
 
-            // Hide bubble menu when excluded nodes are selected (e.g., image, horizontalRule)
+            // Hide bubble menu when excluded nodes are
+            // selected (e.g., image, horizontalRule)
+
             if (isNodeSelection(selection)) {
               const nodeName = selection.node.type.name;
               if (excludedNodeTypes.includes(nodeName)) {
+                menuElement.style.display = 'none';
+                menuElement.dataset.isOpen = 'false';
+                return;
+              }
+            }
+
+            // Hide bubble menu when the selection is inside or across
+            // excluded node types
+
+            const $from = selection.$from;
+            const $to = selection.$to;
+
+            // Check if selection starts in an excluded node type
+
+            for (let depth = $from.depth; depth >= 0; depth--) {
+              const node = $from.node(depth);
+              if (node && excludedNodeTypes.includes(node.type.name)) {
+                menuElement.style.display = 'none';
+                menuElement.dataset.isOpen = 'false';
+                return;
+              }
+            }
+
+            // Check if selection ends in an excluded node type
+
+            for (let depth = $to.depth; depth >= 0; depth--) {
+              const node = $to.node(depth);
+              if (node && excludedNodeTypes.includes(node.type.name)) {
                 menuElement.style.display = 'none';
                 menuElement.dataset.isOpen = 'false';
                 return;
