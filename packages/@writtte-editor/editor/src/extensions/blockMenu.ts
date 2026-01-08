@@ -9,6 +9,24 @@ import {
 
 const INPUT_REGEX = /[\s\n\t]/;
 
+const excludedNodeTypes: string[] = ['codeBlock'];
+
+const isInsideExcludedNode = (state: EditorState): boolean => {
+  const $pos = state.selection.$from;
+  for (let depth: number = $pos.depth; depth >= 0; depth--) {
+    try {
+      const nodeName = $pos.node(depth).type.name;
+      if (excludedNodeTypes.includes(nodeName)) {
+        return true;
+      }
+    } catch {
+      // Skip any errors with node access
+    }
+  }
+
+  return false;
+};
+
 type TBlockMenuOptions = {
   MenuElement: HTMLElement;
   trigger: string;
@@ -37,7 +55,13 @@ const BlockMenuExtension: AnyExtension = Extension.create<TBlockMenuOptions>({
     }
 
     const trigger = this.options.trigger ?? '/';
-    const canOpen = this.options.canOpen ?? (() => true);
+    const canOpen =
+      this.options.canOpen ??
+      ((state: EditorState) => {
+        // Check if we are inside an excluded node type
+        return !isInsideExcludedNode(state);
+      });
+
     const onInputUpdate = this.options.onInputUpdate;
     const onQueryChange = this.options.onQueryChange;
     const queryStateRef = this.options.queryStateRef;
@@ -158,7 +182,15 @@ const BlockMenuExtension: AnyExtension = Extension.create<TBlockMenuOptions>({
                 return;
               }
 
+              // Check if we're inside an excluded node type
+
+              if (isInsideExcludedNode(state)) {
+                hideMenu();
+                return;
+              }
+
               const $from = state.selection.$from;
+
               if (
                 $from.depth === 0 ||
                 $from.nodeBefore?.type.name === 'paragraph' ||
