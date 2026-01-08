@@ -23,6 +23,7 @@ import { StrikethroughExtension } from '../extensions/strikethrough';
 import { SubscriptExtension } from '../extensions/subscript';
 import { SuperscriptExtension } from '../extensions/superscript';
 import { TextExtension } from '../extensions/text';
+import { TrailingNodeExtension } from '../extensions/trailingNode';
 import { UnderlineExtension } from '../extensions/underline';
 import { UndoRedoExtension } from '../extensions/undoRedo';
 import { type TEditorSchema, defaultEditorSchema } from './schema';
@@ -107,6 +108,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   if (opts.options.underline.isEnabled) {
     extensions.push(
       UnderlineExtension.configure(opts.options.underline ?? undefined),
+    );
+  }
+
+  if (opts.options.trailingNode.isEnabled) {
+    extensions.push(
+      TrailingNodeExtension.configure(opts.options.trailingNode ?? undefined),
     );
   }
 
