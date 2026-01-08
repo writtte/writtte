@@ -321,6 +321,23 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     return [
       new Plugin({
         props: {
+          handleKeyDown: (view: EditorView, event: KeyboardEvent): boolean => {
+            const { selection } = view.state;
+
+            if (
+              selection instanceof NodeSelection &&
+              selection.node.type === this.type
+            ) {
+              // Only allow Backspace (8) and Delete (46) keys to remove
+              // the image
+
+              if (event.keyCode !== 8 && event.keyCode !== 46) {
+                return true;
+              }
+            }
+
+            return false;
+          },
           handlePaste: (view: EditorView, event: ClipboardEvent): void => {
             // biome-ignore lint/nursery/noFloatingPromises: A floating promise is required here
             (async () => {
