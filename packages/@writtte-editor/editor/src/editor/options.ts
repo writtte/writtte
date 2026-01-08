@@ -1,3 +1,4 @@
+import type { TBaseNodeOptions } from '../extensions/baseNode';
 import type { TBlockMenuOptions } from '../extensions/blockMenu';
 import type { TBlockPlaceholderOptions } from '../extensions/blockPlaceholder';
 import type { TBlockQuoteOptions } from '../extensions/blockQuote';
@@ -36,6 +37,7 @@ type TExtensionOptions = {
   subscript: Partial<TSubscriptOptions> & { isEnabled: boolean };
   superScript: Partial<TSuperscriptOptions> & { isEnabled: boolean };
   underline: Partial<TUnderlineOptions> & { isEnabled: boolean };
+  baseNode: Partial<TBaseNodeOptions> & { isEnabled: boolean };
   trailingNode: Partial<TTrailingNodeOptions> & { isEnabled: boolean };
   inlineCode: Partial<TInlineCodeOptions> & { isEnabled: boolean };
   codeBlock: Partial<TCodeBlockOptions> & { isEnabled: boolean };

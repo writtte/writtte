@@ -129,6 +129,9 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     },
     isEnabled: true,
   },
+  baseNode: {
+    isEnabled: true,
+  },
   trailingNode: {
     isEnabled: true,
   },
