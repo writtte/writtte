@@ -72,6 +72,10 @@
     "extsentry",
     "selectednode",
     "catppuccin",
-    "keyCode"
+    "keyCode",
+    "documentsharingretrievelist",
+    "documentsharingretrieve",
+    "documentsharingdelete",
+    "documentsharingcreate"
   ]
 }

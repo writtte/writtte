@@ -137,6 +137,11 @@ type TLangKeys = {
   ModalDocumentRenameButtonRenaming: string;
   ModalDocumentRenameTextContent: string;
   ModalDocumentRenameTextTitle: string;
+  ModalDocumentSharingButtonCancel: string;
+  ModalDocumentSharingButtonGenerate: string;
+  ModalDocumentSharingButtonGenerating: string;
+  ModalDocumentSharingTextContent: string;
+  ModalDocumentSharingTextTitle: string;
   ModalEmailUpdateButtonCancel: string;
   ModalEmailUpdateButtonSend: string;
   ModalEmailUpdateButtonSending: string;
@@ -376,6 +381,11 @@ const langKeys = (): TLangKeys => {
     ModalDocumentRenameButtonRenaming: getTr('MODAL_DOCUMENT_RENAME_BUTTON_RENAMING'),
     ModalDocumentRenameTextContent: getTr('MODAL_DOCUMENT_RENAME_TEXT_CONTENT'),
     ModalDocumentRenameTextTitle: getTr('MODAL_DOCUMENT_RENAME_TEXT_TITLE'),
+    ModalDocumentSharingButtonCancel: getTr('MODAL_DOCUMENT_SHARING_BUTTON_CANCEL'),
+    ModalDocumentSharingButtonGenerate: getTr('MODAL_DOCUMENT_SHARING_BUTTON_GENERATE'),
+    ModalDocumentSharingButtonGenerating: getTr('MODAL_DOCUMENT_SHARING_BUTTON_GENERATING'),
+    ModalDocumentSharingTextContent: getTr('MODAL_DOCUMENT_SHARING_TEXT_CONTENT'),
+    ModalDocumentSharingTextTitle: getTr('MODAL_DOCUMENT_SHARING_TEXT_TITLE'),
     ModalEmailUpdateButtonCancel: getTr('MODAL_EMAIL_UPDATE_BUTTON_CANCEL'),
     ModalEmailUpdateButtonSend: getTr('MODAL_EMAIL_UPDATE_BUTTON_SEND'),
     ModalEmailUpdateButtonSending: getTr('MODAL_EMAIL_UPDATE_BUTTON_SENDING'),

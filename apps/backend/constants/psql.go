@@ -48,3 +48,11 @@ const (
 	ImageRetrieved = "IMAGE_RETRIEVED"
 	ImageUpdated   = "IMAGE_UPDATED"
 )
+
+const (
+	DocumentSharingCreated       = "DOCUMENT_SHARING_CREATED"
+	DocumentSharingDeleted       = "DOCUMENT_SHARING_DELETED"
+	DocumentSharingExists        = "DOCUMENT_SHARING_EXISTS"
+	DocumentSharingNotExists     = "DOCUMENT_SHARING_NOT_EXISTS"
+	DocumentSharingRetrievedList = "DOCUMENT_SHARING_RETRIEVED_LIST"
+)

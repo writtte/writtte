@@ -22,6 +22,7 @@
 \echo
 \echo '\033[1;32m[ setup tables in the temporary schema ]\033[0m'
 \echo
+\ir ../scripts/temporary/tables/tb_document_sharing.pg.sql
 \ir ../scripts/temporary/tables/tb_temporary_token.pg.sql
 \echo
 \echo '\033[1;32m[ setup functions in the main schema ]\033[0m'
@@ -51,6 +52,10 @@
 \echo
 \echo '\033[1;32m[ setup functions in the temporary schema ]\033[0m'
 \echo
+\ir ../scripts/temporary/functions/v1_document_sharing_check.pg.sql
+\ir ../scripts/temporary/functions/v1_document_sharing_create.pg.sql
+\ir ../scripts/temporary/functions/v1_document_sharing_delete.pg.sql
+\ir ../scripts/temporary/functions/v1_document_sharing_retrieve_list.pg.sql
 \ir ../scripts/temporary/functions/v1_temporary_token_create.pg.sql
 \ir ../scripts/temporary/functions/v1_temporary_token_update.pg.sql
 \echo
@@ -66,6 +71,7 @@
 \echo
 \echo '\033[1;32m[ setup indexes in the the temporary schema ]\033[0m'
 \echo
+\ir ../scripts/temporary/indexes/idx_tb_document_sharing.pg.sql
 \ir ../scripts/temporary/indexes/idx_tb_temporary_token.pg.sql
 \echo
 \echo '\033[1;32m[ foreign keys in the the main schema ]\033[0m'
