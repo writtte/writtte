@@ -12,6 +12,7 @@ import { ALERT_TIMEOUT } from '../../constants/timeouts';
 import { AlertController } from '../../controller/alert';
 import { getEditorAPI } from '../../data/stores/mainEditor';
 import { langKeys } from '../../translations/keys';
+import { downloadStringAsFile } from '../../utils/file/downloadStringAsFile';
 
 const buildExportMenu = async (e: PointerEvent): Promise<void> => {
   const editorAPI = getEditorAPI();
@@ -80,7 +81,7 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             ALERT_TIMEOUT.SHORT,
           );
         },
-        sectionTitle: undefined,
+        sectionTitle: langKeys().MenuSectionCopy,
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -359,6 +360,48 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             },
             ALERT_TIMEOUT.SHORT,
           );
+        },
+        sectionTitle: undefined,
+        hasTopDivider: false,
+        hasBottomDivider: false,
+      },
+      {
+        id: 'menu_item__hfnhqkhylz',
+        text: langKeys().MenuItemDownloadMarkdown,
+        leftIcon: FlatIcon(FlatIconName._18_MARKDOWN),
+        rightIcon: undefined,
+        isLeftIconVisible: true,
+        onClick: (): void => {
+          const content = editorAPI.getContent();
+          if (!content) {
+            return;
+          }
+
+          const title = `${document.title}.md`;
+          const mdContent = exportToMarkdown(content);
+
+          downloadStringAsFile(title, mdContent);
+        },
+        sectionTitle: langKeys().MenuSectionDownload,
+        hasTopDivider: false,
+        hasBottomDivider: false,
+      },
+      {
+        id: 'menu_item__duaolnzwgt',
+        text: langKeys().MenuItemDownloadXml,
+        leftIcon: FlatIcon(FlatIconName._18_XML),
+        rightIcon: undefined,
+        isLeftIconVisible: true,
+        onClick: (): void => {
+          const content = editorAPI.getContent();
+          if (!content) {
+            return;
+          }
+
+          const title = `${document.title}.xml`;
+          const mdContent = exportToXML(content);
+
+          downloadStringAsFile(title, mdContent);
         },
         sectionTitle: undefined,
         hasTopDivider: false,

@@ -108,12 +108,19 @@ type TLangKeys = {
   MenuItemDocumentExportPlatformSubstack: string;
   MenuItemDocumentExportPlatformWordpress: string;
   MenuItemDocumentExportXml: string;
+  MenuItemDownloadMarkdown: string;
+  MenuItemDownloadXml: string;
   MenuItemHelpAndDocumentation: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
   MenuItemRenameDocument: string;
   MenuItemSettings: string;
+  MenuItemSharePrivate: string;
+  MenuItemSharePublic: string;
   MenuItemSignOut: string;
+  MenuSectionCopy: string;
+  MenuSectionDownload: string;
+  MenuSectionShare: string;
   ModalAccountDeleteConfirmationButtonCancel: string;
   ModalAccountDeleteConfirmationButtonConfirm: string;
   ModalAccountDeleteConfirmationButtonDeleting: string;
@@ -340,12 +347,19 @@ const langKeys = (): TLangKeys => {
     MenuItemDocumentExportPlatformSubstack: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_Substack'),
     MenuItemDocumentExportPlatformWordpress: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_WORDPRESS'),
     MenuItemDocumentExportXml: getTr('MENU_ITEM_DOCUMENT_EXPORT_XML'),
+    MenuItemDownloadMarkdown: getTr('MENU_ITEM_DOWNLOAD_MARKDOWN'),
+    MenuItemDownloadXml: getTr('MENU_ITEM_DOWNLOAD_XML'),
     MenuItemHelpAndDocumentation: getTr('MENU_ITEM_HELP_AND_DOCUMENTATION'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
     MenuItemRenameDocument: getTr('MENU_ITEM_RENAME_DOCUMENT'),
     MenuItemSettings: getTr('MENU_ITEM_SETTINGS'),
+    MenuItemSharePrivate: getTr('MENU_ITEM_SHARE_PRIVATE'),
+    MenuItemSharePublic: getTr('MENU_ITEM_SHARE_PUBLIC'),
     MenuItemSignOut: getTr('MENU_ITEM_SIGN_OUT'),
+    MenuSectionCopy: getTr('MENU_SECTION_COPY'),
+    MenuSectionDownload: getTr('MENU_SECTION_DOWNLOAD'),
+    MenuSectionShare: getTr('MENU_SECTION_SHARE'),
     ModalAccountDeleteConfirmationButtonCancel: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CANCEL'),
     ModalAccountDeleteConfirmationButtonConfirm: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CONFIRM'),
     ModalAccountDeleteConfirmationButtonDeleting: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_DELETING'),
