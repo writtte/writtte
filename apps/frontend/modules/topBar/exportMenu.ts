@@ -80,6 +80,7 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             ALERT_TIMEOUT.SHORT,
           );
         },
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -135,6 +136,7 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             ALERT_TIMEOUT.SHORT,
           );
         },
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: true,
       },
@@ -190,6 +192,7 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             ALERT_TIMEOUT.SHORT,
           );
         },
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: true,
       },
@@ -245,6 +248,7 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             ALERT_TIMEOUT.SHORT,
           );
         },
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -300,6 +304,7 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             ALERT_TIMEOUT.SHORT,
           );
         },
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -355,6 +360,7 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
             ALERT_TIMEOUT.SHORT,
           );
         },
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: false,
       },

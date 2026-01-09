@@ -18,6 +18,23 @@
   gap: 2px;
 }
 
+.menu__section-title {
+  align-items: center;
+  color: var(--component-editor-menu-text);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: all-small-caps;
+  font-weight: 500;
+  gap: 8px;
+  justify-content: flex-start;
+  line-height: normal;
+  min-height: 32px;
+  padding-inline: 8px;
+  width: 100%;
+}
+
 .menu__divider {
   background: var(--component-menu-item-border);
   height: 1px;

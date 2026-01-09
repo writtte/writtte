@@ -12,6 +12,7 @@ type TOptions = {
     y: number;
   };
   items: (TMenuItemOptions & {
+    sectionTitle: string | undefined;
     hasTopDivider: boolean;
     hasBottomDivider: boolean;
   })[];
@@ -47,6 +48,15 @@ const Menu = (opts: TOptions): TReturnMenu => {
   const items: TReturnMenu['items'] = {};
 
   for (let i = 0; i < opts.items.length; i++) {
+    if (opts.items[i].sectionTitle) {
+      const menuSectionTitleDiv = document.createElement('div');
+      menuSectionTitleDiv.classList.add('menu__section-title');
+
+      menuSectionTitleDiv.textContent = opts.items[i].sectionTitle ?? '';
+
+      containerDiv.appendChild(menuSectionTitleDiv);
+    }
+
     if (opts.items[i].hasTopDivider === true) {
       const dividerDiv = document.createElement('div');
       dividerDiv.classList.add('menu__divider');

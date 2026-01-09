@@ -32,6 +32,7 @@ const buildDocumentOptionsMenu = async (
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>
           await navigate(`${PATHS.DOCUMENT_EDIT}/${documentCode}`),
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -43,6 +44,7 @@ const buildDocumentOptionsMenu = async (
         isLeftIconVisible: true,
         onClick: (): void =>
           navigateExternal(`${PATHS.DOCUMENT_EDIT}/${documentCode}`),
+        sectionTitle: undefined,
         hasTopDivider: false,
         hasBottomDivider: false,
       },
@@ -54,6 +56,7 @@ const buildDocumentOptionsMenu = async (
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>
           await openDocumentRenameModal(itemList, documentCode),
+        sectionTitle: undefined,
         hasTopDivider: true,
         hasBottomDivider: false,
       },
@@ -65,6 +68,7 @@ const buildDocumentOptionsMenu = async (
         isLeftIconVisible: true,
         onClick: async (): Promise<void> =>
           await openDocumentDeleteModal(itemList, documentCode),
+        sectionTitle: undefined,
         hasTopDivider: true,
         hasBottomDivider: false,
       },
