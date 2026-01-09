@@ -9,7 +9,7 @@ import (
 	"backend/pkg/extaws"
 )
 
-func getDocumentContent(ctx context.Context, accountCode,
+func GetDocumentContent(ctx context.Context, accountCode,
 	documentCode *string) (*extaws.S3FileRetrieveData, error) {
 	if accountCode == nil || documentCode == nil {
 		return nil, nil

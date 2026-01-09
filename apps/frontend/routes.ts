@@ -6,6 +6,7 @@ import { EditorPage } from './pages/Editor';
 import { NotFoundPage } from './pages/NotFound';
 import { OnboardingPage } from './pages/Onboarding';
 import { OverviewPage } from './pages/Overview';
+import { SharedDocumentPage } from './pages/SharedDocument';
 import { SignInPage } from './pages/SignIn';
 import { SignInEmailPage } from './pages/SignInEmail';
 import { SignInEmailCheckPage } from './pages/SignInEmailCheck';
@@ -66,6 +67,12 @@ const defaultRoutes: TRoute[] = [
     path: PATHS.VALIDATE_EMAIL,
     title: 'Validate Email | Writtte',
     view: async () => await ValidateEmailUpdatePage(),
+  },
+  {
+    path: `${PATHS.SHARE_DOCUMENT}/:sharingCode`,
+    title: 'Shared Document | Writtte',
+    view: async (params: Record<string, string> | undefined) =>
+      await SharedDocumentPage(params),
   },
 ];
 

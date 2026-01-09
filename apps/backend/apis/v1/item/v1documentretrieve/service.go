@@ -38,7 +38,7 @@ func (s *service) perform(ctx context.Context,
 	var contentToPass string
 	if *parsedResults.Status {
 		var content *extaws.S3FileRetrieveData
-		content, err = getDocumentContent(ctx, &accountCode,
+		content, err = GetDocumentContent(ctx, &accountCode,
 			queries.DocumentCode)
 
 		if err != nil {

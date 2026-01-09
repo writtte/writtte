@@ -8,6 +8,7 @@ const PATHS = {
   ONBOARDING: '/onboarding',
   DOCUMENT_EDIT: '/document',
   VALIDATE_EMAIL: '/temporary/validate/email-update',
+  SHARE_DOCUMENT: '/share/document',
 };
 
 export { PATHS };

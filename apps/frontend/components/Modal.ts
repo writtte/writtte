@@ -82,6 +82,23 @@ type TReturnModal = {
   buttons: {
     [key: string]: TReturnButton;
   };
+  addInput: (
+    contentItemIndex: number,
+    input: {
+      title: string | undefined;
+      input: Pick<
+        TInputOptions,
+        | 'id'
+        | 'text'
+        | 'placeholderText'
+        | 'inlineButton'
+        | 'statusText'
+        | 'type'
+        | 'onSubmit'
+      >;
+    },
+  ) => void;
+  removeInput: (contentItemIndex: number, inputId: string) => void;
 };
 
 const Modal = (opts: TOptions): TReturnModal => {
@@ -190,10 +207,67 @@ const Modal = (opts: TOptions): TReturnModal => {
     contentDiv.appendChild(contentItem);
   }
 
+  const addInput = (
+    contentItemIndex: number,
+    inputConfig: {
+      title: string | undefined;
+      input: Pick<
+        TInputOptions,
+        | 'id'
+        | 'text'
+        | 'placeholderText'
+        | 'inlineButton'
+        | 'statusText'
+        | 'type'
+        | 'onSubmit'
+      >;
+    },
+  ): void => {
+    const contentItem = contentDiv.children[contentItemIndex] as HTMLElement;
+    if (!contentItem) return;
+
+    if (inputConfig.title) {
+      const title = document.createElement('div');
+      title.classList.add('modal__input-title');
+      title.textContent = inputConfig.title;
+      contentItem.appendChild(title);
+    }
+
+    const inputComponent = Input({
+      ...inputConfig.input,
+      size: InputSize.MEDIUM,
+      isFullWidth: true,
+      onChange: undefined,
+    });
+
+    contentItem.appendChild(inputComponent.element);
+    inputs[inputConfig.input.id] = inputComponent;
+  };
+
+  const removeInput = (contentItemIndex: number, inputId: string): void => {
+    const contentItem = contentDiv.children[contentItemIndex] as HTMLElement;
+    if (!contentItem) return;
+
+    const inputComponent = inputs[inputId];
+    if (!inputComponent) return;
+
+    // Find and remove the title if it exists (it's the previous sibling)
+    const inputElement = inputComponent.element;
+    const previousSibling = inputElement.previousElementSibling;
+    if (previousSibling?.classList.contains('modal__input-title')) {
+      previousSibling.remove();
+    }
+
+    inputElement.remove();
+    delete inputs[inputId];
+  };
+
   return {
     element: modalDiv,
     inputs,
     buttons,
+    addInput,
+    removeInput,
   };
 };
 

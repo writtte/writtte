@@ -39,7 +39,9 @@ const shortcutKeys = {
   NUMBER_LIST_TOGGLE: 'Mod-Shift-7',
 };
 
-const setupEditorExtensionOptions = (): TExtensionOptions => ({
+const setupEditorExtensionOptions = (
+  isEditable: boolean,
+): TExtensionOptions => ({
   paragraph: {
     shortcutKeys: {
       setParagraph: shortcutKeys.SET_PARAGRAPH,
@@ -173,7 +175,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
   },
   bubbleMenu: {
     MenuElement: setupEditorBubbleMenu(),
-    isEnabled: true,
+    isEnabled: isEditable,
   },
   blockMenu: {
     MenuElement: setupEditorBlockMenu(),
@@ -185,7 +187,7 @@ const setupEditorExtensionOptions = (): TExtensionOptions => ({
     onEnter: (): void => triggerSelectedBlockMenuItem(),
     onSelect: (deleteTrigger: () => void, hideMenu: () => void): void =>
       setBlockMenuCallbacks(deleteTrigger, hideMenu),
-    isEnabled: true,
+    isEnabled: isEditable,
   },
   blockQuote: {
     isEnabled: true,

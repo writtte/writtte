@@ -18,6 +18,31 @@
   gap: 2px;
 }
 
+.menu__section-title {
+  align-items: center;
+  color: var(--component-editor-menu-text);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: all-small-caps;
+  font-weight: 500;
+  gap: 8px;
+  justify-content: center;
+  line-height: normal;
+  min-height: 24px;
+  padding-inline-end: 4px;
+  width: 100%;
+}
+
+.menu__section-title::before {
+  background: var(--component-menu-item-border);
+  content: "";
+  flex: 1;
+  height: 1px;
+  padding-top: 1px;
+}
+
 .menu__divider {
   background: var(--component-menu-item-border);
   height: 1px;

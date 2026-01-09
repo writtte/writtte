@@ -108,12 +108,19 @@ type TLangKeys = {
   MenuItemDocumentExportPlatformSubstack: string;
   MenuItemDocumentExportPlatformWordpress: string;
   MenuItemDocumentExportXml: string;
+  MenuItemDownloadMarkdown: string;
+  MenuItemDownloadXml: string;
   MenuItemHelpAndDocumentation: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
   MenuItemRenameDocument: string;
   MenuItemSettings: string;
+  MenuItemSharePrivate: string;
+  MenuItemSharePublic: string;
   MenuItemSignOut: string;
+  MenuSectionCopy: string;
+  MenuSectionDownload: string;
+  MenuSectionShare: string;
   ModalAccountDeleteConfirmationButtonCancel: string;
   ModalAccountDeleteConfirmationButtonConfirm: string;
   ModalAccountDeleteConfirmationButtonDeleting: string;
@@ -130,6 +137,11 @@ type TLangKeys = {
   ModalDocumentRenameButtonRenaming: string;
   ModalDocumentRenameTextContent: string;
   ModalDocumentRenameTextTitle: string;
+  ModalDocumentSharingButtonCancel: string;
+  ModalDocumentSharingButtonGenerate: string;
+  ModalDocumentSharingButtonGenerating: string;
+  ModalDocumentSharingTextContent: string;
+  ModalDocumentSharingTextTitle: string;
   ModalEmailUpdateButtonCancel: string;
   ModalEmailUpdateButtonSend: string;
   ModalEmailUpdateButtonSending: string;
@@ -340,12 +352,19 @@ const langKeys = (): TLangKeys => {
     MenuItemDocumentExportPlatformSubstack: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_Substack'),
     MenuItemDocumentExportPlatformWordpress: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_WORDPRESS'),
     MenuItemDocumentExportXml: getTr('MENU_ITEM_DOCUMENT_EXPORT_XML'),
+    MenuItemDownloadMarkdown: getTr('MENU_ITEM_DOWNLOAD_MARKDOWN'),
+    MenuItemDownloadXml: getTr('MENU_ITEM_DOWNLOAD_XML'),
     MenuItemHelpAndDocumentation: getTr('MENU_ITEM_HELP_AND_DOCUMENTATION'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
     MenuItemRenameDocument: getTr('MENU_ITEM_RENAME_DOCUMENT'),
     MenuItemSettings: getTr('MENU_ITEM_SETTINGS'),
+    MenuItemSharePrivate: getTr('MENU_ITEM_SHARE_PRIVATE'),
+    MenuItemSharePublic: getTr('MENU_ITEM_SHARE_PUBLIC'),
     MenuItemSignOut: getTr('MENU_ITEM_SIGN_OUT'),
+    MenuSectionCopy: getTr('MENU_SECTION_COPY'),
+    MenuSectionDownload: getTr('MENU_SECTION_DOWNLOAD'),
+    MenuSectionShare: getTr('MENU_SECTION_SHARE'),
     ModalAccountDeleteConfirmationButtonCancel: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CANCEL'),
     ModalAccountDeleteConfirmationButtonConfirm: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CONFIRM'),
     ModalAccountDeleteConfirmationButtonDeleting: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_DELETING'),
@@ -362,6 +381,11 @@ const langKeys = (): TLangKeys => {
     ModalDocumentRenameButtonRenaming: getTr('MODAL_DOCUMENT_RENAME_BUTTON_RENAMING'),
     ModalDocumentRenameTextContent: getTr('MODAL_DOCUMENT_RENAME_TEXT_CONTENT'),
     ModalDocumentRenameTextTitle: getTr('MODAL_DOCUMENT_RENAME_TEXT_TITLE'),
+    ModalDocumentSharingButtonCancel: getTr('MODAL_DOCUMENT_SHARING_BUTTON_CANCEL'),
+    ModalDocumentSharingButtonGenerate: getTr('MODAL_DOCUMENT_SHARING_BUTTON_GENERATE'),
+    ModalDocumentSharingButtonGenerating: getTr('MODAL_DOCUMENT_SHARING_BUTTON_GENERATING'),
+    ModalDocumentSharingTextContent: getTr('MODAL_DOCUMENT_SHARING_TEXT_CONTENT'),
+    ModalDocumentSharingTextTitle: getTr('MODAL_DOCUMENT_SHARING_TEXT_TITLE'),
     ModalEmailUpdateButtonCancel: getTr('MODAL_EMAIL_UPDATE_BUTTON_CANCEL'),
     ModalEmailUpdateButtonSend: getTr('MODAL_EMAIL_UPDATE_BUTTON_SEND'),
     ModalEmailUpdateButtonSending: getTr('MODAL_EMAIL_UPDATE_BUTTON_SENDING'),

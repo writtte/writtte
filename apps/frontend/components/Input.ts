@@ -44,6 +44,7 @@ type TReturnInput = {
   setStatusText: (statusTextOpts: TStatusTextOptions | undefined) => void;
   getValue: () => string;
   setValue: (value: string | undefined) => void;
+  setReadOnly: (shouldReadOnly: boolean) => void;
   getCurrentInputType: () => TInputType;
   changeInlineButtonIcon: (newIcon: HTMLElement) => void;
   clearStatusTextAfterDelay: (delay: number) => void;
@@ -209,12 +210,17 @@ const Input = (opts: TOptions): TReturnInput => {
     }, delay);
   };
 
+  const setReadOnly = (shouldReadOnly: boolean): void => {
+    input.readOnly = shouldReadOnly;
+  };
+
   return {
     element: wrapperDiv,
     changeInputType,
     setStatusText,
     getValue,
     setValue,
+    setReadOnly,
     getCurrentInputType,
     changeInlineButtonIcon,
     clearStatusTextAfterDelay,
