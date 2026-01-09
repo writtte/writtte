@@ -56,3 +56,22 @@ const (
 	DocumentSharingNotExists     = "DOCUMENT_SHARING_NOT_EXISTS"
 	DocumentSharingRetrievedList = "DOCUMENT_SHARING_RETRIEVED_LIST"
 )
+
+const (
+	FolderCreated       = "FOLDER_CREATED"
+	FolderDeleted       = "FOLDER_DELETED"
+	FolderExists        = "FOLDER_EXISTS"
+	FolderHasDocuments  = "FOLDER_HAS_DOCUMENTS"
+	FolderNotExists     = "FOLDER_NOT_EXISTS"
+	FolderRetrieved     = "FOLDER_RETRIEVED"
+	FolderRetrievedList = "FOLDER_RETRIEVED_LIST"
+	FolderUpdated       = "FOLDER_UPDATED"
+)
+
+const (
+	TreeAlreadyExists            = "TREE_ALREADY_EXISTS"
+	TreeDocumentAdded            = "TREE_DOCUMENT_ADDED"
+	TreeDocumentRemoved          = "TREE_DOCUMENT_REMOVED"
+	TreeFolderDocumentsRetrieved = "TREE_FOLDER_DOCUMENTS_RETRIEVED"
+	TreeNotExists                = "TREE_NOT_EXISTS"
+)
