@@ -28,11 +28,19 @@
   font-variant: all-small-caps;
   font-weight: 500;
   gap: 8px;
-  justify-content: flex-start;
+  justify-content: center;
   line-height: normal;
-  min-height: 32px;
-  padding-inline: 8px;
+  min-height: 24px;
+  padding-inline-end: 4px;
   width: 100%;
+}
+
+.menu__section-title::before {
+  background: var(--component-menu-item-border);
+  content: "";
+  flex: 1;
+  height: 1px;
+  padding-top: 1px;
 }
 
 .menu__divider {
