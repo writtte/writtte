@@ -76,6 +76,12 @@
     "documentsharingretrievelist",
     "documentsharingretrieve",
     "documentsharingdelete",
-    "documentsharingcreate"
+    "documentsharingcreate",
+    "foldercreate",
+    "folderdelete",
+    "folderretrieve",
+    "folderretrievelist",
+    "folderupdate",
+    "treeadddocument"
   ]
 }

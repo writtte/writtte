@@ -12,5 +12,6 @@ CREATE TABLE IF NOT EXISTS schema_item.tb_document (
   deleted_time TIMESTAMP WITH TIME ZONE DEFAULT NULL,
   CHECK (lifecycle_state IN ('ACTIVE', 'DELETED')),
   CHECK (workflow_state IN ('PUBLISHED')),
-  PRIMARY KEY (id_main)
+  PRIMARY KEY (id_main),
+  UNIQUE (document_code)
 );
