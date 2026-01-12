@@ -21,7 +21,8 @@
     width: 18px;
 
     path {
-      fill: var(--component-button-close-icon);
+      fill: var(--color--text-beta);
+      transition: fill 0.125s ease-in-out;
     }
   }
 
@@ -29,11 +30,11 @@
     cursor: pointer;
 
     svg path {
-      fill: var(--component-button-close-icon---hover);
+      fill: var(--color--text-alpha);
     }
   }
 
   &:focus-visible {
-    outline: 1px dashed var(--common-focus-neutral);
+    outline: 1px dashed var(--color--border-invert);
   }
 }

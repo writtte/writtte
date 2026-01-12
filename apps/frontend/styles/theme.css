@@ -1,6 +1,6 @@
 /* For fonts, we use `Font Source`
  *
- * Sans: https://fontsource.org/fonts/ibm-plex-sans/install
+ * Sans: https://fontsource.org/fonts/source-sans-3/install
  * Mono: https://fontsource.org/fonts/jetbrains-mono/install
  **/
 
@@ -50,6 +50,7 @@
 
 /* Pages */
 
+@import "./pages/create_draft.css";
 @import "./pages/editor.css";
 @import "./pages/onboarding.css";
 @import "./pages/overview.css";
@@ -83,7 +84,6 @@
 @import "./components/menu.css";
 @import "./components/menu_item.css";
 @import "./components/modal.css";
-@import "./components/overview_title.css";
 @import "./components/settings_item.css";
 @import "./components/settings_modal.css";
 @import "./components/settings_section.css";
@@ -96,6 +96,10 @@
 @import "./controllers/appearance_modal.css";
 @import "./controllers/modal.css";
 @import "./controllers/settings_modal.css";
+
+/* Empty States */
+
+@import "./empty_state/no_documents.css";
 
 /* Vendors */
 

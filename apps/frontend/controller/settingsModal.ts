@@ -3,6 +3,7 @@ import {
   type TReturnSettingsModal,
   type TSettingsModalOptions,
 } from '../components/SettingsModal';
+import { removeWhenRouteChange } from '../utils/ui/removeWhenRouteChange';
 
 type TInternalSettingsModal = {
   id: string;
@@ -30,16 +31,39 @@ const SettingsModalController = (): TReturnSettingsModalController => {
       containerDiv.classList.add('settings-modal-container');
 
       document.body.appendChild(containerDiv);
+
+      removeWhenRouteChange(containerDiv, {
+        enabled: true,
+        animationDuration: 300,
+        onBeforeRemove: () => {
+          if (containerDiv) {
+            containerDiv.classList.add('settings-modal-container--closing');
+          }
+        },
+        onAfterRemove: () => {
+          currentModal = null;
+          containerDiv = null;
+        },
+      });
     }
   };
 
   const closeModal = (id: string): void => {
     if (currentModal && currentModal.id === id) {
-      currentModal.modalReturn.element.remove();
-      currentModal = null;
-
       if (containerDiv) {
-        containerDiv.style.display = 'none';
+        containerDiv.classList.add('settings-modal-container--closing');
+        setTimeout(() => {
+          currentModal?.modalReturn.element.remove();
+          currentModal = null;
+
+          if (containerDiv) {
+            containerDiv.classList.remove('settings-modal-container--closing');
+            containerDiv.style.display = 'none';
+          }
+        }, 300);
+      } else {
+        currentModal.modalReturn.element.remove();
+        currentModal = null;
       }
     }
   };

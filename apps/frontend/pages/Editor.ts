@@ -45,7 +45,7 @@ const EditorPage = async (
 
   const editorElement = Editor({
     id: 'editor__oqvawzczdv',
-    options: setupEditorExtensionOptions(isFreeTrialExpired ?? true),
+    options: setupEditorExtensionOptions(true),
   });
 
   if (editorElement) {

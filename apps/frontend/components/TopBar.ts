@@ -64,8 +64,8 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
   rightButtonsDiv.classList.add('top-bar__right-buttons');
 
   logoDiv.appendChild(opts.logo);
-  leftDiv.append(leftButtonsDiv);
-  rightDiv.append(badgeDiv, rightButtonsDiv);
+  leftDiv.append(badgeDiv, leftButtonsDiv);
+  rightDiv.append(rightButtonsDiv);
   topBarDiv.append(leftDiv, logoDiv, rightDiv);
 
   const buttons: TReturnTopBar['buttons'] = {};
@@ -140,7 +140,7 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
         badge.onClick();
       });
 
-      rightDiv.insertBefore(newBadgeButton, rightButtonsDiv);
+      leftDiv.insertBefore(newBadgeButton, leftButtonsDiv);
     }
   };
 
@@ -151,7 +151,7 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
         existingBadge.remove();
       }
     } else {
-      const existingBadge = rightDiv.querySelector('.top-bar__badge');
+      const existingBadge = leftDiv.querySelector('.top-bar__badge');
       if (existingBadge) {
         existingBadge.remove();
       }

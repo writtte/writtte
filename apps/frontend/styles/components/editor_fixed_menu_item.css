@@ -1,6 +1,6 @@
 .editor-fixed-menu-item-text {
   align-items: center;
-  color: var(--component-editor-menu-item-text);
+  color: var(--color--text-beta);
   display: inline-flex;
   flex-shrink: 0;
   font-size: 13px;
@@ -34,7 +34,7 @@
     width: 18px;
 
     path {
-      fill: var(--component-editor-menu-item-icon);
+      fill: var(--color--text-alpha);
     }
   }
 }
@@ -42,7 +42,7 @@
 .editor-fixed-menu-item-button {
   align-items: center;
   aspect-ratio: 1 / 1;
-  background: var(--component-editor-menu-item-bg);
+  background: var(--color--bg-neutral-100);
   border-radius: 32px;
   border: none;
   box-shadow: none;
@@ -56,23 +56,17 @@
   width: 32px;
 
   &:hover {
-    background: var(--component-editor-menu-item-bg---hover);
+    background: var(--color--bg-neutral-200);
     cursor: pointer;
-
-    .editor-fixed-menu-item-button__icon {
-      svg path {
-        fill: var(--component-editor-menu-item-icon---hover);
-      }
-    }
   }
 
   &:active {
-    background: var(--component-editor-menu-item-bg---active);
+    background: var(--color--bg-neutral-300);
   }
 
   &:focus-visible {
     outline-offset: 2px;
-    outline: 1px dashed var(--common-focus-neutral);
+    outline: 1px dashed var(--color--border-invert);
   }
 }
 
@@ -85,24 +79,24 @@
 }
 
 .editor-fixed-menu-item-button--selected {
-  background: var(--component-editor-menu-item-bg---selected);
+  background: var(--color--bg-neutral-300);
 
   &:hover {
-    background: var(--component-editor-menu-item-bg---selected);
+    background: var(--color--bg-neutral-300);
     cursor: pointer;
   }
 
   &:active {
-    background: var(--component-editor-menu-item-bg---active);
+    background: var(--color--bg-neutral-300);
   }
 }
 
 .editor-fixed-menu-item-input {
   align-items: center;
-  background: var(--component-editor-menu-item-bg--input);
+  background: var(--color--bg-neutral-000);
   border: 1px solid transparent;
   box-shadow: none;
-  color: var(--component-editor-menu-item-text);
+  color: var(--color--text-alpha);
   display: flex;
   flex: 1 0 0;
   flex-shrink: 0;
@@ -120,15 +114,15 @@
 
   &::placeholder,
   &::-ms-input-placeholder {
-    color: var(--component-editor-menu-item-text--placeholder);
+    color: var(--color--text-gamma);
   }
 
   &:active {
-    border: 1px solid var(--component-input-border---active);
+    border: 1px solid var(--color--border-primary);
   }
 
   &:focus-visible {
-    border: 1px solid var(--component-input-border---active);
+    border: 1px solid var(--color--border-primary);
   }
 }
 

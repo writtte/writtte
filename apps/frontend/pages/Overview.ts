@@ -1,20 +1,16 @@
 import { idb } from '@writtte-internal/indexed-db';
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
-import { ItemCreateInput } from '../components/ItemCreateInput';
 import { ItemList, itemSortCollector } from '../components/ItemList';
-import { OverviewTitle } from '../components/OverviewTitle';
 import { PATHS } from '../constants/paths';
 import {
   STORE_NAMES,
   type TIDBDocument,
   getIndexedDB,
 } from '../data/stores/indexedDB';
-import { getAccountOverview } from '../data/stores/overview';
+import { NoDrafts } from '../emptyState/NoDocuments';
 import { buildError } from '../helpers/error/build';
 import { documentCodeToKey } from '../helpers/item/codeToKey';
 import { compareDocuments } from '../modules/overview/compareDocuments';
-import { createDocument } from '../modules/overview/createDocument';
-import { generateOverviewTitleDynamically } from '../modules/overview/dynamicTitle';
 import {
   extractDocumentDetailsFromAPIList,
   getDocumentsFromAPI,
@@ -26,44 +22,27 @@ import { navigate } from '../utils/routes/routes';
 
 const OverviewPage = async (): Promise<HTMLElement> => {
   const overviewDiv = document.createElement('div');
-  const headerDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
 
   overviewDiv.classList.add('overview-page');
-  headerDiv.classList.add('overview-page__header');
   contentDiv.classList.add('overview-page__content');
 
-  overviewDiv.append(headerDiv, contentDiv);
+  overviewDiv.appendChild(contentDiv);
 
-  const accountOverview = getAccountOverview();
-
-  const overviewTitleElement = OverviewTitle({
-    // If you change the ID, please update it in all other
-    // places, such as the account name update in settings.
-
-    id: 'overview_title__gwcalajmpp',
-    title: generateOverviewTitleDynamically(accountOverview.name),
+  const itemListElement = ItemList({
+    emptyState: NoDrafts({
+      title: langKeys().EmptyStateNoDraftsTextTitle,
+      description: langKeys().EmptyStateNoDraftsTextDescription,
+      button: {
+        id: 'button__xxzjzmxkga',
+        text: langKeys().EmptyStateNoDraftsButtonCreate,
+        rightIcon: FlatIcon(FlatIconName._18_ARROW_TOP_RIGHT),
+        onClick: async (): Promise<void> => {
+          await navigate(PATHS.CREATE_DRAFT);
+        },
+      },
+    }),
   });
-
-  const itemCreateInputElement = ItemCreateInput({
-    id: 'item_create_input__ueiwykuysk',
-    placeholderText: langKeys().PageOverviewCreateInputPlaceholderNewDocument,
-    createButton: {
-      id: 'button__ivsmtfanim',
-      icon: FlatIcon(FlatIconName._18_ARROW_RIGHT),
-      onClick: async (): Promise<void> =>
-        await createDocument(itemCreateInputElement),
-    },
-    onSubmit: async (): Promise<void> =>
-      await createDocument(itemCreateInputElement),
-  });
-
-  headerDiv.append(
-    overviewTitleElement.element,
-    itemCreateInputElement.element,
-  );
-
-  const itemListElement = ItemList();
 
   const idbPromise = (async (): Promise<void> => {
     const documents = await getDocumentsFromIDB();
@@ -76,7 +55,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
         text: documents[i].title,
         optionButton: {
           id: `button__${documentCodeToKey(documents[i].documentCode)}`,
-          icon: FlatIcon(FlatIconName._18_HORIZONTAL_DOTS),
+          icon: FlatIcon(FlatIconName._18_DOTS_HORIZONTAL),
           onClick: async (e: PointerEvent): Promise<void> =>
             await buildDocumentOptionsMenu(
               e,
@@ -86,6 +65,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
         },
         onClick: async (): Promise<void> =>
           await navigate(`${PATHS.DOCUMENT_EDIT}/${documents[i].documentCode}`),
+        metadata: undefined,
       });
     }
 
@@ -104,7 +84,10 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     if (!documents || documents.length === 0) {
       itemListElement.setNoItems();
 
-      contentDiv.remove();
+      if (!contentDiv.contains(itemListElement.element)) {
+        contentDiv.remove();
+      }
+
       return;
     }
 
@@ -145,7 +128,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
         text: extractedDocumentDetails.title,
         optionButton: {
           id: `button__${documentCodeToKey(documents[i].document_code)}`,
-          icon: FlatIcon(FlatIconName._18_HORIZONTAL_DOTS),
+          icon: FlatIcon(FlatIconName._18_DOTS_HORIZONTAL),
           onClick: async (e: PointerEvent): Promise<void> =>
             await buildDocumentOptionsMenu(
               e,
@@ -157,6 +140,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
           await navigate(
             `${PATHS.DOCUMENT_EDIT}/${documents[i].document_code}`,
           ),
+        metadata: undefined,
       });
 
       for (let j = 0; j < documents.length; j++) {

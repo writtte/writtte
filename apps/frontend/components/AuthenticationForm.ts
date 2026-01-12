@@ -55,10 +55,12 @@ const AuthenticationForm = (opts: TOptions): TReturnAuthenticationForm => {
     'authentication-form__link',
     'authentication-form__link--left',
   );
+
   middleLinkSpan.classList.add(
     'authentication-form__link',
     'authentication-form__link--middle',
   );
+
   rightLinkSpan.classList.add(
     'authentication-form__link',
     'authentication-form__link--right',

@@ -3,19 +3,46 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  scale: 1;
+  transition: scale 0.05s ease-in-out;
+  user-select: none;
   width: 100%;
+
+  &:active {
+    scale: 0.97;
+  }
 }
 
 .authentication-button__status-text {
+  display: flex;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    max-height 0.3s ease,
+    opacity 0.2s ease,
+    transform 0.3s ease;
   width: 100%;
 }
 
 .authentication-button__status-text.show {
-  display: flex;
+  max-height: 100px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .authentication-button__status-text.hide {
-  display: none;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    max-height 0.3s ease 0.1s,
+    opacity 0.2s ease,
+    transform 0.3s ease;
 }
 
 .authentication-button__icon {
@@ -24,7 +51,7 @@
   width: 18px;
 
   svg path {
-    fill: var(--component-button-authentication-text);
+    fill: var(--color--text-invert);
   }
 }
 
@@ -37,7 +64,7 @@
 }
 
 .authentication-button__text {
-  color: var(--component-button-authentication-text);
+  color: var(--color--text-invert);
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -48,7 +75,7 @@
 .authentication-button__button {
   align-items: center;
   align-self: stretch;
-  background: var(--component-button-authentication-bg);
+  background: var(--color--bg-dark-500);
   border-radius: 32px;
   border: none;
   box-shadow: none;
@@ -60,52 +87,44 @@
   padding: 0 24px;
 
   &:hover {
-    background: var(--component-button-authentication-bg---hover);
+    background: var(--color--bg-dark-400);
     cursor: pointer;
+  }
+
+  &:active {
+    background: var(--color--bg-dark-600);
   }
 
   &:focus-visible {
     border-radius: 32px;
     outline-offset: 2px;
-    outline: 2px dashed var(--common-focus-neutral);
+    outline: 2px dashed var(--color--border-invert);
   }
 
   &:disabled {
-    background: var(--component-button-authentication-bg---disable);
     cursor: not-allowed;
     pointer-events: none;
-
-    .authentication-button__icon {
-      svg path {
-        fill: var(--component-button-authentication-text---disable);
-      }
-    }
-
-    .authentication-button__text {
-      color: var(--component-button-authentication-text---disable);
-    }
   }
 }
 
 .authentication-button__button--loading {
-  background: var(--component-button-authentication-bg---loading);
+  background: var(--color--bg-dark-200);
   cursor: wait;
-  pointer-events: none;
 
   &:hover,
   &:active,
   &:disabled {
-    background: var(--component-button-authentication-bg---loading);
+    background: var(--color--bg-dark-200);
     cursor: wait;
     pointer-events: none;
 
     .authentication-button__text {
-      color: var(--component-button-authentication-text);
+      color: var(--color--text-invert);
     }
 
     .authentication-button__icon {
       svg path {
-        fill: var(--component-button-authentication-text);
+        fill: var(--color--text-invert);
       }
     }
   }

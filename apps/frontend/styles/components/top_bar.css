@@ -1,6 +1,7 @@
 .top-bar {
   align-items: center;
-  border-bottom: 1px solid var(--component-top-bar-border);
+  background: var(--color--bg-neutral-100);
+  box-shadow: var(--shadow-panel);
   display: flex;
   height: 48px;
   justify-content: space-between;
@@ -8,6 +9,7 @@
   padding: 0 12px;
   position: relative;
   width: 100%;
+  z-index: var(--z-index-top-bar);
 }
 
 .top-bar__logo {
@@ -18,6 +20,7 @@
   justify-content: center;
   left: 50%;
   position: absolute;
+  transform: translateX(-50%);
   width: 32px;
 
   svg {
@@ -27,7 +30,7 @@
     width: 26px;
 
     path {
-      fill: var(--component-top-bar-logo);
+      fill: var(--color--text-beta);
     }
   }
 }
@@ -41,7 +44,7 @@
 .top-bar__right {
   align-items: center;
   display: flex;
-  gap: 24px;
+  gap: 12px;
   justify-content: flex-end;
 }
 
@@ -54,7 +57,7 @@
   font-size: 12px;
   font-style: normal;
   font-variant: all-small-caps;
-  font-weight: 500;
+  font-weight: 600;
   gap: 8px;
   height: 24px;
   justify-content: center;
@@ -62,33 +65,33 @@
   outline: none;
   padding: 0 12px;
   text-align: center;
-  transition: padding-inline 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   user-select: none;
 
   &:hover {
     cursor: pointer;
-    padding-inline: 24px;
+    transform: scale(1.03);
   }
 
   &:focus-visible {
     outline-offset: 2px;
-    outline: 1px dashed var(--common-focus-neutral);
+    outline: 1px dashed var(--color--border-invert);
   }
 }
 
 .top-bar__badge--blue {
-  background: var(--component-top-bar-badge-bg--blue);
-  color: var(--component-top-bar-badge-text);
+  background: var(--color--bg-primary-600);
+  color: var(--color--text-invert);
 }
 
 .top-bar__badge--yellow {
-  background: var(--component-top-bar-badge-bg--yellow);
-  color: var(--component-top-bar-badge-text--invert);
+  background: var(--color--bg-yellow-600);
+  color: var(--color--text-alpha);
 }
 
 .top-bar__badge--red {
-  background: var(--component-top-bar-badge-bg--red);
-  color: var(--component-top-bar-badge-text);
+  background: var(--color--bg-danger-600);
+  color: var(--color--text-invert);
 }
 
 .top-bar__left-buttons,
@@ -96,4 +99,10 @@
   align-items: center;
   display: flex;
   gap: 8px;
+}
+
+@media screen and (max-width: 576px) {
+  .top-bar__logo {
+    display: none;
+  }
 }

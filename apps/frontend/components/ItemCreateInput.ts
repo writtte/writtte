@@ -57,6 +57,10 @@ const ItemCreateInput = (opts: TOptions): TReturnItemCreateInput => {
 
   input.addEventListener('input', updateButtonState);
 
+  input.addEventListener('focus', () => {
+    inputDiv.classList.add('active');
+  });
+
   createButton.addEventListener('click', (e) => {
     if (input.value.trim() !== '') {
       e.preventDefault();

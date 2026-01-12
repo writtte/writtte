@@ -1,7 +1,9 @@
 .settings-modal {
   align-items: center;
-  background: var(--component-settings-modal-bg);
-  border: 1px solid var(--component-settings-modal-border);
+  animation: settingsModalFadeIn 0.2s;
+  background: var(--color--bg-neutral-100);
+  border-radius: 12px;
+  border: 1px solid var(--color--border-weak);
   box-shadow: var(--shadow-modal);
   display: flex;
   flex-direction: column;
@@ -11,10 +13,20 @@
   width: 100%;
 }
 
+@keyframes settingsModalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .settings-modal__header {
   align-items: center;
   align-self: stretch;
-  border-bottom: 1px solid var(--component-settings-modal-border);
+  border-bottom: 1px solid var(--color--border-weak);
   display: flex;
   flex-shrink: 0;
   height: 48px;
@@ -33,13 +45,13 @@
     width: 18px;
 
     path {
-      fill: var(--component-settings-modal-text--title);
+      fill: var(--color--text-alpha);
     }
   }
 }
 
 .settings-modal__title {
-  color: var(--component-settings-modal-text--title);
+  color: var(--color--text-alpha);
   font-size: 13px;
   font-style: normal;
   font-weight: 600;
@@ -54,7 +66,7 @@
 }
 
 .settings-modal__section-divider {
-  background: var(--component-settings-modal-border);
+  background: var(--color--border-weak);
   display: flex;
   height: 100%;
   width: 1px;
@@ -79,7 +91,7 @@
 }
 
 .settings-modal__item-divider {
-  background: var(--component-settings-modal-border);
+  background: var(--color--border-weak);
   display: flex;
   height: 1px;
   width: 100%;

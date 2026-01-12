@@ -1,38 +1,63 @@
 .item-create-input {
   align-items: center;
-  background: var(--component-item-create-input-bg);
+  animation: itemCreateInputFadeIn 0.4s ease;
+  background: var(--color--bg-neutral-200);
   border-radius: 32px;
+  border: 1px solid transparent;
   cursor: text;
   display: flex;
   gap: 12px;
   height: 56px;
   padding: 8px 24px 8px 24px;
+  transition:
+    background 0.3s ease,
+    border 0.2s ease,
+    box-shadow 0.2s ease,
+    padding 0.3s ease;
   width: 100%;
+
+  &.active {
+    background: var(--color--bg-neutral-000);
+    border: 1px solid var(--color--border-primary);
+    box-shadow: 0 0 8px 0 var(--color--border-primary);
+  }
+}
+
+@keyframes itemCreateInputFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .item-create-input__input-element {
   background-color: transparent;
   border: none;
   box-shadow: none;
-  color: var(--component-item-create-input-text);
+  color: var(--color--text-alpha);
   flex: 1 0 0;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   outline: none;
+  transition: color 0.3s ease;
   width: 100%;
 
   &::placeholder,
   &::-ms-input-placeholder {
-    color: var(--component-item-create-input-text---placeholder);
+    color: var(--color--text-gamma);
+    transition: color 0.3s ease;
   }
 }
 
 .item-create-input__create-button {
   align-items: center;
   aspect-ratio: 1 / 1;
-  background: var(--component-item-create-input-button-bg);
+  background: var(--color--bg-dark-500);
   border-radius: 32px;
   border: none;
   box-shadow: none;
@@ -41,36 +66,72 @@
   justify-content: center;
   outline: none;
   padding: 8px;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   width: 40px;
 
   svg {
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
     height: 18px;
+    transition: transform 0.2s ease;
     width: 18px;
 
     path {
-      fill: var(--component-item-create-input-button-icon);
+      fill: var(--color--text-invert);
+      transition: fill 0.2s ease;
     }
   }
 
   &:hover {
-    background: var(--component-item-create-input-button-bg---hover);
+    background: var(--color--bg-dark-600);
     cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   &:focus-visible {
     outline-offset: 2px;
-    outline: 2px dashed var(--common-focus-neutral);
+    outline: 2px dashed var(--color--text-alpha);
   }
 }
 
 .item-create-input__create-button.show {
   display: flex;
+  animation: fadeInFromRight 0.3s ease forwards;
 }
 
 .item-create-input__create-button.hide {
+  animation: fadeOutToRight 0.3s ease forwards;
   display: none;
+}
+
+@keyframes fadeInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(20px) scale(0.8);
+  }
 }
 
 .item-create-input:has(.item-create-input__create-button.show) {
@@ -78,12 +139,17 @@
 }
 
 .item-create-input__create-button--loading {
-  background: var(--component-item-create-input-button-bg---loading);
+  animation: expandFromRight 0.3s ease forwards;
+  background: var(--color--bg-dark-400);
   pointer-events: none;
+  transform-origin: right;
+  transition:
+    background 0.3s ease,
+    width 0.3s ease;
   width: 100%;
 
   &:hover {
-    background: var(--component-item-create-input-button-bg---loading);
+    background: var(--color--bg-dark-400);
     cursor: wait;
   }
 
@@ -92,11 +158,45 @@
   }
 }
 
+@keyframes expandFromRight {
+  0% {
+    width: 40px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
 .item-create-input:has(.item-create-input__create-button--loading.show) {
+  animation: adjustPadding 0.3s ease forwards;
   padding: 8px;
+}
+
+@keyframes adjustPadding {
+  0% {
+    padding: 8px 8px 8px 24px;
+  }
+
+  100% {
+    padding: 8px;
+  }
 }
 
 .item-create-input:has(.item-create-input__create-button--loading)
   .item-create-input__input-element {
+  animation: slideOutToLeft 0.2s ease forwards;
   display: none;
+}
+
+@keyframes slideOutToLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
 }

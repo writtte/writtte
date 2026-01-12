@@ -25,7 +25,10 @@ const Alert = (opts: TOptions): TReturnAlert => {
   const closeButtonElement = CloseButton({
     id: `${opts.id}-close-button`,
     onClick: (): void => {
-      alertDiv.dispatchEvent(new CustomEvent('alertRemove'));
+      alertDiv.classList.add('alert--closing');
+      setTimeout(() => {
+        alertDiv.dispatchEvent(new CustomEvent('alertRemove'));
+      }, 300); // Match the animation duration in CSS
     },
   });
 

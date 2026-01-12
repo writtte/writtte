@@ -10,7 +10,8 @@
     width: 18px;
 
     path {
-      fill: var(--component-button-action-icon);
+      fill: var(--color--text-beta);
+      transition: fill 0.125s ease-in-out;
     }
   }
 }
@@ -27,21 +28,22 @@
   height: 32px;
   justify-content: center;
   outline: none;
+  transition: background 0.125s ease-in-out;
   width: 32px;
 
   &:hover {
-    background: var(--component-button-action-bg---hover);
+    background: var(--color--bg-neutral-300);
     cursor: pointer;
 
     .action-button__icon {
       svg path {
-        fill: var(--component-button-action-icon---hover);
+        fill: var(--color--text-alpha);
       }
     }
   }
 
   &:focus-visible {
-    outline: 1px dashed var(--common-focus-neutral, #050505);
     outline-offset: 2px;
+    outline: 1px dashed var(--color--border-invert);
   }
 }

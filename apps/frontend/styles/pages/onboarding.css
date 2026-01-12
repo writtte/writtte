@@ -28,6 +28,7 @@
   left: 50%;
   position: fixed;
   top: 24px;
+  user-select: none;
 
   svg {
     height: 26px;
@@ -79,6 +80,7 @@
   100% {
     filter: drop-shadow(0 0 0 transparent);
   }
+
   50% {
     filter: drop-shadow(0 0 20px rgba(28, 29, 30, 0.08));
   }
@@ -86,12 +88,13 @@
 
 .onboarding-page__step-text {
   color: #1c1d1e;
-  font-family: "IBM Plex Sans Variable", sans-serif;
+  font-family: "Source Sans 3 Variable", sans-serif;
   font-size: 17px;
   font-weight: 350;
   letter-spacing: -0.01em;
   line-height: 1.6;
   text-align: left;
+  user-select: none;
 }
 
 .onboarding-page__step--final .onboarding-page__step-text {
@@ -132,8 +135,6 @@
     transform: scale(1.05);
 
     svg {
-      transform: translateX(2px);
-
       path {
         fill: #ffffff;
       }
@@ -238,7 +239,7 @@
 
 .onboarding-page__step-button-text {
   color: #ffffff;
-  font-family: "IBM Plex Sans Variable", sans-serif;
+  font-family: "Source Sans 3 Variable", sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.01em;

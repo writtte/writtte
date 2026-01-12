@@ -1,6 +1,6 @@
 .dashboard-layout {
   align-items: flex-start;
-  background: var(--layout-bg--dashboard);
+  background: var(--color--bg-neutral-000);
   display: flex;
   height: 100vh;
   justify-content: flex-start;
@@ -22,5 +22,4 @@
   justify-content: center;
   width: 100%;
   position: relative;
-  margin-bottom: 24px;
 }

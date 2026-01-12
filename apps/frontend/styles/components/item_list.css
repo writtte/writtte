@@ -12,11 +12,32 @@
 }
 
 .item-list__container {
-  align-items: flex-start;
   align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border: 1px solid var(--component-item-list-document-border);
   border-bottom: none;
+  box-sizing: border-box;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 100%;
+  width: 100%;
+}
+
+.item-list__container.single-item {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.item-list__container.two-items {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media screen and (max-width: 972px) {
+  .item-list__container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .item-list__container {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }

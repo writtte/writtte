@@ -1,6 +1,6 @@
 /* biome-ignore format: Style variables should not be formatted */
 html[data-editor-theme="editor_sans"] {
-  --editor-core-font-family: "IBM Plex Sans Variable", sans-serif;
+  --editor-core-font-family: 'Source Sans 3 Variable', sans-serif;
 
   /* Placeholder */
 
@@ -18,7 +18,7 @@ html[data-editor-theme="editor_sans"] {
   /* Heading 01 */
 
   --editor-h1-font-size: 30px;
-  --editor-h1-font-weight: 600;
+  --editor-h1-font-weight: 580;
   --editor-h1-line-height: calc(30px * 1.6);
   --editor-h1-word-spacing: calc(30px * 0.16);
   --editor-h1-margin-top: 30px;
@@ -29,7 +29,7 @@ html[data-editor-theme="editor_sans"] {
   /* Heading 02 */
 
   --editor-h2-font-size: 27px;
-  --editor-h2-font-weight: 600;
+  --editor-h2-font-weight: 550;
   --editor-h2-line-height: calc(27px * 1.6);
   --editor-h2-word-spacing: calc(27px * 0.16);
   --editor-h2-margin-top: 27px;

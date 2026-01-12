@@ -1,13 +1,31 @@
 .menu {
   align-items: flex-start;
-  background: var(--component-menu-item-bg);
-  border: 1px solid var(--component-menu-item-border);
+  animation: menuFadeIn 300ms cubic-bezier(0.19, 1, 0.22, 1) forwards;
+  background: var(--color--bg-neutral-000);
+  border-radius: 8px;
+  border: 1px solid var(--color--border-weak);
   box-shadow: var(--shadow-menu);
   display: flex;
   flex-direction: column;
   gap: 8px;
+  opacity: 0;
   padding: 8px;
   position: fixed;
+  transform-origin: top left;
+  transform: scale(0.96) translateY(-8px);
+  z-index: var(--z-index-menu);
+}
+
+@keyframes menuFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .menu__container {
@@ -20,7 +38,7 @@
 
 .menu__section-title {
   align-items: center;
-  color: var(--component-editor-menu-text);
+  color: var(--color--text-gamma);
   display: flex;
   flex: 1 0 0;
   font-size: 13px;
@@ -36,7 +54,7 @@
 }
 
 .menu__section-title::before {
-  background: var(--component-menu-item-border);
+  background: var(--color--border-weak);
   content: "";
   flex: 1;
   height: 1px;
@@ -44,7 +62,11 @@
 }
 
 .menu__divider {
-  background: var(--component-menu-item-border);
+  background: var(--color--border-weak);
   height: 1px;
   width: 100%;
+}
+
+.menu--right-side {
+  transform-origin: top right;
 }

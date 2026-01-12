@@ -3,6 +3,7 @@ import { TopBar } from '../components/TopBar';
 import { PATHS } from '../constants/paths';
 import { TopBarController } from '../controller/topBar';
 import { buildError } from '../helpers/error/build';
+import { setupCreateTopBar } from '../modules/topBar/createTopBar';
 import { setupEditorTopBar } from '../modules/topBar/editorTopBar';
 import { setupParentTopBar } from '../modules/topBar/parentTopBar';
 import { checkRouteStartsWith } from '../utils/routes/helpers';
@@ -39,6 +40,8 @@ const DashboardLayout = async ({
 
   if (checkRouteStartsWith([PATHS.DOCUMENT_EDIT])) {
     await setupEditorTopBar();
+  } else if (checkRouteStartsWith([PATHS.CREATE_DRAFT])) {
+    await setupCreateTopBar();
   } else {
     await setupParentTopBar();
   }

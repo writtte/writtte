@@ -10,10 +10,21 @@ import { ALERT_TIMEOUT } from '../../../constants/timeouts';
 import { AlertController } from '../../../controller/alert';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
 import { langKeys } from '../../../translations/keys';
+import {
+  type TRemoveWhenRouteChangeInstance,
+  removeWhenRouteChange,
+} from '../../../utils/ui/removeWhenRouteChange';
 
 var bubbleMenuInstance: TReturnEditorBubbleMenu | null = null;
 
+var routeChangeInstance: TRemoveWhenRouteChangeInstance | null = null;
+
 const setupEditorBubbleMenu = (): HTMLMenuElement => {
+  if (routeChangeInstance) {
+    routeChangeInstance.destroy();
+    routeChangeInstance = null;
+  }
+
   const menu = EditorBubbleMenu({
     id: 'editor_bubble_menu__dfyfzapiir',
     items: [
@@ -226,6 +237,16 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
   });
 
   bubbleMenuInstance = menu;
+
+  routeChangeInstance = removeWhenRouteChange(menu.element, {
+    enabled: true,
+    animationDuration: 0,
+    onAfterRemove: () => {
+      bubbleMenuInstance = null;
+      routeChangeInstance = null;
+    },
+  });
+
   return menu.element;
 };
 

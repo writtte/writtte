@@ -1,5 +1,9 @@
 import { clickOutside } from '../utils/ui/clickOutside';
 import {
+  type TRemoveWhenRouteChangeInstance,
+  removeWhenRouteChange,
+} from '../utils/ui/removeWhenRouteChange';
+import {
   MenuItem,
   type TMenuItemOptions,
   type TReturnMenuItem,
@@ -38,6 +42,8 @@ const Menu = (opts: TOptions): TReturnMenu => {
   menu.style.top = `${opts.location.y}px`;
 
   if (opts.isRightSideMenu) {
+    menu.classList.add('menu--right-side');
+
     menu.style.right = `${window.innerWidth - opts.location.x}px`;
   } else {
     menu.style.left = `${opts.location.x}px`;
@@ -94,9 +100,11 @@ const Menu = (opts: TOptions): TReturnMenu => {
   }
 
   let clickOutsideInstance: ReturnType<typeof clickOutside> | null = null;
+  let routeChangeInstance: TRemoveWhenRouteChangeInstance | null = null;
 
   const destroy = (): void => {
     clickOutsideInstance?.destroy();
+    routeChangeInstance?.destroy();
     menu.remove();
   };
 
@@ -113,6 +121,16 @@ const Menu = (opts: TOptions): TReturnMenu => {
       },
     );
   }, 0);
+
+  // Setup route change listener to remove menu when navigating
+  routeChangeInstance = removeWhenRouteChange(menu, {
+    enabled: true,
+    animationDuration: 0,
+    onAfterRemove: () => {
+      clickOutsideInstance?.destroy();
+      routeChangeInstance = null;
+    },
+  });
 
   return {
     element: menu,

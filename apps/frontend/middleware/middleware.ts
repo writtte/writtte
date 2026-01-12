@@ -26,7 +26,13 @@ const setupMiddleware = async (): Promise<void> => {
 
     setupTranslations();
 
-    const protectedPaths = ['/onboarding', '/overview', '/document'];
+    const protectedPaths = [
+      '/onboarding',
+      '/create/draft',
+      '/overview',
+      '/document',
+    ];
+
     const publicOnlyPaths = ['/sign-up', '/sign-in'];
 
     const isLogged = (): boolean => {

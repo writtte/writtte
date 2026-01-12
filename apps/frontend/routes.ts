@@ -2,6 +2,7 @@ import type { TRoute } from './utils/routes/routes';
 import { PATHS } from './constants/paths';
 import { AuthenticationLayout } from './layout/authentication';
 import { DashboardLayout } from './layout/dashboard';
+import { CreateDraftPage } from './pages/CreateDraft';
 import { EditorPage } from './pages/Editor';
 import { NotFoundPage } from './pages/NotFound';
 import { OnboardingPage } from './pages/Onboarding';
@@ -49,6 +50,12 @@ const defaultRoutes: TRoute[] = [
     path: PATHS.ONBOARDING,
     title: 'Welcome | Writtte',
     view: async () => await OnboardingPage(),
+  },
+  {
+    path: PATHS.CREATE_DRAFT,
+    title: 'Create a New Draft | Write',
+    layout: DashboardLayout,
+    view: async () => await CreateDraftPage(),
   },
   {
     path: PATHS.OVERVIEW,

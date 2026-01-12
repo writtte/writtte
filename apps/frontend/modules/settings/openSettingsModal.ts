@@ -36,7 +36,7 @@ const openSettingsModal = async (
       },
       {
         id: settingsPageSectionIDs.security,
-        icon: FlatIcon(FlatIconName._18_SECURITY),
+        icon: FlatIcon(FlatIconName._18_SHIELD),
         text: langKeys().SettingsModalSectionTextSecurity,
         isSelected: false,
         onClick: (): void =>

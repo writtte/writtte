@@ -1,9 +1,11 @@
 import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
 import { TopBarBadgeType } from '../../components/TopBar';
+import { PATHS } from '../../constants/paths';
 import { topBarInstance } from '../../controller/topBar';
 import { isAccountInFreeTrial } from '../../data/stores/overview';
 import { buildError } from '../../helpers/error/build';
 import { langKeys } from '../../translations/keys';
+import { navigate } from '../../utils/routes/routes';
 import {
   openSettingsModal,
   settingsPageSectionIDs,
@@ -16,6 +18,15 @@ const setupParentTopBar = async (): Promise<void> => {
   }
 
   topBarInstance.addButtonsToRight([
+    {
+      id: 'action_button__pkyvioodkc',
+      icon: FlatIcon(FlatIconName._18_CIRCLE_PLUS),
+      onClick: async (e: PointerEvent): Promise<void> => {
+        e.preventDefault();
+
+        await navigate(PATHS.CREATE_DRAFT);
+      },
+    },
     {
       id: 'action_button__mctduiojnt',
       icon: FlatIcon(FlatIconName._18_USER),
