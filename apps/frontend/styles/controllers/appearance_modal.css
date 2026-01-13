@@ -12,7 +12,7 @@
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: var(--z-index-controller-settings-modal);
+  z-index: var(--z-index-controller-appearance-modal);
 }
 
 .appearance-modal-container--closing {

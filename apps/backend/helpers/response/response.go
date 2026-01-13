@@ -23,9 +23,10 @@ func Results(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
+	write(w, r, httpStatus, wrappedResult)
+
 	closeConnection(w)
 
-	write(w, r, httpStatus, wrappedResult)
 	dumpResultsLog(uniqueID.(string), httpStatus)
 }
 

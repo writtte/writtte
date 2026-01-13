@@ -1,0 +1,143 @@
+.version-modal {
+  align-items: center;
+  animation: versionModalFadeIn 0.2s;
+  background: var(--color--bg-neutral-100);
+  border-radius: 12px;
+  border: 1px solid var(--color--border-weak);
+  box-shadow: var(--shadow-modal);
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+@keyframes versionModalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.version-modal__header {
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid var(--color--border-weak);
+  display: flex;
+  flex-shrink: 0;
+  height: 48px;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.version-modal__logo {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    aspect-ratio: 1 / 1;
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--color--text-alpha);
+    }
+  }
+}
+
+.version-modal__title {
+  color: var(--color--text-alpha);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.version-modal__content {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 1 0 0;
+}
+
+.version-modal__section-divider {
+  background: var(--color--border-weak);
+  display: flex;
+  height: 100%;
+  width: 1px;
+}
+
+.version-modal__version-list {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  height: 100%;
+  justify-content: flex-start;
+  min-width: 256px;
+  padding: 12px;
+  flex-direction: column;
+}
+
+.version-modal__list-item {
+  align-items: center;
+  background: var(--color--bg-neutral-100);
+  border-radius: 8px;
+  border: 1px solid var(--color--border-weak);
+  display: flex;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  transition: background;
+  width: 100%;
+
+  & {
+    color: var(--color--text-beta);
+    display: flex;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    user-select: none;
+  }
+
+  &:hover {
+    background: var(--color--bg-neutral-200);
+    cursor: pointer;
+  }
+
+  &:focus-visible {
+    outline-offset: -1px;
+    outline: 1px dashed var(--color--border-invert);
+  }
+}
+
+.version-modal__version-content {
+  align-items: flex-start;
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  padding: 24px;
+  position: relative;
+  width: 100%;
+}
+
+.version-modal__version-list-loading-indicator {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.version-modal__version-content-loading-indicator {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}

@@ -208,27 +208,51 @@ type TLangKeys = {
   TopBarBadgeDaysLeft: string;
   TopBarBadgeDocumentReadOnly: string;
   TopBarBadgeFreeTrialExpired: string;
+  MenuItemVersionHistory: string;
+  VersionModalTextTitle: string;
+  VersionModalEmptyStateSelectContentTitle: string;
+  VersionModalButtonRestore: string;
+  VersionModalEmptyStateNoHistoryTitle: string;
+  VersionModalEmptyStateNoHistoryDescription: string;
+  VersionModalEmptyStateSelectContentDescription: string;
+  ErrorVersionHistoryContentRetrievedFailed: string;
+  ErrorVersionHistoryListRetrievedFailed: string;
+  ModalVersionHistoryRestoreButtonCancel: string;
+  ModalVersionHistoryRestoreButtonRestore: string;
+  ModalVersionHistoryRestoreTextTitle: string;
+  ModalVersionHistoryRestoreTextContent: string;
 };
 
 const langKeys = (): TLangKeys => {
   // biome-ignore format: Following array should not be formatted
   const keys: TLangKeys = {
+    ModalVersionHistoryRestoreButtonCancel: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_CANCEL'),
+    ModalVersionHistoryRestoreButtonRestore: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_RESTORE'),
+    ModalVersionHistoryRestoreTextTitle: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_TITLE'),
+    ModalVersionHistoryRestoreTextContent: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_CONTENT'),
     AlertAccountNameUpdateFailedDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_DESCRIPTION'),
+    VersionModalEmptyStateSelectContentTitle: getTr('VERSION_MODAL_EMPTY_STATE_SELECT_CONTENT_TITLE'),
+    VersionModalEmptyStateSelectContentDescription: getTr('VERSION_MODAL_EMPTY_STATE_SELECT_CONTENT_DESCRIPTION'),
     AlertAccountNameUpdateFailedTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_TITLE'),
     AlertAccountNameUpdateSuccessDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_DESCRIPTION'),
     AlertAccountNameUpdateSuccessTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_TITLE'),
     AlertDocumentCopiedDescription: getTr('ALERT_DOCUMENT_COPIED_DESCRIPTION'),
+    ErrorVersionHistoryContentRetrievedFailed: getTr('ERROR_VERSION_HISTORY_CONTENT_RETRIEVED_FAILED'),
+    ErrorVersionHistoryListRetrievedFailed: getTr('ERROR_VERSION_HISTORY_LIST_RETRIEVED_FAILED'),
     AlertDocumentCopiedTitle: getTr('ALERT_DOCUMENT_COPIED_TITLE'),
     AlertDocumentCopyFailedDescription: getTr('ALERT_DOCUMENT_COPY_FAILED_DESCRIPTION'),
     AlertDocumentCopyFailedTitle: getTr('ALERT_DOCUMENT_COPY_FAILED_TITLE'),
     AlertDocumentCreateFailedDescription: getTr('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
     AlertDocumentCreateFailedTitle: getTr('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
+    VersionModalEmptyStateNoHistoryTitle: getTr('VERSION_MODAL_EMPTY_STATE_NO_HISTORY_TITLE'),
+    VersionModalEmptyStateNoHistoryDescription: getTr('VERSION_MODAL_EMPTY_STATE_NO_HISTORY_DESCRIPTION'),
     AlertDocumentRetrievedFailedTitle: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_TITLE'),
     AlertEditorImageUploadFailedDescription: getTr('ALERT_EDITOR_IMAGE_UPLOAD_FAILED_DESCRIPTION'),
     AlertEditorImageUploadFailedTitle: getTr('ALERT_EDITOR_IMAGE_UPLOAD_FAILED_TITLE'),
     AlertEmailUpdateRequestSentDescription: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_DESCRIPTION'),
     AlertEmailUpdateRequestSentTitle: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_TITLE'),
+    VersionModalTextTitle: getTr('VERSION_MODAL_TEXT_TITLE'),
     AlertEmailVerifiedDescription: getTr('ALERT_EMAIL_VERIFIED_DESCRIPTION'),
     AlertEmailVerifiedTitle: getTr('ALERT_EMAIL_VERIFIED_TITLE'),
     AlertMiddlewareNeedSignInDescription: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION'),
@@ -245,6 +269,7 @@ const langKeys = (): TLangKeys => {
     AlertSubscriptionCheckoutSessionLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_TITLE'),
     AlertSubscriptionCustomerPortalLinkFailedDescription: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_DESCRIPTION'),
     AlertSubscriptionCustomerPortalLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_TITLE'),
+    MenuItemVersionHistory: getTr('MENU_ITEM_VERSION_HISTORY'),
     AlertUnableToAddHyperlinkDescription: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_DESCRIPTION'),
     AlertUnableToAddHyperlinkTitle: getTr('ALERT_UNABLE_TO_ADD_HYPERLINK_TITLE'),
     AppearanceModalPanelEditorTextTitle: getTr('APPEARANCE_MODAL_PANEL_EDITOR_TEXT_TITLE'),
@@ -412,6 +437,7 @@ const langKeys = (): TLangKeys => {
     SettingsModalSubscriptionCustomerPortalButtonOpen: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_OPEN'),
     SettingsModalSubscriptionCustomerPortalButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_WAIT'),
     SettingsModalSubscriptionCustomerPortalTextDescription: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_TEXT_DESCRIPTION'),
+    VersionModalButtonRestore: getTr('VERSION_MODAL_BUTTON_RESTORE'),
     SettingsModalSubscriptionCustomerPortalTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_TEXT_TITLE'),
     SettingsModalSubscriptionSubscribeButtonPlans: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_PLANS'),
     SettingsModalSubscriptionSubscribeButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT'),

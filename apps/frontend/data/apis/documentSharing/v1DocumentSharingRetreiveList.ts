@@ -34,7 +34,7 @@ const v1DocumentSharingRetrieveList = async (
   response: TResponseV1DocumentSharingRetrieveList | null;
 }> => {
   const body: TFetchProps = {
-    endPoint: `${BACKEND_CONFIGS.URL}/v1/sharing/document/list`,
+    endPoint: `${BACKEND_CONFIGS.URL}/v1/sharing/documents`,
     mode: REQUEST_MODES.CORS,
     method: HTTP_METHODS.GET,
     bearerValue: payload.accessToken,

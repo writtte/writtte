@@ -22,9 +22,10 @@ func Error(w http.ResponseWriter, r *http.Request,
 		return
 	}
 
-	defer closeConnection(w)
-
 	write(w, r, httpStatus, wrappedError)
+
+	closeConnection(w)
+
 	dumpErrorLog(uniqueID.(string), httpStatus, result, err)
 }
 

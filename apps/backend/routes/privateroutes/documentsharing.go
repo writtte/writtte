@@ -24,7 +24,7 @@ func DocumentSharing(mux *http.ServeMux, prefix *string) {
 
 func documentSharingGet(mux *http.ServeMux, prefix *string) {
 	var (
-		documentListSharingPath = "/document/list"
+		documentListSharingPath = "/documents"
 	)
 
 	flows := []middleware.Flow{

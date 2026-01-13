@@ -89,6 +89,8 @@
 @import "./components/settings_section.css";
 @import "./components/status_text.css";
 @import "./components/top_bar.css";
+@import "./components/version_modal.css";
+@import "./components/version_modal_content.css";
 
 /* Controllers */
 
@@ -96,10 +98,12 @@
 @import "./controllers/appearance_modal.css";
 @import "./controllers/modal.css";
 @import "./controllers/settings_modal.css";
+@import "./controllers/version_modal.css";
 
 /* Empty States */
 
-@import "./empty_state/no_documents.css";
+@import "./empty_state/no_drafts.css";
+@import "./empty_state/version_empty.css";
 
 /* Vendors */
 

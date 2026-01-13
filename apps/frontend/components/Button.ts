@@ -110,7 +110,8 @@ const Button = (opts: TOptions): TReturnButton => {
 
       button.classList.add('button--loading');
     } else {
-      loadingIconSpan.innerHTML = '';
+      loadingIconSpan.replaceChildren();
+
       loadingIconSpan.classList.add('hide');
       loadingIconSpan.classList.remove('show');
 

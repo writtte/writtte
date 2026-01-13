@@ -184,7 +184,7 @@ const updateStatsContent = (
   container: HTMLDivElement,
   stats: TRenderStats,
 ): void => {
-  container.innerHTML = '';
+  container.replaceChildren();
 
   const addLine = (
     label: string,

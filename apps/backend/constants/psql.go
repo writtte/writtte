@@ -58,6 +58,7 @@ const (
 )
 
 const (
-	VersionHistoryCreated       = "VERSION_HISTORY_CREATED"
-	VersionHistoryRetrievedList = "VERSION_HISTORY_RETRIEVED_LIST"
+	VersionCreated       = "VERSION_CREATED"
+	VersionIgnored       = "VERSION_IGNORED"
+	VersionRetrievedList = "VERSION_RETRIEVED_LIST"
 )

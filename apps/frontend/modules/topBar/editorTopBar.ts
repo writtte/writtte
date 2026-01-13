@@ -11,6 +11,7 @@ import {
   settingsPageSectionIDs,
 } from '../settings/openSettingsModal';
 import { buildAccountMenu } from './accountMenu';
+import { buildDocumentMenu } from './buildDocumentMenu';
 import { buildExportMenu } from './exportMenu';
 
 const setupEditorTopBar = async (): Promise<void> => {
@@ -39,6 +40,16 @@ const setupEditorTopBar = async (): Promise<void> => {
         e.stopPropagation();
 
         await buildExportMenu(e);
+      },
+    },
+    {
+      id: 'action_button__skesmzpobn',
+      icon: FlatIcon(FlatIconName._18_DOCUMENT),
+      onClick: async (e: PointerEvent): Promise<void> => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        await buildDocumentMenu(e);
       },
     },
     {

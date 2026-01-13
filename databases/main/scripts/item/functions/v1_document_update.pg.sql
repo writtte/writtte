@@ -13,6 +13,7 @@ DECLARE
   v_p_lifecycle_state VARCHAR(16);
   v_p_workflow_state VARCHAR(16);
   v_p_e_tag VARCHAR(8);
+  v_updated_time TIMESTAMP;
   v_check_document JSONB;
   v_exception TEXT;
 BEGIN
@@ -21,6 +22,7 @@ BEGIN
   v_p_lifecycle_state := upper(p_data ->> 'lifecycle_state');
   v_p_workflow_state := upper(p_data ->> 'workflow_state');
   v_p_e_tag := (p_data ->> 'e_tag');
+  v_updated_time := now();
   v_check_document := schema_item.v1_document_check (json_build_object('document_code', p_document_code)::JSONB, TRUE)::JSONB;
   IF v_check_document ->> k_code != 'DOCUMENT_EXISTS' THEN
     RETURN v_check_document;
@@ -33,18 +35,18 @@ BEGIN
     lifecycle_state = coalesce(v_p_lifecycle_state, lifecycle_state),
     workflow_state = coalesce(v_p_workflow_state, workflow_state),
     e_tag = coalesce(v_p_e_tag, substr(md5(random()::TEXT), 1, 8)),
-    updated_time = now()
+    updated_time = v_updated_time
   WHERE
     document_code = p_document_code;
   IF (v_p_lifecycle_state IS NOT NULL) AND (v_p_lifecycle_state = 'DELETED') THEN
     UPDATE
       schema_item.tb_document
     SET
-      deleted_time = now()
+      deleted_time = v_updated_time
     WHERE
       document_code = p_document_code;
   END IF;
-  RETURN json_build_object(k_status, TRUE, k_code, 'DOCUMENT_UPDATED', k_message, NULL, k_additional, NULL, k_data, json_build_object('document_code', p_document_code)::JSONB)::JSONB;
+  RETURN json_build_object(k_status, TRUE, k_code, 'DOCUMENT_UPDATED', k_message, NULL, k_additional, NULL, k_data, json_build_object('document_code', p_document_code, 'updated_time', v_updated_time)::JSONB)::JSONB;
 EXCEPTION
   WHEN OTHERS THEN
     GET STACKED DIAGNOSTICS v_exception = PG_EXCEPTION_CONTEXT;

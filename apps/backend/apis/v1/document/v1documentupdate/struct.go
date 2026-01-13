@@ -24,12 +24,37 @@ type dbQueryInput struct {
 	ETag           *string
 }
 
+type dbQueryInputVersionData struct {
+	DocumentCode *string
+	StoredType   *string
+	CurrentTime  *string
+	TimeToCheck  *int
+}
+
+type dbQueryOutputCreateVersionData struct {
+	DocumentCode *string `json:"document_code"`
+	VersionCode  *string `json:"version_code"`
+	StoredType   *string `json:"stored_type"`
+}
+
+type dbQueryOutputCreateVersion struct {
+	Status     *bool                           `json:"status"`
+	Code       *string                         `json:"code"`
+	Message    *string                         `json:"message"`
+	Additional *string                         `json:"additional"`
+	Data       *dbQueryOutputCreateVersionData `json:"data"`
+}
+
+type dbQueryOutputData struct {
+	UpdatedTime *string `json:"updated_time"`
+}
+
 type dbQueryOutput struct {
-	Status     *bool   `json:"status"`
-	Code       *string `json:"code"`
-	Message    *string `json:"message"`
-	Additional *string `json:"additional"`
-	Data       *any    `json:"data"`
+	Status     *bool              `json:"status"`
+	Code       *string            `json:"code"`
+	Message    *string            `json:"message"`
+	Additional *string            `json:"additional"`
+	Data       *dbQueryOutputData `json:"data"`
 }
 
 type apiResultsSuccess struct {

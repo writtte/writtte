@@ -9,13 +9,13 @@ import (
 	"backend/pkg/extaws"
 )
 
-func createDocumentFile(ctx context.Context, projectCode,
+func createDocumentFile(ctx context.Context, accountCode,
 	documentCode *string) error {
-	if projectCode == nil || documentCode == nil {
+	if accountCode == nil || documentCode == nil {
 		return nil
 	}
 
-	filePath := files.DocumentFilePath(projectCode, documentCode)
+	filePath := files.DocumentFilePath(accountCode, documentCode)
 	if filePath == nil {
 		return nil
 	}
