@@ -31,7 +31,7 @@ const v1DocumentRetrieve = async (
   response: TResponseV1DocumentRetrieve | null;
 }> => {
   const body: TFetchProps = {
-    endPoint: `${BACKEND_CONFIGS.URL}/v1/item/document`,
+    endPoint: `${BACKEND_CONFIGS.URL}/v1/document`,
     mode: REQUEST_MODES.CORS,
     method: HTTP_METHODS.GET,
     bearerValue: payload.accessToken,

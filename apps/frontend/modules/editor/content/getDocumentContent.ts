@@ -1,5 +1,5 @@
 import { idb } from '@writtte-internal/indexed-db';
-import { v1DocumentRetrieve } from '../../../data/apis/item/v1DocumentRetrieve';
+import { v1DocumentRetrieve } from '../../../data/apis/document/v1DocumentRetrieve';
 import {
   STORE_NAMES,
   type TIDBDocument,

@@ -9,7 +9,7 @@ import {
 } from '../../components/Modal';
 import { StatusTextType } from '../../components/StatusText';
 import { ModalController } from '../../controller/modal';
-import { v1DocumentUpdate } from '../../data/apis/item/v1DocumentUpdate';
+import { v1DocumentUpdate } from '../../data/apis/document/v1DocumentUpdate';
 import {
   STORE_NAMES,
   type TIDBDocument,

@@ -9,7 +9,7 @@ import { ModalController } from '../../controller/modal';
 import {
   DocumentLifecycleState,
   v1DocumentUpdate,
-} from '../../data/apis/item/v1DocumentUpdate';
+} from '../../data/apis/document/v1DocumentUpdate';
 import { STORE_NAMES, getIndexedDB } from '../../data/stores/indexedDB';
 import { AccessToken } from '../../helpers/account/accessToken';
 import { documentCodeToKey } from '../../helpers/item/codeToKey';

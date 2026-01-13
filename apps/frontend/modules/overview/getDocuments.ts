@@ -4,8 +4,8 @@ import { AlertController } from '../../controller/alert';
 import {
   type TResponseV1DocumentRetrieveListDocument,
   v1DocumentRetrieveList,
-} from '../../data/apis/item/v1DocumentRetrieveList';
-import { DocumentLifecycleState } from '../../data/apis/item/v1DocumentUpdate';
+} from '../../data/apis/document/v1DocumentRetrieveList';
+import { DocumentLifecycleState } from '../../data/apis/document/v1DocumentUpdate';
 import {
   STORE_NAMES,
   type TIDBDocument,

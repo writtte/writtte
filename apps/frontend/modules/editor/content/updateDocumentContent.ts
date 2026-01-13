@@ -1,6 +1,6 @@
 import type { TEditorAPI, TEditorSchema } from '@writtte-editor/editor';
 import { idb } from '@writtte-internal/indexed-db';
-import { v1DocumentUpdate } from '../../../data/apis/item/v1DocumentUpdate';
+import { v1DocumentUpdate } from '../../../data/apis/document/v1DocumentUpdate';
 import {
   STORE_NAMES,
   type TIDBDocumentContent,

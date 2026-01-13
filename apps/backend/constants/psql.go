@@ -56,3 +56,8 @@ const (
 	DocumentSharingNotExists     = "DOCUMENT_SHARING_NOT_EXISTS"
 	DocumentSharingRetrievedList = "DOCUMENT_SHARING_RETRIEVED_LIST"
 )
+
+const (
+	VersionHistoryCreated       = "VERSION_HISTORY_CREATED"
+	VersionHistoryRetrievedList = "VERSION_HISTORY_RETRIEVED_LIST"
+)

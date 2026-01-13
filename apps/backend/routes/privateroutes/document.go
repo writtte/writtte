@@ -5,28 +5,28 @@ import (
 	"net/http"
 
 	"backend/apis/v1/authentication/v1signin"
-	"backend/apis/v1/item/v1documentcreate"
-	"backend/apis/v1/item/v1documentretrieve"
-	"backend/apis/v1/item/v1documentretrievelist"
-	"backend/apis/v1/item/v1documentupdate"
+	"backend/apis/v1/document/v1documentcreate"
+	"backend/apis/v1/document/v1documentretrieve"
+	"backend/apis/v1/document/v1documentretrievelist"
+	"backend/apis/v1/document/v1documentupdate"
 	"backend/cmd/glob"
 	"backend/configs"
 	"backend/constants"
 	"backend/middleware"
 )
 
-func Item(mux *http.ServeMux, prefix *string) {
-	basePrefix := *prefix + "/item"
+func Document(mux *http.ServeMux, prefix *string) {
+	basePrefix := *prefix + "/document"
 
-	itemGet(mux, &basePrefix)
-	itemPatch(mux, &basePrefix)
-	itemPost(mux, &basePrefix)
+	documentGet(mux, &basePrefix)
+	documentPatch(mux, &basePrefix)
+	documentPost(mux, &basePrefix)
 }
 
-func itemGet(mux *http.ServeMux, prefix *string) {
+func documentGet(mux *http.ServeMux, prefix *string) {
 	var (
-		documentPath  = "/document"
-		documentsPath = "/documents"
+		documentPath  = ""
+		documentsPath = "s"
 	)
 
 	flows := []middleware.Flow{
@@ -72,9 +72,9 @@ func itemGet(mux *http.ServeMux, prefix *string) {
 	}
 }
 
-func itemPatch(mux *http.ServeMux, prefix *string) {
+func documentPatch(mux *http.ServeMux, prefix *string) {
 	var (
-		documentPath = "/document"
+		documentPath = ""
 	)
 
 	flows := []middleware.Flow{
@@ -106,9 +106,9 @@ func itemPatch(mux *http.ServeMux, prefix *string) {
 	}
 }
 
-func itemPost(mux *http.ServeMux, prefix *string) {
+func documentPost(mux *http.ServeMux, prefix *string) {
 	var (
-		documentPath = "/document"
+		documentPath = ""
 	)
 
 	flows := []middleware.Flow{

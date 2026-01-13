@@ -27,7 +27,7 @@ const v1DocumentCreate = async (
   response: TResponseV1DocumentCreate | null;
 }> => {
   const body: TFetchProps = {
-    endPoint: `${BACKEND_CONFIGS.URL}/v1/item/document`,
+    endPoint: `${BACKEND_CONFIGS.URL}/v1/document`,
     mode: REQUEST_MODES.CORS,
     method: HTTP_METHODS.POST,
     bearerValue: payload.accessToken,

@@ -100,7 +100,7 @@ const v1DocumentRetrieveList = async (
   }
 
   const body: TFetchProps = {
-    endPoint: `${BACKEND_CONFIGS.URL}/v1/item/documents`,
+    endPoint: `${BACKEND_CONFIGS.URL}/v1/documents`,
     mode: REQUEST_MODES.CORS,
     method: HTTP_METHODS.GET,
     bearerValue: payload.accessToken,
