@@ -7,7 +7,7 @@ import {
   type TIDBDocument,
   getIndexedDB,
 } from '../data/stores/indexedDB';
-import { NoDrafts } from '../emptyState/NoDocuments';
+import { NoDrafts } from '../emptyState/NoDrafts';
 import { buildError } from '../helpers/error/build';
 import { documentCodeToKey } from '../helpers/item/codeToKey';
 import { compareDocuments } from '../modules/overview/compareDocuments';
