@@ -35,11 +35,23 @@ const AppearanceModalController = (): TReturnAppearanceModalController => {
 
   const closeModal = (id: string): void => {
     if (currentModal && currentModal.id === id) {
-      currentModal.modalReturn.element.remove();
-      currentModal = null;
-
       if (containerDiv) {
-        containerDiv.style.display = 'none';
+        containerDiv.classList.add('appearance-modal-container--closing');
+        setTimeout(() => {
+          currentModal?.modalReturn.element.remove();
+          currentModal = null;
+
+          if (containerDiv) {
+            containerDiv.classList.remove(
+              'appearance-modal-container--closing',
+            );
+
+            containerDiv.style.display = 'none';
+          }
+        }, 300);
+      } else {
+        currentModal.modalReturn.element.remove();
+        currentModal = null;
       }
     }
   };

@@ -9,9 +9,9 @@ html[data-editor-theme="editor_serif"] {
 
   /* Paragraph */
 
-  --editor-p-font-size: 17px;
+  --editor-p-font-size: 18px;
   --editor-p-font-weight: 300;
-  --editor-p-line-height: calc(17px * 1.6);
+  --editor-p-line-height: calc(17px * 1.8);
   --editor-p-word-spacing: normal;
   --editor-p-margin-bottom: 24px;
 

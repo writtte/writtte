@@ -7,7 +7,7 @@ import {
   setRootElement,
 } from './utils/routes/routes';
 import './styles/theme.css';
-import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource-variable/source-sans-3';
 import '@fontsource-variable/jetbrains-mono';
 import '@fontsource/special-elite';
 import './sentry';

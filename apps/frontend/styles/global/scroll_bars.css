@@ -2,7 +2,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: thin;
-  scrollbar-color: var(--common-scrollbar-bg) transparent;
+  scrollbar-color: var(--color--bg-dark-100) transparent;
 }
 
 .v-scrollbar::-webkit-scrollbar {
@@ -16,19 +16,19 @@
 }
 
 .v-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--common-scrollbar-bg);
+  background: var(--color--bg-dark-100);
   border-radius: 32px;
 }
 
 .v-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--common-scrollbar-bg);
+  background: var(--color--bg-dark-100);
 }
 
 .h-scrollbar {
   overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
-  scrollbar-color: var(--common-scrollbar-bg) transparent;
+  scrollbar-color: var(--color--bg-dark-100) transparent;
 }
 
 .h-scrollbar::-webkit-scrollbar {
@@ -42,18 +42,18 @@
 }
 
 .h-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--common-scrollbar-bg);
+  background: var(--color--bg-dark-100);
   border-radius: 32px;
 }
 
 .h-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--common-scrollbar-bg);
+  background: var(--color--bg-dark-100);
 }
 
 .vh-scrollbar {
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--common-scrollbar-bg) transparent;
+  scrollbar-color: var(--color--bg-dark-100) transparent;
 }
 
 .vh-scrollbar::-webkit-scrollbar {
@@ -67,10 +67,10 @@
 }
 
 .vh-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--common-scrollbar-bg);
+  background: var(--color--bg-dark-100);
   border-radius: 32px;
 }
 
 .vh-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--common-scrollbar-bg);
+  background: var(--color--bg-dark-100);
 }

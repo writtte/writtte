@@ -141,6 +141,13 @@ const navigate = async (path: string): Promise<void> => {
 
   await runMiddlewares(to, async () => {
     window.history.pushState({}, '', path);
+
+    // Dispatch custom event for route change detection
+
+    document.dispatchEvent(
+      new CustomEvent('route:change', { detail: { path } }),
+    );
+
     await runRouter();
   });
 };
@@ -178,6 +185,13 @@ const setRootElement = (element: HTMLElement | null): void => {
 const initRouter = (): void => {
   window.addEventListener('popstate', async () => {
     const path = window.location.pathname;
+
+    // Dispatch custom event for route change
+    // detection (browser back/forward)
+
+    document.dispatchEvent(
+      new CustomEvent('route:change', { detail: { path } }),
+    );
 
     await runMiddlewares({ path }, async () => {
       await runRouter();

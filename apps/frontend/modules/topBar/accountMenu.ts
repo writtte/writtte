@@ -37,7 +37,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
       {
         id: 'menu_item__jqvjjehwnn',
         text: langKeys().MenuItemAppearance,
-        leftIcon: undefined,
+        leftIcon: FlatIcon(FlatIconName._18_SUN),
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: (): void => openAppearanceModal(),

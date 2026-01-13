@@ -6,17 +6,15 @@
   display: inline-flex;
   justify-content: center;
   outline: none;
+  transition: background 0.125s ease;
 
   &:hover {
     cursor: pointer;
   }
 
   &:focus-visible {
-    outline: 2px dashed var(--common-focus-neutral);
-  }
-
-  &:disabled {
-    cursor: not-allowed;
+    outline-offset: 2px;
+    outline: 1px dashed var(--color--border-invert);
   }
 }
 
@@ -46,143 +44,101 @@
 }
 
 .button--primary {
-  background: var(--component-button-primary-bg);
+  background: var(--color--bg-primary-600);
 
   .button__loading-icon,
   .button__icon {
     svg path {
-      fill: var(--component-button-primary-text);
+      fill: var(--color--text-invert);
     }
   }
 
   .button__text {
-    color: var(--component-button-primary-text);
+    color: var(--color--text-invert);
   }
 
   &:hover {
-    background: var(--component-button-primary-bg---hover);
+    background: var(--color--bg-primary-500);
   }
 
   &:active {
-    background: var(--component-button-primary-bg---active);
-  }
-
-  &:disabled {
-    background: var(--component-button-primary-bg---disable);
-
-    .button__text {
-      color: var(--component-button-primary-text---disable);
-    }
-
-    .button__icon {
-      svg path {
-        fill: var(--component-button-primary-text---disable);
-      }
-    }
+    background: var(--color--bg-primary-700);
   }
 
   .button--loading {
-    background: var(--component-button-primary-bg---loading);
+    background: var(--color--bg-primary-400);
 
     &:hover,
     &:active,
     &:focus {
-      background: var(--component-button-primary-bg---loading);
+      background: var(--color--bg-primary-400);
     }
   }
 }
 
 .button--danger {
-  background: var(--component-button-danger-bg);
+  background: var(--color--bg-danger-600);
 
   .button__loading-icon,
   .button__icon {
     svg path {
-      fill: var(--component-button-danger-text);
+      fill: var(--color--text-invert);
     }
   }
 
   .button__text {
-    color: var(--component-button-danger-text);
+    color: var(--color--text-invert);
   }
 
   &:hover {
-    background: var(--component-button-danger-bg---hover);
+    background: var(--color--bg-danger-500);
   }
 
   &:active {
-    background: var(--component-button-danger-bg---active);
-  }
-
-  &:disabled {
-    background: var(--component-button-danger-bg---disable);
-
-    .button__text {
-      color: var(--component-button-danger-text---disable);
-    }
-
-    .button__icon {
-      svg path {
-        fill: var(--component-button-danger-text---disable);
-      }
-    }
+    background: var(--color--bg-danger-700);
   }
 
   .button--loading {
-    background: var(--component-button-danger-bg---loading);
+    background: var(--color--bg-danger-400);
 
     &:hover,
     &:active,
     &:focus {
-      background: var(--component-button-danger-bg---loading);
+      background: var(--color--bg-danger-400);
     }
   }
 }
 
 .button--neutral {
-  background: var(--component-button-neutral-bg);
-  border: 1px solid var(--component-button-neutral-border);
+  background: var(--color--bg-neutral-000);
+  border: 1px solid var(--color--border-weak);
 
   .button__loading-icon,
   .button__icon {
     svg path {
-      fill: var(--component-button-neutral-text);
+      fill: var(--color--text-beta);
     }
   }
 
   .button__text {
-    color: var(--component-button-neutral-text);
+    color: var(--color--text-beta);
   }
 
   &:hover {
-    background: var(--component-button-neutral-bg---hover);
+    background: var(--color--bg-neutral-200);
   }
 
   &:active {
-    background: var(--component-button-neutral-bg---active);
-  }
-
-  &:disabled {
-    background: var(--component-button-neutral-bg---disable);
-
-    .button__text {
-      color: var(--component-button-neutral-text---disable);
-    }
-
-    .button__icon {
-      svg path {
-        fill: var(--component-button-neutral-text---disable);
-      }
-    }
+    background: var(--color--bg-neutral-300);
   }
 
   .button--loading {
-    background: var(--component-button-neutral-bg---loading);
+    background: var(--color--bg-neutral-400);
 
     &:hover,
     &:active,
     &:focus {
-      background: var(--component-button-neutral-bg---loading);
+      background: var(--color--bg-neutral-400);
     }
   }
 }

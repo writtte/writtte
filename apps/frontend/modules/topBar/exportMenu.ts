@@ -43,6 +43,18 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         hasBottomDivider: false,
       },
       {
+        id: 'menu_item__wglpkgtxzx',
+        text: langKeys().MenuItemSharePrivate,
+        leftIcon: FlatIcon(FlatIconName._18_PROTECTED_SHARE),
+        rightIcon: undefined,
+        isLeftIconVisible: true,
+        onClick: async (): Promise<void> =>
+          await openDocumentPublicShareModal(),
+        sectionTitle: undefined,
+        hasTopDivider: false,
+        hasBottomDivider: false,
+      },
+      {
         id: 'menu_item__jwfoepxugv',
         text: langKeys().MenuItemDocumentExportMarkdown,
         leftIcon: FlatIcon(FlatIconName._18_MARKDOWN),

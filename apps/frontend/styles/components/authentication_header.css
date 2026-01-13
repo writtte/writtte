@@ -11,6 +11,6 @@
   width: 100%;
 
   svg path {
-    fill: var(--component-authentication-header-logo);
+    fill: var(--color--text-beta);
   }
 }

@@ -11,6 +11,13 @@ type TOptions = {
     icon: HTMLElement;
     onClick: (e: PointerEvent) => void;
   };
+  metadata:
+    | {
+        createdTime: string;
+        lastUpdatedTime: string;
+        lastOpenedTime: string;
+      }
+    | undefined;
   onClick: () => void;
 };
 

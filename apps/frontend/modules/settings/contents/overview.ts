@@ -1,6 +1,5 @@
 import { ERROR_CODES, validate } from '@writtte-internal/validate';
 import { InputType } from '../../../components/Input';
-import { updateOverviewTitle } from '../../../components/OverviewTitle';
 import {
   SettingsItem,
   SettingsItemType,
@@ -17,7 +16,6 @@ import { handleHTTPError } from '../../../helpers/http/httpError';
 import { langKeys } from '../../../translations/keys';
 import { HTTP_STATUS } from '../../../utils/data/fetch';
 import { debounce } from '../../../utils/time/debounce';
-import { generateOverviewTitleDynamically } from '../../overview/dynamicTitle';
 
 const getOverviewSettingsContent = (): HTMLDivElement[] => {
   const alertController = AlertController();
@@ -123,11 +121,6 @@ const getOverviewSettingsContent = (): HTMLDivElement[] => {
             updateAccountOverview({
               name: value.trim(),
             });
-
-            updateOverviewTitle(
-              'overview_title__gwcalajmpp',
-              generateOverviewTitleDynamically(value.trim()),
-            );
           },
           {
             delay: DEBOUNCE_TIMEOUT.SHORT,

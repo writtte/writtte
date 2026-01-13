@@ -13,7 +13,7 @@ type TReturnCloseButton = {
 const CloseButton = (opts: TOptions): TReturnCloseButton => {
   const button = document.createElement('button');
   button.classList.add('close-button');
-  button.appendChild(FlatIcon(FlatIconName._26_CROSS));
+  button.appendChild(FlatIcon(FlatIconName._18_CROSS));
 
   setTestId(button, opts.id);
 

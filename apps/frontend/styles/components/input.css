@@ -8,27 +8,45 @@
 
 .input-wrapper__status-text {
   display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   width: 100%;
 }
 
 .input-wrapper__status-text.show {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .input-wrapper__status-text.hide {
-  display: none;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease;
 }
 
 .input {
   align-items: center;
   align-self: stretch;
-  background: var(--component-input-bg);
-  border: 1px solid var(--component-input-border);
+  background: var(--color--bg-neutral-000);
+  border-radius: 8px;
+  border: 1px solid var(--color--border-weak);
   display: flex;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
 
   &::placeholder,
   &::-ms-input-placeholder {
-    color: var(--component-input-text---placeholder);
+    color: var(--color--text-gamma);
   }
 
   &:hover {
@@ -36,14 +54,9 @@
   }
 
   &.active {
-    background: var(--component-input-bg);
-    border: 1px solid var(--component-input-border---active);
-    box-shadow: 0 0 8px 0 var(--component-input-shadow---active);
-  }
-
-  &:disabled {
-    background: var(--component-input-bg--disable);
-    color: var(--component-input-text---disable);
+    background: var(--color--bg-neutral-000);
+    border: 1px solid var(--color--border-primary);
+    box-shadow: 0 0 8px 0 var(--color--border-primary);
   }
 }
 
@@ -51,7 +64,7 @@
   background: transparent;
   border: none;
   box-shadow: none;
-  color: var(--component-input-text);
+  color: var(--color--text-alpha);
   flex: 1 0 0;
   font-size: 13px;
   font-style: normal;
@@ -71,6 +84,7 @@
   height: 24px;
   justify-content: center;
   outline: none;
+  user-select: none;
   width: 24px;
 
   svg {
@@ -80,7 +94,8 @@
     width: 18px;
 
     path {
-      fill: var(--component-input-button-icon);
+      fill: var(--color--text-beta);
+      transition: fill 0.2s ease;
     }
   }
 
@@ -88,12 +103,12 @@
     cursor: pointer;
 
     svg path {
-      fill: var(--component-input-button-icon---hover);
+      fill: var(--color--text-alpha);
     }
   }
 
   &:focus-visible {
-    outline: 1px dashed var(--common-focus-neutral);
+    outline: 1px dashed var(--color--border-invert);
     outline-offset: 0px;
   }
 }

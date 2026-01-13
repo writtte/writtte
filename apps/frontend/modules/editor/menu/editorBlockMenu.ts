@@ -6,12 +6,17 @@ import {
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
 import { langKeys } from '../../../translations/keys';
+import {
+  type TRemoveWhenRouteChangeInstance,
+  removeWhenRouteChange,
+} from '../../../utils/ui/removeWhenRouteChange';
 import { browseAndInsertImage } from '../image/browseImage';
 
 let blockMenuQuery = '';
 let blockMenuInstance: TReturnEditorBlockMenu | null = null;
 let deleteTriggerCallback: (() => void) | null = null;
 let hideMenuCallback: (() => void) | null = null;
+let routeChangeInstance: TRemoveWhenRouteChangeInstance | null = null;
 
 const menuItems = (): (TEditorBlockMenuItemOptions & {
   hasTopDivider: boolean;
@@ -91,7 +96,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__hmrfgnivbj',
     text: langKeys().EditorMenuItemHeading03,
     icon: FlatIcon(FlatIconName._18_HEADING_03),
-    key: undefined,
+    key: '###',
     isSelected: false,
     keywords: [
       'heading',
@@ -113,7 +118,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__tppwytmkwn',
     text: langKeys().EditorMenuItemHeading04,
     icon: FlatIcon(FlatIconName._18_HEADING_04),
-    key: undefined,
+    key: '####',
     isSelected: false,
     keywords: [
       'heading',
@@ -135,7 +140,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__cqpplbycxn',
     text: langKeys().EditorMenuItemHeading05,
     icon: FlatIcon(FlatIconName._18_HEADING_05),
-    key: undefined,
+    key: '#####',
     isSelected: false,
     keywords: [
       'heading',
@@ -157,7 +162,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__aoumpxzqyx',
     text: langKeys().EditorMenuItemHeading06,
     icon: FlatIcon(FlatIconName._18_HEADING_06),
-    key: undefined,
+    key: '######',
     isSelected: false,
     keywords: [
       'heading',
@@ -179,7 +184,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__cnguzmiyyz',
     text: langKeys().EditorMenuItemBulletList,
     icon: FlatIcon(FlatIconName._18_BULLET_LIST),
-    key: undefined,
+    key: '*',
     isSelected: false,
     keywords: ['bullets', 'list'],
     onClick: (): void => {
@@ -192,7 +197,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__uyoomociyf',
     text: langKeys().EditorMenuItemNumberList,
     icon: FlatIcon(FlatIconName._18_NUMBER_LIST),
-    key: undefined,
+    key: '1.',
     isSelected: false,
     keywords: ['numbers', 'list'],
     onClick: (): void => {
@@ -205,7 +210,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__mpqbebhndd',
     text: langKeys().EditorMenuItemBlockQuote,
     icon: FlatIcon(FlatIconName._18_BLOCK_QUOTE),
-    key: undefined,
+    key: '>',
     isSelected: false,
     keywords: ['quote', 'blockQuote', 'note'],
     onClick: (): void => {
@@ -218,7 +223,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__mjyeocjthi',
     text: langKeys().EditorMenuItemCodeBlock,
     icon: FlatIcon(FlatIconName._18_CODE_BLOCK),
-    key: undefined,
+    key: '```',
     isSelected: false,
     keywords: ['code', 'codeblock'],
     onClick: (): void => {
@@ -231,7 +236,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
     id: 'block_menu_item__jleijdtqxw',
     text: langKeys().EditorMenuItemHorizontalRule,
     icon: FlatIcon(FlatIconName._18_HORIZONTAL_RULE),
-    key: undefined,
+    key: '---',
     isSelected: false,
     keywords: [
       'hr',
@@ -247,7 +252,7 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
       getEditorAPI().setHorizontalLine();
     },
     hasTopDivider: false,
-    hasBottomDivider: false,
+    hasBottomDivider: true,
   },
   {
     id: 'block_menu_item__jsgfkrjptx',
@@ -273,6 +278,11 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
 ];
 
 const setupEditorBlockMenu = (): HTMLMenuElement => {
+  if (routeChangeInstance) {
+    routeChangeInstance.destroy();
+    routeChangeInstance = null;
+  }
+
   const menu = EditorBlockMenu({
     id: 'editor_block_menu__ihhzzfwpjj',
     filterText: langKeys().EditorMenuTitleFilter,
@@ -281,6 +291,16 @@ const setupEditorBlockMenu = (): HTMLMenuElement => {
   });
 
   blockMenuInstance = menu;
+
+  routeChangeInstance = removeWhenRouteChange(menu.element, {
+    enabled: true,
+    animationDuration: 0,
+    onAfterRemove: () => {
+      blockMenuInstance = null;
+      routeChangeInstance = null;
+    },
+  });
+
   return menu.element;
 };
 

@@ -3,6 +3,7 @@ import {
   type TModalOptions,
   type TReturnModal,
 } from '../components/Modal';
+import { removeWhenRouteChange } from '../utils/ui/removeWhenRouteChange';
 
 type TInternalModal = {
   id: string;
@@ -32,6 +33,20 @@ const ModalController = (): TReturnModalController => {
       containerDiv.classList.add('modal-container');
 
       document.body.appendChild(containerDiv);
+
+      removeWhenRouteChange(containerDiv, {
+        enabled: true,
+        animationDuration: 300,
+        onBeforeRemove: () => {
+          if (containerDiv) {
+            containerDiv.classList.add('modal-container--closing');
+          }
+        },
+        onAfterRemove: () => {
+          modals = [];
+          containerDiv = null;
+        },
+      });
     }
   };
 
@@ -45,20 +60,38 @@ const ModalController = (): TReturnModalController => {
   const closeModal = (id: string): void => {
     const modalToClose = modals.find((m) => m.id === id);
     if (modalToClose) {
-      modalToClose.modalReturn.element.remove();
-      const newModals: TInternalModal[] = [];
-
-      for (let i = 0; i < modals.length; i++) {
-        if (modals[i].id !== id) {
-          newModals.push(modals[i]);
-        }
-      }
-
-      modals = newModals;
-
       if (containerDiv) {
-        containerDiv.remove();
-        containerDiv = null;
+        containerDiv.classList.add('modal-container--closing');
+
+        setTimeout(() => {
+          modalToClose.modalReturn.element.remove();
+          const newModals: TInternalModal[] = [];
+
+          for (let i = 0; i < modals.length; i++) {
+            if (modals[i].id !== id) {
+              newModals.push(modals[i]);
+            }
+          }
+
+          modals = newModals;
+
+          if (containerDiv) {
+            containerDiv.classList.remove('modal-container--closing');
+            containerDiv.remove();
+            containerDiv = null;
+          }
+        }, 300);
+      } else {
+        modalToClose.modalReturn.element.remove();
+        const newModals: TInternalModal[] = [];
+
+        for (let i = 0; i < modals.length; i++) {
+          if (modals[i].id !== id) {
+            newModals.push(modals[i]);
+          }
+        }
+
+        modals = newModals;
       }
     }
   };

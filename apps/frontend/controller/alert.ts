@@ -1,4 +1,5 @@
 import { Alert, type TAlertOptions } from '../components/Alert';
+import { removeWhenRouteChange } from '../utils/ui/removeWhenRouteChange';
 
 type TInternalAlert = {
   id: string;
@@ -26,6 +27,15 @@ const AlertController = (): TReturnAlertController => {
 
       containerDiv.classList.add('alert-container');
       document.body.appendChild(containerDiv);
+
+      removeWhenRouteChange(containerDiv, {
+        enabled: true,
+        animationDuration: 0,
+        onAfterRemove: () => {
+          alerts = [];
+          containerDiv = null;
+        },
+      });
     }
   };
 
@@ -70,7 +80,10 @@ const AlertController = (): TReturnAlertController => {
     );
 
     if (alertElement) {
-      alertElement.dispatchEvent(new CustomEvent('alertRemove'));
+      alertElement.classList.add('alert--closing');
+      setTimeout(() => {
+        alertElement.dispatchEvent(new CustomEvent('alertRemove'));
+      }, 300);
     }
   };
 

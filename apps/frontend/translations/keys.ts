@@ -53,6 +53,9 @@ type TLangKeys = {
   EditorMenuItemNumberList: string;
   EditorMenuItemParagraph: string;
   EditorMenuTitleFilter: string;
+  EmptyStateNoDraftsButtonCreate: string;
+  EmptyStateNoDraftsTextDescription: string;
+  EmptyStateNoDraftsTextTitle: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountDeleteAlreadyInSubscription: string;
   ErrorAccountDeleteConfirmationFailed: string;
@@ -156,41 +159,6 @@ type TLangKeys = {
   PageEditorErrorDocumentRetrieveTextTitle: string;
   PageEditorPlaceholder: string;
   PageOverviewCreateInputPlaceholderNewDocument: string;
-  PageOverviewGreetingsAfternoon01: string;
-  PageOverviewGreetingsAfternoon02: string;
-  PageOverviewGreetingsAfternoon03: string;
-  PageOverviewGreetingsAfternoon04: string;
-  PageOverviewGreetingsAfternoon05: string;
-  PageOverviewGreetingsAfternoon06: string;
-  PageOverviewGreetingsAfternoon07: string;
-  PageOverviewGreetingsEvening01: string;
-  PageOverviewGreetingsEvening02: string;
-  PageOverviewGreetingsEvening03: string;
-  PageOverviewGreetingsEvening04: string;
-  PageOverviewGreetingsEvening05: string;
-  PageOverviewGreetingsEvening06: string;
-  PageOverviewGreetingsEvening07: string;
-  PageOverviewGreetingsHello01: string;
-  PageOverviewGreetingsHello02: string;
-  PageOverviewGreetingsHello03: string;
-  PageOverviewGreetingsHello04: string;
-  PageOverviewGreetingsHello05: string;
-  PageOverviewGreetingsHello06: string;
-  PageOverviewGreetingsHello07: string;
-  PageOverviewGreetingsMorning01: string;
-  PageOverviewGreetingsMorning02: string;
-  PageOverviewGreetingsMorning03: string;
-  PageOverviewGreetingsMorning04: string;
-  PageOverviewGreetingsMorning05: string;
-  PageOverviewGreetingsMorning06: string;
-  PageOverviewGreetingsMorning07: string;
-  PageOverviewGreetingsNight01: string;
-  PageOverviewGreetingsNight02: string;
-  PageOverviewGreetingsNight03: string;
-  PageOverviewGreetingsNight04: string;
-  PageOverviewGreetingsNight05: string;
-  PageOverviewGreetingsNight06: string;
-  PageOverviewGreetingsNight07: string;
   PageSignInButtonSignIn: string;
   PageSignInButtonSigning: string;
   PageSignInEmailButtonSend: string;
@@ -297,6 +265,9 @@ const langKeys = (): TLangKeys => {
     EditorMenuItemNumberList: getTr('EDITOR_MENU_ITEM_NUMBER_LIST'),
     EditorMenuItemParagraph: getTr('EDITOR_MENU_ITEM_PARAGRAPH'),
     EditorMenuTitleFilter: getTr('EDITOR_MENU_TITLE_FILTER'),
+    EmptyStateNoDraftsButtonCreate: getTr('EMPTY_STATE_NO_DRAFTS_BUTTON_CREATE'),
+    EmptyStateNoDraftsTextDescription: getTr('EMPTY_STATE_NO_DRAFTS_TEXT_DESCRIPTION'),
+    EmptyStateNoDraftsTextTitle: getTr('EMPTY_STATE_NO_DRAFTS_TEXT_TITLE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountDeleteAlreadyInSubscription: getTr('ERROR_ACCOUNT_DELETE_ALREADY_IN_SUBSCRIPTION'),
     ErrorAccountDeleteConfirmationFailed: getTr('ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED'),
@@ -400,41 +371,6 @@ const langKeys = (): TLangKeys => {
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageEditorPlaceholder: getTr('PAGE_EDITOR_PLACEHOLDER'),
     PageOverviewCreateInputPlaceholderNewDocument: getTr('PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT'),
-    PageOverviewGreetingsAfternoon01: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_01'),
-    PageOverviewGreetingsAfternoon02: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_02'),
-    PageOverviewGreetingsAfternoon03: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_03'),
-    PageOverviewGreetingsAfternoon04: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_04'),
-    PageOverviewGreetingsAfternoon05: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_05'),
-    PageOverviewGreetingsAfternoon06: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_06'),
-    PageOverviewGreetingsAfternoon07: getTr('PAGE_OVERVIEW_GREETINGS_AFTERNOON_07'),
-    PageOverviewGreetingsEvening01: getTr('PAGE_OVERVIEW_GREETINGS_EVENING_01'),
-    PageOverviewGreetingsEvening02: getTr('PAGE_OVERVIEW_GREETINGS_EVENING_02'),
-    PageOverviewGreetingsEvening03: getTr('PAGE_OVERVIEW_GREETINGS_EVENING_03'),
-    PageOverviewGreetingsEvening04: getTr('PAGE_OVERVIEW_GREETINGS_EVENING_04'),
-    PageOverviewGreetingsEvening05: getTr('PAGE_OVERVIEW_GREETINGS_EVENING_05'),
-    PageOverviewGreetingsEvening06: getTr('PAGE_OVERVIEW_GREETINGS_EVENING_06'),
-    PageOverviewGreetingsEvening07: getTr('PAGE_OVERVIEW_GREETINGS_EVENING_07'),
-    PageOverviewGreetingsHello01: getTr('PAGE_OVERVIEW_GREETINGS_HELLO_01'),
-    PageOverviewGreetingsHello02: getTr('PAGE_OVERVIEW_GREETINGS_HELLO_02'),
-    PageOverviewGreetingsHello03: getTr('PAGE_OVERVIEW_GREETINGS_HELLO_03'),
-    PageOverviewGreetingsHello04: getTr('PAGE_OVERVIEW_GREETINGS_HELLO_04'),
-    PageOverviewGreetingsHello05: getTr('PAGE_OVERVIEW_GREETINGS_HELLO_05'),
-    PageOverviewGreetingsHello06: getTr('PAGE_OVERVIEW_GREETINGS_HELLO_06'),
-    PageOverviewGreetingsHello07: getTr('PAGE_OVERVIEW_GREETINGS_HELLO_07'),
-    PageOverviewGreetingsMorning01: getTr('PAGE_OVERVIEW_GREETINGS_MORNING_01'),
-    PageOverviewGreetingsMorning02: getTr('PAGE_OVERVIEW_GREETINGS_MORNING_02'),
-    PageOverviewGreetingsMorning03: getTr('PAGE_OVERVIEW_GREETINGS_MORNING_03'),
-    PageOverviewGreetingsMorning04: getTr('PAGE_OVERVIEW_GREETINGS_MORNING_04'),
-    PageOverviewGreetingsMorning05: getTr('PAGE_OVERVIEW_GREETINGS_MORNING_05'),
-    PageOverviewGreetingsMorning06: getTr('PAGE_OVERVIEW_GREETINGS_MORNING_06'),
-    PageOverviewGreetingsMorning07: getTr('PAGE_OVERVIEW_GREETINGS_MORNING_07'),
-    PageOverviewGreetingsNight01: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_01'),
-    PageOverviewGreetingsNight02: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_02'),
-    PageOverviewGreetingsNight03: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_03'),
-    PageOverviewGreetingsNight04: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_04'),
-    PageOverviewGreetingsNight05: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_05'),
-    PageOverviewGreetingsNight06: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_06'),
-    PageOverviewGreetingsNight07: getTr('PAGE_OVERVIEW_GREETINGS_NIGHT_07'),
     PageSignInButtonSignIn: getTr('PAGE_SIGN_IN_BUTTON_SIGN_IN'),
     PageSignInButtonSigning: getTr('PAGE_SIGN_IN_BUTTON_SIGNING'),
     PageSignInEmailButtonSend: getTr('PAGE_SIGN_IN_EMAIL_BUTTON_SEND'),

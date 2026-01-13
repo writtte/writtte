@@ -21,7 +21,7 @@ const setupEditorTopBar = async (): Promise<void> => {
   topBarInstance.addButtonsToLeft([
     {
       id: 'action_button__wzgexjekpk',
-      icon: FlatIcon(FlatIconName._18_ARROW_LEFT),
+      icon: FlatIcon(FlatIconName._18_CHEVRON_LEFT),
       onClick: async (e: PointerEvent): Promise<void> => {
         e.preventDefault();
 

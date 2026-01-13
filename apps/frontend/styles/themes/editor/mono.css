@@ -11,7 +11,7 @@ html[data-editor-theme="editor_mono"] {
 
   --editor-p-font-size: 15px;
   --editor-p-font-weight: 400;
-  --editor-p-line-height: calc(15px * 1.6);
+  --editor-p-line-height: calc(15px * 1.8);
   --editor-p-word-spacing: normal;
   --editor-p-margin-bottom: 24px;
 

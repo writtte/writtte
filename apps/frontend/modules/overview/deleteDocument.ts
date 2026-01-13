@@ -1,4 +1,5 @@
 import type { TReturnItemList } from '../../components/ItemList';
+import { idb } from '@writtte-internal/indexed-db';
 import { ButtonColor } from '../../components/Button';
 import {
   ModalContainerItemDirection,
@@ -9,6 +10,7 @@ import {
   DocumentLifecycleState,
   v1DocumentUpdate,
 } from '../../data/apis/item/v1DocumentUpdate';
+import { STORE_NAMES, getIndexedDB } from '../../data/stores/indexedDB';
 import { AccessToken } from '../../helpers/account/accessToken';
 import { documentCodeToKey } from '../../helpers/item/codeToKey';
 import { langKeys } from '../../translations/keys';
@@ -69,6 +71,10 @@ const openDocumentDeleteModal = async (
     const documentId = documentCodeToKey(documentCode);
     itemList.removeItemFromList(documentId);
 
+    // The document should also be removed from IndexedDB
+
+    await deleteDocumentFromIDB(documentCode);
+
     if (itemList.items.size === 0) {
       itemList.setNoItems();
     }
@@ -91,6 +97,17 @@ const deleteDocument = async (documentCode: string): Promise<boolean> => {
   }
 
   return true;
+};
+
+const deleteDocumentFromIDB = async (documentCode: string): Promise<void> => {
+  const db = getIndexedDB();
+
+  try {
+    await idb.deleteData(db, STORE_NAMES.DOCUMENTS, documentCode);
+    await idb.deleteData(db, STORE_NAMES.DOCUMENT_CONTENTS, documentCode);
+  } catch {
+    // Ignore errors...
+  }
 };
 
 export { openDocumentDeleteModal };

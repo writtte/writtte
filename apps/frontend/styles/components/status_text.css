@@ -30,23 +30,23 @@
 .status-text--success {
   .status-text__icon {
     svg path {
-      fill: var(--component-status-text-text--success);
+      fill: var(--color--text-success);
     }
   }
 
   .status-text__text {
-    color: var(--component-status-text-text--success);
+    color: var(--color--text-success);
   }
 }
 
 .status-text--error {
   .status-text__icon {
     svg path {
-      fill: var(--component-status-text-text--error);
+      fill: var(--color--text-danger);
     }
   }
 
   .status-text__text {
-    color: var(--component-status-text-text--error);
+    color: var(--color--text-danger);
   }
 }

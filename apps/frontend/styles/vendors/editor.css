@@ -16,27 +16,27 @@
 }
 
 .writtte-editor ::selection {
-  background: var(--component-writtte-editor-bg--text-selection);
+  background: var(--color--bg-primary-300);
   color: inherit;
 }
 
 .writtte-editor ::-moz-selection {
-  background: var(--component-writtte-editor-bg--text-selection);
+  background: var(--color--bg-primary-300);
   color: inherit;
 }
 
 /* Selected Node */
 
 .writtte-editor .ProseMirror-selectednode {
-  border-radius: 0px;
+  border-radius: 12px;
   border: none;
   box-shadow: none;
   outline-offset: -1px;
-  outline: 1px solid var(--component-writtte-editor-border--block---focused);
+  outline: 1px solid var(--color--border-primary);
 }
 
 .writtte-editor .persistent-selection {
-  background: var(--component-writtte-editor-bg--text-selection);
+  background: var(--color--bg-primary-300);
   color: inherit;
 }
 
@@ -58,7 +58,7 @@
 }
 
 .writtte-editor p::before {
-  color: var(--component-writtte-editor-text---placeholder);
+  color: var(--color--text-gamma);
   content: attr(data-placeholder);
   display: block;
   font-family: inherit;
@@ -77,8 +77,8 @@
 /* Paragraph */
 
 .writtte-editor p {
-  caret-color: var(--component-writtte-editor-text--paragraph);
-  color: var(--component-writtte-editor-text--paragraph);
+  caret-color: var(--color--text-alpha);
+  color: var(--color--text-alpha);
   font-size: var(--editor-p-font-size);
   font-weight: var(--editor-p-font-weight);
   line-height: var(--editor-p-line-height);
@@ -86,23 +86,25 @@
   word-spacing: var(--editor-p-word-spacing);
 }
 
+/* Headings */
+
 .writtte-editor h1 {
   border-bottom: var(--editor-h1-border-bottom);
-  caret-color: var(--component-writtte-editor-text--h1);
-  color: var(--component-writtte-editor-text--h1);
+  caret-color: var(--color--text-alpha);
+  color: var(--color--text-alpha);
   font-size: var(--editor-h1-font-size);
   font-weight: var(--editor-h1-font-weight);
   line-height: var(--editor-h1-line-height);
   margin-bottom: var(--editor-h1-margin-bottom);
-  margin-top: var(--editor-h1-margia-top);
+  margin-top: var(--editor-h1-margin-top);
   text-align: var(--editor-h1-text-align);
   word-spacing: var(--editor-h1-word-spacing);
 }
 
 .writtte-editor h2 {
   border-bottom: var(--editor-h2-border-bottom);
-  caret-color: var(--component-writtte-editor-text--h2);
-  color: var(--component-writtte-editor-text--h2);
+  caret-color: var(--color--text-alpha);
+  color: var(--color--text-alpha);
   font-size: var(--editor-h2-font-size);
   font-weight: var(--editor-h2-font-weight);
   line-height: var(--editor-h2-line-height);
@@ -114,8 +116,8 @@
 
 .writtte-editor h3 {
   border-bottom: var(--editor-h3-border-bottom);
-  caret-color: var(--component-writtte-editor-text--h3);
-  color: var(--component-writtte-editor-text--h3);
+  caret-color: var(--color--text-alpha);
+  color: var(--color--text-alpha);
   font-size: var(--editor-h3-font-size);
   font-weight: var(--editor-h3-font-weight);
   line-height: var(--editor-h3-line-height);
@@ -127,8 +129,8 @@
 
 .writtte-editor h4 {
   border-bottom: var(--editor-h4-border-bottom);
-  caret-color: var(--component-writtte-editor-text--h4);
-  color: var(--component-writtte-editor-text--h4);
+  caret-color: var(--color--text-alpha);
+  color: var(--color--text-alpha);
   font-size: var(--editor-h4-font-size);
   font-weight: var(--editor-h4-font-weight);
   line-height: var(--editor-h4-line-height);
@@ -140,8 +142,8 @@
 
 .writtte-editor h5 {
   border-bottom: var(--editor-h5-border-bottom);
-  caret-color: var(--component-writtte-editor-text--h5);
-  color: var(--component-writtte-editor-text--h5);
+  caret-color: var(--color--text-alpha);
+  color: var(--color--text-alpha);
   font-size: var(--editor-h5-font-size);
   font-weight: var(--editor-h5-font-weight);
   line-height: var(--editor-h5-line-height);
@@ -153,8 +155,8 @@
 
 .writtte-editor h6 {
   border-bottom: var(--editor-h6-border-bottom);
-  caret-color: var(--component-writtte-editor-text--h6);
-  color: var(--component-writtte-editor-text--h6);
+  caret-color: var(--color--text-alpha);
+  color: var(--color--text-alpha);
   font-size: var(--editor-h6-font-size);
   font-weight: var(--editor-h6-font-weight);
   line-height: var(--editor-h6-line-height);
@@ -186,7 +188,7 @@
 
 .writtte-editor b,
 .writtte-editor strong {
-  color: var(--component-writtte-editor-text--paragraph);
+  color: var(--color--text-alpha);
   font-weight: var(--editor-bold-font-weight);
 }
 
@@ -235,9 +237,9 @@
 
 .writtte-editor code {
   align-items: center;
-  background: var(--component-writtte-editor-bg--inline-code);
+  background: var(--color--bg-neutral-300);
   border-radius: var(--editor-inline-code-border-radius);
-  color: var(--component-writtte-editor-text--paragraph);
+  color: var(--color--text-alpha);
   display: inline-flex;
   flex-direction: column;
   font-family: var(--editor-inline-code-font-family);
@@ -253,7 +255,7 @@
 .writtte-editor a {
   background: none;
   border: none;
-  color: var(--component-writtte-editor-text--link);
+  color: var(--color--text-primary);
   cursor: text;
   font-style: inherit;
   font-weight: inherit;
@@ -269,6 +271,7 @@
     text-decoration var(--editor-hyper-link-hover-duration);
 
   &:hover {
+    cursor: pointer;
     filter: var(--editor-hyper-link-hover-filter);
     opacity: var(--editor-hyper-link-hover-opacity);
     text-decoration: underline;
@@ -280,7 +283,8 @@
   &:visited {
     background: none;
     border: none;
-    color: var(--component-writtte-editor-text--link);
+    color: var(--color--text-primary);
+    cursor: pointer;
     outline: none;
     text-decoration: none;
   }
@@ -327,7 +331,7 @@
 }
 
 .writtte-editor li::marker {
-  color: var(--component-writtte-editor-bg--list-item-marker);
+  color: var(--color--text-beta);
 }
 
 .writtte-editor ul,
@@ -356,7 +360,7 @@
 /* Horizontal Rule */
 
 .writtte-editor hr {
-  background: var(--component-writtte-editor-bg--hr);
+  background: var(--color--border-strong);
   border: none;
   display: block;
   height: var(--editor-horizontal-rule-height);
@@ -368,8 +372,8 @@
 /* Blockquote */
 
 .writtte-editor blockquote {
-  border-left: 3px solid var(--component-writtte-editor-text--paragraph);
-  color: var(--component-writtte-editor-text--paragraph);
+  border-left: 3px solid var(--color--text-alpha);
+  color: var(--color--text-alpha);
   margin: 24px 0;
   padding: 4px 24px;
 }
@@ -382,6 +386,8 @@
 
 .writtte-image-container {
   align-items: center;
+  border-radius: 12px;
+  cursor: default;
   display: flex;
   height: auto;
   justify-content: center;
@@ -393,6 +399,7 @@
   width: auto;
 
   img {
+    border-radius: 12px;
     height: auto;
     max-height: 100%;
     max-width: 100%;
@@ -408,9 +415,9 @@
 /* Code Block */
 
 .writtte-code-block {
-  background: var(--component-writtte-editor-bg--inline-code);
-  border-radius: 0px;
-  color: var(--component-writtte-editor-text--paragraph);
+  background: var(--color--bg-neutral-300);
+  border-radius: 12px;
+  color: var(--color--text-alpha);
   font-family: "JetBrains Mono Variable", monospace;
   font-size: 13px;
   line-height: 24px;
@@ -423,7 +430,7 @@
 
 .writtte-code-block code {
   background: transparent;
-  caret-color: var(--component-writtte-editor-text--paragraph);
+  caret-color: var(--color--text-alpha);
   color: inherit;
   display: block;
   font-family: inherit;
@@ -433,7 +440,7 @@
 }
 
 .writtte-code-block .ProseMirror pre {
-  caret-color: var(--component-writtte-editor-text--paragraph);
+  caret-color: var(--color--text-alpha);
   min-height: 24px;
   outline: none;
 }

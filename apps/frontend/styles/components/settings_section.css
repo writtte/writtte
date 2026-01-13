@@ -1,7 +1,7 @@
 .settings-section {
   align-items: center;
-  background: var(--component-settings-modal-item-bg);
-  border-bottom: 1px solid var(--component-settings-modal-border);
+  background: var(--color--bg-neutral-100);
+  border-bottom: 1px solid var(--color--border-weak);
   border-left: none;
   border-right: none;
   border-top: none;
@@ -10,15 +10,16 @@
   height: 48px;
   min-width: 288px;
   padding: 0 12px;
+  transition: background;
 
   &:hover {
-    background: var(--component-settings-modal-item-bg---hover);
+    background: var(--color--bg-neutral-200);
     cursor: pointer;
   }
 
   &:focus-visible {
     outline-offset: -1px;
-    outline: 1px dashed var(--common-focus-neutral);
+    outline: 1px dashed var(--color--border-invert);
   }
 }
 
@@ -34,13 +35,13 @@
     width: 18px;
 
     path {
-      fill: var(--component-settings-modal-item-text);
+      fill: var(--color--text-beta);
     }
   }
 }
 
 .settings-section__text {
-  color: var(--component-settings-modal-item-text);
+  color: var(--color--text-beta);
   display: flex;
   flex: 1 0 0;
   font-size: 13px;
@@ -51,7 +52,7 @@
 }
 
 .settings-section--selected {
-  background: var(--component-settings-modal-item-bg---selected);
+  background: var(--color--bg-neutral-300);
   pointer-events: none;
 
   &:focus-visible {
