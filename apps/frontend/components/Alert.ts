@@ -28,7 +28,7 @@ const Alert = (opts: TOptions): TReturnAlert => {
       alertDiv.classList.add('alert--closing');
       setTimeout(() => {
         alertDiv.dispatchEvent(new CustomEvent('alertRemove'));
-      }, 300); // Match the animation duration in CSS
+      }, 300);
     },
   });
 
