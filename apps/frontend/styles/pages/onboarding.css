@@ -105,7 +105,7 @@
 .onboarding-page__step-button {
   align-items: center;
   background: transparent;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #eaebec;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
@@ -181,7 +181,7 @@
   align-items: center;
   background: transparent;
   border-radius: 50%;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #eaebec;
   cursor: pointer;
   display: flex;
   height: 8px;
