@@ -9,7 +9,7 @@ type QueryParams struct {
 	Page           *int    `json:"page" validate:"omitempty,min=1"`
 	PageSize       *int    `json:"page_size" validate:"omitempty,min=1,max=1000"`
 	SortBy         *string `json:"sort_by" validate:"omitempty,oneof=created_time updated_time title"`
-	SortOrder      *string `json:"sort_order" validate:"omitempty,oneof=ASC DESC"`
+	SortOrder      *string `json:"sort_order" validate:"omitempty,oneof=sort-asc sort-desc"`
 }
 
 // revive:enable:line-length-limit

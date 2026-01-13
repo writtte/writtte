@@ -3,11 +3,13 @@ package v1documentretrievelist
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	"backend/apis/v1/authentication/v1signin"
 	"backend/constants"
 	"backend/helpers/dbconvert"
 	"backend/pkg/extjwt"
+	"backend/pkg/intstr"
 )
 
 type service struct {
@@ -27,7 +29,7 @@ func (s *service) perform(ctx context.Context,
 		Page:           queries.Page,
 		PageSize:       queries.PageSize,
 		SortBy:         queries.SortBy,
-		SortOrder:      queries.SortOrder,
+		SortOrder:      setSortOrder(queries),
 	}
 
 	results, err := s.repo.perform(ctx, &input)
@@ -59,4 +61,21 @@ func setWorkflowState(queries *QueryParams) *string {
 
 	convertedType := dbconvert.ItemWorkflowStateToDB(queries.WorkflowState)
 	return &convertedType
+}
+
+func setSortOrder(queries *QueryParams) *string {
+	if queries.SortOrder == nil {
+		return nil
+	}
+
+	switch *queries.SortOrder {
+	case "sort-asc":
+		return intstr.StrPtr("ASC")
+
+	case "sort-desc":
+		return intstr.StrPtr("DESC")
+
+	default:
+		panic(fmt.Sprintf("invalid value %s identified", *queries.SortOrder))
+	}
 }
