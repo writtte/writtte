@@ -109,6 +109,10 @@
 
 @import "./vendors/editor.css";
 
+/* Animations */
+
+@import "./animations/modalAnimations.css";
+
 /* Debugging */
 
 /* @import "./debug/outline.css"; */

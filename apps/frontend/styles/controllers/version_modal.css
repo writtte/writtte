@@ -1,6 +1,6 @@
 .version-modal-container {
   align-items: center;
-  animation: versionModalControllerFadeIn 0.2s forwards;
+  animation: modalControllerFadeIn 0.2s forwards;
   background: var(--color--bg-neutral-000);
   display: flex;
   height: 100vh;
@@ -14,27 +14,7 @@
 }
 
 .version-modal-container--closing {
-  animation: versionModalControllerFadeOut 0.3s forwards;
-}
-
-@keyframes versionModalControllerFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes versionModalControllerFadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
+  animation: modalControllerFadeOut 0.3s forwards;
 }
 
 @media screen and (max-width: 1200px) {
