@@ -15,7 +15,8 @@ func write(w http.ResponseWriter, r *http.Request,
 	}
 
 	setJSONHeader(w, httpStatus)
-	if httpStatus == http.StatusNoContent {
+	if httpStatus == http.StatusNoContent ||
+		httpStatus == http.StatusNotModified {
 		return
 	}
 

@@ -76,6 +76,11 @@
     "documentsharingretrievelist",
     "documentsharingretrieve",
     "documentsharingdelete",
-    "documentsharingcreate"
+    "documentsharingcreate",
+    "documentversionretrievelist",
+    "documentversion",
+    "documentversionretrieve",
+    "getsentry",
+    "ampm"
   ]
 }

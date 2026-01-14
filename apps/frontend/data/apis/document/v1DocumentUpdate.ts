@@ -46,7 +46,7 @@ const v1DocumentUpdate = async (
   response: TResponseV1DocumentUpdate | null;
 }> => {
   const body: TFetchProps = {
-    endPoint: `${BACKEND_CONFIGS.URL}/v1/item/document`,
+    endPoint: `${BACKEND_CONFIGS.URL}/v1/document`,
     mode: REQUEST_MODES.CORS,
     method: HTTP_METHODS.PATCH,
     bearerValue: payload.accessToken,

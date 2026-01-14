@@ -96,6 +96,8 @@ type TLangKeys = {
   ErrorUrlMin: string;
   ErrorUrlPattern: string;
   ErrorUrlRequired: string;
+  ErrorVersionHistoryContentRetrievedFailed: string;
+  ErrorVersionHistoryListRetrievedFailed: string;
   InputPlaceholderEmailAddress: string;
   InputPlaceholderName: string;
   InputPlaceholderPassword: string;
@@ -121,6 +123,7 @@ type TLangKeys = {
   MenuItemSharePrivate: string;
   MenuItemSharePublic: string;
   MenuItemSignOut: string;
+  MenuItemVersionHistory: string;
   MenuSectionCopy: string;
   MenuSectionDownload: string;
   MenuSectionShare: string;
@@ -155,6 +158,10 @@ type TLangKeys = {
   ModalPasswordUpdateButtonUpdating: string;
   ModalPasswordUpdateTextContent: string;
   ModalPasswordUpdateTextTitle: string;
+  ModalVersionHistoryRestoreButtonCancel: string;
+  ModalVersionHistoryRestoreButtonRestore: string;
+  ModalVersionHistoryRestoreTextContent: string;
+  ModalVersionHistoryRestoreTextTitle: string;
   PageEditorErrorDocumentRetrieveTextDescription: string;
   PageEditorErrorDocumentRetrieveTextTitle: string;
   PageEditorPlaceholder: string;
@@ -208,6 +215,12 @@ type TLangKeys = {
   TopBarBadgeDaysLeft: string;
   TopBarBadgeDocumentReadOnly: string;
   TopBarBadgeFreeTrialExpired: string;
+  VersionModalButtonRestore: string;
+  VersionModalEmptyStateNoHistoryDescription: string;
+  VersionModalEmptyStateNoHistoryTitle: string;
+  VersionModalEmptyStateSelectContentDescription: string;
+  VersionModalEmptyStateSelectContentTitle: string;
+  VersionModalTextTitle: string;
 };
 
 const langKeys = (): TLangKeys => {
@@ -308,6 +321,8 @@ const langKeys = (): TLangKeys => {
     ErrorUrlMin: getTr('ERROR_URL_MIN'),
     ErrorUrlPattern: getTr('ERROR_URL_PATTERN'),
     ErrorUrlRequired: getTr('ERROR_URL_REQUIRED'),
+    ErrorVersionHistoryContentRetrievedFailed: getTr('ERROR_VERSION_HISTORY_CONTENT_RETRIEVED_FAILED'),
+    ErrorVersionHistoryListRetrievedFailed: getTr('ERROR_VERSION_HISTORY_LIST_RETRIEVED_FAILED'),
     InputPlaceholderEmailAddress: getTr('INPUT_PLACEHOLDER_EMAIL_ADDRESS'),
     InputPlaceholderName: getTr('INPUT_PLACEHOLDER_NAME'),
     InputPlaceholderPassword: getTr('INPUT_PLACEHOLDER_PASSWORD'),
@@ -333,6 +348,7 @@ const langKeys = (): TLangKeys => {
     MenuItemSharePrivate: getTr('MENU_ITEM_SHARE_PRIVATE'),
     MenuItemSharePublic: getTr('MENU_ITEM_SHARE_PUBLIC'),
     MenuItemSignOut: getTr('MENU_ITEM_SIGN_OUT'),
+    MenuItemVersionHistory: getTr('MENU_ITEM_VERSION_HISTORY'),
     MenuSectionCopy: getTr('MENU_SECTION_COPY'),
     MenuSectionDownload: getTr('MENU_SECTION_DOWNLOAD'),
     MenuSectionShare: getTr('MENU_SECTION_SHARE'),
@@ -367,6 +383,10 @@ const langKeys = (): TLangKeys => {
     ModalPasswordUpdateButtonUpdating: getTr('MODAL_PASSWORD_UPDATE_BUTTON_UPDATING'),
     ModalPasswordUpdateTextContent: getTr('MODAL_PASSWORD_UPDATE_TEXT_CONTENT'),
     ModalPasswordUpdateTextTitle: getTr('MODAL_PASSWORD_UPDATE_TEXT_TITLE'),
+    ModalVersionHistoryRestoreButtonCancel: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_CANCEL'),
+    ModalVersionHistoryRestoreButtonRestore: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_RESTORE'),
+    ModalVersionHistoryRestoreTextContent: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_CONTENT'),
+    ModalVersionHistoryRestoreTextTitle: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_TITLE'),
     PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageEditorPlaceholder: getTr('PAGE_EDITOR_PLACEHOLDER'),
@@ -420,6 +440,12 @@ const langKeys = (): TLangKeys => {
     TopBarBadgeDaysLeft: getTr('TOP_BAR_BADGE_DAYS_LEFT'),
     TopBarBadgeDocumentReadOnly: getTr('TOP_BAR_BADGE_DOCUMENT_READ_ONLY'),
     TopBarBadgeFreeTrialExpired: getTr('TOP_BAR_BADGE_FREE_TRIAL_EXPIRED'),
+    VersionModalButtonRestore: getTr('VERSION_MODAL_BUTTON_RESTORE'),
+    VersionModalEmptyStateNoHistoryDescription: getTr('VERSION_MODAL_EMPTY_STATE_NO_HISTORY_DESCRIPTION'),
+    VersionModalEmptyStateNoHistoryTitle: getTr('VERSION_MODAL_EMPTY_STATE_NO_HISTORY_TITLE'),
+    VersionModalEmptyStateSelectContentDescription: getTr('VERSION_MODAL_EMPTY_STATE_SELECT_CONTENT_DESCRIPTION'),
+    VersionModalEmptyStateSelectContentTitle: getTr('VERSION_MODAL_EMPTY_STATE_SELECT_CONTENT_TITLE'),
+    VersionModalTextTitle: getTr('VERSION_MODAL_TEXT_TITLE'),
   }
 
   return keys;

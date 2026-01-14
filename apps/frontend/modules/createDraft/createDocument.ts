@@ -3,11 +3,11 @@ import { idb } from '@writtte-internal/indexed-db';
 import { PATHS } from '../../constants/paths';
 import { ALERT_TIMEOUT } from '../../constants/timeouts';
 import { AlertController } from '../../controller/alert';
-import { v1DocumentCreate } from '../../data/apis/item/v1DocumentCreate';
+import { v1DocumentCreate } from '../../data/apis/document/v1DocumentCreate';
 import {
   DocumentLifecycleState,
   DocumentWorkflowState,
-} from '../../data/apis/item/v1DocumentUpdate';
+} from '../../data/apis/document/v1DocumentUpdate';
 import {
   STORE_NAMES,
   type TIDBDocument,

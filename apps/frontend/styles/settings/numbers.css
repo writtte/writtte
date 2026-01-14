@@ -1,10 +1,12 @@
 :root {
-  --z-index-top-bar: 50;
-  --z-index-editor-fixed-menu: 51;
-  --z-index-controller-settings-modal: 100;
-  --z-index-controller-modal: 200;
-  --z-index-overlay-loading-indicator: 300;
-  --z-index-overlay-error-message: 400;
-  --z-index-controller-alert: 500;
-  --z-index-menu: 600;
+  --z-index-top-bar: 100;
+  --z-index-editor-fixed-menu: 101;
+  --z-index-controller-appearance-modal: 102;
+  --z-index-controller-settings-modal: 103;
+  --z-index-controller-version-modal: 104;
+  --z-index-controller-modal: 105;
+  --z-index-overlay-loading-indicator: 106;
+  --z-index-overlay-error-message: 107;
+  --z-index-controller-alert: 108;
+  --z-index-menu: 109;
 }

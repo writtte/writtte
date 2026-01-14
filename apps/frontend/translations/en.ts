@@ -95,6 +95,8 @@ const enMessages = {
   ERROR_URL_MIN: 'URL must be at least 5 characters long.',
   ERROR_URL_PATTERN: 'Please enter a valid URL (including http:// or https://).',
   ERROR_URL_REQUIRED: 'A valid URL is required to add as a link.',
+  ERROR_VERSION_HISTORY_CONTENT_RETRIEVED_FAILED: 'Failed to load the selected version content. Please try again.',
+  ERROR_VERSION_HISTORY_LIST_RETRIEVED_FAILED: 'Failed to load the version history list. Please try again later.',
   INPUT_PLACEHOLDER_EMAIL_ADDRESS: 'Email Address',
   INPUT_PLACEHOLDER_NAME: 'Name',
   INPUT_PLACEHOLDER_PASSWORD: 'Password',
@@ -120,6 +122,7 @@ const enMessages = {
   MENU_ITEM_SHARE_PRIVATE: 'Protected Share',
   MENU_ITEM_SHARE_PUBLIC: 'Share',
   MENU_ITEM_SIGN_OUT: 'Sign out',
+  MENU_ITEM_VERSION_HISTORY: 'Version history',
   MENU_SECTION_COPY: 'Copy',
   MENU_SECTION_DOWNLOAD: 'Download',
   MENU_SECTION_SHARE: 'Share',
@@ -154,6 +157,10 @@ const enMessages = {
   MODAL_PASSWORD_UPDATE_BUTTON_UPDATING: 'Updating...',
   MODAL_PASSWORD_UPDATE_TEXT_CONTENT: 'Enter your new password that needs to be updated. After updating, you will not be signed out, but when you sign in later, you can use this password.',
   MODAL_PASSWORD_UPDATE_TEXT_TITLE: 'Update Password',
+  MODAL_VERSION_HISTORY_RESTORE_BUTTON_CANCEL: 'Cancel',
+  MODAL_VERSION_HISTORY_RESTORE_BUTTON_RESTORE: 'Restore',
+  MODAL_VERSION_HISTORY_RESTORE_TEXT_CONTENT: 'This will replace your current content with the selected version. You can restore another version later if needed.',
+  MODAL_VERSION_HISTORY_RESTORE_TEXT_TITLE: 'Restore this version?',
   PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION: 'Something went wrong while retrieving this document from our servers. Please try again in a few moments. If it still doesn\'t work, our support team can help.',
   PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE: 'We Couldn\'t Load Your Document',
   PAGE_EDITOR_PLACEHOLDER: 'Draft your content here...',
@@ -206,7 +213,13 @@ const enMessages = {
   SETTINGS_MODAL_TEXT_TITLE: 'Writtte Settings',
   TOP_BAR_BADGE_DAYS_LEFT: 'Days Left!',
   TOP_BAR_BADGE_DOCUMENT_READ_ONLY: 'You Can View Only',
-  TOP_BAR_BADGE_FREE_TRIAL_EXPIRED: 'Unlock Full Access'
+  TOP_BAR_BADGE_FREE_TRIAL_EXPIRED: 'Unlock Full Access',
+  VERSION_MODAL_BUTTON_RESTORE: 'Restore This Version',
+  VERSION_MODAL_EMPTY_STATE_NO_HISTORY_DESCRIPTION: 'Versions will be created automatically as you make changes while typing.',
+  VERSION_MODAL_EMPTY_STATE_NO_HISTORY_TITLE: 'No version history yet',
+  VERSION_MODAL_EMPTY_STATE_SELECT_CONTENT_DESCRIPTION: 'Choose an existing item to see its version history appear here.',
+  VERSION_MODAL_EMPTY_STATE_SELECT_CONTENT_TITLE: 'Select content to view its history',
+  VERSION_MODAL_TEXT_TITLE: 'Document Version History',
 };
 
 export { enMessages };

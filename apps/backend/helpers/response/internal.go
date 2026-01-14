@@ -35,14 +35,14 @@ func Internal(w http.ResponseWriter, r *http.Request,
 		http.Error(w, err.Error(), httpStatus)
 	}
 
-	defer closeConnection(w)
-
 	_, err = w.Write(wrappedError)
 	if err != nil {
 		dumpInternalLog(r, getUniqueID, result, err.Error(),
 			file, funcName, line, stackTrace)
 		http.Error(w, err.Error(), httpStatus)
 	}
+
+	closeConnection(w)
 
 	dumpInternalLog(r, getUniqueID, result, errMsg,
 		file, funcName, line, stackTrace)

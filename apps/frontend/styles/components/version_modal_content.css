@@ -1,0 +1,27 @@
+.version-modal-content {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  width: 100%;
+}
+
+.version-modal-content__container {
+  cursor: default;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  scroll-behavior: smooth;
+  width: 100%;
+
+  &:hover {
+    cursor: default;
+    user-select: none;
+  }
+}
+
+.version-modal-content__button {
+  display: flex;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}

@@ -80,7 +80,7 @@ const SettingsModal = (opts: TOptions): TReturnSettingsModal => {
   // modal.
 
   const setSectionContent = (items: HTMLDivElement[]): void => {
-    sectionContentDiv.innerHTML = '';
+    sectionContentDiv.replaceChildren();
 
     for (let i = 0; i < items.length; i++) {
       sectionContentDiv.appendChild(items[i]);

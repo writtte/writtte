@@ -1,6 +1,6 @@
 .appearance-modal {
   align-items: center;
-  animation: appearanceModalFadeIn 0.2s;
+  animation: modalFadeIn 0.2s;
   background: var(--color--bg-neutral-100);
   border: 1px solid var(--color--border-weak);
   border-radius: 12px;
@@ -13,16 +13,6 @@
   max-height: 400px;
   max-width: 600px;
   width: 100%;
-}
-
-@keyframes appearanceModalFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .appearance-modal__header {

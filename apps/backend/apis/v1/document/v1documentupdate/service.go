@@ -42,10 +42,18 @@ func (s *service) perform(ctx context.Context,
 	}
 
 	if body.Content != nil {
-		if err := updateContent(ctx, &accountCode, queries.DocumentCode,
-			body.Content); err != nil {
+		err := updateContent(ctx, &accountCode, queries.DocumentCode,
+			body.Content)
+
+		if err != nil {
 			return nil, nil, err
 		}
+
+		// If the content is successfully updated, create the version
+		// history after checking the time.
+
+		s.checkAndSetVersionFile(ctx, queries.DocumentCode,
+			body.Content, parsedResults.Data.UpdatedTime)
 	}
 
 	return parsedResults, eTag, nil

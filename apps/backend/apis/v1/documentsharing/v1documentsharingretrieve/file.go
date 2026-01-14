@@ -3,7 +3,7 @@ package v1documentsharingretrieve
 import (
 	"context"
 
-	"backend/apis/v1/item/v1documentretrieve"
+	"backend/apis/v1/document/v1documentretrieve"
 )
 
 func getDocumentFileContent(ctx context.Context, accountCode,
