@@ -1,7 +1,7 @@
 package v1documentretrieve
 
 type QueryParams struct {
-	DocumentCode *string `json:"item_code" validate:"required,uuid"`
+	DocumentCode *string `json:"document_code" validate:"required,uuid"`
 }
 
 type dbQueryInput struct {

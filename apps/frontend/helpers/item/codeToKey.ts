@@ -1,7 +1,7 @@
-const documentCodeToKey = (itemCode: string): string => {
+const documentCodeToKey = (documentCode: string): string => {
   let hash = 2166136261;
-  for (let i = 0; i < itemCode.length; i++) {
-    hash ^= itemCode.charCodeAt(i);
+  for (let i = 0; i < documentCode.length; i++) {
+    hash ^= documentCode.charCodeAt(i);
     hash +=
       (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
   }

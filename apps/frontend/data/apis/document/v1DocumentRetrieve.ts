@@ -37,7 +37,7 @@ const v1DocumentRetrieve = async (
     bearerValue: payload.accessToken,
     queryParams: [
       {
-        key: 'item_code',
+        key: 'document_code',
         value: payload.documentCode,
       },
     ],
