@@ -1,7 +1,7 @@
-import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
-import { Menu } from '../../components/Menu';
-import { langKeys } from '../../translations/keys';
-import { openVersionModal } from '../version/openVersionModal';
+import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
+import { Menu } from '../../../components/Menu';
+import { langKeys } from '../../../translations/keys';
+import { openVersionModal } from '../../version/openVersionModal';
 
 const buildDocumentMenu = async (e: PointerEvent): Promise<void> => {
   const rect = (e.target as HTMLButtonElement).getBoundingClientRect();

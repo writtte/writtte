@@ -1,14 +1,14 @@
-import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
-import { Menu } from '../../components/Menu';
-import { LINKS } from '../../constants/links';
-import { signOutCurrentAccount } from '../../helpers/account/signOut';
-import { langKeys } from '../../translations/keys';
-import { navigateExternal } from '../../utils/routes/helpers';
-import { openAppearanceModal } from '../appearance/openAppearanceModal';
+import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
+import { Menu } from '../../../components/Menu';
+import { LINKS } from '../../../constants/links';
+import { signOutCurrentAccount } from '../../../helpers/account/signOut';
+import { langKeys } from '../../../translations/keys';
+import { navigateExternal } from '../../../utils/routes/helpers';
+import { openAppearanceModal } from '../../appearance/openAppearanceModal';
 import {
   openSettingsModal,
   settingsPageSectionIDs,
-} from '../settings/openSettingsModal';
+} from '../../settings/openSettingsModal';
 
 const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
   const rect = (e.target as HTMLButtonElement).getBoundingClientRect();

@@ -5,15 +5,15 @@ import {
   exportToSubstack,
   exportToWordpress,
   exportToXML,
-} from '../../../../packages/@writtte-editor/export';
-import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
-import { Menu } from '../../components/Menu';
-import { ALERT_TIMEOUT } from '../../constants/timeouts';
-import { AlertController } from '../../controller/alert';
-import { getEditorAPI } from '../../data/stores/mainEditor';
-import { langKeys } from '../../translations/keys';
-import { downloadStringAsFile } from '../../utils/file/downloadStringAsFile';
-import { openDocumentPublicShareModal } from '../documentSharing/publicShare';
+} from '../../../../../packages/@writtte-editor/export/dist';
+import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
+import { Menu } from '../../../components/Menu';
+import { ALERT_TIMEOUT } from '../../../constants/timeouts';
+import { AlertController } from '../../../controller/alert';
+import { getEditorAPI } from '../../../data/stores/mainEditor';
+import { langKeys } from '../../../translations/keys';
+import { downloadStringAsFile } from '../../../utils/file/downloadStringAsFile';
+import { openDocumentPublicShareModal } from '../../documentSharing/publicShare';
 
 const buildExportMenu = async (e: PointerEvent): Promise<void> => {
   const editorAPI = getEditorAPI();

@@ -3,7 +3,7 @@ import { PATHS } from '../../constants/paths';
 import { topBarInstance } from '../../controller/topBar';
 import { buildError } from '../../helpers/error/build';
 import { navigate } from '../../utils/routes/routes';
-import { buildAccountMenu } from './accountMenu';
+import { buildAccountMenu } from './menus/accountMenu';
 
 const setupCreateTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {

@@ -10,9 +10,9 @@ import {
   openSettingsModal,
   settingsPageSectionIDs,
 } from '../settings/openSettingsModal';
-import { buildAccountMenu } from './accountMenu';
-import { buildDocumentMenu } from './buildDocumentMenu';
-import { buildExportMenu } from './exportMenu';
+import { buildAccountMenu } from './menus/accountMenu';
+import { buildDocumentMenu } from './menus/documentMenu';
+import { buildExportMenu } from './menus/exportMenu';
 
 const setupEditorTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {
