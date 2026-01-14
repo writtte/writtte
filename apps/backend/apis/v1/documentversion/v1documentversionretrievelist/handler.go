@@ -63,13 +63,13 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 }
 
 func constructVersionList(dbVersionList []*dbQueryOutputDataVersionItem,
-) []*apiResultsVersionItem {
+) []*apiResultsSuccessVersionItem {
 	const placeholder = 0
-	versionItems := make([]*apiResultsVersionItem, placeholder,
+	versionItems := make([]*apiResultsSuccessVersionItem, placeholder,
 		len(dbVersionList))
 
 	for _, item := range dbVersionList {
-		versionItems = append(versionItems, &apiResultsVersionItem{
+		versionItems = append(versionItems, &apiResultsSuccessVersionItem{
 			VersionCode:  item.VersionCode,
 			DocumentCode: item.DocumentCode,
 			StoredType:   item.StoredType,
@@ -81,8 +81,8 @@ func constructVersionList(dbVersionList []*dbQueryOutputDataVersionItem,
 }
 
 func constructPagination(dbPagination *dbQueryOutputDataPagination,
-) *apiResultsPagination {
-	return &apiResultsPagination{
+) *apiResultsSuccessPagination {
+	return &apiResultsSuccessPagination{
 		CurrentPage: dbPagination.CurrentPage,
 		PageSize:    dbPagination.PageSize,
 		TotalCount:  dbPagination.TotalCount,

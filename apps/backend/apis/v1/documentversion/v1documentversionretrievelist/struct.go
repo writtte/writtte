@@ -49,14 +49,14 @@ type dbQueryOutput struct {
 	Data       *dbQueryOutputData `json:"data"`
 }
 
-type apiResultsVersionItem struct {
+type apiResultsSuccessVersionItem struct {
 	VersionCode  *string `json:"version_code"`
 	DocumentCode *string `json:"document_code"`
 	StoredType   *string `json:"stored_type"`
 	CreatedTime  *string `json:"created_time"`
 }
 
-type apiResultsPagination struct {
+type apiResultsSuccessPagination struct {
 	CurrentPage *int `json:"current_page"`
 	PageSize    *int `json:"page_size"`
 	TotalCount  *int `json:"total_count"`
@@ -64,6 +64,6 @@ type apiResultsPagination struct {
 }
 
 type apiResultsSuccess struct {
-	Versions   []*apiResultsVersionItem `json:"versions"`
-	Pagination *apiResultsPagination    `json:"pagination"`
+	Versions   []*apiResultsSuccessVersionItem `json:"versions"`
+	Pagination *apiResultsSuccessPagination    `json:"pagination"`
 }
