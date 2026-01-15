@@ -26,8 +26,7 @@ type TResponseV1DocumentSharingViewRetrieveList = {
     date_range: string;
     start_date: string;
     end_date: string;
-    daily_analytics: string;
-    versions: TResponseV1DocumentSharingViewRetrieveListAnalytics[];
+    daily_analytics: TResponseV1DocumentSharingViewRetrieveListAnalytics[];
   };
   status: boolean;
 };

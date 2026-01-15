@@ -10,6 +10,8 @@ import {
   SharingModalAnalytics,
   type TAnalyticsCardDeltaType,
 } from '../../components/SharingModalAnalytics';
+import { FRONTEND_CONFIGS } from '../../configs/fe';
+import { PATHS } from '../../constants/paths';
 import { ALERT_TIMEOUT } from '../../constants/timeouts';
 import { AlertController } from '../../controller/alert';
 import { ModalController } from '../../controller/modal';
@@ -261,13 +263,14 @@ const openSharingModal = async (): Promise<void> => {
     }
 
     const versions: TResponseV1DocumentSharingViewRetrieveListAnalytics[] =
-      response.results.versions || [];
+      response.results.daily_analytics || [];
 
     const totalUniqueViews = calculateTotalUniqueViews(versions);
     const totalViews = calculateTotalViews(versions);
 
     const currentDateData =
       versions.length > 0 ? versions[versions.length - 1] : null;
+
     const previousDateData =
       versions.length > 1 ? versions[versions.length - 2] : null;
 
@@ -407,9 +410,9 @@ const openSharingModal = async (): Promise<void> => {
 };
 
 const generateSharingLinkToRender = (code: string): string =>
-  `writtte.link/${code}`;
+  `${PATHS.SHARE_DOCUMENT}/${code}`;
 
 const generateSharingLinkToCopy = (code: string): string =>
-  `https://writtte.link/${code}`;
+  `${FRONTEND_CONFIGS.URL}${PATHS.SHARE_DOCUMENT}/${code}`;
 
 export { openSharingModal };
