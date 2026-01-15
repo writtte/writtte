@@ -103,7 +103,8 @@ const SharingModal = (opts: TOptions): TReturnSharingModal => {
 
     linkDiv.textContent = item.text;
 
-    copyButton.appendChild(FlatIcon(FlatIconName._18_COPY));
+    const copyIcon = FlatIcon(FlatIconName._18_COPY);
+    copyButton.appendChild(copyIcon);
     deleteButton.appendChild(FlatIcon(FlatIconName._18_TRASH));
     buttonsDiv.append(copyButton, deleteButton);
     itemButton.append(linkDiv, buttonsDiv);
@@ -123,6 +124,38 @@ const SharingModal = (opts: TOptions): TReturnSharingModal => {
     copyButton.addEventListener('click', (e: PointerEvent): void => {
       e.preventDefault();
       e.stopPropagation();
+
+      // Change the icon to a filled circle check when the user
+      // presses the copy button
+
+      const checkIcon = FlatIcon(FlatIconName._18_CIRCLE_CHECK_FILLED);
+      checkIcon.classList.add(
+        'sharing-link-copy-icon-absolute',
+        'icon-fade-out',
+      );
+
+      const copyIconElement = copyButton.querySelector('svg');
+      if (copyIconElement) {
+        copyButton.appendChild(checkIcon);
+
+        setTimeout(() => {
+          copyIconElement.classList.add('sharing-link-copy-icon-fade-out');
+          checkIcon.classList.remove('sharing-link-copy-icon-fade-out');
+          checkIcon.classList.add('sharing-link-copy-icon-fade-in');
+        }, 10);
+
+        setTimeout(() => {
+          checkIcon.classList.remove('sharing-link-copy-icon-fade-in');
+          checkIcon.classList.add('sharing-link-copy-icon-fade-out');
+          copyIconElement.classList.remove('sharing-link-copy-icon-fade-out');
+
+          setTimeout(() => {
+            if (copyButton.contains(checkIcon)) {
+              copyButton.removeChild(checkIcon);
+            }
+          }, 300);
+        }, 5000);
+      }
 
       item.onCopy();
     });

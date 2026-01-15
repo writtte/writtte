@@ -202,6 +202,7 @@
   height: 32px;
   justify-content: center;
   outline: none;
+  position: relative;
   transition: background 0.125s ease-in-out;
   width: 32px;
 
@@ -209,6 +210,7 @@
     aspect-ratio: 1 / 1;
     flex-shrink: 0;
     height: 18px;
+    transition: opacity 0.3s ease;
     width: 18px;
 
     path {
@@ -244,6 +246,21 @@
       fill: var(--color--text-danger);
     }
   }
+}
+
+.sharing-link-copy-icon-fade-out {
+  opacity: 0;
+}
+
+.sharing-link-copy-icon-fade-in {
+  opacity: 1;
+}
+
+.sharing-link-copy-icon-absolute {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .sharing-modal__item-list-loading-indicator {
