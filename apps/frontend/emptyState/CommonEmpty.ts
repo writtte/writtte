@@ -3,16 +3,16 @@ type TOptions = {
   description: string;
 };
 
-const VersionEmpty = (opts: TOptions): HTMLElement => {
+const CommonEmpty = (opts: TOptions): HTMLElement => {
   const emptyStateDiv = document.createElement('div');
   const containerDiv = document.createElement('div');
   const titleDiv = document.createElement('div');
   const descriptionDiv = document.createElement('div');
 
-  emptyStateDiv.classList.add('version-empty-empty-state');
-  containerDiv.classList.add('version-empty-empty-state__container');
-  titleDiv.classList.add('version-empty-empty-state__title');
-  descriptionDiv.classList.add('version-empty-empty-state__description');
+  emptyStateDiv.classList.add('common-empty-state');
+  containerDiv.classList.add('common-empty-state__container');
+  titleDiv.classList.add('common-empty-state__title');
+  descriptionDiv.classList.add('common-empty-state__description');
 
   titleDiv.textContent = opts.title;
   descriptionDiv.textContent = opts.description;
@@ -25,4 +25,4 @@ const VersionEmpty = (opts: TOptions): HTMLElement => {
 
 export type { TOptions as TVersionEmptyOptions };
 
-export { VersionEmpty };
+export { CommonEmpty };

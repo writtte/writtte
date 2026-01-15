@@ -1,4 +1,4 @@
-.version-empty-empty-state {
+.common-empty-state {
   align-items: center;
   display: flex;
   height: 100%;
@@ -7,7 +7,7 @@
   width: 100%;
 }
 
-.version-empty-empty-state__container {
+.common-empty-state__container {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,7 @@
   justify-content: center;
 }
 
-.version-empty-empty-state__title {
+.common-empty-state__title {
   align-items: center;
   align-self: stretch;
   color: var(--color--text-alpha);
@@ -32,7 +32,7 @@
   width: 100%;
 }
 
-.version-empty-empty-state__description {
+.common-empty-state__description {
   align-items: center;
   align-self: stretch;
   color: var(--color--text-beta);
