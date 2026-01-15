@@ -6,8 +6,9 @@
 \echo
 \echo '\033[1;32m[ setup schemas ]\033[0m'
 \echo
-\ir ../scripts/main/schema.pg.sql
+\ir ../scripts/analytics/schema.pg.sql
 \ir ../scripts/item/schema.pg.sql
+\ir ../scripts/main/schema.pg.sql
 \ir ../scripts/temporary/schema.pg.sql
 \echo
 \echo '\033[1;32m[ setup tables in the main schema ]\033[0m'
@@ -25,6 +26,10 @@
 \echo
 \ir ../scripts/temporary/tables/tb_document_sharing.pg.sql
 \ir ../scripts/temporary/tables/tb_temporary_token.pg.sql
+\echo
+\echo '\033[1;32m[ setup tables in the analytics schema ]\033[0m'
+\echo
+\ir ../scripts/analytics/tables/tb_sharing_views.pg.sql
 \echo
 \echo '\033[1;32m[ setup functions in the main schema ]\033[0m'
 \echo
@@ -62,6 +67,11 @@
 \ir ../scripts/temporary/functions/v1_temporary_token_create.pg.sql
 \ir ../scripts/temporary/functions/v1_temporary_token_update.pg.sql
 \echo
+\echo '\033[1;32m[ setup functions in the analytics schema ]\033[0m'
+\echo
+\ir ../scripts/analytics/functions/v1_sharing_views_create.pg.sql
+\ir ../scripts/analytics/functions/v1_sharing_views_retrieve_list.pg.sql
+\echo
 \echo '\033[1;32m[ setup indexes in the the main schema ]\033[0m'
 \echo
 \ir ../scripts/main/indexes/idx_tb_subscription.pg.sql
@@ -77,6 +87,10 @@
 \echo
 \ir ../scripts/temporary/indexes/idx_tb_document_sharing.pg.sql
 \ir ../scripts/temporary/indexes/idx_tb_temporary_token.pg.sql
+\echo
+\echo '\033[1;32m[ setup indexes in the the analytics schema ]\033[0m'
+\echo
+\ir ../scripts/analytics/indexes/idx_tb_sharing_views.pg.sql
 \echo
 \echo '\033[1;32m[ foreign keys in the the main schema ]\033[0m'
 \echo

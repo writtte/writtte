@@ -62,3 +62,9 @@ const (
 	VersionIgnored       = "VERSION_IGNORED"
 	VersionRetrievedList = "VERSION_RETRIEVED_LIST"
 )
+
+const (
+	SharingViewCreated       = "SHARING_VIEW_CREATED"
+	SharingViewRetrievedList = "SHARING_VIEW_RETRIEVED_LIST"
+	SharingViewUpdated       = "SHARING_VIEW_UPDATED"
+)

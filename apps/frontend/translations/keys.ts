@@ -25,6 +25,10 @@ type TLangKeys = {
   AlertMiddlewareSignInRequiredTitle: string;
   AlertPasswordUpdatedDescription: string;
   AlertPasswordUpdatedTitle: string;
+  AlertSharingItemCreateFailedDescription: string;
+  AlertSharingItemCreateFailedTitle: string;
+  AlertSharingItemDeleteFailedDescription: string;
+  AlertSharingItemDeleteFailedTitle: string;
   AlertSignInMagicLinkSentDescription: string;
   AlertSignInMagicLinkSentTitle: string;
   AlertSignUpInvitationSentDescription: string;
@@ -92,6 +96,8 @@ type TLangKeys = {
   ErrorPasswordMin: string;
   ErrorPasswordMismatch: string;
   ErrorPasswordRequired: string;
+  ErrorSharingAnalyticsRetrievedFailed: string;
+  ErrorSharingLinksRetrievedFailed: string;
   ErrorUrlMax: string;
   ErrorUrlMin: string;
   ErrorUrlPattern: string;
@@ -120,13 +126,11 @@ type TLangKeys = {
   MenuItemOpenInTab: string;
   MenuItemRenameDocument: string;
   MenuItemSettings: string;
-  MenuItemSharePrivate: string;
   MenuItemSharePublic: string;
   MenuItemSignOut: string;
   MenuItemVersionHistory: string;
   MenuSectionCopy: string;
   MenuSectionDownload: string;
-  MenuSectionShare: string;
   ModalAccountDeleteConfirmationButtonCancel: string;
   ModalAccountDeleteConfirmationButtonConfirm: string;
   ModalAccountDeleteConfirmationButtonDeleting: string;
@@ -143,11 +147,6 @@ type TLangKeys = {
   ModalDocumentRenameButtonRenaming: string;
   ModalDocumentRenameTextContent: string;
   ModalDocumentRenameTextTitle: string;
-  ModalDocumentSharingButtonCancel: string;
-  ModalDocumentSharingButtonGenerate: string;
-  ModalDocumentSharingButtonGenerating: string;
-  ModalDocumentSharingTextContent: string;
-  ModalDocumentSharingTextTitle: string;
   ModalEmailUpdateButtonCancel: string;
   ModalEmailUpdateButtonSend: string;
   ModalEmailUpdateButtonSending: string;
@@ -158,6 +157,11 @@ type TLangKeys = {
   ModalPasswordUpdateButtonUpdating: string;
   ModalPasswordUpdateTextContent: string;
   ModalPasswordUpdateTextTitle: string;
+  ModalSharingLinkDeleteButtonCancel: string;
+  ModalSharingLinkDeleteButtonDelete: string;
+  ModalSharingLinkDeleteButtonDeleting: string;
+  ModalSharingLinkDeleteTextContent: string;
+  ModalSharingLinkDeleteTextTitle: string;
   ModalVersionHistoryRestoreButtonCancel: string;
   ModalVersionHistoryRestoreButtonRestore: string;
   ModalVersionHistoryRestoreTextContent: string;
@@ -212,6 +216,18 @@ type TLangKeys = {
   SettingsModalSubscriptionSubscribeButtonWait: string;
   SettingsModalSubscriptionSubscribeTextTitle: string;
   SettingsModalTextTitle: string;
+  SharingModalAnalyticsCardLabelTotalUniqueViews: string;
+  SharingModalAnalyticsCardLabelTotalUniqueViewsPerDay: string;
+  SharingModalAnalyticsCardLabelTotalViews: string;
+  SharingModalAnalyticsCardLabelTotalViewsPerDay: string;
+  SharingModalAnalyticsChartFieldUniqueViews: string;
+  SharingModalAnalyticsChartFieldViews: string;
+  SharingModalAnalyticsTitlePrefix: string;
+  SharingModalEmptyStateNoLinksDescription: string;
+  SharingModalEmptyStateNoLinksTitle: string;
+  SharingModalEmptyStateSelectLinkDescription: string;
+  SharingModalEmptyStateSelectLinkTitle: string;
+  SharingModalTextTitle: string;
   TopBarBadgeDaysLeft: string;
   TopBarBadgeDocumentReadOnly: string;
   TopBarBadgeFreeTrialExpired: string;
@@ -250,6 +266,10 @@ const langKeys = (): TLangKeys => {
     AlertMiddlewareSignInRequiredTitle: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_TITLE'),
     AlertPasswordUpdatedDescription: getTr('ALERT_PASSWORD_UPDATED_DESCRIPTION'),
     AlertPasswordUpdatedTitle: getTr('ALERT_PASSWORD_UPDATED_TITLE'),
+    AlertSharingItemCreateFailedDescription: getTr('ALERT_SHARING_ITEM_CREATE_FAILED_DESCRIPTION'),
+    AlertSharingItemCreateFailedTitle: getTr('ALERT_SHARING_ITEM_CREATE_FAILED_TITLE'),
+    AlertSharingItemDeleteFailedDescription: getTr('ALERT_SHARING_ITEM_DELETE_FAILED_DESCRIPTION'),
+    AlertSharingItemDeleteFailedTitle: getTr('ALERT_SHARING_ITEM_DELETE_FAILED_TITLE'),
     AlertSignInMagicLinkSentDescription: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_DESCRIPTION'),
     AlertSignInMagicLinkSentTitle: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE'),
     AlertSignUpInvitationSentDescription: getTr('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
@@ -317,6 +337,8 @@ const langKeys = (): TLangKeys => {
     ErrorPasswordMin: getTr('ERROR_PASSWORD_MIN'),
     ErrorPasswordMismatch: getTr('ERROR_PASSWORD_MISMATCH'),
     ErrorPasswordRequired: getTr('ERROR_PASSWORD_REQUIRED'),
+    ErrorSharingAnalyticsRetrievedFailed: getTr('ERROR_SHARING_ANALYTICS_RETRIEVED_FAILED'),
+    ErrorSharingLinksRetrievedFailed: getTr('ERROR_SHARING_LINKS_RETRIEVED_FAILED'),
     ErrorUrlMax: getTr('ERROR_URL_MAX'),
     ErrorUrlMin: getTr('ERROR_URL_MIN'),
     ErrorUrlPattern: getTr('ERROR_URL_PATTERN'),
@@ -345,13 +367,11 @@ const langKeys = (): TLangKeys => {
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
     MenuItemRenameDocument: getTr('MENU_ITEM_RENAME_DOCUMENT'),
     MenuItemSettings: getTr('MENU_ITEM_SETTINGS'),
-    MenuItemSharePrivate: getTr('MENU_ITEM_SHARE_PRIVATE'),
     MenuItemSharePublic: getTr('MENU_ITEM_SHARE_PUBLIC'),
     MenuItemSignOut: getTr('MENU_ITEM_SIGN_OUT'),
     MenuItemVersionHistory: getTr('MENU_ITEM_VERSION_HISTORY'),
     MenuSectionCopy: getTr('MENU_SECTION_COPY'),
     MenuSectionDownload: getTr('MENU_SECTION_DOWNLOAD'),
-    MenuSectionShare: getTr('MENU_SECTION_SHARE'),
     ModalAccountDeleteConfirmationButtonCancel: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CANCEL'),
     ModalAccountDeleteConfirmationButtonConfirm: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_CONFIRM'),
     ModalAccountDeleteConfirmationButtonDeleting: getTr('MODAL_ACCOUNT_DELETE_CONFIRMATION_BUTTON_DELETING'),
@@ -368,11 +388,6 @@ const langKeys = (): TLangKeys => {
     ModalDocumentRenameButtonRenaming: getTr('MODAL_DOCUMENT_RENAME_BUTTON_RENAMING'),
     ModalDocumentRenameTextContent: getTr('MODAL_DOCUMENT_RENAME_TEXT_CONTENT'),
     ModalDocumentRenameTextTitle: getTr('MODAL_DOCUMENT_RENAME_TEXT_TITLE'),
-    ModalDocumentSharingButtonCancel: getTr('MODAL_DOCUMENT_SHARING_BUTTON_CANCEL'),
-    ModalDocumentSharingButtonGenerate: getTr('MODAL_DOCUMENT_SHARING_BUTTON_GENERATE'),
-    ModalDocumentSharingButtonGenerating: getTr('MODAL_DOCUMENT_SHARING_BUTTON_GENERATING'),
-    ModalDocumentSharingTextContent: getTr('MODAL_DOCUMENT_SHARING_TEXT_CONTENT'),
-    ModalDocumentSharingTextTitle: getTr('MODAL_DOCUMENT_SHARING_TEXT_TITLE'),
     ModalEmailUpdateButtonCancel: getTr('MODAL_EMAIL_UPDATE_BUTTON_CANCEL'),
     ModalEmailUpdateButtonSend: getTr('MODAL_EMAIL_UPDATE_BUTTON_SEND'),
     ModalEmailUpdateButtonSending: getTr('MODAL_EMAIL_UPDATE_BUTTON_SENDING'),
@@ -383,6 +398,11 @@ const langKeys = (): TLangKeys => {
     ModalPasswordUpdateButtonUpdating: getTr('MODAL_PASSWORD_UPDATE_BUTTON_UPDATING'),
     ModalPasswordUpdateTextContent: getTr('MODAL_PASSWORD_UPDATE_TEXT_CONTENT'),
     ModalPasswordUpdateTextTitle: getTr('MODAL_PASSWORD_UPDATE_TEXT_TITLE'),
+    ModalSharingLinkDeleteButtonCancel: getTr('MODAL_SHARING_LINK_DELETE_BUTTON_CANCEL'),
+    ModalSharingLinkDeleteButtonDelete: getTr('MODAL_SHARING_LINK_DELETE_BUTTON_DELETE'),
+    ModalSharingLinkDeleteButtonDeleting: getTr('MODAL_SHARING_LINK_DELETE_BUTTON_DELETING'),
+    ModalSharingLinkDeleteTextContent: getTr('MODAL_SHARING_LINK_DELETE_TEXT_CONTENT'),
+    ModalSharingLinkDeleteTextTitle: getTr('MODAL_SHARING_LINK_DELETE_TEXT_TITLE'),
     ModalVersionHistoryRestoreButtonCancel: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_CANCEL'),
     ModalVersionHistoryRestoreButtonRestore: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_RESTORE'),
     ModalVersionHistoryRestoreTextContent: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_CONTENT'),
@@ -437,6 +457,18 @@ const langKeys = (): TLangKeys => {
     SettingsModalSubscriptionSubscribeButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_BUTTON_WAIT'),
     SettingsModalSubscriptionSubscribeTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_SUBSCRIBE_TEXT_TITLE'),
     SettingsModalTextTitle: getTr('SETTINGS_MODAL_TEXT_TITLE'),
+    SharingModalAnalyticsCardLabelTotalUniqueViews: getTr('SHARING_MODAL_ANALYTICS_CARD_LABEL_TOTAL_UNIQUE_VIEWS'),
+    SharingModalAnalyticsCardLabelTotalUniqueViewsPerDay: getTr('SHARING_MODAL_ANALYTICS_CARD_LABEL_TOTAL_UNIQUE_VIEWS_PER_DAY'),
+    SharingModalAnalyticsCardLabelTotalViews: getTr('SHARING_MODAL_ANALYTICS_CARD_LABEL_TOTAL_VIEWS'),
+    SharingModalAnalyticsCardLabelTotalViewsPerDay: getTr('SHARING_MODAL_ANALYTICS_CARD_LABEL_TOTAL_VIEWS_PER_DAY'),
+    SharingModalAnalyticsChartFieldUniqueViews: getTr('SHARING_MODAL_ANALYTICS_CHART_FIELD_UNIQUE_VIEWS'),
+    SharingModalAnalyticsChartFieldViews: getTr('SHARING_MODAL_ANALYTICS_CHART_FIELD_VIEWS'),
+    SharingModalAnalyticsTitlePrefix: getTr('SHARING_MODAL_ANALYTICS_TITLE_PREFIX'),
+    SharingModalEmptyStateNoLinksDescription: getTr('SHARING_MODAL_EMPTY_STATE_NO_LINKS_DESCRIPTION'),
+    SharingModalEmptyStateNoLinksTitle: getTr('SHARING_MODAL_EMPTY_STATE_NO_LINKS_TITLE'),
+    SharingModalEmptyStateSelectLinkDescription: getTr('SHARING_MODAL_EMPTY_STATE_SELECT_LINK_DESCRIPTION'),
+    SharingModalEmptyStateSelectLinkTitle: getTr('SHARING_MODAL_EMPTY_STATE_SELECT_LINK_TITLE'),
+    SharingModalTextTitle: getTr('SHARING_MODAL_TEXT_TITLE'),
     TopBarBadgeDaysLeft: getTr('TOP_BAR_BADGE_DAYS_LEFT'),
     TopBarBadgeDocumentReadOnly: getTr('TOP_BAR_BADGE_DOCUMENT_READ_ONLY'),
     TopBarBadgeFreeTrialExpired: getTr('TOP_BAR_BADGE_FREE_TRIAL_EXPIRED'),

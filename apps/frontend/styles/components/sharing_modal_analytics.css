@@ -1,0 +1,166 @@
+.sharing-modal-analytics {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+  justify-content: flex-start;
+  left: 0;
+  padding: 12px 12px 24px 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.sharing-modal-analytics__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 48px;
+  padding: 12px;
+  width: 100%;
+}
+
+.sharing-modal-analytics__title {
+  color: var(--color--text-alpha);
+  display: flex;
+  flex: 1 0 0;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.sharing-modal-analytics__cards {
+  align-self: stretch;
+  border-bottom: none;
+  box-sizing: border-box;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 100%;
+  padding-inline: 12px;
+  width: 100%;
+}
+
+.sharing-modal-analytics__chart {
+  display: block;
+  padding-inline: 12px;
+
+  /* biome-ignore lint/complexity/noImportantStyles: the !important
+     style is required here because the width is set inside the
+     component via JavaScript */
+  height: fit-content !important;
+
+  /* biome-ignore lint/complexity/noImportantStyles: the !important
+     style is required here because the width is set inside the
+     component via JavaScript */
+  width: 100% !important;
+}
+
+.sharing-modal-analytics__card {
+  align-items: flex-start;
+  border-radius: 8px;
+  border: 1px solid var(--color--border-weak);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: flex-start;
+  padding: 12px;
+  width: 100%;
+}
+
+.sharing-modal-analytics__card-label {
+  color: var(--color--text-beta);
+  display: flex;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  width: 100%;
+}
+
+.sharing-modal-analytics__card-details {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  width: 100%;
+}
+
+.sharing-modal-analytics__card-value {
+  color: var(--color--text-alpha);
+  flex-direction: row;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.sharing-modal-analytics__card-delta {
+  display: flex;
+  flex-direction: row;
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  padding-bottom: 8px;
+}
+
+.sharing-modal-analytics__card-delta-text {
+  color: var(--color--text-alpha);
+  font-family: "JetBrains Mono Variable", monospace;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  padding-top: 2px;
+}
+
+.sharing-modal-analytics__card-delta-icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  svg {
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--color--text-alpha);
+    }
+  }
+}
+
+.sharing-modal-analytics__card-delta-text--up,
+.sharing-modal-analytics__card-delta-icon--up {
+  color: var(--color--text-success);
+
+  svg path {
+    fill: var(--color--text-success);
+  }
+}
+
+.sharing-modal-analytics__card-delta-text--down,
+.sharing-modal-analytics__card-delta-icon--down {
+  color: var(--color--text-danger);
+
+  svg path {
+    fill: var(--color--text-danger);
+  }
+}
+
+@media screen and (max-width: 972px) {
+  .sharing-modal-analytics {
+    padding-bottom: 128px;
+  }
+
+  .sharing-modal-analytics__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .sharing-modal-analytics__cards {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

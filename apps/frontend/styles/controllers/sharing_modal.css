@@ -1,0 +1,23 @@
+.sharing-modal-container {
+  align-items: center;
+  animation: modalControllerFadeIn 0.2s forwards;
+  background: var(--color--bg-neutral-000);
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: var(--z-index-controller-sharing-modal);
+}
+
+.sharing-modal-container--closing {
+  animation: modalControllerFadeOut 0.3s forwards;
+}
+
+@media screen and (max-width: 1200px) {
+  .sharing-modal-container {
+    padding: 24px;
+  }
+}
