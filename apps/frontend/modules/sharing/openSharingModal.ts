@@ -383,7 +383,7 @@ const openSharingModal = async (): Promise<void> => {
                 leftIcon: undefined,
                 color: ButtonColor.NEUTRAL,
                 onClick: (): void => {
-                  modalController.closeModal('modal__ivogbppdvg');
+                  modalController.closeModal('modal__bqawzpjcab');
                 },
               },
               {
