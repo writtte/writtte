@@ -170,7 +170,7 @@ const SharingModal = (opts: TOptions): TReturnSharingModal => {
       item.onDelete();
     });
 
-    itemListDiv.appendChild(itemButton);
+    itemListDiv.prepend(itemButton);
   };
 
   const addItems = (items: TSharingItem[]): void => {
