@@ -28,7 +28,7 @@ const VersionModalContent = (opts: TOptions): TReturnVersionModalContent => {
   const containerDiv = document.createElement('div');
   const buttonDiv = document.createElement('div');
 
-  versionEditorDiv.classList.add('version-modal-content');
+  versionEditorDiv.classList.add('version-modal-content', 'v-scrollbar');
   buttonDiv.classList.add('version-modal-content__button');
 
   containerDiv.classList.add(

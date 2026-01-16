@@ -1,7 +1,12 @@
 .version-modal-content {
+  bottom: 0;
   height: 100%;
+  left: 0;
   overflow: auto;
-  position: relative;
+  padding: 12px;
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 100%;
 }
 
@@ -20,8 +25,8 @@
 }
 
 .version-modal-content__button {
+  bottom: 12px;
   display: flex;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 12px;
 }
