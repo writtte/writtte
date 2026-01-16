@@ -1,4 +1,4 @@
-package sharedroutes
+package publicroutes
 
 import (
 	"fmt"

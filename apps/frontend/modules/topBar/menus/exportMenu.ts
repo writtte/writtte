@@ -5,15 +5,14 @@ import {
   exportToSubstack,
   exportToWordpress,
   exportToXML,
-} from '../../../../packages/@writtte-editor/export';
-import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
-import { Menu } from '../../components/Menu';
-import { ALERT_TIMEOUT } from '../../constants/timeouts';
-import { AlertController } from '../../controller/alert';
-import { getEditorAPI } from '../../data/stores/mainEditor';
-import { langKeys } from '../../translations/keys';
-import { downloadStringAsFile } from '../../utils/file/downloadStringAsFile';
-import { openDocumentPublicShareModal } from '../documentSharing/publicShare';
+} from '../../../../../packages/@writtte-editor/export/dist';
+import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
+import { Menu } from '../../../components/Menu';
+import { ALERT_TIMEOUT } from '../../../constants/timeouts';
+import { AlertController } from '../../../controller/alert';
+import { getEditorAPI } from '../../../data/stores/mainEditor';
+import { langKeys } from '../../../translations/keys';
+import { downloadStringAsFile } from '../../../utils/file/downloadStringAsFile';
 
 const buildExportMenu = async (e: PointerEvent): Promise<void> => {
   const editorAPI = getEditorAPI();
@@ -30,30 +29,6 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
     id: 'menu__kitjfiudfe',
     location,
     items: [
-      {
-        id: 'menu_item__wglpkgtxzx',
-        text: langKeys().MenuItemSharePublic,
-        leftIcon: FlatIcon(FlatIconName._18_SHARE),
-        rightIcon: undefined,
-        isLeftIconVisible: true,
-        onClick: async (): Promise<void> =>
-          await openDocumentPublicShareModal(),
-        sectionTitle: langKeys().MenuSectionShare,
-        hasTopDivider: false,
-        hasBottomDivider: false,
-      },
-      {
-        id: 'menu_item__wglpkgtxzx',
-        text: langKeys().MenuItemSharePrivate,
-        leftIcon: FlatIcon(FlatIconName._18_PROTECTED_SHARE),
-        rightIcon: undefined,
-        isLeftIconVisible: true,
-        onClick: async (): Promise<void> =>
-          await openDocumentPublicShareModal(),
-        sectionTitle: undefined,
-        hasTopDivider: false,
-        hasBottomDivider: false,
-      },
       {
         id: 'menu_item__jwfoepxugv',
         text: langKeys().MenuItemDocumentExportMarkdown,

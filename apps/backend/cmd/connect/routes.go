@@ -16,4 +16,5 @@ func Routes() {
 
 	routes.Shared(mux)
 	routes.Private(mux)
+	routes.Public(mux)
 }

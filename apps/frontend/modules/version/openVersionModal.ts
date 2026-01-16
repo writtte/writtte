@@ -10,7 +10,7 @@ import { VersionModalController } from '../../controller/versionModal';
 import { v1DocumentVersionRetrieve } from '../../data/apis/documentVersion/v1DocumentVersionRetrieve';
 import { v1DocumentVersionRetrieveList } from '../../data/apis/documentVersion/v1DocumentVersionRetrieveList';
 import { getEditorAPI, getMainEditor } from '../../data/stores/mainEditor';
-import { VersionEmpty } from '../../emptyState/VersionEmpty';
+import { CommonEmpty } from '../../emptyState/CommonEmpty';
 import { AccessToken } from '../../helpers/account/accessToken';
 import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
@@ -29,7 +29,7 @@ const openVersionModal = async (): Promise<void> => {
   });
 
   modal.setVersionContent(
-    VersionEmpty({
+    CommonEmpty({
       title: langKeys().VersionModalEmptyStateSelectContentTitle,
       description: langKeys().VersionModalEmptyStateSelectContentDescription,
     }),
@@ -49,7 +49,7 @@ const openVersionModal = async (): Promise<void> => {
 
     if (status !== HTTP_STATUS.OK || !response?.results.content) {
       modal.setVersionContent(
-        VersionEmpty({
+        CommonEmpty({
           title: langKeys().ErrorApiInternalServerError,
           description: langKeys().ErrorVersionHistoryContentRetrievedFailed,
         }),
@@ -132,7 +132,7 @@ const openVersionModal = async (): Promise<void> => {
 
     if (status !== HTTP_STATUS.OK || !response?.results) {
       modal.setVersionListContent(
-        VersionEmpty({
+        CommonEmpty({
           title: langKeys().ErrorApiInternalServerError,
           description: langKeys().ErrorVersionHistoryListRetrievedFailed,
         }),
@@ -147,7 +147,7 @@ const openVersionModal = async (): Promise<void> => {
 
     if (versions.length === 0) {
       modal.setVersionListContent(
-        VersionEmpty({
+        CommonEmpty({
           title: langKeys().VersionModalEmptyStateNoHistoryTitle,
           description: langKeys().VersionModalEmptyStateNoHistoryDescription,
         }),

@@ -1,2 +1,2 @@
-\echo # create schema item
+\echo create schema item
 CREATE SCHEMA IF NOT EXISTS schema_item;

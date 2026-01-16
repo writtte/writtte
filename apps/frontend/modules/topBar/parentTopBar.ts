@@ -10,7 +10,7 @@ import {
   openSettingsModal,
   settingsPageSectionIDs,
 } from '../settings/openSettingsModal';
-import { buildAccountMenu } from './accountMenu';
+import { buildAccountMenu } from './menus/accountMenu';
 
 const setupParentTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {

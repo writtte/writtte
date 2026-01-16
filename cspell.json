@@ -81,6 +81,14 @@
     "documentversion",
     "documentversionretrieve",
     "getsentry",
-    "ampm"
+    "ampm",
+    "pgtap",
+    "documentsharing",
+    "publicroutes",
+    "sharingviews",
+    "documentsharingviewcreate",
+    "documentsharingviewretrievelist",
+    "documentsharingview",
+    "registerables"
   ]
 }

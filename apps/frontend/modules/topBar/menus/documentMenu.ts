@@ -1,7 +1,8 @@
-import { FlatIcon, FlatIconName } from '../../components/FlatIcon';
-import { Menu } from '../../components/Menu';
-import { langKeys } from '../../translations/keys';
-import { openVersionModal } from '../version/openVersionModal';
+import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
+import { Menu } from '../../../components/Menu';
+import { langKeys } from '../../../translations/keys';
+import { openSharingModal } from '../../sharing/openSharingModal';
+import { openVersionModal } from '../../version/openVersionModal';
 
 const buildDocumentMenu = async (e: PointerEvent): Promise<void> => {
   const rect = (e.target as HTMLButtonElement).getBoundingClientRect();
@@ -15,6 +16,17 @@ const buildDocumentMenu = async (e: PointerEvent): Promise<void> => {
     id: 'menu__nlmyogeyhd',
     location,
     items: [
+      {
+        id: 'menu_item__wglpkgtxzx',
+        text: langKeys().MenuItemSharePublic,
+        leftIcon: FlatIcon(FlatIconName._18_SHARE),
+        rightIcon: undefined,
+        isLeftIconVisible: true,
+        onClick: async (): Promise<void> => await openSharingModal(),
+        sectionTitle: undefined,
+        hasTopDivider: false,
+        hasBottomDivider: true,
+      },
       {
         id: 'menu_item__caxjryjctd',
         text: langKeys().MenuItemVersionHistory,
