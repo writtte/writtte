@@ -23,6 +23,7 @@ let notFoundRoute: TRoute | null = null;
 
 let currentLayoutId: string | null = null;
 let currentLayoutElement: HTMLElement | null = null;
+let currentContentContainer: HTMLElement | null = null;
 
 const middlewares: TMiddlewareFunction[] = [];
 
@@ -90,28 +91,59 @@ const renderRoute = async (
 
   if (matchedRoute.layout !== undefined) {
     if (matchedRoute.layoutId !== currentLayoutId || !currentLayoutElement) {
+      // Create a placeholder element for content
+      const placeholder = document.createElement('div');
+      placeholder.setAttribute('data-route-content-placeholder', 'true');
+
       currentLayoutId = matchedRoute.layoutId || null;
       currentLayoutElement = await matchedRoute.layout({
-        content: pageContent,
+        content: placeholder,
       });
 
-      root.replaceChildren(currentLayoutElement);
-    } else if (matchedRoute.layoutId === currentLayoutId) {
-      const contentContainer = currentLayoutElement.querySelector(
-        '[data-content-container]',
+      // Find and store reference to the content container
+      // by locating our placeholder's parent
+      const placeholderInLayout = currentLayoutElement.querySelector(
+        '[data-route-content-placeholder]',
       );
 
-      if (contentContainer) {
-        contentContainer.replaceChildren(pageContent);
+      if (placeholderInLayout?.parentElement) {
+        currentContentContainer = placeholderInLayout.parentElement;
+
+        // Replace placeholder with actual content
+
+        currentContentContainer.replaceChildren(pageContent);
       } else {
-        throw new Error(
-          buildError('no [data-content-container] found in the layout'),
-        );
+        // Look for data-content-container
+
+        const container =
+          currentLayoutElement.querySelector(
+            `[data-content-container="${matchedRoute.layoutId}"]`,
+          ) || currentLayoutElement.querySelector('[data-content-container]');
+
+        if (container) {
+          currentContentContainer = container as HTMLElement;
+          currentContentContainer.replaceChildren(pageContent);
+        } else {
+          throw new Error(
+            buildError('no content container found in the layout'),
+          );
+        }
       }
+
+      root.replaceChildren(currentLayoutElement);
+    } else if (
+      matchedRoute.layoutId === currentLayoutId &&
+      currentContentContainer
+    ) {
+      // Same layout, just replace the content using stored
+      // reference
+
+      currentContentContainer.replaceChildren(pageContent);
     }
   } else {
     currentLayoutId = null;
     currentLayoutElement = null;
+    currentContentContainer = null;
 
     root.replaceChildren(pageContent);
   }
