@@ -89,6 +89,11 @@
     "documentsharingviewcreate",
     "documentsharingviewretrievelist",
     "documentsharingview",
-    "registerables"
+    "registerables",
+    "aistyleretrievelist",
+    "aistyleupdate",
+    "aistyleretrieve",
+    "aistylecreate",
+    "aistyle"
   ]
 }
