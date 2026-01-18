@@ -7,6 +7,7 @@
   justify-content: center;
   outline: none;
   transition: background 0.125s ease;
+  width: fit-content;
 
   &:hover {
     cursor: pointer;

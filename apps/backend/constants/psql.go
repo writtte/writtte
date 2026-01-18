@@ -68,3 +68,11 @@ const (
 	SharingViewRetrievedList = "SHARING_VIEW_RETRIEVED_LIST"
 	SharingViewUpdated       = "SHARING_VIEW_UPDATED"
 )
+
+const (
+	AIStyleCreated       = "AI_STYLE_CREATED"
+	AIStyleNotExists     = "AI_STYLE_NOT_EXISTS"
+	AIStyleRetrieved     = "AI_STYLE_RETRIEVED"
+	AIStyleRetrievedList = "AI_STYLES_RETRIEVED_LIST"
+	AIStyleUpdated       = "AI_STYLE_UPDATED"
+)

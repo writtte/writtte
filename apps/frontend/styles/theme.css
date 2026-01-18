@@ -55,6 +55,7 @@
 @import "./pages/onboarding.css";
 @import "./pages/overview.css";
 @import "./pages/shared_document.css";
+@import "./pages/styles.css";
 
 /* Components */
 
@@ -84,12 +85,15 @@
 @import "./components/menu.css";
 @import "./components/menu_item.css";
 @import "./components/modal.css";
+@import "./components/page_header.css";
 @import "./components/settings_item.css";
 @import "./components/settings_modal.css";
 @import "./components/settings_section.css";
 @import "./components/sharing_modal.css";
 @import "./components/sharing_modal_analytics.css";
 @import "./components/status_text.css";
+@import "./components/style_change_modal.css";
+@import "./components/text_area.css";
 @import "./components/top_bar.css";
 @import "./components/version_modal.css";
 @import "./components/version_modal_content.css";
@@ -101,6 +105,7 @@
 @import "./controllers/modal.css";
 @import "./controllers/settings_modal.css";
 @import "./controllers/sharing_modal.css";
+@import "./controllers/style_change_modal.css";
 @import "./controllers/version_modal.css";
 
 /* Empty States */
@@ -115,6 +120,7 @@
 /* Animations */
 
 @import "./animations/modalAnimations.css";
+@import "./animations/pageAnimations.css";
 
 /* Debugging */
 

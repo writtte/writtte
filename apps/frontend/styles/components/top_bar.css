@@ -101,6 +101,113 @@
   gap: 8px;
 }
 
+.top-bar__page-change-buttons {
+  align-items: center;
+  display: flex;
+  gap: 0px;
+  border-radius: 32px;
+}
+
+.top-bar__page-change-button__icon {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+
+  svg {
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--color--text-beta);
+      transition: fill 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+}
+
+.top-bar__page-change-button {
+  align-items: center;
+  background: transparent;
+  border-radius: 32px;
+  border: none;
+  box-shadow: none;
+  color: var(--color--text-beta);
+  cursor: pointer;
+  display: flex;
+  font-size: 12px;
+  font-weight: 550;
+  gap: 0px;
+  height: 32px;
+  justify-content: center;
+  outline: none;
+  overflow: hidden;
+  padding-inline: 12px;
+  position: relative;
+  transition:
+    background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    gap 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  white-space: nowrap;
+  width: auto;
+
+  &:hover:not(.top-bar__page-change-button--selected) {
+    .top-bar__page-change-button__icon {
+      svg path {
+        fill: var(--color--text-alpha);
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline-offset: 2px;
+    outline: 1px dashed var(--color--border-invert);
+  }
+}
+
+.top-bar__page-change-button__text {
+  display: block;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.top-bar__page-change-button--selected {
+  background: var(--color--bg-neutral-300);
+  color: var(--color--text-alpha);
+  gap: 8px;
+  pointer-events: none;
+
+  .top-bar__page-change-button__icon {
+    svg path {
+      fill: var(--color--text-alpha);
+    }
+  }
+
+  .top-bar__page-change-button__text {
+    color: var(--color--text-alpha);
+    display: flex;
+    max-width: 150px;
+    opacity: 1;
+  }
+
+  &:hover {
+    background: var(--color--bg-neutral-300);
+    color: var(--color--text-alpha);
+
+    .top-bar__page-change-button__icon {
+      svg path {
+        fill: var(--color--text-alpha);
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 576px) {
   .top-bar__logo {
     display: none;

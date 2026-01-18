@@ -5,6 +5,7 @@ import { topBarInstance } from '../../controller/topBar';
 import { isAccountInFreeTrial } from '../../data/stores/overview';
 import { buildError } from '../../helpers/error/build';
 import { langKeys } from '../../translations/keys';
+import { checkRoute } from '../../utils/routes/helpers';
 import { navigate } from '../../utils/routes/routes';
 import {
   openSettingsModal,
@@ -15,6 +16,29 @@ import { buildAccountMenu } from './menus/accountMenu';
 const setupParentTopBar = async (): Promise<void> => {
   if (topBarInstance === null) {
     throw new Error(buildError('the top bar instance still not initialized'));
+  }
+
+  topBarInstance.addPageChangeButtons([
+    {
+      id: 'button_dvbsgjoqen',
+      icon: FlatIcon(FlatIconName._18_DOCUMENT),
+      text: langKeys().TopBarPageButtonDocuments,
+      onClick: async (): Promise<void> => await navigate(PATHS.OVERVIEW),
+    },
+    {
+      id: 'button_cygsfociml',
+      icon: FlatIcon(FlatIconName._18_AI_STYLES),
+      text: langKeys().TopBarPageButtonAiStyles,
+      onClick: async (): Promise<void> => await navigate(PATHS.STYLES),
+    },
+  ]);
+
+  if (checkRoute([PATHS.OVERVIEW])) {
+    topBarInstance.selectPageChangeButton('button_dvbsgjoqen');
+  }
+
+  if (checkRoute([PATHS.STYLES])) {
+    topBarInstance.selectPageChangeButton('button_cygsfociml');
   }
 
   topBarInstance.addButtonsToRight([

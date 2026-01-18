@@ -2,12 +2,13 @@
   --z-index-top-bar: 100;
   --z-index-editor-fixed-menu: 101;
   --z-index-controller-appearance-modal: 102;
-  --z-index-controller-settings-modal: 103;
-  --z-index-controller-sharing-modal: 103;
-  --z-index-controller-version-modal: 104;
-  --z-index-controller-modal: 105;
-  --z-index-overlay-loading-indicator: 106;
-  --z-index-overlay-error-message: 107;
-  --z-index-controller-alert: 108;
-  --z-index-menu: 109;
+  --z-index-controller-settings-modal: 102;
+  --z-index-controller-sharing-modal: 102;
+  --z-index-controller-version-modal: 102;
+  --z-index-controller-style-change-modal: 102;
+  --z-index-controller-modal: 102;
+  --z-index-overlay-loading-indicator: 103;
+  --z-index-overlay-error-message: 104;
+  --z-index-controller-alert: 105;
+  --z-index-menu: 106;
 }

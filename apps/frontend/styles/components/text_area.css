@@ -1,0 +1,96 @@
+.text-area-wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: auto;
+}
+
+.text-area-wrapper__status-text {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  width: 100%;
+}
+
+.text-area-wrapper__status-text.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.text-area-wrapper__status-text.hide {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease;
+}
+
+.text-area {
+  align-items: center;
+  align-self: stretch;
+  background: var(--color--bg-neutral-000);
+  border-radius: 8px;
+  border: 1px solid var(--color--border-weak);
+  display: flex;
+  transition:
+    border 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &::placeholder,
+  &::-ms-input-placeholder {
+    color: var(--color--text-gamma);
+  }
+
+  &:hover {
+    cursor: text;
+  }
+
+  &.active {
+    background: var(--color--bg-neutral-000);
+    border: 1px solid var(--color--border-primary);
+    box-shadow: 0 0 8px 0 var(--color--border-primary);
+  }
+}
+
+.text-area__element {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--color--text-alpha);
+  flex: 1 0 0;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+  width: 100%;
+}
+
+/* Default state is resizable vertical, but can be overridden by JS */
+.text-area__element {
+  resize: vertical;
+}
+
+.text-area--medium {
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 12px;
+}
+
+.text-area--small {
+  gap: 8px;
+  min-height: 32px;
+  padding: 4px 8px;
+}
+
+.text-area-wrapper--full-width {
+  width: 100%;
+}

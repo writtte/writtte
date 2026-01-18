@@ -6,6 +6,7 @@ const PATHS = {
   SIGN_IN_CHECK: '/sign-in/check',
   CREATE_DRAFT: '/create/draft',
   OVERVIEW: '/overview',
+  STYLES: '/styles',
   ONBOARDING: '/onboarding',
   DOCUMENT_EDIT: '/document',
   VALIDATE_EMAIL: '/temporary/validate/email-update',

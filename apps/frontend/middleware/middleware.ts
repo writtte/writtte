@@ -30,6 +30,7 @@ const setupMiddleware = async (): Promise<void> => {
       '/onboarding',
       '/create/draft',
       '/overview',
+      '/styles',
       '/document',
     ];
 

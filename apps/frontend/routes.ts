@@ -13,6 +13,7 @@ import { SignInEmailPage } from './pages/SignInEmail';
 import { SignInEmailCheckPage } from './pages/SignInEmailCheck';
 import { SignUpPage } from './pages/SignUp';
 import { SignUpCreatePage } from './pages/SignUpCreate';
+import { StylesPage } from './pages/Styles';
 import { ValidateEmailUpdatePage } from './pages/ValidateEmailUpdate';
 
 const defaultRoutes: TRoute[] = [
@@ -61,7 +62,15 @@ const defaultRoutes: TRoute[] = [
     path: PATHS.OVERVIEW,
     title: 'Overview | Writtte',
     layout: DashboardLayout,
+    layoutId: 'administrator-overview-layout',
     view: async () => await OverviewPage(),
+  },
+  {
+    path: PATHS.STYLES,
+    title: 'AI Styles | Writtte',
+    layout: DashboardLayout,
+    layoutId: 'administrator-overview-layout',
+    view: async () => await StylesPage(),
   },
   {
     path: `${PATHS.DOCUMENT_EDIT}/:documentCode`,

@@ -32,7 +32,7 @@ type TItemWithMetadata = {
 type TReturnItemList = {
   element: HTMLDivElement;
   items: Map<string, TReturnItemListDocument>;
-  getAllDocumentIDs: () => string[];
+  getAllItemIDs: () => string[];
   addItemToList: (item: TItemListDocumentOptions) => void;
   removeItemFromList: (id: string) => void;
   setNoItems: () => void;
@@ -70,12 +70,13 @@ const ItemList = (opts?: Partial<TOptions>): TReturnItemList => {
 
   const documentIds: Map<string, string> = new Map();
 
-  const getAllDocumentIDs = (): string[] => Array.from(documentIds.keys());
+  const getAllItemIDs = (): string[] => Array.from(documentIds.keys());
 
   const addItemToList = (item: TItemListDocumentOptions): void => {
     const newItem = ItemListDocument(item);
     documentIds.set(item.id, item.id);
     documentItems.set(item.id, newItem);
+
     if (item.metadata) {
       documentMetadata.set(item.id, item.metadata);
     }
@@ -267,7 +268,7 @@ const ItemList = (opts?: Partial<TOptions>): TReturnItemList => {
   return {
     element: listDiv,
     items: documentItems,
-    getAllDocumentIDs,
+    getAllItemIDs,
     addItemToList,
     removeItemFromList,
     setNoItems,

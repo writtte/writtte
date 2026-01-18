@@ -21,6 +21,13 @@ type TTopBarBadge = {
   onClick: () => void;
 };
 
+type TTopBarPageChangeButton = {
+  id: string;
+  icon: HTMLElement;
+  text: string;
+  onClick: () => void;
+};
+
 type TOptions = {
   logo: HTMLElement;
   badge: TTopBarBadge | undefined;
@@ -44,6 +51,8 @@ type TReturnTopBar = {
   addButtonsToRight: (buttons: TActionButtonOptions[]) => void;
   removeButtonFromLeft: (id: string) => void;
   removeButtonFromRight: (id: string) => void;
+  addPageChangeButtons: (buttons: TTopBarPageChangeButton[]) => void;
+  selectPageChangeButton: (id: string) => void;
 };
 
 const TopBar = (opts: TOptions): TReturnTopBar => {
@@ -51,6 +60,7 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
   const logoDiv = document.createElement('div');
   const leftDiv = document.createElement('div');
   const rightDiv = document.createElement('div');
+  const pageChangeButtonsDiv = document.createElement('div');
   const badgeDiv = document.createElement('div');
   const leftButtonsDiv = document.createElement('div');
   const rightButtonsDiv = document.createElement('div');
@@ -59,12 +69,13 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
   logoDiv.classList.add('top-bar__logo');
   leftDiv.classList.add('top-bar__left');
   rightDiv.classList.add('top-bar__right');
+  pageChangeButtonsDiv.classList.add('top-bar__page-change-buttons');
   badgeDiv.classList.add('top-bar__badge');
   leftButtonsDiv.classList.add('top-bar__left-buttons');
   rightButtonsDiv.classList.add('top-bar__right-buttons');
 
   logoDiv.appendChild(opts.logo);
-  leftDiv.append(badgeDiv, leftButtonsDiv);
+  leftDiv.append(badgeDiv, pageChangeButtonsDiv, leftButtonsDiv);
   rightDiv.append(rightButtonsDiv);
   topBarDiv.append(leftDiv, logoDiv, rightDiv);
 
@@ -240,6 +251,76 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
     }
   };
 
+  const addPageChangeButtons = (
+    pageChangeButtons: TTopBarPageChangeButton[],
+  ): void => {
+    pageChangeButtonsDiv.replaceChildren();
+
+    for (let i = 0; i < pageChangeButtons.length; i++) {
+      const buttonConfig = pageChangeButtons[i];
+
+      const button = document.createElement('button');
+      const iconWrapper = document.createElement('span');
+      const textWrapper = document.createElement('span');
+
+      button.classList.add('top-bar__page-change-button');
+      iconWrapper.classList.add('top-bar__page-change-button__icon');
+      textWrapper.classList.add('top-bar__page-change-button__text');
+
+      button.id = buttonConfig.id;
+      setTestId(button, buttonConfig.id);
+
+      iconWrapper.appendChild(buttonConfig.icon);
+      textWrapper.textContent = buttonConfig.text;
+
+      button.appendChild(iconWrapper);
+      button.appendChild(textWrapper);
+
+      if (i === 0) {
+        button.classList.add('top-bar__page-change-button--selected');
+      }
+
+      button.addEventListener('click', (e: PointerEvent): void => {
+        e.preventDefault();
+
+        const previouslySelected = pageChangeButtonsDiv.querySelector(
+          '.top-bar__page-change-button--selected',
+        );
+
+        if (previouslySelected) {
+          previouslySelected.classList.remove(
+            'top-bar__page-change-button--selected',
+          );
+        }
+
+        button.classList.add('top-bar__page-change-button--selected');
+        buttonConfig.onClick();
+      });
+
+      pageChangeButtonsDiv.appendChild(button);
+    }
+  };
+
+  const selectPageChangeButton = (id: string): void => {
+    const previouslySelected = pageChangeButtonsDiv.querySelector(
+      '.top-bar__page-change-button--selected',
+    );
+
+    if (previouslySelected) {
+      previouslySelected.classList.remove(
+        'top-bar__page-change-button--selected',
+      );
+    }
+
+    const buttonToSelect = pageChangeButtonsDiv.querySelector(
+      `#${id}`,
+    ) as HTMLButtonElement;
+
+    if (buttonToSelect) {
+      buttonToSelect.classList.add('top-bar__page-change-button--selected');
+    }
+  };
+
   return {
     element: topBarDiv,
     buttons,
@@ -254,12 +335,15 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
     addButtonsToRight,
     removeButtonFromLeft,
     removeButtonFromRight,
+    addPageChangeButtons,
+    selectPageChangeButton,
   };
 };
 
 export type {
   TTopBarBadgeType,
   TTopBarBadge,
+  TTopBarPageChangeButton,
   TOptions as TTopBarOptions,
   TReturnTopBar,
 };

@@ -10,6 +10,7 @@ const STORE_NAMES = {
   DOCUMENTS: 'documents',
   DOCUMENT_CONTENTS: 'document-contents',
   DOCUMENT_IMAGES: 'document-images',
+  STYLES: 'styles',
 };
 
 type TIDBDocument = {
@@ -34,6 +35,13 @@ type TIDBDocumentImages = {
   image: Blob;
 };
 
+type TIDBStyles = {
+  accountCode: string;
+  styleCode: string;
+  styleName: string;
+  styleContent: string;
+};
+
 type TIndexedDBStore = {
   idbInstance: IDBDatabase | null;
 };
@@ -51,6 +59,7 @@ const initializeIDB = async (): Promise<void> => {
     setupDocumentStore(database);
     setupDocumentContentStore(database);
     setupDocumentImageStore(database);
+    setupStyles(database);
   });
 
   indexedDBStore.setState({
@@ -97,10 +106,21 @@ const setupDocumentImageStore = (database: IDBDatabase): void => {
   });
 };
 
+const setupStyles = (database: IDBDatabase): void => {
+  const store = database.createObjectStore(STORE_NAMES.STYLES, {
+    keyPath: 'styleCode',
+  });
+
+  store.createIndex('styleCode', 'styleCode', {
+    unique: false,
+  });
+};
+
 export type {
   TIDBDocument,
   TIDBDocumentContent,
   TIDBDocumentImages,
+  TIDBStyles,
   TIndexedDBStore,
 };
 
