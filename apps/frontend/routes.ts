@@ -60,7 +60,7 @@ const defaultRoutes: TRoute[] = [
   },
   {
     path: PATHS.DOCUMENTS,
-    title: 'Overview | Writtte',
+    title: 'Documents | Writtte',
     layout: DashboardLayout,
     layoutId: 'administrator-layout',
     view: async () => await DocumentsPage(),

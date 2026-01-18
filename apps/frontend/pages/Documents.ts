@@ -10,13 +10,13 @@ import {
 import { NoDocuments } from '../emptyState/NoDocuments';
 import { buildError } from '../helpers/error/build';
 import { documentCodeToKey } from '../helpers/item/codeToKey';
-import { compareDocuments } from '../modules/overview/compareDocuments';
+import { compareDocuments } from '../modules/documents/compareDocuments';
 import {
   extractDocumentDetailsFromAPIList,
   getDocumentsFromAPI,
   getDocumentsFromIDB,
-} from '../modules/overview/getDocuments';
-import { buildDocumentOptionsMenu } from '../modules/overview/optionsMenu';
+} from '../modules/documents/getDocuments';
+import { buildDocumentOptionsMenu } from '../modules/documents/optionsMenu';
 import { langKeys } from '../translations/keys';
 import { navigate } from '../utils/routes/routes';
 
