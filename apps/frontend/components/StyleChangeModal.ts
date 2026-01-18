@@ -166,7 +166,7 @@ const StyleChangeModal = (opts: TOptions): TReturnStyleChangeModal => {
   sampleURLDiv.append(urlInputElement.element, scrapeButtonElement.element);
   sampleContainerDiv.append(sampleURLDiv, uploadButtonElement.element);
   sampleDiv.append(sampleTitleDiv, sampleContainerDiv);
-  contentDiv.append(styleNameDiv, styleDataDiv, sampleDiv, footerDiv);
+  contentDiv.append(styleNameDiv, styleDataDiv, footerDiv);
   modalDiv.append(headerDiv, contentDiv);
 
   modalDiv.dataset.testId = opts.id;

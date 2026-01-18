@@ -63,7 +63,7 @@ const openStyleChangeModal = async (
         loadingText: langKeys().StylesModalButtonScraping,
         leftIcon: FlatIcon(FlatIconName._18_HYPERLINK),
         onClick: (): void => {
-          // Update this code later
+          // Update this code later, check commit (feat: temporary disable samples feature in styles)
         },
       },
       uploadButton: {
@@ -72,7 +72,7 @@ const openStyleChangeModal = async (
         loadingText: langKeys().StylesModalButtonUploading,
         leftIcon: FlatIcon(FlatIconName._18_EXPORT),
         onClick: (): void => {
-          // Update this code later
+          // Update this code later, check commit (feat: temporary disable samples feature in styles)
         },
       },
     },
