@@ -7,7 +7,7 @@ import {
   type TIDBDocument,
   getIndexedDB,
 } from '../data/stores/indexedDB';
-import { NoDrafts } from '../emptyState/NoDrafts';
+import { NoDocuments } from '../emptyState/NoDocuments';
 import { buildError } from '../helpers/error/build';
 import { documentCodeToKey } from '../helpers/item/codeToKey';
 import { compareDocuments } from '../modules/overview/compareDocuments';
@@ -20,30 +20,27 @@ import { buildDocumentOptionsMenu } from '../modules/overview/optionsMenu';
 import { langKeys } from '../translations/keys';
 import { navigate } from '../utils/routes/routes';
 
-const OverviewPage = async (): Promise<HTMLElement> => {
+const DocumentsPage = async (): Promise<HTMLElement> => {
   const pageDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
 
-  pageDiv.classList.add('overview-page');
-  contentDiv.classList.add('overview-page__content');
+  pageDiv.classList.add('documents-page');
+  contentDiv.classList.add('documents-page__content');
 
-  pageDiv.setAttribute(
-    'data-content-container',
-    'administrator-overview-layout',
-  );
+  pageDiv.setAttribute('data-content-container', 'administrator-layout');
 
   pageDiv.appendChild(contentDiv);
 
   const itemListElement = ItemList({
-    emptyState: NoDrafts({
-      title: langKeys().EmptyStateNoDraftsTextTitle,
-      description: langKeys().EmptyStateNoDraftsTextDescription,
+    emptyState: NoDocuments({
+      title: langKeys().PageDocumentsEmptyStateNoDocumentsTextTitle,
+      description: langKeys().PageDocumentsEmptyStateNoDocumentsTextDescription,
       button: {
         id: 'button__xxzjzmxkga',
-        text: langKeys().EmptyStateNoDraftsButtonCreate,
+        text: langKeys().PageDocumentsEmptyStateNoDocumentsButtonCreate,
         rightIcon: FlatIcon(FlatIconName._18_ARROW_TOP_RIGHT),
         onClick: async (): Promise<void> => {
-          await navigate(PATHS.CREATE_DRAFT);
+          await navigate(PATHS.CREATE_DOCUMENT);
         },
       },
     }),
@@ -205,4 +202,4 @@ const OverviewPage = async (): Promise<HTMLElement> => {
   return pageDiv;
 };
 
-export { OverviewPage };
+export { DocumentsPage };

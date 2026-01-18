@@ -107,7 +107,7 @@ const ValidateEmailUpdatePage = async (): Promise<HTMLElement> => {
 
     await new Promise((res) => setTimeout(res, WAIT_TIMEOUT.LONG));
 
-    await navigateHard(PATHS.OVERVIEW);
+    await navigateHard(PATHS.DOCUMENTS);
   } catch {
     containerDiv.replaceChildren(
       ErrorMessage({

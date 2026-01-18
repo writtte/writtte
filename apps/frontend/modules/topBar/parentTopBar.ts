@@ -23,7 +23,7 @@ const setupParentTopBar = async (): Promise<void> => {
       id: 'button_dvbsgjoqen',
       icon: FlatIcon(FlatIconName._18_DOCUMENT),
       text: langKeys().TopBarPageButtonDocuments,
-      onClick: async (): Promise<void> => await navigate(PATHS.OVERVIEW),
+      onClick: async (): Promise<void> => await navigate(PATHS.DOCUMENTS),
     },
     {
       id: 'button_cygsfociml',
@@ -33,7 +33,7 @@ const setupParentTopBar = async (): Promise<void> => {
     },
   ]);
 
-  if (checkRoute([PATHS.OVERVIEW])) {
+  if (checkRoute([PATHS.DOCUMENTS])) {
     topBarInstance.selectPageChangeButton('button_dvbsgjoqen');
   }
 
@@ -48,7 +48,7 @@ const setupParentTopBar = async (): Promise<void> => {
       onClick: async (e: PointerEvent): Promise<void> => {
         e.preventDefault();
 
-        await navigate(PATHS.CREATE_DRAFT);
+        await navigate(PATHS.CREATE_DOCUMENT);
       },
     },
     {

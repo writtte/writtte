@@ -50,10 +50,10 @@
 
 /* Pages */
 
-@import "./pages/create_draft.css";
+@import "./pages/create_document.css";
+@import "./pages/documents.css";
 @import "./pages/editor.css";
 @import "./pages/onboarding.css";
-@import "./pages/overview.css";
 @import "./pages/shared_document.css";
 @import "./pages/styles.css";
 
@@ -111,7 +111,7 @@
 /* Empty States */
 
 @import "./empty_state/common_empty.css";
-@import "./empty_state/no_drafts.css";
+@import "./empty_state/no_documents.css";
 
 /* Vendors */
 

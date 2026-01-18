@@ -28,10 +28,7 @@ const StylesPage = async (): Promise<HTMLElement> => {
   headerDiv.classList.add('styles-page__header');
   contentDiv.classList.add('styles-page__content');
 
-  pageDiv.setAttribute(
-    'data-content-container',
-    'administrator-overview-layout',
-  );
+  pageDiv.setAttribute('data-content-container', 'administrator-layout');
 
   const itemListElement = ItemList({
     emptyState: CommonEmpty({

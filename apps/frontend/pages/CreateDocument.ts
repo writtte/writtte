@@ -1,14 +1,14 @@
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { ItemCreateInput } from '../components/ItemCreateInput';
-import { createDocument } from '../modules/createDraft/createDocument';
+import { createDocument } from '../modules/createDocument/createDocument';
 import { langKeys } from '../translations/keys';
 
-const CreateDraftPage = async (): Promise<HTMLElement> => {
+const CreateDocumentPage = async (): Promise<HTMLElement> => {
   const pageDiv = document.createElement('div');
   const containerDiv = document.createElement('div');
 
-  pageDiv.classList.add('create-draft-page');
-  containerDiv.classList.add('create-draft-page__container');
+  pageDiv.classList.add('create-document-page');
+  containerDiv.classList.add('create-document-page__container');
 
   const itemCreateInputElement = ItemCreateInput({
     id: 'item_create_input__ueiwykuysk',
@@ -28,4 +28,4 @@ const CreateDraftPage = async (): Promise<HTMLElement> => {
   return pageDiv;
 };
 
-export { CreateDraftPage };
+export { CreateDocumentPage };

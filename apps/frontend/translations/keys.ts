@@ -59,9 +59,6 @@ type TLangKeys = {
   EditorMenuItemNumberList: string;
   EditorMenuItemParagraph: string;
   EditorMenuTitleFilter: string;
-  EmptyStateNoDraftsButtonCreate: string;
-  EmptyStateNoDraftsTextDescription: string;
-  EmptyStateNoDraftsTextTitle: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountDeleteAlreadyInSubscription: string;
   ErrorAccountDeleteConfirmationFailed: string;
@@ -173,6 +170,9 @@ type TLangKeys = {
   ModalVersionHistoryRestoreButtonRestore: string;
   ModalVersionHistoryRestoreTextContent: string;
   ModalVersionHistoryRestoreTextTitle: string;
+  PageDocumentsEmptyStateNoDocumentsButtonCreate: string;
+  PageDocumentsEmptyStateNoDocumentsTextDescription: string;
+  PageDocumentsEmptyStateNoDocumentsTextTitle: string;
   PageEditorErrorDocumentRetrieveTextDescription: string;
   PageEditorErrorDocumentRetrieveTextTitle: string;
   PageEditorPlaceholder: string;
@@ -330,9 +330,6 @@ const langKeys = (): TLangKeys => {
     EditorMenuItemNumberList: getTr('EDITOR_MENU_ITEM_NUMBER_LIST'),
     EditorMenuItemParagraph: getTr('EDITOR_MENU_ITEM_PARAGRAPH'),
     EditorMenuTitleFilter: getTr('EDITOR_MENU_TITLE_FILTER'),
-    EmptyStateNoDraftsButtonCreate: getTr('EMPTY_STATE_NO_DRAFTS_BUTTON_CREATE'),
-    EmptyStateNoDraftsTextDescription: getTr('EMPTY_STATE_NO_DRAFTS_TEXT_DESCRIPTION'),
-    EmptyStateNoDraftsTextTitle: getTr('EMPTY_STATE_NO_DRAFTS_TEXT_TITLE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountDeleteAlreadyInSubscription: getTr('ERROR_ACCOUNT_DELETE_ALREADY_IN_SUBSCRIPTION'),
     ErrorAccountDeleteConfirmationFailed: getTr('ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED'),
@@ -444,6 +441,9 @@ const langKeys = (): TLangKeys => {
     ModalVersionHistoryRestoreButtonRestore: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_RESTORE'),
     ModalVersionHistoryRestoreTextContent: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_CONTENT'),
     ModalVersionHistoryRestoreTextTitle: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_TITLE'),
+    PageDocumentsEmptyStateNoDocumentsButtonCreate: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_BUTTON_CREATE'),
+    PageDocumentsEmptyStateNoDocumentsTextDescription: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_DESCRIPTION'),
+    PageDocumentsEmptyStateNoDocumentsTextTitle: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_TITLE'),
     PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageEditorPlaceholder: getTr('PAGE_EDITOR_PLACEHOLDER'),

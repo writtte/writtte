@@ -27,14 +27,14 @@ const setupMiddleware = async (): Promise<void> => {
     setupTranslations();
 
     const protectedPaths = [
-      '/onboarding',
-      '/create/draft',
-      '/overview',
-      '/styles',
-      '/document',
+      PATHS.ONBOARDING,
+      PATHS.CREATE_DOCUMENT,
+      PATHS.DOCUMENTS,
+      PATHS.STYLES,
+      PATHS.DOCUMENT_EDIT,
     ];
 
-    const publicOnlyPaths = ['/sign-up', '/sign-in'];
+    const publicOnlyPaths = [PATHS.SIGN_UP, PATHS.SIGN_IN];
 
     const isLogged = (): boolean => {
       const currentLoggedAccountCode = getCurrentAccount();
@@ -74,12 +74,12 @@ const setupMiddleware = async (): Promise<void> => {
           ALERT_TIMEOUT.SHORT,
         );
 
-        return next(PATHS.OVERVIEW);
+        return next(PATHS.DOCUMENTS);
       }
     } else {
       if (to.path === '/') {
         if (isLogged()) {
-          return next(PATHS.OVERVIEW);
+          return next(PATHS.DOCUMENTS);
         } else {
           return next(PATHS.SIGN_IN);
         }

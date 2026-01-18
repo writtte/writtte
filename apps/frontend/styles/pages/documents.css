@@ -1,4 +1,4 @@
-.overview-page {
+.documents-page {
   align-items: center;
   animation: pageFadeIn 0.4s ease;
   display: flex;
@@ -11,7 +11,7 @@
   width: 80%;
 }
 
-.overview-page__content {
+.documents-page__content {
   align-items: center;
   display: flex;
   justify-content: flex-start;
@@ -20,14 +20,14 @@
 }
 
 @media screen and (max-width: 1200px) {
-  .overview-page {
+  .documents-page {
     padding-inline: 24px;
     width: 90%;
   }
 }
 
 @media screen and (max-width: 972px) {
-  .overview-page {
+  .documents-page {
     padding-inline: 12px;
     width: 100%;
   }

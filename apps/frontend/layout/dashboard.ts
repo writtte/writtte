@@ -40,7 +40,7 @@ const DashboardLayout = async ({
 
   if (checkRouteStartsWith([PATHS.DOCUMENT_EDIT])) {
     await setupEditorTopBar();
-  } else if (checkRouteStartsWith([PATHS.CREATE_DRAFT])) {
+  } else if (checkRouteStartsWith([PATHS.CREATE_DOCUMENT])) {
     await setupCreateTopBar();
   } else {
     await setupParentTopBar();

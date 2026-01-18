@@ -14,11 +14,11 @@ const OnboardingPage = async (): Promise<HTMLElement> => {
   let currentStep = 0;
 
   const steps: string[] = [
-    'Welcome to Writtte, the space where long drafts come alive and everything you write lives in one place.',
+    'Welcome to Writtte, the space where long documents come alive and everything you write lives in one place.',
     'Write, copy, and share anywhere, Medium, Substack, your blog, without extra formatting, steps or headaches.',
     "Unlike Google Docs or Notion, there's no clutter, no distractions. Just you and your words, flowing fast and smooth.",
-    'Every tool you need to write great drafts is right here.',
-    'Enough waiting. Start your first draft now and see your ideas take shape instantly.',
+    'Every tool you need to write great documents is right here.',
+    'Enough waiting. Start your first document now and see your ideas take shape instantly.',
   ];
 
   const stepElements: HTMLElement[] = [];
@@ -74,7 +74,7 @@ const OnboardingPage = async (): Promise<HTMLElement> => {
       progressDiv.classList.add('onboarding-page__progress--complete');
 
       setTimeout(() => {
-        navigateHard(PATHS.OVERVIEW);
+        navigateHard(PATHS.DOCUMENTS);
       }, 600);
     }
   };
