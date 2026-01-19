@@ -17,6 +17,7 @@ type TEditorAPI = {
   onFocus: (callback: (state: TEditorState) => void) => void;
   onBlur: (callback: (state: TEditorState) => void) => void;
   onTransaction: (callback: (state: TEditorState) => void) => void;
+  getCursorPosition: () => { x: number; y: number } | null;
   setParagraph: () => boolean;
   setHorizontalLine: () => boolean;
   setLink: (href: string, target: string) => boolean;

@@ -264,6 +264,59 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     });
   };
 
+  const getCursorPosition = (): { x: number; y: number } | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      const pos = selection.empty ? selection.$head.pos : selection.head;
+
+      const coords = view.coordsAtPos(pos);
+      if (coords) {
+        return {
+          x: coords.left,
+          y: coords.top,
+        };
+      }
+    } catch {
+      // just ignore...
+    }
+
+    try {
+      const domSel = window.getSelection();
+      if (domSel && domSel.rangeCount > 0) {
+        const range = domSel.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        return {
+          x: rect.left,
+          y: rect.top,
+        };
+      }
+    } catch {
+      // just ignore...
+    }
+
+    try {
+      const editorElement = view.dom;
+      if (editorElement) {
+        const rect = editorElement.getBoundingClientRect();
+        return {
+          x: rect.left,
+          y: rect.top + rect.height / 2,
+        };
+      }
+    } catch {
+      // all methods failed, just ignore
+    }
+
+    return null;
+  };
+
   const setParagraph = (): boolean =>
     _editor.chain().focus().setParagraph().run();
 
@@ -452,6 +505,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     onFocus,
     onBlur,
     onTransaction,
+    getCursorPosition,
     setParagraph,
     setHorizontalLine,
     setLink,
