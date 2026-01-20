@@ -9,12 +9,10 @@ DECLARE
   k_additional CONSTANT TEXT := 'additional';
   k_data CONSTANT TEXT := 'data';
   v_p_style_code UUID;
-  v_p_account_code UUID;
   v_ai_style_data JSONB;
   v_exception TEXT;
 BEGIN
   v_p_style_code := (p_data ->> 'style_code')::UUID;
-  v_p_account_code := (p_data ->> 'account_code')::UUID;
   IF NOT EXISTS (
     SELECT
       1
@@ -22,8 +20,6 @@ BEGIN
       schema_main.tb_ai_styles
     WHERE
       style_code = v_p_style_code
-      AND (v_p_account_code IS NULL
-        OR account_code = v_p_account_code)
       AND deleted_time IS NULL) THEN
   RETURN json_build_object(k_status, TRUE, k_code, 'AI_STYLE_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
 END IF;

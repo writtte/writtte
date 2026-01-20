@@ -14,6 +14,7 @@
 \echo '\033[1;32m[ setup tables in the main schema ]\033[0m'
 \echo
 \ir ../scripts/main/tables/tb_ai_style.pg.sql
+\ir ../scripts/main/tables/tb_credit.sql
 \ir ../scripts/main/tables/tb_subscription.pg.sql
 \ir ../scripts/main/tables/tb_user.pg.sql
 \echo
@@ -38,6 +39,11 @@
 \ir ../scripts/main/functions/v1_ai_style_retrieve.pg.sql
 \ir ../scripts/main/functions/v1_ai_style_retrieve_list.pg.sql
 \ir ../scripts/main/functions/v1_ai_style_update.pg.sql
+\ir ../scripts/main/functions/v1_credit_add.pg.sql
+\ir ../scripts/main/functions/v1_credit_check.pg.sql
+\ir ../scripts/main/functions/v1_credit_reset.pg.sql
+\ir ../scripts/main/functions/v1_credit_retrieve.pg.sql
+\ir ../scripts/main/functions/v1_credit_update.pg.sql
 \ir ../scripts/main/functions/v1_overview_account.pg.sql
 \ir ../scripts/main/functions/v1_subscription_create.pg.sql
 \ir ../scripts/main/functions/v1_subscription_retrieve.pg.sql
@@ -80,6 +86,7 @@
 \echo '\033[1;32m[ setup indexes in the the main schema ]\033[0m'
 \echo
 \ir ../scripts/main/indexes/idx_tb_ai_style.pg.sql
+\ir ../scripts/main/indexes/idx_tb_credit.pg.sql
 \ir ../scripts/main/indexes/idx_tb_subscription.pg.sql
 \ir ../scripts/main/indexes/idx_tb_user.pg.sql
 \echo
@@ -101,5 +108,6 @@
 \echo '\033[1;32m[ foreign keys in the the main schema ]\033[0m'
 \echo
 \ir ../scripts/main/fkeys/fk_tb_ai_style.pg.sql
+\ir ../scripts/main/fkeys/fk_tb_credit.pg.sql
 \ir ../scripts/main/fkeys/fk_tb_subscription.pg.sql
 \echo
