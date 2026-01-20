@@ -95,6 +95,11 @@
     "aistyleretrieve",
     "aistylecreate",
     "aistyle",
-    "aistyles"
+    "aistyles",
+    "aigeneratestreaming",
+    "aigenerate",
+    "VITE",
+    "nosec",
+    "bedrockruntime"
   ]
 }
