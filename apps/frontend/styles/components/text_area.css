@@ -71,12 +71,8 @@
   font-weight: 400;
   line-height: normal;
   outline: none;
-  width: 100%;
-}
-
-/* Default state is resizable vertical, but can be overridden by JS */
-.text-area__element {
   resize: vertical;
+  width: 100%;
 }
 
 .text-area--medium {
