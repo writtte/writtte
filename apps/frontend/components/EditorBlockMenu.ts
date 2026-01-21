@@ -53,7 +53,6 @@ const EditorBlockMenu = (opts: TOptions): TReturnEditorBlockMenu => {
 
   setTestId(menu, opts.id);
 
-  // Track selected index and current items
   let selectedIndex = 0;
   let currentItems: TOptions['items'] = [];
   let itemElements: HTMLButtonElement[] = [];
@@ -69,25 +68,23 @@ const EditorBlockMenu = (opts: TOptions): TReturnEditorBlockMenu => {
   };
 
   const updateSelectedItem = (newIndex: number): void => {
-    if (itemElements.length === 0) return;
+    if (itemElements.length === 0) {
+      return;
+    }
 
-    // Remove selection from current item
     if (selectedIndex >= 0 && selectedIndex < itemElements.length) {
       itemElements[selectedIndex].classList.remove(
         'editor-block-menu-item--selected',
       );
     }
 
-    // Clamp new index to valid range
     selectedIndex = Math.max(0, Math.min(newIndex, itemElements.length - 1));
 
-    // Add selection to new item
     if (selectedIndex >= 0 && selectedIndex < itemElements.length) {
       itemElements[selectedIndex].classList.add(
         'editor-block-menu-item--selected',
       );
 
-      // Scroll item into view if needed
       itemElements[selectedIndex].scrollIntoView({
         block: 'nearest',
         behavior: 'smooth',
@@ -130,7 +127,6 @@ const EditorBlockMenu = (opts: TOptions): TReturnEditorBlockMenu => {
   const getItemCount = (): number => itemElements.length;
 
   const renderItems = (items: TOptions['items']): void => {
-    // Clear existing items
     while (itemsDiv.firstChild) {
       itemsDiv.removeChild(itemsDiv.firstChild);
     }
@@ -140,7 +136,6 @@ const EditorBlockMenu = (opts: TOptions): TReturnEditorBlockMenu => {
     selectedIndex = 0;
 
     for (let i = 0; i < items.length; i++) {
-      // Set first item as selected by default
       const originalItem = items[i];
       const itemWithSelection = {
         ...originalItem,
@@ -177,7 +172,6 @@ const EditorBlockMenu = (opts: TOptions): TReturnEditorBlockMenu => {
     }
   };
 
-  // Initial render
   const itemsToDisplay = opts.filterQuery
     ? filterMenuItems(opts.items, opts.filterQuery)
     : opts.items;
