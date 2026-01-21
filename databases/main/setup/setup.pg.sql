@@ -14,7 +14,7 @@
 \echo '\033[1;32m[ setup tables in the main schema ]\033[0m'
 \echo
 \ir ../scripts/main/tables/tb_ai_style.pg.sql
-\ir ../scripts/main/tables/tb_credit.sql
+\ir ../scripts/main/tables/tb_credit.pg.sql
 \ir ../scripts/main/tables/tb_subscription.pg.sql
 \ir ../scripts/main/tables/tb_user.pg.sql
 \echo
