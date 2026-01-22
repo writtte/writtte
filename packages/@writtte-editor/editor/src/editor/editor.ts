@@ -214,7 +214,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     to: number,
     content: string,
   ): void => {
-    _editor.commands.insertContentAt({ from, to }, content.trim(), {
+    _editor.commands.deleteRange({ from, to });
+
+    _editor.commands.insertContentAt(from, content.trim(), {
       updateSelection: true,
       parseOptions: {
         preserveWhitespace: 'full',
