@@ -26,7 +26,7 @@ func Error(w http.ResponseWriter, r *http.Request,
 
 	closeConnection(w)
 
-	dumpErrorLog(uniqueID.(string), httpStatus, result, err)
+	DumpErrorLog(uniqueID.(string), httpStatus, result, err)
 }
 
 func wrapError(id string, httpStatus int,
@@ -39,7 +39,7 @@ func wrapError(id string, httpStatus int,
 	})
 }
 
-func dumpErrorLog(id string, httpStatus int,
+func DumpErrorLog(id string, httpStatus int,
 	results any, errMsg any) {
 	jsonContent := map[string]any{
 		constants.LogID:         &id,

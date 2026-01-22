@@ -59,6 +59,14 @@ func SetupApp() {
 		IsDirectoryBucket: true,
 	})
 
+	bedrockClient := extaws.InitBedrock(extaws.BedrockConfig{
+		Region:          &configs.AWSBedrockRegion,
+		AccessKey:       &configs.AWSBedrockAccessKey,
+		SecretAccessKey: &configs.AWSBedrockSecretAccessKey,
+	})
+
+	glob.Config.AWSBedrockClient = bedrockClient
+
 	// Always add local selection at the end of the
 	// configuration flow
 

@@ -76,3 +76,14 @@ const (
 	AIStyleRetrievedList = "AI_STYLES_RETRIEVED_LIST"
 	AIStyleUpdated       = "AI_STYLE_UPDATED"
 )
+
+const (
+	CreditAdded          = "CREDIT_ADDED"
+	CreditAlreadyExists  = "CREDIT_ALREADY_EXISTS"
+	CreditInsufficient   = "CREDIT_INSUFFICIENT" // #nosec G101
+	CreditNotExists      = "CREDIT_NOT_EXISTS"
+	CreditNothingToReset = "CREDIT_NOTHING_TO_RESET"
+	CreditReset          = "CREDIT_RESET"
+	CreditRetrieved      = "CREDIT_RETRIEVED"
+	CreditUpdated        = "CREDIT_UPDATED"
+)

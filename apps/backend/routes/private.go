@@ -19,6 +19,7 @@ func Private(mux *http.ServeMux) {
 	privateroutes.DocumentSharingView(mux, &baseVersion)
 	privateroutes.Subscription(mux, &baseVersion)
 	privateroutes.AIStyle(mux, &baseVersion)
+	privateroutes.AIGenerate(mux, &baseVersion)
 	privateroutes.Webhook(mux, &baseVersion)
 	privateroutes.External(mux, &baseVersion)
 }

@@ -22,6 +22,7 @@ type GlobalConfiguration struct {
 	AWSSESSession                     *extaws.AWSSESSession
 	AWSS3PrivateGeneralBucketClient   *extaws.S3Client
 	AWSS3PrivateDirectoryBucketClient *extaws.S3Client
+	AWSBedrockClient                  *extaws.BedrockClient
 	EmailTemplates                    *embeds.EmailTemplateFiles
 	RateLimit                         bool
 	UseLocalSESInLocalEnv             bool
