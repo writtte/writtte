@@ -55,7 +55,19 @@ func streamMessage(w http.ResponseWriter,
 
 	for msg := range sseChannel {
 		if msg.Text != nil {
-			_, err := fmt.Fprintf(w, responseStructure, *msg.Text)
+			textData := map[string]any{
+				"text": *msg.Text,
+			}
+
+			jsonMsg, err := json.Marshal(textData)
+			if err != nil {
+				sendSSEError(w, fmt.Sprintf("failed to marshal text: %v",
+					err))
+
+				return
+			}
+
+			_, err = fmt.Fprintf(w, responseStructure, jsonMsg)
 			if err != nil {
 				sendSSEError(w, fmt.Sprintf("failed to write message: %v",
 					err))
