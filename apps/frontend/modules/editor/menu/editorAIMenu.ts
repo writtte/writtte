@@ -212,14 +212,25 @@ const submitRequest = async (
         // do nothing here...
       },
       onError: (error: string) => {
-        logFatalToSentry(error);
+        if (error === 'NO_CREDITS') {
+          logFatalToSentry(error);
 
-        menu.manualEditReturn.setStatusText({
-          id: 'status_text__fxlsszdbvk',
-          text: langKeys().ErrorApiInternalServerError,
-          type: StatusTextType.ERROR,
-          isIconVisible: true,
-        });
+          menu.manualEditReturn.setStatusText({
+            id: 'status_text__fxlsszdbvk',
+            text: langKeys().ErrorAiCreditInsufficient,
+            type: StatusTextType.ERROR,
+            isIconVisible: true,
+          });
+        } else {
+          logFatalToSentry(error);
+
+          menu.manualEditReturn.setStatusText({
+            id: 'status_text__fxlsszdbvk',
+            text: langKeys().ErrorApiInternalServerError,
+            type: StatusTextType.ERROR,
+            isIconVisible: true,
+          });
+        }
 
         menu.setResponse(undefined, false);
         menu.manualEditReturn.setGenerating(false);

@@ -75,6 +75,7 @@ type TLangKeys = {
   ErrorAccountDeleteConfirmationFailed: string;
   ErrorAccountInvalidCredentials: string;
   ErrorAccountNotExists: string;
+  ErrorAiCreditInsufficient: string;
   ErrorAiInputRequired: string;
   ErrorApiBadGateway: string;
   ErrorApiBadRequest: string;
@@ -358,6 +359,7 @@ const langKeys = (): TLangKeys => {
     ErrorAccountDeleteConfirmationFailed: getTr('ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
     ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),
+    ErrorAiCreditInsufficient: getTr('ERROR_AI_CREDIT_INSUFFICIENT'),
     ErrorAiInputRequired: getTr('ERROR_AI_INPUT_REQUIRED'),
     ErrorApiBadGateway: getTr('ERROR_API_BAD_GATEWAY'),
     ErrorApiBadRequest: getTr('ERROR_API_BAD_REQUEST'),

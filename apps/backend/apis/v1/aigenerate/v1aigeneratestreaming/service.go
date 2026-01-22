@@ -22,10 +22,41 @@ type service struct {
 
 func (s *service) perform(ctx context.Context, body *BodyParams,
 ) <-chan sseMessage {
+	claims := ctx.Value(constants.JWTKey).(extjwt.MapClaims)  // revive:disable-line
+	accountCode := claims[v1signin.ClaimAccountCode].(string) // revive:disable-line
+
 	const messageBuffer = 10
 	const fiveMinutes = 5
 
 	sseChannel := make(chan sseMessage, messageBuffer)
+
+	isCreditsAvailable, err := s.checkCreditsAvailability(ctx,
+		&accountCode)
+
+	if err != nil {
+		sseChannel <- sseMessage{
+			// revive:disable:line-length-limit
+
+			Error: intstr.StrPtr(fmt.Sprintf("failed to check credits: %v", err)),
+
+			// revive:enable:line-length-limit
+		}
+
+		close(sseChannel)
+		return sseChannel
+	}
+
+	if !isCreditsAvailable {
+		sseChannel <- sseMessage{
+			// This error string will be used directly in the frontend, so
+			// do not add an explanatory string.
+
+			Error: intstr.StrPtr("NO_CREDITS"),
+		}
+
+		close(sseChannel)
+		return sseChannel
+	}
 
 	timeout := fiveMinutes * time.Minute
 	ctx, cancel := context.WithTimeout(ctx, timeout)
@@ -163,4 +194,19 @@ func (s *service) updateUserCredits(ctx context.Context,
 	}
 
 	return parsedResults, nil
+}
+
+func (s *service) checkCreditsAvailability(ctx context.Context,
+	accountCode *string) (bool, error) {
+	amount, err := s.repo.performCreditRetrieval(ctx, accountCode)
+	if err != nil {
+		return false, err
+	}
+
+	const minimumAmountToCheck = 1.0
+	if *amount <= minimumAmountToCheck {
+		return false, nil
+	}
+
+	return true, nil
 }

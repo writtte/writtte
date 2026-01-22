@@ -74,6 +74,7 @@ const enMessages = {
   ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED: 'The confirmation text format you entered is invalid. Please enter it in the correct format to continue.',
   ERROR_ACCOUNT_INVALID_CREDENTIALS: 'The email or password you entered is incorrect.',
   ERROR_ACCOUNT_NOT_EXISTS: 'No account found with this email address.',
+  ERROR_AI_CREDIT_INSUFFICIENT: 'Your AI credits have run out',
   ERROR_AI_INPUT_REQUIRED: 'Please provide a message.',
   ERROR_API_BAD_GATEWAY: 'We\'re having trouble reaching the server. Please try again soon.',
   ERROR_API_BAD_REQUEST: 'Something\'s not right with your request. Please check your details and try again.',

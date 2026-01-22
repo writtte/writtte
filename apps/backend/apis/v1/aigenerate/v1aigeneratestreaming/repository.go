@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"backend/pkg/extpgx"
+	"backend/repositories/v1repositories"
 )
 
 type database struct {
@@ -15,6 +16,9 @@ type repository interface {
 
 	performStyle(ctx context.Context, styleCode *string,
 	) (*string, error)
+
+	performCreditRetrieval(ctx context.Context, accountCode *string,
+	) (*float64, error)
 }
 
 func (d *database) perform(ctx context.Context,
@@ -50,4 +54,9 @@ func (d *database) performStyle(ctx context.Context,
 	}
 
 	return &results, nil
+}
+
+func (d *database) performCreditRetrieval(ctx context.Context,
+	accountCode *string) (*float64, error) {
+	return v1repositories.RetrieveCredit(ctx, d.DB, accountCode)
 }
