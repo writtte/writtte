@@ -21,11 +21,12 @@ func (d *database) perform(ctx context.Context,
 		"SELECT schema_main.v1_subscription_update($1::UUID, $2::JSONB)",
 		data.AccountCode,
 		map[string]any{
-			"customer_id":  data.CustomerID,
-			"seat_count":   data.SeatCount,
-			"service":      data.Service,
-			"service_data": data.ServiceData,
-			"status":       data.Status,
+			"customer_id":                data.CustomerID,
+			"seat_count":                 data.SeatCount,
+			"service":                    data.Service,
+			"service_data":               data.ServiceData,
+			"status":                     data.Status,
+			"subscription_credit_amount": data.SubscriptionCreditAmount,
 		},
 	).Scan(&results)
 

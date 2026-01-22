@@ -145,12 +145,13 @@ type BodyParams struct {
 // revive:enable:line-length-limit
 
 type dbQueryInput struct {
-	AccountCode *string
-	CustomerID  *string
-	SeatCount   *int
-	Service     *string
-	ServiceData map[string]any
-	Status      *string
+	AccountCode              *string
+	CustomerID               *string
+	SeatCount                *int
+	Service                  *string
+	ServiceData              map[string]any
+	Status                   *string
+	SubscriptionCreditAmount *float64
 }
 
 type dbQueryOutput struct {
