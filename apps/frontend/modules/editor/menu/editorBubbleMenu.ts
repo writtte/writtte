@@ -14,6 +14,7 @@ import {
   type TRemoveWhenRouteChangeInstance,
   removeWhenRouteChange,
 } from '../../../utils/ui/removeWhenRouteChange';
+import { setupAIMenu } from './editorAIMenu';
 
 var bubbleMenuInstance: TReturnEditorBubbleMenu | null = null;
 
@@ -28,6 +29,22 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
   const menu = EditorBubbleMenu({
     id: 'editor_bubble_menu__dfyfzapiir',
     items: [
+      {
+        id: 'bubble_menu_item__wmljfsahjh',
+        item: {
+          type: BubbleMenuItemType.BUTTON,
+          icon: FlatIcon(FlatIconName._18_AI),
+          isVisible: true,
+          isSelected: false,
+          onClick: async (): Promise<void> => {
+            menu.closeMenu();
+
+            await setupAIMenu();
+          },
+        },
+        hasLeftDivider: false,
+        hasRightDivider: true,
+      },
       {
         id: 'bubble_menu_item__stxjsfxwwc',
         item: {

@@ -6,7 +6,7 @@ import {
   ModalContentItemType,
 } from '../../components/Modal';
 import { ModalController } from '../../controller/modal';
-import { v1AIStyleUpdate } from '../../data/apis/aistyles/v1AIStyleUpdate';
+import { v1AIStyleUpdate } from '../../data/apis/aiStyles/v1AIStyleUpdate';
 import { STORE_NAMES, getIndexedDB } from '../../data/stores/indexedDB';
 import { AccessToken } from '../../helpers/account/accessToken';
 import { langKeys } from '../../translations/keys';

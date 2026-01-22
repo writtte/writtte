@@ -59,6 +59,7 @@
 
 /* Components */
 
+@import "./components/input.css";
 @import "./components/action_button.css";
 @import "./components/alert.css";
 @import "./components/animated_icon.css";
@@ -69,6 +70,10 @@
 @import "./components/button.css";
 @import "./components/close_button.css";
 @import "./components/editor.css";
+@import "./components/editor_ai_menu.css";
+@import "./components/editor_ai_menu_manual.css";
+@import "./components/editor_ai_menu_quicks.css";
+@import "./components/editor_ai_menu_response.css";
 @import "./components/editor_block_menu.css";
 @import "./components/editor_block_menu_item.css";
 @import "./components/editor_bubble_menu.css";
@@ -77,7 +82,6 @@
 @import "./components/editor_fixed_menu_item.css";
 @import "./components/editor_node_loading_indicator.css";
 @import "./components/error_message.css";
-@import "./components/input.css";
 @import "./components/item_create_input.css";
 @import "./components/item_list.css";
 @import "./components/item_list_document.css";
@@ -102,6 +106,7 @@
 
 @import "./controllers/alert.css";
 @import "./controllers/appearance_modal.css";
+@import "./controllers/editor_ai_menu.css";
 @import "./controllers/modal.css";
 @import "./controllers/settings_modal.css";
 @import "./controllers/sharing_modal.css";

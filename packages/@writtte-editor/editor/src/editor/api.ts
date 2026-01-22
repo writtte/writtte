@@ -8,6 +8,8 @@ type TEditorAPI = {
   setReadable: () => void;
   getContent: () => TEditorSchema | undefined;
   setContent: (content: TEditorSchema) => void;
+  setContentInHTML: (position: number, content: string) => void;
+  replaceContentInHTML: (from: number, to: number, content: string) => void;
   replaceContent: (content: TEditorSchema) => TEditorSchema;
   stringToSchema: (content: string) => TEditorSchema;
   focus: () => void;
@@ -18,6 +20,10 @@ type TEditorAPI = {
   onBlur: (callback: (state: TEditorState) => void) => void;
   onTransaction: (callback: (state: TEditorState) => void) => void;
   getCursorPosition: () => { x: number; y: number } | null;
+  getCurrentPosition: () => number | null;
+  getCurrentSelectionRange: () => { from: number; to: number } | null;
+  getSelectedRangeInText: () => string | null;
+  getSelectedRangeInSchema: () => TEditorSchema | null;
   setParagraph: () => boolean;
   setHorizontalLine: () => boolean;
   setLink: (href: string, target: string) => boolean;

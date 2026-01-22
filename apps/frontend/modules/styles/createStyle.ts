@@ -3,7 +3,7 @@ import type { TReturnInput } from '../../components/Input';
 import type { TReturnTextArea } from '../../components/TextArea';
 import { idb } from '@writtte-internal/indexed-db';
 import { StatusTextType } from '../../components/StatusText';
-import { v1AIStyleCreate } from '../../data/apis/aistyles/v1AIStyleCreate';
+import { v1AIStyleCreate } from '../../data/apis/aiStyles/v1AIStyleCreate';
 import {
   STORE_NAMES,
   type TIDBStyles,
@@ -27,7 +27,8 @@ const createStyle = async (
   saveButton.setLoading(true);
 
   const db = getIndexedDB();
-  const { getCurrentAccountData } = AccessToken();
+
+  const { getCurrentAccountData, getCurrentAccount } = AccessToken();
 
   const accessToken = getCurrentAccountData()?.access_token ?? '';
   const styleName = nameInput.getValue();
@@ -54,7 +55,7 @@ const createStyle = async (
   const styleCode = response.results.style_code;
 
   const styleObject: TIDBStyles = {
-    accountCode: accessToken,
+    accountCode: getCurrentAccount() ?? '',
     styleCode,
     styleName,
     styleContent,

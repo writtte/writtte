@@ -201,6 +201,27 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     _editor.commands.setContent(content);
   };
 
+  const setContentInHTML = (position: number, content: string): void => {
+    _editor.commands.insertContentAt(position, content.trim(), {
+      parseOptions: {
+        preserveWhitespace: 'full',
+      },
+    });
+  };
+
+  const replaceContentInHTML = (
+    from: number,
+    to: number,
+    content: string,
+  ): void => {
+    _editor.commands.insertContentAt({ from, to }, content.trim(), {
+      updateSelection: true,
+      parseOptions: {
+        preserveWhitespace: 'full',
+      },
+    });
+  };
+
   const replaceContent = (content: TEditorSchema): TEditorSchema => {
     _editor.commands.setContent(content);
     return _editor.getJSON();
@@ -315,6 +336,83 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     }
 
     return null;
+  };
+
+  const getCurrentPosition = (): number | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      return selection.empty ? selection.$head.pos : selection.head;
+    } catch {
+      return null;
+    }
+  };
+
+  const getCurrentSelectionRange = (): { from: number; to: number } | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      return {
+        from: selection.from,
+        to: selection.to,
+      };
+    } catch {
+      return null;
+    }
+  };
+
+  const getSelectedRangeInText = (): string | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      if (selection.empty) {
+        return '';
+      }
+
+      return state.doc.textBetween(selection.from, selection.to, ' ');
+    } catch {
+      return null;
+    }
+  };
+
+  const getSelectedRangeInSchema = (): TEditorSchema | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      if (selection.empty) {
+        return null;
+      }
+
+      const selectedFragment = state.doc.slice(selection.from, selection.to);
+
+      return selectedFragment.content.toJSON() as TEditorSchema;
+    } catch {
+      return null;
+    }
   };
 
   const setParagraph = (): boolean =>
@@ -495,6 +593,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setEditable,
     setReadable,
     setContent,
+    setContentInHTML,
+    replaceContentInHTML,
     getContent,
     replaceContent,
     stringToSchema,
@@ -506,6 +606,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     onBlur,
     onTransaction,
     getCursorPosition,
+    getCurrentPosition,
+    getCurrentSelectionRange,
+    getSelectedRangeInText,
+    getSelectedRangeInSchema,
     setParagraph,
     setHorizontalLine,
     setLink,

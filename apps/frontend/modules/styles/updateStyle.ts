@@ -3,7 +3,7 @@ import type { TReturnInput } from '../../components/Input';
 import type { TReturnTextArea } from '../../components/TextArea';
 import { idb } from '@writtte-internal/indexed-db';
 import { StatusTextType } from '../../components/StatusText';
-import { v1AIStyleUpdate } from '../../data/apis/aistyles/v1AIStyleUpdate';
+import { v1AIStyleUpdate } from '../../data/apis/aiStyles/v1AIStyleUpdate';
 import {
   STORE_NAMES,
   type TIDBStyles,
@@ -26,7 +26,8 @@ const updateStyle = async (
   | undefined
 > => {
   const db = getIndexedDB();
-  const { getCurrentAccountData } = AccessToken();
+
+  const { getCurrentAccountData, getCurrentAccount } = AccessToken();
 
   updateButton.setLoading(true);
 
@@ -54,7 +55,7 @@ const updateStyle = async (
   }
 
   const newDataToUpdate: TIDBStyles = {
-    accountCode: accessToken,
+    accountCode: getCurrentAccount() ?? '',
     styleCode,
     styleName,
     styleContent,

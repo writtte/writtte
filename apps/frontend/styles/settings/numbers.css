@@ -1,6 +1,7 @@
 :root {
   --z-index-top-bar: 100;
   --z-index-editor-fixed-menu: 101;
+  --z-index-editor-ai-menu: 101;
   --z-index-controller-appearance-modal: 102;
   --z-index-controller-settings-modal: 102;
   --z-index-controller-sharing-modal: 102;

@@ -4,7 +4,7 @@ import { AlertController } from '../../controller/alert';
 import {
   type TResponseV1AIStyleRetrieveListItem,
   v1AIStyleRetrieveList,
-} from '../../data/apis/aistyles/v1AIStyleRetrieveList';
+} from '../../data/apis/aiStyles/v1AIStyleRetrieveList';
 import {
   STORE_NAMES,
   type TIDBStyles,

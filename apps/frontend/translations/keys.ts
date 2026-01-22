@@ -44,7 +44,18 @@ type TLangKeys = {
   AppearanceModalPanelEditorTextTitle: string;
   AppearanceModalPanelThemeTextTitle: string;
   AppearanceModalTextTitle: string;
+  EditorAiMenuButtonCancel: string;
+  EditorAiMenuButtonConfirm: string;
+  EditorAiMenuPlaceholder: string;
+  EditorAiMenuQuickFixGrammar: string;
+  EditorAiMenuQuickLengthen: string;
+  EditorAiMenuQuickShorten: string;
+  EditorAiMenuQuickSimplify: string;
+  EditorAiMenuQuickSummarize: string;
+  EditorAiMenuStyles: string;
+  EditorAiMenuTitle: string;
   EditorLoadingUploadingImage: string;
+  EditorMenuItemAIGenerate: string;
   EditorMenuItemBlockQuote: string;
   EditorMenuItemBulletList: string;
   EditorMenuItemCodeBlock: string;
@@ -64,6 +75,7 @@ type TLangKeys = {
   ErrorAccountDeleteConfirmationFailed: string;
   ErrorAccountInvalidCredentials: string;
   ErrorAccountNotExists: string;
+  ErrorAiInputRequired: string;
   ErrorApiBadGateway: string;
   ErrorApiBadRequest: string;
   ErrorApiConflict: string;
@@ -315,7 +327,18 @@ const langKeys = (): TLangKeys => {
     AppearanceModalPanelEditorTextTitle: getTr('APPEARANCE_MODAL_PANEL_EDITOR_TEXT_TITLE'),
     AppearanceModalPanelThemeTextTitle: getTr('APPEARANCE_MODAL_PANEL_THEME_TEXT_TITLE'),
     AppearanceModalTextTitle: getTr('APPEARANCE_MODAL_TEXT_TITLE'),
+    EditorAiMenuButtonCancel: getTr('EDITOR_AI_MENU_BUTTON_CANCEL'),
+    EditorAiMenuButtonConfirm: getTr('EDITOR_AI_MENU_BUTTON_CONFIRM'),
+    EditorAiMenuPlaceholder: getTr('EDITOR_AI_MENU_PLACEHOLDER'),
+    EditorAiMenuQuickFixGrammar: getTr('EDITOR_AI_MENU_QUICK_FIX_GRAMMAR'),
+    EditorAiMenuQuickLengthen: getTr('EDITOR_AI_MENU_QUICK_LENGTHEN'),
+    EditorAiMenuQuickShorten: getTr('EDITOR_AI_MENU_QUICK_SHORTEN'),
+    EditorAiMenuQuickSimplify: getTr('EDITOR_AI_MENU_QUICK_SIMPLIFY'),
+    EditorAiMenuQuickSummarize: getTr('EDITOR_AI_MENU_QUICK_SUMMARIZE'),
+    EditorAiMenuStyles: getTr('EDITOR_AI_MENU_STYLES'),
+    EditorAiMenuTitle: getTr('EDITOR_AI_MENU_TITLE'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
+    EditorMenuItemAIGenerate: getTr('EDITOR_MENU_ITEM_AI_GENERATE'),
     EditorMenuItemBlockQuote: getTr('EDITOR_MENU_ITEM_BLOCK_QUOTE'),
     EditorMenuItemBulletList: getTr('EDITOR_MENU_ITEM_BULLET_LIST'),
     EditorMenuItemCodeBlock: getTr('EDITOR_MENU_ITEM_CODE_BLOCK'),
@@ -335,6 +358,7 @@ const langKeys = (): TLangKeys => {
     ErrorAccountDeleteConfirmationFailed: getTr('ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
     ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),
+    ErrorAiInputRequired: getTr('ERROR_AI_INPUT_REQUIRED'),
     ErrorApiBadGateway: getTr('ERROR_API_BAD_GATEWAY'),
     ErrorApiBadRequest: getTr('ERROR_API_BAD_REQUEST'),
     ErrorApiConflict: getTr('ERROR_API_CONFLICT'),
