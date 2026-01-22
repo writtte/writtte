@@ -1,8 +1,10 @@
+import type { TEditorSchema } from '@writtte-editor/editor';
 import type { TReturnEditorAIMenu } from '../../../components/EditorAIMenu';
 import type { TEditorAIMenuStyle } from '../../../components/EditorAIMenuManual';
 import type { TEditorAIMenuQuick } from '../../../components/EditorAIMenuQuicks';
 import { idb } from '@writtte-internal/indexed-db';
 import { micromark } from 'micromark';
+import { exportToMarkdownSection } from '../../../../../packages/@writtte-editor/export/dist';
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
 import { StatusTextType } from '../../../components/StatusText';
 import {
@@ -153,7 +155,7 @@ const submitRequest = async (
 
   const payload: TPayloadV1AIGenerateStreaming = {
     accessToken: getCurrentAccountData()?.access_token ?? '',
-    message: instructions,
+    message: setMessage(instructions, quick),
   };
 
   if (styleCode && styleCode.trim().length > 0) {
@@ -218,7 +220,6 @@ const submitRequest = async (
         menu.quicksReturn.setGenerating(false);
       },
       onComplete: () => {
-        menu.setResponse(undefined, false);
         menu.manualEditReturn.setGenerating(false);
         menu.quicksReturn.setGenerating(false);
       },
@@ -236,6 +237,29 @@ const submitRequest = async (
     menu.manualEditReturn.setGenerating(false);
     menu.quicksReturn.setGenerating(false);
   }
+};
+
+const setMessage = (instruction: string, quick: string | undefined): string => {
+  if (quick === undefined) {
+    // In this case, the instructions should be used directly
+
+    return instruction;
+  }
+
+  // In this case, the selected text from the editor should be retrieved
+  // and passed as the message
+
+  const editorAPI = getEditorAPI();
+
+  const rangeInSchema: TEditorSchema | null =
+    editorAPI.getSelectedRangeInSchema();
+
+  if (rangeInSchema === null) {
+    return instruction;
+  }
+
+  const rangeInMD = exportToMarkdownSection(rangeInSchema);
+  return rangeInMD;
 };
 
 const cancelChanges = (controller: TReturnEditorAIMenuController): void => {
