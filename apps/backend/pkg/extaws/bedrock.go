@@ -35,7 +35,7 @@ type ContentBlockDeltaMemberText = types.ContentBlockDeltaMemberText
 
 // revive:enable:line-length-limit
 
-const RoleUser = "User"
+const RoleUser = "user"
 
 func InitBedrock(cfg BedrockConfig) *bedrockruntime.Client {
 	ctx := context.Background()
