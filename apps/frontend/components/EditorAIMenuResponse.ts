@@ -19,6 +19,7 @@ type TOptions = {
 type TReturnEditorAIMenuResponse = {
   element: HTMLDivElement;
   setValue: (mdValue: string) => void;
+  setVisibility: (isVisible: boolean) => void;
 };
 
 const EditorAIMenuResponse = (opts: TOptions): TReturnEditorAIMenuResponse => {
@@ -69,9 +70,20 @@ const EditorAIMenuResponse = (opts: TOptions): TReturnEditorAIMenuResponse => {
     responseContentDiv.innerHTML = micromark(mdValue);
   };
 
+  const setVisibility = (isVisible: boolean): void => {
+    if (isVisible === false) {
+      responseDiv.style.display = 'none';
+      return;
+    }
+
+    responseDiv.style.display = 'flex';
+    return;
+  };
+
   return {
     element: responseDiv,
     setValue,
+    setVisibility,
   };
 };
 

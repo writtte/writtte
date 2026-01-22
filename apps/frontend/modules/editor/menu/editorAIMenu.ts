@@ -190,10 +190,16 @@ const submitRequest = async (
     throw new Error(buildError('response element is undefined'));
   }
 
+  responseElement.setVisibility(false);
+
   try {
     await v1AIGenerateStreaming(payload, {
       onChunk: (chunk: string) => {
         fullResponse += chunk;
+        if (fullResponse.trim().length > 0) {
+          responseElement.setVisibility(true);
+        }
+
         responseElement.setValue(fullResponse);
       },
       onFinal: ({
