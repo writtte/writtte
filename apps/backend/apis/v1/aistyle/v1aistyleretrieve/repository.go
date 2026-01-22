@@ -21,8 +21,7 @@ func (d *database) perform(ctx context.Context,
 	err := d.DB.Pool.QueryRow(ctx,
 		"SELECT schema_main.v1_ai_style_retrieve($1::JSONB)",
 		map[string]any{
-			"account_code": data.AccountCode,
-			"style_code":   data.StyleCode,
+			"style_code": data.StyleCode,
 		},
 	).Scan(&results)
 

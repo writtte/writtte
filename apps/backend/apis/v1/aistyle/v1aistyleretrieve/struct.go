@@ -5,8 +5,7 @@ type QueryParams struct {
 }
 
 type dbQueryInput struct {
-	AccountCode *string
-	StyleCode   *string
+	StyleCode *string
 }
 
 type dbQueryOutputData struct {
