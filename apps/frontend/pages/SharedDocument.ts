@@ -43,7 +43,7 @@ const SharedDocumentPage = async (
   const headerDiv = document.createElement('div');
   const badgeA = document.createElement('a');
 
-  pageDiv.classList.add('shared-document-page', 'v-scrollbar');
+  pageDiv.classList.add('shared-document-page');
   headerDiv.classList.add('shared-document-page__header');
   badgeA.classList.add('shared-document-page__badge');
 
@@ -51,6 +51,8 @@ const SharedDocumentPage = async (
     id: 'editor__iddscbrrkv',
     options: setupEditorExtensionOptions(false),
   });
+
+  editorElement.element.classList.add('shared-document-page__editor');
 
   if (editorElement) {
     editorElement.api.setReadable();
