@@ -11,10 +11,11 @@ type BodyParams struct {
 // revive:enable:line-length-limit
 
 type dbQueryInput struct {
-	EmailAddress   *string
-	Name           *string
-	HashedPassword *string
-	PasswordSalt   *string
+	EmailAddress       *string
+	Name               *string
+	HashedPassword     *string
+	PasswordSalt       *string
+	ManualCreditAmount *float64
 }
 
 type dbQueryOutputData struct {
