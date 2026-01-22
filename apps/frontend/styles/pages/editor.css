@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding-bottom: 48px;
   position: relative;
   width: 100%;
 }
@@ -16,10 +15,30 @@
 }
 
 .editor-page__editor {
+  align-items: center;
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: center;
   overflow: hidden;
-  padding-inline: 0;
   width: 100%;
+}
+
+.editor-page__editor .ProseMirror {
+  margin: 0 auto;
+  max-width: 100%;
+  width: 1024px;
+}
+
+@media screen and (max-width: 1200px) {
+  .editor-page__editor .ProseMirror {
+    width: 768px;
+  }
+}
+
+@media screen and (max-width: 972px) {
+  .editor-page__editor .ProseMirror {
+    padding: 0 16px;
+    width: 90%;
+  }
 }

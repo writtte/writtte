@@ -1,7 +1,6 @@
 .editor {
   height: 100%;
   overflow: auto;
-  padding-inline: 384px;
   padding-top: 96px;
   position: relative;
   scroll-behavior: smooth;
@@ -23,18 +22,6 @@
     black calc(100% - 64px),
     transparent 100%
   );
-}
-
-@media screen and (max-width: 1200px) {
-  .editor {
-    padding-inline: 128px;
-  }
-}
-
-@media screen and (max-width: 972px) {
-  .editor {
-    padding-inline: 24px;
-  }
 }
 
 .editor-loading-indicator-container {
