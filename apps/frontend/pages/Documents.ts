@@ -7,38 +7,40 @@ import {
   type TIDBDocument,
   getIndexedDB,
 } from '../data/stores/indexedDB';
-import { NoDrafts } from '../emptyState/NoDrafts';
+import { NoDocuments } from '../emptyState/NoDocuments';
 import { buildError } from '../helpers/error/build';
 import { documentCodeToKey } from '../helpers/item/codeToKey';
-import { compareDocuments } from '../modules/overview/compareDocuments';
+import { compareDocuments } from '../modules/documents/compareDocuments';
 import {
   extractDocumentDetailsFromAPIList,
   getDocumentsFromAPI,
   getDocumentsFromIDB,
-} from '../modules/overview/getDocuments';
-import { buildDocumentOptionsMenu } from '../modules/overview/optionsMenu';
+} from '../modules/documents/getDocuments';
+import { buildDocumentOptionsMenu } from '../modules/documents/optionsMenu';
 import { langKeys } from '../translations/keys';
 import { navigate } from '../utils/routes/routes';
 
-const OverviewPage = async (): Promise<HTMLElement> => {
-  const overviewDiv = document.createElement('div');
+const DocumentsPage = async (): Promise<HTMLElement> => {
+  const pageDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
 
-  overviewDiv.classList.add('overview-page');
-  contentDiv.classList.add('overview-page__content');
+  pageDiv.classList.add('documents-page');
+  contentDiv.classList.add('documents-page__content');
 
-  overviewDiv.appendChild(contentDiv);
+  pageDiv.setAttribute('data-content-container', 'administrator-layout');
+
+  pageDiv.appendChild(contentDiv);
 
   const itemListElement = ItemList({
-    emptyState: NoDrafts({
-      title: langKeys().EmptyStateNoDraftsTextTitle,
-      description: langKeys().EmptyStateNoDraftsTextDescription,
+    emptyState: NoDocuments({
+      title: langKeys().PageDocumentsEmptyStateNoDocumentsTextTitle,
+      description: langKeys().PageDocumentsEmptyStateNoDocumentsTextDescription,
       button: {
         id: 'button__xxzjzmxkga',
-        text: langKeys().EmptyStateNoDraftsButtonCreate,
+        text: langKeys().PageDocumentsEmptyStateNoDocumentsButtonCreate,
         rightIcon: FlatIcon(FlatIconName._18_ARROW_TOP_RIGHT),
         onClick: async (): Promise<void> => {
-          await navigate(PATHS.CREATE_DRAFT);
+          await navigate(PATHS.CREATE_DOCUMENT);
         },
       },
     }),
@@ -76,7 +78,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
   Promise.all([idbPromise]).then(async (): Promise<void> => {
     const db = getIndexedDB();
 
-    const currentDocumentIds = itemListElement.getAllDocumentIDs();
+    const currentDocumentIds = itemListElement.getAllItemIDs();
     const currentDocumentsFromIDB = await getDocumentsFromIDB();
 
     const documents = await getDocumentsFromAPI();
@@ -197,7 +199,7 @@ const OverviewPage = async (): Promise<HTMLElement> => {
     itemListElement.sortItemsAlphabetically();
   });
 
-  return overviewDiv;
+  return pageDiv;
 };
 
-export { OverviewPage };
+export { DocumentsPage };

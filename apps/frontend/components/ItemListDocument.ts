@@ -6,11 +6,13 @@ import { FlatIcon, FlatIconName } from './FlatIcon';
 type TOptions = {
   id: string;
   text: string;
-  optionButton: {
-    id: string;
-    icon: HTMLElement;
-    onClick: (e: PointerEvent) => void;
-  };
+  optionButton:
+    | {
+        id: string;
+        icon: HTMLElement;
+        onClick: (e: PointerEvent) => void;
+      }
+    | undefined;
   metadata:
     | {
         createdTime: string;
@@ -38,18 +40,22 @@ const ItemListDocument = (opts: TOptions): TReturnItemListDocument => {
 
   iconDiv.appendChild(FlatIcon(FlatIconName._18_DOCUMENT));
 
-  const optionButtonElement = ActionButton({
-    id: opts.optionButton.id,
-    icon: opts.optionButton.icon,
-    onClick: (e: PointerEvent): void => {
-      e.preventDefault();
-      e.stopPropagation();
+  if (opts.optionButton) {
+    const optionButtonElement = ActionButton({
+      id: opts.optionButton.id,
+      icon: opts.optionButton.icon,
+      onClick: (e: PointerEvent): void => {
+        e.preventDefault();
+        e.stopPropagation();
 
-      opts.optionButton.onClick(e);
-    },
-  });
+        opts.optionButton?.onClick(e);
+      },
+    });
 
-  itemButton.append(iconDiv, textDiv, optionButtonElement.element);
+    itemButton.append(iconDiv, textDiv, optionButtonElement.element);
+  } else {
+    itemButton.append(iconDiv, textDiv);
+  }
 
   textDiv.id = `${opts.id}-text`;
   textDiv.textContent = opts.text;

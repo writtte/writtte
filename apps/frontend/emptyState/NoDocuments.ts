@@ -12,18 +12,18 @@ type TOptions = {
   button: Pick<TButtonOptions, 'id' | 'text' | 'rightIcon' | 'onClick'>;
 };
 
-const NoDrafts = (opts: TOptions): HTMLElement => {
+const NoDocuments = (opts: TOptions): HTMLElement => {
   const emptyStateDiv = document.createElement('div');
   const containerDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
   const titleDiv = document.createElement('div');
   const descriptionDiv = document.createElement('div');
 
-  emptyStateDiv.classList.add('no-drafts-empty-state');
-  containerDiv.classList.add('no-drafts-empty-state__container');
-  contentDiv.classList.add('no-drafts-empty-state__content');
-  titleDiv.classList.add('no-drafts-empty-state__title');
-  descriptionDiv.classList.add('no-drafts-empty-state__description');
+  emptyStateDiv.classList.add('no-documents-empty-state');
+  containerDiv.classList.add('no-documents-empty-state__container');
+  contentDiv.classList.add('no-documents-empty-state__content');
+  titleDiv.classList.add('no-documents-empty-state__title');
+  descriptionDiv.classList.add('no-documents-empty-state__description');
 
   titleDiv.textContent = opts.title;
   descriptionDiv.textContent = opts.description;
@@ -45,6 +45,6 @@ const NoDrafts = (opts: TOptions): HTMLElement => {
   return emptyStateDiv;
 };
 
-export type { TOptions as TNoDraftsOptions };
+export type { TOptions as TNoDocumentsOptions };
 
-export { NoDrafts };
+export { NoDocuments };

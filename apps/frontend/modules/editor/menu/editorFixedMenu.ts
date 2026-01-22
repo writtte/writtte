@@ -6,6 +6,7 @@ import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
 import { isAccountInFreeTrial } from '../../../data/stores/overview';
 import { browseAndInsertImage } from '../image/browseImage';
+import { setupAIMenu } from './editorAIMenu';
 
 const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
   hasLeftDivider: boolean;
@@ -17,6 +18,18 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
   }
 
   return [
+    {
+      id: 'button__hjwhvmtaro',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_AI_MAGIC),
+        isVisible: true,
+        isSelected: false,
+        onClick: async (): Promise<void> => await setupAIMenu(),
+      },
+      hasLeftDivider: false,
+      hasRightDivider: true,
+    },
     {
       id: 'button__klxnihfohr',
       item: {

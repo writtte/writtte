@@ -21,6 +21,11 @@ var (
 	AWSS3PrivateDirectoryBucketSecretAccessKey string
 	AWSS3PrivateDirectoryBucketRegion          string
 	AWSS3PrivateDirectoryBucketName            string
+
+	AWSBedrockRegion          string
+	AWSBedrockAccessKey       string
+	AWSBedrockSecretAccessKey string
+	AWSBedrockModelIDNovaLite string
 )
 
 // revive:disable:line-length-limit
@@ -42,4 +47,9 @@ func AWSEnvs() {
 	AWSS3PrivateDirectoryBucketSecretAccessKey = intenv.Load("BE_AWS_S3_KEY_SECRET_ACCESS")
 	AWSS3PrivateDirectoryBucketRegion = intenv.Load("BE_AWS_S3_REGION")
 	AWSS3PrivateDirectoryBucketName = intenv.Load("BE_AWS_S3_PRIVATE_DIRECTORY_BUCKET_NAME")
+
+	AWSBedrockRegion = intenv.Load("BE_AWS_BEDROCK_REGION")
+	AWSBedrockAccessKey = intenv.Load("BE_AWS_BEDROCK_KEY_ACCESS")
+	AWSBedrockSecretAccessKey = intenv.Load("BE_AWS_BEDROCK_KEY_SECRET_ACCESS")
+	AWSBedrockModelIDNovaLite = intenv.Load("BE_AWS_BEDROCK_MODAL_ID_NOVA_LITE")
 }

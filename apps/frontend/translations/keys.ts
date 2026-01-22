@@ -33,6 +33,8 @@ type TLangKeys = {
   AlertSignInMagicLinkSentTitle: string;
   AlertSignUpInvitationSentDescription: string;
   AlertSignUpInvitationSentTitle: string;
+  AlertStylesRetrievedFailedDescription: string;
+  AlertStylesRetrievedFailedTitle: string;
   AlertSubscriptionCheckoutSessionLinkFailedDescription: string;
   AlertSubscriptionCheckoutSessionLinkFailedTitle: string;
   AlertSubscriptionCustomerPortalLinkFailedDescription: string;
@@ -42,7 +44,18 @@ type TLangKeys = {
   AppearanceModalPanelEditorTextTitle: string;
   AppearanceModalPanelThemeTextTitle: string;
   AppearanceModalTextTitle: string;
+  EditorAiMenuButtonCancel: string;
+  EditorAiMenuButtonConfirm: string;
+  EditorAiMenuPlaceholder: string;
+  EditorAiMenuQuickFixGrammar: string;
+  EditorAiMenuQuickLengthen: string;
+  EditorAiMenuQuickShorten: string;
+  EditorAiMenuQuickSimplify: string;
+  EditorAiMenuQuickSummarize: string;
+  EditorAiMenuStyles: string;
+  EditorAiMenuTitle: string;
   EditorLoadingUploadingImage: string;
+  EditorMenuItemAIGenerate: string;
   EditorMenuItemBlockQuote: string;
   EditorMenuItemBulletList: string;
   EditorMenuItemCodeBlock: string;
@@ -57,14 +70,13 @@ type TLangKeys = {
   EditorMenuItemNumberList: string;
   EditorMenuItemParagraph: string;
   EditorMenuTitleFilter: string;
-  EmptyStateNoDraftsButtonCreate: string;
-  EmptyStateNoDraftsTextDescription: string;
-  EmptyStateNoDraftsTextTitle: string;
   ErrorAccountAlreadyExists: string;
   ErrorAccountDeleteAlreadyInSubscription: string;
   ErrorAccountDeleteConfirmationFailed: string;
   ErrorAccountInvalidCredentials: string;
   ErrorAccountNotExists: string;
+  ErrorAiCreditInsufficient: string;
+  ErrorAiInputRequired: string;
   ErrorApiBadGateway: string;
   ErrorApiBadRequest: string;
   ErrorApiConflict: string;
@@ -162,10 +174,18 @@ type TLangKeys = {
   ModalSharingLinkDeleteButtonDeleting: string;
   ModalSharingLinkDeleteTextContent: string;
   ModalSharingLinkDeleteTextTitle: string;
+  ModalStyleDeleteButtonCancel: string;
+  ModalStyleDeleteButtonDelete: string;
+  ModalStyleDeleteButtonDeleting: string;
+  ModalStyleDeleteTextContent: string;
+  ModalStyleDeleteTextTitle: string;
   ModalVersionHistoryRestoreButtonCancel: string;
   ModalVersionHistoryRestoreButtonRestore: string;
   ModalVersionHistoryRestoreTextContent: string;
   ModalVersionHistoryRestoreTextTitle: string;
+  PageDocumentsEmptyStateNoDocumentsButtonCreate: string;
+  PageDocumentsEmptyStateNoDocumentsTextDescription: string;
+  PageDocumentsEmptyStateNoDocumentsTextTitle: string;
   PageEditorErrorDocumentRetrieveTextDescription: string;
   PageEditorErrorDocumentRetrieveTextTitle: string;
   PageEditorPlaceholder: string;
@@ -192,6 +212,11 @@ type TLangKeys = {
   PageSignUpTextTitle: string;
   PageSingInLinkPasswordReset: string;
   PageSingInLinkSignUp: string;
+  PageStylesEmptyStateNoStylesTextDescription: string;
+  PageStylesEmptyStateNoStylesTextTitle: string;
+  PageStylesHeaderButtonCreate: string;
+  PageStylesHeaderTextSubtitle: string;
+  PageStylesHeaderTextTitle: string;
   SettingsModalButtonOk: string;
   SettingsModalHighRiskDeleteAccountButtonDelete: string;
   SettingsModalHighRiskDeleteAccountTextDescription: string;
@@ -228,9 +253,27 @@ type TLangKeys = {
   SharingModalEmptyStateSelectLinkDescription: string;
   SharingModalEmptyStateSelectLinkTitle: string;
   SharingModalTextTitle: string;
+  StylesModalButtonCreate: string;
+  StylesModalButtonCreating: string;
+  StylesModalButtonScrape: string;
+  StylesModalButtonScraping: string;
+  StylesModalButtonUpdate: string;
+  StylesModalButtonUpdating: string;
+  StylesModalButtonUpload: string;
+  StylesModalButtonUploading: string;
+  StylesModalInputPlaceholderName: string;
+  StylesModalInputPlaceholderStyle: string;
+  StylesModalInputPlaceholderUrl: string;
+  StylesModalSectionTitleName: string;
+  StylesModalSectionTitleStyle: string;
+  StylesModalSectionTitleUpdate: string;
+  StylesModalTextTitleCreate: string;
+  StylesModalTextTitleUpdate: string;
   TopBarBadgeDaysLeft: string;
   TopBarBadgeDocumentReadOnly: string;
   TopBarBadgeFreeTrialExpired: string;
+  TopBarPageButtonAiStyles: string;
+  TopBarPageButtonDocuments: string;
   VersionModalButtonRestore: string;
   VersionModalEmptyStateNoHistoryDescription: string;
   VersionModalEmptyStateNoHistoryTitle: string;
@@ -274,6 +317,8 @@ const langKeys = (): TLangKeys => {
     AlertSignInMagicLinkSentTitle: getTr('ALERT_SIGN_IN_MAGIC_LINK_SENT_TITLE'),
     AlertSignUpInvitationSentDescription: getTr('ALERT_SIGN_UP_INVITATION_SENT_DESCRIPTION'),
     AlertSignUpInvitationSentTitle: getTr('ALERT_SIGN_UP_INVITATION_SENT_TITLE'),
+    AlertStylesRetrievedFailedDescription: getTr('ALERT_STYLES_RETRIEVED_FAILED_DESCRIPTION'),
+    AlertStylesRetrievedFailedTitle: getTr('ALERT_STYLES_RETRIEVED_FAILED_TITLE'),
     AlertSubscriptionCheckoutSessionLinkFailedDescription: getTr('ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_DESCRIPTION'),
     AlertSubscriptionCheckoutSessionLinkFailedTitle: getTr('ALERT_SUBSCRIPTION_CHECKOUT_SESSION_LINK_FAILED_TITLE'),
     AlertSubscriptionCustomerPortalLinkFailedDescription: getTr('ALERT_SUBSCRIPTION_CUSTOMER_PORTAL_LINK_FAILED_DESCRIPTION'),
@@ -283,7 +328,18 @@ const langKeys = (): TLangKeys => {
     AppearanceModalPanelEditorTextTitle: getTr('APPEARANCE_MODAL_PANEL_EDITOR_TEXT_TITLE'),
     AppearanceModalPanelThemeTextTitle: getTr('APPEARANCE_MODAL_PANEL_THEME_TEXT_TITLE'),
     AppearanceModalTextTitle: getTr('APPEARANCE_MODAL_TEXT_TITLE'),
+    EditorAiMenuButtonCancel: getTr('EDITOR_AI_MENU_BUTTON_CANCEL'),
+    EditorAiMenuButtonConfirm: getTr('EDITOR_AI_MENU_BUTTON_CONFIRM'),
+    EditorAiMenuPlaceholder: getTr('EDITOR_AI_MENU_PLACEHOLDER'),
+    EditorAiMenuQuickFixGrammar: getTr('EDITOR_AI_MENU_QUICK_FIX_GRAMMAR'),
+    EditorAiMenuQuickLengthen: getTr('EDITOR_AI_MENU_QUICK_LENGTHEN'),
+    EditorAiMenuQuickShorten: getTr('EDITOR_AI_MENU_QUICK_SHORTEN'),
+    EditorAiMenuQuickSimplify: getTr('EDITOR_AI_MENU_QUICK_SIMPLIFY'),
+    EditorAiMenuQuickSummarize: getTr('EDITOR_AI_MENU_QUICK_SUMMARIZE'),
+    EditorAiMenuStyles: getTr('EDITOR_AI_MENU_STYLES'),
+    EditorAiMenuTitle: getTr('EDITOR_AI_MENU_TITLE'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
+    EditorMenuItemAIGenerate: getTr('EDITOR_MENU_ITEM_AI_GENERATE'),
     EditorMenuItemBlockQuote: getTr('EDITOR_MENU_ITEM_BLOCK_QUOTE'),
     EditorMenuItemBulletList: getTr('EDITOR_MENU_ITEM_BULLET_LIST'),
     EditorMenuItemCodeBlock: getTr('EDITOR_MENU_ITEM_CODE_BLOCK'),
@@ -298,14 +354,13 @@ const langKeys = (): TLangKeys => {
     EditorMenuItemNumberList: getTr('EDITOR_MENU_ITEM_NUMBER_LIST'),
     EditorMenuItemParagraph: getTr('EDITOR_MENU_ITEM_PARAGRAPH'),
     EditorMenuTitleFilter: getTr('EDITOR_MENU_TITLE_FILTER'),
-    EmptyStateNoDraftsButtonCreate: getTr('EMPTY_STATE_NO_DRAFTS_BUTTON_CREATE'),
-    EmptyStateNoDraftsTextDescription: getTr('EMPTY_STATE_NO_DRAFTS_TEXT_DESCRIPTION'),
-    EmptyStateNoDraftsTextTitle: getTr('EMPTY_STATE_NO_DRAFTS_TEXT_TITLE'),
     ErrorAccountAlreadyExists: getTr('ERROR_ACCOUNT_ALREADY_EXISTS'),
     ErrorAccountDeleteAlreadyInSubscription: getTr('ERROR_ACCOUNT_DELETE_ALREADY_IN_SUBSCRIPTION'),
     ErrorAccountDeleteConfirmationFailed: getTr('ERROR_ACCOUNT_DELETE_CONFIRMATION_FAILED'),
     ErrorAccountInvalidCredentials: getTr('ERROR_ACCOUNT_INVALID_CREDENTIALS'),
     ErrorAccountNotExists: getTr('ERROR_ACCOUNT_NOT_EXISTS'),
+    ErrorAiCreditInsufficient: getTr('ERROR_AI_CREDIT_INSUFFICIENT'),
+    ErrorAiInputRequired: getTr('ERROR_AI_INPUT_REQUIRED'),
     ErrorApiBadGateway: getTr('ERROR_API_BAD_GATEWAY'),
     ErrorApiBadRequest: getTr('ERROR_API_BAD_REQUEST'),
     ErrorApiConflict: getTr('ERROR_API_CONFLICT'),
@@ -403,10 +458,18 @@ const langKeys = (): TLangKeys => {
     ModalSharingLinkDeleteButtonDeleting: getTr('MODAL_SHARING_LINK_DELETE_BUTTON_DELETING'),
     ModalSharingLinkDeleteTextContent: getTr('MODAL_SHARING_LINK_DELETE_TEXT_CONTENT'),
     ModalSharingLinkDeleteTextTitle: getTr('MODAL_SHARING_LINK_DELETE_TEXT_TITLE'),
+    ModalStyleDeleteButtonCancel: getTr('MODAL_STYLE_DELETE_BUTTON_CANCEL'),
+    ModalStyleDeleteButtonDelete: getTr('MODAL_STYLE_DELETE_BUTTON_DELETE'),
+    ModalStyleDeleteButtonDeleting: getTr('MODAL_STYLE_DELETE_BUTTON_DELETING'),
+    ModalStyleDeleteTextContent: getTr('MODAL_STYLE_DELETE_TEXT_CONTENT'),
+    ModalStyleDeleteTextTitle: getTr('MODAL_STYLE_DELETE_TEXT_TITLE'),
     ModalVersionHistoryRestoreButtonCancel: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_CANCEL'),
     ModalVersionHistoryRestoreButtonRestore: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_RESTORE'),
     ModalVersionHistoryRestoreTextContent: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_CONTENT'),
     ModalVersionHistoryRestoreTextTitle: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_TITLE'),
+    PageDocumentsEmptyStateNoDocumentsButtonCreate: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_BUTTON_CREATE'),
+    PageDocumentsEmptyStateNoDocumentsTextDescription: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_DESCRIPTION'),
+    PageDocumentsEmptyStateNoDocumentsTextTitle: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_TITLE'),
     PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageEditorPlaceholder: getTr('PAGE_EDITOR_PLACEHOLDER'),
@@ -433,6 +496,11 @@ const langKeys = (): TLangKeys => {
     PageSignUpTextTitle: getTr('PAGE_SIGN_UP_TEXT_TITLE'),
     PageSingInLinkPasswordReset: getTr('PAGE_SING_IN_LINK_PASSWORD_RESET'),
     PageSingInLinkSignUp: getTr('PAGE_SING_IN_LINK_SIGN_UP'),
+    PageStylesEmptyStateNoStylesTextDescription: getTr('PAGE_STYLES_EMPTY_STATE_NO_STYLES_TEXT_DESCRIPTION'),
+    PageStylesEmptyStateNoStylesTextTitle: getTr('PAGE_STYLES_EMPTY_STATE_NO_STYLES_TEXT_TITLE'),
+    PageStylesHeaderButtonCreate: getTr('PAGE_STYLES_HEADER_BUTTON_CREATE'),
+    PageStylesHeaderTextSubtitle: getTr('PAGE_STYLES_HEADER_TEXT_SUBTITLE'),
+    PageStylesHeaderTextTitle: getTr('PAGE_STYLES_HEADER_TEXT_TITLE'),
     SettingsModalButtonOk: getTr('SETTINGS_MODAL_BUTTON_OK'),
     SettingsModalHighRiskDeleteAccountButtonDelete: getTr('SETTINGS_MODAL_HIGH_RISK_DELETE_ACCOUNT_BUTTON_DELETE'),
     SettingsModalHighRiskDeleteAccountTextDescription: getTr('SETTINGS_MODAL_HIGH_RISK_DELETE_ACCOUNT_TEXT_DESCRIPTION'),
@@ -469,9 +537,27 @@ const langKeys = (): TLangKeys => {
     SharingModalEmptyStateSelectLinkDescription: getTr('SHARING_MODAL_EMPTY_STATE_SELECT_LINK_DESCRIPTION'),
     SharingModalEmptyStateSelectLinkTitle: getTr('SHARING_MODAL_EMPTY_STATE_SELECT_LINK_TITLE'),
     SharingModalTextTitle: getTr('SHARING_MODAL_TEXT_TITLE'),
+    StylesModalButtonCreate: getTr('STYLES_MODAL_BUTTON_CREATE'),
+    StylesModalButtonCreating: getTr('STYLES_MODAL_BUTTON_CREATING'),
+    StylesModalButtonScrape: getTr('STYLES_MODAL_BUTTON_SCRAPE'),
+    StylesModalButtonScraping: getTr('STYLES_MODAL_BUTTON_SCRAPING'),
+    StylesModalButtonUpdate: getTr('STYLES_MODAL_BUTTON_UPDATE'),
+    StylesModalButtonUpdating: getTr('STYLES_MODAL_BUTTON_UPDATING'),
+    StylesModalButtonUpload: getTr('STYLES_MODAL_BUTTON_UPLOAD'),
+    StylesModalButtonUploading: getTr('STYLES_MODAL_BUTTON_UPLOADING'),
+    StylesModalInputPlaceholderName: getTr('STYLES_MODAL_INPUT_PLACEHOLDER_NAME'),
+    StylesModalInputPlaceholderStyle: getTr('STYLES_MODAL_INPUT_PLACEHOLDER_STYLE'),
+    StylesModalInputPlaceholderUrl: getTr('STYLES_MODAL_INPUT_PLACEHOLDER_URL'),
+    StylesModalSectionTitleName: getTr('STYLES_MODAL_SECTION_TITLE_NAME'),
+    StylesModalSectionTitleStyle: getTr('STYLES_MODAL_SECTION_TITLE_STYLE'),
+    StylesModalSectionTitleUpdate: getTr('STYLES_MODAL_SECTION_TITLE_UPDATE'),
+    StylesModalTextTitleCreate: getTr('STYLES_MODAL_TEXT_TITLE_CREATE'),
+    StylesModalTextTitleUpdate: getTr('STYLES_MODAL_TEXT_TITLE_UPDATE'),
     TopBarBadgeDaysLeft: getTr('TOP_BAR_BADGE_DAYS_LEFT'),
     TopBarBadgeDocumentReadOnly: getTr('TOP_BAR_BADGE_DOCUMENT_READ_ONLY'),
     TopBarBadgeFreeTrialExpired: getTr('TOP_BAR_BADGE_FREE_TRIAL_EXPIRED'),
+    TopBarPageButtonAiStyles: getTr('TOP_BAR_PAGE_BUTTON_AI_STYLES'),
+    TopBarPageButtonDocuments: getTr('TOP_BAR_PAGE_BUTTON_DOCUMENTS'),
     VersionModalButtonRestore: getTr('VERSION_MODAL_BUTTON_RESTORE'),
     VersionModalEmptyStateNoHistoryDescription: getTr('VERSION_MODAL_EMPTY_STATE_NO_HISTORY_DESCRIPTION'),
     VersionModalEmptyStateNoHistoryTitle: getTr('VERSION_MODAL_EMPTY_STATE_NO_HISTORY_TITLE'),

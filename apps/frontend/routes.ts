@@ -2,17 +2,18 @@ import type { TRoute } from './utils/routes/routes';
 import { PATHS } from './constants/paths';
 import { AuthenticationLayout } from './layout/authentication';
 import { DashboardLayout } from './layout/dashboard';
-import { CreateDraftPage } from './pages/CreateDraft';
+import { CreateDocumentPage } from './pages/CreateDocument';
+import { DocumentsPage } from './pages/Documents';
 import { EditorPage } from './pages/Editor';
 import { NotFoundPage } from './pages/NotFound';
 import { OnboardingPage } from './pages/Onboarding';
-import { OverviewPage } from './pages/Overview';
 import { SharedDocumentPage } from './pages/SharedDocument';
 import { SignInPage } from './pages/SignIn';
 import { SignInEmailPage } from './pages/SignInEmail';
 import { SignInEmailCheckPage } from './pages/SignInEmailCheck';
 import { SignUpPage } from './pages/SignUp';
 import { SignUpCreatePage } from './pages/SignUpCreate';
+import { StylesPage } from './pages/Styles';
 import { ValidateEmailUpdatePage } from './pages/ValidateEmailUpdate';
 
 const defaultRoutes: TRoute[] = [
@@ -52,16 +53,24 @@ const defaultRoutes: TRoute[] = [
     view: async () => await OnboardingPage(),
   },
   {
-    path: PATHS.CREATE_DRAFT,
-    title: 'Create a New Draft | Write',
+    path: PATHS.CREATE_DOCUMENT,
+    title: 'Create a New Document | Write',
     layout: DashboardLayout,
-    view: async () => await CreateDraftPage(),
+    view: async () => await CreateDocumentPage(),
   },
   {
-    path: PATHS.OVERVIEW,
-    title: 'Overview | Writtte',
+    path: PATHS.DOCUMENTS,
+    title: 'Documents | Writtte',
     layout: DashboardLayout,
-    view: async () => await OverviewPage(),
+    layoutId: 'administrator-layout',
+    view: async () => await DocumentsPage(),
+  },
+  {
+    path: PATHS.STYLES,
+    title: 'AI Styles | Writtte',
+    layout: DashboardLayout,
+    layoutId: 'administrator-layout',
+    view: async () => await StylesPage(),
   },
   {
     path: `${PATHS.DOCUMENT_EDIT}/:documentCode`,

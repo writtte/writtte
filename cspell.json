@@ -89,6 +89,17 @@
     "documentsharingviewcreate",
     "documentsharingviewretrievelist",
     "documentsharingview",
-    "registerables"
+    "registerables",
+    "aistyleretrievelist",
+    "aistyleupdate",
+    "aistyleretrieve",
+    "aistylecreate",
+    "aistyle",
+    "aistyles",
+    "aigeneratestreaming",
+    "aigenerate",
+    "VITE",
+    "nosec",
+    "bedrockruntime"
   ]
 }

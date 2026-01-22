@@ -17,6 +17,7 @@ type TReturnEditorBubbleMenu = {
   returnsMap: {
     [key: string]: TReturnEditorBubbleMenuItem;
   };
+  closeMenu: () => void;
 };
 
 const EditorBubbleMenu = (opts: TOptions): TReturnEditorBubbleMenu => {
@@ -54,9 +55,17 @@ const EditorBubbleMenu = (opts: TOptions): TReturnEditorBubbleMenu => {
     itemReturnsMap[opts.items[i].id] = itemElement;
   }
 
+  const closeMenu = (): void => {
+    // The extension uses display: none, so both should match
+    // here
+
+    menu.style.display = 'none';
+  };
+
   return {
     element: menu,
     returnsMap: itemReturnsMap,
+    closeMenu,
   };
 };
 

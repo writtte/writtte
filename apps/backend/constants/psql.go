@@ -68,3 +68,22 @@ const (
 	SharingViewRetrievedList = "SHARING_VIEW_RETRIEVED_LIST"
 	SharingViewUpdated       = "SHARING_VIEW_UPDATED"
 )
+
+const (
+	AIStyleCreated       = "AI_STYLE_CREATED"
+	AIStyleNotExists     = "AI_STYLE_NOT_EXISTS"
+	AIStyleRetrieved     = "AI_STYLE_RETRIEVED"
+	AIStyleRetrievedList = "AI_STYLES_RETRIEVED_LIST"
+	AIStyleUpdated       = "AI_STYLE_UPDATED"
+)
+
+const (
+	CreditAdded          = "CREDIT_ADDED"
+	CreditAlreadyExists  = "CREDIT_ALREADY_EXISTS"
+	CreditInsufficient   = "CREDIT_INSUFFICIENT" // #nosec G101
+	CreditNotExists      = "CREDIT_NOT_EXISTS"
+	CreditNothingToReset = "CREDIT_NOTHING_TO_RESET"
+	CreditReset          = "CREDIT_RESET"
+	CreditRetrieved      = "CREDIT_RETRIEVED"
+	CreditUpdated        = "CREDIT_UPDATED"
+)

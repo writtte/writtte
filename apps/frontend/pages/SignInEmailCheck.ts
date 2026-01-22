@@ -16,7 +16,7 @@ const SignInEmailCheckPage = async (): Promise<HTMLElement> => {
     });
   }
 
-  navigateHard(PATHS.OVERVIEW);
+  navigateHard(PATHS.DOCUMENTS);
 
   return LoadingIndicator({
     id: 'loading_indicator__cbxmwowiyf',

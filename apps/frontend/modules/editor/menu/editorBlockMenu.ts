@@ -11,6 +11,7 @@ import {
   removeWhenRouteChange,
 } from '../../../utils/ui/removeWhenRouteChange';
 import { browseAndInsertImage } from '../image/browseImage';
+import { setupAIMenu } from './editorAIMenu';
 
 let blockMenuQuery = '';
 let blockMenuInstance: TReturnEditorBlockMenu | null = null;
@@ -23,6 +24,17 @@ const menuItems = (): (TEditorBlockMenuItemOptions & {
   hasBottomDivider: boolean;
   keywords: string[];
 })[] => [
+  {
+    id: 'block_menu_item__txmoahyroq',
+    text: langKeys().EditorMenuItemAIGenerate,
+    icon: FlatIcon(FlatIconName._18_AI_MAGIC),
+    key: undefined,
+    isSelected: false,
+    keywords: ['ai', 'generate', 'magic'],
+    onClick: async (): Promise<void> => await setupAIMenu(),
+    hasTopDivider: false,
+    hasBottomDivider: true,
+  },
   {
     id: 'block_menu_item__xztlssiejf',
     text: langKeys().EditorMenuItemParagraph,

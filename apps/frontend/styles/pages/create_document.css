@@ -1,4 +1,4 @@
-.create-draft-page {
+.create-document-page {
   align-items: center;
   display: flex;
   height: 100%;
@@ -6,7 +6,7 @@
   width: 100%;
 }
 
-.create-draft-page__container {
+.create-document-page__container {
   max-width: calc(100% - 48px);
   width: 640px;
 }

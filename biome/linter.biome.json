@@ -15,7 +15,7 @@
         "noUselessEscapeInRegex": "error",
         "noUselessFragments": "error",
         "noUselessLabel": "error",
-        "noUselessLoneBlockStatements": "error",
+        "noUselessLoneBlockStatements": "off",
         "noUselessRename": "error",
         "noUselessStringConcat": "error",
         "noUselessStringRaw": "error",

@@ -201,6 +201,29 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     _editor.commands.setContent(content);
   };
 
+  const setContentInHTML = (position: number, content: string): void => {
+    _editor.commands.insertContentAt(position, content.trim(), {
+      parseOptions: {
+        preserveWhitespace: 'full',
+      },
+    });
+  };
+
+  const replaceContentInHTML = (
+    from: number,
+    to: number,
+    content: string,
+  ): void => {
+    _editor.commands.deleteRange({ from, to });
+
+    _editor.commands.insertContentAt(from, content.trim(), {
+      updateSelection: true,
+      parseOptions: {
+        preserveWhitespace: 'full',
+      },
+    });
+  };
+
   const replaceContent = (content: TEditorSchema): TEditorSchema => {
     _editor.commands.setContent(content);
     return _editor.getJSON();
@@ -262,6 +285,136 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
       const stateInfo = getEditorState(editor);
       callback(stateInfo);
     });
+  };
+
+  const getCursorPosition = (): { x: number; y: number } | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      const pos = selection.empty ? selection.$head.pos : selection.head;
+
+      const coords = view.coordsAtPos(pos);
+      if (coords) {
+        return {
+          x: coords.left,
+          y: coords.top,
+        };
+      }
+    } catch {
+      // just ignore...
+    }
+
+    try {
+      const domSel = window.getSelection();
+      if (domSel && domSel.rangeCount > 0) {
+        const range = domSel.getRangeAt(0);
+        const rect = range.getBoundingClientRect();
+        return {
+          x: rect.left,
+          y: rect.top,
+        };
+      }
+    } catch {
+      // just ignore...
+    }
+
+    try {
+      const editorElement = view.dom;
+      if (editorElement) {
+        const rect = editorElement.getBoundingClientRect();
+        return {
+          x: rect.left,
+          y: rect.top + rect.height / 2,
+        };
+      }
+    } catch {
+      // all methods failed, just ignore
+    }
+
+    return null;
+  };
+
+  const getCurrentPosition = (): number | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      return selection.empty ? selection.$head.pos : selection.head;
+    } catch {
+      return null;
+    }
+  };
+
+  const getCurrentSelectionRange = (): { from: number; to: number } | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      return {
+        from: selection.from,
+        to: selection.to,
+      };
+    } catch {
+      return null;
+    }
+  };
+
+  const getSelectedRangeInText = (): string | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      if (selection.empty) {
+        return '';
+      }
+
+      return state.doc.textBetween(selection.from, selection.to, ' ');
+    } catch {
+      return null;
+    }
+  };
+
+  const getSelectedRangeInSchema = (): TEditorSchema | null => {
+    const { view } = _editor;
+    if (!view) {
+      return null;
+    }
+
+    try {
+      const { state } = view;
+      const { selection } = state;
+
+      if (selection.empty) {
+        return null;
+      }
+
+      const selectedFragment = state.doc.slice(selection.from, selection.to);
+
+      return selectedFragment.content.toJSON() as TEditorSchema;
+    } catch {
+      return null;
+    }
   };
 
   const setParagraph = (): boolean =>
@@ -442,6 +595,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setEditable,
     setReadable,
     setContent,
+    setContentInHTML,
+    replaceContentInHTML,
     getContent,
     replaceContent,
     stringToSchema,
@@ -452,6 +607,11 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     onFocus,
     onBlur,
     onTransaction,
+    getCursorPosition,
+    getCurrentPosition,
+    getCurrentSelectionRange,
+    getSelectedRangeInText,
+    getSelectedRangeInSchema,
     setParagraph,
     setHorizontalLine,
     setLink,

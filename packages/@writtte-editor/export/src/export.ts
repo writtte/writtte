@@ -1,9 +1,13 @@
 import type { TEditorSchema } from '@writtte-editor/editor';
 import { parseSchema } from './parse';
+import { parseSchemaSection } from './parseSection';
 import { ExportType } from './type';
 
 const exportToMarkdown = (schema: TEditorSchema): string =>
   parseSchema(ExportType.MD, schema, undefined);
+
+const exportToMarkdownSection = (schema: TEditorSchema): string =>
+  parseSchemaSection(ExportType.MD, schema);
 
 const exportToXML = (schema: TEditorSchema): string =>
   parseSchema(ExportType.XML, schema, undefined);
@@ -19,6 +23,7 @@ const exportToSubstack = (schema: TEditorSchema): string =>
 
 export {
   exportToMarkdown,
+  exportToMarkdownSection,
   exportToXML,
   exportToWordpress,
   exportToMedium,

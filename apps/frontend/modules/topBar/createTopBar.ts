@@ -17,7 +17,7 @@ const setupCreateTopBar = async (): Promise<void> => {
       onClick: async (e: PointerEvent): Promise<void> => {
         e.preventDefault();
 
-        await navigate(PATHS.OVERVIEW);
+        await navigate(PATHS.DOCUMENTS);
       },
     },
   ]);

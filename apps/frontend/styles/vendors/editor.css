@@ -28,11 +28,12 @@
 /* Selected Node */
 
 .writtte-editor .ProseMirror-selectednode {
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   box-shadow: none;
   outline-offset: -1px;
   outline: 1px solid var(--color--border-primary);
+  padding: 4px;
 }
 
 .writtte-editor .persistent-selection {

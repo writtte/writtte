@@ -28,7 +28,8 @@ func (s *service) perform(ctx context.Context, body *BodyParams,
 		ServiceData: map[string]any{
 			"webhook_payload": body,
 		},
-		Status: intstr.StrPtr("ACTIVE"),
+		Status:                   intstr.StrPtr("ACTIVE"),
+		SubscriptionCreditAmount: getSubscriptionCreditAmount(),
 	}
 
 	results, err := s.repo.perform(ctx, &input)
@@ -49,4 +50,11 @@ func getSeatCount() *int {
 
 	defaultSeatCount := oneSeat
 	return &defaultSeatCount
+}
+
+func getSubscriptionCreditAmount() *float64 {
+	const defaultAmountPerPlan = 1000.00
+
+	amount := defaultAmountPerPlan
+	return &amount
 }
