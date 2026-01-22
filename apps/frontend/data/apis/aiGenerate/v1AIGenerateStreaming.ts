@@ -126,6 +126,8 @@ const v1AIGenerateStreaming = async (
             return {
               abort: () => controller.abort(),
             };
+          } else if (parsed.text !== undefined) {
+            callbacks.onChunk(parsed.text);
           }
         } catch {
           callbacks.onChunk(dataContent);
