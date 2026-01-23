@@ -243,6 +243,18 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
       .run();
   };
 
+  const replaceContentInText = (
+    from: number,
+    to: number,
+    content: string,
+  ): string => {
+    const { state } = _editor;
+
+    const fullText = state.doc.textBetween(0, state.doc.content.size, '\n');
+
+    return fullText.substring(0, from) + content + fullText.substring(to);
+  };
+
   const replaceContent = (content: TEditorSchema): TEditorSchema => {
     _editor.commands.setContent(content);
     return _editor.getJSON();
@@ -616,6 +628,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setContent,
     setContentInHTML,
     replaceContentInHTML,
+    replaceContentInText,
     getContent,
     replaceContent,
     stringToSchema,
