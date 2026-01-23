@@ -84,6 +84,8 @@ const openDocumentRenameModal = async (
     width: 384,
   });
 
+  modal.inputs.input__bbnophhgew.focus();
+
   const performDocumentRename = async (): Promise<void> => {
     const input = modal.inputs.input__bbnophhgew;
     const button = modal.buttons.button__hqvgtxctib;
