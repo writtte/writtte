@@ -162,6 +162,8 @@ const openStyleChangeModal = async (
       },
     },
   });
+
+  modal.inputTitle.focus();
 };
 
 export { openStyleChangeModal };

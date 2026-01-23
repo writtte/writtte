@@ -147,6 +147,11 @@ const openSharingModal = async (): Promise<void> => {
 
     totalSharingLinks--;
 
+    modal.removeItem(`sharing_item__${sharingCode}`);
+
+    // Check if we need to show the empty state after removing the item
+    // This ensures the empty state appears when all items are removed
+
     if (totalSharingLinks <= 0) {
       modal.setItemListContent(
         CommonEmpty({
@@ -156,7 +161,6 @@ const openSharingModal = async (): Promise<void> => {
       );
     }
 
-    modal.removeItem(`sharing_item__${sharingCode}`);
     button.setLoading(false);
 
     modalController.closeModal('modal__bqawzpjcab');
@@ -184,6 +188,10 @@ const openSharingModal = async (): Promise<void> => {
 
       return;
     }
+
+    // Only clear the content area if we're transitioning from empty state
+    // This ensures the empty state is removed when adding the first item
+    // but preserves existing items when adding more items
 
     if (totalSharingLinks === 0) {
       modal.removeItemListContent();
@@ -225,8 +233,10 @@ const openSharingModal = async (): Promise<void> => {
       type = AnalyticsCardDeltaType.DOWN;
     }
 
+    const roundedValue = Math.round(Math.abs(percentageChange) * 100) / 100;
+
     return {
-      value: Math.abs(percentageChange),
+      value: roundedValue,
       type,
     };
   };

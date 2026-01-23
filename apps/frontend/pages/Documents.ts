@@ -1,4 +1,5 @@
 import { idb } from '@writtte-internal/indexed-db';
+import { DocumentCreatePanel } from '../components/DocumentCreatePanel';
 import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { ItemList, itemSortCollector } from '../components/ItemList';
 import { PATHS } from '../constants/paths';
@@ -23,13 +24,34 @@ import { navigate } from '../utils/routes/routes';
 const DocumentsPage = async (): Promise<HTMLElement> => {
   const pageDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
+  const createTitleDiv = document.createElement('div');
+  const listTitleDiv = document.createElement('div');
 
   pageDiv.classList.add('documents-page');
   contentDiv.classList.add('documents-page__content');
+  createTitleDiv.classList.add('documents-page__title');
+  listTitleDiv.classList.add('documents-page__title');
 
   pageDiv.setAttribute('data-content-container', 'administrator-layout');
 
+  const documentCreatePanelElement = DocumentCreatePanel({
+    id: 'document_create_panel__nezjjgbixn',
+    createButton: {
+      id: 'button__dmupytdqdw',
+      onClick: async (): Promise<void> => await navigate(PATHS.CREATE_DOCUMENT),
+    },
+  });
+
+  contentDiv.append(
+    createTitleDiv,
+    documentCreatePanelElement.element,
+    listTitleDiv,
+  );
+
   pageDiv.appendChild(contentDiv);
+
+  createTitleDiv.textContent = langKeys().PageDocumentsSectionTitleCreate;
+  listTitleDiv.textContent = langKeys().PageDocumentsSectionTitleList;
 
   const itemListElement = ItemList({
     emptyState: NoDocuments({

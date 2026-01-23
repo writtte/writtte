@@ -40,7 +40,7 @@ const deleteStyle = async (
             leftIcon: undefined,
             color: ButtonColor.NEUTRAL,
             onClick: (): void => {
-              modalController.closeModal('modal__ivogbppdvg');
+              modalController.closeModal('modal__vnflqegjep');
             },
           },
           {

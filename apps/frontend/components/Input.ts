@@ -48,6 +48,7 @@ type TReturnInput = {
   getCurrentInputType: () => TInputType;
   changeInlineButtonIcon: (newIcon: HTMLElement) => void;
   clearStatusTextAfterDelay: (delay: number) => void;
+  focus: () => void;
 };
 
 const Input = (opts: TOptions): TReturnInput => {
@@ -214,6 +215,11 @@ const Input = (opts: TOptions): TReturnInput => {
     input.readOnly = shouldReadOnly;
   };
 
+  const focus = (): void => {
+    inputDiv.classList.add('active');
+    input.focus();
+  };
+
   return {
     element: wrapperDiv,
     changeInputType,
@@ -224,6 +230,7 @@ const Input = (opts: TOptions): TReturnInput => {
     getCurrentInputType,
     changeInlineButtonIcon,
     clearStatusTextAfterDelay,
+    focus,
   };
 };
 

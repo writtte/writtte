@@ -101,6 +101,8 @@ const getHighRiskSettingsContent = (): HTMLDivElement[] => {
             width: 512,
           });
 
+          modal.inputs.input__xbuqaocryp.focus();
+
           const checkAndDeleteAccount = async (): Promise<void> => {
             const input = modal.inputs.input__xbuqaocryp;
             const button = modal.buttons.button__usagxhtwyl;

@@ -14,8 +14,27 @@
 .documents-page__content {
   align-items: center;
   display: flex;
+  flex-direction: column;
+  gap: 12px;
   justify-content: flex-start;
   margin-top: 24px;
+  width: 100%;
+}
+
+.documents-page__title {
+  align-items: center;
+  align-self: stretch;
+  color: var(--color--text-alpha);
+  display: flex;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 550;
+  gap: 8px;
+  justify-content: flex-start;
+  line-height: normal;
+  padding: 24px 8px 0px 8px;
+  text-align: center;
+  user-select: none;
   width: 100%;
 }
 

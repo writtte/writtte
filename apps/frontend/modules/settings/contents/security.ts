@@ -104,6 +104,8 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
             width: 512,
           });
 
+          modal.inputs.input__fawmwhkzme.focus();
+
           const sendEmailUpdateRequest = async (): Promise<void> => {
             const input = modal.inputs.input__fawmwhkzme;
             const button = modal.buttons.button__vgzgeojcri;
@@ -309,6 +311,8 @@ const getSecuritySettingsContent = (): HTMLDivElement[] => {
             ],
             width: 512,
           });
+
+          modal.inputs.input__znzeioyjkn.focus();
 
           const updateAccountPassword = async (): Promise<void> => {
             const button = modal.buttons.button__kwildirfxa;

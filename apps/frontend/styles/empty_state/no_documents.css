@@ -3,11 +3,10 @@
   animation: noDocumentEmptyStateFadeIn 0.4s ease;
   bottom: 0;
   display: flex;
-  height: auto;
   justify-content: center;
   left: 0;
   margin: auto;
-  position: fixed;
+  position: relative;
   right: 0;
   top: 0;
   width: 100%;
@@ -31,7 +30,7 @@
   height: auto;
   justify-content: center;
   max-width: 100%;
-  padding: 48px 24px;
+  padding: 128px 24px;
   width: 512px;
 }
 

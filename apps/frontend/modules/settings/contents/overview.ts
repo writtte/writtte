@@ -25,7 +25,7 @@ const getOverviewSettingsContent = (): HTMLDivElement[] => {
 
   const nameUpdateElement = SettingsItem({
     title: langKeys().SettingsModalOverviewUpdateNameTextTitle,
-    description: undefined,
+    description: langKeys().SettingsModalOverviewUpdateNameTextDescription,
     item: {
       type: SettingsItemType.INPUT,
       input: {
