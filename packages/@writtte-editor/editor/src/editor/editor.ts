@@ -214,14 +214,33 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     to: number,
     content: string,
   ): void => {
-    _editor.commands.deleteRange({ from, to });
+    const { state } = _editor;
 
-    _editor.commands.insertContentAt(from, content.trim(), {
-      updateSelection: true,
-      parseOptions: {
-        preserveWhitespace: 'full',
-      },
-    });
+    const $from = state.doc.resolve(from);
+
+    let listFrom = from;
+    let listTo = to;
+
+    for (let d = $from.depth; d > 0; d--) {
+      const node = $from.node(d);
+      if (node.type.name === 'bulletList' || node.type.name === 'orderedList') {
+        listFrom = $from.start(d) - 1;
+        listTo = $from.end(d) + 1;
+        break;
+      }
+    }
+
+    _editor
+      .chain()
+      .focus()
+      .deleteRange({ from: listFrom, to: listTo })
+      .insertContentAt(listFrom, content.trim(), {
+        updateSelection: true,
+        parseOptions: {
+          preserveWhitespace: 'full',
+        },
+      })
+      .run();
   };
 
   const replaceContent = (content: TEditorSchema): TEditorSchema => {
