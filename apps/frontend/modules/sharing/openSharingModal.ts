@@ -225,8 +225,10 @@ const openSharingModal = async (): Promise<void> => {
       type = AnalyticsCardDeltaType.DOWN;
     }
 
+    const roundedValue = Math.round(Math.abs(percentageChange) * 100) / 100;
+
     return {
-      value: Math.abs(percentageChange),
+      value: roundedValue,
       type,
     };
   };
