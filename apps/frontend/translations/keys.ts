@@ -183,6 +183,9 @@ type TLangKeys = {
   ModalVersionHistoryRestoreButtonRestore: string;
   ModalVersionHistoryRestoreTextContent: string;
   ModalVersionHistoryRestoreTextTitle: string;
+  PageCreateDocumentInputPlaceholderNewDocument: string;
+  PageCreateDocumentTextSubtitle: string;
+  PageCreateDocumentTextTitle: string;
   PageDocumentsEmptyStateNoDocumentsButtonCreate: string;
   PageDocumentsEmptyStateNoDocumentsTextDescription: string;
   PageDocumentsEmptyStateNoDocumentsTextTitle: string;
@@ -191,7 +194,6 @@ type TLangKeys = {
   PageEditorErrorDocumentRetrieveTextDescription: string;
   PageEditorErrorDocumentRetrieveTextTitle: string;
   PageEditorPlaceholder: string;
-  PageOverviewCreateInputPlaceholderNewDocument: string;
   PageSignInButtonSignIn: string;
   PageSignInButtonSigning: string;
   PageSignInEmailButtonSend: string;
@@ -469,6 +471,9 @@ const langKeys = (): TLangKeys => {
     ModalVersionHistoryRestoreButtonRestore: getTr('MODAL_VERSION_HISTORY_RESTORE_BUTTON_RESTORE'),
     ModalVersionHistoryRestoreTextContent: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_CONTENT'),
     ModalVersionHistoryRestoreTextTitle: getTr('MODAL_VERSION_HISTORY_RESTORE_TEXT_TITLE'),
+    PageCreateDocumentInputPlaceholderNewDocument: getTr('PAGE_CREATE_DOCUMENT_INPUT_PLACEHOLDER_NEW_DOCUMENT'),
+    PageCreateDocumentTextSubtitle: getTr('PAGE_CREATE_DOCUMENT_TEXT_SUBTITLE'),
+    PageCreateDocumentTextTitle: getTr('PAGE_CREATE_DOCUMENT_TEXT_TITLE'),
     PageDocumentsEmptyStateNoDocumentsButtonCreate: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_BUTTON_CREATE'),
     PageDocumentsEmptyStateNoDocumentsTextDescription: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_DESCRIPTION'),
     PageDocumentsEmptyStateNoDocumentsTextTitle: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_TITLE'),
@@ -477,7 +482,6 @@ const langKeys = (): TLangKeys => {
     PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageEditorPlaceholder: getTr('PAGE_EDITOR_PLACEHOLDER'),
-    PageOverviewCreateInputPlaceholderNewDocument: getTr('PAGE_OVERVIEW_CREATE_INPUT_PLACEHOLDER_NEW_DOCUMENT'),
     PageSignInButtonSignIn: getTr('PAGE_SIGN_IN_BUTTON_SIGN_IN'),
     PageSignInButtonSigning: getTr('PAGE_SIGN_IN_BUTTON_SIGNING'),
     PageSignInEmailButtonSend: getTr('PAGE_SIGN_IN_EMAIL_BUTTON_SEND'),
