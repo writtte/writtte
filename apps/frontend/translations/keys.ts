@@ -226,6 +226,7 @@ type TLangKeys = {
   SettingsModalHighRiskDeleteAccountTextDescription: string;
   SettingsModalHighRiskDeleteAccountTextTitle: string;
   SettingsModalOverviewUpdateNameInputPlaceholder: string;
+  SettingsModalOverviewUpdateNameTextDescription: string;
   SettingsModalOverviewUpdateNameTextTitle: string;
   SettingsModalSectionTextHighRisk: string;
   SettingsModalSectionTextOverview: string;
@@ -514,6 +515,7 @@ const langKeys = (): TLangKeys => {
     SettingsModalHighRiskDeleteAccountTextDescription: getTr('SETTINGS_MODAL_HIGH_RISK_DELETE_ACCOUNT_TEXT_DESCRIPTION'),
     SettingsModalHighRiskDeleteAccountTextTitle: getTr('SETTINGS_MODAL_HIGH_RISK_DELETE_ACCOUNT_TEXT_TITLE'),
     SettingsModalOverviewUpdateNameInputPlaceholder: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_INPUT_PLACEHOLDER'),
+    SettingsModalOverviewUpdateNameTextDescription: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_TEXT_DESCRIPTION'),
     SettingsModalOverviewUpdateNameTextTitle: getTr('SETTINGS_MODAL_OVERVIEW_UPDATE_NAME_TEXT_TITLE'),
     SettingsModalSectionTextHighRisk: getTr('SETTINGS_MODAL_SECTION_TEXT_HIGH_RISK'),
     SettingsModalSectionTextOverview: getTr('SETTINGS_MODAL_SECTION_TEXT_OVERVIEW'),
