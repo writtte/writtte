@@ -103,9 +103,7 @@ const SharingModalAnalytics = (
         x: {
           min: 1,
           grid: {
-            color: computedStyles
-              .getPropertyValue('--color--border-strong')
-              .trim(),
+            color: 'transparent',
           },
           ticks: {
             color: computedStyles
@@ -116,9 +114,7 @@ const SharingModalAnalytics = (
         y: {
           min: 0,
           grid: {
-            color: computedStyles
-              .getPropertyValue('--color--border-strong')
-              .trim(),
+            color: 'transparent',
           },
           ticks: {
             color: computedStyles
