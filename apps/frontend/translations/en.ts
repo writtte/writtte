@@ -186,6 +186,8 @@ const enMessages = {
   PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_BUTTON_CREATE: 'Create first document',
   PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_DESCRIPTION: 'Documents are where ideas begin - start one and build from there.',
   PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_TITLE: 'This is where your documents will live.',
+  PAGE_DOCUMENTS_SECTION_TITLE_CREATE: 'Start a new document',
+  PAGE_DOCUMENTS_SECTION_TITLE_LIST: 'Your documents',
   PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION: 'Something went wrong while retrieving this document from our servers. Please try again in a few moments. If it still doesn\'t work, our support team can help.',
   PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE: 'We Couldn\'t Load Your Document',
   PAGE_EDITOR_PLACEHOLDER: 'Document your content here...',

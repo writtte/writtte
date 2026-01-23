@@ -1,0 +1,50 @@
+.document-create-panel {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  width: 100%;
+}
+
+.document-create-panel__container {
+  display: flex;
+  flex-direction: row;
+  padding: 8px;
+  width: 100%;
+}
+
+.document-create-panel__create-button {
+  align-items: center;
+  background: var(--color--bg-neutral-000);
+  border-radius: 8px;
+  border: 1px solid var(--color--border-weak);
+  box-shadow: none;
+  display: flex;
+  height: 160px;
+  justify-content: center;
+  outline: none;
+  transition: background 0.125s ease;
+  width: 116px;
+
+  svg {
+    height: 18px;
+    width: 18px;
+
+    path {
+      fill: var(--color--text-beta);
+    }
+  }
+
+  &:hover {
+    background: var(--color--bg-neutral-100);
+    cursor: pointer;
+  }
+
+  &:active {
+    background: var(--color--bg-neutral-200);
+  }
+
+  &:focus-visible {
+    outline-offset: 2px;
+    outline: 1px dashed var(--color--border-invert);
+  }
+}

@@ -186,6 +186,8 @@ type TLangKeys = {
   PageDocumentsEmptyStateNoDocumentsButtonCreate: string;
   PageDocumentsEmptyStateNoDocumentsTextDescription: string;
   PageDocumentsEmptyStateNoDocumentsTextTitle: string;
+  PageDocumentsSectionTitleCreate: string;
+  PageDocumentsSectionTitleList: string;
   PageEditorErrorDocumentRetrieveTextDescription: string;
   PageEditorErrorDocumentRetrieveTextTitle: string;
   PageEditorPlaceholder: string;
@@ -470,6 +472,8 @@ const langKeys = (): TLangKeys => {
     PageDocumentsEmptyStateNoDocumentsButtonCreate: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_BUTTON_CREATE'),
     PageDocumentsEmptyStateNoDocumentsTextDescription: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_DESCRIPTION'),
     PageDocumentsEmptyStateNoDocumentsTextTitle: getTr('PAGE_DOCUMENTS_EMPTY_STATE_NO_DOCUMENTS_TEXT_TITLE'),
+    PageDocumentsSectionTitleCreate: getTr('PAGE_DOCUMENTS_SECTION_TITLE_CREATE'),
+    PageDocumentsSectionTitleList: getTr('PAGE_DOCUMENTS_SECTION_TITLE_LIST'),
     PageEditorErrorDocumentRetrieveTextDescription: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_DESCRIPTION'),
     PageEditorErrorDocumentRetrieveTextTitle: getTr('PAGE_EDITOR_ERROR_DOCUMENT_RETRIEVE_TEXT_TITLE'),
     PageEditorPlaceholder: getTr('PAGE_EDITOR_PLACEHOLDER'),
