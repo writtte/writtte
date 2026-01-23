@@ -12,6 +12,17 @@
   gap: 48px;
   max-width: calc(100% - 48px);
   width: 640px;
+  animation: containerFadeIn 0.4s ease;
+}
+
+@keyframes containerFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .create-document-page___header {

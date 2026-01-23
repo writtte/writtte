@@ -1,6 +1,5 @@
 .item-create-input {
   align-items: center;
-  animation: itemCreateInputFadeIn 0.4s ease;
   background: var(--color--bg-neutral-200);
   border-radius: 32px;
   border: 1px solid transparent;
@@ -20,16 +19,6 @@
     background: var(--color--bg-neutral-000);
     border: 1px solid var(--color--border-primary);
     box-shadow: 0 0 8px 0 var(--color--border-primary);
-  }
-}
-
-@keyframes itemCreateInputFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
 
