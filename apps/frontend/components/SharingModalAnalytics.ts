@@ -205,11 +205,11 @@ const SharingModalAnalytics = (
         deltaIconSpan.appendChild(FlatIcon(FlatIconName._18_ARROW_UP));
       } else if (delta.type === AnalyticsCardDeltaType.DOWN) {
         deltaTextSpan.classList.add(
-          'sharing-modal-analytics__card-delta-text--bottom',
+          'sharing-modal-analytics__card-delta-text--down',
         );
 
         deltaIconSpan.classList.add(
-          'sharing-modal-analytics__card-delta-icon--bottom',
+          'sharing-modal-analytics__card-delta-icon--down',
         );
 
         deltaIconSpan.appendChild(FlatIcon(FlatIconName._18_ARROW_DOWN));
