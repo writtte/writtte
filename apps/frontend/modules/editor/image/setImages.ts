@@ -20,6 +20,18 @@ const checkAndSetImages = async (): Promise<void> => {
   for (let i = 0; i < elements.length; i++) {
     const attrValue = elements[i].getAttribute('data-image-code');
     if (attrValue) {
+      // When loading images, first set all images' display to none, then
+      // show them one by one.
+
+      (elements[i] as HTMLImageElement).style.display = 'none';
+    }
+  }
+
+  for (let i = 0; i < elements.length; i++) {
+    const attrValue = elements[i].getAttribute('data-image-code');
+    if (attrValue) {
+      (elements[i] as HTMLImageElement).style.display = 'block';
+
       // biome-ignore lint/performance/noAwaitInLoops: The await inside the loop is required here
       await checkAndSetImage(attrValue, undefined);
     }
