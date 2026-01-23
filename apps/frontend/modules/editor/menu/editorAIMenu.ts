@@ -25,6 +25,9 @@ import { AccessToken } from '../../../helpers/account/accessToken';
 import { buildError } from '../../../helpers/error/build';
 import { logFatalToSentry } from '../../../helpers/error/sentry';
 import { langKeys } from '../../../translations/keys';
+import { trimString } from '../../../utils/string/trim';
+
+const maximumMessageLength = 10000;
 
 const setupAIMenu = async (): Promise<void> => {
   const editorAIMenuController = EditorAIMenuController();
@@ -155,7 +158,7 @@ const submitRequest = async (
 
   const payload: TPayloadV1AIGenerateStreaming = {
     accessToken: getCurrentAccountData()?.access_token ?? '',
-    message: setMessage(instructions, quick),
+    message: trimString(setMessage(instructions, quick), maximumMessageLength),
   };
 
   if (styleCode && styleCode.trim().length > 0) {

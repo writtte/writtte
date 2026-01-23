@@ -10,6 +10,7 @@ type TEditorAPI = {
   setContent: (content: TEditorSchema) => void;
   setContentInHTML: (position: number, content: string) => void;
   replaceContentInHTML: (from: number, to: number, content: string) => void;
+  replaceContentInText: (from: number, to: number, content: string) => void;
   replaceContent: (content: TEditorSchema) => TEditorSchema;
   stringToSchema: (content: string) => TEditorSchema;
   focus: () => void;

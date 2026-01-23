@@ -3,7 +3,7 @@ package v1aigeneratestreaming
 // revive:disable:line-length-limit
 
 type BodyParams struct {
-	Message   *string `json:"message" validate:"required,max=1000"`
+	Message   *string `json:"message" validate:"required,max=10240"`
 	StyleCode *string `json:"style_code" validate:"omitempty,uuid"`
 	Quick     *string `json:"quick" validate:"omitempty,oneof=fix-grammar shorten lengthen summarize simplify"`
 }
