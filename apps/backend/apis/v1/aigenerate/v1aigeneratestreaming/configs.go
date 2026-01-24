@@ -6,7 +6,7 @@ import (
 	"backend/configs"
 )
 
-const maxTokens2048 = 2048
+const maxTokens2048 = 10000
 const defaultTemperature = 0.8
 
 func (s *service) returnNovaLiteConfigs(ctx context.Context,
