@@ -38,12 +38,14 @@ const EditorAIMenu = (opts: TOptions): TReturnEditorAIMenu => {
   const headerDiv = document.createElement('div');
   const logoDiv = document.createElement('div');
   const titleDiv = document.createElement('div');
+  const betaTagDiv = document.createElement('div');
   const contentDiv = document.createElement('div');
 
   menuDiv.classList.add('editor-ai-menu');
   headerDiv.classList.add('editor-ai-menu__header');
   logoDiv.classList.add('editor-ai-menu__logo');
   titleDiv.classList.add('editor-ai-menu__title');
+  betaTagDiv.classList.add('editor-ai-menu__beta-tag');
   contentDiv.classList.add('editor-ai-menu__content');
 
   const closeButtonElement = CloseButton({
@@ -61,9 +63,10 @@ const EditorAIMenu = (opts: TOptions): TReturnEditorAIMenu => {
 
   menuDiv.id = opts.id;
   titleDiv.textContent = opts.title;
+  betaTagDiv.textContent = 'Beta';
 
   logoDiv.appendChild(FlatIcon(FlatIconName._18_WRITTTE_LOGO));
-  headerDiv.append(logoDiv, titleDiv, closeButtonElement.element);
+  headerDiv.append(logoDiv, titleDiv, betaTagDiv, closeButtonElement.element);
   menuDiv.append(headerDiv, contentDiv);
 
   const manualElement = EditorAIMenuManual({ ...opts.manualEdit });

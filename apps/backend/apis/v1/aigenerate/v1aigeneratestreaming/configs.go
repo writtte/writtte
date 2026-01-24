@@ -6,7 +6,7 @@ import (
 	"backend/configs"
 )
 
-const maxTokens2048 = 2048
+const maxTokens2048 = 10000
 const defaultTemperature = 0.8
 
 func (s *service) returnNovaLiteConfigs(ctx context.Context,
@@ -23,7 +23,7 @@ func (s *service) returnNovaLiteConfigs(ctx context.Context,
 		ModalID:                  &configs.AWSBedrockModelIDNovaLite,
 		MaxTokens:                &maxTokens,
 		Temperature:              &temperature,
-		SystemContext:            getSystemContext(),
+		SystemContext:            getSystemContext(quickCode),
 		ResponseStructureContext: getResponseStructureContext(quickCode),
 		StyleContext:             styleContent,
 	}, nil

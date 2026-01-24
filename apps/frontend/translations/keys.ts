@@ -52,6 +52,7 @@ type TLangKeys = {
   EditorAiMenuQuickShorten: string;
   EditorAiMenuQuickSimplify: string;
   EditorAiMenuQuickSummarize: string;
+  EditorAiMenuStyleNull: string;
   EditorAiMenuStyles: string;
   EditorAiMenuTitle: string;
   EditorLoadingUploadingImage: string;
@@ -347,6 +348,7 @@ const langKeys = (): TLangKeys => {
     EditorAiMenuQuickShorten: getTr('EDITOR_AI_MENU_QUICK_SHORTEN'),
     EditorAiMenuQuickSimplify: getTr('EDITOR_AI_MENU_QUICK_SIMPLIFY'),
     EditorAiMenuQuickSummarize: getTr('EDITOR_AI_MENU_QUICK_SUMMARIZE'),
+    EditorAiMenuStyleNull: getTr('EDITOR_AI_MENU_STYLE_NULL'),
     EditorAiMenuStyles: getTr('EDITOR_AI_MENU_STYLES'),
     EditorAiMenuTitle: getTr('EDITOR_AI_MENU_TITLE'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),

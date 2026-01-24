@@ -44,7 +44,20 @@
     border 0.2s ease,
     box-shadow 0.2s ease;
 
-  &::placeholder,
+  &::placeholder {
+    color: var(--color--text-gamma);
+    opacity: 1;
+  }
+
+  &::-webkit-input-placeholder {
+    color: var(--color--text-gamma);
+  }
+
+  &::-moz-placeholder {
+    color: var(--color--text-gamma);
+    opacity: 1;
+  }
+
   &::-ms-input-placeholder {
     color: var(--color--text-gamma);
   }

@@ -1,10 +1,13 @@
 import type { TEditorSchema } from '@writtte-editor/editor';
 import type { TReturnEditorAIMenu } from '../../../components/EditorAIMenu';
-import type { TEditorAIMenuStyle } from '../../../components/EditorAIMenuManual';
 import type { TEditorAIMenuQuick } from '../../../components/EditorAIMenuQuicks';
 import { idb } from '@writtte-internal/indexed-db';
 import { micromark } from 'micromark';
 import { exportToMarkdownSection } from '../../../../../packages/@writtte-editor/export/dist';
+import {
+  type TEditorAIMenuStyle,
+  defaultNullStyleCode,
+} from '../../../components/EditorAIMenuManual';
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
 import { StatusTextType } from '../../../components/StatusText';
 import {
@@ -70,6 +73,17 @@ const getCustomStyles = async (): Promise<TEditorAIMenuStyle[]> => {
 
   const stylesForList: TEditorAIMenuStyle[] = [];
   const allStyles: TIDBStyles[] = await idb.getAllData(db, STORE_NAMES.STYLES);
+
+  if (allStyles.length > 0) {
+    // Add the default null style to the styles
+
+    stylesForList.push({
+      id: `editor_ai_menu_custom_style__${defaultNullStyleCode}`,
+      code: defaultNullStyleCode,
+      name: langKeys().EditorAiMenuStyleNull,
+      isVisible: true,
+    });
+  }
 
   for (let i = 0; i < allStyles.length; i++) {
     const style = allStyles[i];
@@ -161,7 +175,11 @@ const submitRequest = async (
     message: trimString(setMessage(instructions, quick), maximumMessageLength),
   };
 
-  if (styleCode && styleCode.trim().length > 0) {
+  if (
+    styleCode &&
+    styleCode.trim().length > 0 &&
+    styleCode !== defaultNullStyleCode
+  ) {
     payload.styleCode = styleCode;
   }
 
