@@ -86,6 +86,7 @@ type TReturnSettingsItem = {
       }
     | undefined;
   button: TReturnButton | undefined;
+  setTextContent: (title: string, description: string) => void;
 };
 
 const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
@@ -112,16 +113,36 @@ const SettingsItem = (opts: TOptions): TReturnSettingsItem => {
   }
 
   if (opts.item.type === SettingsItemType.DOUBLE_INPUT) {
-    // In double inputs, the full width header should be applied
     itemDiv.classList.add('settings-item--full');
   } else {
     itemDiv.classList.add('settings-item--half');
   }
 
+  const setTextContent = (title: string, description: string): void => {
+    if (opts.item.type === SettingsItemType.TEXT) {
+      const contentTitleDiv = contentDiv.querySelector(
+        '.settings-item__content-title',
+      );
+
+      const contentDescriptionDiv = contentDiv.querySelector(
+        '.settings-item__content-description',
+      );
+
+      if (contentTitleDiv) {
+        contentTitleDiv.textContent = title;
+      }
+
+      if (contentDescriptionDiv && description) {
+        contentDescriptionDiv.textContent = description;
+      }
+    }
+  };
+
   const result: TReturnSettingsItem = {
     element: itemDiv,
     inputs: undefined,
     button: undefined,
+    setTextContent: setTextContent,
   };
 
   switch (opts.item.type) {

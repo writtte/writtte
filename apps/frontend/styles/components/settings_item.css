@@ -44,9 +44,10 @@
 }
 
 .settings-item__content {
-  align-items: center;
+  align-items: flex-end;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
   min-width: 256px;
 }
 
@@ -89,7 +90,17 @@
   }
 
   .settings-item__content {
+    align-items: flex-start;
     min-width: 100%;
+  }
+
+  .settings-item__content-title {
     justify-content: flex-start;
+    text-align: left;
+  }
+
+  .settings-item__content-description {
+    justify-content: flex-start;
+    text-align: left;
   }
 }

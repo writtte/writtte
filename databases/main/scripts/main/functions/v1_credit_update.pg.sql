@@ -29,7 +29,7 @@ BEGIN
     (v_check_credit -> 'data' ->> 'subscription_exists')::BOOLEAN,
     (v_check_credit -> 'data' ->> 'manual_exists')::BOOLEAN INTO v_subscription_exists,
     v_manual_exists;
-  v_credit_retrieve := schema_main.v1_credit_retrieve (p_account_code);
+  v_credit_retrieve := schema_main.v1_credit_retrieve (json_build_object('account_code', p_account_code)::JSONB);
   v_total_available := (v_credit_retrieve -> 'data' ->> 'total_credit_amount')::NUMERIC(18, 6);
   IF v_total_available < v_used_credit_amount THEN
     RETURN json_build_object(k_status, TRUE, k_code, 'CREDIT_INSUFFICIENT', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;

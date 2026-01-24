@@ -238,6 +238,10 @@ type TLangKeys = {
   SettingsModalSecurityUpdatePasswordButtonUpdate: string;
   SettingsModalSecurityUpdatePasswordTextDescription: string;
   SettingsModalSecurityUpdatePasswordTextTitle: string;
+  SettingsModalSubscriptionAiUsageTextAvailable: string;
+  SettingsModalSubscriptionAiUsageTextDescription: string;
+  SettingsModalSubscriptionAiUsageTextLoading: string;
+  SettingsModalSubscriptionAiUsageTextTitle: string;
   SettingsModalSubscriptionCustomerPortalButtonOpen: string;
   SettingsModalSubscriptionCustomerPortalButtonWait: string;
   SettingsModalSubscriptionCustomerPortalTextDescription: string;
@@ -527,6 +531,10 @@ const langKeys = (): TLangKeys => {
     SettingsModalSecurityUpdatePasswordButtonUpdate: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_BUTTON_UPDATE'),
     SettingsModalSecurityUpdatePasswordTextDescription: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_DESCRIPTION'),
     SettingsModalSecurityUpdatePasswordTextTitle: getTr('SETTINGS_MODAL_SECURITY_UPDATE_PASSWORD_TEXT_TITLE'),
+    SettingsModalSubscriptionAiUsageTextAvailable: getTr('SETTINGS_MODAL_SUBSCRIPTION_AI_USAGE_TEXT_AVAILABLE'),
+    SettingsModalSubscriptionAiUsageTextDescription: getTr('SETTINGS_MODAL_SUBSCRIPTION_AI_USAGE_TEXT_DESCRIPTION'),
+    SettingsModalSubscriptionAiUsageTextLoading: getTr('SETTINGS_MODAL_SUBSCRIPTION_AI_USAGE_TEXT_LOADING'),
+    SettingsModalSubscriptionAiUsageTextTitle: getTr('SETTINGS_MODAL_SUBSCRIPTION_AI_USAGE_TEXT_TITLE'),
     SettingsModalSubscriptionCustomerPortalButtonOpen: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_OPEN'),
     SettingsModalSubscriptionCustomerPortalButtonWait: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_BUTTON_WAIT'),
     SettingsModalSubscriptionCustomerPortalTextDescription: getTr('SETTINGS_MODAL_SUBSCRIPTION_CUSTOMER_PORTAL_TEXT_DESCRIPTION'),
