@@ -98,7 +98,6 @@ func processStreamingResults(ctx context.Context,
 	eventStream := streamingOutput.GetStream()
 
 	for event := range eventStream.Events() {
-
 		select {
 		case <-ctx.Done():
 			return &totalInputTokens, &totalOutputTokens, ctx.Err()
