@@ -57,6 +57,27 @@
   user-select: none;
 }
 
+.editor-ai-menu__beta-tag {
+  align-items: center;
+  background: var(--color--bg-neutral-400);
+  border-radius: 32px;
+  border: none;
+  box-shadow: none;
+  color: var(--color--text-alpha);
+  display: inline-flex;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  gap: 8px;
+  height: 20px;
+  justify-content: center;
+  line-height: normal;
+  outline: none;
+  padding: 0 10px;
+  text-align: center;
+  user-select: none;
+}
+
 .editor-ai-menu__content {
   display: flex;
   flex-direction: column;
