@@ -12,6 +12,7 @@ import {
 import { AccessToken } from '../../helpers/account/accessToken';
 import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
+import { validateStyle } from './validateStyle';
 
 const updateStyle = async (
   nameInput: TReturnInput,
@@ -25,11 +26,16 @@ const updateStyle = async (
     }
   | undefined
 > => {
+  updateButton.setLoading(true);
+
+  if (!validateStyle(nameInput, styleTextArea)) {
+    updateButton.setLoading(false);
+    return;
+  }
+
   const db = getIndexedDB();
 
   const { getCurrentAccountData, getCurrentAccount } = AccessToken();
-
-  updateButton.setLoading(true);
 
   const accessToken = getCurrentAccountData()?.access_token ?? '';
   const styleName = nameInput.getValue();

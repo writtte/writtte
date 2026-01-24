@@ -109,6 +109,8 @@ const enMessages = {
   ERROR_PASSWORD_REQUIRED: 'Password is required to continue.',
   ERROR_SHARING_ANALYTICS_RETRIEVED_FAILED: 'We couldn’t load sharing analytics. Please try again.',
   ERROR_SHARING_LINKS_RETRIEVED_FAILED: 'We couldn’t load sharing links. Please try again.',
+  ERROR_STYLE_CONTENT_REQUIRED: 'Please add content for the style.',
+  ERROR_STYLE_NAME_REQUIRED: 'Please enter a style name.',
   ERROR_URL_MAX: 'URL can’t be longer than 2048 characters.',
   ERROR_URL_MIN: 'URL must be at least 5 characters long.',
   ERROR_URL_PATTERN: 'Please enter a valid URL (including http:// or https://).',
