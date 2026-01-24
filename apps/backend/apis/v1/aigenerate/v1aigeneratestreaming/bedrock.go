@@ -97,8 +97,8 @@ func processStreamingResults(ctx context.Context,
 
 	eventStream := streamingOutput.GetStream()
 
-EventLoop:
 	for event := range eventStream.Events() {
+
 		select {
 		case <-ctx.Done():
 			return &totalInputTokens, &totalOutputTokens, ctx.Err()
@@ -131,7 +131,7 @@ EventLoop:
 			}
 
 		case *extaws.ConverseStreamOutputMemberMessageStop:
-			break EventLoop
+			continue
 
 		case *extaws.ConverseStreamOutputMemberContentBlockStart,
 			*extaws.ConverseStreamOutputMemberContentBlockStop:
