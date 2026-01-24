@@ -23,7 +23,7 @@ func (s *service) returnNovaLiteConfigs(ctx context.Context,
 		ModalID:                  &configs.AWSBedrockModelIDNovaLite,
 		MaxTokens:                &maxTokens,
 		Temperature:              &temperature,
-		SystemContext:            getSystemContext(),
+		SystemContext:            getSystemContext(quickCode),
 		ResponseStructureContext: getResponseStructureContext(quickCode),
 		StyleContext:             styleContent,
 	}, nil
