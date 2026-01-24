@@ -5,8 +5,8 @@ type QueryParams struct {
 }
 
 type BodyParams struct {
-	Name      *string `json:"name" validate:"omitempty,min=2,max=256"`
-	Style     *string `json:"style" validate:"omitempty,max=1000"`
+	Name      *string `json:"name" validate:"omitempty,min=1,max=256"`
+	Style     *string `json:"style" validate:"omitempty,min=1,max=10000"`
 	IsDeleted *bool   `json:"is_deleted" validate:"omitempty"`
 }
 

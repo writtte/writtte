@@ -12,6 +12,7 @@ import {
 import { AccessToken } from '../../helpers/account/accessToken';
 import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
+import { validateStyle } from './validateStyle';
 
 const createStyle = async (
   nameInput: TReturnInput,
@@ -25,6 +26,11 @@ const createStyle = async (
   | undefined
 > => {
   saveButton.setLoading(true);
+
+  if (!validateStyle(nameInput, styleTextArea)) {
+    saveButton.setLoading(false);
+    return;
+  }
 
   const db = getIndexedDB();
 

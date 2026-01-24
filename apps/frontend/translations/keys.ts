@@ -110,6 +110,8 @@ type TLangKeys = {
   ErrorPasswordRequired: string;
   ErrorSharingAnalyticsRetrievedFailed: string;
   ErrorSharingLinksRetrievedFailed: string;
+  ErrorStyleContentRequired: string;
+  ErrorStyleNameRequired: string;
   ErrorUrlMax: string;
   ErrorUrlMin: string;
   ErrorUrlPattern: string;
@@ -403,6 +405,8 @@ const langKeys = (): TLangKeys => {
     ErrorPasswordRequired: getTr('ERROR_PASSWORD_REQUIRED'),
     ErrorSharingAnalyticsRetrievedFailed: getTr('ERROR_SHARING_ANALYTICS_RETRIEVED_FAILED'),
     ErrorSharingLinksRetrievedFailed: getTr('ERROR_SHARING_LINKS_RETRIEVED_FAILED'),
+    ErrorStyleContentRequired: getTr('ERROR_STYLE_CONTENT_REQUIRED'),
+    ErrorStyleNameRequired: getTr('ERROR_STYLE_NAME_REQUIRED'),
     ErrorUrlMax: getTr('ERROR_URL_MAX'),
     ErrorUrlMin: getTr('ERROR_URL_MIN'),
     ErrorUrlPattern: getTr('ERROR_URL_PATTERN'),

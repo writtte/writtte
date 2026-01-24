@@ -1,8 +1,8 @@
 package v1aistylecreate
 
 type BodyParams struct {
-	Name  *string `json:"name" validate:"required,max=256"`
-	Style *string `json:"style" validate:"required,max=1000"`
+	Name  *string `json:"name" validate:"required,min=1,max=256"`
+	Style *string `json:"style" validate:"required,min=1,max=10000"`
 }
 
 type dbQueryInput struct {
