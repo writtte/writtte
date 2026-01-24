@@ -23,11 +23,12 @@ const systemContext = `You are an AI writing assistant designed for precise text
 
 ## Critical Rule
 
-Output ONLY the complete final edited text with no additional content whatsoever.`
+Output ONLY the complete final edited text with no additional content whatsoever. Do not wrap the output in markdown code blocks.`
 
 const fixGrammarContext = `Fix all grammar, spelling, and punctuation errors in the provided text while preserving its original meaning, tone, and writing style. Follow these guidelines:
 
 ## Rules
+
 - Correct errors without rephrasing unless absolutely necessary for grammatical correctness
 - Maintain the author's original voice, style, and intent
 - Do not add, remove, or alter information
@@ -36,7 +37,7 @@ const fixGrammarContext = `Fix all grammar, spelling, and punctuation errors in 
 
 ## Output Format
 
-Return ONLY the corrected text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the corrected content.`
+Return ONLY the corrected text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the corrected content. Do not wrap the output in markdown code blocks.`
 
 const shortenContext = `Shorten the provided text by eliminating redundancy and unnecessary words while preserving its original meaning, tone, and key details. Follow these guidelines:
 
@@ -51,7 +52,7 @@ const shortenContext = `Shorten the provided text by eliminating redundancy and 
 
 ## Output Format
 
-Return ONLY the shortened text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the concise content.`
+Return ONLY the shortened text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the concise content. Do not wrap the output in markdown code blocks.`
 
 const lengthenContext = `Lengthen the provided text by adding clarity, detail, and elaboration to existing ideas while preserving its original meaning, tone, and writing style. Follow these guidelines:
 
@@ -66,7 +67,7 @@ const lengthenContext = `Lengthen the provided text by adding clarity, detail, a
 
 ## Output Format
 
-Return ONLY the expanded text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the lengthened content.`
+Return ONLY the expanded text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the lengthened content. Do not wrap the output in markdown code blocks.`
 
 const summarizeContext = `Summarize the provided text by distilling its core ideas into a clear and concise form. Follow these guidelines:
 
@@ -81,7 +82,7 @@ const summarizeContext = `Summarize the provided text by distilling its core ide
 
 ## Output Format
 
-Return ONLY the summary in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the summarized content.`
+Return ONLY the summary in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the summarized content. Do not wrap the output in markdown code blocks.`
 
 const simplifyContext = `Simplify the provided text by using clearer language and shorter sentences while preserving its original meaning and intent. Follow these guidelines:
 
@@ -97,7 +98,7 @@ const simplifyContext = `Simplify the provided text by using clearer language an
 
 ## Output Format
 
-Return ONLY the simplified text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the simplified content.`
+Return ONLY the simplified text in markdown format with no preamble, introduction, explanations, or commentary. Begin immediately with the simplified content. Do not wrap the output in markdown code blocks.`
 
 // revive:enable:line-length-limit
 
