@@ -28,6 +28,20 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
         onClick: async (): Promise<void> => await setupAIMenu(),
       },
       hasLeftDivider: false,
+      hasRightDivider: false,
+    },
+    {
+      id: 'button__iilmhndxvf',
+      item: {
+        type: FixedMenuItemType.BUTTON,
+        icon: FlatIcon(FlatIconName._18_GRAMMAR),
+        isVisible: true,
+        isSelected: false,
+        onClick: (): void => {
+          getEditorAPI().proofreadDocument();
+        },
+      },
+      hasLeftDivider: false,
       hasRightDivider: true,
     },
     {

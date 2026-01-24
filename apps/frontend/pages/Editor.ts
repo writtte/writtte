@@ -3,6 +3,7 @@ import { Editor } from '../components/Editor';
 import { EditorFixedMenu } from '../components/EditorFixedMenu';
 import { ErrorMessage } from '../components/ErrorMessage';
 import { DEBOUNCE_TIMEOUT } from '../constants/timeouts';
+import { editorLanguageToolPopupController } from '../controller/editorLanguageToolPopup';
 import { updateMainEditor } from '../data/stores/mainEditor';
 import { isAccountInFreeTrial } from '../data/stores/overview';
 import {
@@ -34,6 +35,8 @@ const EditorPage = async (
   const documentCode = params.documentCode;
 
   const { isFreeTrialExpired } = isAccountInFreeTrial();
+  const { setEventListener, cleanEventListener } =
+    editorLanguageToolPopupController();
 
   const editorPageDiv = document.createElement('div');
   const containerDiv = document.createElement('div');
@@ -43,9 +46,16 @@ const EditorPage = async (
   containerDiv.classList.add('editor-page__container');
   editorDiv.classList.add('editor-page__editor');
 
+  const editorFixedMenuElement = EditorFixedMenu({
+    id: 'editor_fixed_menu__tuaodnwhdq',
+  });
+
   const editorElement = Editor({
     id: 'editor__oqvawzczdv',
-    options: setupEditorExtensionOptions(!isFreeTrialExpired),
+    options: setupEditorExtensionOptions(
+      !isFreeTrialExpired,
+      editorFixedMenuElement,
+    ),
   });
 
   if (editorElement) {
@@ -56,14 +66,13 @@ const EditorPage = async (
 
     if (isFreeTrialExpired) {
       editorElement.api.setReadable();
+      cleanEventListener(editorElement.element);
+    } else {
+      setEventListener(editorElement.element);
     }
   }
 
   if (!isFreeTrialExpired) {
-    const editorFixedMenuElement = EditorFixedMenu({
-      id: 'editor_fixed_menu__tuaodnwhdq',
-    });
-
     editorFixedMenuElement.setItems(setupEditorFixedMenuOptions());
 
     containerDiv.append(editorFixedMenuElement.element, editorDiv);
@@ -72,6 +81,8 @@ const EditorPage = async (
 
     bubbleMenuEventListener();
   } else {
+    editorFixedMenuElement.remove();
+
     containerDiv.appendChild(editorDiv);
   }
 

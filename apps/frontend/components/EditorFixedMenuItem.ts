@@ -1,5 +1,6 @@
 import { buildError } from '../helpers/error/build';
 import { setTestId } from '../utils/dom/testId';
+import { AnimatedIcon, AnimatedIconName } from './AnimatedIcon';
 
 const FixedMenuItemType = {
   TEXT: 'TEXT',
@@ -56,6 +57,7 @@ type TReturnEditorFixedMenuItem = {
     | {
         setSelectedState: (isSelected: boolean) => void;
         setVisibleState: (isVisible: boolean) => void;
+        setLoadingState: (isLoading: boolean) => void;
       }
     | undefined;
 };
@@ -203,6 +205,25 @@ const EditorFixedMenuItem = (opts: TOptions): TReturnEditorFixedMenuItem => {
       }
     };
 
+    const setLoadingState = (isLoading: boolean): void => {
+      if (isLoading === true) {
+        if (opts.item.type === FixedMenuItemType.BUTTON) {
+          button.classList.add('loading');
+
+          iconDiv.replaceChildren(
+            AnimatedIcon(AnimatedIconName._18_CIRCLE_SPINNER),
+          );
+        }
+
+        return;
+      }
+
+      if (opts.item.type === FixedMenuItemType.BUTTON) {
+        button.classList.remove('loading');
+        iconDiv.replaceChildren(opts.item.icon);
+      }
+    };
+
     return {
       element: button,
       textReturns: undefined,
@@ -210,6 +231,7 @@ const EditorFixedMenuItem = (opts: TOptions): TReturnEditorFixedMenuItem => {
       buttonReturns: {
         setSelectedState,
         setVisibleState,
+        setLoadingState,
       },
     };
   }

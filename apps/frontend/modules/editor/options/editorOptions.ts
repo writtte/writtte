@@ -2,6 +2,9 @@ import type {
   TExtensionOptions,
   TImageAttributes,
 } from '@writtte-editor/editor';
+import type { TReturnEditorFixedMenu } from '../../../components/EditorFixedMenu';
+import { LANG_TOOL_CONFIGS } from '../../../configs/langTool';
+import { logFatalToSentry } from '../../../helpers/error/sentry';
 import { langKeys } from '../../../translations/keys';
 import { ALLOWED_IMAGE_FILE_EXTENSIONS } from '../image/browseImage';
 import { imageAfterPaste, setupImageForUpload } from '../image/imageUpload';
@@ -41,6 +44,7 @@ const shortcutKeys = {
 
 const setupEditorExtensionOptions = (
   isEditable: boolean,
+  fixedMenu: TReturnEditorFixedMenu | undefined,
 ): TExtensionOptions => ({
   paragraph: {
     shortcutKeys: {
@@ -190,6 +194,33 @@ const setupEditorExtensionOptions = (
     isEnabled: isEditable,
   },
   blockQuote: {
+    isEnabled: true,
+  },
+  langTool: {
+    apiUrl: LANG_TOOL_CONFIGS.URL,
+    language: 'auto',
+    documentId: null,
+    databaseName: 'writtte-language-tool',
+    chunkSize: 500,
+    maxSuggestions: 20,
+    HTMLAttributes: {
+      'data-custom': 'writtte-grammar-highlight',
+    },
+    onProofreadStart: (): void => {
+      if (fixedMenu !== undefined) {
+        const proofreadButton = fixedMenu.returnsMap.button__iilmhndxvf;
+        proofreadButton.buttonReturns?.setLoadingState(true);
+      }
+    },
+    onProofreadComplete: (): void => {
+      if (fixedMenu !== undefined) {
+        const proofreadButton = fixedMenu.returnsMap.button__iilmhndxvf;
+        proofreadButton.buttonReturns?.setLoadingState(false);
+      }
+    },
+    onError: (error: Error): void => {
+      logFatalToSentry(error);
+    },
     isEnabled: true,
   },
 });

@@ -11,6 +11,7 @@ import type { THorizontalLineOptions } from '../extensions/horizontalLine';
 import type { TImageOptions } from '../extensions/image';
 import type { TInlineCodeOptions } from '../extensions/inlineCode';
 import type { TItalicOptions } from '../extensions/italic';
+import type { TLangToolOptions } from '../extensions/langTool';
 import type { TLinkOptions } from '../extensions/link';
 import type { TListItemOptions } from '../extensions/listItem';
 import type { TNumberListOptions } from '../extensions/numberList';
@@ -48,6 +49,7 @@ type TExtensionOptions = {
   bubbleMenu: Partial<TBubbleMenuOptions> & { isEnabled: boolean };
   blockMenu: Partial<TBlockMenuOptions> & { isEnabled: boolean };
   blockQuote: Partial<TBlockQuoteOptions> & { isEnabled: boolean };
+  langTool: Partial<TLangToolOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };

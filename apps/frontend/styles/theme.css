@@ -80,6 +80,7 @@
 @import "./components/editor_bubble_menu_item.css";
 @import "./components/editor_fixed_menu.css";
 @import "./components/editor_fixed_menu_item.css";
+@import "./components/editor_language_tool_popup.css";
 @import "./components/editor_node_loading_indicator.css";
 @import "./components/error_message.css";
 @import "./components/input.css";
@@ -122,6 +123,7 @@
 /* Vendors */
 
 @import "./vendors/editor.css";
+@import "./vendors/lang_tool.css";
 
 /* Animations */
 

@@ -15,6 +15,11 @@ import { HorizontalLineExtension } from '../extensions/horizontalLine';
 import { ImageExtension, type TImageAttributes } from '../extensions/image';
 import { InlineCodeExtension } from '../extensions/inlineCode';
 import { ItalicExtension } from '../extensions/italic';
+import {
+  LangToolExtension,
+  type TLangToolStorage,
+  type TLanguageToolMatch,
+} from '../extensions/langTool';
 import { LinkExtension } from '../extensions/link';
 import { ListItemExtension } from '../extensions/listItem';
 import { NumberListExtension } from '../extensions/numberList';
@@ -180,6 +185,12 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     );
   }
 
+  if (opts.options.langTool.isEnabled) {
+    extensions.push(
+      LangToolExtension.configure(opts.options.langTool ?? undefined),
+    );
+  }
+
   const _editor = new Editor({
     element: opts.element,
     extensions: [TextExtension, DocumentExtension, ...extensions],
@@ -269,17 +280,17 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     }
   };
 
-  const focus = (): void => {
-    if (!_editor.isActive || !_editor.isFocused) {
-      _editor.chain().focus();
-    }
-  };
-
   const schemaToString = (schema: TEditorSchema): string => {
     try {
       return JSON.stringify(schema);
     } catch {
       return '';
+    }
+  };
+
+  const focus = (): void => {
+    if (!_editor.isActive || !_editor.isFocused) {
+      _editor.chain().focus();
     }
   };
 
@@ -446,6 +457,56 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     } catch {
       return null;
     }
+  };
+
+  const proofreadDocument = (): boolean =>
+    _editor.chain().focus().proofreadDocument().run();
+
+  const toggleLangTool = (): boolean =>
+    _editor.chain().focus().toggleLangTool().run();
+
+  const acceptSuggestion = (replacement: string): boolean =>
+    _editor.chain().focus().acceptSuggestion(replacement).run();
+
+  const ignoreSuggestion = (): boolean =>
+    _editor.chain().focus().ignoreSuggestion().run();
+
+  const clearMatch = (): boolean => _editor.chain().focus().clearMatch().run();
+
+  const setLanguage = (language: string): boolean =>
+    _editor.chain().focus().setLanguage(language).run();
+
+  const getLanguage = (): string => {
+    const extension = _editor.extensionManager.extensions.find(
+      (ext) => ext.name === 'langTool',
+    );
+
+    return extension?.options?.language ?? 'auto';
+  };
+
+  const getLangToolMatch = (): TLanguageToolMatch | null => {
+    const storage = _editor.storage as Record<string, TLangToolStorage>;
+    return storage.langTool?.currentMatch ?? null;
+  };
+
+  const getLangToolMatchRange = (): { from: number; to: number } | null => {
+    const storage = _editor.storage as Record<string, TLangToolStorage>;
+    return storage.langTool?.matchRange ?? null;
+  };
+
+  const getLangToolStorage = (): TLangToolStorage | null => {
+    const storage = _editor.storage as Record<string, TLangToolStorage>;
+    return storage.langTool ?? null;
+  };
+
+  const isLangToolActive = (): boolean => {
+    const storage = _editor.storage as Record<string, TLangToolStorage>;
+    return storage.langTool?.isActive ?? false;
+  };
+
+  const isLangToolLoading = (): boolean => {
+    const storage = _editor.storage as Record<string, TLangToolStorage>;
+    return storage.langTool?.isLoading ?? false;
   };
 
   const setParagraph = (): boolean =>
@@ -632,8 +693,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     getContent,
     replaceContent,
     stringToSchema,
-    focus,
     schemaToString,
+    focus,
     onChange,
     onSelectionUpdate,
     onFocus,
@@ -644,6 +705,18 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     getCurrentSelectionRange,
     getSelectedRangeInText,
     getSelectedRangeInSchema,
+    proofreadDocument,
+    toggleLangTool,
+    acceptSuggestion,
+    ignoreSuggestion,
+    clearMatch,
+    setLanguage,
+    getLanguage,
+    getLangToolMatch,
+    getLangToolMatchRange,
+    getLangToolStorage,
+    isLangToolActive,
+    isLangToolLoading,
     setParagraph,
     setHorizontalLine,
     setLink,
