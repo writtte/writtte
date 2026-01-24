@@ -52,6 +52,7 @@ const enMessages = {
   EDITOR_AI_MENU_QUICK_SIMPLIFY: 'Simplify',
   EDITOR_AI_MENU_QUICK_SUMMARIZE: 'Summarize',
   EDITOR_AI_MENU_STYLES: 'Select style:',
+  EDITOR_AI_MENU_STYLE_NULL: 'No Style Selected',
   EDITOR_AI_MENU_TITLE: 'Writtte AI',
   EDITOR_LOADING_UPLOADING_IMAGE: 'Uploading image...',
   EDITOR_MENU_ITEM_AI_GENERATE: 'Generate Content',

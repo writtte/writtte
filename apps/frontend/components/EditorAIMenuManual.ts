@@ -32,6 +32,8 @@ type TReturnEditorAIMenuManual = {
   focusInput: () => void;
 };
 
+const defaultNullStyleCode = '00000000-0000-0000-0000-000000000000';
+
 const EditorAIMenuManual = (opts: TOptions): TReturnEditorAIMenuManual => {
   const editDiv = document.createElement('div');
   const editTextAreaWrapperDiv = document.createElement('div');
@@ -213,4 +215,4 @@ export type {
   TReturnEditorAIMenuManual,
 };
 
-export { EditorAIMenuManual };
+export { defaultNullStyleCode, EditorAIMenuManual };
