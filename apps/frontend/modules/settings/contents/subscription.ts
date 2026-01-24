@@ -33,8 +33,8 @@ const getSubscriptionSettingsContent = (): HTMLDivElement[] => {
     description: langKeys().SettingsModalSubscriptionAiUsageTextDescription,
     item: {
       type: SettingsItemType.TEXT,
-      title: langKeys().SettingsModalSubscriptionAiUsageTextLoading, // calculate
-      description: langKeys().SettingsModalSubscriptionAiUsageTextLoading, // calculate
+      title: langKeys().SettingsModalSubscriptionAiUsageTextLoading,
+      description: langKeys().SettingsModalSubscriptionAiUsageTextLoading,
     },
   });
 
