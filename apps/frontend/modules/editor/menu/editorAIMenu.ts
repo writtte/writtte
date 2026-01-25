@@ -104,43 +104,52 @@ const getCustomStyles = async (): Promise<TEditorAIMenuStyle[]> => {
 
 const setQuicks = async (
   controller: TReturnEditorAIMenuController,
-): Promise<TEditorAIMenuQuick[]> => [
-  {
-    id: 'editor_ai_menu_quick__rbluuuuehc',
-    label: langKeys().EditorAiMenuQuickFixGrammar,
-    isVisible: true,
-    onClick: async (): Promise<void> =>
-      await submitRequest(controller, 'fix-grammar'),
-  },
-  {
-    id: 'editor_ai_menu_quick__bppcodmici',
-    label: langKeys().EditorAiMenuQuickShorten,
-    isVisible: true,
-    onClick: async (): Promise<void> =>
-      await submitRequest(controller, 'shorten'),
-  },
-  {
-    id: 'editor_ai_menu_quick__izchfyeved',
-    label: langKeys().EditorAiMenuQuickLengthen,
-    isVisible: true,
-    onClick: async (): Promise<void> =>
-      await submitRequest(controller, 'lengthen'),
-  },
-  {
-    id: 'editor_ai_menu_quick__gkhblwketj',
-    label: langKeys().EditorAiMenuQuickSummarize,
-    isVisible: true,
-    onClick: async (): Promise<void> =>
-      await submitRequest(controller, 'summarize'),
-  },
-  {
-    id: 'editor_ai_menu_quick__mlsbxiqxdc',
-    label: langKeys().EditorAiMenuQuickSimplify,
-    isVisible: true,
-    onClick: async (): Promise<void> =>
-      await submitRequest(controller, 'simplify'),
-  },
-];
+): Promise<TEditorAIMenuQuick[]> => {
+  const editorAPI = getEditorAPI();
+  const selectedRange = editorAPI.getSelectedRangeInText();
+
+  if (selectedRange === null || selectedRange.trim().length === 0) {
+    return [];
+  }
+
+  return [
+    {
+      id: 'editor_ai_menu_quick__rbluuuuehc',
+      label: langKeys().EditorAiMenuQuickFixGrammar,
+      isVisible: true,
+      onClick: async (): Promise<void> =>
+        await submitRequest(controller, 'fix-grammar'),
+    },
+    {
+      id: 'editor_ai_menu_quick__bppcodmici',
+      label: langKeys().EditorAiMenuQuickShorten,
+      isVisible: true,
+      onClick: async (): Promise<void> =>
+        await submitRequest(controller, 'shorten'),
+    },
+    {
+      id: 'editor_ai_menu_quick__izchfyeved',
+      label: langKeys().EditorAiMenuQuickLengthen,
+      isVisible: true,
+      onClick: async (): Promise<void> =>
+        await submitRequest(controller, 'lengthen'),
+    },
+    {
+      id: 'editor_ai_menu_quick__gkhblwketj',
+      label: langKeys().EditorAiMenuQuickSummarize,
+      isVisible: true,
+      onClick: async (): Promise<void> =>
+        await submitRequest(controller, 'summarize'),
+    },
+    {
+      id: 'editor_ai_menu_quick__mlsbxiqxdc',
+      label: langKeys().EditorAiMenuQuickSimplify,
+      isVisible: true,
+      onClick: async (): Promise<void> =>
+        await submitRequest(controller, 'simplify'),
+    },
+  ];
+};
 
 const submitRequest = async (
   controller: TReturnEditorAIMenuController,
