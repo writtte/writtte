@@ -180,8 +180,6 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
 
                   tr.setSelection(TextSelection.create(tr.doc, $to.pos));
                 }
-
-                tr.scrollIntoView();
               }
 
               return true;
@@ -426,7 +424,6 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
                     tr.setSelection(TextSelection.create(tr.doc, $to.pos));
                   }
 
-                  tr.scrollIntoView();
                   view.dispatch(tr);
 
                   if (this.options.onAfterPaste) {
