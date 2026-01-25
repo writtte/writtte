@@ -21,6 +21,7 @@ func Private(mux *http.ServeMux) {
 	privateroutes.Credit(mux, &baseVersion)
 	privateroutes.AIStyle(mux, &baseVersion)
 	privateroutes.AIGenerate(mux, &baseVersion)
+	privateroutes.LangTool(mux, &baseVersion)
 	privateroutes.Webhook(mux, &baseVersion)
 	privateroutes.External(mux, &baseVersion)
 }

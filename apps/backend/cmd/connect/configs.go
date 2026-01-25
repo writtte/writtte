@@ -8,6 +8,7 @@ func SetupConfigs() {
 	configs.ServerEnvs()
 	configs.DatabaseEnvs()
 	configs.FrontendEnvs()
+	configs.LangToolEnvs()
 	configs.AWSEnvs()
 	configs.JWTEnvs()
 	configs.PolarEnvs()

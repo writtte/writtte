@@ -20,6 +20,7 @@ type TReturnEditorFixedMenu = {
   returnsMap: {
     [key: string]: TReturnEditorFixedMenuItem;
   };
+  remove: () => void;
 };
 
 const EditorFixedMenu = (opts: TOptions): TReturnEditorFixedMenu => {
@@ -65,10 +66,15 @@ const EditorFixedMenu = (opts: TOptions): TReturnEditorFixedMenu => {
     }
   };
 
+  const remove = (): void => {
+    menu.remove();
+  };
+
   return {
     element: menu,
     setItems,
     returnsMap: itemReturnsMap,
+    remove,
   };
 };
 

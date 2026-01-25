@@ -78,6 +78,14 @@
   display: none;
 }
 
+.editor-fixed-menu-item-button.loading {
+  pointer-events: none;
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 .editor-fixed-menu-item-button--selected {
   background: var(--color--bg-neutral-300);
 

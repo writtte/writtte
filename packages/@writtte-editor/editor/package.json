@@ -25,7 +25,8 @@
     "prosemirror-model": "1.25.4",
     "prosemirror-state": "1.4.4",
     "prosemirror-history": "1.5.0",
-    "prosemirror-view": "1.41.4"
+    "prosemirror-view": "1.41.4",
+    "@writtte-internal/indexed-db": "workspace:*"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

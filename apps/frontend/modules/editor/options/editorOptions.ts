@@ -2,6 +2,10 @@ import type {
   TExtensionOptions,
   TImageAttributes,
 } from '@writtte-editor/editor';
+import type { TReturnEditorFixedMenu } from '../../../components/EditorFixedMenu';
+import { BACKEND_CONFIGS } from '../../../configs/be';
+import { AccessToken } from '../../../helpers/account/accessToken';
+import { logFatalToSentry } from '../../../helpers/error/sentry';
 import { langKeys } from '../../../translations/keys';
 import { ALLOWED_IMAGE_FILE_EXTENSIONS } from '../image/browseImage';
 import { imageAfterPaste, setupImageForUpload } from '../image/imageUpload';
@@ -41,157 +45,190 @@ const shortcutKeys = {
 
 const setupEditorExtensionOptions = (
   isEditable: boolean,
-): TExtensionOptions => ({
-  paragraph: {
-    shortcutKeys: {
-      setParagraph: shortcutKeys.SET_PARAGRAPH,
+  fixedMenu: TReturnEditorFixedMenu | undefined,
+): TExtensionOptions => {
+  const { getCurrentAccountData } = AccessToken();
+
+  return {
+    paragraph: {
+      shortcutKeys: {
+        setParagraph: shortcutKeys.SET_PARAGRAPH,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  header: {
-    shortcutKeys: {
-      setHeading: shortcutKeys.SET_HEADING,
+    header: {
+      shortcutKeys: {
+        setHeading: shortcutKeys.SET_HEADING,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  bulletList: {
-    keepMarksWhenSplitting: true,
-    keepAttributesWhenSplitting: true,
-    shortcutKeys: {
-      toggleBulletList: shortcutKeys.BULLET_LIST_TOGGLE,
+    bulletList: {
+      keepMarksWhenSplitting: true,
+      keepAttributesWhenSplitting: true,
+      shortcutKeys: {
+        toggleBulletList: shortcutKeys.BULLET_LIST_TOGGLE,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  numberList: {
-    keepMarksWhenSplitting: true,
-    keepAttributesWhenSplitting: true,
-    shortcutKeys: {
-      toggleNumberList: shortcutKeys.NUMBER_LIST_TOGGLE,
+    numberList: {
+      keepMarksWhenSplitting: true,
+      keepAttributesWhenSplitting: true,
+      shortcutKeys: {
+        toggleNumberList: shortcutKeys.NUMBER_LIST_TOGGLE,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  listItem: {
-    shortcutKeys: {
-      splitListItem: shortcutKeys.LIST_ITEM_SPLIT,
-      sinkListItem: shortcutKeys.LIST_ITEM_SINK,
-      liftListItem: shortcutKeys.LIST_ITEM_LIFT,
+    listItem: {
+      shortcutKeys: {
+        splitListItem: shortcutKeys.LIST_ITEM_SPLIT,
+        sinkListItem: shortcutKeys.LIST_ITEM_SINK,
+        liftListItem: shortcutKeys.LIST_ITEM_LIFT,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  undoRedo: {
-    shortcutKeys: {
-      undo: shortcutKeys.UNDO,
-      redo: shortcutKeys.REDO,
-      redoSecond: shortcutKeys.REDO_SECOND,
-      undoRussian: shortcutKeys.UNDO_RUSSIAN,
-      redoRussian: shortcutKeys.REDO_RUSSIAN,
+    undoRedo: {
+      shortcutKeys: {
+        undo: shortcutKeys.UNDO,
+        redo: shortcutKeys.REDO,
+        redoSecond: shortcutKeys.REDO_SECOND,
+        undoRussian: shortcutKeys.UNDO_RUSSIAN,
+        redoRussian: shortcutKeys.REDO_RUSSIAN,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  link: {
-    HTMLAttributes: {
-      rel: 'noopener noreferrer nofollow',
-      'data-disable-progress': 'true',
+    link: {
+      HTMLAttributes: {
+        rel: 'noopener noreferrer nofollow',
+        'data-disable-progress': 'true',
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  bold: {
-    shortcutKeys: {
-      toggleBold: shortcutKeys.TOGGLE_BOLD,
+    bold: {
+      shortcutKeys: {
+        toggleBold: shortcutKeys.TOGGLE_BOLD,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  italic: {
-    shortcutKeys: {
-      toggleItalic: shortcutKeys.TOGGLE_ITALIC,
+    italic: {
+      shortcutKeys: {
+        toggleItalic: shortcutKeys.TOGGLE_ITALIC,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  strikeThrough: {
-    shortcutKeys: {
-      toggleStrikethrough: shortcutKeys.TOGGLE_STRIKETHROUGH,
+    strikeThrough: {
+      shortcutKeys: {
+        toggleStrikethrough: shortcutKeys.TOGGLE_STRIKETHROUGH,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  subscript: {
-    shortcutKeys: {
-      toggleSubscript: shortcutKeys.TOGGLE_SUBSCRIPT,
+    subscript: {
+      shortcutKeys: {
+        toggleSubscript: shortcutKeys.TOGGLE_SUBSCRIPT,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  superScript: {
-    shortcutKeys: {
-      toggleSuperscript: shortcutKeys.TOGGLE_SUPERSCRIPT,
+    superScript: {
+      shortcutKeys: {
+        toggleSuperscript: shortcutKeys.TOGGLE_SUPERSCRIPT,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  underline: {
-    shortcutKeys: {
-      toggleUnderline: shortcutKeys.TOGGLE_UNDERLINE,
+    underline: {
+      shortcutKeys: {
+        toggleUnderline: shortcutKeys.TOGGLE_UNDERLINE,
+      },
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  baseNode: {
-    isEnabled: true,
-  },
-  trailingNode: {
-    isEnabled: true,
-  },
-  inlineCode: {
-    shortcutKeys: {
-      toggleInlineCode: shortcutKeys.TOGGLE_INLINE_CODE,
+    baseNode: {
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  codeBlock: {
-    shortcutKeys: {
-      toggleCodeBlock: shortcutKeys.TOGGLE_CODE_BLOCK,
+    trailingNode: {
+      isEnabled: true,
     },
-    isEnabled: true,
-  },
-  horizontalRule: {
-    ignoredParents: ['tableCell', 'listItem'],
-    isEnabled: true,
-  },
-  placeholder: {
-    placeholder: langKeys().PageEditorPlaceholder,
-    showOnlyWhenEditable: true,
-    showOnlyIfCurrentNodeIsEmpty: true,
-    isEnabled: true,
-  },
-  blockPlaceholder: {
-    isEnabled: true,
-  },
-  image: {
-    fileExtensions: ALLOWED_IMAGE_FILE_EXTENSIONS,
-    onBeforePaste: async (file: File): Promise<TImageAttributes> =>
-      await setupImageForUpload(file),
-    onAfterPaste: async (
-      _: File,
-      __: TImageAttributes,
-      ___: (attrs: Partial<TImageAttributes>) => void,
-    ): Promise<void> => await imageAfterPaste(),
-    isEnabled: true,
-  },
-  bubbleMenu: {
-    MenuElement: setupEditorBubbleMenu(),
-    isEnabled: isEditable,
-  },
-  blockMenu: {
-    MenuElement: setupEditorBlockMenu(),
-    trigger: '/',
-    onInputUpdate: (query: string): void => updateBlockMenuQuery(query),
-    queryStateRef: getQueryStateRef(),
-    onArrowDown: (): void => selectNextBlockMenuItem(),
-    onArrowUp: (): void => selectPreviousBlockMenuItem(),
-    onEnter: (): void => triggerSelectedBlockMenuItem(),
-    onSelect: (deleteTrigger: () => void, hideMenu: () => void): void =>
-      setBlockMenuCallbacks(deleteTrigger, hideMenu),
-    isEnabled: isEditable,
-  },
-  blockQuote: {
-    isEnabled: true,
-  },
-});
+    inlineCode: {
+      shortcutKeys: {
+        toggleInlineCode: shortcutKeys.TOGGLE_INLINE_CODE,
+      },
+      isEnabled: true,
+    },
+    codeBlock: {
+      shortcutKeys: {
+        toggleCodeBlock: shortcutKeys.TOGGLE_CODE_BLOCK,
+      },
+      isEnabled: true,
+    },
+    horizontalRule: {
+      ignoredParents: ['tableCell', 'listItem'],
+      isEnabled: true,
+    },
+    placeholder: {
+      placeholder: langKeys().PageEditorPlaceholder,
+      showOnlyWhenEditable: true,
+      showOnlyIfCurrentNodeIsEmpty: true,
+      isEnabled: true,
+    },
+    blockPlaceholder: {
+      isEnabled: true,
+    },
+    image: {
+      fileExtensions: ALLOWED_IMAGE_FILE_EXTENSIONS,
+      onBeforePaste: async (file: File): Promise<TImageAttributes> =>
+        await setupImageForUpload(file),
+      onAfterPaste: async (
+        _: File,
+        __: TImageAttributes,
+        ___: (attrs: Partial<TImageAttributes>) => void,
+      ): Promise<void> => await imageAfterPaste(),
+      isEnabled: true,
+    },
+    bubbleMenu: {
+      MenuElement: setupEditorBubbleMenu(),
+      isEnabled: isEditable,
+    },
+    blockMenu: {
+      MenuElement: setupEditorBlockMenu(),
+      trigger: '/',
+      onInputUpdate: (query: string): void => updateBlockMenuQuery(query),
+      queryStateRef: getQueryStateRef(),
+      onArrowDown: (): void => selectNextBlockMenuItem(),
+      onArrowUp: (): void => selectPreviousBlockMenuItem(),
+      onEnter: (): void => triggerSelectedBlockMenuItem(),
+      onSelect: (deleteTrigger: () => void, hideMenu: () => void): void =>
+        setBlockMenuCallbacks(deleteTrigger, hideMenu),
+      isEnabled: isEditable,
+    },
+    blockQuote: {
+      isEnabled: true,
+    },
+    langTool: {
+      apiUrl: `${BACKEND_CONFIGS.URL}/v1/lang-tool/check`,
+      bearer: getCurrentAccountData()?.access_token ?? '',
+      language: 'auto',
+      documentId: null,
+      databaseName: 'writtte-language-tool',
+      chunkSize: 500,
+      maxSuggestions: 20,
+      HTMLAttributes: {
+        'data-custom': 'writtte-grammar-highlight',
+      },
+      onProofreadStart: (): void => {
+        if (fixedMenu !== undefined) {
+          const proofreadButton = fixedMenu.returnsMap.button__iilmhndxvf;
+          proofreadButton.buttonReturns?.setLoadingState(true);
+        }
+      },
+      onProofreadComplete: (): void => {
+        if (fixedMenu !== undefined) {
+          const proofreadButton = fixedMenu.returnsMap.button__iilmhndxvf;
+          proofreadButton.buttonReturns?.setLoadingState(false);
+        }
+      },
+      onError: (error: Error): void => {
+        logFatalToSentry(error);
+      },
+      isEnabled: true,
+    },
+  };
+};
 
 export { setupEditorExtensionOptions };

@@ -1,0 +1,32 @@
+version: "3"
+
+env:
+  DIRECTORY_LANG_TOOL_BINARY: apps/langtool/binary
+  DIRECTORY_LANG_TOOL_SNAPSHOT: apps/langtool/snapshot
+
+tasks:
+  download:
+    description: download and setup language tool latest snapshot
+    cmds:
+      - |
+        mkdir -p ${DIRECTORY_LANG_TOOL_SNAPSHOT}
+        wget -P ${DIRECTORY_LANG_TOOL_SNAPSHOT} https://internal1.languagetool.org/snapshots/LanguageTool-20260124-snapshot.zip
+        unzip ${DIRECTORY_LANG_TOOL_SNAPSHOT}/LanguageTool-20260124-snapshot.zip -d ${DIRECTORY_LANG_TOOL_SNAPSHOT}
+
+  extract:
+    description: extract downloaded language tool snapshot
+    cmds:
+      - |
+        mkdir -p ${DIRECTORY_LANG_TOOL_BINARY}
+        cp -R ${DIRECTORY_LANG_TOOL_SNAPSHOT}/LanguageTool-6.8-SNAPSHOT/ ${DIRECTORY_LANG_TOOL_BINARY}
+
+  setup:
+    description: setup language tool
+    cmds:
+      - |
+        touch ${DIRECTORY_LANG_TOOL_BINARY}/server.properties
+
+  run:
+    description: run language tool
+    cmds:
+      - java -cp ${DIRECTORY_LANG_TOOL_BINARY}/languagetool-server.jar org.languagetool.server.HTTPServer --config ${DIRECTORY_LANG_TOOL_BINARY}/server.properties --port 7103 --allow-origin

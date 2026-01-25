@@ -49,7 +49,7 @@ const SharedDocumentPage = async (
 
   const editorElement = Editor({
     id: 'editor__iddscbrrkv',
-    options: setupEditorExtensionOptions(false),
+    options: setupEditorExtensionOptions(false, undefined),
   });
 
   editorElement.element.classList.add('shared-document-page__editor');

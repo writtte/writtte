@@ -12,6 +12,7 @@ env:
 includes:
   go:backend: ./apps/backend/taskfile.yml
   psql:main: ./databases/main/taskfile.yml
+  langtool: "./apps/langtool/taskfile.yml"
 
 tasks:
   main:format:

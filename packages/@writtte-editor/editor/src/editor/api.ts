@@ -1,4 +1,8 @@
 import type { TImageAttributes } from '../extensions/image';
+import type {
+  TLangToolStorage,
+  TLanguageToolMatch,
+} from '../extensions/langTool';
 import type { TEditorSchema } from './schema';
 import type { TEditorState } from './state';
 
@@ -13,8 +17,8 @@ type TEditorAPI = {
   replaceContentInText: (from: number, to: number, content: string) => void;
   replaceContent: (content: TEditorSchema) => TEditorSchema;
   stringToSchema: (content: string) => TEditorSchema;
-  focus: () => void;
   schemaToString: (schema: TEditorSchema) => string;
+  focus: () => void;
   onChange: (callback: (content: TEditorSchema) => void) => void;
   onSelectionUpdate: (callback: (state: TEditorState) => void) => void;
   onFocus: (callback: (state: TEditorState) => void) => void;
@@ -25,6 +29,18 @@ type TEditorAPI = {
   getCurrentSelectionRange: () => { from: number; to: number } | null;
   getSelectedRangeInText: () => string | null;
   getSelectedRangeInSchema: () => TEditorSchema | null;
+  proofreadDocument: () => boolean;
+  toggleLangTool: () => boolean;
+  acceptSuggestion: (replacement: string) => boolean;
+  ignoreSuggestion: () => boolean;
+  clearMatch: () => boolean;
+  setLanguage: (language: string) => boolean;
+  getLanguage: () => string;
+  getLangToolMatch: () => TLanguageToolMatch | null;
+  getLangToolMatchRange: () => { from: number; to: number } | null;
+  getLangToolStorage: () => TLangToolStorage | null;
+  isLangToolActive: () => boolean;
+  isLangToolLoading: () => boolean;
   setParagraph: () => boolean;
   setHorizontalLine: () => boolean;
   setLink: (href: string, target: string) => boolean;

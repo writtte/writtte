@@ -1,0 +1,39 @@
+.writtte-grammar-mark {
+  animation: fadeInBorder 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  transition:
+    border-width 0.1s ease-in-out,
+    transform 0.1s ease-in-out;
+
+  &:hover {
+    border-width: 4px;
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes fadeInBorder {
+  from {
+    border-bottom-color: transparent;
+  }
+
+  to {
+    border-bottom-color: var(--color--bg-danger-600);
+  }
+}
+
+.writtte-grammar-misspelling {
+  border-bottom: 2px solid var(--color--bg-danger-600);
+}
+
+.writtte-grammar-grammar {
+  border-bottom: 2px solid var(--color--bg-danger-600);
+}
+
+.writtte-grammar-style {
+  border-bottom: 2px solid var(--color--bg-danger-600);
+}
+
+.writtte-grammar-typographical {
+  border-bottom: 2px solid var(--color--bg-danger-600);
+}

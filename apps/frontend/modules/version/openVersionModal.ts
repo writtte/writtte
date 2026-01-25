@@ -59,7 +59,7 @@ const openVersionModal = async (): Promise<void> => {
     }
 
     const editorContent = VersionModalContent({
-      options: setupEditorExtensionOptions(false),
+      options: setupEditorExtensionOptions(false, undefined),
       content: response.results.content,
       restoreButton: {
         id: `button__version-content-${versionCode}`,
