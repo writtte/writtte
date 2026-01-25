@@ -22,6 +22,7 @@ type TLangToolOptions = {
   databaseName: string;
   chunkSize: number;
   maxSuggestions: number;
+  bearer: string | undefined;
   HTMLAttributes: Record<string, string | number | boolean>;
   onProofreadStart: (() => void) | undefined;
   onProofreadComplete: (() => void) | undefined;
@@ -62,28 +63,33 @@ type TLanguageToolMatch = {
 };
 
 type TLanguageToolResponse = {
-  software: {
-    name: string;
-    version: string;
-    buildDate: string;
-    apiVersion: number;
-    premium: boolean;
-    premiumHint: string;
-    status: string;
-  };
-  warnings: {
-    incompleteResults: boolean;
-  };
-  language: {
-    name: string;
-    code: string;
-    detectedLanguage: {
+  code: number;
+  status: boolean;
+  id: string;
+  results: {
+    software: {
+      name: string;
+      version: string;
+      buildDate: string;
+      apiVersion: number;
+      premium: boolean;
+      premiumHint: string;
+      status: string;
+    };
+    warnings: {
+      incompleteResults: boolean;
+    };
+    language: {
       name: string;
       code: string;
-      confidence: number;
+      detectedLanguage: {
+        name: string;
+        code: string;
+        confidence: number;
+      };
     };
+    matches: TLanguageToolMatch[];
   };
-  matches: TLanguageToolMatch[];
 };
 
 type TIgnoredSuggestion = {
@@ -129,6 +135,7 @@ const LangToolExtension: AnyExtension = Extension.create<TLangToolOptions>({
       databaseName: '',
       chunkSize: 500,
       maxSuggestions: 5,
+      bearer: undefined,
       HTMLAttributes: {},
       onProofreadStart: undefined,
       onProofreadComplete: undefined,
@@ -346,12 +353,18 @@ const LangToolExtension: AnyExtension = Extension.create<TLangToolOptions>({
       }
 
       try {
+        const headers: Record<string, string> = {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Accept: 'application/json',
+        };
+
+        if (this.options.bearer) {
+          headers.Authorization = `Bearer ${this.options.bearer}`;
+        }
+
         const response = await fetch(this.options.apiUrl, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            Accept: 'application/json',
-          },
+          headers,
           body: new URLSearchParams({
             text: text,
             language: this.options.language,
@@ -365,8 +378,14 @@ const LangToolExtension: AnyExtension = Extension.create<TLangToolOptions>({
 
         const data: TLanguageToolResponse = await response.json();
 
+        if (!data.status || !data.results) {
+          throw new Error(
+            'Invalid API response: status is false or results missing',
+          );
+        }
+
         const filtered: TLanguageToolMatch[] = [];
-        for (const match of data.matches) {
+        for (const match of data.results.matches) {
           const matchText = text.substring(
             match.offset,
             match.offset + match.length,

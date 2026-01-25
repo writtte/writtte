@@ -105,6 +105,7 @@
     "langtool",
     "dotenv",
     "taskfile",
-    "languagetool"
+    "languagetool",
+    "langtoolcheck"
   ]
 }
