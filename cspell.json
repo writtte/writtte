@@ -101,6 +101,10 @@
     "VITE",
     "nosec",
     "bedrockruntime",
-    "creditretrieve"
+    "creditretrieve",
+    "langtool",
+    "dotenv",
+    "taskfile",
+    "languagetool"
   ]
 }
