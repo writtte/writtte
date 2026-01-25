@@ -194,6 +194,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const _editor = new Editor({
     element: opts.element,
     extensions: [TextExtension, DocumentExtension, ...extensions],
+    autofocus: false,
     editorProps: {
       handleScrollToSelection: (): boolean => false,
     },
@@ -293,7 +294,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   const focus = (): void => {
     if (!_editor.isActive || !_editor.isFocused) {
-      _editor.chain().focus();
+      _editor.chain().focus('start').run();
     }
   };
 
