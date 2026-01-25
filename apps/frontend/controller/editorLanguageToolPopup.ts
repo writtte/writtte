@@ -3,6 +3,7 @@ import {
   type TEditorLanguageToolPopup,
 } from '../components/EditorLanguageToolPopup';
 import { getEditorAPI } from '../data/stores/mainEditor';
+import { removeWhenRouteChange } from '../utils/ui/removeWhenRouteChange';
 
 type TReturnEditorLanguageToolPopupController = {
   setEventListener: (editorElement: HTMLDivElement) => void;
@@ -75,6 +76,11 @@ const editorLanguageToolPopupController =
       currentPopup = popup.element;
 
       document.body.appendChild(currentPopup);
+
+      removeWhenRouteChange(currentPopup, {
+        enabled: true,
+        animationDuration: 0,
+      });
     };
 
     const handleDocumentClick = (e: MouseEvent): void => {
