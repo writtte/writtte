@@ -69,7 +69,7 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
   logoDiv.classList.add('top-bar__logo');
   leftDiv.classList.add('top-bar__left');
   rightDiv.classList.add('top-bar__right');
-  pageChangeButtonsDiv.classList.add('top-bar__page-change-buttons');
+  pageChangeButtonsDiv.classList.add('top-bar__page-change-buttons', 'hide');
   badgeDiv.classList.add('top-bar__badge');
   leftButtonsDiv.classList.add('top-bar__left-buttons');
   rightButtonsDiv.classList.add('top-bar__right-buttons');
@@ -255,6 +255,9 @@ const TopBar = (opts: TOptions): TReturnTopBar => {
     pageChangeButtons: TTopBarPageChangeButton[],
   ): void => {
     pageChangeButtonsDiv.replaceChildren();
+
+    pageChangeButtonsDiv.classList.remove('hide');
+    pageChangeButtonsDiv.classList.add('show');
 
     for (let i = 0; i < pageChangeButtons.length; i++) {
       const buttonConfig = pageChangeButtons[i];

@@ -108,6 +108,14 @@
   border-radius: 32px;
 }
 
+.top-bar__page-change-buttons.show {
+  display: flex;
+}
+
+.top-bar__page-change-buttons.hide {
+  display: none;
+}
+
 .top-bar__page-change-button__icon {
   align-items: center;
   display: flex;
