@@ -41,7 +41,7 @@ BEGIN
     RAISE EXCEPTION 'failed to create subscription: %', v_subscription_create_results ->> k_message;
   END IF;
   IF v_p_manual_credit_amount IS NOT NULL THEN
-    v_credit_add_results := schema_main.v1_credit_add (json_build_object('account_code', v_account_code, 'manual_credit_amount', v_p_manual_credit_amount)::JSONB);
+    v_credit_add_results := schema_main.v1_credit_add (json_build_object('account_code', v_account_code, 'manual_credit_amount', v_p_manual_credit_amount, 'allocated_manual_credit_amount_to_add', v_p_manual_credit_amount)::JSONB);
     IF (v_credit_add_results ->> k_status)::BOOLEAN = FALSE THEN
       RAISE EXCEPTION 'failed to add credits: %', v_credit_add_results ->> k_message;
     END IF;

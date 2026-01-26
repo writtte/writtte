@@ -44,7 +44,7 @@ BEGIN
     RETURN json_build_object(k_status, TRUE, k_code, 'SUBSCRIPTION_NOT_EXISTS', k_message, NULL, k_additional, NULL, k_data, NULL)::JSONB;
   END IF;
   IF v_p_subscription_credit_amount IS NOT NULL OR (p_data ->> 'reset_subscription_credit_amount')::BOOLEAN = TRUE OR (p_data ->> 'reset_manual_credit_amount')::BOOLEAN = TRUE THEN
-    v_credit_add_results := schema_main.v1_credit_add (json_build_object('account_code', p_account_code, 'subscription_credit_amount', v_p_subscription_credit_amount, 'reset_subscription_credit_amount', (p_data ->> 'reset_subscription_credit_amount')::BOOLEAN, 'reset_manual_credit_amount', (p_data ->> 'reset_manual_credit_amount')::BOOLEAN)::JSONB);
+    v_credit_add_results := schema_main.v1_credit_add (json_build_object('account_code', p_account_code, 'subscription_credit_amount', v_p_subscription_credit_amount, 'reset_subscription_credit_amount', (p_data ->> 'reset_subscription_credit_amount')::BOOLEAN, 'reset_manual_credit_amount', (p_data ->> 'reset_manual_credit_amount')::BOOLEAN, 'allocated_subscription_credit_amount_to_add', v_p_subscription_credit_amount)::JSONB);
     IF (v_credit_add_results ->> k_status)::BOOLEAN = FALSE THEN
       RAISE EXCEPTION 'failed to add credits: %', v_credit_add_results ->> k_message;
     END IF;
