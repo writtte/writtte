@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"encoding/json"
+	"html/template"
 	"strconv"
 	"time"
 
@@ -23,10 +24,10 @@ func signInLink(email, name, code, accessToken,
 
 	var result bytes.Buffer
 	err := glob.Config.EmailTemplates.SignInQuickLink.
-		Execute(&result, map[string]string{
+		Execute(&result, map[string]any{
 			"EmailTitle":   mailSubject,
 			"EmailAddress": *email,
-			"SignInLink":   generatedLink,
+			"SignInLink":   template.URL(generatedLink), // #nosec G203
 			"CurrentYear":  strconv.Itoa(time.Now().Year()),
 		})
 
