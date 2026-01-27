@@ -106,6 +106,9 @@
     "dotenv",
     "taskfile",
     "languagetool",
-    "langtoolcheck"
+    "langtoolcheck",
+    "rlimit",
+    "PGUSER",
+    "PGPASSWORD"
   ]
 }
