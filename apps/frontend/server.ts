@@ -14,7 +14,7 @@ const allowedOrigins: string[] = process.env.ALLOWED_ORIGINS?.split(',') || [
   '*',
 ];
 
-const appDir: string = './';
+const appDir: string = import.meta.dir;
 
 const filePathRegex = /\.\w+$/;
 
