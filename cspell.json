@@ -109,6 +109,8 @@
     "langtoolcheck",
     "rlimit",
     "PGUSER",
-    "PGPASSWORD"
+    "PGPASSWORD",
+    "fontobject",
+    "nosniff"
   ]
 }
