@@ -55,7 +55,7 @@ const getSubscriptionSettingsContent = (): HTMLDivElement[] => {
 
           const { status, response } = await v1CheckoutSessionLink({
             accessToken: getCurrentAccountData()?.access_token ?? '',
-            returnURL: `${FRONTEND_CONFIGS.URL}/${PATHS.DOCUMENTS}`,
+            returnURL: `${FRONTEND_CONFIGS.URL}${PATHS.DOCUMENTS}`,
           });
 
           if (status !== HTTP_STATUS.OK || !response) {
@@ -102,7 +102,7 @@ const getSubscriptionSettingsContent = (): HTMLDivElement[] => {
 
           const { status, response } = await v1CustomerPortalLink({
             accessToken: getCurrentAccountData()?.access_token ?? '',
-            returnURL: `${FRONTEND_CONFIGS.URL}/${PATHS.DOCUMENTS}`,
+            returnURL: `${FRONTEND_CONFIGS.URL}${PATHS.DOCUMENTS}`,
           });
 
           if (status !== HTTP_STATUS.OK || !response) {

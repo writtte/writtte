@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/base64"
 	"encoding/json"
+	"html/template"
 	"strconv"
 	"time"
 
@@ -22,10 +23,10 @@ func signUpLink(email, code *string) (title, subject,
 
 	var result bytes.Buffer
 	err := glob.Config.EmailTemplates.SignUpLink.
-		Execute(&result, map[string]string{
+		Execute(&result, map[string]any{
 			"EmailTitle":     mailSubject,
 			"EmailAddress":   *email,
-			"InvitationLink": generatedLink,
+			"InvitationLink": template.URL(generatedLink), // #nosec G203
 			"CurrentYear":    strconv.Itoa(time.Now().Year()),
 		})
 
@@ -78,13 +79,17 @@ func emailUpdateLink(email, code, accountCode,
 
 	var result bytes.Buffer
 	err := glob.Config.EmailTemplates.AccountEmailUpdate.
-		Execute(&result, map[string]string{
+		// revive:disable:line-length-limit
+
+		Execute(&result, map[string]any{
 			"EmailTitle":              mailSubject,
 			"EmailAddress":            *email,
 			"NewEmailAddressToUpdate": *newEmailToUpdate,
-			"ConfirmationLink":        generatedLink,
+			"ConfirmationLink":        template.URL(generatedLink), // #nosec G203
 			"CurrentYear":             strconv.Itoa(time.Now().Year()),
 		})
+
+	// revive:enable:line-length-limit
 
 	if err != nil {
 		panic(err)

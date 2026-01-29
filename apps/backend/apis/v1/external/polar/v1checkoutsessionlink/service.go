@@ -68,7 +68,6 @@ func generateCheckoutLink(accountCode, name, email, returnURL *string,
 	body := requestBody{
 		Products: []string{
 			configs.PolarPlanProductIDSoloMonthly,
-			configs.PolarPlanProductIDSoloYearly,
 		},
 		CustomerName:  *name,
 		CustomerEmail: *email,

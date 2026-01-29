@@ -10,7 +10,7 @@ const packageJson = JSON.parse(
 )
 
 export default defineConfig({
-  base: "./",
+  base: "/",
   envDir: "../../",
   build: {
     rollupOptions: {
