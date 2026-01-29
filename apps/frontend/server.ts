@@ -54,7 +54,7 @@ const getSecurityHeaders = (): SecurityHeaders => {
       "style-src 'self' 'unsafe-inline'; " +
       "img-src 'self' data: https:; " +
       "font-src 'self' data:; " +
-      "connect-src 'self' https://api.writtte.com https://*.ingest.us.sentry.io https://*.ingest.sentry.io;",
+      "connect-src 'self' https://api.writtte.com https://*.ingest.us.sentry.io https://*.ingest.sentry.io https://writtte.s3.us-east-1.amazonaws.com;",
   };
 
   if (isProduction) {
