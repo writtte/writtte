@@ -1,6 +1,9 @@
 // biome-ignore-all lint/correctness/noNodejsModules: NodeJS modules are required in this script
 // biome-ignore-all lint/correctness/noProcessGlobal: Global processes are required in this script
 
+// This script is used only for hosting production frontend application. Modify
+// the headers as needed for your hosting environment.
+
 import { join, resolve } from 'node:path';
 import { type BunFile, file, serve } from 'bun';
 
