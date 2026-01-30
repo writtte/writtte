@@ -5,7 +5,6 @@ import {
 import { AnimatedIcon, AnimatedIconName } from '../components/AnimatedIcon';
 import { Editor } from '../components/Editor';
 import { ErrorMessage } from '../components/ErrorMessage';
-import { FlatIcon, FlatIconName } from '../components/FlatIcon';
 import { LoadingIndicator } from '../components/LoadingIndicator';
 import { v1DocumentSharingRetrieve } from '../data/apis/documentSharing/v1DocumentSharingRetrieve';
 import { v1DocumentSharingViewCreate } from '../data/apis/documentSharingView/v1SharingViewCreate';
@@ -40,11 +39,9 @@ const SharedDocumentPage = async (
   document.body.appendChild(loadingIndicatorElement);
 
   const pageDiv = document.createElement('div');
-  const headerDiv = document.createElement('div');
   const badgeA = document.createElement('a');
 
   pageDiv.classList.add('shared-document-page');
-  headerDiv.classList.add('shared-document-page__header');
   badgeA.classList.add('shared-document-page__badge');
 
   const editorElement = Editor({
@@ -102,11 +99,10 @@ const SharedDocumentPage = async (
   checkAndSetImagesInSharedDocument(editorElement.element);
 
   badgeA.textContent = 'Drafted in Writtte';
-  badgeA.href = 'https://writtte.com';
+  badgeA.href = 'https://writtte.com?utm_source=shared-document';
   badgeA.target = '_blank';
 
-  headerDiv.appendChild(FlatIcon(FlatIconName._26_WRITTTE_LOGO));
-  pageDiv.append(headerDiv, editorElement.element, badgeA);
+  pageDiv.append(editorElement.element, badgeA);
 
   // The loading indicator should be removed after everything is
   // completed. This should be the very last step.
