@@ -102,7 +102,7 @@ const SharedDocumentPage = async (
   checkAndSetImagesInSharedDocument(editorElement.element);
 
   badgeA.textContent = 'Drafted in Writtte';
-  badgeA.href = 'https://writtte.com';
+  badgeA.href = 'https://writtte.com?utm_source=shared-document';
   badgeA.target = '_blank';
 
   headerDiv.appendChild(FlatIcon(FlatIconName._26_WRITTTE_LOGO));
