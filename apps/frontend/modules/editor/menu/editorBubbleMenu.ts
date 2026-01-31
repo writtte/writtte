@@ -34,6 +34,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_AI),
+          toolTip: langKeys().EditorBubbleMenuTooltipAi,
           isVisible: true,
           isSelected: false,
           onClick: async (): Promise<void> => {
@@ -50,6 +51,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_PARAGRAPH),
+          toolTip: langKeys().EditorBubbleMenuTooltipParagraph,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -64,6 +66,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_BOLD),
+          toolTip: langKeys().EditorBubbleMenuTooltipBold,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -78,6 +81,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_ITALIC),
+          toolTip: langKeys().EditorBubbleMenuTooltipItalic,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -92,6 +96,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_UNDERLINE),
+          toolTip: langKeys().EditorBubbleMenuTooltipUnderline,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -106,6 +111,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_INLINE_CODE),
+          toolTip: langKeys().EditorBubbleMenuTooltipInlineCode,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -120,6 +126,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_SUPER_SCRIPT),
+          toolTip: langKeys().EditorBubbleMenuTooltipSuperscript,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -134,6 +141,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_SUB_SCRIPT),
+          toolTip: langKeys().EditorBubbleMenuTooltipSubscript,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -148,6 +156,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_STRIKETHROUGH),
+          toolTip: langKeys().EditorBubbleMenuTooltipStrikethrough,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -162,6 +171,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_BULLET_LIST),
+          toolTip: langKeys().EditorBubbleMenuTooltipBulletList,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -176,6 +186,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_NUMBER_LIST),
+          toolTip: langKeys().EditorBubbleMenuTooltipNumberList,
           isVisible: true,
           isSelected: false,
           onClick: (): void => {
@@ -190,6 +201,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_HYPERLINK),
+          toolTip: langKeys().EditorBubbleMenuTooltipHyperlink,
           isVisible: false,
           isSelected: false,
           onClick: (): void => {
@@ -222,6 +234,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_HYPERLINK_ADD),
+          toolTip: langKeys().EditorBubbleMenuTooltipHyperlinkAdd,
           isVisible: false,
           isSelected: false,
           onClick: (): void => {
@@ -238,6 +251,7 @@ const setupEditorBubbleMenu = (): HTMLMenuElement => {
         item: {
           type: BubbleMenuItemType.BUTTON,
           icon: FlatIcon(FlatIconName._18_HYPERLINK_REMOVE),
+          toolTip: langKeys().EditorBubbleMenuTooltipHyperlinkRemove,
           isVisible: false,
           isSelected: false,
           onClick: (): void => {

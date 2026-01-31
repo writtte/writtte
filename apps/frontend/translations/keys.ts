@@ -55,6 +55,20 @@ type TLangKeys = {
   EditorAiMenuStyleNull: string;
   EditorAiMenuStyles: string;
   EditorAiMenuTitle: string;
+  EditorBubbleMenuTooltipAi: string;
+  EditorBubbleMenuTooltipBold: string;
+  EditorBubbleMenuTooltipBulletList: string;
+  EditorBubbleMenuTooltipHyperlink: string;
+  EditorBubbleMenuTooltipHyperlinkAdd: string;
+  EditorBubbleMenuTooltipHyperlinkRemove: string;
+  EditorBubbleMenuTooltipInlineCode: string;
+  EditorBubbleMenuTooltipItalic: string;
+  EditorBubbleMenuTooltipNumberList: string;
+  EditorBubbleMenuTooltipParagraph: string;
+  EditorBubbleMenuTooltipStrikethrough: string;
+  EditorBubbleMenuTooltipSubscript: string;
+  EditorBubbleMenuTooltipSuperscript: string;
+  EditorBubbleMenuTooltipUnderline: string;
   EditorFixedMenuTooltipAi: string;
   EditorFixedMenuTooltipBlockQuote: string;
   EditorFixedMenuTooltipBulletList: string;
@@ -366,6 +380,20 @@ const langKeys = (): TLangKeys => {
     EditorAiMenuStyleNull: getTr('EDITOR_AI_MENU_STYLE_NULL'),
     EditorAiMenuStyles: getTr('EDITOR_AI_MENU_STYLES'),
     EditorAiMenuTitle: getTr('EDITOR_AI_MENU_TITLE'),
+    EditorBubbleMenuTooltipAi: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_AI'),
+    EditorBubbleMenuTooltipBold: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_BOLD'),
+    EditorBubbleMenuTooltipBulletList: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_BULLET_LIST'),
+    EditorBubbleMenuTooltipHyperlink: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_HYPERLINK'),
+    EditorBubbleMenuTooltipHyperlinkAdd: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_HYPERLINK_ADD'),
+    EditorBubbleMenuTooltipHyperlinkRemove: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_HYPERLINK_REMOVE'),
+    EditorBubbleMenuTooltipInlineCode: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_INLINE_CODE'),
+    EditorBubbleMenuTooltipItalic: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_ITALIC'),
+    EditorBubbleMenuTooltipNumberList: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_NUMBER_LIST'),
+    EditorBubbleMenuTooltipParagraph: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_PARAGRAPH'),
+    EditorBubbleMenuTooltipStrikethrough: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_STRIKETHROUGH'),
+    EditorBubbleMenuTooltipSubscript: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_SUBSCRIPT'),
+    EditorBubbleMenuTooltipSuperscript: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_SUPERSCRIPT'),
+    EditorBubbleMenuTooltipUnderline: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_UNDERLINE'),
     EditorFixedMenuTooltipAi: getTr('EDITOR_FIXED_MENU_TOOLTIP_AI'),
     EditorFixedMenuTooltipBlockQuote: getTr('EDITOR_FIXED_MENU_TOOLTIP_BLOCK_QUOTE'),
     EditorFixedMenuTooltipBulletList: getTr('EDITOR_FIXED_MENU_TOOLTIP_BULLET_LIST'),
