@@ -17,12 +17,39 @@ const allowedOrigins: string[] = process.env.ALLOWED_ORIGINS?.split(',') || [
   '*',
 ];
 
+const blockedFilePatterns: RegExp[] = [
+  /^\./,
+  /\.env($|\.)/i,
+  /\.(pem|key|crt|p12|pfx|jks)$/i,
+  /\.(sql|db|sqlite|sqlite3)$/i,
+  /\.(log|bak|backup|old|orig|swp|swo)$/i,
+  /\.(ts|tsx|jsx|vue|svelte)$/i,
+  /\.(yml|yaml|toml|ini|cfg)$/i,
+  /^(package|package-lock|yarn\.lock|pnpm-lock|tsconfig|vite\.config|biome|eslint|prettier)/i,
+  /^(Dockerfile|docker-compose|Makefile|Vagrantfile)$/i,
+  /^\.git/,
+  /^\.vscode/,
+  /node_modules/,
+];
+
 const appDir: string = import.meta.dir;
 
 const filePathRegex = /\.\w+$/;
 
 const isFileRequest = (pathname: string): boolean =>
   filePathRegex.test(pathname);
+
+const isSensitiveFile = (pathname: string): boolean => {
+  const segments = pathname.split('/').filter(Boolean);
+
+  for (const segment of segments) {
+    if (blockedFilePatterns.some((pattern) => pattern.test(segment))) {
+      return true;
+    }
+  }
+
+  return false;
+};
 
 const getCacheHeaders = (pathname: string): CacheHeaders => {
   if (pathname.startsWith('/assets/')) {
@@ -180,6 +207,14 @@ serve({
       }
 
       pathname = decodeURIComponent(pathname);
+
+      if (pathname.includes('\0')) {
+        return createErrorResponse('Bad Request', 400, origin);
+      }
+
+      if (isSensitiveFile(pathname)) {
+        return createErrorResponse('Forbidden', 403, origin);
+      }
 
       if (pathname === '/') {
         pathname = '/index.html';
