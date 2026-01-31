@@ -1,5 +1,7 @@
+import { TOOL_TIP_TIMEOUT } from '../constants/timeouts';
 import { buildError } from '../helpers/error/build';
 import { setTestId } from '../utils/dom/testId';
+import { ToolTip, ToolTipPosition } from './ToolTip';
 
 const BubbleMenuItemType = {
   TEXT: 'TEXT',
@@ -28,6 +30,7 @@ type TOptions = {
     | {
         type: typeof BubbleMenuItemType.BUTTON;
         icon: HTMLElement;
+        toolTip: string;
         isVisible: boolean;
         isSelected: boolean;
         onClick: () => void;
@@ -175,6 +178,13 @@ const EditorBubbleMenuItem = (opts: TOptions): TReturnEditorBubbleMenuItem => {
     button.appendChild(iconDiv);
 
     setTestId(button, opts.id);
+
+    ToolTip({
+      text: opts.item.toolTip,
+      position: ToolTipPosition.TOP,
+      delay: TOOL_TIP_TIMEOUT.SHORT,
+      targetElement: button,
+    });
 
     button.addEventListener('click', (e) => {
       e.preventDefault();

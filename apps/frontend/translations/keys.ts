@@ -55,6 +55,35 @@ type TLangKeys = {
   EditorAiMenuStyleNull: string;
   EditorAiMenuStyles: string;
   EditorAiMenuTitle: string;
+  EditorBubbleMenuTooltipAi: string;
+  EditorBubbleMenuTooltipBold: string;
+  EditorBubbleMenuTooltipBulletList: string;
+  EditorBubbleMenuTooltipHyperlink: string;
+  EditorBubbleMenuTooltipHyperlinkAdd: string;
+  EditorBubbleMenuTooltipHyperlinkRemove: string;
+  EditorBubbleMenuTooltipInlineCode: string;
+  EditorBubbleMenuTooltipItalic: string;
+  EditorBubbleMenuTooltipNumberList: string;
+  EditorBubbleMenuTooltipParagraph: string;
+  EditorBubbleMenuTooltipStrikethrough: string;
+  EditorBubbleMenuTooltipSubscript: string;
+  EditorBubbleMenuTooltipSuperscript: string;
+  EditorBubbleMenuTooltipUnderline: string;
+  EditorFixedMenuTooltipAi: string;
+  EditorFixedMenuTooltipBlockQuote: string;
+  EditorFixedMenuTooltipBulletList: string;
+  EditorFixedMenuTooltipCodeBlock: string;
+  EditorFixedMenuTooltipGrammar: string;
+  EditorFixedMenuTooltipHeading01: string;
+  EditorFixedMenuTooltipHeading02: string;
+  EditorFixedMenuTooltipHeading03: string;
+  EditorFixedMenuTooltipHeading04: string;
+  EditorFixedMenuTooltipHeading05: string;
+  EditorFixedMenuTooltipHeading06: string;
+  EditorFixedMenuTooltipHorizontalRule: string;
+  EditorFixedMenuTooltipImage: string;
+  EditorFixedMenuTooltipNumberList: string;
+  EditorFixedMenuTooltipParagraph: string;
   EditorLoadingUploadingImage: string;
   EditorMenuItemAIGenerate: string;
   EditorMenuItemBlockQuote: string;
@@ -351,6 +380,35 @@ const langKeys = (): TLangKeys => {
     EditorAiMenuStyleNull: getTr('EDITOR_AI_MENU_STYLE_NULL'),
     EditorAiMenuStyles: getTr('EDITOR_AI_MENU_STYLES'),
     EditorAiMenuTitle: getTr('EDITOR_AI_MENU_TITLE'),
+    EditorBubbleMenuTooltipAi: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_AI'),
+    EditorBubbleMenuTooltipBold: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_BOLD'),
+    EditorBubbleMenuTooltipBulletList: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_BULLET_LIST'),
+    EditorBubbleMenuTooltipHyperlink: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_HYPERLINK'),
+    EditorBubbleMenuTooltipHyperlinkAdd: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_HYPERLINK_ADD'),
+    EditorBubbleMenuTooltipHyperlinkRemove: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_HYPERLINK_REMOVE'),
+    EditorBubbleMenuTooltipInlineCode: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_INLINE_CODE'),
+    EditorBubbleMenuTooltipItalic: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_ITALIC'),
+    EditorBubbleMenuTooltipNumberList: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_NUMBER_LIST'),
+    EditorBubbleMenuTooltipParagraph: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_PARAGRAPH'),
+    EditorBubbleMenuTooltipStrikethrough: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_STRIKETHROUGH'),
+    EditorBubbleMenuTooltipSubscript: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_SUBSCRIPT'),
+    EditorBubbleMenuTooltipSuperscript: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_SUPERSCRIPT'),
+    EditorBubbleMenuTooltipUnderline: getTr('EDITOR_BUBBLE_MENU_TOOLTIP_UNDERLINE'),
+    EditorFixedMenuTooltipAi: getTr('EDITOR_FIXED_MENU_TOOLTIP_AI'),
+    EditorFixedMenuTooltipBlockQuote: getTr('EDITOR_FIXED_MENU_TOOLTIP_BLOCK_QUOTE'),
+    EditorFixedMenuTooltipBulletList: getTr('EDITOR_FIXED_MENU_TOOLTIP_BULLET_LIST'),
+    EditorFixedMenuTooltipCodeBlock: getTr('EDITOR_FIXED_MENU_TOOLTIP_CODE_BLOCK'),
+    EditorFixedMenuTooltipGrammar: getTr('EDITOR_FIXED_MENU_TOOLTIP_GRAMMAR'),
+    EditorFixedMenuTooltipHeading01: getTr('EDITOR_FIXED_MENU_TOOLTIP_HEADING_01'),
+    EditorFixedMenuTooltipHeading02: getTr('EDITOR_FIXED_MENU_TOOLTIP_HEADING_02'),
+    EditorFixedMenuTooltipHeading03: getTr('EDITOR_FIXED_MENU_TOOLTIP_HEADING_03'),
+    EditorFixedMenuTooltipHeading04: getTr('EDITOR_FIXED_MENU_TOOLTIP_HEADING_04'),
+    EditorFixedMenuTooltipHeading05: getTr('EDITOR_FIXED_MENU_TOOLTIP_HEADING_05'),
+    EditorFixedMenuTooltipHeading06: getTr('EDITOR_FIXED_MENU_TOOLTIP_HEADING_06'),
+    EditorFixedMenuTooltipHorizontalRule: getTr('EDITOR_FIXED_MENU_TOOLTIP_HORIZONTAL_RULE'),
+    EditorFixedMenuTooltipImage: getTr('EDITOR_FIXED_MENU_TOOLTIP_IMAGE'),
+    EditorFixedMenuTooltipNumberList: getTr('EDITOR_FIXED_MENU_TOOLTIP_NUMBER_LIST'),
+    EditorFixedMenuTooltipParagraph: getTr('EDITOR_FIXED_MENU_TOOLTIP_PARAGRAPH'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
     EditorMenuItemAIGenerate: getTr('EDITOR_MENU_ITEM_AI_GENERATE'),
     EditorMenuItemBlockQuote: getTr('EDITOR_MENU_ITEM_BLOCK_QUOTE'),
