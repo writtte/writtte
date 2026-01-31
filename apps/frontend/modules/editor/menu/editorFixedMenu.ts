@@ -5,6 +5,7 @@ import {
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
 import { isAccountInFreeTrial } from '../../../data/stores/overview';
+import { langKeys } from '../../../translations/keys';
 import { browseAndInsertImage } from '../image/browseImage';
 import { setupAIMenu } from './editorAIMenu';
 
@@ -23,6 +24,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_AI_MAGIC),
+        toolTip: langKeys().EditorFixedMenuTooltipAi,
         isVisible: true,
         isSelected: false,
         onClick: async (): Promise<void> => await setupAIMenu(),
@@ -35,6 +37,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_GRAMMAR),
+        toolTip: langKeys().EditorFixedMenuTooltipGrammar,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -49,6 +52,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_PARAGRAPH),
+        toolTip: langKeys().EditorFixedMenuTooltipParagraph,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -63,6 +67,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_HEADING_01),
+        toolTip: langKeys().EditorFixedMenuTooltipHeading01,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -77,6 +82,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_HEADING_02),
+        toolTip: langKeys().EditorFixedMenuTooltipHeading02,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -91,6 +97,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_HEADING_03),
+        toolTip: langKeys().EditorFixedMenuTooltipHeading03,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -105,6 +112,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_HEADING_04),
+        toolTip: langKeys().EditorFixedMenuTooltipHeading04,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -119,6 +127,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_HEADING_05),
+        toolTip: langKeys().EditorFixedMenuTooltipHeading05,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -133,6 +142,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_HEADING_06),
+        toolTip: langKeys().EditorFixedMenuTooltipHeading06,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -147,6 +157,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_BULLET_LIST),
+        toolTip: langKeys().EditorFixedMenuTooltipBulletList,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -161,6 +172,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_NUMBER_LIST),
+        toolTip: langKeys().EditorFixedMenuTooltipNumberList,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -175,6 +187,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_BLOCK_QUOTE),
+        toolTip: langKeys().EditorFixedMenuTooltipBlockQuote,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -189,6 +202,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_CODE_BLOCK),
+        toolTip: langKeys().EditorFixedMenuTooltipCodeBlock,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -203,6 +217,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_HORIZONTAL_RULE),
+        toolTip: langKeys().EditorFixedMenuTooltipHorizontalRule,
         isVisible: true,
         isSelected: false,
         onClick: (): void => {
@@ -217,6 +232,7 @@ const setupEditorFixedMenuOptions = (): (TEditorFixedMenuItemOptions & {
       item: {
         type: FixedMenuItemType.BUTTON,
         icon: FlatIcon(FlatIconName._18_IMAGE),
+        toolTip: langKeys().EditorFixedMenuTooltipImage,
         isVisible: true,
         isSelected: false,
         onClick: async (): Promise<void> => await browseAndInsertImage(),

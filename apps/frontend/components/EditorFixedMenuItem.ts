@@ -1,6 +1,8 @@
+import { TOOL_TIP_TIMEOUT } from '../constants/timeouts';
 import { buildError } from '../helpers/error/build';
 import { setTestId } from '../utils/dom/testId';
 import { AnimatedIcon, AnimatedIconName } from './AnimatedIcon';
+import { ToolTip, ToolTipPosition } from './ToolTip';
 
 const FixedMenuItemType = {
   TEXT: 'TEXT',
@@ -29,6 +31,7 @@ type TOptions = {
     | {
         type: typeof FixedMenuItemType.BUTTON;
         icon: HTMLElement;
+        toolTip: string;
         isVisible: boolean;
         isSelected: boolean;
         onClick: () => void;
@@ -174,7 +177,15 @@ const EditorFixedMenuItem = (opts: TOptions): TReturnEditorFixedMenuItem => {
     iconDiv.appendChild(opts.item.icon);
     button.appendChild(iconDiv);
 
+    button.id = opts.id;
     setTestId(button, opts.id);
+
+    ToolTip({
+      text: opts.item.toolTip,
+      position: ToolTipPosition.BOTTOM,
+      delay: TOOL_TIP_TIMEOUT.SHORT,
+      targetElement: button,
+    });
 
     button.addEventListener('click', (e) => {
       e.preventDefault();

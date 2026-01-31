@@ -1,0 +1,73 @@
+.tool-tip-target {
+  position: relative;
+}
+
+.tool-tip {
+  align-items: center;
+  background-color: var(--color--bg-dark-600);
+  border-radius: 8px;
+  color: var(--color--text-invert);
+  display: flex;
+  font-size: 12px;
+  font-weight: 400;
+  height: 24px;
+  justify-content: center;
+  opacity: 0;
+  padding-inline: 8px;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease,
+    transform 0.2s ease;
+  visibility: hidden;
+  white-space: nowrap;
+  width: max-content;
+  z-index: 9999;
+}
+
+.tool-tip.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tool-tip--bottom {
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+}
+
+.tool-tip--bottom.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.tool-tip--top {
+  left: 50%;
+  top: -30px;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+.tool-tip--top.visible {
+  transform: translateX(-50%) translateY(0);
+}
+
+.tool-tip--left {
+  left: -8px;
+  top: 50%;
+  transform: translateX(-100%) translateY(-50%) translateX(-5px);
+}
+
+.tool-tip--left.visible {
+  transform: translateX(-100%) translateY(-50%);
+}
+
+.tool-tip--right {
+  right: -8px;
+  top: 50%;
+  transform: translateX(100%) translateY(-50%) translateX(5px);
+}
+
+.tool-tip--right.visible {
+  transform: translateX(100%) translateY(-50%);
+}

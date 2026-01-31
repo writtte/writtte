@@ -100,6 +100,7 @@
 @import "./components/status_text.css";
 @import "./components/style_change_modal.css";
 @import "./components/text_area.css";
+@import "./components/tool_tip.css";
 @import "./components/top_bar.css";
 @import "./components/version_modal.css";
 @import "./components/version_modal_content.css";
