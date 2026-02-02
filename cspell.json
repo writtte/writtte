@@ -111,6 +111,9 @@
     "PGUSER",
     "PGPASSWORD",
     "fontobject",
-    "nosniff"
+    "nosniff",
+    "Zepto",
+    "WORKTREE",
+    "htmlbody"
   ]
 }

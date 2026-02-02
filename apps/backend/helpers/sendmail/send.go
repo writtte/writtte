@@ -1,12 +1,11 @@
 package sendmail
 
 import (
+	"fmt"
 	"net/http"
 
 	"backend/cmd/flags"
-	"backend/cmd/glob"
 	"backend/constants"
-	"backend/pkg/extaws"
 )
 
 type Info struct {
@@ -19,7 +18,7 @@ type Info struct {
 }
 
 func Send(r *http.Request, info Info) {
-	if !flags.ReturnSESStatus() {
+	if !flags.ReturnEmailSendStatus() {
 		return
 	}
 
@@ -32,33 +31,16 @@ func Send(r *http.Request, info Info) {
 		uniqueID = ""
 	}
 
-	email := extaws.EmailInfo{
-		Sender:    *info.From,
-		Recipient: *info.To,
-		Subject:   *info.Subject,
-		HTMLBody:  info.Content,
-		CharSet:   extaws.CharSetUTF8,
-		Tags: []extaws.SESTags{
-			{
-				Name:  extaws.ReturnAWSString("type"),
-				Value: extaws.ReturnAWSString(*info.Title),
-			},
-		},
-		Configuration: *info.Config,
+	emailClient := flags.ReturnEmailClient()
+	switch emailClient {
+	case "ses":
+		sendViaSES(info, uniqueID)
+
+	case "zepto":
+		sendViaZepto(info, uniqueID)
+
+	default:
+		panic(fmt.Sprintf("invalid email client '%s' detected",
+			emailClient))
 	}
-
-	output, err := extaws.SendEmail(email, *glob.Config.AWSSESSession)
-	if err != nil {
-		glob.Config.Logger.Error(map[string]any{
-			constants.LogID:    uniqueID,
-			constants.LogError: err.Error(),
-		}, constants.SESEmailSendFailed)
-
-		return
-	}
-
-	glob.Config.Logger.Success(map[string]any{
-		constants.LogID:      uniqueID,
-		constants.LogDetails: output,
-	}, constants.SESEmailSendSuccess)
 }

@@ -9,7 +9,9 @@ func SetupConfigs() {
 	configs.DatabaseEnvs()
 	configs.FrontendEnvs()
 	configs.LangToolEnvs()
-	configs.AWSEnvs()
 	configs.JWTEnvs()
+	configs.AWSEnvs()
+	configs.ZohoEnvs()
+	configs.SentryEnvs()
 	configs.PolarEnvs()
 }

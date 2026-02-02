@@ -8,7 +8,7 @@ import (
 )
 
 func sendLocally(i Info) bool {
-	shouldUseLocal := glob.Config.UseLocalSESInLocalEnv
+	shouldUseLocal := glob.Config.ShouldPreventSendEmailInLocal
 	if !shouldUseLocal {
 		return false
 	}

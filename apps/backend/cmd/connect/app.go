@@ -27,7 +27,7 @@ func SetupApp() {
 	glob.Config.RateLimit = flags.ReturnRateLimitStatus()
 	glob.Config.Validator = extvalidator.Init()
 
-	if flags.ReturnSESStatus() {
+	if flags.ReturnEmailSendStatus() {
 		const emptySession = ""
 		cfg, err := extaws.InitSESConfig(extaws.SESConfig{
 			Region:          &configs.AWSSESRegion,
@@ -70,7 +70,7 @@ func SetupApp() {
 	// Always add local selection at the end of the
 	// configuration flow
 
-	glob.Config.UseLocalSESInLocalEnv =
+	glob.Config.ShouldPreventSendEmailInLocal =
 		glob.Config.Environment == flags.LocalEnv
 }
 

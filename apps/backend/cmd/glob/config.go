@@ -25,7 +25,7 @@ type GlobalConfiguration struct {
 	AWSBedrockClient                  *extaws.BedrockClient
 	EmailTemplates                    *embeds.EmailTemplateFiles
 	RateLimit                         bool
-	UseLocalSESInLocalEnv             bool
+	ShouldPreventSendEmailInLocal     bool
 }
 
 var Config *GlobalConfiguration
