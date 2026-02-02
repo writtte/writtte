@@ -10,7 +10,6 @@ import (
 
 type Info struct {
 	Title   *string // Email title or type for tagging purposes
-	From    *string // Sender email address
 	To      *string // Recipient email address
 	Subject *string // Email subject line
 	Content *string // Email content in HTML format

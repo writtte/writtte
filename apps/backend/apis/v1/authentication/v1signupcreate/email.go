@@ -13,7 +13,6 @@ func sendSignUpEmail(r *http.Request, email, name, accountCode *string,
 
 	info := sendmail.Info{
 		Title:   title,
-		From:    &configs.AWSSESTransactionalSender,
 		To:      email,
 		Subject: subject,
 		Content: content,
