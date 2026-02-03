@@ -12,7 +12,6 @@ func sendSignUpEmail(r *http.Request, email, code *string) *string {
 
 	info := sendmail.Info{
 		Title:   title,
-		From:    &configs.AWSSESTransactionalSender,
 		To:      email,
 		Subject: subject,
 		Content: content,
@@ -30,7 +29,6 @@ func sendEmailUpdateEmail(r *http.Request, email, code, accountCode,
 
 	info := sendmail.Info{
 		Title:   title,
-		From:    &configs.AWSSESTransactionalSender,
 		To:      email,
 		Subject: subject,
 		Content: content,

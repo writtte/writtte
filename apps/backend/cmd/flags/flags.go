@@ -1,6 +1,8 @@
 package flags
 
-import "flag"
+import (
+	"flag"
+)
 
 const (
 	LocalEnv int = iota
@@ -18,7 +20,8 @@ var (
 	selectedMode        int
 	selectedAddress     string
 	rLimitStatus        bool
-	sesStatus           bool
+	emailSendStatus     bool
+	selectedEmailClient string
 )
 
 func Scan() {
@@ -28,16 +31,17 @@ func Scan() {
 	mode := flag.String("mode", emptyStr, emptyStr)
 	address := flag.String("address", emptyStr, emptyStr)
 	rLimitEnabled := flag.Bool("rlimit-enabled", false, emptyStr)
-	sesEnabled := flag.Bool("ses-enabled", false, emptyStr)
+	emailSendEnabled := flag.Bool("emails-enabled", false, emptyStr)
+	emailClient := flag.String("email-client", emptyStr, emptyStr)
 
-	// revive:disable-next-line
-	flag.Parse()
+	flag.Parse() // revive:disable-line
 
 	selectedEnvironment = checkEnvironment(*env)
 	selectedMode = checkMode(*mode)
 	selectedAddress = checkAddresses(*address)
 	rLimitStatus = bool(*rLimitEnabled)
-	sesStatus = bool(*sesEnabled)
+	emailSendStatus = bool(*emailSendEnabled)
+	selectedEmailClient = *emailClient
 }
 
 func ReturnEnvironment() int {
@@ -56,6 +60,10 @@ func ReturnRateLimitStatus() bool {
 	return rLimitStatus
 }
 
-func ReturnSESStatus() bool {
-	return sesStatus
+func ReturnEmailSendStatus() bool {
+	return emailSendStatus
+}
+
+func ReturnEmailClient() string {
+	return selectedEmailClient
 }
