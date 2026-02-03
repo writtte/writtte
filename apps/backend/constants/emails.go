@@ -4,6 +4,8 @@ package constants
 
 const (
 	TransactionalEmailTitle = "Writtte"
+
+	InternalFeedbackEmailTitle = "Writtte Feedback"
 )
 
 const (

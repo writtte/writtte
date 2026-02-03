@@ -5,6 +5,7 @@ import { signOutCurrentAccount } from '../../../helpers/account/signOut';
 import { langKeys } from '../../../translations/keys';
 import { navigateExternal } from '../../../utils/routes/helpers';
 import { openAppearanceModal } from '../../appearance/openAppearanceModal';
+import { openFeedbackModal } from '../../feedback/openFeedbackModal';
 import {
   openSettingsModal,
   settingsPageSectionIDs,
@@ -65,7 +66,18 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         onClick: (): void => navigateExternal(LINKS.PRODUCT_CHANGELOGS),
         sectionTitle: undefined,
         hasTopDivider: false,
-        hasBottomDivider: false,
+        hasBottomDivider: true,
+      },
+      {
+        id: 'menu_item__tpovgkvsvl',
+        text: langKeys().MenuItemFeedback,
+        leftIcon: FlatIcon(FlatIconName._18_FEEDBACK),
+        rightIcon: undefined,
+        isLeftIconVisible: true,
+        onClick: async (): Promise<void> => await openFeedbackModal(),
+        sectionTitle: undefined,
+        hasTopDivider: false,
+        hasBottomDivider: true,
       },
       {
         id: 'menu_item__skauzwsbhh',
@@ -75,7 +87,7 @@ const buildAccountMenu = async (e: PointerEvent): Promise<void> => {
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => await signOutCurrentAccount(),
         sectionTitle: undefined,
-        hasTopDivider: true,
+        hasTopDivider: false,
         hasBottomDivider: false,
       },
     ],

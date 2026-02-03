@@ -22,6 +22,7 @@ func Private(mux *http.ServeMux) {
 	privateroutes.AIStyle(mux, &baseVersion)
 	privateroutes.AIGenerate(mux, &baseVersion)
 	privateroutes.LangTool(mux, &baseVersion)
+	privateroutes.Feedback(mux, &baseVersion)
 	privateroutes.Webhook(mux, &baseVersion)
 	privateroutes.External(mux, &baseVersion)
 }
