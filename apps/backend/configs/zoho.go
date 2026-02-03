@@ -8,6 +8,6 @@ var (
 )
 
 func ZohoEnvs() {
-	ZeptoSender = intenv.Load("ZEPTO_SENDER")
-	ZeptoTokenKey = intenv.Load("ZEPTO_TOKEN_KEY")
+	ZeptoSender = intenv.Load("BE_ZEPTO_SENDER")
+	ZeptoTokenKey = intenv.Load("BE_ZEPTO_TOKEN_KEY")
 }
