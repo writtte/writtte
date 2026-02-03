@@ -37,7 +37,7 @@
       "-mode=debug",
       "-address=127.0.0.1:7100",
       "-emails-enabled",
-      "-emails-client=zepto"
+      "-email-client=zepto"
     ],
     "envFile": "${ZED_WORKTREE_ROOT}/.env"
   }
