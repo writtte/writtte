@@ -19,6 +19,8 @@ type TLangKeys = {
   AlertEmailUpdateRequestSentTitle: string;
   AlertEmailVerifiedDescription: string;
   AlertEmailVerifiedTitle: string;
+  AlertFeedbackSentSuccessfulDescription: string;
+  AlertFeedbackSentSuccessfulTitle: string;
   AlertMiddlewareNeedSignInDescription: string;
   AlertMiddlewareNeedSignInTitle: string;
   AlertMiddlewareSignInRequiredDescription: string;
@@ -126,6 +128,7 @@ type TLangKeys = {
   ErrorEmailMin: string;
   ErrorEmailRequired: string;
   ErrorEmailSimilar: string;
+  ErrorFeedbackContentRequired: string;
   ErrorMessageNotFoundDescription: string;
   ErrorMessageNotFoundTitle: string;
   ErrorMessageOverviewNotLoadedDescription: string;
@@ -148,6 +151,10 @@ type TLangKeys = {
   ErrorUrlRequired: string;
   ErrorVersionHistoryContentRetrievedFailed: string;
   ErrorVersionHistoryListRetrievedFailed: string;
+  FeedbackModalButtonSend: string;
+  FeedbackModalButtonSending: string;
+  FeedbackModalInputPlaceholderMessage: string;
+  FeedbackModalTextTitle: string;
   InputPlaceholderEmailAddress: string;
   InputPlaceholderName: string;
   InputPlaceholderPassword: string;
@@ -165,6 +172,7 @@ type TLangKeys = {
   MenuItemDocumentExportXml: string;
   MenuItemDownloadMarkdown: string;
   MenuItemDownloadXml: string;
+  MenuItemFeedback: string;
   MenuItemHelpAndDocumentation: string;
   MenuItemOpen: string;
   MenuItemOpenInTab: string;
@@ -344,6 +352,8 @@ const langKeys = (): TLangKeys => {
     AlertEmailUpdateRequestSentTitle: getTr('ALERT_EMAIL_UPDATE_REQUEST_SENT_TITLE'),
     AlertEmailVerifiedDescription: getTr('ALERT_EMAIL_VERIFIED_DESCRIPTION'),
     AlertEmailVerifiedTitle: getTr('ALERT_EMAIL_VERIFIED_TITLE'),
+    AlertFeedbackSentSuccessfulDescription: getTr('ALERT_FEEDBACK_SENT_SUCCESSFUL_DESCRIPTION'),
+    AlertFeedbackSentSuccessfulTitle: getTr('ALERT_FEEDBACK_SENT_SUCCESSFUL_TITLE'),
     AlertMiddlewareNeedSignInDescription: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_DESCRIPTION'),
     AlertMiddlewareNeedSignInTitle: getTr('ALERT_MIDDLEWARE_NEED_SIGN_IN_TITLE'),
     AlertMiddlewareSignInRequiredDescription: getTr('ALERT_MIDDLEWARE_SIGN_IN_REQUIRED_DESCRIPTION'),
@@ -451,6 +461,7 @@ const langKeys = (): TLangKeys => {
     ErrorEmailMin: getTr('ERROR_EMAIL_MIN'),
     ErrorEmailRequired: getTr('ERROR_EMAIL_REQUIRED'),
     ErrorEmailSimilar: getTr('ERROR_EMAIL_SIMILAR'),
+    ErrorFeedbackContentRequired: getTr('ERROR_FEEDBACK_CONTENT_REQUIRED'),
     ErrorMessageNotFoundDescription: getTr('ERROR_MESSAGE_NOT_FOUND_DESCRIPTION'),
     ErrorMessageNotFoundTitle: getTr('ERROR_MESSAGE_NOT_FOUND_TITLE'),
     ErrorMessageOverviewNotLoadedDescription: getTr('ERROR_MESSAGE_OVERVIEW_NOT_LOADED_DESCRIPTION'),
@@ -473,6 +484,10 @@ const langKeys = (): TLangKeys => {
     ErrorUrlRequired: getTr('ERROR_URL_REQUIRED'),
     ErrorVersionHistoryContentRetrievedFailed: getTr('ERROR_VERSION_HISTORY_CONTENT_RETRIEVED_FAILED'),
     ErrorVersionHistoryListRetrievedFailed: getTr('ERROR_VERSION_HISTORY_LIST_RETRIEVED_FAILED'),
+    FeedbackModalButtonSend: getTr('FEEDBACK_MODAL_BUTTON_SEND'),
+    FeedbackModalButtonSending: getTr('FEEDBACK_MODAL_BUTTON_SENDING'),
+    FeedbackModalInputPlaceholderMessage: getTr('FEEDBACK_MODAL_INPUT_PLACEHOLDER_MESSAGE'),
+    FeedbackModalTextTitle: getTr('FEEDBACK_MODAL_TEXT_TITLE'),
     InputPlaceholderEmailAddress: getTr('INPUT_PLACEHOLDER_EMAIL_ADDRESS'),
     InputPlaceholderName: getTr('INPUT_PLACEHOLDER_NAME'),
     InputPlaceholderPassword: getTr('INPUT_PLACEHOLDER_PASSWORD'),
@@ -490,6 +505,7 @@ const langKeys = (): TLangKeys => {
     MenuItemDocumentExportXml: getTr('MENU_ITEM_DOCUMENT_EXPORT_XML'),
     MenuItemDownloadMarkdown: getTr('MENU_ITEM_DOWNLOAD_MARKDOWN'),
     MenuItemDownloadXml: getTr('MENU_ITEM_DOWNLOAD_XML'),
+    MenuItemFeedback: getTr('MENU_ITEM_FEEDBACK'),
     MenuItemHelpAndDocumentation: getTr('MENU_ITEM_HELP_AND_DOCUMENTATION'),
     MenuItemOpen: getTr('MENU_ITEM_OPEN'),
     MenuItemOpenInTab: getTr('MENU_ITEM_OPEN_IN_TAB'),
