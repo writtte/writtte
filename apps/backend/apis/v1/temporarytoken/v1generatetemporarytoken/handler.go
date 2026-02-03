@@ -35,7 +35,7 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if !validate.Body(w, r, queries) {
+	if !validate.Body(w, r, body) {
 		return
 	}
 
