@@ -114,6 +114,7 @@
     "nosniff",
     "Zepto",
     "WORKTREE",
-    "htmlbody"
+    "htmlbody",
+    "feedbacksend"
   ]
 }

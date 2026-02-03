@@ -10,6 +10,7 @@ func SetupConfigs() {
 	configs.FrontendEnvs()
 	configs.LangToolEnvs()
 	configs.JWTEnvs()
+	configs.FeedbackEnvs()
 	configs.AWSEnvs()
 	configs.ZohoEnvs()
 	configs.SentryEnvs()
