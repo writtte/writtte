@@ -11,9 +11,9 @@ type CacheHeaders = Record<string, string>;
 
 type SecurityHeaders = Record<string, string>;
 
-const port: number = Number(process.env.PORT) || 3000;
+const port: number = Number(process.env.FE_PORT) || 3000;
 const isProduction: boolean = process.env.NODE_ENV === 'production';
-const allowedOrigins: string[] = process.env.ALLOWED_ORIGINS?.split(',') || [
+const allowedOrigins: string[] = process.env.FE_ALLOWED_ORIGINS?.split(',') || [
   '*',
 ];
 
