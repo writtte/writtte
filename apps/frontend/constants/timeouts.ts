@@ -9,7 +9,8 @@ const ALERT_TIMEOUT = {
 };
 
 const TOAST_TIMEOUT = {
-  SHORT: 10000,
+  SHORT: 4000,
+  LONG: 8000,
 };
 
 const DEBOUNCE_TIMEOUT = {

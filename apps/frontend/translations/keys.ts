@@ -321,6 +321,11 @@ type TLangKeys = {
   StylesModalSectionTitleUpdate: string;
   StylesModalTextTitleCreate: string;
   StylesModalTextTitleUpdate: string;
+  ToastImageDownloadFailed: string;
+  ToastImageDownloadSuccess: string;
+  ToastImageDownloading: string;
+  ToastImagePathCopyFailed: string;
+  ToastImagePathCopySuccess: string;
   TopBarBadgeDaysLeft: string;
   TopBarBadgeDocumentReadOnly: string;
   TopBarBadgeFreeTrialExpired: string;
@@ -657,6 +662,11 @@ const langKeys = (): TLangKeys => {
     StylesModalSectionTitleUpdate: getTr('STYLES_MODAL_SECTION_TITLE_UPDATE'),
     StylesModalTextTitleCreate: getTr('STYLES_MODAL_TEXT_TITLE_CREATE'),
     StylesModalTextTitleUpdate: getTr('STYLES_MODAL_TEXT_TITLE_UPDATE'),
+    ToastImageDownloadFailed: getTr('TOAST_IMAGE_DOWNLOAD_FAILED'),
+    ToastImageDownloadSuccess: getTr('TOAST_IMAGE_DOWNLOAD_SUCCESS'),
+    ToastImageDownloading: getTr('TOAST_IMAGE_DOWNLOADING'),
+    ToastImagePathCopyFailed: getTr('TOAST_IMAGE_PATH_COPY_FAILED'),
+    ToastImagePathCopySuccess: getTr('TOAST_IMAGE_PATH_COPY_SUCCESS'),
     TopBarBadgeDaysLeft: getTr('TOP_BAR_BADGE_DAYS_LEFT'),
     TopBarBadgeDocumentReadOnly: getTr('TOP_BAR_BADGE_DOCUMENT_READ_ONLY'),
     TopBarBadgeFreeTrialExpired: getTr('TOP_BAR_BADGE_FREE_TRIAL_EXPIRED'),
