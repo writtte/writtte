@@ -25,7 +25,10 @@ const ItemCreateInput = (opts: TOptions): TReturnItemCreateInput => {
 
   inputDiv.classList.add('item-create-input');
   input.classList.add('item-create-input__input-element');
-  createButton.classList.add('item-create-input__create-button', 'hide');
+  createButton.classList.add(
+    'item-create-input__create-button',
+    'hide-immediately',
+  );
 
   createButton.appendChild(opts.createButton.icon);
   inputDiv.append(input, createButton);
@@ -39,7 +42,11 @@ const ItemCreateInput = (opts: TOptions): TReturnItemCreateInput => {
   createButton.disabled = true;
   createButton.dataset.hasValue = 'false';
 
+  input.autocomplete = 'off';
+
   const updateButtonState = (): void => {
+    createButton.classList.remove('hide-immediately');
+
     const hasValue = input.value.trim() !== '';
     createButton.disabled = !hasValue;
     createButton.dataset.hasValue = hasValue ? 'true' : 'false';
@@ -86,34 +93,38 @@ const ItemCreateInput = (opts: TOptions): TReturnItemCreateInput => {
   const getValue = (): string => input.value;
 
   const setLoadingState = (isLoading: boolean): void => {
+    createButton.classList.remove('hide-immediately');
+
     if (isLoading) {
-      input.classList.add('hide');
+      inputDiv.classList.add('disable');
+      input.classList.add('disable');
 
       createButton.replaceChildren(
         AnimatedIcon(AnimatedIconName._18_CIRCLE_SPINNER),
       );
 
       createButton.setAttribute('disabled', 'true');
-      createButton.classList.add(
-        'item-create-input__create-button--loading',
-        'show',
-      );
 
+      createButton.classList.add('show');
       createButton.classList.remove('hide');
     } else {
-      input.classList.add('show');
+      inputDiv.classList.remove('disable');
+      input.classList.remove('disable');
 
       createButton.replaceChildren(opts.createButton.icon);
 
       updateButtonState();
-      createButton.classList.add('hide');
 
-      createButton.classList.remove(
-        'item-create-input__create-button--loading',
-        'show',
-      );
+      if (input.value.length <= 0) {
+        createButton.classList.add('hide');
+        createButton.classList.remove('show');
+      }
     }
   };
+
+  setTimeout((): void => {
+    input.focus();
+  }, 0);
 
   return {
     element: inputDiv,
