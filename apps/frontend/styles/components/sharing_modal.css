@@ -28,7 +28,9 @@
 .sharing-modal__logo {
   align-items: center;
   display: flex;
+  height: 32px;
   justify-content: center;
+  width: 32px;
 
   svg {
     aspect-ratio: 1 / 1;
