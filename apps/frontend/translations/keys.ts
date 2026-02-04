@@ -5,10 +5,6 @@ type TLangKeys = {
   AlertAccountNameUpdateFailedTitle: string;
   AlertAccountNameUpdateSuccessDescription: string;
   AlertAccountNameUpdateSuccessTitle: string;
-  AlertDocumentCopiedDescription: string;
-  AlertDocumentCopiedTitle: string;
-  AlertDocumentCopyFailedDescription: string;
-  AlertDocumentCopyFailedTitle: string;
   AlertDocumentCreateFailedDescription: string;
   AlertDocumentCreateFailedTitle: string;
   AlertDocumentRetrievedFailedDescription: string;
@@ -168,7 +164,6 @@ type TLangKeys = {
   MenuItemChangelogs: string;
   MenuItemDeleteDocument: string;
   MenuItemDocumentExportMarkdown: string;
-  MenuItemDocumentExportMarkdownX: string;
   MenuItemDocumentExportPlatformMedium: string;
   MenuItemDocumentExportPlatformSubstack: string;
   MenuItemDocumentExportPlatformWordpress: string;
@@ -321,6 +316,18 @@ type TLangKeys = {
   StylesModalSectionTitleUpdate: string;
   StylesModalTextTitleCreate: string;
   StylesModalTextTitleUpdate: string;
+  ToastDocumentCopyContentMdFailed: string;
+  ToastDocumentCopyContentMdSuccessful: string;
+  ToastDocumentCopyContentMediumFailed: string;
+  ToastDocumentCopyContentMediumSuccessful: string;
+  ToastDocumentCopyContentSubstackFailed: string;
+  ToastDocumentCopyContentSubstackSuccessful: string;
+  ToastDocumentCopyContentWordpressFailed: string;
+  ToastDocumentCopyContentWordpressSuccessful: string;
+  ToastDocumentCopyContentXmlFailed: string;
+  ToastDocumentCopyContentXmlSuccessful: string;
+  ToastDocumentDownloadContentMdSuccessful: string;
+  ToastDocumentDownloadContentXmlSuccessful: string;
   ToastImageDownloadFailed: string;
   ToastImageDownloadSuccess: string;
   ToastImageDownloading: string;
@@ -346,10 +353,6 @@ const langKeys = (): TLangKeys => {
     AlertAccountNameUpdateFailedTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_FAILED_TITLE'),
     AlertAccountNameUpdateSuccessDescription: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_DESCRIPTION'),
     AlertAccountNameUpdateSuccessTitle: getTr('ALERT_ACCOUNT_NAME_UPDATE_SUCCESS_TITLE'),
-    AlertDocumentCopiedDescription: getTr('ALERT_DOCUMENT_COPIED_DESCRIPTION'),
-    AlertDocumentCopiedTitle: getTr('ALERT_DOCUMENT_COPIED_TITLE'),
-    AlertDocumentCopyFailedDescription: getTr('ALERT_DOCUMENT_COPY_FAILED_DESCRIPTION'),
-    AlertDocumentCopyFailedTitle: getTr('ALERT_DOCUMENT_COPY_FAILED_TITLE'),
     AlertDocumentCreateFailedDescription: getTr('ALERT_DOCUMENT_CREATE_FAILED_DESCRIPTION'),
     AlertDocumentCreateFailedTitle: getTr('ALERT_DOCUMENT_CREATE_FAILED_TITLE'),
     AlertDocumentRetrievedFailedDescription: getTr('ALERT_DOCUMENT_RETRIEVED_FAILED_DESCRIPTION'),
@@ -509,7 +512,6 @@ const langKeys = (): TLangKeys => {
     MenuItemChangelogs: getTr('MENU_ITEM_CHANGELOGS'),
     MenuItemDeleteDocument: getTr('MENU_ITEM_DELETE_DOCUMENT'),
     MenuItemDocumentExportMarkdown: getTr('MENU_ITEM_DOCUMENT_EXPORT_MARKDOWN'),
-    MenuItemDocumentExportMarkdownX: getTr('MENU_ITEM_DOCUMENT_EXPORT_MARKDOWN_X'),
     MenuItemDocumentExportPlatformMedium: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_MEDIUM'),
     MenuItemDocumentExportPlatformSubstack: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_Substack'),
     MenuItemDocumentExportPlatformWordpress: getTr('MENU_ITEM_DOCUMENT_EXPORT_PLATFORM_WORDPRESS'),
@@ -662,6 +664,18 @@ const langKeys = (): TLangKeys => {
     StylesModalSectionTitleUpdate: getTr('STYLES_MODAL_SECTION_TITLE_UPDATE'),
     StylesModalTextTitleCreate: getTr('STYLES_MODAL_TEXT_TITLE_CREATE'),
     StylesModalTextTitleUpdate: getTr('STYLES_MODAL_TEXT_TITLE_UPDATE'),
+    ToastDocumentCopyContentMdFailed: getTr('TOAST_DOCUMENT_COPY_CONTENT_MD_FAILED'),
+    ToastDocumentCopyContentMdSuccessful: getTr('TOAST_DOCUMENT_COPY_CONTENT_MD_SUCCESSFUL'),
+    ToastDocumentCopyContentMediumFailed: getTr('TOAST_DOCUMENT_COPY_CONTENT_MEDIUM_FAILED'),
+    ToastDocumentCopyContentMediumSuccessful: getTr('TOAST_DOCUMENT_COPY_CONTENT_MEDIUM_SUCCESSFUL'),
+    ToastDocumentCopyContentSubstackFailed: getTr('TOAST_DOCUMENT_COPY_CONTENT_SUBSTACK_FAILED'),
+    ToastDocumentCopyContentSubstackSuccessful: getTr('TOAST_DOCUMENT_COPY_CONTENT_SUBSTACK_SUCCESSFUL'),
+    ToastDocumentCopyContentWordpressFailed: getTr('TOAST_DOCUMENT_COPY_CONTENT_WORDPRESS_FAILED'),
+    ToastDocumentCopyContentWordpressSuccessful: getTr('TOAST_DOCUMENT_COPY_CONTENT_WORDPRESS_SUCCESSFUL'),
+    ToastDocumentCopyContentXmlFailed: getTr('TOAST_DOCUMENT_COPY_CONTENT_XML_FAILED'),
+    ToastDocumentCopyContentXmlSuccessful: getTr('TOAST_DOCUMENT_COPY_CONTENT_XML_SUCCESSFUL'),
+    ToastDocumentDownloadContentMdSuccessful: getTr('TOAST_DOCUMENT_DOWNLOAD_CONTENT_MD_SUCCESSFUL'),
+    ToastDocumentDownloadContentXmlSuccessful: getTr('TOAST_DOCUMENT_DOWNLOAD_CONTENT_XML_SUCCESSFUL'),
     ToastImageDownloadFailed: getTr('TOAST_IMAGE_DOWNLOAD_FAILED'),
     ToastImageDownloadSuccess: getTr('TOAST_IMAGE_DOWNLOAD_SUCCESS'),
     ToastImageDownloading: getTr('TOAST_IMAGE_DOWNLOADING'),
