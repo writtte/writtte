@@ -1,6 +1,7 @@
 import type { TEditorAPI } from './api';
 import type { TExtensionOptions } from './options';
 import { type AnyExtension, Editor } from '@tiptap/core';
+import { NodeSelection } from 'prosemirror-state';
 import { BaseNodeExtension } from '../extensions/baseNode';
 import { BlockMenuExtension } from '../extensions/blockMenu';
 import { BlockPlaceholderExtension } from '../extensions/blockPlaceholder';
@@ -559,6 +560,34 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const removeImage = (): boolean =>
     _editor.chain().focus().removeImage().run();
 
+  const getImageSrc = (): string | null => {
+    const { state } = _editor;
+    const { selection } = state;
+
+    if (
+      !(selection instanceof NodeSelection) ||
+      selection.node.type.name !== 'image'
+    ) {
+      return null;
+    }
+
+    return selection.node.attrs.src || null;
+  };
+
+  const getImageAttribute = (attr: string): string | null => {
+    const { state } = _editor;
+    const { selection } = state;
+
+    if (
+      !(selection instanceof NodeSelection) ||
+      selection.node.type.name !== 'image'
+    ) {
+      return null;
+    }
+
+    return selection.node.attrs[attr] || null;
+  };
+
   const addPlaceholder = (element: HTMLElement, id: string): boolean =>
     _editor.chain().focus().addPlaceholder(element, id).run();
 
@@ -728,6 +757,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     setImage,
     updateImage,
     removeImage,
+    getImageSrc,
+    getImageAttribute,
     addPlaceholder,
     removePlaceholder,
     removeAllPlaceholders,

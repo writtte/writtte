@@ -1,3 +1,4 @@
+import { removeWhenRouteChange } from '../utils/ui/removeWhenRouteChange';
 import {
   EditorBubbleMenuItem,
   type TEditorBubbleMenuItemOptions,
@@ -61,6 +62,11 @@ const EditorBubbleMenu = (opts: TOptions): TReturnEditorBubbleMenu => {
 
     menu.style.display = 'none';
   };
+
+  removeWhenRouteChange(menu, {
+    enabled: true,
+    animationDuration: 0,
+  });
 
   return {
     element: menu,

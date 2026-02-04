@@ -1,4 +1,5 @@
 import { setTestId } from '../utils/dom/testId';
+import { removeWhenRouteChange } from '../utils/ui/removeWhenRouteChange';
 import {
   EditorBlockMenuItem,
   type TEditorBlockMenuItemOptions,
@@ -186,6 +187,11 @@ const EditorBlockMenu = (opts: TOptions): TReturnEditorBlockMenu => {
     const filteredItems = filterMenuItems(opts.items, query);
     renderItems(filteredItems);
   };
+
+  removeWhenRouteChange(menu, {
+    enabled: true,
+    animationDuration: 0,
+  });
 
   return {
     element: menu,

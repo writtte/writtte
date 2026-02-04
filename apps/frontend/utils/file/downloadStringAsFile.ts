@@ -10,6 +10,7 @@ const downloadStringAsFile = (filename: string, content: string): void => {
   a.download = filename;
   a.click();
 
+  document.removeChild(a);
   URL.revokeObjectURL(url);
 };
 

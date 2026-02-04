@@ -84,6 +84,7 @@
 @import "./components/editor_node_loading_indicator.css";
 @import "./components/error_message.css";
 @import "./components/feedback_modal.css";
+@import "./components/image_block_options.css";
 @import "./components/input.css";
 @import "./components/item_create_input.css";
 @import "./components/item_list.css";

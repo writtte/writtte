@@ -86,6 +86,9 @@ type TLangKeys = {
   EditorFixedMenuTooltipImage: string;
   EditorFixedMenuTooltipNumberList: string;
   EditorFixedMenuTooltipParagraph: string;
+  EditorImageBlockOptionsTooltipCopy: string;
+  EditorImageBlockOptionsTooltipDelete: string;
+  EditorImageBlockOptionsTooltipDownload: string;
   EditorLoadingUploadingImage: string;
   EditorMenuItemAIGenerate: string;
   EditorMenuItemBlockQuote: string;
@@ -419,6 +422,9 @@ const langKeys = (): TLangKeys => {
     EditorFixedMenuTooltipImage: getTr('EDITOR_FIXED_MENU_TOOLTIP_IMAGE'),
     EditorFixedMenuTooltipNumberList: getTr('EDITOR_FIXED_MENU_TOOLTIP_NUMBER_LIST'),
     EditorFixedMenuTooltipParagraph: getTr('EDITOR_FIXED_MENU_TOOLTIP_PARAGRAPH'),
+    EditorImageBlockOptionsTooltipCopy: getTr('EDITOR_IMAGE_BLOCK_OPTIONS_TOOLTIP_COPY'),
+    EditorImageBlockOptionsTooltipDelete: getTr('EDITOR_IMAGE_BLOCK_OPTIONS_TOOLTIP_DELETE'),
+    EditorImageBlockOptionsTooltipDownload: getTr('EDITOR_IMAGE_BLOCK_OPTIONS_TOOLTIP_DOWNLOAD'),
     EditorLoadingUploadingImage: getTr('EDITOR_LOADING_UPLOADING_IMAGE'),
     EditorMenuItemAIGenerate: getTr('EDITOR_MENU_ITEM_AI_GENERATE'),
     EditorMenuItemBlockQuote: getTr('EDITOR_MENU_ITEM_BLOCK_QUOTE'),
