@@ -75,15 +75,17 @@ const AlertController = (): TReturnAlertController => {
   const closeAlert = (id: string): void => {
     alerts = alerts.filter((a) => a.id !== id);
 
-    const alertElement = containerDiv?.querySelector<HTMLElement>(
+    const alertElements = containerDiv?.querySelectorAll<HTMLElement>(
       `[id="${id}"]`,
     );
 
-    if (alertElement) {
-      alertElement.classList.add('alert--closing');
-      setTimeout(() => {
-        alertElement.dispatchEvent(new CustomEvent('alertRemove'));
-      }, 300);
+    if (alertElements) {
+      alertElements.forEach((element) => {
+        element.classList.add('alert--closing');
+        setTimeout(() => {
+          element.dispatchEvent(new CustomEvent('alertRemove'));
+        }, 300);
+      });
     }
   };
 
