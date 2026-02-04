@@ -11,6 +11,7 @@
   --z-index-controller-modal: 109;
   --z-index-overlay-loading-indicator: 110;
   --z-index-overlay-error-message: 111;
-  --z-index-controller-alert: 112;
-  --z-index-menu: 113;
+  --z-index-controller-toast: 112;
+  --z-index-controller-alert: 113;
+  --z-index-menu: 114;
 }

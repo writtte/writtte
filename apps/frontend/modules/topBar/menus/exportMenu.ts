@@ -8,15 +8,17 @@ import {
 } from '../../../../../packages/@writtte-editor/export/dist';
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
 import { Menu } from '../../../components/Menu';
-import { ALERT_TIMEOUT } from '../../../constants/timeouts';
-import { AlertController } from '../../../controller/alert';
+import { ToastType } from '../../../components/Toast';
+import { TOAST_TIMEOUT } from '../../../constants/timeouts';
+import { ToastController } from '../../../controller/toast';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
+import { logFatalToSentry } from '../../../helpers/error/sentry';
 import { langKeys } from '../../../translations/keys';
 import { downloadStringAsFile } from '../../../utils/file/downloadStringAsFile';
 
 const buildExportMenu = async (e: PointerEvent): Promise<void> => {
   const editorAPI = getEditorAPI();
-  const alertController = AlertController();
+  const toastController = ToastController();
 
   const rect = (e.target as HTMLButtonElement).getBoundingClientRect();
 
@@ -36,17 +38,15 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          const alertPrefix = 'Markdown ';
-
           const content = editorAPI.getContent();
           if (content === undefined) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__vefoupxouy',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__xycmyfwmzp',
+                text: langKeys().ToastDocumentCopyContentMdFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
 
             return;
@@ -58,88 +58,34 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
           });
 
           if (!isCopied || error) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__edtifuossn',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: error
-                  ? error
-                  : langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__lhlsfptvnc',
+                text: langKeys().ToastDocumentCopyContentMdFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
+
+            if (error) {
+              logFatalToSentry(error);
+            }
 
             return;
           }
 
-          alertController.showAlert(
+          toastController.showToast(
             {
-              id: 'alert__jcaftsgzum',
-              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
-              description: langKeys().AlertDocumentCopiedDescription,
+              id: 'toast__hzaubjxvol',
+              text: langKeys().ToastDocumentCopyContentMdSuccessful,
+              type: ToastType.SUCCESS,
             },
-            ALERT_TIMEOUT.SHORT,
+            TOAST_TIMEOUT.LONG,
           );
         },
         sectionTitle: langKeys().MenuSectionCopy,
         hasTopDivider: false,
         hasBottomDivider: false,
-      },
-      {
-        id: 'menu_item__ijguhtlhrm',
-        text: langKeys().MenuItemDocumentExportMarkdownX,
-        leftIcon: undefined,
-        rightIcon: undefined,
-        isLeftIconVisible: true,
-        onClick: async (): Promise<void> => {
-          const alertPrefix = 'Markdown eXtended ';
-
-          const content = editorAPI.getContent();
-          if (content === undefined) {
-            alertController.showAlert(
-              {
-                id: 'alert__hjqbczbhlu',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: langKeys().AlertDocumentCopyFailedDescription,
-              },
-              ALERT_TIMEOUT.SHORT,
-            );
-
-            return;
-          }
-
-          const mdContent = exportToMarkdown(content);
-          const { isCopied, error } = await copyToClipboard(mdContent, {
-            mimeType: 'text/plain',
-          });
-
-          if (!isCopied || error) {
-            alertController.showAlert(
-              {
-                id: 'alert__kjmvkvhzvd',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: error
-                  ? error
-                  : langKeys().AlertDocumentCopyFailedDescription,
-              },
-              ALERT_TIMEOUT.SHORT,
-            );
-
-            return;
-          }
-
-          alertController.showAlert(
-            {
-              id: 'alert__hxtnejnkjz',
-              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
-              description: langKeys().AlertDocumentCopiedDescription,
-            },
-            ALERT_TIMEOUT.SHORT,
-          );
-        },
-        sectionTitle: undefined,
-        hasTopDivider: false,
-        hasBottomDivider: true,
       },
       {
         id: 'menu_item__knnagvxbau',
@@ -148,17 +94,15 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          const alertPrefix = 'XML ';
-
           const content = editorAPI.getContent();
           if (content === undefined) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__ylomdvanwa',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__toszevlyxs',
+                text: langKeys().ToastDocumentCopyContentXmlFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
 
             return;
@@ -170,27 +114,29 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
           });
 
           if (!isCopied || error) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__cdhibpeyer',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: error
-                  ? error
-                  : langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__bymeyywgge',
+                text: langKeys().ToastDocumentCopyContentXmlFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
+
+            if (error) {
+              logFatalToSentry(error);
+            }
 
             return;
           }
 
-          alertController.showAlert(
+          toastController.showToast(
             {
-              id: 'alert__xqmolqozww',
-              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
-              description: langKeys().AlertDocumentCopiedDescription,
+              id: 'toast__lqeftkmbur',
+              text: langKeys().ToastDocumentCopyContentXmlSuccessful,
+              type: ToastType.SUCCESS,
             },
-            ALERT_TIMEOUT.SHORT,
+            TOAST_TIMEOUT.LONG,
           );
         },
         sectionTitle: undefined,
@@ -204,17 +150,15 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          const alertPrefix = 'Wordpress ';
-
           const content = editorAPI.getContent();
           if (content === undefined) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__fnkumixpyh',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__gkxkrjoexz',
+                text: langKeys().ToastDocumentCopyContentWordpressFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
 
             return;
@@ -226,27 +170,29 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
           });
 
           if (!isCopied || error) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__vdjxhbiruc',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: error
-                  ? error
-                  : langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__xmcvjhkstk',
+                text: langKeys().ToastDocumentCopyContentWordpressFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
+
+            if (error) {
+              logFatalToSentry(error);
+            }
 
             return;
           }
 
-          alertController.showAlert(
+          toastController.showToast(
             {
-              id: 'alert__tflvnovsxk',
-              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
-              description: langKeys().AlertDocumentCopiedDescription,
+              id: 'toast__gmpkdtjmhn',
+              text: langKeys().ToastDocumentCopyContentWordpressSuccessful,
+              type: ToastType.SUCCESS,
             },
-            ALERT_TIMEOUT.SHORT,
+            TOAST_TIMEOUT.LONG,
           );
         },
         sectionTitle: undefined,
@@ -260,17 +206,15 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          const alertPrefix = 'Medium ';
-
           const content = editorAPI.getContent();
           if (content === undefined) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__xpvopfpqmi',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__ychdhufxrq',
+                text: langKeys().ToastDocumentCopyContentMediumFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
 
             return;
@@ -282,27 +226,29 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
           });
 
           if (!isCopied || error) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__ecbpmppnjp',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: error
-                  ? error
-                  : langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__nfmzcuxwlj',
+                text: langKeys().ToastDocumentCopyContentMediumFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
+
+            if (error) {
+              logFatalToSentry(error);
+            }
 
             return;
           }
 
-          alertController.showAlert(
+          toastController.showToast(
             {
-              id: 'alert__ondbbryded',
-              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
-              description: langKeys().AlertDocumentCopiedDescription,
+              id: 'toast__jgumaebzro',
+              text: langKeys().ToastDocumentCopyContentMediumSuccessful,
+              type: ToastType.SUCCESS,
             },
-            ALERT_TIMEOUT.SHORT,
+            TOAST_TIMEOUT.LONG,
           );
         },
         sectionTitle: undefined,
@@ -316,17 +262,15 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
         rightIcon: undefined,
         isLeftIconVisible: true,
         onClick: async (): Promise<void> => {
-          const alertPrefix = 'Substack ';
-
           const content = editorAPI.getContent();
           if (content === undefined) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__wrpmrtfmsw',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__urkrqxidsc',
+                text: langKeys().ToastDocumentCopyContentSubstackFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
 
             return;
@@ -338,27 +282,29 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
           });
 
           if (!isCopied || error) {
-            alertController.showAlert(
+            toastController.showToast(
               {
-                id: 'alert__voexwdtoxe',
-                title: alertPrefix + langKeys().AlertDocumentCopyFailedTitle,
-                description: error
-                  ? error
-                  : langKeys().AlertDocumentCopyFailedDescription,
+                id: 'toast__pwrhnprwml',
+                text: langKeys().ToastDocumentCopyContentSubstackFailed,
+                type: ToastType.ERROR,
               },
-              ALERT_TIMEOUT.SHORT,
+              TOAST_TIMEOUT.SHORT,
             );
+
+            if (error) {
+              logFatalToSentry(error);
+            }
 
             return;
           }
 
-          alertController.showAlert(
+          toastController.showToast(
             {
-              id: 'alert__fbytdubhju',
-              title: alertPrefix + langKeys().AlertDocumentCopiedTitle,
-              description: langKeys().AlertDocumentCopiedDescription,
+              id: 'toast__exearxhffh',
+              text: langKeys().ToastDocumentCopyContentSubstackSuccessful,
+              type: ToastType.SUCCESS,
             },
-            ALERT_TIMEOUT.SHORT,
+            TOAST_TIMEOUT.LONG,
           );
         },
         sectionTitle: undefined,
@@ -381,6 +327,15 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
           const mdContent = exportToMarkdown(content);
 
           downloadStringAsFile(title, mdContent);
+
+          toastController.showToast(
+            {
+              id: 'toast__mphtseijfe',
+              text: langKeys().ToastDocumentDownloadContentMdSuccessful,
+              type: ToastType.SUCCESS,
+            },
+            TOAST_TIMEOUT.LONG,
+          );
         },
         sectionTitle: langKeys().MenuSectionDownload,
         hasTopDivider: false,
@@ -402,6 +357,15 @@ const buildExportMenu = async (e: PointerEvent): Promise<void> => {
           const mdContent = exportToXML(content);
 
           downloadStringAsFile(title, mdContent);
+
+          toastController.showToast(
+            {
+              id: 'toast__qnfndamfin',
+              text: langKeys().ToastDocumentDownloadContentXmlSuccessful,
+              type: ToastType.SUCCESS,
+            },
+            TOAST_TIMEOUT.LONG,
+          );
         },
         sectionTitle: undefined,
         hasTopDivider: false,
