@@ -1,0 +1,28 @@
+.toast-container {
+  background: transparent;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 8px;
+  left: 50%;
+  max-height: 80vh;
+  overflow-y: auto;
+  padding: 12px;
+  position: fixed;
+  scrollbar-width: none;
+  transform: translateX(-50%);
+  z-index: var(--z-index-controller-toast);
+}
+
+.toast-container::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 480px) {
+  .toast-container {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    transform: none;
+  }
+}
