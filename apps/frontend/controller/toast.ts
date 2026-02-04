@@ -75,15 +75,17 @@ const ToastController = (): TReturnToastController => {
   const closeToast = (id: string): void => {
     toasts = toasts.filter((t) => t.id !== id);
 
-    const toastElement = containerDiv?.querySelector<HTMLElement>(
+    const toastElements = containerDiv?.querySelectorAll<HTMLElement>(
       `[id="${id}"]`,
     );
 
-    if (toastElement) {
-      toastElement.classList.add('toast--closing');
-      setTimeout(() => {
-        toastElement.dispatchEvent(new CustomEvent('toastRemove'));
-      }, 300);
+    if (toastElements) {
+      toastElements.forEach((element) => {
+        element.classList.add('toast--closing');
+        setTimeout(() => {
+          element.dispatchEvent(new CustomEvent('toastRemove'));
+        }, 300);
+      });
     }
   };
 
