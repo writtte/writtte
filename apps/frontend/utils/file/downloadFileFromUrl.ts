@@ -29,7 +29,7 @@ const downloadFileFromUrl = async (
       return error;
     }
 
-    return new Error('Unknown error occurred while downloading the file');
+    return new Error('unknown error occurred while downloading the file');
   }
 };
 
