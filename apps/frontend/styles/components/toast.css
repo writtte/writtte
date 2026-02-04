@@ -1,13 +1,13 @@
 .toast {
   align-items: center;
   animation: toastSlideIn 0.3s ease forwards;
-  border-radius: 32px;
+  border-radius: 8px;
   box-shadow: var(--shadow-alert);
   display: flex;
   gap: 8px;
   max-width: 512px;
   min-height: 32px;
-  padding-inline: 24px;
+  padding-inline: 12px;
   position: relative;
   text-align: center;
   transition:
