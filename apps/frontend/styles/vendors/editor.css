@@ -31,8 +31,7 @@
   border-radius: 14px;
   border: none;
   box-shadow: none;
-  outline-offset: 1px;
-  outline: 2px dashed var(--color--border-primary);
+  outline: 1px dashed var(--color--border-primary);
 }
 
 .writtte-editor .persistent-selection {

@@ -3,11 +3,16 @@ import type {
   TImageAttributes,
 } from '@writtte-editor/editor';
 import type { TReturnEditorFixedMenu } from '../../../components/EditorFixedMenu';
+import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
+import { ImageBlockOptions } from '../../../components/ImageBlockOptions';
 import { BACKEND_CONFIGS } from '../../../configs/be';
+import { getEditorAPI } from '../../../data/stores/mainEditor';
 import { AccessToken } from '../../../helpers/account/accessToken';
 import { logFatalToSentry } from '../../../helpers/error/sentry';
 import { langKeys } from '../../../translations/keys';
 import { ALLOWED_IMAGE_FILE_EXTENSIONS } from '../image/browseImage';
+import { copyCurrentImagePublicSrc } from '../image/copyImage';
+import { downloadCurrentImage } from '../image/downloadImage';
 import { imageAfterPaste, setupImageForUpload } from '../image/imageUpload';
 import {
   getQueryStateRef,
@@ -171,6 +176,40 @@ const setupEditorExtensionOptions = (
       isEnabled: true,
     },
     image: {
+      optionsElement: () =>
+        ImageBlockOptions({
+          id: 'image_block_options__tnnbqbdoaq',
+          buttons: [
+            {
+              id: 'button__tccphqfxjm',
+              icon: FlatIcon(FlatIconName._18_COPY),
+              toolTip: langKeys().EditorImageBlockOptionsTooltipCopy,
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> =>
+                await copyCurrentImagePublicSrc(),
+            },
+            {
+              id: 'button__dmnhqrvkua',
+              icon: FlatIcon(FlatIconName._18_DOWNLOAD),
+              toolTip: langKeys().EditorImageBlockOptionsTooltipDownload,
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> => await downloadCurrentImage(),
+            },
+            {
+              id: 'button__nzmqnocpjf',
+              icon: FlatIcon(FlatIconName._18_TRASH),
+              toolTip: langKeys().EditorImageBlockOptionsTooltipDelete,
+              isDanger: true,
+              isVisible: isEditable,
+              onClick: (): void => {
+                getEditorAPI().removeImage();
+              },
+            },
+          ],
+          isVisible: true,
+        }),
       fileExtensions: ALLOWED_IMAGE_FILE_EXTENSIONS,
       onBeforePaste: async (file: File): Promise<TImageAttributes> =>
         await setupImageForUpload(file),

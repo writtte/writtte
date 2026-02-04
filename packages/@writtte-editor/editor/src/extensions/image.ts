@@ -24,6 +24,7 @@ import {
 } from 'prosemirror-state';
 
 type TImageOptions = {
+  optionsElement: (() => HTMLDivElement | null) | null;
   HTMLAttributes: Record<string, string | number | boolean>;
   fileExtensions: string[];
   onBeforePaste: ((file: File) => Promise<TImageAttributes>) | undefined;
@@ -67,6 +68,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       fileExtensions: [],
       onBeforePaste: undefined,
       onAfterPaste: undefined,
+      optionsElement: null,
     };
   },
   addAttributes(): Attributes {
@@ -260,9 +262,18 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
     };
   },
   addNodeView(): NodeViewRenderer {
-    return ({ node }: { node: ProsemirrorNode }) => {
+    return ({
+      node,
+      view,
+      getPos,
+    }: {
+      node: ProsemirrorNode;
+      view: EditorView;
+      getPos: () => number | undefined;
+    }) => {
       const dom = document.createElement('div');
       dom.classList.add('writtte-image-container');
+      dom.style.position = 'relative';
 
       const img = document.createElement('img');
 
@@ -282,6 +293,43 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       }
 
       dom.appendChild(img);
+
+      let clickHandler: ((e: MouseEvent) => void) | null = null;
+      let optionsElement: HTMLDivElement | null = null;
+
+      if (this.options.optionsElement) {
+        optionsElement = this.options.optionsElement();
+
+        if (optionsElement) {
+          optionsElement.style.display = 'none';
+          optionsElement.style.position = 'absolute';
+          optionsElement.style.zIndex = '10';
+
+          dom.appendChild(optionsElement);
+
+          const isSelected = () => {
+            const pos = getPos();
+            if (pos === undefined) return false;
+
+            const { selection } = view.state;
+            return selection instanceof NodeSelection && selection.from === pos;
+          };
+
+          clickHandler = (e: MouseEvent) => {
+            if (
+              optionsElement &&
+              optionsElement !== e.target &&
+              !optionsElement.contains(e.target as Element)
+            ) {
+              if (!isSelected()) {
+                optionsElement.style.display = 'none';
+              }
+            }
+          };
+
+          document.addEventListener('click', clickHandler);
+        }
+      }
 
       return {
         dom,
@@ -311,6 +359,23 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
           }
 
           return true;
+        },
+        selectNode: () => {
+          if (optionsElement) {
+            optionsElement.style.display = 'flex';
+          }
+          dom.classList.add('ProseMirror-selectednode');
+        },
+        deselectNode: () => {
+          if (optionsElement) {
+            optionsElement.style.display = 'none';
+          }
+          dom.classList.remove('ProseMirror-selectednode');
+        },
+        destroy: () => {
+          if (clickHandler) {
+            document.removeEventListener('click', clickHandler);
+          }
         },
       };
     };

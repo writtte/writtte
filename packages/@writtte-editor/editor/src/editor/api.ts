@@ -57,6 +57,8 @@ type TEditorAPI = {
     attributes: Partial<TImageAttributes>,
   ) => boolean;
   removeImage: () => boolean;
+  getImageSrc: () => string | null;
+  getImageAttribute: (attr: string) => string | null;
   addPlaceholder: (element: HTMLElement, id: string) => boolean;
   removePlaceholder: (id: string) => boolean;
   removeAllPlaceholders: () => boolean;
