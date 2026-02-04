@@ -382,12 +382,14 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
           if (optionsElement) {
             optionsElement.style.display = 'flex';
           }
+
           dom.classList.add('ProseMirror-selectednode');
         },
         deselectNode: () => {
           if (optionsElement) {
             optionsElement.style.display = 'none';
           }
+
           dom.classList.remove('ProseMirror-selectednode');
         },
         destroy: () => {
