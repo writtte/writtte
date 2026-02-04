@@ -18,6 +18,11 @@
   scroll-behavior: smooth;
   width: 100%;
 
+  &.writtte-editor {
+    overflow-x: hidden;
+    padding-inline: 12px;
+  }
+
   &:hover {
     cursor: default;
     user-select: none;
