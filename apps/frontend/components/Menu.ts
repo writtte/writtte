@@ -122,7 +122,6 @@ const Menu = (opts: TOptions): TReturnMenu => {
     );
   }, 0);
 
-  // Setup route change listener to remove menu when navigating
   routeChangeInstance = removeWhenRouteChange(menu, {
     enabled: true,
     animationDuration: 0,
