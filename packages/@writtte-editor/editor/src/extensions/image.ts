@@ -295,6 +295,7 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
       dom.appendChild(img);
 
       let clickHandler: ((e: MouseEvent) => void) | null = null;
+      let imageClickHandler: ((e: MouseEvent) => void) | null = null;
       let optionsElement: HTMLDivElement | null = null;
 
       if (this.options.optionsElement) {
@@ -330,6 +331,23 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
           document.addEventListener('click', clickHandler);
         }
       }
+
+      imageClickHandler = (e: MouseEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const pos = getPos();
+        if (pos === undefined) return;
+
+        const tr = view.state.tr.setSelection(
+          NodeSelection.create(view.state.doc, pos),
+        );
+
+        view.dispatch(tr);
+      };
+
+      img.addEventListener('click', imageClickHandler);
+      img.style.cursor = 'pointer';
 
       return {
         dom,
@@ -375,6 +393,10 @@ const ImageExtension: AnyExtension = Node.create<TImageOptions>({
         destroy: () => {
           if (clickHandler) {
             document.removeEventListener('click', clickHandler);
+          }
+
+          if (imageClickHandler) {
+            img.removeEventListener('click', imageClickHandler);
           }
         },
       };
