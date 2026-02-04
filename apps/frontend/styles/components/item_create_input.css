@@ -14,12 +14,19 @@
     box-shadow 0.2s ease,
     padding 0.3s ease;
   width: 100%;
+}
 
-  &.active {
-    background: var(--color--bg-neutral-000);
-    border: 1px solid var(--color--border-primary);
-    box-shadow: 0 0 8px 0 var(--color--border-primary);
-  }
+.item-create-input.active:not(.disable) {
+  background: var(--color--bg-neutral-000);
+  border: 1px solid var(--color--border-primary);
+  box-shadow: 0 0 8px 0 var(--color--border-primary);
+}
+
+.item-create-input.disable {
+  background: var(--color--bg-neutral-000);
+  box-shadow: 0 0 8px 0 var(--color--border-primary);
+  pointer-events: none;
+  user-select: none;
 }
 
 .item-create-input__input-element {
@@ -43,6 +50,13 @@
   }
 }
 
+.item-create-input__input-element.disable {
+  caret-color: transparent;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+}
+
 .item-create-input__create-button {
   align-items: center;
   aspect-ratio: 1 / 1;
@@ -50,6 +64,7 @@
   border-radius: 32px;
   border: none;
   box-shadow: none;
+  display: flex;
   gap: 8px;
   height: 40px;
   justify-content: center;
@@ -96,7 +111,13 @@
 
 .item-create-input__create-button.hide {
   animation: fadeOutToRight 0.3s ease forwards;
-  display: none;
+  pointer-events: none;
+}
+
+.item-create-input__create-button.hide-immediately {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
 }
 
 @keyframes fadeInFromRight {
@@ -120,72 +141,10 @@
   100% {
     opacity: 0;
     transform: translateX(20px) scale(0.8);
+    visibility: hidden;
   }
 }
 
 .item-create-input:has(.item-create-input__create-button.show) {
   padding: 8px 8px 8px 24px;
-}
-
-.item-create-input__create-button--loading {
-  animation: expandFromRight 0.3s ease forwards;
-  background: var(--color--bg-dark-400);
-  pointer-events: none;
-  transform-origin: right;
-  transition:
-    background 0.3s ease,
-    width 0.3s ease;
-  width: 100%;
-
-  &:hover {
-    background: var(--color--bg-dark-400);
-    cursor: wait;
-  }
-
-  &:focus-visible {
-    outline: none;
-  }
-}
-
-@keyframes expandFromRight {
-  0% {
-    width: 40px;
-  }
-
-  100% {
-    width: 100%;
-  }
-}
-
-.item-create-input:has(.item-create-input__create-button--loading.show) {
-  animation: adjustPadding 0.3s ease forwards;
-  padding: 8px;
-}
-
-@keyframes adjustPadding {
-  0% {
-    padding: 8px 8px 8px 24px;
-  }
-
-  100% {
-    padding: 8px;
-  }
-}
-
-.item-create-input:has(.item-create-input__create-button--loading)
-  .item-create-input__input-element {
-  animation: slideOutToLeft 0.2s ease forwards;
-  display: none;
-}
-
-@keyframes slideOutToLeft {
-  0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
 }
