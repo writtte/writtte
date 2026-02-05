@@ -30,6 +30,11 @@ import { StrikethroughExtension } from '../extensions/strikethrough';
 import { SubscriptExtension } from '../extensions/subscript';
 import { SuperscriptExtension } from '../extensions/superscript';
 import { TextExtension } from '../extensions/text';
+import {
+  type TTocHeading,
+  type TTocStorage,
+  TocExtension,
+} from '../extensions/toc';
 import { TrailingNodeExtension } from '../extensions/trailingNode';
 import { UnderlineExtension } from '../extensions/underline';
 import { UndoRedoExtension } from '../extensions/undoRedo';
@@ -190,6 +195,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     extensions.push(
       LangToolExtension.configure(opts.options.langTool ?? undefined),
     );
+  }
+
+  if (opts.options.toc.isEnabled) {
+    extensions.push(TocExtension.configure(opts.options.toc ?? undefined));
   }
 
   const _editor = new Editor({
@@ -517,6 +526,17 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
   const setParagraph = (): boolean =>
     _editor.chain().focus().setParagraph().run();
 
+  const getTableOfContents = (): TTocHeading[] => {
+    const storage = _editor.storage as Record<string, TTocStorage>;
+    return storage.toc?.headings ?? [];
+  };
+
+  const refreshTableOfContents = (): boolean =>
+    _editor.commands.refreshTableOfContents();
+
+  const scrollToHeading = (id: string): boolean =>
+    _editor.commands.scrollToHeading(id);
+
   const setHorizontalLine = (): boolean =>
     _editor.chain().focus().setHorizontalLine().run();
 
@@ -750,6 +770,9 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isLangToolActive,
     isLangToolLoading,
     setParagraph,
+    getTableOfContents,
+    refreshTableOfContents,
+    scrollToHeading,
     setHorizontalLine,
     setLink,
     getLink,

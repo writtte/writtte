@@ -20,6 +20,7 @@ import type { TPlaceholderOptions } from '../extensions/placeholder';
 import type { TStrikethroughOptions } from '../extensions/strikethrough';
 import type { TSubscriptOptions } from '../extensions/subscript';
 import type { TSuperscriptOptions } from '../extensions/superscript';
+import type { TTocOptions } from '../extensions/toc';
 import type { TTrailingNodeOptions } from '../extensions/trailingNode';
 import type { TUnderlineOptions } from '../extensions/underline';
 import type { TUndoRedoOptions } from '../extensions/undoRedo';
@@ -50,6 +51,7 @@ type TExtensionOptions = {
   blockMenu: Partial<TBlockMenuOptions> & { isEnabled: boolean };
   blockQuote: Partial<TBlockQuoteOptions> & { isEnabled: boolean };
   langTool: Partial<TLangToolOptions> & { isEnabled: boolean };
+  toc: Partial<TTocOptions> & { isEnabled: boolean };
 };
 
 export type { TExtensionOptions };

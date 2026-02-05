@@ -3,6 +3,7 @@
 export type { TBaseNodeOptions } from './extensions/baseNode';
 export type { TCodeBlockOptions } from './extensions/codeBlock';
 export type { TImageAttributes } from './extensions/image';
+export type { TTocHeading } from './extensions/toc';
 export * from './editor/api';
 export * from './editor/editor';
 export * from './editor/options';

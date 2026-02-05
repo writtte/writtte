@@ -11,15 +11,15 @@
   -webkit-mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 64px,
-    black calc(100% - 64px),
+    black 24px,
+    black calc(100% - 24px),
     transparent 100%
   );
   mask-image: linear-gradient(
     to bottom,
     transparent 0%,
-    black 64px,
-    black calc(100% - 64px),
+    black 24px,
+    black calc(100% - 24px),
     transparent 100%
   );
 }
