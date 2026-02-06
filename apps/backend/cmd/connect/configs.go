@@ -13,6 +13,7 @@ func SetupConfigs() {
 	configs.FeedbackEnvs()
 	configs.AWSEnvs()
 	configs.ZohoEnvs()
+	configs.BirdEnvs()
 	configs.SentryEnvs()
 	configs.PolarEnvs()
 }

@@ -38,6 +38,9 @@ func Send(r *http.Request, info Info) {
 	case "zepto":
 		sendViaZepto(info, uniqueID)
 
+	case "bird":
+		sendViaBird(info, uniqueID)
+
 	default:
 		panic(fmt.Sprintf("invalid email client '%s' detected",
 			emailClient))
