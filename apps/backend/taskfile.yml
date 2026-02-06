@@ -3,7 +3,7 @@ version: "3"
 silent: true
 
 env:
-  PRIVATE_SERVER_FLAGS: -env=local -mode=debug -address=127.0.0.1:7100 -rlimit-enabled=true -emails-enabled=true -email-client=zepto
+  PRIVATE_SERVER_FLAGS: -env=local -mode=debug -address=127.0.0.1:7100 -rlimit-enabled=true -emails-enabled=true -email-client=bird
 
 tasks:
   setup:
