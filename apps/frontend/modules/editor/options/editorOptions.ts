@@ -3,8 +3,8 @@ import type {
   TImageAttributes,
 } from '@writtte-editor/editor';
 import type { TReturnEditorFixedMenu } from '../../../components/EditorFixedMenu';
+import { EditorBlockOptions } from '../../../components/EditorBlockOptions';
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
-import { ImageBlockOptions } from '../../../components/ImageBlockOptions';
 import { BACKEND_CONFIGS } from '../../../configs/be';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
 import { AccessToken } from '../../../helpers/account/accessToken';
@@ -177,7 +177,7 @@ const setupEditorExtensionOptions = (
     },
     image: {
       optionsElement: () =>
-        ImageBlockOptions({
+        EditorBlockOptions({
           id: 'image_block_options__tnnbqbdoaq',
           buttons: [
             {
