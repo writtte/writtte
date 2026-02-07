@@ -6,6 +6,7 @@ import {
   extractParagraphContent,
   normalizeNewlines,
   tabsPrefixForListItem,
+  textToHTML,
 } from './utils';
 
 const setBold = (exportType: TExportType, text: string): string => {
@@ -373,19 +374,19 @@ const setCodeBlock = (
       return '<pre>' + content + '</pre>';
 
     case ExportType.WORDPRESS:
-      return '<pre>' + content + '</pre>';
+      return '<pre>' + textToHTML(content) + '</pre>';
 
     case ExportType.MEDIUM:
       return (
         '<pre data-code-block-lang="' +
         (language ?? '') +
         '">' +
-        content +
+        textToHTML(content) +
         '</pre>'
       );
 
     case ExportType.SUBSTACK:
-      return '<pre><code>' + content + '</code></pre>';
+      return '<pre><code>' + textToHTML(content) + '</code></pre>';
   }
 
   return '';

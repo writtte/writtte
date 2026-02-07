@@ -48,4 +48,30 @@ const extractParagraphContent = (text: string): string => {
   return text.substring(3, len - 4);
 };
 
-export { normalizeNewlines, tabsPrefixForListItem, extractParagraphContent };
+const textToHTML = (text: string): string => {
+  const htmlEntities: Record<string, string> = {
+    '<': '&lt;',
+    '>': '&gt;',
+    '&': '&amp;',
+    '"': '&quot;',
+    "'": '&#39;',
+  };
+
+  let result = '';
+
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    const encodedChar = htmlEntities[char] || char;
+
+    result += `<span>${encodedChar}</span>`;
+  }
+
+  return result;
+};
+
+export {
+  normalizeNewlines,
+  tabsPrefixForListItem,
+  extractParagraphContent,
+  textToHTML,
+};
