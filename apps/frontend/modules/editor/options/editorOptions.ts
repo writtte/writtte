@@ -3,8 +3,8 @@ import type {
   TImageAttributes,
 } from '@writtte-editor/editor';
 import type { TReturnEditorFixedMenu } from '../../../components/EditorFixedMenu';
+import { EditorBlockOptions } from '../../../components/EditorBlockOptions';
 import { FlatIcon, FlatIconName } from '../../../components/FlatIcon';
-import { ImageBlockOptions } from '../../../components/ImageBlockOptions';
 import { BACKEND_CONFIGS } from '../../../configs/be';
 import { getEditorAPI } from '../../../data/stores/mainEditor';
 import { AccessToken } from '../../../helpers/account/accessToken';
@@ -177,7 +177,7 @@ const setupEditorExtensionOptions = (
     },
     image: {
       optionsElement: () =>
-        ImageBlockOptions({
+        EditorBlockOptions({
           id: 'image_block_options__tnnbqbdoaq',
           buttons: [
             {
@@ -218,6 +218,50 @@ const setupEditorExtensionOptions = (
         __: TImageAttributes,
         ___: (attrs: Partial<TImageAttributes>) => void,
       ): Promise<void> => await imageAfterPaste(),
+      isEnabled: true,
+    },
+    latex: {
+      optionsElement: () =>
+        EditorBlockOptions({
+          id: 'latex_block_options__pbgyyhtfet',
+          buttons: [
+            {
+              id: 'button__gzdqxdwjlb',
+              icon: FlatIcon(FlatIconName._18_COPY),
+              toolTip: 'langKeys().',
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> => {},
+            },
+            {
+              id: 'button__dpuqystunt',
+              icon: FlatIcon(FlatIconName._18_DOWNLOAD),
+              toolTip: 'langKeys().',
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> => {},
+            },
+            {
+              id: 'button__ecpznvmnkr',
+              icon: FlatIcon(FlatIconName._18_EDIT),
+              toolTip: 'langKeys().',
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> => {},
+            },
+            {
+              id: 'button__lchotdabpm',
+              icon: FlatIcon(FlatIconName._18_TRASH),
+              toolTip: 'langKeys().',
+              isDanger: true,
+              isVisible: isEditable,
+              onClick: (): void => {
+                getEditorAPI().removeLatex();
+              },
+            },
+          ],
+          isVisible: true,
+        }),
       isEnabled: true,
     },
     bubbleMenu: {

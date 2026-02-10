@@ -3,6 +3,7 @@ import type {
   TLangToolStorage,
   TLanguageToolMatch,
 } from '../extensions/langTool';
+import type { TLatexAttributes } from '../extensions/latex';
 import type { TEditorSchema } from './schema';
 import type { TEditorState } from './state';
 
@@ -59,6 +60,14 @@ type TEditorAPI = {
   removeImage: () => boolean;
   getImageSrc: () => string | null;
   getImageAttribute: (attr: string) => string | null;
+  setLatex: (attributes: TLatexAttributes) => boolean;
+  updateLatex: (
+    latexCode: string,
+    attributes: Partial<TLatexAttributes>,
+  ) => boolean;
+  removeLatex: () => boolean;
+  getLatexSrc: () => string | null;
+  getLatexAttribute: (attr: string) => string | null;
   addPlaceholder: (element: HTMLElement, id: string) => boolean;
   removePlaceholder: (id: string) => boolean;
   removeAllPlaceholders: () => boolean;
@@ -92,6 +101,7 @@ type TEditorAPI = {
   isBulletListActive: () => boolean;
   isNumberListActive: () => boolean;
   isImageActive: () => boolean;
+  isLatexActive: () => boolean;
   isCodeBlockActive: () => boolean;
 };
 
