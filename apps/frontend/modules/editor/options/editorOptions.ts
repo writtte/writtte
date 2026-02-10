@@ -220,6 +220,50 @@ const setupEditorExtensionOptions = (
       ): Promise<void> => await imageAfterPaste(),
       isEnabled: true,
     },
+    latex: {
+      optionsElement: () =>
+        EditorBlockOptions({
+          id: 'latex_block_options__pbgyyhtfet',
+          buttons: [
+            {
+              id: 'button__gzdqxdwjlb',
+              icon: FlatIcon(FlatIconName._18_COPY),
+              toolTip: 'langKeys().',
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> => {},
+            },
+            {
+              id: 'button__dpuqystunt',
+              icon: FlatIcon(FlatIconName._18_DOWNLOAD),
+              toolTip: 'langKeys().',
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> => {},
+            },
+            {
+              id: 'button__ecpznvmnkr',
+              icon: FlatIcon(FlatIconName._18_EDIT),
+              toolTip: 'langKeys().',
+              isDanger: false,
+              isVisible: true,
+              onClick: async (): Promise<void> => {},
+            },
+            {
+              id: 'button__lchotdabpm',
+              icon: FlatIcon(FlatIconName._18_TRASH),
+              toolTip: 'langKeys().',
+              isDanger: true,
+              isVisible: isEditable,
+              onClick: (): void => {
+                getEditorAPI().removeLatex();
+              },
+            },
+          ],
+          isVisible: true,
+        }),
+      isEnabled: true,
+    },
     bubbleMenu: {
       MenuElement: setupEditorBubbleMenu(),
       isEnabled: isEditable,

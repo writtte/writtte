@@ -26,15 +26,6 @@ import {
 type TLatexOptions = {
   optionsElement: (() => HTMLDivElement | null) | null;
   HTMLAttributes: Record<string, string | number | boolean>;
-  fileExtensions: string[];
-  onBeforePaste: ((file: File) => Promise<TLatexAttributes>) | undefined;
-  onAfterPaste:
-    | ((
-        file: File,
-        currentAttrs: TLatexAttributes,
-        updateLatex: (attrs: Partial<TLatexAttributes>) => void,
-      ) => Promise<void>)
-    | undefined;
 };
 
 type TLatexAttributes = {
@@ -64,9 +55,6 @@ const LatexExtension: AnyExtension = Node.create<TLatexOptions>({
   addOptions(): TLatexOptions {
     return {
       HTMLAttributes: {},
-      fileExtensions: ['svg', 'png', 'jpeg'],
-      onBeforePaste: undefined,
-      onAfterPaste: undefined,
       optionsElement: null,
     };
   },
@@ -410,155 +398,6 @@ const LatexExtension: AnyExtension = Node.create<TLatexOptions>({
             }
 
             return false;
-          },
-          handlePaste: (view: EditorView, event: ClipboardEvent): void => {
-            // biome-ignore lint/nursery/noFloatingPromises: A floating promise is required here
-            (async () => {
-              if (!event.clipboardData) {
-                return false;
-              }
-
-              var latexItems: DataTransferItem[] = [];
-
-              const items = Array.from(event.clipboardData.items);
-              for (let i = 0; i < items.length; i++) {
-                if (
-                  items[i].kind === 'file' &&
-                  items[i].type.startsWith('image/')
-                ) {
-                  latexItems.push(items[i]);
-                }
-              }
-
-              if (latexItems.length === 0) {
-                return false;
-              }
-
-              event.preventDefault();
-
-              for (let i = 0; i < latexItems.length; i++) {
-                const item = latexItems[i];
-                const itemFile = item.getAsFile();
-
-                if (!itemFile) {
-                  break;
-                }
-
-                const fileExtension =
-                  itemFile.name.split('.').pop()?.toLowerCase() || '';
-
-                // Check if the file extension is allowed
-                // If fileExtensions is empty, all extensions are allowed
-                // Otherwise, check if the extension is in the list
-
-                if (
-                  this.options.fileExtensions.length > 0 &&
-                  !this.options.fileExtensions.includes(fileExtension)
-                ) {
-                  break;
-                }
-
-                try {
-                  if (!this.options.onBeforePaste) {
-                    continue;
-                  }
-
-                  const latexAttrs: TLatexAttributes =
-                    // biome-ignore lint/performance/noAwaitInLoops: The await inside the loop is required
-                    await this.options.onBeforePaste(itemFile);
-
-                  const latexNode =
-                    view.state.schema.nodes[this.name].create(latexAttrs);
-
-                  if (
-                    !canInsertNode(
-                      view.state,
-                      view.state.schema.nodes[this.name],
-                    )
-                  ) {
-                    continue;
-                  }
-
-                  const tr = view.state.tr;
-                  tr.replaceSelectionWith(latexNode);
-
-                  const { $to } = tr.selection;
-                  if ($to.pos >= tr.doc.content.size - 2) {
-                    const node =
-                      $to.parent.type.contentMatch.defaultType?.create();
-
-                    if (node) {
-                      const posAfter = $to.end();
-
-                      tr.insert(posAfter, node);
-                      tr.setSelection(
-                        TextSelection.create(tr.doc, posAfter + 1),
-                      );
-                    }
-                  } else {
-                    tr.setSelection(TextSelection.create(tr.doc, $to.pos));
-                  }
-
-                  view.dispatch(tr);
-
-                  if (this.options.onAfterPaste) {
-                    const updateLatexAttrs = (
-                      attrs: Partial<TLatexAttributes>,
-                    ) => {
-                      const currentState = view.state;
-                      const attrsTr = currentState.tr;
-
-                      let found = false;
-                      currentState.doc.descendants((node, pos) => {
-                        if (found) {
-                          return false;
-                        }
-
-                        if (node.type === this.type) {
-                          found = true;
-                          attrsTr.setNodeMarkup(pos, undefined, {
-                            ...node.attrs,
-                            ...attrs,
-                          });
-
-                          view.dispatch(attrsTr);
-                          return false;
-                        }
-
-                        return true;
-                      });
-                    };
-
-                    this.options.onAfterPaste(
-                      itemFile,
-                      latexAttrs,
-                      updateLatexAttrs,
-                    );
-                  }
-                } catch {
-                  // Handle error silently, the error will be thrown to
-                  // the caller and if upload fails, we should remove the
-                  // placeholder
-
-                  const { state } = view;
-
-                  const errorTr = state.tr;
-
-                  state.doc.descendants((node, pos) => {
-                    if (node.type === this.type) {
-                      errorTr.delete(pos, pos + node.nodeSize);
-                      view.dispatch(errorTr);
-
-                      return false;
-                    }
-
-                    return true;
-                  });
-                }
-              }
-
-              return true;
-            })();
           },
         },
       }),
