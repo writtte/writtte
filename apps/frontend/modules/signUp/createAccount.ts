@@ -15,7 +15,6 @@ import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
 import { navigate } from '../../utils/routes/routes';
 import { decodeArrayParam } from '../../utils/string/decodeArrayParam';
-import { isExpired } from '../../utils/time/isExpired';
 
 const createUserAccount = async (
   nameInput: TReturnInput,
@@ -77,19 +76,7 @@ const createUserAccount = async (
     return;
   }
 
-  const { email, code, time } = extractedData;
-
-  if (isExpired(time, 60 * 60 * 1000)) {
-    button.setStatusText({
-      id: 'status_text__jaslvcwwxj',
-      text: langKeys().ErrorApiForbidden,
-      type: StatusTextType.ERROR,
-      isIconVisible: true,
-    });
-
-    button.setLoadingState(false);
-    return;
-  }
+  const { email, code } = extractedData;
 
   const { status: temporaryTokenValidateStatus } =
     await v1TemporaryTokenValidate({
