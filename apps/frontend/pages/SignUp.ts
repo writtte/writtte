@@ -30,7 +30,7 @@ const SignUpPage = async (): Promise<HTMLElement> => {
       text: langKeys().PageSignUpButtonSend,
       loadingText: langKeys().PageSignUpButtonSending,
       leftIcon: undefined,
-      rightIcon: FlatIcon(FlatIconName._18_EMAIL_GET),
+      rightIcon: FlatIcon(FlatIconName._18_ARROW_RIGHT),
       statusText: undefined,
       onClick: async (): Promise<void> => await submitForm(),
     },

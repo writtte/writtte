@@ -33,7 +33,7 @@ BEGIN
     RETURN v_check_user;
   END IF;
   INSERT INTO schema_main.tb_user (email_address, name, hashed_password, password_salt, is_email_verified)
-    VALUES (v_p_email_address, v_p_name, v_p_hashed_password, v_p_password_salt, TRUE)
+    VALUES (v_p_email_address, v_p_name, v_p_hashed_password, v_p_password_salt, FALSE)
   RETURNING
     account_code INTO v_account_code;
   v_subscription_create_results := schema_main.v1_subscription_create (json_build_object('account_code', v_account_code, 'status', 'NO_SUBSCRIPTION')::JSONB)::JSONB;

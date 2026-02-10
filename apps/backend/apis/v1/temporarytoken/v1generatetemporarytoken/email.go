@@ -7,18 +7,21 @@ import (
 	"backend/helpers/sendmail"
 )
 
-func sendSignUpEmail(r *http.Request, email, code *string) *string {
-	title, subject, content, link := signUpLink(email, code)
+func sendSignUpEmail(_ *http.Request, email, code *string) *string {
+	_, _, _, link := signUpLink(email, code)
 
-	info := sendmail.Info{
-		Title:   title,
-		To:      email,
-		Subject: subject,
-		Content: content,
-		Config:  &configs.AWSSESTransactionalConfiguration,
-	}
+	// Temporarily disable the sign-up verification email link.
+	//
+	// info := sendmail.Info{
+	// 	Title:   title,
+	// 	To:      email,
+	// 	Subject: subject,
+	// 	Content: content,
+	// 	Config:  &configs.AWSSESTransactionalConfiguration,
+	// }
 
-	sendmail.Send(r, info)
+	// sendmail.Send(r, info)
+
 	return link
 }
 

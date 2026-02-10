@@ -48,6 +48,8 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 	checkResponse(w, r, &queries, &body, *tokenType, results)
 }
 
+// revive:disable:cognitive-complexity
+
 func checkResponse(w http.ResponseWriter, r *http.Request,
 	queries *QueryParams, body *BodyParams, tokenType TokenType,
 	results *dbQueryOutput) {
@@ -63,6 +65,14 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 
 		if generatedLink == nil {
 			response.Error(w, r, http.StatusNotAcceptable, nil)
+			return
+		}
+
+		if checkType(*queries.Type) == TypeSignUpVerify {
+			response.Results(w, r, http.StatusCreated, apiResultsSuccess{
+				GeneratedLink: generatedLink,
+			})
+
 			return
 		}
 
@@ -84,6 +94,8 @@ func checkResponse(w http.ResponseWriter, r *http.Request,
 		return
 	}
 }
+
+// revive:enable:cognitive-complexity
 
 func checkEmailSend(r *http.Request, body *BodyParams, tokenType TokenType,
 	tokenToSend, email *string) *string {
