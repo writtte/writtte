@@ -43,6 +43,6 @@ type dbQueryOutput struct {
 
 type apiResultsSuccess struct {
 	GeneratedLink  *string `json:"generated_link"`
-	GeneratedCode  *string `json:"generated_code"`
-	ExpirationTime *string `json:"expiration_time"`
+	GeneratedCode  *string `json:"generated_code,omitempty"`
+	ExpirationTime *string `json:"expiration_time,omitempty"`
 }

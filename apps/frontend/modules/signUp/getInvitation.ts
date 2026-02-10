@@ -2,9 +2,8 @@ import type { TReturnAuthenticationButton } from '../../components/Authenticatio
 import type { TReturnInput } from '../../components/Input';
 import { ERROR_CODES, validate } from '@writtte-internal/validate';
 import { StatusTextType } from '../../components/StatusText';
+import { PATHS } from '../../constants/paths';
 import { REGEX } from '../../constants/regex';
-import { ALERT_TIMEOUT } from '../../constants/timeouts';
-import { AlertController } from '../../controller/alert';
 import {
   TokenGenerateType,
   v1TemporaryTokenGenerate,
@@ -12,6 +11,7 @@ import {
 import { handleHTTPError } from '../../helpers/http/httpError';
 import { langKeys } from '../../translations/keys';
 import { HTTP_STATUS } from '../../utils/data/fetch';
+import { navigateHard } from '../../utils/routes/helpers';
 
 const getSignUpInvitation = async (
   emailInput: TReturnInput,
@@ -19,8 +19,6 @@ const getSignUpInvitation = async (
 ): Promise<void> => {
   emailInput.setStatusText(undefined);
   button.setLoadingState(true);
-
-  const alertController = AlertController();
 
   const { isValid, error } = validateForm(emailInput.getValue());
   if (!isValid || error) {
@@ -35,7 +33,7 @@ const getSignUpInvitation = async (
     return;
   }
 
-  const { status } = await v1TemporaryTokenGenerate({
+  const { status, response } = await v1TemporaryTokenGenerate({
     type: TokenGenerateType.SIGN_UP_VERIFY,
     email: emailInput.getValue(),
     key: emailInput.getValue(),
@@ -55,17 +53,20 @@ const getSignUpInvitation = async (
     return;
   }
 
-  alertController.showAlert(
-    {
-      id: 'alert__cxswunnauy',
-      title: langKeys().AlertSignUpInvitationSentTitle,
-      description: langKeys().AlertSignUpInvitationSentDescription,
-    },
-    ALERT_TIMEOUT.SHORT,
-  );
+  // alertController.showAlert(
+  //   {
+  //     id: 'alert__cxswunnauy',
+  //     title: langKeys().AlertSignUpInvitationSentTitle,
+  //     description: langKeys().AlertSignUpInvitationSentDescription,
+  //   },
+  //   ALERT_TIMEOUT.SHORT,
+  // );
 
-  emailInput.setValue(undefined);
-  button.setLoadingState(false);
+  // emailInput.setValue(undefined);
+  // button.setLoadingState(false);
+
+  const generatedLink = response?.results.generated_link ?? PATHS.SIGN_UP;
+  navigateHard(generatedLink);
 };
 
 const validateForm = (
