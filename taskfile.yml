@@ -94,6 +94,8 @@ tasks:
           -type d \( \
             -name "export" -o \
             -name "dist" -o \
+            -name "binary" -o \
+            -name "snapshot" -o \
             -name "temp" -o \
             -name ".git" -o \
             -name ".turbo" -o \
