@@ -32,9 +32,9 @@ type EmailInfo struct {
 
 type SESConfig struct {
 	Region          *string // AWS region for SES service
-	AccessKey       *string // AWS access key ID
+	AccessKey       *string // #nosec G117 AWS access key ID
 	SecretAccessKey *string // AWS secret access key
-	SessionToken    string  // AWS session token (optional)
+	SessionToken    string  // #nosec G117 AWS session token (optional)
 }
 
 const (

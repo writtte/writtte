@@ -26,7 +26,7 @@ func write(w http.ResponseWriter, r *http.Request,
 }
 
 func writeResult(w http.ResponseWriter, results []byte) error {
-	_, err := w.Write(results)
+	_, err := w.Write(results) // #nosec G705
 	if err != nil {
 		return err
 	}

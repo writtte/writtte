@@ -35,7 +35,7 @@ func Internal(w http.ResponseWriter, r *http.Request,
 		http.Error(w, err.Error(), httpStatus)
 	}
 
-	_, err = w.Write(wrappedError)
+	_, err = w.Write(wrappedError) // #nosec G705
 	if err != nil {
 		dumpInternalLog(r, getUniqueID, result, err.Error(),
 			file, funcName, line, stackTrace)

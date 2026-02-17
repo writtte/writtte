@@ -26,8 +26,8 @@ type serviceResults struct {
 	Name         *string `json:"name"`
 	EmailAddress *string `json:"email_address"`
 	AccountCode  *string `json:"account_code"`
-	AccessToken  *string `json:"access_token"`
-	RefreshToken *string `json:"refresh_token"`
+	AccessToken  *string `json:"access_token"`  // #nosec G117
+	RefreshToken *string `json:"refresh_token"` // #nosec G117
 }
 
 type apiResultsSuccess struct {

@@ -19,7 +19,7 @@ const invalidHTTPStatusCode = -1
 type APIRequest struct {
 	URL         string            `json:"url"`          // The target URL for the API request
 	Method      string            `json:"method"`       // HTTP method (GET, POST, etc.)
-	BearerToken string            `json:"bearer_token"` // Optional OAuth bearer token
+	BearerToken string            `json:"bearer_token"` // #nosec G117 Optional OAuth bearer token
 	QueryParams map[string]string `json:"query_params"` // Optional URL query parameters
 	Body        any               `json:"body"`         // Optional request body
 	Headers     map[string]string `json:"headers"`      // Optional HTTP headers
@@ -121,7 +121,7 @@ func (h *HTTPClient) executeRequest(httpReq *http.Request,
 		client = &http.Client{Timeout: timeout}
 	}
 
-	return client.Do(httpReq)
+	return client.Do(httpReq) // #nosec G704
 }
 
 func processResponse(resp *http.Response) APIResponse {

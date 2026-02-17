@@ -99,7 +99,7 @@ const setInlineCode = (exportType: TExportType, text: string): string => {
     case ExportType.WORDPRESS:
     case ExportType.MEDIUM:
     case ExportType.SUBSTACK:
-      return '<code>' + text + '</code>';
+      return '<code>' + textToHTML(text) + '</code>';
   }
 
   return text;

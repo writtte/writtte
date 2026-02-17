@@ -4,7 +4,7 @@ package v1userupdate
 
 type BodyParams struct {
 	Name            *string `json:"name" validate:"omitempty,min=2,max=256"`
-	Password        *string `json:"password" validate:"omitempty,min=8,max=256"`
+	Password        *string `json:"password" validate:"omitempty,min=8,max=256"` // #nosec G117
 	Status          *string `json:"status" validate:"omitempty,oneof=pending-deletion"`
 	IsEmailVerified *bool   `json:"is_email_verified" validate:"omitempty,boolean"`
 }

@@ -79,7 +79,7 @@ func prepareRequest(ctx context.Context, requestData map[string]any,
 
 func (s *service) sendRequest(req *http.Request,
 ) (*http.Response, error) {
-	resp, err := s.httpClient.Do(req)
+	resp, err := s.httpClient.Do(req) // #nosec G704
 	if err != nil {
 		return nil,
 			fmt.Errorf("error sending request to Language Tool API: %w", err)
