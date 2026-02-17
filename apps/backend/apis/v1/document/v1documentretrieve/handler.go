@@ -5,7 +5,7 @@ import (
 
 	"backend/constants"
 	"backend/helpers/dbconvert"
-	"backend/helpers/parse"
+	"backend/helpers/parseparams"
 	"backend/helpers/response"
 	"backend/helpers/validate"
 	"backend/pkg/intstr"
@@ -23,7 +23,7 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 	ifNoneMatch := r.Header.Get("if-none-match")
 
 	var queries QueryParams
-	if err := parse.Queries(r, &queries); err != nil {
+	if err := parseparams.Queries(r, &queries); err != nil {
 		response.Internal(w, r, nil, intstr.StrPtr(err.Error()))
 		return
 	}

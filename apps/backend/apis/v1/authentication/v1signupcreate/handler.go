@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"backend/constants"
-	"backend/helpers/parse"
+	"backend/helpers/parseparams"
 	"backend/helpers/response"
 	"backend/helpers/validate"
 	"backend/pkg/intstr"
@@ -18,7 +18,7 @@ func (h *handler) perform(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 
 	var body BodyParams
-	if err := parse.Body(r, &body); err != nil {
+	if err := parseparams.Body(r, &body); err != nil {
 		response.Internal(w, r, nil, intstr.StrPtr((err.Error())))
 		return
 	}
