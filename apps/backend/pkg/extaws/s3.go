@@ -19,7 +19,7 @@ type S3Client = s3.Client
 
 type S3Config struct {
 	Region            *string // AWS region for S3 service
-	AccessKey         *string // AWS access key ID
+	AccessKey         *string // #nosec G117 AWS access key ID
 	SecretAccessKey   *string // AWS secret access key
 	IsDirectoryBucket bool    // Whether to use S3 directory bucket mode
 }

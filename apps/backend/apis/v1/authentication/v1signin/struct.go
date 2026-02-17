@@ -1,9 +1,13 @@
 package v1signin
 
+// revive:disable:line-length-limit
+
 type BodyParams struct {
 	EmailAddress *string `json:"email_address" validate:"required,email"`
-	Password     *string `json:"password" validate:"required,min=2,max=256"`
+	Password     *string `json:"password" validate:"required,min=2,max=256"` // #nosec G117
 }
+
+// revive:enable:line-length-limit
 
 type dbQueryInput struct {
 	EmailAddress *string
@@ -29,6 +33,6 @@ type apiResultsSuccess struct {
 	Name         *string `json:"name"`
 	EmailAddress *string `json:"email_address"`
 	AccountCode  *string `json:"account_code"`
-	AccessToken  *string `json:"access_token"`
-	RefreshToken *string `json:"refresh_token"`
+	AccessToken  *string `json:"access_token"`  // #nosec G117
+	RefreshToken *string `json:"refresh_token"` // #nosec G117
 }

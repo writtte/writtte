@@ -11,7 +11,7 @@ import (
 
 type BedrockConfig struct {
 	Region          *string
-	AccessKey       *string
+	AccessKey       *string // #nosec G117
 	SecretAccessKey *string
 }
 

@@ -5,7 +5,7 @@ package v1signupcreate
 type BodyParams struct {
 	EmailAddress *string `json:"email_address" validate:"required,email"`
 	Name         *string `json:"name" validate:"required,min=2,max=256"`
-	Password     *string `json:"password" validate:"required,min=2,max=256"`
+	Password     *string `json:"password" validate:"required,min=2,max=256"` // #nosec G117
 }
 
 // revive:enable:line-length-limit

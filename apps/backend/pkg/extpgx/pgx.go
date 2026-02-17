@@ -11,7 +11,7 @@ type PsqlURI struct {
 	Host     string // Server hostname or IP address
 	Port     string // Server port
 	User     string // Username
-	Password string // User password
+	Password string // #nosec G117 User password
 	Database string // Name
 }
 
