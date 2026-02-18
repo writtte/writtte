@@ -267,6 +267,9 @@ const setupEditorExtensionOptions = (
       },
       isEnabled: true,
     },
+    toc: {
+      isEnabled: true,
+    },
   };
 };
 

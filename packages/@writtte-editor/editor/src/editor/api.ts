@@ -3,6 +3,7 @@ import type {
   TLangToolStorage,
   TLanguageToolMatch,
 } from '../extensions/langTool';
+import type { TTocHeading } from '../extensions/toc';
 import type { TEditorSchema } from './schema';
 import type { TEditorState } from './state';
 
@@ -41,6 +42,9 @@ type TEditorAPI = {
   getLangToolStorage: () => TLangToolStorage | null;
   isLangToolActive: () => boolean;
   isLangToolLoading: () => boolean;
+  getTableOfContents: () => TTocHeading[];
+  refreshTableOfContents: () => boolean;
+  scrollToHeading: (id: string) => boolean;
   setParagraph: () => boolean;
   setHorizontalLine: () => boolean;
   setLink: (href: string, target: string) => boolean;
