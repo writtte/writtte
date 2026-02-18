@@ -21,6 +21,7 @@ import {
   type TLangToolStorage,
   type TLanguageToolMatch,
 } from '../extensions/langTool';
+import { LatexExtension, type TLatexAttributes } from '../extensions/latex';
 import { LinkExtension } from '../extensions/link';
 import { ListItemExtension } from '../extensions/listItem';
 import { NumberListExtension } from '../extensions/numberList';
@@ -166,6 +167,10 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   if (opts.options.image.isEnabled) {
     extensions.push(ImageExtension.configure(opts.options.image ?? undefined));
+  }
+
+  if (opts.options.latex.isEnabled) {
+    extensions.push(LatexExtension.configure(opts.options.latex ?? undefined));
   }
 
   if (opts.options.bubbleMenu.isEnabled) {
@@ -588,6 +593,45 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     return selection.node.attrs[attr] || null;
   };
 
+  const setLatex = (attributes: TLatexAttributes): boolean =>
+    _editor.commands.setLatex(attributes);
+
+  const updateLatex = (
+    latexCode: string,
+    attributes: Partial<TLatexAttributes>,
+  ): boolean => _editor.commands.updateLatex(latexCode, attributes);
+
+  const removeLatex = (): boolean =>
+    _editor.chain().focus().removeLatex().run();
+
+  const getLatexSrc = (): string | null => {
+    const { state } = _editor;
+    const { selection } = state;
+
+    if (
+      !(selection instanceof NodeSelection) ||
+      selection.node.type.name !== 'latex'
+    ) {
+      return null;
+    }
+
+    return selection.node.attrs.src || null;
+  };
+
+  const getLatexAttribute = (attr: string): string | null => {
+    const { state } = _editor;
+    const { selection } = state;
+
+    if (
+      !(selection instanceof NodeSelection) ||
+      selection.node.type.name !== 'latex'
+    ) {
+      return null;
+    }
+
+    return selection.node.attrs[attr] || null;
+  };
+
   const addPlaceholder = (element: HTMLElement, id: string): boolean =>
     _editor.chain().focus().addPlaceholder(element, id).run();
 
@@ -712,6 +756,8 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
 
   const isImageActive = (): boolean => _editor.isActive('image');
 
+  const isLatexActive = (): boolean => _editor.isActive('latex');
+
   const isCodeBlockActive = (): boolean => _editor.isActive('codeBlock');
 
   return {
@@ -759,6 +805,11 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     removeImage,
     getImageSrc,
     getImageAttribute,
+    setLatex,
+    updateLatex,
+    removeLatex,
+    getLatexSrc,
+    getLatexAttribute,
     addPlaceholder,
     removePlaceholder,
     removeAllPlaceholders,
@@ -792,6 +843,7 @@ const WrittteEditor = (opts: TOptions): TEditorAPI => {
     isBulletListActive,
     isNumberListActive,
     isImageActive,
+    isLatexActive,
     isCodeBlockActive,
   };
 };

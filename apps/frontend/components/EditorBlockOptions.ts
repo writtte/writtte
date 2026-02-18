@@ -15,13 +15,13 @@ type TOptions = {
   isVisible: boolean;
 };
 
-const ImageBlockOptions = (opts: TOptions): HTMLDivElement | null => {
+const EditorBlockOptions = (opts: TOptions): HTMLDivElement | null => {
   if (opts.isVisible === false) {
     return null;
   }
 
   const optionsDiv = document.createElement('div');
-  optionsDiv.classList.add('image-block-options');
+  optionsDiv.classList.add('editor-block-options');
 
   optionsDiv.id = opts.id;
   setTestId(optionsDiv, opts.id);
@@ -32,10 +32,10 @@ const ImageBlockOptions = (opts: TOptions): HTMLDivElement | null => {
     }
 
     const button = document.createElement('button');
-    button.classList.add('image-block-options__button');
+    button.classList.add('editor-block-options__button');
 
     if (opts.buttons[i].isDanger === true) {
-      button.classList.add('image-block-options__button--danger');
+      button.classList.add('editor-block-options__button--danger');
     }
 
     button.id = opts.buttons[i].id;
@@ -62,6 +62,6 @@ const ImageBlockOptions = (opts: TOptions): HTMLDivElement | null => {
   return optionsDiv;
 };
 
-export type { TOptions as TImageBlockOptions };
+export type { TOptions as TEditorBlockOptions };
 
-export { ImageBlockOptions };
+export { EditorBlockOptions };
